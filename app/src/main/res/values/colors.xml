@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="base_bg">#EBEBED</color>
+    <color name="theme">#3D7FD3</color>
+    <color name="text1">#313131</color>
+    <color name="edit_bar">#ececec</color>
+    <color name="white">#fff</color>
+
+    <color name="code">#999</color>
+
+    <color name="cheng">#f95e03</color>
+    <color name="title_transparent_black">#00dddddd</color>
+    <color name="apptitle">#5F9AE4</color>
+    <color name="loan_text">#f95e03</color>
+
+    <color name="hui">#999</color>
+    <color name="touming">#00000000</color>
+</resources>

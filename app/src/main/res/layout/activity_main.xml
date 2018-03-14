@@ -1,0 +1,123 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+
+    <LinearLayout
+        android:id="@+id/main_bottom"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:background="#fff">
+
+        <LinearLayout
+            android:id="@+id/tab_1"
+            android:layout_weight="1"
+            android:layout_width="10dp"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <ImageView
+                android:layout_width="60dp"
+                android:layout_height="30dp"
+                android:src="@drawable/tab1"
+                android:layout_marginTop="8dp"
+                android:padding="3dp"
+                android:layout_gravity="center"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="同 城"
+                android:layout_gravity="center_horizontal"
+                android:textSize="12dp"
+                android:textColor="@drawable/tab_textcolor"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_weight="1"
+
+            android:id="@+id/tab_2"
+            android:layout_width="10dp"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <ImageView
+                android:layout_width="60dp"
+                android:layout_height="30dp"
+                android:src="@drawable/tab1"
+                android:layout_marginTop="8dp"
+                android:padding="3dp"
+                android:layout_gravity="center"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="打 车"
+                android:layout_gravity="center_horizontal"
+                android:textColor="@drawable/tab_textcolor"
+                android:textSize="12dp"
+                />
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_weight="1"
+            android:id="@+id/tab_3"
+            android:layout_width="10dp"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <ImageView
+                android:layout_width="60dp"
+                android:layout_height="30dp"
+                android:src="@drawable/tab1"
+                android:layout_marginTop="8dp"
+                android:padding="3dp"
+                android:layout_gravity="center"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="秒 杀"
+                android:layout_gravity="center_horizontal"
+                android:textSize="12dp"
+                android:textColor="@drawable/tab_textcolor"/>
+        </LinearLayout>
+
+
+
+        <LinearLayout
+            android:layout_weight="1"
+            android:id="@+id/tab_4"
+            android:layout_width="10dp"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <ImageView
+                android:layout_width="60dp"
+                android:layout_height="30dp"
+                android:src="@drawable/tab1"
+                android:layout_marginTop="8dp"
+                android:padding="3dp"
+                android:layout_gravity="center"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="个人中心"
+                android:layout_gravity="center_horizontal"
+                android:textSize="12dp"
+                android:textColor="@drawable/tab_textcolor"/>
+        </LinearLayout>
+
+    </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.1dp"
+        android:background="#dedede"
+        android:layout_alignTop="@id/main_bottom" />
+
+    <RelativeLayout
+        android:id="@+id/fragment_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/main_bottom" />
+
+
+</RelativeLayout>
