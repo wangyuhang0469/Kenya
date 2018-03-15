@@ -18,4 +18,6 @@
 
     <color name="hui">#999</color>
     <color name="touming">#00000000</color>
+    <!--登陆界面的样式的选择颜色-->
+    <color name="textBlack">#313131</color>
 </resources>

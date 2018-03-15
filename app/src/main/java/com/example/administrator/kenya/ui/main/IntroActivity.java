@@ -1,9 +1,12 @@
 package com.example.administrator.kenya.ui.main;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 
+import com.example.administrator.kenya.MainActivity;
 import com.example.administrator.kenya.R;
+import com.example.administrator.kenya.ui.myself.LoginActivity;
 import com.github.paolorotolo.appintro.AppIntro;
 
 
@@ -18,17 +21,17 @@ public class IntroActivity extends AppIntro {
 
 //        if (isFirstStart) {
 
-            addSlide(SlideFragment.newInstance(R.layout.fragment_splansh1));
-            addSlide(SlideFragment.newInstance(R.layout.fragment_splansh2));
-            addSlide(SlideFragment.newInstance(R.layout.fragment_splansh3));
+        addSlide(SlideFragment.newInstance(R.layout.fragment_splansh1));
+        addSlide(SlideFragment.newInstance(R.layout.fragment_splansh2));
+        addSlide(SlideFragment.newInstance(R.layout.fragment_splansh3));
 
-            setColorDoneText(Color.parseColor("#313131"));
-            setIndicatorColor(Color.parseColor("#555555"), Color.parseColor("#aaaaaa"));
+        setColorDoneText(Color.parseColor("#313131"));
+        setIndicatorColor(Color.parseColor("#555555"), Color.parseColor("#aaaaaa"));
 
-            setSeparatorColor(getResources().getColor(R.color.touming));
-            showStatusBar(false);
-            showSkipButton(false);
-            setDoneText("立即体验");
+        setSeparatorColor(getResources().getColor(R.color.touming));
+        showStatusBar(false);
+        showSkipButton(false);
+        setDoneText("立即体验");
 
 //            SharedPreferences.Editor e = getPrefs.edit();
 //            e.putBoolean("firstStart", false);
@@ -42,13 +45,14 @@ public class IntroActivity extends AppIntro {
 
     }
 
-    private void startMain(){
-//        Intent intent = new Intent();
-//        intent.setClass(getApplicationContext(),MainActivity.class);
-//        startActivity(intent);
+    private void startMain() {
+        Intent intent = new Intent();
+        intent.setClass(getApplicationContext(), LoginActivity.class);
+        startActivity(intent);
         finish();
         overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
     }
+
     @Override
     public void onSkipPressed() {
     }

@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.example.administrator.kenya.ui.myself.LoginActivity">
+
+    <include layout="@layout/title_bar" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:paddingLeft="40dp"
+        android:paddingRight="40dp">
+
+
+        <ImageView
+            android:layout_width="90dp"
+            android:layout_height="90dp"
+            android:layout_marginTop="20dp"
+            android:src="@drawable/logo" />
+
+        <LinearLayout
+            style="@style/bar1"
+            android:layout_width="280dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="20dp">
+
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@drawable/login_icon1" />
+
+            <EditText
+                android:id="@+id/phone"
+                style="@style/edit_base"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="输入手机号"
+                android:inputType="phone" />
+        </LinearLayout>
+
+        <include layout="@layout/line_max" />
+
+        <LinearLayout
+            style="@style/bar1"
+            android:layout_width="280dp"
+            android:layout_height="50dp">
+
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@drawable/login_icon2" />
+
+            <EditText
+                android:id="@+id/password"
+                style="@style/edit_base"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="输入密码"
+                android:password="true" />
+        </LinearLayout>
+
+        <include layout="@layout/line_max" />
+
+        <Button
+            android:id="@+id/login"
+            style="@style/btn"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/bg20dp_theme"
+            android:text="登   录"
+            android:textColor="@color/white" />
+
+        <RelativeLayout
+            android:layout_width="260dp"
+            android:layout_height="40dp"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:id="@+id/forgetPassword"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="忘记密码？"
+                android:textSize="16dp" />
+
+            <TextView
+                android:id="@+id/Register"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_alignParentRight="true"
+                android:gravity="center"
+                android:text="账号注册"
+                android:textColor="@color/theme"
+                android:textSize="16dp" />
+        </RelativeLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

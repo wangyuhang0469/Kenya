@@ -9,8 +9,8 @@ import java.io.Serializable;
 public class User implements Serializable {
 
 
-    private String userName="";
-    private Boolean status =false;
+    private String userName = "";
+    private Boolean status = false;
 
     public String getUserName() {
         return userName;
@@ -29,12 +29,11 @@ public class User implements Serializable {
     }
 
 
-
-
-    private User() {}
+    private User() {
+    }
 
     private static class UserHolder {
-                static final User INSTANCE = new User();
+        static final User INSTANCE = new User();
     }
 
     public static User getInstance() {

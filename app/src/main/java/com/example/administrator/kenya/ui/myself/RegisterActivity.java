@@ -14,8 +14,7 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class ForgetPasswordActivity extends BaseActivity {
-
+public class RegisterActivity extends BaseActivity {
 
     @Bind(R.id.title)
     TextView title;
@@ -25,6 +24,8 @@ public class ForgetPasswordActivity extends BaseActivity {
     EditText verifyCode;
     @Bind(R.id.getVerifyCode)
     Button getVerifyCode;
+    @Bind(R.id.userName)
+    EditText userName;
     @Bind(R.id.password)
     EditText password;
 
@@ -33,13 +34,12 @@ public class ForgetPasswordActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_forget_password);
+        setContentView(R.layout.activity_register);
         ButterKnife.bind(this);
-        title.setText("忘记密码");
+        title.setText("注册");
     }
 
-
-    @OnClick({R.id.back, R.id.getVerifyCode})
+    @OnClick({R.id.back, R.id.getVerifyCode, R.id.register, R.id.toLogin})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.back:
@@ -48,22 +48,23 @@ public class ForgetPasswordActivity extends BaseActivity {
             case R.id.getVerifyCode:
                 myCountDownTimer.start();
                 break;
+            case R.id.register:
+                if (phone.getText().length() != 0 && verifyCode.getText().length() != 0 && userName.getText().length() != 0 && password.getText().length() != 0) {
+                    toast("注册成功");
+                    finish();
+                } else {
+                    toast("请填写完整信息");
+                }
+                break;
+            case R.id.toLogin:
+                finish();
+                break;
         }
     }
-
-    @OnClick(R.id.updatePassword)
-    public void onViewClicked() {
-        if (phone.getText().length() != 0 && verifyCode.getText().length() != 0 && password.getText().length() != 0) {
-            toast("更新成功");
-            finish();
-        } else {
-            toast("请填写完整信息");
-        }
-    }
-
     /*
-    *倒计时
+    * 倒计时获取验证码
     * */
+
     private class MyCountDownTimer extends CountDownTimer {
 
         public MyCountDownTimer(long millisInFuture, long countDownInterval) {

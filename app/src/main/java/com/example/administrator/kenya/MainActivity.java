@@ -43,7 +43,7 @@ public class MainActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        isFirstStart();
+        //isFirstStart();
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
 
@@ -78,18 +78,18 @@ public class MainActivity extends BaseActivity {
 
 
     public void onTabSelect(int index) {
-            if (currentTabIndex != index) {
-                FragmentTransaction trx = getSupportFragmentManager().beginTransaction();
-                trx.hide(fragments[currentTabIndex]);
-                if (!fragments[index].isAdded()) {
-                    trx.add(R.id.fragment_container, fragments[index]);
-                }
-                trx.show(fragments[index]).commit();
+        if (currentTabIndex != index) {
+            FragmentTransaction trx = getSupportFragmentManager().beginTransaction();
+            trx.hide(fragments[currentTabIndex]);
+            if (!fragments[index].isAdded()) {
+                trx.add(R.id.fragment_container, fragments[index]);
             }
+            trx.show(fragments[index]).commit();
+        }
 
-            linearLayouts[currentTabIndex].setSelected(false);
-            linearLayouts[index].setSelected(true);
-            currentTabIndex = index;
+        linearLayouts[currentTabIndex].setSelected(false);
+        linearLayouts[index].setSelected(true);
+        currentTabIndex = index;
     }
 
 
@@ -126,9 +126,6 @@ public class MainActivity extends BaseActivity {
         }
         return super.onKeyDown(keyCode, event);
     }
-
-
-
 
 
     @OnClick({R.id.tab_1, R.id.tab_2, R.id.tab_3, R.id.tab_4})
