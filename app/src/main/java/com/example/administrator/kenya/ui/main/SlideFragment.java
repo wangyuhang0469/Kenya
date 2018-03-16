@@ -42,5 +42,4 @@ public class SlideFragment extends Fragment {
         return inflater.inflate(layoutResId, container, false);
     }
 
-
 }
