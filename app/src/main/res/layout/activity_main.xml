@@ -1,12 +1,12 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.zhy.autolayout.AutoRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent" >
 
 
-    <LinearLayout
+    <com.zhy.autolayout.AutoLinearLayout
         android:id="@+id/main_bottom"
         android:layout_width="match_parent"
-        android:layout_height="60dp"
+        android:layout_height="180px"
         android:gravity="center_vertical"
         android:orientation="horizontal"
         android:layout_alignParentBottom="true"
@@ -106,7 +106,7 @@
                 android:textColor="@drawable/tab_textcolor"/>
         </LinearLayout>
 
-    </LinearLayout>
+    </com.zhy.autolayout.AutoLinearLayout>
     <View
         android:layout_width="match_parent"
         android:layout_height="0.1dp"
@@ -120,4 +120,4 @@
         android:layout_above="@id/main_bottom" />
 
 
-</RelativeLayout>
+</com.zhy.autolayout.AutoRelativeLayout>
