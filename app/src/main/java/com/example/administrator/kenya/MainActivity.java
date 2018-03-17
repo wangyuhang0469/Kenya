@@ -11,6 +11,7 @@ import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.example.administrator.kenya.base.BaseActivity;
+import com.example.administrator.kenya.ui.city.CityHomeFragment;
 import com.example.administrator.kenya.ui.main.BlankFragment;
 import com.example.administrator.kenya.ui.main.IntroActivity;
 import com.example.administrator.kenya.ui.main.WelcomeActivity;
@@ -30,7 +31,7 @@ public class MainActivity extends BaseActivity {
     @Bind(R.id.tab_4)
     LinearLayout tab4;
 
-    private BlankFragment blankFragment1;
+    private CityHomeFragment cityHomeFragment;
     private BlankFragment blankFragment2;
     private BlankFragment blankFragment3;
     private BlankFragment blankFragment4;
@@ -62,18 +63,18 @@ public class MainActivity extends BaseActivity {
         linearLayouts[3] = tab4;
         linearLayouts[0].setSelected(true);
 
-        blankFragment1 = new BlankFragment();
+        cityHomeFragment = new CityHomeFragment();
         blankFragment2 = new BlankFragment();
         blankFragment3 = new BlankFragment();
         blankFragment4 = new BlankFragment();
-        fragments = new Fragment[]{blankFragment1, blankFragment2, blankFragment3, blankFragment4};
+        fragments = new Fragment[]{cityHomeFragment, blankFragment2, blankFragment3, blankFragment4};
         getSupportFragmentManager().beginTransaction()
-                .add(R.id.fragment_container, blankFragment1)
+                .add(R.id.fragment_container, cityHomeFragment)
                 .add(R.id.fragment_container, blankFragment2)
                 .add(R.id.fragment_container, blankFragment3)
                 .add(R.id.fragment_container, blankFragment4)
                 .hide(blankFragment4).hide(blankFragment3).hide(blankFragment2)
-                .show(blankFragment1).commit();
+                .show(cityHomeFragment).commit();
     }
 
 

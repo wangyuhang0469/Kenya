@@ -6,7 +6,7 @@
     <com.zhy.autolayout.AutoLinearLayout
         android:id="@+id/main_bottom"
         android:layout_width="match_parent"
-        android:layout_height="180px"
+        android:layout_height="160px"
         android:gravity="center_vertical"
         android:orientation="horizontal"
         android:layout_alignParentBottom="true"
@@ -18,12 +18,12 @@
             android:layout_weight="1"
             android:layout_width="10dp"
             android:layout_height="match_parent"
+            android:gravity="center"
             android:orientation="vertical">
             <ImageView
                 android:layout_width="60dp"
                 android:layout_height="30dp"
                 android:src="@drawable/tab1"
-                android:layout_marginTop="8dp"
                 android:padding="3dp"
                 android:layout_gravity="center"/>
             <TextView
@@ -41,12 +41,12 @@
             android:id="@+id/tab_2"
             android:layout_width="10dp"
             android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:gravity="center">
             <ImageView
                 android:layout_width="60dp"
                 android:layout_height="30dp"
                 android:src="@drawable/tab1"
-                android:layout_marginTop="8dp"
                 android:padding="3dp"
                 android:layout_gravity="center"/>
             <TextView
@@ -65,12 +65,12 @@
             android:id="@+id/tab_3"
             android:layout_width="10dp"
             android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:gravity="center">
             <ImageView
                 android:layout_width="60dp"
                 android:layout_height="30dp"
                 android:src="@drawable/tab1"
-                android:layout_marginTop="8dp"
                 android:padding="3dp"
                 android:layout_gravity="center"/>
             <TextView
@@ -89,12 +89,12 @@
             android:id="@+id/tab_4"
             android:layout_width="10dp"
             android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:gravity="center">
             <ImageView
                 android:layout_width="60dp"
                 android:layout_height="30dp"
                 android:src="@drawable/tab1"
-                android:layout_marginTop="8dp"
                 android:padding="3dp"
                 android:layout_gravity="center"/>
             <TextView
