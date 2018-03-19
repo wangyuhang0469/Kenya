@@ -20,6 +20,7 @@ import java.util.List;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -68,5 +69,16 @@ public class CityHomeFragment extends BaseFragment {
     public void onDestroyView() {
         super.onDestroyView();
         ButterKnife.unbind(this);
+    }
+
+    @OnClick({R.id.btn1, R.id.btn2})
+    public void onViewClicked(View view) {
+        toast("sss");
+        switch (view.getId()) {
+            case R.id.btn1:
+                break;
+            case R.id.btn2:
+                break;
+        }
     }
 }

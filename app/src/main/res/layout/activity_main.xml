@@ -46,7 +46,7 @@
             <ImageView
                 android:layout_width="60dp"
                 android:layout_height="30dp"
-                android:src="@drawable/tab1"
+                android:src="@drawable/tab2"
                 android:padding="3dp"
                 android:layout_gravity="center"/>
             <TextView
@@ -70,13 +70,13 @@
             <ImageView
                 android:layout_width="60dp"
                 android:layout_height="30dp"
-                android:src="@drawable/tab1"
+                android:src="@drawable/tab3"
                 android:padding="3dp"
                 android:layout_gravity="center"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="秒 杀"
+                android:text="商 场"
                 android:layout_gravity="center_horizontal"
                 android:textSize="12dp"
                 android:textColor="@drawable/tab_textcolor"/>
@@ -94,7 +94,7 @@
             <ImageView
                 android:layout_width="60dp"
                 android:layout_height="30dp"
-                android:src="@drawable/tab1"
+                android:src="@drawable/tab4"
                 android:padding="3dp"
                 android:layout_gravity="center"/>
             <TextView
@@ -109,8 +109,8 @@
     </com.zhy.autolayout.AutoLinearLayout>
     <View
         android:layout_width="match_parent"
-        android:layout_height="0.1dp"
-        android:background="#dedede"
+        android:layout_height="1px"
+        android:background="#989898"
         android:layout_alignTop="@id/main_bottom" />
 
     <RelativeLayout

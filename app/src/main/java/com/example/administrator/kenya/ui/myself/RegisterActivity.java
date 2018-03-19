@@ -7,8 +7,10 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.example.administrator.kenya.R;
 import com.example.administrator.kenya.base.BaseActivity;
+import com.zhy.http.okhttp.OkHttpUtils;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -60,6 +62,13 @@ public class RegisterActivity extends BaseActivity {
                 finish();
                 break;
         }
+    }
+
+
+    private void register(){
+//        OkHttpUtils.get()
+//                .url()
+
     }
     /*
     * 倒计时获取验证码
