@@ -194,29 +194,62 @@
 
 
 
-            <com.zhy.autolayout.AutoLinearLayout
+            <com.zhy.autolayout.AutoRelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="146px"
+                    android:layout_height="86px"
                     android:layout_marginTop="20px"
                     android:background="@color/white">
 
                     <ImageView
-                        android:layout_width="106px"
-                        android:layout_height="106px"
+                        android:id="@+id/image1"
+                        android:layout_width="144px"
+                        android:layout_height="match_parent"
                         android:layout_gravity="center_vertical"
-                        android:layout_marginLeft="94px"
+                        android:layout_marginLeft="60px"
                         android:src="@mipmap/city_home_news" />
+                
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:id="@+id/image2"
+                        android:layout_width="6px"
+                        android:layout_height="6px"
+                        android:src="#555555"
+                        android:layout_centerVertical="true"
+                        android:layout_toRightOf="@id/image1"
+                        android:layout_marginLeft="16px"/>
 
                     <com.example.administrator.kenya.view.MarqueeView
                         android:id="@+id/marqueeView1"
                         android:layout_width="match_parent"
-                        android:layout_height="146px"
+                        android:layout_height="match_parent"
                         android:layout_gravity="center_vertical"
-                        android:layout_marginLeft="20px"
+                        android:layout_marginLeft="16px"
+                        android:layout_toEndOf="@id/image2"
+                        android:layout_marginRight="35px"
+                        android:layout_toStartOf="@+id/tv1"
                         app:marqueeTextColor="@color/textBlack1"
                         app:marqueeTextGravity="left"
-                        app:marqueeTextSize="15sp" />
-            </com.zhy.autolayout.AutoLinearLayout>
+                        app:marqueeTextSize="13sp"/>
+
+                <TextView
+                    android:id="@+id/tv1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:text="更多"
+                    android:textSize="13sp"
+                    android:textColor="@color/textBlack1"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="60px"/>
+                
+                <View
+                    android:layout_width="2px"
+                    android:layout_height="44px"
+                    android:background="#656565"
+                    android:layout_centerVertical="true"
+                    android:layout_toLeftOf="@id/tv1"
+                    android:layout_marginRight="20px"/>
+
+            </com.zhy.autolayout.AutoRelativeLayout>
 
 
 
@@ -225,8 +258,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20px"
                 android:background="@color/white"
-                android:paddingBottom="75px"
-                android:paddingTop="75px">
+                android:paddingBottom="112px"
+                android:paddingTop="112px">
 
                 <Button
                     android:id="@+id/btn1"

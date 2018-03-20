@@ -54,11 +54,12 @@ public class CityHomeFragment extends BaseFragment {
         imageList.add("http://pic.90sjimg.com/design/00/14/38/18/5581393a30663.jpg");
 
         ArrayList<String> data = new ArrayList<>();
-        data.add("窗前明月光！\n\n12131");
-        data.add("疑是地上霜！");
-        data.add("举头望明月！");
-        data.add("低头思故乡！");
+        data.add("李克强：抗癌药物力争降到零关税");
+        data.add("IBM将推出世界上最小电脑：比一粒盐还小");
+        data.add("Facebook负面不断 扎克伯格身价一天蒸发60亿美元");
+        data.add("Adidas用海洋垃圾造鞋，卖了100多万双");
         marqueeView1.setMarqueeData(data);
+
         initBanner(imageList);
         return view;
     }
