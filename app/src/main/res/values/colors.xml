@@ -22,4 +22,6 @@
     <color name="view_line">#989898</color><!--view_line 单线条-->
 
     <color name="city_news">#ff393a4c</color>
+
+    <color name="city_login_bg">#ed6d45</color>
 </resources>
