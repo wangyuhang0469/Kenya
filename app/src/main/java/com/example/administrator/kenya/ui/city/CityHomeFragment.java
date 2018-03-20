@@ -9,9 +9,11 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.administrator.kenya.MainActivity;
 import com.example.administrator.kenya.R;
 import com.example.administrator.kenya.base.BaseFragment;
 import com.example.administrator.kenya.tools.GlideImageLoader;
+import com.lxj.marqueeview.MarqueeView;
 import com.youth.banner.Banner;
 import com.youth.banner.listener.OnBannerListener;
 
@@ -42,6 +44,7 @@ public class CityHomeFragment extends BaseFragment {
         View view = inflater.inflate(R.layout.fragment_city_home, container, false);
         ButterKnife.bind(this, view);
 
+        MarqueeView marqueeView1 = view.findViewById(R.id.marqueeView1);
         title.setText("同城");
         back.setVisibility(View.GONE);
 
@@ -50,8 +53,13 @@ public class CityHomeFragment extends BaseFragment {
         imageList.add("https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=2351109249,2100272265&fm=27&gp=0.jpg");
         imageList.add("http://pic.90sjimg.com/design/00/14/38/18/5581393a30663.jpg");
 
+        ArrayList<String> data = new ArrayList<>();
+        data.add("窗前明月光！\n\n12131");
+        data.add("疑是地上霜！");
+        data.add("举头望明月！");
+        data.add("低头思故乡！");
+        marqueeView1.setMarqueeData(data);
         initBanner(imageList);
-
         return view;
     }
 

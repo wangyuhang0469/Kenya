@@ -34,4 +34,15 @@
         <item name="android:textColor">@color/textBlack1</item>
     </style>
 
+    <!-- view_line 同城界面的间隔线 -->
+    <style name="cite_home_view_line" parent="base_widthMatch_heightWrapContent">
+        <item name="android:layout_height">20px</item>
+        <item name="android:background">@color/view_line</item>
+    </style>
+    <!-- Base with height match wrap content -->
+    <style name="base_widthMatch_heightWrapContent">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
 </resources>

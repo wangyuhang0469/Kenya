@@ -16,4 +16,10 @@
 
 
     <color name="touming">#00000000</color>
+    <!--登陆界面的样式的选择颜色-->
+    <color name="textBlack">#313131</color>
+
+    <color name="view_line">#989898</color><!--view_line 单线条-->
+
+    <color name="city_news">#ff393a4c</color>
 </resources>
