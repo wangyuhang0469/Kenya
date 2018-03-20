@@ -9,7 +9,6 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.administrator.kenya.MainActivity;
 import com.example.administrator.kenya.R;
 import com.example.administrator.kenya.base.BaseFragment;
 import com.example.administrator.kenya.tools.GlideImageLoader;
@@ -36,6 +35,8 @@ public class CityHomeFragment extends BaseFragment {
     ImageView back;
     @Bind(R.id.title)
     TextView title;
+    @Bind(R.id.marqueeView1)
+    MarqueeView marqueeView1;
 
 
     @Override
@@ -44,7 +45,6 @@ public class CityHomeFragment extends BaseFragment {
         View view = inflater.inflate(R.layout.fragment_city_home, container, false);
         ButterKnife.bind(this, view);
 
-        MarqueeView marqueeView1 = view.findViewById(R.id.marqueeView1);
         title.setText("同城");
         back.setVisibility(View.GONE);
 
