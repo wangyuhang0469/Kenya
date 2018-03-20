@@ -13,7 +13,7 @@ import com.example.administrator.kenya.MainActivity;
 import com.example.administrator.kenya.R;
 import com.example.administrator.kenya.base.BaseFragment;
 import com.example.administrator.kenya.tools.GlideImageLoader;
-import com.lxj.marqueeview.MarqueeView;
+import com.example.administrator.kenya.view.MarqueeView;
 import com.youth.banner.Banner;
 import com.youth.banner.listener.OnBannerListener;
 
