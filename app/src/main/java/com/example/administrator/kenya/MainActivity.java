@@ -15,6 +15,7 @@ import com.example.administrator.kenya.ui.city.CityHomeFragment;
 import com.example.administrator.kenya.ui.main.BlankFragment;
 import com.example.administrator.kenya.ui.main.IntroActivity;
 import com.example.administrator.kenya.ui.main.WelcomeActivity;
+import com.example.administrator.kenya.ui.myself.MyselfFragment;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -34,7 +35,7 @@ public class MainActivity extends BaseActivity {
     private CityHomeFragment cityHomeFragment;
     private BlankFragment blankFragment2;
     private BlankFragment blankFragment3;
-    private BlankFragment blankFragment4;
+    private MyselfFragment myselfFragment;
     private Fragment[] fragments;
     private LinearLayout[] linearLayouts;
     public int index;
@@ -66,14 +67,14 @@ public class MainActivity extends BaseActivity {
         cityHomeFragment = new CityHomeFragment();
         blankFragment2 = new BlankFragment();
         blankFragment3 = new BlankFragment();
-        blankFragment4 = new BlankFragment();
-        fragments = new Fragment[]{cityHomeFragment, blankFragment2, blankFragment3, blankFragment4};
+        myselfFragment = new MyselfFragment();
+        fragments = new Fragment[]{cityHomeFragment, blankFragment2, blankFragment3, myselfFragment};
         getSupportFragmentManager().beginTransaction()
                 .add(R.id.fragment_container, cityHomeFragment)
                 .add(R.id.fragment_container, blankFragment2)
                 .add(R.id.fragment_container, blankFragment3)
-                .add(R.id.fragment_container, blankFragment4)
-                .hide(blankFragment4).hide(blankFragment3).hide(blankFragment2)
+                .add(R.id.fragment_container, myselfFragment)
+                .hide(myselfFragment).hide(blankFragment3).hide(blankFragment2)
                 .show(cityHomeFragment).commit();
     }
 
