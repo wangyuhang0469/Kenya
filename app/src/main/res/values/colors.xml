@@ -6,19 +6,21 @@
 
     <color name="textBlack1">#4b4b4b</color>
     <color name="textBlack2">#656565</color>
+    <color name="textBlack3">#989898</color>
+    <color name="textgaeen1">#46bd76</color>
+    <color name="textgaeen2">#19ad5e</color>
     <color name="base_bg">#f5f5f5</color>
 
-    <color name="theme">#f93b09</color>
+    <color name="theme">#00b062</color>
+    <color name="theme_btn">#78cc99</color>
     <color name="orange">#fda06e</color>
-    <color name="theme_new">#64cea0</color>
+    <color name="touming">#00000000</color>
 
+    <color name="green_action_bar">#009452</color>
 
     <color name="white">#fff</color>
 
 
-    <color name="touming">#00000000</color>
-    <!--登陆界面的样式的选择颜色-->
-    <color name="textBlack">#313131</color>
 
     <color name="view_line">#989898</color><!--view_line 单线条-->
 

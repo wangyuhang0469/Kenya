@@ -5,7 +5,6 @@ import android.os.CountDownTimer;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 
 import com.example.administrator.kenya.R;
 import com.example.administrator.kenya.base.BaseActivity;
@@ -17,8 +16,6 @@ import butterknife.OnClick;
 public class ForgetPasswordActivity extends BaseActivity {
 
 
-    @Bind(R.id.title)
-    TextView title;
     @Bind(R.id.phone)
     EditText phone;
     @Bind(R.id.verifyCode)
@@ -33,20 +30,13 @@ public class ForgetPasswordActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_forget_password);
         ButterKnife.bind(this);
-        title.setText("找 回 密 码");
+
     }
 
 
-    @OnClick({R.id.back, R.id.getVerifyCode})
+    @OnClick(R.id.getVerifyCode)
     public void onViewClicked(View view) {
-        switch (view.getId()) {
-            case R.id.back:
-                finish();
-                break;
-            case R.id.getVerifyCode:
-                myCountDownTimer.start();
-                break;
-        }
+        myCountDownTimer.start();
     }
 
     @OnClick(R.id.updatePassword)
@@ -74,7 +64,7 @@ public class ForgetPasswordActivity extends BaseActivity {
             //防止退出Activity造成空指针
             if (getVerifyCode != null) {
                 getVerifyCode.setClickable(false);
-                getVerifyCode.setBackgroundDrawable(getResources().getDrawable(R.drawable.bg20dp_grey));
+                getVerifyCode.setBackgroundDrawable(getResources().getDrawable(R.drawable.bg4dp_grey));
                 getVerifyCode.setText(l / 1000 + "s");
             } else myCountDownTimer.cancel();
         }
@@ -86,7 +76,7 @@ public class ForgetPasswordActivity extends BaseActivity {
             if (getVerifyCode != null) {
                 getVerifyCode.setText("重新获取");
                 //设置可点击
-                getVerifyCode.setBackgroundDrawable(getResources().getDrawable(R.drawable.bg20dp_theme));
+                getVerifyCode.setBackgroundDrawable(getResources().getDrawable(R.drawable.bg4dp_theme_btn));
                 getVerifyCode.setClickable(true);
             } else myCountDownTimer.cancel();
         }

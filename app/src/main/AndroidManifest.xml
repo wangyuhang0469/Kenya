@@ -11,7 +11,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity" />
+        <activity android:name=".MainActivity"/>
         <activity android:name=".base.BaseActivity" />
         <activity
             android:name=".ui.main.IntroActivity"
@@ -19,9 +19,9 @@
         <activity
             android:name=".ui.main.WelcomeActivity"
             android:theme="@android:style/Theme.NoTitleBar.Fullscreen" />
-        <activity android:name=".ui.myself.LoginActivity" />
-        <activity android:name=".ui.myself.RegisterActivity" />
-        <activity android:name=".ui.myself.ForgetPasswordActivity" />
+        <activity android:name=".ui.myself.LoginActivity" android:theme="@style/AppTheme.dark_action_bar"/>
+        <activity android:name=".ui.myself.RegisterActivity" android:theme="@style/AppTheme.dark_action_bar" />
+        <activity android:name=".ui.myself.ForgetPasswordActivity" android:theme="@style/AppTheme.dark_action_bar" />
         <activity android:name=".StartActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -37,7 +37,6 @@
             android:name="design_height"
             android:value="1920" />
 
-        <activity android:name=".ui.myself.FindPasswordActivity" />
         <activity android:name=".ui.city.JobActivity"></activity>
     </application>
 

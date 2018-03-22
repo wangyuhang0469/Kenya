@@ -5,14 +5,23 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:paddingLeft="30px"
+    android:paddingRight="30px"
     tools:context="com.example.administrator.kenya.ui.myself.RegisterActivity">
 
-    <include layout="@layout/login_title_bar" />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="144px"
+        android:textSize="18sp"
+        android:textColor="@color/textBlack1"
+        android:gravity="center"
+        android:text="注册"/>
+
 
     <com.zhy.autolayout.AutoLinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30px"
+        android:layout_marginTop="250px"
         android:orientation="vertical"
         android:paddingLeft="2dp">
 
@@ -21,7 +30,8 @@
             <ImageView
                 android:layout_width="44px"
                 android:layout_height="38px"
-                android:src="@mipmap/login_user2" />
+                android:src="@mipmap/login_user2"
+                android:layout_marginBottom="40px" />
 
             <EditText
                 android:id="@+id/phone"
@@ -29,10 +39,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:hint="请输入手机号"
-                android:inputType="phone" />
+                android:inputType="phone"
+                android:paddingLeft="20px"/>
         </com.zhy.autolayout.AutoLinearLayout>
 
-        <include layout="@layout/line" />
+        <include layout="@layout/line_max" />
 
 
         <com.zhy.autolayout.AutoRelativeLayout style="@style/bar1">
@@ -41,7 +52,8 @@
                 android:id="@+id/img001"
                 android:layout_width="44px"
                 android:layout_height="35px"
-                android:layout_centerVertical="true"
+                android:layout_alignParentBottom="true"
+                android:layout_marginBottom="40px"
                 android:src="@mipmap/register_code2" />
 
             <EditText
@@ -53,28 +65,29 @@
                 android:layout_toEndOf="@id/img001"
                 android:layout_toStartOf="@+id/getVerifyCode"
                 android:hint="请输入验证码"
-                android:inputType="number" />
+                android:inputType="number"
+                android:paddingLeft="20px" />
 
             <Button
                 android:id="@+id/getVerifyCode"
-                android:layout_width="wrap_content"
-                android:layout_height="35dp"
+                android:layout_width="186px"
+                android:layout_height="66px"
                 android:layout_alignParentRight="true"
                 android:layout_centerInParent="true"
-                android:layout_marginRight="60px"
-                android:background="@drawable/bg20dp_theme"
-                android:text=" 获取验证码 "
+                android:background="@drawable/bg4dp_theme_btn"
+                android:text="获取"
                 android:textColor="@color/white"
-                android:textSize="30px" />
+                android:textSize="13sp" />
         </com.zhy.autolayout.AutoRelativeLayout>
 
-        <include layout="@layout/line" />
+        <include layout="@layout/line_max" />
 
         <com.zhy.autolayout.AutoLinearLayout style="@style/bar1">
 
             <ImageView
                 android:layout_width="39px"
                 android:layout_height="33px"
+                android:layout_marginBottom="40px"
                 android:src="@mipmap/login_pwd2" />
 
             <EditText
@@ -82,62 +95,61 @@
                 style="@style/edit_base"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:hint="请输入密码(8-16位数字或字母)" />
+                android:hint="请输入姓名"
+                android:paddingLeft="20px" />
         </com.zhy.autolayout.AutoLinearLayout>
 
-        <include layout="@layout/line" />
+        <include layout="@layout/line_max" />
 
         <com.zhy.autolayout.AutoLinearLayout style="@style/bar1">
 
             <ImageView
                 android:layout_width="39px"
                 android:layout_height="33px"
+                android:layout_marginBottom="40px"
                 android:src="@mipmap/login_pwd2" />
 
             <EditText
-                android:id="@+id/password"
+                android:id="@+id/password1"
                 style="@style/edit_base"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:hint="确认密码(8-16位数字或字母)"
-                android:password="true" />
+                android:hint="请输入密码(8-16位数字或字母)"
+                android:inputType="textPassword"
+                android:paddingLeft="20px" />
         </com.zhy.autolayout.AutoLinearLayout>
 
-        <include layout="@layout/line" />
+        <include layout="@layout/line_max" />
 
-        <com.zhy.autolayout.AutoLinearLayout
-            style="@style/bar1"
-            android:visibility="gone">
+        <com.zhy.autolayout.AutoLinearLayout style="@style/bar1">
 
             <ImageView
-                android:layout_width="18dp"
-                android:layout_height="18dp"
-                android:src="@drawable/login_icon2" />
+                android:layout_width="39px"
+                android:layout_height="33px"
+                android:layout_marginBottom="40px"
+                android:src="@mipmap/login_pwd2" />
 
             <EditText
-                android:id="@+id/passwordrepeat"
+                android:id="@+id/password2"
                 style="@style/edit_base"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:hint="确认密码(8-16位数字或字母)"
-                android:password="true" />
+                android:hint="请确认密码(8-16位数字或字母)"
+                android:inputType="textPassword"
+                android:paddingLeft="20px" />
         </com.zhy.autolayout.AutoLinearLayout>
+
+        <include layout="@layout/line_max" />
+
+
     </com.zhy.autolayout.AutoLinearLayout>
 
     <Button
         android:id="@+id/register"
         style="@style/btn"
         android:layout_marginTop="100px"
-        android:background="@drawable/bg20dp_theme"
-        android:text="立即注册"
+        android:background="@drawable/bg4dp_theme_btn"
+        android:text="注册"
         android:textColor="@color/white" />
 
-    <TextView
-        android:id="@+id/toLogin"
-        android:layout_width="wrap_content"
-        android:layout_height="38dp"
-        android:layout_marginLeft="40px"
-        android:layout_marginTop="60px"
-        android:gravity="center_vertical"
-        android:text="＜＜ 已有账号 去登陆" />
 </com.zhy.autolayout.AutoLinearLayout>

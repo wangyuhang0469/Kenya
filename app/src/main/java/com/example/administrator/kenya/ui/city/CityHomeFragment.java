@@ -58,6 +58,7 @@ public class CityHomeFragment extends BaseFragment {
         data.add("IBM将推出世界上最小电脑：比一粒盐还小");
         data.add("Facebook负面不断 扎克伯格身价一天蒸发60亿美元");
         data.add("Adidas用海洋垃圾造鞋，卖了100多万双");
+
         marqueeView1.setMarqueeData(data);
 
         initBanner(imageList);

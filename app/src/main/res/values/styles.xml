@@ -3,36 +3,41 @@
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
         <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorPrimary">@color/theme</item>
+        <item name="colorPrimaryDark">@color/green_action_bar</item>
         <item name="colorAccent">@color/colorAccent</item>
         <item name="android:windowIsTranslucent">true</item>
+
+    </style>
+
+    <style name="AppTheme.dark_action_bar" parent="AppTheme">
+        <item name="colorPrimaryDark">#4b4b4b</item>
     </style>
 
     <style name="btn">
-        <item name="android:layout_width">1020px</item>
+        <item name="android:layout_width">1014px</item>
         <item name="android:layout_height">120px</item>
         <item name="android:layout_gravity">center_horizontal</item>
-        <item name="android:textSize">18sp</item>
+        <item name="android:textSize">16sp</item>
         <item name="android:gravity">center</item>
     </style>
 
     <style name="bar1">
         <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">168px</item>
-        <item name="android:gravity">center_vertical</item>
-        <item name="android:paddingLeft">60px</item>
+        <item name="android:layout_height">144px</item>
+        <item name="android:gravity">bottom</item>
+        <item name="android:paddingLeft">30px</item>
         <item name="android:paddingRight">16dp</item>
     </style>
     <!--登陆界面填写样式-->
     <style name="edit_base">
-        <item name="android:textColorHint">#aaa</item>
-        <item name="android:gravity">center_vertical</item>
+        <item name="android:gravity">bottom</item>
+        <item name="android:paddingBottom">30px</item>
         <item name="android:textCursorDrawable">@null</item>
         <item name="android:background">@null</item>
-        <item name="android:paddingLeft">20px</item>
-        <item name="android:textSize">16sp</item>
-        <item name="android:textColor">@color/textBlack1</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/textBlack2</item>
+        <item name="android:textColorHint">@color/textBlack3</item>
     </style>
 
     <!-- view_line 同城界面的间隔线 -->
