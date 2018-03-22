@@ -1,13 +1,179 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.zhy.autolayout.AutoLinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical"
     tools:context="com.example.administrator.kenya.ui.myself.MyselfFragment">
-
     <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="165165656" />
 
-</FrameLayout>
+    <com.zhy.autolayout.AutoLinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
+
+        <ImageView
+            android:layout_width="90dp"
+            android:layout_height="90dp"
+            android:layout_marginTop="20dp"
+            android:src="@drawable/logo" />
+
+        <com.zhy.autolayout.AutoLinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:id="@+id/my_center_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="康召辉"
+                android:textSize="14dp" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20px"
+                android:src="@mipmap/my_center_writer" />
+        </com.zhy.autolayout.AutoLinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="手机号：15931127537"
+            android:textSize="14dp" />
+    </com.zhy.autolayout.AutoLinearLayout>
+
+    <com.zhy.autolayout.AutoLinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="520px"
+        android:layout_marginTop="52px"
+        android:background="@color/base_bg"
+        android:orientation="vertical">
+
+        <com.zhy.autolayout.AutoRelativeLayout
+            style="@style/my_center_bar"
+            android:layout_marginTop="20px">
+
+            <ImageView
+                android:id="@+id/my_center_address"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:src="@mipmap/my_center_address" />
+
+            <TextView
+                android:id="@+id/phone"
+                style="@style/my_center_tv"
+                android:layout_toRightOf="@id/my_center_address"
+                android:text="我的收获地址" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="30px"
+                android:src="@mipmap/my_center_inter" />
+        </com.zhy.autolayout.AutoRelativeLayout>
+
+        <include layout="@layout/line" />
+
+        <com.zhy.autolayout.AutoRelativeLayout style="@style/my_center_bar">
+
+            <ImageView
+                android:id="@+id/my_center_infor"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:src="@mipmap/my_center_info" />
+
+            <TextView
+                style="@style/my_center_tv"
+                android:layout_toRightOf="@id/my_center_infor"
+                android:text="我发布的信息" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="30px"
+                android:src="@mipmap/my_center_inter" />
+        </com.zhy.autolayout.AutoRelativeLayout>
+
+        <include layout="@layout/line" />
+
+        <com.zhy.autolayout.AutoRelativeLayout style="@style/my_center_bar">
+
+            <ImageView
+                android:id="@+id/my_center_bink"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:src="@mipmap/my_center_bink" />
+
+            <TextView
+                style="@style/my_center_tv"
+                android:layout_toRightOf="@id/my_center_bink"
+                android:text="我要申请电车" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="30px"
+                android:src="@mipmap/my_center_inter" />
+        </com.zhy.autolayout.AutoRelativeLayout>
+
+    </com.zhy.autolayout.AutoLinearLayout>
+
+    <com.zhy.autolayout.AutoRelativeLayout style="@style/my_center_bar">
+
+        <ImageView
+            android:id="@+id/my_center_points"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:src="@mipmap/my_center_points" />
+
+        <TextView
+            style="@style/my_center_tv"
+            android:layout_toRightOf="@id/my_center_points"
+            android:text="我的积分" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="30px"
+            android:src="@mipmap/my_center_inter" />
+    </com.zhy.autolayout.AutoRelativeLayout>
+
+    <include layout="@layout/line" />
+
+    <com.zhy.autolayout.AutoRelativeLayout style="@style/my_center_bar">
+
+        <ImageView
+            android:id="@+id/my_center_purse"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:src="@mipmap/my_center_purse" />
+
+        <TextView
+            style="@style/my_center_tv"
+            android:layout_toRightOf="@id/my_center_purse"
+            android:text="我的钱包" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="30px"
+            android:src="@mipmap/my_center_inter" />
+    </com.zhy.autolayout.AutoRelativeLayout>
+
+    <include layout="@layout/line" />
+
+</com.zhy.autolayout.AutoLinearLayout>

@@ -25,8 +25,6 @@ public class ForgetPasswordActivity extends BaseActivity {
     EditText verifyCode;
     @Bind(R.id.getVerifyCode)
     Button getVerifyCode;
-    @Bind(R.id.password)
-    EditText password;
 
     private MyCountDownTimer myCountDownTimer = new MyCountDownTimer(60000, 1000);
 
@@ -35,7 +33,7 @@ public class ForgetPasswordActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_forget_password);
         ButterKnife.bind(this);
-        title.setText("忘记密码");
+        title.setText("找 回 密 码");
     }
 
 
@@ -53,8 +51,8 @@ public class ForgetPasswordActivity extends BaseActivity {
 
     @OnClick(R.id.updatePassword)
     public void onViewClicked() {
-        if (phone.getText().length() != 0 && verifyCode.getText().length() != 0 && password.getText().length() != 0) {
-            toast("更新成功");
+        if (phone.getText().length() != 0 && verifyCode.getText().length() != 0) {
+            startActivity(FindPasswordActivity.class, null);
             finish();
         } else {
             toast("请填写完整信息");

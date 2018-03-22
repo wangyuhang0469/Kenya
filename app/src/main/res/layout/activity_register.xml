@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/city_login_bg"
     android:orientation="vertical"
     tools:context="com.example.administrator.kenya.ui.myself.RegisterActivity">
 
@@ -13,7 +12,7 @@
     <com.zhy.autolayout.AutoLinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10px"
+        android:layout_marginTop="30px"
         android:orientation="vertical"
         android:paddingLeft="2dp">
 
@@ -22,7 +21,7 @@
             <ImageView
                 android:layout_width="44px"
                 android:layout_height="38px"
-                android:src="@mipmap/regiser_user" />
+                android:src="@mipmap/login_user2" />
 
             <EditText
                 android:id="@+id/phone"
@@ -43,7 +42,7 @@
                 android:layout_width="44px"
                 android:layout_height="35px"
                 android:layout_centerVertical="true"
-                android:src="@mipmap/register_code" />
+                android:src="@mipmap/register_code2" />
 
             <EditText
                 android:id="@+id/verifyCode"
@@ -76,7 +75,7 @@
             <ImageView
                 android:layout_width="39px"
                 android:layout_height="33px"
-                android:src="@mipmap/register_pwd" />
+                android:src="@mipmap/login_pwd2" />
 
             <EditText
                 android:id="@+id/userName"
@@ -93,7 +92,7 @@
             <ImageView
                 android:layout_width="39px"
                 android:layout_height="33px"
-                android:src="@mipmap/register_code_repeat" />
+                android:src="@mipmap/login_pwd2" />
 
             <EditText
                 android:id="@+id/password"

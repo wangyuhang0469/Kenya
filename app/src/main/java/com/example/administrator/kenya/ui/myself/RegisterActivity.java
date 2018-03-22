@@ -38,7 +38,7 @@ public class RegisterActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
         ButterKnife.bind(this);
-        title.setText("注册");
+        title.setText("注 册");
     }
 
     @OnClick({R.id.back, R.id.getVerifyCode, R.id.register, R.id.toLogin})

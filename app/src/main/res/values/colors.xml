@@ -10,6 +10,7 @@
 
     <color name="theme">#f93b09</color>
     <color name="orange">#fda06e</color>
+    <color name="theme_new">#64cea0</color>
 
 
     <color name="white">#fff</color>
@@ -23,5 +24,5 @@
 
     <color name="city_news">#ff393a4c</color>
 
-    <color name="city_login_bg">#ed6d45</color>
+    <color name="city_login_bg">#00b062</color>
 </resources>

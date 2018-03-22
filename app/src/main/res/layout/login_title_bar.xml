@@ -22,7 +22,7 @@
         android:maxEms="10"
         android:singleLine="true"
         android:textColor="#fff"
-        android:textSize="50px" />
+        android:textSize="20sp" />
 
 
 </com.zhy.autolayout.AutoRelativeLayout>

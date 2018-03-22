@@ -30,7 +30,7 @@ public class LoginActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         ButterKnife.bind(this);
-        title.setText("登录");
+        title.setText("登 录");
         back.setVisibility(View.GONE);
     }
 
