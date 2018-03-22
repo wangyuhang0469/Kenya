@@ -39,8 +39,7 @@
                 style="@style/edit_base"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:hint="请输入手机号"
-                android:inputType="phone" />
+                android:hint="请输入手机号" />
         </com.zhy.autolayout.AutoLinearLayout>
 
         <include layout="@layout/line_max" />

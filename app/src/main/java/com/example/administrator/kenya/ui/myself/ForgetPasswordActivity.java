@@ -52,7 +52,7 @@ public class ForgetPasswordActivity extends BaseActivity {
     @OnClick(R.id.updatePassword)
     public void onViewClicked() {
         if (phone.getText().length() != 0 && verifyCode.getText().length() != 0) {
-            startActivity(FindPasswordActivity.class, null);
+            startActivity(ForgetPasswordActivity.class, null);
             finish();
         } else {
             toast("请填写完整信息");
