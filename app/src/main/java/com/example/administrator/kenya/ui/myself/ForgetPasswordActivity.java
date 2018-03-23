@@ -1,10 +1,12 @@
 package com.example.administrator.kenya.ui.myself;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import com.example.administrator.kenya.R;
 import com.example.administrator.kenya.base.BaseActivity;
@@ -21,7 +23,13 @@ public class ForgetPasswordActivity extends BaseActivity {
     @Bind(R.id.verifyCode)
     EditText verifyCode;
     @Bind(R.id.getVerifyCode)
-    Button getVerifyCode;
+    TextView getVerifyCode;
+    @Bind(R.id.password1)
+    EditText password1;
+    @Bind(R.id.password2)
+    EditText password2;
+    @Bind(R.id.title)
+    TextView title;
 
     private MyCountDownTimer myCountDownTimer = new MyCountDownTimer(60000, 1000);
 
@@ -31,6 +39,7 @@ public class ForgetPasswordActivity extends BaseActivity {
         setContentView(R.layout.activity_forget_password);
         ButterKnife.bind(this);
 
+        title.setText("找回密码");
     }
 
 
@@ -49,6 +58,11 @@ public class ForgetPasswordActivity extends BaseActivity {
         }
     }
 
+    @OnClick(R.id.back)
+    public void onViewClicked2() {
+        finish();
+    }
+
     /*
     *倒计时
     * */
@@ -64,7 +78,7 @@ public class ForgetPasswordActivity extends BaseActivity {
             //防止退出Activity造成空指针
             if (getVerifyCode != null) {
                 getVerifyCode.setClickable(false);
-                getVerifyCode.setBackgroundDrawable(getResources().getDrawable(R.drawable.bg4dp_grey));
+                getVerifyCode.setTextColor(getResources().getColor(R.color.textBlack2));
                 getVerifyCode.setText(l / 1000 + "s");
             } else myCountDownTimer.cancel();
         }
@@ -75,8 +89,8 @@ public class ForgetPasswordActivity extends BaseActivity {
             //重新给Button设置文字
             if (getVerifyCode != null) {
                 getVerifyCode.setText("重新获取");
+                getVerifyCode.setTextColor(getResources().getColor(R.color.textgreen1));
                 //设置可点击
-                getVerifyCode.setBackgroundDrawable(getResources().getDrawable(R.drawable.bg4dp_theme_btn));
                 getVerifyCode.setClickable(true);
             } else myCountDownTimer.cancel();
         }
