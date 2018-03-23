@@ -19,12 +19,16 @@
     <color name="green_action_bar">#009452</color>
 
     <color name="white">#fff</color>
-
-
-
     <color name="view_line">#989898</color><!--view_line 单线条-->
-
     <color name="city_news">#ff393a4c</color>
-
     <color name="city_login_bg">#00b062</color>
+    <color name="city_gry_bg">#ccc</color>
+    <color name="line1">#989898</color>
+    <color name="line2">#ffffff</color>
+    <color name="line3">#656565</color>
+    <color name="line4">#46bd7b</color>
+    <color name="line5">#00b062</color>
+    <color name="line6">#9b9b9b</color>
+    <color name="line7">#c3c3c3</color>
+    <color name="line8">#989898</color>
 </resources>

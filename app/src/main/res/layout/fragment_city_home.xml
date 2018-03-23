@@ -84,6 +84,7 @@
 
 
                 <com.zhy.autolayout.AutoLinearLayout
+                    android:id="@+id/city_home_job"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"

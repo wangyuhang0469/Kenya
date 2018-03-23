@@ -10,10 +10,10 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="144px"
-        android:textSize="18sp"
-        android:textColor="@color/textBlack1"
         android:gravity="center"
-        android:text="登录"/>
+        android:text="登录"
+        android:textColor="@color/textBlack1"
+        android:textSize="18sp" />
 
     <com.zhy.autolayout.AutoLinearLayout
         android:layout_width="match_parent"
@@ -36,8 +36,8 @@
             <ImageView
                 android:layout_width="38px"
                 android:layout_height="44px"
-                android:src="@mipmap/login_user2"
-                android:layout_marginBottom="40px"/>
+                android:layout_marginBottom="40px"
+                android:src="@mipmap/login_user2" />
 
             <EditText
                 android:id="@+id/phone"
@@ -51,14 +51,13 @@
 
         <include layout="@layout/line_max" />
 
-        <com.zhy.autolayout.AutoLinearLayout
-            style="@style/bar1">
+        <com.zhy.autolayout.AutoLinearLayout style="@style/bar1">
 
             <ImageView
                 android:layout_width="33px"
                 android:layout_height="39px"
-                android:src="@mipmap/login_pwd2"
-                android:layout_marginBottom="43px" />
+                android:layout_marginBottom="43px"
+                android:src="@mipmap/login_pwd2" />
 
             <EditText
                 android:id="@+id/password"

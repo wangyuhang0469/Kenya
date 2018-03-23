@@ -7,7 +7,6 @@
         <item name="colorPrimaryDark">@color/green_action_bar</item>
         <item name="colorAccent">@color/colorAccent</item>
         <item name="android:windowIsTranslucent">true</item>
-
     </style>
 
     <style name="AppTheme.dark_action_bar" parent="AppTheme">
@@ -68,5 +67,9 @@
         <item name="android:textSize">16sp</item>
         <item name="android:layout_marginLeft">10sp</item>
     </style>
-
+    <!--Tab字体-->
+    <style name="MyTabLayoutTextAppeara" parent="TextAppearance.AppCompat.Widget.ActionBar.Title.Inverse">
+        <item name="android:textSize">20sp</item>
+        <item name="android:textColor">@color/grey</item>
+    </style>
 </resources>

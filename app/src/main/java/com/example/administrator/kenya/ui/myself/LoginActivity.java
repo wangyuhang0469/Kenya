@@ -1,7 +1,5 @@
 package com.example.administrator.kenya.ui.myself;
 
-import android.app.Activity;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
@@ -33,26 +31,25 @@ public class LoginActivity extends BaseActivity {
     @Bind(R.id.password)
     EditText password;
 
-    private boolean lock=false;
+    private boolean lock = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         ButterKnife.bind(this);
-
     }
-
 
     @OnClick({R.id.login, R.id.forgetPassword, R.id.Register})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.login:
                 if (lock) {
-                } else if (phone.getText().length() == 0 || password.getText().length() == 0){
+                } else if (phone.getText().length() == 0 || password.getText().length() == 0) {
                     toast("用户名或密码不能为空");
-                }else {
-                    login();
+                } else {
+                    // login();
+                    startActivity(MainActivity.class, null);
                 }
                 break;
             case R.id.forgetPassword:
@@ -64,12 +61,12 @@ public class LoginActivity extends BaseActivity {
         }
     }
 
-    public void login(){
+    public void login() {
         lock = true;
         OkHttpUtils.get()
                 .url("http://192.168.1.102:8080/kenYa-test/user/login")
-                .addParams("userPhoneNumber",phone.getText().toString())
-                .addParams("userPsw",password.getText().toString())
+                .addParams("userPhoneNumber", phone.getText().toString())
+                .addParams("userPsw", password.getText().toString())
                 .build()
                 .execute(new StringCallback() {
                     @Override
@@ -84,7 +81,7 @@ public class LoginActivity extends BaseActivity {
                         JSONObject jsonObject = null;
                         try {
                             jsonObject = new JSONObject(response);
-                            if (jsonObject.getString("code").equals("000")){
+                            if (jsonObject.getString("code").equals("000")) {
                                 jsonObject = jsonObject.getJSONObject("data");
                                 User user = User.getInstance();
                                 user.setUserName(jsonObject.getString("userName"));
@@ -92,7 +89,7 @@ public class LoginActivity extends BaseActivity {
                                 startActivity(MainActivity.class, null);
                                 finish();
                                 toast("登录成功");
-                            }else {
+                            } else {
                                 toast(jsonObject.getString("message"));
                             }
                         } catch (JSONException e) {
@@ -102,8 +99,4 @@ public class LoginActivity extends BaseActivity {
                     }
                 });
     }
-
-
-
-
 }

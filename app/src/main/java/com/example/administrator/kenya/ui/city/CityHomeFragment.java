@@ -81,13 +81,16 @@ public class CityHomeFragment extends BaseFragment {
         ButterKnife.unbind(this);
     }
 
-    @OnClick({R.id.btn1, R.id.btn2})
+    @OnClick({R.id.btn1, R.id.btn2, R.id.city_home_job})
     public void onViewClicked(View view) {
         toast("sss");
         switch (view.getId()) {
             case R.id.btn1:
                 break;
             case R.id.btn2:
+                break;
+            case R.id.city_home_job:
+                startActivity(JobActivity.class, null);
                 break;
         }
     }

@@ -38,5 +38,6 @@ dependencies {
     compile 'com.github.ksoichiro:android-observablescrollview:1.6.0'
     compile 'com.youth.banner:banner:1.4.10'
     compile 'de.hdodenhof:circleimageview:2.2.0'
+    compile 'com.android.support:design:26.0.0-alpha1'
     testCompile 'junit:junit:4.12'
 }
