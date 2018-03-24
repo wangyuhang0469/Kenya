@@ -11,9 +11,6 @@ import butterknife.ButterKnife;
 
 public class ResumeinfoActivity extends Activity {
 
-    @Bind(R.id.resume_info)
-    AutoRelativeLayout resumeInfo;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

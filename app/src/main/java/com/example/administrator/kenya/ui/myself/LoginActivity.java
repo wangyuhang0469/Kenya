@@ -48,8 +48,8 @@ public class LoginActivity extends BaseActivity {
                 } else if (phone.getText().length() == 0 || password.getText().length() == 0) {
                     toast("用户名或密码不能为空");
                 } else {
-                    // login();
-                    startActivity(MainActivity.class, null);
+                    login();
+                    // startActivity(MainActivity.class, null);
                 }
                 break;
             case R.id.forgetPassword:

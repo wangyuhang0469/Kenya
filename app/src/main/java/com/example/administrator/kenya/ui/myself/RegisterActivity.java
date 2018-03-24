@@ -35,7 +35,7 @@ public class RegisterActivity extends BaseActivity {
     @Bind(R.id.password2)
     EditText password2;
 
-    private boolean lock=false;
+    private boolean lock = false;
 
 
     private MyCountDownTimer myCountDownTimer = new MyCountDownTimer(60000, 1000);
@@ -55,12 +55,12 @@ public class RegisterActivity extends BaseActivity {
                 myCountDownTimer.start();
                 break;
             case R.id.register:
-                if (lock){
-                }else if (phone.getText().length() == 0 || userName.getText().length() == 0 || password1.getText().length() == 0 || password2.getText().length() == 0) {
+                if (lock) {
+                } else if (phone.getText().length() == 0 || userName.getText().length() == 0 || password1.getText().length() == 0 || password2.getText().length() == 0) {
                     toast("请填写完整信息");
-                } else if(!password1.getText().toString().equals(password2.getText().toString())){
+                } else if (!password1.getText().toString().equals(password2.getText().toString())) {
                     toast("密码输入不一致");
-                }else {
+                } else {
                     register();
                 }
                 break;
@@ -73,10 +73,10 @@ public class RegisterActivity extends BaseActivity {
         OkHttpUtils.get()
                 .url("http://192.168.1.102:8080/kenYa-test/user/register")
                 .addParams("userPhoneNumber", phone.getText().toString())
-                .addParams("userName",userName.getText().toString())
-                .addParams("userPsw",password1.getText().toString())
-                .addParams("userSex","6")
-                .addParams("userAge","99")
+                .addParams("userName", userName.getText().toString())
+                .addParams("userPsw", password1.getText().toString())
+                .addParams("userSex", "6")
+                .addParams("userAge", "99")
                 .build()
                 .execute(new StringCallback() {
                     @Override
@@ -91,10 +91,10 @@ public class RegisterActivity extends BaseActivity {
                         JSONObject jsonObject = null;
                         try {
                             jsonObject = new JSONObject(response);
-                            if (jsonObject.getString("code").equals("000")){
+                            if (jsonObject.getString("code").equals("000")) {
                                 toast("注册成功");
                                 finish();
-                            }else {
+                            } else {
                                 toast(jsonObject.getString("message"));
                             }
                         } catch (JSONException e) {

@@ -28,9 +28,8 @@
         <activity
             android:name=".ui.myself.ForgetPasswordActivity"
             android:theme="@style/AppTheme.dark_action_bar" />
-        <activity android:name=".ui.myself.LoginActivity" android:theme="@style/AppTheme.dark_action_bar"/>
-        <activity android:name=".ui.myself.RegisterActivity" android:theme="@style/AppTheme.dark_action_bar" />
-        <activity android:name=".ui.myself.ForgetPasswordActivity"/>
+
+
         <activity android:name=".StartActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
