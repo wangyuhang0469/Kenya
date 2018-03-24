@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 
+import com.example.administrator.kenya.MainActivity;
 import com.example.administrator.kenya.R;
 import com.example.administrator.kenya.ui.myself.LoginActivity;
 

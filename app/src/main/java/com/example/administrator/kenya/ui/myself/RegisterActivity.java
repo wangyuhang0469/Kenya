@@ -71,7 +71,7 @@ public class RegisterActivity extends BaseActivity {
     private void register() {
         lock = true;
         OkHttpUtils.get()
-                .url("http://192.168.1.102:8080/kenYa-test/user/register")
+                .url("http://47.93.6.164/kenYa-test/user/register")
                 .addParams("userPhoneNumber", phone.getText().toString())
                 .addParams("userName", userName.getText().toString())
                 .addParams("userPsw", password1.getText().toString())

@@ -12,6 +12,7 @@ import android.widget.TextView;
 import com.example.administrator.kenya.R;
 import com.example.administrator.kenya.base.BaseFragment;
 import com.example.administrator.kenya.tools.GlideImageLoader;
+import com.example.administrator.kenya.ui.city.used.UsedActivity;
 import com.example.administrator.kenya.view.MarqueeView;
 import com.youth.banner.Banner;
 import com.youth.banner.listener.OnBannerListener;
@@ -81,9 +82,8 @@ public class CityHomeFragment extends BaseFragment {
         ButterKnife.unbind(this);
     }
 
-    @OnClick({R.id.btn1, R.id.btn2, R.id.city_home_job})
+    @OnClick({R.id.btn1, R.id.btn2, R.id.city_home_job,R.id.city_home_used})
     public void onViewClicked(View view) {
-        toast("sss");
         switch (view.getId()) {
             case R.id.btn1:
                 break;
@@ -91,6 +91,9 @@ public class CityHomeFragment extends BaseFragment {
                 break;
             case R.id.city_home_job:
                 startActivity(JobActivity.class, null);
+                break;
+            case R.id.city_home_used:
+                startActivity(UsedActivity.class, null);
                 break;
         }
     }

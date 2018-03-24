@@ -10,10 +10,16 @@ import android.widget.TextView;
 
 import com.example.administrator.kenya.R;
 import com.example.administrator.kenya.base.BaseActivity;
+import com.zhy.http.okhttp.OkHttpUtils;
+import com.zhy.http.okhttp.callback.StringCallback;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import okhttp3.Call;
 
 public class ForgetPasswordActivity extends BaseActivity {
 
@@ -30,6 +36,8 @@ public class ForgetPasswordActivity extends BaseActivity {
     EditText password2;
     @Bind(R.id.title)
     TextView title;
+
+    private boolean lock = false;
 
     private MyCountDownTimer myCountDownTimer = new MyCountDownTimer(60000, 1000);
 
@@ -50,11 +58,13 @@ public class ForgetPasswordActivity extends BaseActivity {
 
     @OnClick(R.id.updatePassword)
     public void onViewClicked() {
-        if (phone.getText().length() != 0 && verifyCode.getText().length() != 0) {
-            startActivity(ForgetPasswordActivity.class, null);
-            finish();
-        } else {
+        if (lock) {
+        } else if (phone.getText().length() == 0 ||  password1.getText().length() == 0 || password2.getText().length() == 0) {
             toast("请填写完整信息");
+        } else if (!password1.getText().toString().equals(password2.getText().toString())) {
+            toast("密码输入不一致");
+        } else {
+            update();
         }
     }
 
@@ -63,6 +73,41 @@ public class ForgetPasswordActivity extends BaseActivity {
         finish();
     }
 
+
+    private void update() {
+        lock = true;
+        OkHttpUtils.get()
+                .url("http://47.93.6.164/kenYa-test/user/updatePassWord")
+                .addParams("userPhoneNumber", phone.getText().toString())
+                .addParams("userPsw", password1.getText().toString())
+                .build()
+                .execute(new StringCallback() {
+                    @Override
+                    public void onError(Call call, Exception e, int id) {
+                        toast("修改失败");
+                        lock = false;
+                        e.printStackTrace();
+                    }
+
+                    @Override
+                    public void onResponse(String response, int id) {
+                        JSONObject jsonObject = null;
+                        try {
+                            jsonObject = new JSONObject(response);
+                            if (jsonObject.getString("code").equals("000")) {
+                                toast("修改成功");
+                                finish();
+                            } else {
+                                toast(jsonObject.getString("message"));
+                            }
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                        lock = false;
+                    }
+                });
+
+    }
     /*
     *倒计时
     * */

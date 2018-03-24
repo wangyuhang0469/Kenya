@@ -28,8 +28,6 @@
         <activity
             android:name=".ui.myself.ForgetPasswordActivity"
             android:theme="@style/AppTheme.dark_action_bar" />
-
-
         <activity android:name=".StartActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -51,7 +49,8 @@
         <activity
             android:name=".ui.myself.FindPasswordActivity"
             android:theme="@style/AppTheme.dark_action_bar" />
-        <activity android:name=".activity.ResumeinfoActivity"></activity>
+        <activity android:name=".activity.ResumeinfoActivity" />
+        <activity android:name=".ui.city.used.UsedActivity"></activity>
     </application>
 
 </manifest>

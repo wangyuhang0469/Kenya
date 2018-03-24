@@ -39,5 +39,6 @@ dependencies {
     compile 'com.youth.banner:banner:1.4.10'
     compile 'de.hdodenhof:circleimageview:2.2.0'
     compile 'com.android.support:design:26.0.0-alpha1'
+    compile 'com.android.support:recyclerview-v7:26+'
     testCompile 'junit:junit:4.12'
 }

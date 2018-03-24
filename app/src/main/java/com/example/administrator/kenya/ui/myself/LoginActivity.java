@@ -64,7 +64,7 @@ public class LoginActivity extends BaseActivity {
     public void login() {
         lock = true;
         OkHttpUtils.get()
-                .url("http://192.168.1.102:8080/kenYa-test/user/login")
+                .url("http://47.93.6.164/kenYa-test/user/login")
                 .addParams("userPhoneNumber", phone.getText().toString())
                 .addParams("userPsw", password.getText().toString())
                 .build()
