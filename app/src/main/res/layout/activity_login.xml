@@ -46,7 +46,8 @@
                 android:layout_height="match_parent"
                 android:hint="请输入手机号"
                 android:inputType="phone"
-                android:paddingLeft="20px" />
+                android:paddingLeft="20px"
+                android:text="15231170279"/>
         </com.zhy.autolayout.AutoLinearLayout>
 
         <include layout="@layout/line_max" />
@@ -66,7 +67,8 @@
                 android:layout_height="match_parent"
                 android:hint="输入密码"
                 android:paddingLeft="22px"
-                android:password="true" />
+                android:password="true"
+                android:text="123"/>
         </com.zhy.autolayout.AutoLinearLayout>
 
         <include layout="@layout/line_max" />

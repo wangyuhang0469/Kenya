@@ -2,11 +2,11 @@
 <com.zhy.autolayout.AutoRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:paddingRight="30px">
+    android:background="@color/white">
 
     <ImageView
         android:id="@+id/image"
-        android:layout_width="360px"
+        android:layout_width="350px"
         android:layout_height="250px"
         android:layout_margin="30px"
         android:background="@drawable/linshi3"/>
@@ -17,7 +17,9 @@
         android:layout_height="wrap_content"
         android:layout_toRightOf="@id/image"
         android:layout_alignTop="@id/image"
-        android:textColor="@color/textBlack1"/>
+        android:textColor="@color/textBlack1"
+        android:layout_marginRight="30px"
+        android:layout_marginTop="18px"/>
 
     <TextView
         android:id="@+id/phone"
@@ -28,7 +30,7 @@
         android:textColor="@color/textBlack2"
         android:text="手机：18532159723"
         android:textSize="13sp"
-        android:layout_marginBottom="8px"/>
+        android:layout_marginBottom="18px"/>
     
     <TextView
         android:id="@+id/call"
@@ -40,7 +42,8 @@
         android:textSize="13sp"
         android:text="拨号"
         android:layout_alignParentRight="true"
-        android:layout_alignBottom="@id/image"/>
+        android:layout_alignBottom="@id/image"
+        android:layout_marginRight="30px"/>
 
     <TextView
         android:id="@+id/price"
@@ -51,8 +54,12 @@
         android:textSize="17sp"
         android:layout_toRightOf="@id/image"
         android:layout_above="@id/phone"
-        android:layout_marginBottom="6px"/>
+        android:layout_marginBottom="14px"/>
 
-    <include layout="@layout/line_max" />
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2px"
+        android:background="#989898"
+        android:layout_alignParentBottom="true"/>
 
 </com.zhy.autolayout.AutoRelativeLayout>

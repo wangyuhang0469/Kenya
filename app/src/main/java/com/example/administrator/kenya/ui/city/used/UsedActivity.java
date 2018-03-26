@@ -22,8 +22,6 @@ public class UsedActivity extends BaseActivity {
 
     @Bind(R.id.recyclerView)
     RecyclerView recyclerView;
-    @Bind(R.id.title)
-    TextView title;
 
     private MyAdapter myAdapter;
     private List<Goods> goodsList;
@@ -35,7 +33,6 @@ public class UsedActivity extends BaseActivity {
         setContentView(R.layout.activity_used);
         ButterKnife.bind(this);
 
-        title.setText("二手");
 
         goodsList = new ArrayList<>();
         for (int i = 0; i < 8; i++) {
@@ -48,6 +45,7 @@ public class UsedActivity extends BaseActivity {
         LinearLayoutManager layoutmanager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutmanager);
         recyclerView.setAdapter(myAdapter);
+
 
 
     }
@@ -68,6 +66,8 @@ public class UsedActivity extends BaseActivity {
                 super(itemView);
                 goodsTitle = (TextView) itemView.findViewById(R.id.goodsTitle);
             }
+
+
         }
 
 
@@ -80,6 +80,13 @@ public class UsedActivity extends BaseActivity {
         @Override
         public void onBindViewHolder(ViewHolder holder, final int position) {
             holder.goodsTitle.setText(list.get(position).getTitle());
+
+            holder.itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    startActivity(GoodsDetailsActivity.class,null);
+                }
+            });
         }
 
 

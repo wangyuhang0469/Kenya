@@ -192,9 +192,10 @@
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="77dp"
-        android:src="@mipmap/resum_photo" />
+        android:layout_marginTop="28dp"
+        android:src="@mipmap/resum_photo"
+        android:layout_below="@+id/person_info"
+        android:layout_centerHorizontal="true" />
 
     <TextView
         android:id="@+id/city_home_job_release"

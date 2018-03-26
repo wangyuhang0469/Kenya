@@ -50,7 +50,10 @@
             android:name=".ui.myself.FindPasswordActivity"
             android:theme="@style/AppTheme.dark_action_bar" />
         <activity android:name=".activity.ResumeinfoActivity" />
-        <activity android:name=".ui.city.used.UsedActivity"></activity>
+        <activity
+            android:name=".ui.city.used.UsedActivity"
+            android:theme="@style/AppTheme.grey_action_bar" />
+        <activity android:name=".ui.city.used.GoodsDetailsActivity" android:theme="@style/AppTheme.grey_action_bar"/>
     </application>
 
 </manifest>

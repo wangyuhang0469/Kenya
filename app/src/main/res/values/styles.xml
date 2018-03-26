@@ -13,6 +13,11 @@
         <item name="colorPrimaryDark">#4b4b4b</item>
     </style>
 
+    <style name="AppTheme.grey_action_bar" parent="AppTheme">
+        <item name="android:windowLightStatusBar">true</item>
+        <item name="colorPrimaryDark">#f1f1f1</item>
+    </style>
+
     <style name="btn">
         <item name="android:layout_width">1014px</item>
         <item name="android:layout_height">120px</item>
