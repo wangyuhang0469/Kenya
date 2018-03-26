@@ -17,6 +17,7 @@ import java.util.List;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 public class UsedActivity extends BaseActivity {
 
@@ -47,7 +48,18 @@ public class UsedActivity extends BaseActivity {
         recyclerView.setAdapter(myAdapter);
 
 
+    }
 
+    @OnClick({R.id.back, R.id.release})
+    public void onViewClicked(View view) {
+        switch (view.getId()) {
+            case R.id.back:
+                finish();
+                break;
+            case R.id.release:
+                startActivity(GoodsReleaseActivity.class,null);
+                break;
+        }
     }
 
     public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
@@ -84,7 +96,7 @@ public class UsedActivity extends BaseActivity {
             holder.itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    startActivity(GoodsDetailsActivity.class,null);
+                    startActivity(GoodsDetailsActivity.class, null);
                 }
             });
         }

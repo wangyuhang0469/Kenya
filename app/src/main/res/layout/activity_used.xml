@@ -7,13 +7,13 @@
     tools:context="com.example.administrator.kenya.ui.city.used.UsedActivity">
 
 
-    <RelativeLayout
+    <com.zhy.autolayout.AutoRelativeLayout
         android:id="@+id/title_bar"
         android:layout_width="match_parent"
         android:layout_height="144px"
         android:background="@color/base_bg">
 
-        <LinearLayout
+        <com.zhy.autolayout.AutoLinearLayout
             android:layout_width="match_parent"
             android:layout_height="100px"
             android:background="@color/white"
@@ -34,7 +34,7 @@
                 android:text="输入你想找的"
                 android:textColor="@color/textBlack3"/>
 
-        </LinearLayout>
+        </com.zhy.autolayout.AutoLinearLayout>
 
         <ImageView
             android:id="@+id/back"
@@ -55,7 +55,7 @@
             android:textColor="@color/textBlack1"
             android:layout_alignParentRight="true" />
 
-    </RelativeLayout>
+    </com.zhy.autolayout.AutoRelativeLayout>
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recyclerView"
@@ -73,6 +73,7 @@
         android:background="@color/theme_btn"
         android:gravity="center"
         android:text="发布"
-        android:textColor="@color/white"/>
+        android:textColor="@color/white"
+        android:textSize="17sp"/>
 
 </com.zhy.autolayout.AutoRelativeLayout>

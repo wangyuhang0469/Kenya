@@ -32,9 +32,9 @@ public class GoodsDetailsActivity extends BaseActivity {
         title.setText("物品详情");
 
         List<String> imageList = new ArrayList<>();
-        imageList.add("http://img011.hc360.cn/k1/M0B/24/D0/wKhQwFdjdHSER6NQAAAAADZsFuo401.jpg");
-        imageList.add("https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=2351109249,2100272265&fm=27&gp=0.jpg");
-        imageList.add("http://pic.90sjimg.com/design/00/14/38/18/5581393a30663.jpg");
+        imageList.add("https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1522661576&di=303c4b46e2f05da6b6363612b5673ee0&imgtype=jpg&er=1&src=http%3A%2F%2Fpic47.nipic.com%2F20140820%2F9666634_183159701000_2.jpg");
+        imageList.add("https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1522066924716&di=bc984eb61d75ca2725bc794b1f31f6ca&imgtype=0&src=http%3A%2F%2Fimage.kejixun.com%2F2017%2F0220%2F20170220040005766.jpg");
+        imageList.add("https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1522066961510&di=0461b7f9b07b81b33f888cc231c4d142&imgtype=0&src=http%3A%2F%2Fimg0.pconline.com.cn%2Fpconline%2F1712%2F14%2F10506108_6412_thumb.jpg");
 
         initBanner(imageList);
 
