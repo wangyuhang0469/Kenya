@@ -44,6 +44,16 @@
         <item name="android:textColorHint">@color/textBlack3</item>
     </style>
 
+
+    <style name="edit_base2">
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:textCursorDrawable">@null</item>
+        <item name="android:background">@null</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/textBlack2</item>
+        <item name="android:textColorHint">@color/textBlack3</item>
+    </style>
+
     <!-- view_line 同城界面的间隔线 -->
     <style name="cite_home_view_line" parent="base_widthMatch_heightWrapContent">
         <item name="android:layout_height">20px</item>
