@@ -3,4 +3,9 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <!--时间上用到的-->
+    <string name="timepicker_finish">确认</string>
+    <string name="timepicker_year">年</string>
+    <string name="timepicker_month">月</string>
+    <string name="timepicker_day">日</string>
 </resources>

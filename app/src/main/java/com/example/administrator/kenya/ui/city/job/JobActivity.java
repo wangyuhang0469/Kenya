@@ -1,4 +1,4 @@
-package com.example.administrator.kenya.ui.city;
+package com.example.administrator.kenya.ui.city.job;
 
 import android.content.Intent;
 import android.os.Bundle;

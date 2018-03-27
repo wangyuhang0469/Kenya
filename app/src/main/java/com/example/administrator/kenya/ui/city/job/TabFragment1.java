@@ -1,4 +1,4 @@
-package com.example.administrator.kenya.ui.city;
+package com.example.administrator.kenya.ui.city.job;
 
 
 import android.os.Bundle;
@@ -53,11 +53,5 @@ public class TabFragment1 extends Fragment {
         textView.setText(mParam1);
         return myview;
     }
-    public List<String> getData() {
-        List<String> list = new ArrayList<>();
-        for (int i = 0; i < 20; i++) {
-            list.add("item" + i);
-        }
-        return list;
-    }
+    
 }

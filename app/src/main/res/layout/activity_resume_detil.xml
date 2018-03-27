@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.zhy.autolayout.AutoRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.example.administrator.kenya.activity.ResumeDetilActivity">
+
+    <com.zhy.autolayout.AutoRelativeLayout
+        android:id="@+id/person_info_deyail"
+        android:layout_width="395dp"
+        android:layout_height="41dp"
+        tools:layout_editor_absoluteX="8dp"
+        tools:layout_editor_absoluteY="0dp">
+
+        <ImageView
+            android:id="@+id/back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:adjustViewBounds="true"
+            android:padding="11dp"
+            android:src="@mipmap/resume_bank" />
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_centerInParent="true"
+            android:ellipsize="end"
+            android:gravity="center"
+            android:maxEms="10"
+            android:singleLine="true"
+            android:text="简历详情"
+            android:textSize="18sp" />
+    </com.zhy.autolayout.AutoRelativeLayout>
+
+    <com.zhy.autolayout.AutoLinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/city_home_job_release"
+        android:layout_below="@id/person_info_deyail"
+        android:orientation="vertical">
+
+        <com.zhy.autolayout.AutoLinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="50px"
+            android:layout_marginLeft="60px"
+            android:layout_marginTop="56px"
+            android:gravity="center_vertical">
+
+            <ImageView
+                android:layout_width="248px"
+                android:layout_height="248px"
+                android:src="@drawable/logo" />
+
+            <com.zhy.autolayout.AutoLinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/resume_detail_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="30px"
+                    android:gravity="center_vertical"
+                    android:text="王小花"
+                    android:textColor="@color/textBlack1"
+                    android:textSize="46px" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="30px"
+                    android:layout_marginTop="10px"
+                    android:text="期望薪资:3000"
+                    android:textColor="@color/textBlack1"
+                    android:textSize="38px" />
+            </com.zhy.autolayout.AutoLinearLayout>
+
+        </com.zhy.autolayout.AutoLinearLayout>
+
+
+        <com.zhy.autolayout.AutoLinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="276px"
+            android:orientation="vertical">
+
+            <TextView
+                style="@style/detail_tv"
+                android:text="求职意向" />
+
+            <TextView
+                style="@style/detail_tv_content"
+                android:text="洗车工" />
+
+        </com.zhy.autolayout.AutoLinearLayout>
+
+        <include layout="@layout/line" />
+
+        <com.zhy.autolayout.AutoLinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="276px"
+            android:orientation="vertical">
+
+            <TextView
+                style="@style/detail_tv"
+                android:text="工作经验" />
+
+            <TextView
+                style="@style/detail_tv_content"
+                android:text="3-5年" />
+
+        </com.zhy.autolayout.AutoLinearLayout>
+
+        <include layout="@layout/line" />
+
+        <com.zhy.autolayout.AutoLinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="388px">
+
+            <TextView
+                style="@style/detail_tv"
+                android:text="个人介绍" />
+
+        </com.zhy.autolayout.AutoLinearLayout>
+
+        <include layout="@layout/line" />
+
+        <com.zhy.autolayout.AutoLinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="276px"
+            android:orientation="vertical">
+
+            <TextView
+                style="@style/detail_tv"
+                android:text="手机号：" />
+
+            <TextView
+                style="@style/detail_tv_content"
+                android:text="15931127537" />
+        </com.zhy.autolayout.AutoLinearLayout>
+    </com.zhy.autolayout.AutoLinearLayout>
+
+    <TextView
+        android:id="@+id/city_home_job_release"
+        android:layout_width="match_parent"
+        android:layout_height="160px"
+        android:layout_alignParentBottom="true"
+        android:background="@color/theme_btn"
+        android:gravity="center"
+        android:text="拨号" />
+</com.zhy.autolayout.AutoRelativeLayout>

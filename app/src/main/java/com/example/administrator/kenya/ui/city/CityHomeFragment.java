@@ -12,6 +12,7 @@ import android.widget.TextView;
 import com.example.administrator.kenya.R;
 import com.example.administrator.kenya.base.BaseFragment;
 import com.example.administrator.kenya.tools.GlideImageLoader;
+import com.example.administrator.kenya.ui.city.job.JobActivity;
 import com.example.administrator.kenya.ui.city.used.UsedActivity;
 import com.example.administrator.kenya.view.MarqueeView;
 import com.youth.banner.Banner;
@@ -82,7 +83,7 @@ public class CityHomeFragment extends BaseFragment {
         ButterKnife.unbind(this);
     }
 
-    @OnClick({R.id.btn1, R.id.btn2, R.id.city_home_job,R.id.city_home_used})
+    @OnClick({R.id.btn1, R.id.btn2, R.id.city_home_job, R.id.city_home_used})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.btn1:

@@ -30,7 +30,6 @@ public class LoginActivity extends BaseActivity {
     EditText phone;
     @Bind(R.id.password)
     EditText password;
-
     private boolean lock = false;
 
     @Override

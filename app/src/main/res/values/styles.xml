@@ -87,4 +87,43 @@
         <item name="android:textSize">20sp</item>
         <item name="android:textColor">@color/grey</item>
     </style>
+    <!--选择时间的样式-->
+    <style name="Theme.Light.NoTitle.Dialog" parent="@android:style/Theme.Dialog">
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowFrame">@null</item>
+    </style>
+    <!--时间样式-->
+    <style name="Theme.Light.NoTitle.NoShadow.Dialog" parent="Theme.Light.NoTitle.Dialog">
+        <item name="android:backgroundDimEnabled">false</item>
+    </style>
+
+    <style name="Animation.Bottom.Rising" parent="@android:style/Animation">
+        <item name="android:windowEnterAnimation">@anim/slide_in_bottom</item>
+        <item name="android:windowExitAnimation">@anim/slide_out_bottom</item>
+    </style>
+    <!--简历详情字体的设置-->
+    <style name="detail_tv">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginLeft">30px</item>
+        <item name="android:layout_marginTop">20px</item>
+        <item name="android:textSize">46px</item>
+        <item name="android:textColor">@color/textBlack3</item>
+    </style>
+
+    <style name="detail_tv_content">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">116px</item>
+        <item name="android:gravity">center_horizontal</item>
+        <item name="android:textColor">@color/textBlack1</item>
+    </style>
+
+    <!--底部弹出对话框样式-->
+    <style name="PopupWindow">
+        <item name="android:windowEnterAnimation">@anim/window_in</item>
+        <item name="android:windowExitAnimation">@anim/window_out</item>
+    </style>
 </resources>

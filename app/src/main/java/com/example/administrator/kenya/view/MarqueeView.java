@@ -209,7 +209,4 @@ public class MarqueeView extends FrameLayout {
         }
     };
 
-
-
-
 }

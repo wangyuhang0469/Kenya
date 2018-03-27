@@ -49,22 +49,25 @@
             android:value="1920" />
 
         <activity
-            android:name=".ui.city.JobActivity"
+            android:name=".ui.city.job.JobActivity"
             android:theme="@style/AppTheme.dark_action_bar" />
         <activity
             android:name=".ui.myself.FindPasswordActivity"
             android:theme="@style/AppTheme.dark_action_bar" />
         <activity android:name=".activity.ResumeinfoActivity" />
+        <activity android:name=".activity.ResumeDetilActivity"></activity>
         <activity
             android:name=".ui.city.used.UsedActivity"
             android:theme="@style/AppTheme.grey_action_bar" />
         <activity
             android:name=".ui.city.used.GoodsDetailsActivity"
             android:theme="@style/AppTheme.grey_action_bar" />
-        <activity android:name=".ui.city.used.GoodsReleaseActivity" android:theme="@style/AppTheme.grey_action_bar"/>
+        <activity
+            android:name=".ui.city.used.GoodsReleaseActivity"
+            android:theme="@style/AppTheme.grey_action_bar" />
         <activity
             android:name="com.zfdang.multiple_images_selector.ImagesSelectorActivity"
-            android:configChanges="orientation|screenSize"/>
+            android:configChanges="orientation|screenSize" />
     </application>
 
 </manifest>

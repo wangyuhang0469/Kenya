@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     android:background="@color/base_bg"
     android:orientation="vertical"
-    tools:context="com.example.administrator.kenya.ui.city.TabFragment1">
+    tools:context="com.example.administrator.kenya.ui.city.job.TabFragment1">
 
     <!-- TODO: Update blank fragment layout -->
     <com.zhy.autolayout.AutoLinearLayout

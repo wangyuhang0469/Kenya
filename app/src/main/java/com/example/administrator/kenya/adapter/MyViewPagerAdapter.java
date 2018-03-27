@@ -13,7 +13,6 @@ import java.util.List;
  */
 public class MyViewPagerAdapter extends FragmentStatePagerAdapter {
 
-
     private final List<Fragment> myFragments = new ArrayList<>();
     private final List<String> myFragmentTitles = new ArrayList<>();
     private Context context;

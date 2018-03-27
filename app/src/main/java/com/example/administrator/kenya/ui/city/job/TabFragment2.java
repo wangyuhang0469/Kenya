@@ -1,4 +1,4 @@
-package com.example.administrator.kenya.ui.city;
+package com.example.administrator.kenya.ui.city.job;
 
 
 import android.os.Bundle;
@@ -25,7 +25,6 @@ public class TabFragment2 extends Fragment {
         fragment.setArguments(args);
         return fragment;
     }
-
     public TabFragment2() {
         // Required empty public constructor
     }
