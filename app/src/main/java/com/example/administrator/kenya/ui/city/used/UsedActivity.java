@@ -46,8 +46,6 @@ public class UsedActivity extends BaseActivity {
         LinearLayoutManager layoutmanager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutmanager);
         recyclerView.setAdapter(myAdapter);
-
-
     }
 
     @OnClick({R.id.back, R.id.release})
@@ -57,7 +55,7 @@ public class UsedActivity extends BaseActivity {
                 finish();
                 break;
             case R.id.release:
-                startActivity(GoodsReleaseActivity.class,null);
+                startActivity(GoodsReleaseActivity.class, null);
                 break;
         }
     }
@@ -78,10 +76,7 @@ public class UsedActivity extends BaseActivity {
                 super(itemView);
                 goodsTitle = (TextView) itemView.findViewById(R.id.goodsTitle);
             }
-
-
         }
-
 
         @Override
         public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -101,12 +96,10 @@ public class UsedActivity extends BaseActivity {
             });
         }
 
-
         @Override
         public int getItemCount() {
             return list == null ? 0 : list.size();
         }
-
 
     }
 }

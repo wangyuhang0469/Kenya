@@ -2,6 +2,7 @@ package com.example.administrator.kenya.ui.myself;
 
 import android.os.Bundle;
 import android.os.CountDownTimer;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -36,8 +37,6 @@ public class RegisterActivity extends BaseActivity {
     EditText password2;
 
     private boolean lock = false;
-
-
     private MyCountDownTimer myCountDownTimer = new MyCountDownTimer(60000, 1000);
 
     @Override
@@ -45,7 +44,6 @@ public class RegisterActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
         ButterKnife.bind(this);
-
     }
 
     @OnClick({R.id.getVerifyCode, R.id.register})
@@ -67,7 +65,6 @@ public class RegisterActivity extends BaseActivity {
         }
     }
 
-
     private void register() {
         lock = true;
         OkHttpUtils.get()
@@ -88,6 +85,8 @@ public class RegisterActivity extends BaseActivity {
 
                     @Override
                     public void onResponse(String response, int id) {
+                        Log.d("kang", "11111111" + response);
+                        Log.d("kang", "22222" + id);
                         JSONObject jsonObject = null;
                         try {
                             jsonObject = new JSONObject(response);

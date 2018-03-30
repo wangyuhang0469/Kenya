@@ -35,9 +35,6 @@ public class GoodsReleaseActivity extends BaseActivity {
         ButterKnife.bind(this);
 
         title.setText("发布");
-
-
-
     }
 
 

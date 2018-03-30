@@ -1,6 +1,7 @@
 package com.example.administrator.kenya.ui.myself;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
@@ -77,6 +78,8 @@ public class LoginActivity extends BaseActivity {
 
                     @Override
                     public void onResponse(String response, int id) {
+                        Log.d("kang", "sssssssssssss" + response);
+                        Log.d("kang", "2323" + id);
                         JSONObject jsonObject = null;
                         try {
                             jsonObject = new JSONObject(response);

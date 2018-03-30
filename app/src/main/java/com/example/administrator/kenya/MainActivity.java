@@ -48,11 +48,8 @@ public class MainActivity extends BaseActivity {
         //isFirstStart();
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
-
         initView();
-
         log("aaaaaaaaaaaaaaaaaaaa");
-
     }
 
 

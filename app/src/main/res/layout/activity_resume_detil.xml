@@ -53,7 +53,7 @@
             <ImageView
                 android:layout_width="248px"
                 android:layout_height="248px"
-                android:src="@drawable/logo" />
+                android:src="@drawable/linshi4" />
 
             <com.zhy.autolayout.AutoLinearLayout
                 android:layout_width="wrap_content"

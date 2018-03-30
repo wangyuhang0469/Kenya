@@ -7,7 +7,6 @@
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
-
     <application
         android:name=".base.MyApplication"
         android:allowBackup="true"
@@ -55,7 +54,7 @@
             android:name=".ui.myself.FindPasswordActivity"
             android:theme="@style/AppTheme.dark_action_bar" />
         <activity android:name=".activity.ResumeinfoActivity" />
-        <activity android:name=".activity.ResumeDetilActivity"></activity>
+        <activity android:name=".activity.ResumeDetilActivity" />
         <activity
             android:name=".ui.city.used.UsedActivity"
             android:theme="@style/AppTheme.grey_action_bar" />
@@ -68,6 +67,9 @@
         <activity
             android:name="com.zfdang.multiple_images_selector.ImagesSelectorActivity"
             android:configChanges="orientation|screenSize" />
+        <activity android:name=".ui.city.house.HouseActivity" />
+        <activity android:name=".ui.city.house.HouseDetailActivity" />
+        <activity android:name=".ui.city.house.HouseInfoActivity"></activity>
     </application>
 
 </manifest>

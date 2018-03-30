@@ -1,7 +1,6 @@
-package com.example.administrator.kenya.activity;
+package com.example.administrator.kenya.ui.city.house;
 
 import android.app.Activity;
-import android.app.Dialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
@@ -20,55 +19,29 @@ import android.widget.ImageView;
 import android.widget.PopupWindow;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.administrator.kenya.R;
-import com.example.administrator.kenya.ui.city.job.DatePickerDialog;
-import com.example.administrator.kenya.utils.DateUtil;
-import com.zhy.autolayout.AutoLinearLayout;
-import com.zhy.autolayout.AutoRelativeLayout;
 
 import java.io.File;
-import java.util.List;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
+public class HouseInfoActivity extends Activity implements View.OnClickListener, PopupWindow.OnDismissListener {
 
-public class ResumeinfoActivity extends Activity implements View.OnClickListener, PopupWindow.OnDismissListener {
-
-    @Bind(R.id.pick_time)
-    AutoLinearLayout pickTime;
-    @Bind(R.id.resume_time_birday)
-    TextView resumeTimeBirday;
-    @Bind(R.id.resume_recm)
-    AutoLinearLayout resumeRecm;
-    @Bind(R.id.ruseme_work_time)
-    AutoLinearLayout rusemeWorkTime;
-    @Bind(R.id.resume_tv_time)
-    TextView resumeTvTime;
-    @Bind(R.id.resume_time_birday_choose)
-    TextView resumeTimeBirdayChoose;
-    @Bind(R.id.resume_tv_choose)
-    TextView resumeTvChoose;
-    @Bind(R.id.back)
-    ImageView back;
     @Bind(R.id.title)
     TextView title;
-    @Bind(R.id.person_info)
-    AutoRelativeLayout personInfo;
-    @Bind(R.id.resume_tv_phone)
-    TextView resumeTvPhone;
-    @Bind(R.id.resume_tv_recm)
-    TextView resumeTvRecm;
-    @Bind(R.id.resume_tv_recm_choose)
-    TextView resumeTvRecmChoose;
-    @Bind(R.id.resume_info_photo)
-    ImageView resumeInfoPhoto;
-    @Bind(R.id.resume_info_detail)
-    TextView resumeInfoDetail;
-    private Dialog dateDialog;
+    @Bind(R.id.house_info_img1)
+    ImageView houseInfoImg1;
+    @Bind(R.id.house_info_img2)
+    ImageView houseInfoImg2;
+    @Bind(R.id.house_info_img3)
+    ImageView houseInfoImg3;
+    @Bind(R.id.house_info_img4)
+    ImageView houseInfoImg4;
+    @Bind(R.id.house_info_img5)
+    ImageView houseInfoImg5;
     private PopupWindow popupWindow;
     //相册请求码
     private static final int ALBUM_REQUEST_CODE = 1;
@@ -78,65 +51,40 @@ public class ResumeinfoActivity extends Activity implements View.OnClickListener
     private static final int CROP_REQUEST_CODE = 3;
     //调用照相机返回图片文件
     private File tempFile;
+    String img;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_resumeinfo);
+        setContentView(R.layout.activity_house_info);
         ButterKnife.bind(this);
+        title.setText("发布");
     }
 
-    @OnClick({R.id.pick_time, R.id.resume_recm, R.id.ruseme_work_time, R.id.resume_info_photo, R.id.resume_info_detail})
+    @OnClick({R.id.house_info_img1, R.id.house_info_img2, R.id.house_info_img3, R.id.house_info_img4, R.id.house_info_img5})
     public void onViewClicked(View view) {
         switch (view.getId()) {
-            case R.id.pick_time:
-                showDateDialog(DateUtil.getDateForString("1990-01-01"), "A");
-                break;
-            case R.id.resume_recm:
-                break;
-            case R.id.ruseme_work_time:
-                showDateDialog(DateUtil.getDateForString("1990-01-01"), "B");
-                break;
-            case R.id.resume_info_photo:
+            case R.id.house_info_img1:
+                img = "A";
                 openPopupWindow(view);
                 break;
-            case R.id.resume_info_detail:
-                Intent intent = new Intent(this, ResumeDetilActivity.class);
-                startActivity(intent);
+            case R.id.house_info_img2:
+                img = "B";
+                openPopupWindow(view);
+                break;
+            case R.id.house_info_img3:
+                img = "C";
+                openPopupWindow(view);
+                break;
+            case R.id.house_info_img4:
+                img = "D";
+                openPopupWindow(view);
+                break;
+            case R.id.house_info_img5:
+                img = "E";
+                openPopupWindow(view);
                 break;
         }
-    }
-
-    /* 用户生日时间*/
-    private void showDateDialog(List<Integer> date, final String str) {
-        DatePickerDialog.Builder builder = new DatePickerDialog.Builder(this);
-        builder.setOnDateSelectedListener(new DatePickerDialog.OnDateSelectedListener() {
-            @Override
-            public void onDateSelected(int[] dates) {
-                if (str.equals("A")) {
-                    resumeTimeBirday.setText(dates[0] + "-" + (dates[1] > 9 ? dates[1] : ("0" + dates[1])) + "-"
-                            + (dates[2] > 9 ? dates[2] : ("0" + dates[2])));
-                    resumeTimeBirdayChoose.setVisibility(View.GONE);
-                } else {
-                    resumeTvTime.setText(dates[0] + "-" + (dates[1] > 9 ? dates[1] : ("0" + dates[1])) + "-"
-                            + (dates[2] > 9 ? dates[2] : ("0" + dates[2])));
-                    resumeTvChoose.setVisibility(View.GONE);
-                }
-            }
-
-            @Override
-            public void onCancel() {
-            }
-        })
-                .setSelectYear(date.get(0) - 1)
-                .setSelectMonth(date.get(1) - 1)
-                .setSelectDay(date.get(2) - 1);
-
-        builder.setMaxYear(DateUtil.getYear());
-        builder.setMaxMonth(DateUtil.getDateForString(DateUtil.getToday()).get(1));
-        builder.setMaxDay(DateUtil.getDateForString(DateUtil.getToday()).get(2));
-        dateDialog = builder.create();
-        dateDialog.show();
     }
 
     /*
@@ -220,7 +168,7 @@ public class ResumeinfoActivity extends Activity implements View.OnClickListener
         //判断版本
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {   //如果在Android7.0以上,使用FileProvider获取Uri
             intent.setFlags(Intent.FLAG_GRANT_WRITE_URI_PERMISSION);
-            Uri contentUri = FileProvider.getUriForFile(ResumeinfoActivity.this, "com.hansion.chosehead", tempFile);
+            Uri contentUri = FileProvider.getUriForFile(HouseInfoActivity.this, "com.hansion.chosehead", tempFile);
             intent.putExtra(MediaStore.EXTRA_OUTPUT, contentUri);
             Log.e("dasd", contentUri.toString());
         } else {    //否则使用Uri.fromFile(file)方法获取Uri
@@ -262,7 +210,7 @@ public class ResumeinfoActivity extends Activity implements View.OnClickListener
                 if (resultCode == RESULT_OK) {
                     //用相机返回的照片去调用剪裁也需要对Uri进行处理
                     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-                        Uri contentUri = FileProvider.getUriForFile(ResumeinfoActivity.this, "com.hansion.chosehead", tempFile);
+                        Uri contentUri = FileProvider.getUriForFile(HouseInfoActivity.this, "com.hansion.chosehead", tempFile);
                         cropPhoto(contentUri);
                     } else {
                         cropPhoto(Uri.fromFile(tempFile));
@@ -281,7 +229,18 @@ public class ResumeinfoActivity extends Activity implements View.OnClickListener
                     //在这里获得了剪裁后的Bitmap对象，可以用于上传
                     Bitmap image = bundle.getParcelable("data");
                     //设置到ImageView上
-                    resumeInfoPhoto.setImageBitmap(image);
+                    if (img.equals("A")) {
+                        houseInfoImg1.setImageBitmap(image);
+                    } else if (img.equals("B")) {
+                        houseInfoImg2.setImageBitmap(image);
+                    } else if (img.equals("C")) {
+                        houseInfoImg3.setImageBitmap(image);
+                    } else if (img.equals("D")) {
+                        houseInfoImg4.setImageBitmap(image);
+                    } else if (img.equals("E")) {
+                        houseInfoImg5.setImageBitmap(image);
+                    } else {
+                    }
                 }
                 break;
         }
