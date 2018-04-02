@@ -63,18 +63,21 @@
                 android:layout_height="wrap_content">
 
                 <ImageView
+                    android:id="@+id/image1"
                     android:layout_width="250px"
                     android:layout_height="250px"
                     android:layout_marginLeft="30px"
                     android:src="@drawable/city_used_camera" />
 
                 <ImageView
+                    android:id="@+id/image2"
                     android:layout_width="250px"
                     android:layout_height="250px"
                     android:layout_centerHorizontal="true"
                     android:src="@drawable/city_used_camera" />
 
                 <ImageView
+                    android:id="@+id/image3"
                     android:layout_width="250px"
                     android:layout_height="250px"
                     android:layout_alignParentRight="true"
@@ -89,12 +92,14 @@
                 android:layout_marginTop="50px">
 
                 <ImageView
+                    android:id="@+id/image4"
                     android:layout_width="250px"
                     android:layout_height="250px"
                     android:layout_marginLeft="30px"
                     android:src="@drawable/city_used_camera" />
 
                 <ImageView
+                    android:id="@+id/image5"
                     android:layout_width="250px"
                     android:layout_height="250px"
                     android:layout_centerHorizontal="true"

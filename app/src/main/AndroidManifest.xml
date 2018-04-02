@@ -59,14 +59,15 @@
             android:name=".ui.city.used.UsedActivity"
             android:theme="@style/AppTheme.grey_action_bar" />
         <activity
+            android:name=".ui.city.used.UsedSearchActivity"
+            android:theme="@style/AppTheme.grey_action_bar" />
+        <activity
             android:name=".ui.city.used.GoodsDetailsActivity"
             android:theme="@style/AppTheme.grey_action_bar" />
         <activity
             android:name=".ui.city.used.GoodsReleaseActivity"
             android:theme="@style/AppTheme.grey_action_bar" />
-        <activity
-            android:name="com.zfdang.multiple_images_selector.ImagesSelectorActivity"
-            android:configChanges="orientation|screenSize" />
+        <activity android:name=".model.image_selector.MultiImageSelectorActivity" android:theme="@style/AppTheme.grey_action_bar"/>
         <activity android:name=".ui.city.house.HouseActivity" />
         <activity android:name=".ui.city.house.HouseDetailActivity" />
         <activity android:name=".ui.city.house.HouseInfoActivity"></activity>

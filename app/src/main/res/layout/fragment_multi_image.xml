@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.zhy.autolayout.AutoRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <GridView
+        android:id="@+id/grid"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:horizontalSpacing="15px"
+        android:verticalSpacing="15px"
+        android:paddingBottom="?android:attr/actionBarSize"
+        android:clipToPadding="false"
+        android:numColumns="3"
+        android:background="@color/base_bg"/>
+
+    <com.zhy.autolayout.AutoRelativeLayout
+        android:clickable="true"
+        android:id="@+id/footer"
+        android:background="@color/theme_btn"
+        android:layout_alignParentBottom="true"
+        android:layout_width="match_parent"
+        android:layout_height="160px">
+
+        <Button
+            android:id="@+id/category_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:paddingLeft="30px"
+            android:paddingRight="36px"
+            android:layout_centerVertical="true"
+            android:textColor="@drawable/folder_text_color"
+            tools:text="所有图片"
+            android:textSize="16sp"
+            android:background="@null"/>
+
+        <ImageView
+            android:layout_width="36px"
+            android:layout_height="match_parent"
+            android:layout_alignRight="@id/category_btn"
+            android:src="@drawable/text_indicator"/>
+
+        <Button
+            android:visibility="gone"
+            android:id="@+id/preview"
+            tools:text="预览(1)"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:minHeight="1dp"
+            android:minWidth="1dp"
+            android:background="@null"
+            android:textColor="@drawable/default_text_color"
+            android:textSize="14sp"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent" />
+
+        </com.zhy.autolayout.AutoRelativeLayout>
+
+</com.zhy.autolayout.AutoRelativeLayout>

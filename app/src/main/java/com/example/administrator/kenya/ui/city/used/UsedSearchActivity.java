@@ -6,6 +6,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import com.alibaba.fastjson.JSON;
@@ -26,17 +27,20 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import okhttp3.Call;
 
-public class UsedActivity extends BaseActivity {
+public class UsedSearchActivity extends BaseActivity {
 
     @Bind(R.id.recyclerView)
     RecyclerView recyclerView;
     @Bind(R.id.pullToRefreshLayout)
     PullToRefreshLayout pullToRefreshLayout;
+    @Bind(R.id.keyword)
+    EditText keyword;
 
     private MyAdapter myAdapter;
     private List<Goods> goodsList;
 
     private int cpageNum = 1;
+    private String lastKeyword="";
 
     private PostFormBuilder postFormBuilder;
     private StringCallback StringCallback;
@@ -44,7 +48,7 @@ public class UsedActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_used);
+        setContentView(R.layout.activity_used_search);
         ButterKnife.bind(this);
 
 
@@ -57,7 +61,6 @@ public class UsedActivity extends BaseActivity {
         recyclerView.setAdapter(myAdapter);
 
         initOKHttp();
-        postFormBuilder.addParams("pn", cpageNum + "").build().execute(StringCallback);
 
         initPullToRresh();
 
@@ -66,7 +69,8 @@ public class UsedActivity extends BaseActivity {
     private void initOKHttp() {
         postFormBuilder = OkHttpUtils.post()
                 .url("http://192.168.1.101:8080/kenya/Goods/selectByFile")
-                .addParams("pn", cpageNum + "");
+                .addParams("pn", cpageNum + "")
+                .addParams("goodsName", keyword.getText().toString());
 
 
         StringCallback = new StringCallback() {
@@ -74,12 +78,15 @@ public class UsedActivity extends BaseActivity {
             public void onError(Call call, Exception e, int id) {
                 pullToRefreshLayout.finishLoadMore();
                 toast("加载失败");
+                if (cpageNum == 1)
+                    pullToRefreshLayout.setCanLoadMore(false);
                 e.printStackTrace();
             }
 
             @Override
             public void onResponse(String response, int id) {
                 cpageNum++;
+                lastKeyword = keyword.getText().toString();
                 log(cpageNum + response);
 
                 List<Goods> addList = JSON.parseArray(response, Goods.class);
@@ -90,7 +97,11 @@ public class UsedActivity extends BaseActivity {
                     goodsList.addAll(addList);
                     myAdapter.notifyDataSetChanged();
                     pullToRefreshLayout.setCanLoadMore(true);
-                } else {
+                } else if (cpageNum == 2){
+                    pullToRefreshLayout.setCanLoadMore(false);
+                    toast("未查询到数据");
+                    myAdapter.notifyDataSetChanged();
+                }else {
                     pullToRefreshLayout.setCanLoadMore(false);
                     toast("已是最后一页");
                 }
@@ -99,6 +110,12 @@ public class UsedActivity extends BaseActivity {
             }
         };
 
+    }
+
+    private void replacement() {
+        goodsList.clear();
+        cpageNum = 1;
+        pullToRefreshLayout.setCanLoadMore(true);
     }
 
 
@@ -113,28 +130,30 @@ public class UsedActivity extends BaseActivity {
 
             @Override
             public void loadMore() {
-                postFormBuilder.addParams("pn", cpageNum + "").tag(this).build().execute(StringCallback);
+                postFormBuilder.addParams("pn", cpageNum + "").addParams("goodsName", keyword.getText().toString()).build().execute(StringCallback);
             }
         });
     }
 
-
-    @OnClick({R.id.back, R.id.release})
+    @OnClick({R.id.back, R.id.tv_search})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.back:
                 finish();
                 break;
-            case R.id.release:
-                startActivity(GoodsReleaseActivity.class, null);
+            case R.id.tv_search:
+                if (keyword.getText().length() == 0){
+                    toast("请输入搜索内容");
+                }else if (lastKeyword.equals(keyword.getText().toString())){
+                    postFormBuilder.addParams("pn", cpageNum + "").addParams("goodsName", keyword.getText().toString()).build().execute(StringCallback);
+                }else {
+                    replacement();
+                    postFormBuilder.addParams("pn", cpageNum + "").addParams("goodsName", keyword.getText().toString()).build().execute(StringCallback);
+                }
                 break;
         }
     }
 
-    @OnClick({R.id.search_bar, R.id.tv_search})
-    public void onViewClicked2(View view) {
-        startActivity(UsedSearchActivity.class,null);
-    }
 
     public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
 

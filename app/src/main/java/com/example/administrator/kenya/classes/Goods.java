@@ -6,40 +6,73 @@ package com.example.administrator.kenya.classes;
 
 public class Goods {
 
-    String title;
-    String name;
-    String price;
-    String phone;
+    String goodsid;
+    String goodsname;
+    String goodsimg;
+    String goodsprice;
+    String userid;
+    String goodsdesc;
+    String user_phoneNumber;
 
-    public String getTitle() {
-        return title;
+    public String getGoodsid() {
+        return goodsid;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
+    public void setGoodsid(String goodsid) {
+        this.goodsid = goodsid;
     }
 
-    public String getName() {
-        return name;
+    public String getGoodsname() {
+        return goodsname;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setGoodsname(String goodsname) {
+        this.goodsname = goodsname;
     }
 
-    public String getPrice() {
-        return price;
+    public String getGoodsimg() {
+        return goodsimg;
     }
 
-    public void setPrice(String price) {
-        this.price = price;
+    public void setGoodsimg(String goodsimg) {
+        this.goodsimg = goodsimg;
     }
 
-    public String getPhone() {
-        return phone;
+    public String getGoodsprice() {
+        return goodsprice;
     }
 
-    public void setPhone(String phone) {
-        this.phone = phone;
+    public void setGoodsprice(String goodsprice) {
+        this.goodsprice = goodsprice;
     }
+
+    public String getUserid() {
+        return userid;
+    }
+
+    public void setUserid(String userid) {
+        this.userid = userid;
+    }
+
+    public String getGoodsdesc() {
+        return goodsdesc;
+    }
+
+    public void setGoodsdesc(String goodsdesc) {
+        this.goodsdesc = goodsdesc;
+    }
+
+
+
+    public String getUser_phoneNumber() {
+        return user_phoneNumber;
+    }
+
+    public void setUser_phoneNumber(String user_phoneNumber) {
+        this.user_phoneNumber = user_phoneNumber;
+    }
+
+
+
+
 }
