@@ -30,6 +30,8 @@ public class GoodsDetailsActivity extends BaseActivity {
     TextView goodsusername;
     @Bind(R.id.goodsphone)
     TextView goodsphone;
+    @Bind(R.id.goodsname)
+    TextView goodsname;
 
     private Goods goods;
 
@@ -45,11 +47,11 @@ public class GoodsDetailsActivity extends BaseActivity {
 
         initBanner(goods.getImageUrlList());
 
-        goodsprice.setText("$"+goods.getGoodsprice());
+        goodsname.setText(goods.getGoodsname());
+        goodsprice.setText("$" + goods.getGoodsprice());
         goodsdesc.setText(goods.getGoodsdesc());
         goodsusername.setText(goods.getGoodsusername());
-        goodsphone.setText("手机号："+goods.getGoodsphone());
-
+        goodsphone.setText("手机号：" + goods.getGoodsphone());
 
 
     }

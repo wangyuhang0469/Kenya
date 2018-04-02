@@ -32,12 +32,22 @@
                 app:indicator_drawable_selected="@drawable/bg4dp_theme_btn"/>
 
             <TextView
+                android:id="@+id/goodsname"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/textBlack1"
+                android:textSize="20sp"
+                android:layout_marginTop="40px"
+                android:layout_marginLeft="30px"/>
+
+
+            <TextView
                 android:id="@+id/goodsprice"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@color/textgreen1"
                 android:textSize="20sp"
-                android:layout_marginTop="50px"
+                android:layout_marginTop="30px"
                 android:layout_marginLeft="30px"/>
 
             <TextView

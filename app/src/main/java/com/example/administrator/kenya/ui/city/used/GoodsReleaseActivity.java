@@ -1,7 +1,12 @@
 package com.example.administrator.kenya.ui.city.used;
 
+import android.Manifest;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -73,6 +78,28 @@ public class GoodsReleaseActivity extends BaseActivity {
         super.onActivityResult(requestCode, resultCode, data);
     }
 
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+
+        if (requestCode == 1) {
+            boolean isAllGranted = true;
+
+            // 判断是否所有的权限都已经授予了
+            for (int grant : grantResults) {
+                if (grant != PackageManager.PERMISSION_GRANTED) {
+                    isAllGranted = false;
+                    break;
+                }
+            }
+
+            if (isAllGranted) {
+                startCamera();
+            }
+        }
+    }
+
     @OnClick({R.id.back, R.id.release})
     public void onViewClicked(View view) {
         switch (view.getId()) {
@@ -87,6 +114,14 @@ public class GoodsReleaseActivity extends BaseActivity {
     @OnClick({R.id.image1, R.id.image2, R.id.image3, R.id.image4, R.id.image5})
     public void onViewClicked2(View view) {
 
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED ||ActivityCompat.checkSelfPermission(this, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE,Manifest.permission.WRITE_EXTERNAL_STORAGE,Manifest.permission.CAMERA},1);
+        }else {
+            startCamera();
+        }
+    }
+
+    private void startCamera(){
         Intent intent = new Intent(GoodsReleaseActivity.this, MultiImageSelectorActivity.class);
         // 是否显示拍摄图片
         intent.putExtra(MultiImageSelectorActivity.EXTRA_SHOW_CAMERA, true);
@@ -99,6 +134,6 @@ public class GoodsReleaseActivity extends BaseActivity {
             intent.putExtra(MultiImageSelectorActivity.EXTRA_DEFAULT_SELECTED_LIST, mResults);
         }
         startActivityForResult(intent, 2);
-
     }
+
 }
