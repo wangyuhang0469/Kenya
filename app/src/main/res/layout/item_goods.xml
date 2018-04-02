@@ -5,30 +5,28 @@
     android:background="@color/white">
 
     <ImageView
-        android:id="@+id/image"
+        android:id="@+id/goodsimgs"
         android:layout_width="350px"
         android:layout_height="250px"
-        android:layout_margin="30px"
-        android:background="@drawable/linshi3"/>
+        android:layout_margin="30px"/>
 
     <TextView
-        android:id="@+id/goodsTitle"
+        android:id="@+id/goodsname"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_toRightOf="@id/image"
-        android:layout_alignTop="@id/image"
+        android:layout_toRightOf="@id/goodsimgs"
+        android:layout_alignTop="@id/goodsimgs"
         android:textColor="@color/textBlack1"
         android:layout_marginRight="30px"
         android:layout_marginTop="18px"/>
 
     <TextView
-        android:id="@+id/phone"
+        android:id="@+id/goodsphone"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_toRightOf="@id/image"
-        android:layout_alignBottom="@id/image"
+        android:layout_toRightOf="@id/goodsimgs"
+        android:layout_alignBottom="@id/goodsimgs"
         android:textColor="@color/textBlack2"
-        android:text="手机：18532159723"
         android:textSize="13sp"
         android:layout_marginBottom="18px"/>
     
@@ -42,18 +40,17 @@
         android:textSize="13sp"
         android:text="拨号"
         android:layout_alignParentRight="true"
-        android:layout_alignBottom="@id/image"
+        android:layout_alignBottom="@id/goodsimgs"
         android:layout_marginRight="30px"/>
 
     <TextView
-        android:id="@+id/price"
+        android:id="@+id/goodsprice"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="@color/textgreen1"
-        android:text="3000元"
         android:textSize="17sp"
-        android:layout_toRightOf="@id/image"
-        android:layout_above="@id/phone"
+        android:layout_toRightOf="@id/goodsimgs"
+        android:layout_above="@id/goodsphone"
         android:layout_marginBottom="14px"/>
 
     <View

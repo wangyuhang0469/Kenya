@@ -1,18 +1,29 @@
 package com.example.administrator.kenya.classes;
 
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Created by Administrator on 2018/3/24.
  */
 
-public class Goods {
+public class Goods implements Serializable{
 
     String goodsid;
     String goodsname;
-    String goodsimg;
+    String goodsimgs;
+    String goodsimg1;
+    String goodsimg2;
+    String goodsimg3;
+    String goodsimg4;
     String goodsprice;
+    String goodsusername;
+    String goodsphone;
     String userid;
     String goodsdesc;
     String user_phoneNumber;
+
 
     public String getGoodsid() {
         return goodsid;
@@ -30,12 +41,44 @@ public class Goods {
         this.goodsname = goodsname;
     }
 
-    public String getGoodsimg() {
-        return goodsimg;
+    public String getGoodsimgs() {
+        return goodsimgs;
     }
 
-    public void setGoodsimg(String goodsimg) {
-        this.goodsimg = goodsimg;
+    public void setGoodsimgs(String goodsimgs) {
+        this.goodsimgs = goodsimgs;
+    }
+
+    public String getGoodsimg1() {
+        return goodsimg1;
+    }
+
+    public void setGoodsimg1(String goodsimg1) {
+        this.goodsimg1 = goodsimg1;
+    }
+
+    public String getGoodsimg2() {
+        return goodsimg2;
+    }
+
+    public void setGoodsimg2(String goodsimg2) {
+        this.goodsimg2 = goodsimg2;
+    }
+
+    public String getGoodsimg3() {
+        return goodsimg3;
+    }
+
+    public void setGoodsimg3(String goodsimg3) {
+        this.goodsimg3 = goodsimg3;
+    }
+
+    public String getGoodsimg4() {
+        return goodsimg4;
+    }
+
+    public void setGoodsimg4(String goodsimg4) {
+        this.goodsimg4 = goodsimg4;
     }
 
     public String getGoodsprice() {
@@ -44,6 +87,22 @@ public class Goods {
 
     public void setGoodsprice(String goodsprice) {
         this.goodsprice = goodsprice;
+    }
+
+    public String getGoodsusername() {
+        return goodsusername;
+    }
+
+    public void setGoodsusername(String goodsusername) {
+        this.goodsusername = goodsusername;
+    }
+
+    public String getGoodsphone() {
+        return goodsphone;
+    }
+
+    public void setGoodsphone(String goodsphone) {
+        this.goodsphone = goodsphone;
     }
 
     public String getUserid() {
@@ -62,8 +121,6 @@ public class Goods {
         this.goodsdesc = goodsdesc;
     }
 
-
-
     public String getUser_phoneNumber() {
         return user_phoneNumber;
     }
@@ -73,6 +130,13 @@ public class Goods {
     }
 
 
-
-
+    public List<String> getImageUrlList(){
+        List<String> imageUrlList = new ArrayList<>();
+        imageUrlList.add(goodsimgs);
+        imageUrlList.add(goodsimg1);
+        imageUrlList.add(goodsimg2);
+        imageUrlList.add(goodsimg3);
+        imageUrlList.add(goodsimg4);
+        return imageUrlList;
+    }
 }

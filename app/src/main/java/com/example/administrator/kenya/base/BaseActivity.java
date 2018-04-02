@@ -73,12 +73,6 @@ public class BaseActivity extends FragmentActivity {
         Log.i("===============================================================", msg);
     }
 
-    public Bundle getBundle() {
-        if (getIntent() != null && getIntent().hasExtra(getPackageName()))
-            return getIntent().getBundleExtra(getPackageName());
-        else
-            return null;
-    }
 
 
     public void hideSoftInput(IBinder token) {

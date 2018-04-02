@@ -32,19 +32,19 @@
                 app:indicator_drawable_selected="@drawable/bg4dp_theme_btn"/>
 
             <TextView
+                android:id="@+id/goodsprice"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@color/textgreen1"
                 android:textSize="20sp"
-                android:text="$ 610"
                 android:layout_marginTop="50px"
                 android:layout_marginLeft="30px"/>
 
             <TextView
+                android:id="@+id/goodsdesc"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textColor="@color/textBlack2"
-                android:text="出售苹果笔记本电脑Mac book pro 苹果MacbookPro笔记本电脑苹果macbookPro笔记本电脑15款的i5处理器8g运行128g硬盘。入手半年左右基本没用过99新一切功能正常外表无划痕因需要装了双系统喜欢的朋友私聊吧"
                 android:lineSpacingMultiplier="1.3"
                 android:layout_marginTop="43px"
                 android:layout_marginLeft="30px"
@@ -70,18 +70,18 @@
                     android:src="@drawable/linshi4"/>
 
                 <TextView
+                    android:id="@+id/goodsusername"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="@color/textBlack1"
-                    android:text="王小花"
                     android:layout_toRightOf="@id/avatar"
                     android:layout_marginTop="66px"
                     android:layout_marginLeft="20px"/>
 
                 <TextView
+                    android:id="@+id/goodsphone"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="手机：18332569875"
                     android:textColor="@color/textgreen1"
                     android:layout_toRightOf="@id/avatar"
                     android:layout_alignParentBottom="true"

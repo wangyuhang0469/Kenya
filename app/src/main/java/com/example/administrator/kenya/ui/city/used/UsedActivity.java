@@ -1,14 +1,21 @@
 package com.example.administrator.kenya.ui.city.used;
 
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.alibaba.fastjson.JSON;
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.animation.GlideAnimation;
+import com.bumptech.glide.request.target.SimpleTarget;
 import com.example.administrator.kenya.R;
 import com.example.administrator.kenya.base.BaseActivity;
 import com.example.administrator.kenya.classes.Goods;
@@ -17,6 +24,9 @@ import com.jwenfeng.library.pulltorefresh.PullToRefreshLayout;
 import com.zhy.http.okhttp.OkHttpUtils;
 import com.zhy.http.okhttp.builder.PostFormBuilder;
 import com.zhy.http.okhttp.callback.StringCallback;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -34,7 +44,7 @@ public class UsedActivity extends BaseActivity {
     PullToRefreshLayout pullToRefreshLayout;
 
     private MyAdapter myAdapter;
-    private List<Goods> goodsList;
+    private List<Goods> goodsList = new ArrayList<>();
 
     private int cpageNum = 1;
 
@@ -48,61 +58,70 @@ public class UsedActivity extends BaseActivity {
         ButterKnife.bind(this);
 
 
-        goodsList = new ArrayList<>();
-
-
-        myAdapter = new MyAdapter(goodsList);
-        LinearLayoutManager layoutmanager = new LinearLayoutManager(this);
-        recyclerView.setLayoutManager(layoutmanager);
-        recyclerView.setAdapter(myAdapter);
-
         initOKHttp();
-        postFormBuilder.addParams("pn", cpageNum + "").build().execute(StringCallback);
 
-        initPullToRresh();
+        initView();
+
+        postFormBuilder.addParams("pn", cpageNum + "").build().execute(StringCallback);
 
     }
 
     private void initOKHttp() {
         postFormBuilder = OkHttpUtils.post()
-                .url("http://192.168.1.101:8080/kenya/Goods/selectByFile")
+                .url("http://192.168.1.100:8080/kenya/Goods/selectByFile")
                 .addParams("pn", cpageNum + "");
 
 
         StringCallback = new StringCallback() {
             @Override
             public void onError(Call call, Exception e, int id) {
-                pullToRefreshLayout.finishLoadMore();
-                toast("加载失败");
-                e.printStackTrace();
+                //防止因Activity释放导致内部控件空指针
+                if (pullToRefreshLayout != null) {
+                    pullToRefreshLayout.finishLoadMore();
+                    toast("加载失败");
+                    e.printStackTrace();
+                }
             }
 
             @Override
             public void onResponse(String response, int id) {
-                cpageNum++;
-                log(cpageNum + response);
+                //防止因Activity释放导致内部控件空指针
+                if (pullToRefreshLayout != null) {
+                    cpageNum++;
+                    List<Goods> addList = null;
+                    try {
+                        JSONObject jsonObject = new JSONObject(response);
+                        if (jsonObject.getString("code").equals("000")) {
+                            pullToRefreshLayout.setCanLoadMore(true);
+                        } else {
+                            pullToRefreshLayout.setCanLoadMore(false);
+                        }
+                        response = jsonObject.getString("result");
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
 
-                List<Goods> addList = JSON.parseArray(response, Goods.class);
-
-                if (addList == null) {
-                    toast("加载失败");
-                } else if (addList.size() > 0) {
+                    addList = JSON.parseArray(response, Goods.class);
                     goodsList.addAll(addList);
                     myAdapter.notifyDataSetChanged();
-                    pullToRefreshLayout.setCanLoadMore(true);
-                } else {
-                    pullToRefreshLayout.setCanLoadMore(false);
-                    toast("已是最后一页");
-                }
 
-                pullToRefreshLayout.finishLoadMore();
+
+                    pullToRefreshLayout.finishLoadMore();
+                }
             }
         };
 
     }
 
+//初始化组件
+    private void initView() {
 
-    private void initPullToRresh() {
+        myAdapter = new MyAdapter(goodsList);
+        LinearLayoutManager layoutmanager = new LinearLayoutManager(this);
+        recyclerView.setLayoutManager(layoutmanager);
+        recyclerView.setAdapter(myAdapter);
+
+
         pullToRefreshLayout.setCanRefresh(false);
         pullToRefreshLayout.setCanLoadMore(false);
 
@@ -146,11 +165,15 @@ public class UsedActivity extends BaseActivity {
         }
 
         public class ViewHolder extends RecyclerView.ViewHolder {
-            TextView goodsTitle;
+            TextView goodsname,goodsphone,goodsprice;
+            ImageView goodsimgs;
 
             public ViewHolder(View itemView) {
                 super(itemView);
-                goodsTitle = (TextView) itemView.findViewById(R.id.goodsTitle);
+                goodsname = (TextView) itemView.findViewById(R.id.goodsname);
+                goodsphone = (TextView) itemView.findViewById(R.id.goodsphone);
+                goodsprice = (TextView) itemView.findViewById(R.id.goodsprice);
+                goodsimgs = (ImageView) itemView.findViewById(R.id.goodsimgs);
             }
         }
 
@@ -161,16 +184,39 @@ public class UsedActivity extends BaseActivity {
         }
 
         @Override
-        public void onBindViewHolder(ViewHolder holder, final int position) {
-            holder.goodsTitle.setText(list.get(position).getGoodsname());
+        public void onBindViewHolder(final ViewHolder holder, final int position) {
+            holder.goodsname.setText(list.get(position).getGoodsname());
+            holder.goodsphone.setText("手机："+list.get(position).getGoodsphone());
+            holder.goodsprice.setText("$"+list.get(position).getGoodsprice());
+
+
+            holder.goodsimgs.setTag(list.get(position).getGoodsimgs());
+
+            Glide.with(UsedActivity.this)
+                    .load(list.get(position).getGoodsimgs())
+                    .asBitmap()
+                    .placeholder(R.drawable.bg4dp_grey)
+                    .into(new SimpleTarget<Bitmap>() {
+                        @Override
+                        public void onResourceReady(Bitmap resource, GlideAnimation<? super Bitmap> glideAnimation) {
+                            String tag = (String) holder.goodsimgs.getTag();
+                            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN && tag!=null && tag.equals(list.get(position).getGoodsimgs())) {
+                                holder.goodsimgs.setBackground(new BitmapDrawable(resource));   //设置背景
+                            }
+                        }
+                    });
 
             holder.itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    startActivity(GoodsDetailsActivity.class, null);
+                    Bundle bundle = new Bundle();
+                    bundle.putSerializable("goods",list.get(position));
+                    startActivity(GoodsDetailsActivity.class, bundle);
                 }
             });
         }
+
+
 
         @Override
         public int getItemCount() {
