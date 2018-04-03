@@ -201,17 +201,14 @@
         </com.zhy.autolayout.AutoLinearLayout>
     </com.zhy.autolayout.AutoLinearLayout>
 
-    <ImageView
+    <com.example.administrator.kenya.view.RoundImageView
         android:id="@+id/resume_info_photo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="65dp"
+        android:scaleType="fitXY"
         android:src="@mipmap/resum_photo" />
-        android:layout_marginTop="28dp"
-        android:src="@mipmap/resum_photo"
-        android:layout_below="@+id/person_info"
-        android:layout_centerHorizontal="true" />
 
     <TextView
         android:id="@+id/resume_info_detail"

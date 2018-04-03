@@ -67,10 +67,23 @@
         <activity
             android:name=".ui.city.used.GoodsReleaseActivity"
             android:theme="@style/AppTheme.grey_action_bar" />
-        <activity android:name=".model.image_selector.MultiImageSelectorActivity" android:theme="@style/AppTheme.grey_action_bar"/>
+        <activity
+            android:name=".model.image_selector.MultiImageSelectorActivity"
+            android:theme="@style/AppTheme.grey_action_bar" />
         <activity android:name=".ui.city.house.HouseActivity" />
         <activity android:name=".ui.city.house.HouseDetailActivity" />
-        <activity android:name=".ui.city.house.HouseInfoActivity"></activity>
+        <activity android:name=".ui.city.house.HouseInfoActivity" />
+        <activity android:name=".ui.city.friends.FriendsActivity"></activity>
+
+        <provider
+            android:name="android.support.v4.content.FileProvider"
+            android:authorities="com.example.administrator.kenya.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider>
     </application>
 
 </manifest>

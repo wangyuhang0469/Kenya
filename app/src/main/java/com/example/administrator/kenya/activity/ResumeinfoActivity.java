@@ -1,9 +1,11 @@
 package com.example.administrator.kenya.activity;
 
+import android.Manifest;
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.Build;
@@ -16,6 +18,8 @@ import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.PopupWindow;
 import android.widget.RelativeLayout;
@@ -23,20 +27,24 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.administrator.kenya.R;
+import com.example.administrator.kenya.base.BaseActivity;
 import com.example.administrator.kenya.ui.city.job.DatePickerDialog;
+import com.example.administrator.kenya.ui.city.job.OnBooleanListener;
 import com.example.administrator.kenya.utils.DateUtil;
+import com.example.administrator.kenya.view.RoundImageView;
 import com.zhy.autolayout.AutoLinearLayout;
 import com.zhy.autolayout.AutoRelativeLayout;
 
+import java.io.ByteArrayOutputStream;
 import java.io.File;
+import java.lang.ref.WeakReference;
 import java.util.List;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-
-public class ResumeinfoActivity extends Activity implements View.OnClickListener, PopupWindow.OnDismissListener {
+public class ResumeinfoActivity extends BaseActivity implements View.OnClickListener, PopupWindow.OnDismissListener {
 
     @Bind(R.id.pick_time)
     AutoLinearLayout pickTime;
@@ -70,14 +78,18 @@ public class ResumeinfoActivity extends Activity implements View.OnClickListener
     TextView resumeInfoDetail;
     private Dialog dateDialog;
     private PopupWindow popupWindow;
+
+
+    public final String USER_IMAGE_NAME = "image.png";
+    public final String USER_CROP_IMAGE_NAME = "temporary.png";
+    public Uri imageUriFromCamera;
+    public Uri cropImageUri;
+    public final int GET_IMAGE_BY_CAMERA_U = 5001;
+    public final int CROP_IMAGE_U = 5003;
     //相册请求码
     private static final int ALBUM_REQUEST_CODE = 1;
-    //相机请求码
-    private static final int CAMERA_REQUEST_CODE = 2;
     //剪裁请求码
     private static final int CROP_REQUEST_CODE = 3;
-    //调用照相机返回图片文件
-    private File tempFile;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -194,7 +206,7 @@ public class ResumeinfoActivity extends Activity implements View.OnClickListener
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.tv_pick_phone:
-                getPicFromCamera();
+                camer();
                 popupWindow.dismiss();
                 break;
             case R.id.tv_pick_zone:
@@ -205,28 +217,150 @@ public class ResumeinfoActivity extends Activity implements View.OnClickListener
                 popupWindow.dismiss();
                 break;
         }
+    }
+
+    public void camer() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+
+            onPermissionRequests(Manifest.permission.CAMERA, new OnBooleanListener() {
+                @Override
+                public void onClick(boolean bln) {
+                    if (bln) {
+                        Log.d("MainActivity", "进入权限");
+                        Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                        File photoFile = createImagePathFile(ResumeinfoActivity.this);
+                        intent.setAction(MediaStore.ACTION_IMAGE_CAPTURE);
+                        intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+                        imageUriFromCamera = FileProvider.getUriForFile(ResumeinfoActivity.this,
+                                "com.example.administrator.kenya.fileprovider", photoFile);
+                        intent.putExtra(MediaStore.EXTRA_OUTPUT, imageUriFromCamera);
+
+                        startActivityForResult(intent, GET_IMAGE_BY_CAMERA_U);
+                    } else {
+                        Toast.makeText(ResumeinfoActivity.this, "拍照无法正常使用", Toast.LENGTH_SHORT).show();
+                    }
+                }
+            });
+
+        } else {
+            imageUriFromCamera = createImagePathUri(ResumeinfoActivity.this);
+            Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+            intent.putExtra(MediaStore.EXTRA_OUTPUT,
+                    imageUriFromCamera);
+            startActivityForResult(intent, GET_IMAGE_BY_CAMERA_U);
+        }
 
     }
 
-    /**
-     * 从相机获取图片
-     */
+    public File createImagePathFile(Activity activity) {
+        Uri imageFilePath;
+        File file = new File(activity.getExternalCacheDir(), USER_IMAGE_NAME);
+        imageFilePath = Uri.fromFile(file);
+        return file;
+    }
 
-    private void getPicFromCamera() {
-        //用于保存调用相机拍照后所生成的文件
-        tempFile = new File(Environment.getExternalStorageDirectory().getPath(), System.currentTimeMillis() + ".jpg");
-        //跳转到调用系统相机
-        Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-        //判断版本
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {   //如果在Android7.0以上,使用FileProvider获取Uri
-            intent.setFlags(Intent.FLAG_GRANT_WRITE_URI_PERMISSION);
-            Uri contentUri = FileProvider.getUriForFile(ResumeinfoActivity.this, "com.hansion.chosehead", tempFile);
-            intent.putExtra(MediaStore.EXTRA_OUTPUT, contentUri);
-            Log.e("dasd", contentUri.toString());
-        } else {    //否则使用Uri.fromFile(file)方法获取Uri
-            intent.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(tempFile));
+    public Uri createImagePathUri(Activity activity) {
+        Uri imageFilePath;
+        File file = new File(activity.getExternalCacheDir(), USER_IMAGE_NAME);
+        imageFilePath = Uri.fromFile(file);
+        return imageFilePath;
+    }
+
+    @Override
+    protected void onResume() {
+        onPermissionRequests(Manifest.permission.WRITE_EXTERNAL_STORAGE, new OnBooleanListener() {
+            @Override
+            public void onClick(boolean bln) {
+                if (bln) {
+
+                } else {
+                    Toast.makeText(ResumeinfoActivity.this, "文件读写无法正常使用", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+        super.onResume();
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        // TODO Auto-generated method stub
+
+        super.onActivityResult(requestCode, resultCode, data);
+        System.out.println(requestCode);
+        System.out.println("数据" + resultCode + "" + this.RESULT_OK);
+        if (resultCode != this.RESULT_CANCELED) {
+            switch (requestCode) {
+                case GET_IMAGE_BY_CAMERA_U:
+                    if (imageUriFromCamera != null) {
+                        cropImage(imageUriFromCamera, 1, 1, CROP_IMAGE_U);
+                        break;
+                    }
+                    break;
+                case CROP_IMAGE_U:
+                    final String s = getExternalCacheDir() + "/" + USER_CROP_IMAGE_NAME;
+                    Bitmap imageBitmap = GetBitmap(s, 320, 320);
+                    ByteArrayOutputStream baos = new ByteArrayOutputStream();
+                    imageBitmap.compress(Bitmap.CompressFormat.PNG, 70, baos);
+                    resumeInfoPhoto.setImageBitmap(imageBitmap);
+                    break;
+                case ALBUM_REQUEST_CODE:
+                    if (resultCode == RESULT_OK) {
+                        Uri uri = data.getData();
+                        cropPhoto(uri);
+                    }
+                    break;
+                case CROP_REQUEST_CODE:
+                    Bundle bundle = data.getExtras();
+                    if (bundle != null) {
+                        Bitmap image = bundle.getParcelable("data");
+                        resumeInfoPhoto.setImageBitmap(image);
+
+                    }
+                    break;
+                default:
+                    break;
+            }
         }
-        startActivityForResult(intent, CAMERA_REQUEST_CODE);
+
+    }
+
+    public void cropImage(Uri imageUri, int aspectX, int aspectY,
+                          int return_flag) {
+        File file = new File(this.getExternalCacheDir(), USER_CROP_IMAGE_NAME);
+        Intent intent = new Intent("com.android.camera.action.CROP");
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+            intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+            FileProvider.getUriForFile(ResumeinfoActivity.this, "com.example.administrator.kenya.fileprovider", file);
+        }
+        cropImageUri = Uri.fromFile(file);
+        intent.setDataAndType(imageUri, "image/*");
+        intent.putExtra("crop", "true");
+        intent.putExtra("aspectX", aspectX);
+        intent.putExtra("aspectY", aspectY);
+        intent.putExtra("outputX", 320);
+        intent.putExtra("outputY", 320);
+        intent.putExtra(MediaStore.EXTRA_OUTPUT, cropImageUri);
+        startActivityForResult(intent, return_flag);
+    }
+
+    public Bitmap GetBitmap(String path, int w, int h) {
+        BitmapFactory.Options opts = new BitmapFactory.Options();
+        opts.inJustDecodeBounds = true;
+        opts.inPreferredConfig = Bitmap.Config.ARGB_8888;
+        BitmapFactory.decodeFile(path, opts);
+        int width = opts.outWidth;
+        int height = opts.outHeight;
+        float scaleWidth = 0.f, scaleHeight = 0.f;
+        if (width > w || height > h) {
+            scaleWidth = ((float) width) / w;
+            scaleHeight = ((float) height) / h;
+        }
+        opts.inJustDecodeBounds = false;
+        float scale = Math.max(scaleWidth, scaleHeight);
+        opts.inSampleSize = (int) scale;
+        WeakReference<Bitmap> weak = new WeakReference<Bitmap>(
+                BitmapFactory.decodeFile(path, opts));
+        return Bitmap.createScaledBitmap(weak.get(), w, h, true);
     }
 
     /**
@@ -253,37 +387,5 @@ public class ResumeinfoActivity extends Activity implements View.OnClickListener
         intent.putExtra("outputY", 300);
         intent.putExtra("return-data", true);
         startActivityForResult(intent, CROP_REQUEST_CODE);
-    }
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent intent) {
-        switch (requestCode) {
-            case CAMERA_REQUEST_CODE:   //调用相机后返回
-                if (resultCode == RESULT_OK) {
-                    //用相机返回的照片去调用剪裁也需要对Uri进行处理
-                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-                        Uri contentUri = FileProvider.getUriForFile(ResumeinfoActivity.this, "com.hansion.chosehead", tempFile);
-                        cropPhoto(contentUri);
-                    } else {
-                        cropPhoto(Uri.fromFile(tempFile));
-                    }
-                }
-                break;
-            case ALBUM_REQUEST_CODE:    //调用相册后返回
-                if (resultCode == RESULT_OK) {
-                    Uri uri = intent.getData();
-                    cropPhoto(uri);
-                }
-                break;
-            case CROP_REQUEST_CODE:     //调用剪裁后返回
-                Bundle bundle = intent.getExtras();
-                if (bundle != null) {
-                    //在这里获得了剪裁后的Bitmap对象，可以用于上传
-                    Bitmap image = bundle.getParcelable("data");
-                    //设置到ImageView上
-                    resumeInfoPhoto.setImageBitmap(image);
-                }
-                break;
-        }
     }
 }

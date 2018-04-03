@@ -42,10 +42,8 @@ public class GoodsReleaseActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_goods_release);
         ButterKnife.bind(this);
-
         title.setText("发布");
     }
-
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -62,12 +60,12 @@ public class GoodsReleaseActivity extends BaseActivity {
                     sb.append(result).append("\n");
                 }
                 brief.setText(sb.toString());
-                for ( int i = 0; i < 5 ; i++){
+                for (int i = 0; i < 5; i++) {
                     if (i < mResults.size()) {
                         Glide.with(this)
                                 .load(mResults.get(i))
                                 .into(imageViews.get(i));
-                    }else {
+                    } else {
                         Glide.with(this)
                                 .load(R.drawable.city_used_camera)
                                 .into(imageViews.get(i));
@@ -130,7 +128,7 @@ public class GoodsReleaseActivity extends BaseActivity {
         // 选择模式
         intent.putExtra(MultiImageSelectorActivity.EXTRA_SELECT_MODE, 1);
         // 默认选择
-        if(mResults != null && mResults.size()>0){
+        if (mResults != null && mResults.size() > 0) {
             intent.putExtra(MultiImageSelectorActivity.EXTRA_DEFAULT_SELECTED_LIST, mResults);
         }
         startActivityForResult(intent, 2);

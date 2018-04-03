@@ -57,11 +57,8 @@ public class UsedActivity extends BaseActivity {
         setContentView(R.layout.activity_used);
         ButterKnife.bind(this);
 
-
         initOKHttp();
-
         initView();
-
         postFormBuilder.addParams("pn", cpageNum + "").build().execute(StringCallback);
 
     }
@@ -113,7 +110,7 @@ public class UsedActivity extends BaseActivity {
 
     }
 
-//初始化组件
+    //初始化组件
     private void initView() {
 
         myAdapter = new MyAdapter(goodsList);
@@ -152,7 +149,7 @@ public class UsedActivity extends BaseActivity {
 
     @OnClick({R.id.search_bar, R.id.tv_search})
     public void onViewClicked2(View view) {
-        startActivity(UsedSearchActivity.class,null);
+        startActivity(UsedSearchActivity.class, null);
     }
 
     public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
@@ -165,7 +162,7 @@ public class UsedActivity extends BaseActivity {
         }
 
         public class ViewHolder extends RecyclerView.ViewHolder {
-            TextView goodsname,goodsphone,goodsprice;
+            TextView goodsname, goodsphone, goodsprice;
             ImageView goodsimgs;
 
             public ViewHolder(View itemView) {
@@ -186,9 +183,8 @@ public class UsedActivity extends BaseActivity {
         @Override
         public void onBindViewHolder(final ViewHolder holder, final int position) {
             holder.goodsname.setText(list.get(position).getGoodsname());
-            holder.goodsphone.setText("手机："+list.get(position).getGoodsphone());
-            holder.goodsprice.setText("$"+list.get(position).getGoodsprice());
-
+            holder.goodsphone.setText("手机：" + list.get(position).getGoodsphone());
+            holder.goodsprice.setText("$" + list.get(position).getGoodsprice());
 
             holder.goodsimgs.setTag(list.get(position).getGoodsimgs());
 
@@ -200,7 +196,7 @@ public class UsedActivity extends BaseActivity {
                         @Override
                         public void onResourceReady(Bitmap resource, GlideAnimation<? super Bitmap> glideAnimation) {
                             String tag = (String) holder.goodsimgs.getTag();
-                            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN && tag!=null && tag.equals(list.get(position).getGoodsimgs())) {
+                            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN && tag != null && tag.equals(list.get(position).getGoodsimgs())) {
                                 holder.goodsimgs.setBackground(new BitmapDrawable(resource));   //设置背景
                             }
                         }
@@ -210,13 +206,11 @@ public class UsedActivity extends BaseActivity {
                 @Override
                 public void onClick(View view) {
                     Bundle bundle = new Bundle();
-                    bundle.putSerializable("goods",list.get(position));
+                    bundle.putSerializable("goods", list.get(position));
                     startActivity(GoodsDetailsActivity.class, bundle);
                 }
             });
         }
-
-
 
         @Override
         public int getItemCount() {
