@@ -1,5 +1,8 @@
 package com.example.administrator.kenya.classes;
 
+import android.util.Log;
+import android.widget.Toast;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -132,11 +135,17 @@ public class Goods implements Serializable{
 
     public List<String> getImageUrlList(){
         List<String> imageUrlList = new ArrayList<>();
-        imageUrlList.add(goodsimgs);
-        imageUrlList.add(goodsimg1);
-        imageUrlList.add(goodsimg2);
-        imageUrlList.add(goodsimg3);
-        imageUrlList.add(goodsimg4);
+        if (!goodsimgs.equals(""))
+            imageUrlList.add("http://192.168.1.106:8080"+goodsimgs);
+        if (!goodsimg1.equals(""))
+            imageUrlList.add("http://192.168.1.106:8080"+goodsimg1);
+        if (!goodsimg2.equals(""))
+            imageUrlList.add("http://192.168.1.106:8080"+goodsimg2);
+        if (!goodsimg3.equals(""))
+            imageUrlList.add("http://192.168.1.106:8080"+goodsimg3);
+        if (!goodsimg4.equals(""))
+            imageUrlList.add("http://192.168.1.106:8080"+goodsimg4);
+
         return imageUrlList;
     }
 }

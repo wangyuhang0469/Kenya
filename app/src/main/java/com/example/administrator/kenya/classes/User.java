@@ -10,7 +10,37 @@ public class User implements Serializable {
 
 
     private String userName = "";
+    private String userAge = "";
+    private String userPhonenumber = "";
+    private String userSex = "";
     private Boolean status = false;
+
+
+    public String getUserAge() {
+        return userAge;
+    }
+
+    public void setUserAge(String userAge) {
+        this.userAge = userAge;
+    }
+
+    public String getUserPhonenumber() {
+        return userPhonenumber;
+    }
+
+    public void setUserPhonenumber(String userPhonenumber) {
+        this.userPhonenumber = userPhonenumber;
+    }
+
+    public String getUserSex() {
+        return userSex;
+    }
+
+    public void setUserSex(String userSex) {
+        this.userSex = userSex;
+    }
+
+
 
     public String getUserName() {
         return userName;

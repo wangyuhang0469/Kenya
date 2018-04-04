@@ -76,7 +76,7 @@ public class UsedSearchActivity extends BaseActivity {
 
     private void initOKHttp() {
         postFormBuilder = OkHttpUtils.post()
-                .url("http://192.168.1.100:8080/kenya/Goods/selectByFile")
+                .url("http://192.168.1.108:8080/kenya/Goods/selectByFile")
                 .addParams("pn", cpageNum + "")
                 .addParams("goodsName", keyword.getText().toString());
 

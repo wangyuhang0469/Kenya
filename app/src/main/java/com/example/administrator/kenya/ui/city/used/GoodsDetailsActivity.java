@@ -45,6 +45,7 @@ public class GoodsDetailsActivity extends BaseActivity {
 
         goods = (Goods) getIntent().getExtras().getSerializable("goods");
 
+
         initBanner(goods.getImageUrlList());
 
         goodsname.setText(goods.getGoodsname());
