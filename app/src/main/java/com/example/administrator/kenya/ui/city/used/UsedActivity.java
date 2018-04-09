@@ -6,6 +6,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,6 +20,7 @@ import com.bumptech.glide.request.target.SimpleTarget;
 import com.example.administrator.kenya.R;
 import com.example.administrator.kenya.base.BaseActivity;
 import com.example.administrator.kenya.classes.Goods;
+import com.example.administrator.kenya.constants.AppConstants;
 import com.jwenfeng.library.pulltorefresh.BaseRefreshListener;
 import com.jwenfeng.library.pulltorefresh.PullToRefreshLayout;
 import com.zhy.http.okhttp.OkHttpUtils;
@@ -59,15 +61,15 @@ public class UsedActivity extends BaseActivity {
 
         initOKHttp();
         initView();
+        Log.d("kang", "111aaa" + cpageNum);
         postFormBuilder.addParams("pn", cpageNum + "").build().execute(StringCallback);
 
     }
 
     private void initOKHttp() {
         postFormBuilder = OkHttpUtils.post()
-                .url("http://192.168.1.108:8080/kenya/Goods/selectByFile")
+                .url(AppConstants.BASE_URL + "/kenya/Goods/selectByFile")
                 .addParams("pn", cpageNum + "");
-
 
         StringCallback = new StringCallback() {
             @Override
@@ -82,6 +84,7 @@ public class UsedActivity extends BaseActivity {
 
             @Override
             public void onResponse(String response, int id) {
+                Log.d("kang", "111111" + response);
                 //防止因Activity释放导致内部控件空指针
                 if (pullToRefreshLayout != null) {
                     cpageNum++;
@@ -117,8 +120,6 @@ public class UsedActivity extends BaseActivity {
         LinearLayoutManager layoutmanager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutmanager);
         recyclerView.setAdapter(myAdapter);
-
-
         pullToRefreshLayout.setCanRefresh(false);
         pullToRefreshLayout.setCanLoadMore(false);
 
@@ -129,6 +130,7 @@ public class UsedActivity extends BaseActivity {
 
             @Override
             public void loadMore() {
+                Log.d("kang", "111aaa" + cpageNum);
                 postFormBuilder.addParams("pn", cpageNum + "").tag(this).build().execute(StringCallback);
             }
         });

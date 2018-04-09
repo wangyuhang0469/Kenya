@@ -1,30 +1,21 @@
-package com.example.administrator.kenya.ui.city.used;
+package com.example.administrator.kenya.ui.city.house;
 
-import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.drawable.BitmapDrawable;
-import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.KeyEvent;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.view.inputmethod.EditorInfo;
-import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.alibaba.fastjson.JSON;
-import com.bumptech.glide.Glide;
-import com.bumptech.glide.request.animation.GlideAnimation;
-import com.bumptech.glide.request.target.SimpleTarget;
 import com.example.administrator.kenya.R;
+import com.example.administrator.kenya.adapter.HouseAdapter;
 import com.example.administrator.kenya.base.BaseActivity;
-import com.example.administrator.kenya.classes.Goods;
+import com.example.administrator.kenya.classes.House;
 import com.example.administrator.kenya.constants.AppConstants;
 import com.jwenfeng.library.pulltorefresh.BaseRefreshListener;
 import com.jwenfeng.library.pulltorefresh.PullToRefreshLayout;
@@ -43,44 +34,39 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import okhttp3.Call;
 
-public class UsedSearchActivity extends BaseActivity {
+public class HouseSearchActivity extends BaseActivity {
 
-    @Bind(R.id.recyclerView)
-    RecyclerView recyclerView;
-    @Bind(R.id.pullToRefreshLayout)
-    PullToRefreshLayout pullToRefreshLayout;
     @Bind(R.id.keyword)
     EditText keyword;
-
-    private MyAdapter myAdapter;
-    private List<Goods> goodsList = new ArrayList<>();
-
-    private int cpageNum = 1;
-    private String lastKeyword = "";
-
+    @Bind(R.id.pullToRefreshLayout)
+    PullToRefreshLayout pullToRefreshLayout;
+    @Bind(R.id.recyclerView)
+    RecyclerView recyclerView;
     private PostFormBuilder postFormBuilder;
+    private int cpageNum = 1;
     private StringCallback StringCallback;
+    private List<House> housesList = new ArrayList<>();
+    private HouseAdapter houseadapter;
+    private String lastKeyword = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_used_search);
+        setContentView(R.layout.activity_house_search);
         ButterKnife.bind(this);
 
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_VISIBLE);
 
-        initOKHttp();
-
         initView();
 
+        initOKHttp();
     }
 
     private void initOKHttp() {
         postFormBuilder = OkHttpUtils.post()
-                .url(AppConstants.BASE_URL + "/kenya/Goods/selectByFile")
+                .url(AppConstants.BASE_URL + "/kenya/Lease/selectByFile")
                 .addParams("pn", cpageNum + "")
-                .addParams("goodsName", keyword.getText().toString());
-
+                .addParams("LeaseName", keyword.getText().toString());
 
         StringCallback = new StringCallback() {
             @Override
@@ -95,13 +81,11 @@ public class UsedSearchActivity extends BaseActivity {
 
             @Override
             public void onResponse(String response, int id) {
+                Log.d("kang", "111111" + response);
                 //防止因Activity释放导致内部控件空指针
                 if (pullToRefreshLayout != null) {
                     cpageNum++;
-                    lastKeyword = keyword.getText().toString();
-
-
-                    List<Goods> addList = null;
+                    List<House> addList = null;
                     try {
                         JSONObject jsonObject = new JSONObject(response);
                         if (jsonObject.getString("code").equals("000")) {
@@ -113,32 +97,21 @@ public class UsedSearchActivity extends BaseActivity {
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
-
-                    addList = JSON.parseArray(response, Goods.class);
-                    if (addList.size() > 0) {
-                        goodsList.addAll(addList);
-                    } else {
-//                        goodsList.clear();
-                        toast("查询无数据");
-                        pullToRefreshLayout.setCanLoadMore(false);
-                    }
-                    myAdapter.notifyDataSetChanged();
-
+                    addList = JSON.parseArray(response, House.class);
+                    housesList.addAll(addList);
+                    houseadapter.notifyDataSetChanged();
                     pullToRefreshLayout.finishLoadMore();
                 }
             }
         };
-
     }
 
-
+    //初始化组件
     private void initView() {
-
-        myAdapter = new MyAdapter(goodsList);
+        houseadapter = new HouseAdapter(this, housesList);
         LinearLayoutManager layoutmanager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutmanager);
-        recyclerView.setAdapter(myAdapter);
-
+        recyclerView.setAdapter(houseadapter);
 
         keyword.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
@@ -152,7 +125,6 @@ public class UsedSearchActivity extends BaseActivity {
             }
         });
 
-
         pullToRefreshLayout.setCanRefresh(false);
         pullToRefreshLayout.setCanLoadMore(false);
         pullToRefreshLayout.setRefreshListener(new BaseRefreshListener() {
@@ -162,17 +134,15 @@ public class UsedSearchActivity extends BaseActivity {
 
             @Override
             public void loadMore() {
-                postFormBuilder.addParams("pn", cpageNum + "").addParams("goodsName", lastKeyword).build().execute(StringCallback);
+                postFormBuilder.addParams("pn", cpageNum + "").tag(this).build().execute(StringCallback);
             }
         });
     }
 
-
     private void replacement() {
-        goodsList.clear();
+        housesList.clear();
         cpageNum = 1;
     }
-
 
     private void searchEvent() {
         if (keyword.getText().length() == 0) {
@@ -183,7 +153,6 @@ public class UsedSearchActivity extends BaseActivity {
             postFormBuilder.addParams("pn", cpageNum + "").addParams("goodsName", keyword.getText().toString()).build().execute(StringCallback);
         }
     }
-
 
     @OnClick({R.id.back, R.id.tv_search})
     public void onViewClicked(View view) {
@@ -198,73 +167,4 @@ public class UsedSearchActivity extends BaseActivity {
                 break;
         }
     }
-
-
-    public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
-
-
-        private List<Goods> list;
-
-        public MyAdapter(List<Goods> list) {
-            this.list = list;
-        }
-
-        public class ViewHolder extends RecyclerView.ViewHolder {
-            TextView goodsname, goodsphone, goodsprice;
-            ImageView goodsimgs;
-
-            public ViewHolder(View itemView) {
-                super(itemView);
-                goodsname = (TextView) itemView.findViewById(R.id.goodsname);
-                goodsphone = (TextView) itemView.findViewById(R.id.goodsphone);
-                goodsprice = (TextView) itemView.findViewById(R.id.goodsprice);
-                goodsimgs = (ImageView) itemView.findViewById(R.id.goodsimgs);
-            }
-        }
-
-        @Override
-        public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-            View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_goods, parent, false);
-            return new ViewHolder(v);
-        }
-
-        @Override
-        public void onBindViewHolder(final ViewHolder holder, final int position) {
-            holder.goodsname.setText(list.get(position).getGoodsname());
-            holder.goodsphone.setText("手机：" + list.get(position).getGoodsphone());
-            holder.goodsprice.setText("$" + list.get(position).getGoodsprice());
-
-            holder.goodsimgs.setTag(list.get(position).getGoodsimgs());
-
-            Glide.with(UsedSearchActivity.this)
-                    .load(list.get(position).getGoodsimgs())
-                    .asBitmap()
-                    .placeholder(R.drawable.bg4dp_grey)
-                    .into(new SimpleTarget<Bitmap>() {
-                        @Override
-                        public void onResourceReady(Bitmap resource, GlideAnimation<? super Bitmap> glideAnimation) {
-                            String tag = (String) holder.goodsimgs.getTag();
-                            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN && tag != null && tag.equals(list.get(position).getGoodsimgs())) {
-                                holder.goodsimgs.setBackground(new BitmapDrawable(resource));   //设置背景
-                            }
-                        }
-                    });
-
-            holder.itemView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Bundle bundle = new Bundle();
-                    bundle.putSerializable("goods", list.get(position));
-                    startActivity(GoodsDetailsActivity.class, bundle);
-                }
-            });
-        }
-
-        @Override
-        public int getItemCount() {
-            return list == null ? 0 : list.size();
-        }
-
-    }
-
 }

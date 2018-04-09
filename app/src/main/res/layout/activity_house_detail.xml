@@ -31,6 +31,7 @@
                 app:indicator_width="7.5dp" />
 
             <TextView
+                android:id="@+id/house_detail_desc"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="44px"
@@ -43,6 +44,7 @@
                 android:textSize="50px" />
 
             <TextView
+                android:id="@+id/house_detail_price"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="30px"
@@ -60,6 +62,7 @@
                 android:background="@color/line1" />
 
             <TextView
+                android:id="@+id/house_detail_home"
                 android:layout_width="match_parent"
                 android:layout_height="150px"
                 android:gravity="center"
@@ -77,7 +80,7 @@
                 android:layout_height="252px">
 
                 <ImageView
-                    android:id="@+id/avatar"
+                    android:id="@+id/house_user_img"
                     android:layout_width="152px"
                     android:layout_height="152px"
                     android:layout_marginBottom="50px"
@@ -86,26 +89,26 @@
                     android:src="@drawable/linshi4" />
 
                 <TextView
+                    android:id="@+id/house_username"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="20px"
                     android:layout_marginTop="66px"
-                    android:layout_toRightOf="@id/avatar"
+                    android:layout_toRightOf="@id/house_user_img"
                     android:text="王小花"
                     android:textColor="@color/textBlack1" />
 
                 <TextView
+                    android:id="@+id/house_phone"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentBottom="true"
                     android:layout_marginBottom="66px"
                     android:layout_marginLeft="20px"
-                    android:layout_toRightOf="@id/avatar"
+                    android:layout_toRightOf="@id/house_user_img"
                     android:text="手机：18332569875"
                     android:textColor="@color/textgreen1" />
-
             </com.zhy.autolayout.AutoRelativeLayout>
-
         </com.zhy.autolayout.AutoLinearLayout>
     </com.example.administrator.kenya.view.MyObervalbleScrollView>
 

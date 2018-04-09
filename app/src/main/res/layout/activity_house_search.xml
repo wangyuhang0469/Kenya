@@ -4,35 +4,37 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.administrator.kenya.ui.city.house.HouseActivity">
+    tools:context="com.example.administrator.kenya.ui.city.house.HouseSearchActivity">
+
 
     <com.zhy.autolayout.AutoRelativeLayout
-        android:id="@+id/house_title_bar"
+        android:id="@+id/title_bar"
         android:layout_width="match_parent"
         android:layout_height="144px"
         android:background="@color/base_bg">
 
         <com.zhy.autolayout.AutoLinearLayout
-            android:id="@+id/house_search_bar"
             android:layout_width="match_parent"
             android:layout_height="100px"
             android:layout_centerVertical="true"
             android:layout_toEndOf="@+id/back"
             android:layout_toStartOf="@+id/tv_search"
             android:background="@color/white"
-            android:gravity="center">
+            android:gravity="center_vertical">
 
             <ImageView
                 android:layout_width="41px"
                 android:layout_height="41px"
+                android:layout_marginLeft="30px"
                 android:layout_marginRight="20px"
                 android:src="@drawable/search" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="输入你想找的"
-                android:textColor="@color/textBlack3" />
+            <EditText
+                android:id="@+id/keyword"
+                style="@style/edit_base2"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="输入你想找的" />
 
         </com.zhy.autolayout.AutoLinearLayout>
 
@@ -57,33 +59,17 @@
 
     </com.zhy.autolayout.AutoRelativeLayout>
 
-
     <com.jwenfeng.library.pulltorefresh.PullToRefreshLayout
         android:id="@+id/pullToRefreshLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_above="@+id/release"
-        android:layout_below="@+id/house_title_bar">
+        android:layout_below="@+id/title_bar">
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/recyclerView"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_above="@+id/release"
-            android:layout_below="@+id/house_title_bar" />
+            android:layout_height="match_parent" />
 
     </com.jwenfeng.library.pulltorefresh.PullToRefreshLayout>
-
-
-    <TextView
-        android:id="@+id/release"
-        android:layout_width="match_parent"
-        android:layout_height="160px"
-        android:layout_alignParentBottom="true"
-        android:background="@color/theme_btn"
-        android:gravity="center"
-        android:text="发布"
-        android:textColor="@color/white"
-        android:textSize="17sp" />
 
 </com.zhy.autolayout.AutoRelativeLayout>

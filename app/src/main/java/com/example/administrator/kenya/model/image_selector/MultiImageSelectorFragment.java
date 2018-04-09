@@ -1,23 +1,31 @@
 package com.example.administrator.kenya.model.image_selector;
 
+import android.Manifest;
 import android.app.Activity;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.content.res.Configuration;
 import android.database.Cursor;
 import android.graphics.Color;
 import android.graphics.Point;
 import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.provider.MediaStore;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.LoaderManager;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.content.CursorLoader;
+import android.support.v4.content.FileProvider;
 import android.support.v4.content.Loader;
 import android.support.v7.widget.ListPopupWindow;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -29,12 +37,15 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.administrator.kenya.R;
+import com.example.administrator.kenya.ui.city.job.OnBooleanListener;
 import com.squareup.picasso.Picasso;
 
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+
+import static com.example.administrator.kenya.model.image_selector.FileUtils.createTmpFile;
 
 
 /**
@@ -43,21 +54,35 @@ import java.util.List;
  */
 public class MultiImageSelectorFragment extends Fragment {
 
+    private OnBooleanListener onPermissionListener;
+
     public static final String TAG = "me.nereo.multi_image_selector.MultiImageSelectorFragment";
 
     private static final String KEY_TEMP_FILE = "key_temp_file";
 
-    /** 最大图片选择次数，int类型 */
+    /**
+     * 最大图片选择次数，int类型
+     */
     public static final String EXTRA_SELECT_COUNT = "max_select_count";
-    /** 图片选择模式，int类型 */
+    /**
+     * 图片选择模式，int类型
+     */
     public static final String EXTRA_SELECT_MODE = "select_count_mode";
-    /** 是否显示相机，boolean类型 */
+    /**
+     * 是否显示相机，boolean类型
+     */
     public static final String EXTRA_SHOW_CAMERA = "show_camera";
-    /** 默认选择的数据集 */
+    /**
+     * 默认选择的数据集
+     */
     public static final String EXTRA_DEFAULT_SELECTED_LIST = "default_result";
-    /** 单选 */
+    /**
+     * 单选
+     */
     public static final int MODE_SINGLE = 0;
-    /** 多选 */
+    /**
+     * 多选
+     */
     public static final int MODE_MULTI = 1;
     // 不同loader定义
     private static final int LOADER_ALL = 0;
@@ -99,7 +124,7 @@ public class MultiImageSelectorFragment extends Fragment {
         super.onAttach(activity);
         try {
             mCallback = (Callback) activity;
-        }catch (ClassCastException e){
+        } catch (ClassCastException e) {
             throw new ClassCastException("The Activity must implement MultiImageSelectorFragment.Callback interface...");
         }
     }
@@ -120,9 +145,9 @@ public class MultiImageSelectorFragment extends Fragment {
         final int mode = getArguments().getInt(EXTRA_SELECT_MODE);
 
         // 默认选择
-        if(mode == MODE_MULTI) {
+        if (mode == MODE_MULTI) {
             ArrayList<String> tmp = getArguments().getStringArrayList(EXTRA_DEFAULT_SELECTED_LIST);
-            if(tmp != null && tmp.size()>0) {
+            if (tmp != null && tmp.size() > 0) {
                 resultList = tmp;
             }
         }
@@ -142,7 +167,7 @@ public class MultiImageSelectorFragment extends Fragment {
             @Override
             public void onClick(View view) {
 
-                if(mFolderPopupWindow == null){
+                if (mFolderPopupWindow == null) {
                     createPopupFolderList();
                 }
 
@@ -159,7 +184,7 @@ public class MultiImageSelectorFragment extends Fragment {
 
         mPreviewBtn = (Button) view.findViewById(R.id.preview);
         // 初始化，按钮状态初始化
-        if(resultList == null || resultList.size()<=0){
+        if (resultList == null || resultList.size() <= 0) {
             mPreviewBtn.setText(R.string.preview);
             mPreviewBtn.setEnabled(false);
         }
@@ -216,7 +241,7 @@ public class MultiImageSelectorFragment extends Fragment {
     private void createPopupFolderList() {
         Point point = ScreenUtils.getScreenSize(getActivity());
         int width = point.x;
-        int height = (int) (point.y * (4.5f/8.0f));
+        int height = (int) (point.y * (4.5f / 8.0f));
         mFolderPopupWindow = new ListPopupWindow(getActivity());
         mFolderPopupWindow.setBackgroundDrawable(new ColorDrawable(Color.WHITE));
         mFolderPopupWindow.setAdapter(mFolderAdapter);
@@ -295,17 +320,17 @@ public class MultiImageSelectorFragment extends Fragment {
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         // 相机拍照完成后，返回图片路径
-        if(requestCode == REQUEST_CAMERA){
-            if(resultCode == Activity.RESULT_OK) {
+        if (requestCode == REQUEST_CAMERA) {
+            if (resultCode == Activity.RESULT_OK) {
                 if (mTmpFile != null) {
                     if (mCallback != null) {
                         mCallback.onCameraShot(mTmpFile);
                     }
                 }
-            }else{
-                while (mTmpFile != null && mTmpFile.exists()){
+            } else {
+                while (mTmpFile != null && mTmpFile.exists()) {
                     boolean success = mTmpFile.delete();
-                    if(success){
+                    if (success) {
                         mTmpFile = null;
                     }
                 }
@@ -315,8 +340,8 @@ public class MultiImageSelectorFragment extends Fragment {
 
     @Override
     public void onConfigurationChanged(Configuration newConfig) {
-        if(mFolderPopupWindow != null){
-            if(mFolderPopupWindow.isShowing()){
+        if (mFolderPopupWindow != null) {
+            if (mFolderPopupWindow.isShowing()) {
                 mFolderPopupWindow.dismiss();
             }
         }
@@ -327,41 +352,76 @@ public class MultiImageSelectorFragment extends Fragment {
      * 选择相机
      */
     private void showCameraAction() {
-        // 跳转到系统照相机
-        Intent cameraIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-        if(cameraIntent.resolveActivity(getActivity().getPackageManager()) != null){
-            // 设置系统相机拍照后的输出路径
-            // 创建临时文件
-            try {
-                mTmpFile = FileUtils.createTmpFile(getActivity());
-            } catch (IOException e) {
-                e.printStackTrace();
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {  // 或者 android.os.Build.VERSION_CODES.KITKAT这个常量的值是19
+            Log.d("kang", "2222222222222" + Build.VERSION.SDK_INT);
+            onPermissionRequests(Manifest.permission.CAMERA, new OnBooleanListener() {
+                @Override
+                public void onClick(boolean bln) {
+                    if (bln) {
+                        Log.d("MainActivity", "进入权限");
+                        Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                        try {
+                            mTmpFile = createTmpFile(getActivity());
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                        intent.setAction(MediaStore.ACTION_IMAGE_CAPTURE);
+
+                                /*
+                                * 这里就是高版本需要注意的，需用使用FileProvider来获取Uri，同时需要注意getUriForFile
+                                * 方法第二个参数要与AndroidManifest.xml中provider的里面的属性authorities的值一致
+                                * */
+                        intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+//                        imageUriFromCamera = FileProvider.getUriForFile(getActivity(),
+//                                "com.example.a123.test1.fileprovider", mTmpFile);
+                        intent.putExtra(MediaStore.EXTRA_OUTPUT, FileProvider.getUriForFile(getActivity(),
+                                "com.example.administrator.kenya.fileprovider", mTmpFile));
+
+                        startActivityForResult(intent, REQUEST_CAMERA);
+                    } else {
+                        Toast.makeText(getActivity(), "拍照无法正常使用", Toast.LENGTH_SHORT).show();
+                    }
+                }
+            });
+        } else {
+            Log.d("kang", "1111111111111" + Build.VERSION.SDK_INT);
+            // 跳转到系统照相机
+            Intent cameraIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+            if (cameraIntent.resolveActivity(getActivity().getPackageManager()) != null) {
+                // 设置系统相机拍照后的输出路径
+                // 创建临时文件
+                try {
+                    mTmpFile = createTmpFile(getActivity());
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                if (mTmpFile != null && mTmpFile.exists()) {
+                    cameraIntent.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(mTmpFile));
+                    startActivityForResult(cameraIntent, REQUEST_CAMERA);
+                } else {
+                    Toast.makeText(getActivity(), "图片错误", Toast.LENGTH_SHORT).show();
+                }
+            } else {
+                Toast.makeText(getActivity(), R.string.msg_no_camera, Toast.LENGTH_SHORT).show();
             }
-            if(mTmpFile != null && mTmpFile.exists()) {
-                cameraIntent.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(mTmpFile));
-                startActivityForResult(cameraIntent, REQUEST_CAMERA);
-            }else{
-                Toast.makeText(getActivity(), "图片错误", Toast.LENGTH_SHORT).show();
-            }
-        }else{
-            Toast.makeText(getActivity(), R.string.msg_no_camera, Toast.LENGTH_SHORT).show();
         }
     }
 
     /**
      * 选择图片操作
+     *
      * @param image
      */
     private void selectImageFromGrid(Image image, int mode) {
-        if(image != null) {
+        if (image != null) {
             // 多选模式
-            if(mode == MODE_MULTI) {
+            if (mode == MODE_MULTI) {
                 if (resultList.contains(image.path)) {
                     resultList.remove(image.path);
-                    if(resultList.size() != 0) {
+                    if (resultList.size() != 0) {
                         mPreviewBtn.setEnabled(true);
                         mPreviewBtn.setText(getResources().getString(R.string.preview) + "(" + resultList.size() + ")");
-                    }else{
+                    } else {
                         mPreviewBtn.setEnabled(false);
                         mPreviewBtn.setText(R.string.preview);
                     }
@@ -370,7 +430,7 @@ public class MultiImageSelectorFragment extends Fragment {
                     }
                 } else {
                     // 判断选择数量问题
-                    if(mDesireImageCount == resultList.size()){
+                    if (mDesireImageCount == resultList.size()) {
                         Toast.makeText(getActivity(), R.string.msg_amount_limit, Toast.LENGTH_SHORT).show();
                         return;
                     }
@@ -383,9 +443,9 @@ public class MultiImageSelectorFragment extends Fragment {
                     }
                 }
                 mImageAdapter.select(image);
-            }else if(mode == MODE_SINGLE){
+            } else if (mode == MODE_SINGLE) {
                 // 单选模式
-                if(mCallback != null){
+                if (mCallback != null) {
                     mCallback.onSingleImageSelected(image.path);
                 }
             }
@@ -400,20 +460,20 @@ public class MultiImageSelectorFragment extends Fragment {
                 MediaStore.Images.Media.DATE_ADDED,
                 MediaStore.Images.Media.MIME_TYPE,
                 MediaStore.Images.Media.SIZE,
-                MediaStore.Images.Media._ID };
+                MediaStore.Images.Media._ID};
 
         @Override
         public Loader<Cursor> onCreateLoader(int id, Bundle args) {
-            if(id == LOADER_ALL) {
+            if (id == LOADER_ALL) {
                 CursorLoader cursorLoader = new CursorLoader(getActivity(),
                         MediaStore.Images.Media.EXTERNAL_CONTENT_URI, IMAGE_PROJECTION,
-                        IMAGE_PROJECTION[4]+">0 AND "+IMAGE_PROJECTION[3]+"=? OR "+IMAGE_PROJECTION[3]+"=? ",
+                        IMAGE_PROJECTION[4] + ">0 AND " + IMAGE_PROJECTION[3] + "=? OR " + IMAGE_PROJECTION[3] + "=? ",
                         new String[]{"image/jpeg", "image/png"}, IMAGE_PROJECTION[2] + " DESC");
                 return cursorLoader;
-            }else if(id == LOADER_CATEGORY){
+            } else if (id == LOADER_CATEGORY) {
                 CursorLoader cursorLoader = new CursorLoader(getActivity(),
                         MediaStore.Images.Media.EXTERNAL_CONTENT_URI, IMAGE_PROJECTION,
-                        IMAGE_PROJECTION[4]+">0 AND "+IMAGE_PROJECTION[0]+" like '%"+args.getString("path")+"%'",
+                        IMAGE_PROJECTION[4] + ">0 AND " + IMAGE_PROJECTION[0] + " like '%" + args.getString("path") + "%'",
                         null, IMAGE_PROJECTION[2] + " DESC");
                 return cursorLoader;
             }
@@ -421,8 +481,8 @@ public class MultiImageSelectorFragment extends Fragment {
             return null;
         }
 
-        private boolean fileExist(String path){
-            if(!TextUtils.isEmpty(path)){
+        private boolean fileExist(String path) {
+            if (!TextUtils.isEmpty(path)) {
                 return new File(path).exists();
             }
             return false;
@@ -434,7 +494,7 @@ public class MultiImageSelectorFragment extends Fragment {
                 if (data.getCount() > 0) {
                     List<Image> images = new ArrayList<>();
                     data.moveToFirst();
-                    do{
+                    do {
                         String path = data.getString(data.getColumnIndexOrThrow(IMAGE_PROJECTION[0]));
                         String name = data.getString(data.getColumnIndexOrThrow(IMAGE_PROJECTION[1]));
                         long dateTime = data.getLong(data.getColumnIndexOrThrow(IMAGE_PROJECTION[2]));
@@ -443,13 +503,13 @@ public class MultiImageSelectorFragment extends Fragment {
                             image = new Image(path, name, dateTime);
                             images.add(image);
                         }
-                        if( !hasFolderGened ) {
+                        if (!hasFolderGened) {
                             // 获取文件夹名称
                             File folderFile = new File(path).getParentFile();
-                            if(folderFile != null && folderFile.exists()){
+                            if (folderFile != null && folderFile.exists()) {
                                 String fp = folderFile.getAbsolutePath();
                                 Folder f = getFolderByPath(fp);
-                                if(f == null){
+                                if (f == null) {
                                     Folder folder = new Folder();
                                     folder.name = folderFile.getName();
                                     folder.path = fp;
@@ -458,21 +518,21 @@ public class MultiImageSelectorFragment extends Fragment {
                                     imageList.add(image);
                                     folder.images = imageList;
                                     mResultFolder.add(folder);
-                                }else {
+                                } else {
                                     f.images.add(image);
                                 }
                             }
                         }
 
-                    }while(data.moveToNext());
+                    } while (data.moveToNext());
 
                     mImageAdapter.setData(images);
                     // 设定默认选择
-                    if(resultList != null && resultList.size()>0){
+                    if (resultList != null && resultList.size() > 0) {
                         mImageAdapter.setDefaultSelected(resultList);
                     }
 
-                    if(!hasFolderGened) {
+                    if (!hasFolderGened) {
                         mFolderAdapter.setData(mResultFolder);
                         hasFolderGened = true;
                     }
@@ -487,10 +547,10 @@ public class MultiImageSelectorFragment extends Fragment {
         }
     };
 
-    private Folder getFolderByPath(String path){
-        if(mResultFolder != null){
+    private Folder getFolderByPath(String path) {
+        if (mResultFolder != null) {
             for (Folder folder : mResultFolder) {
-                if(TextUtils.equals(folder.path, path)){
+                if (TextUtils.equals(folder.path, path)) {
                     return folder;
                 }
             }
@@ -501,10 +561,57 @@ public class MultiImageSelectorFragment extends Fragment {
     /**
      * 回调接口
      */
-    public interface Callback{
+    public interface Callback {
         void onSingleImageSelected(String path);
+
         void onImageSelected(String path);
+
         void onImageUnselected(String path);
+
         void onCameraShot(File imageFile);
+    }
+
+    public void onPermissionRequests(String permission, OnBooleanListener onBooleanListener) {
+        onPermissionListener = onBooleanListener;
+        Log.d("MainActivity", "0");
+        if (ContextCompat.checkSelfPermission(this.getActivity(),
+                permission)
+                != PackageManager.PERMISSION_GRANTED) {
+            // Should we show an explanation?
+            Log.d("MainActivity", "1");
+            if (ActivityCompat.shouldShowRequestPermissionRationale(this.getActivity(),
+                    Manifest.permission.READ_CONTACTS)) {
+                //权限已有
+                onPermissionListener.onClick(true);
+            } else {
+                //没有权限，申请一下
+                ActivityCompat.requestPermissions(this.getActivity(),
+                        new String[]{permission},
+                        1);
+            }
+        } else {
+            onPermissionListener.onClick(true);
+            Log.d("MainActivity", "2" + ContextCompat.checkSelfPermission(this.getActivity(),
+                    permission));
+        }
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        if (requestCode == 1) {
+            if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                //权限通过
+                if (onPermissionListener != null) {
+                    onPermissionListener.onClick(true);
+                }
+            } else {
+                //权限拒绝
+                if (onPermissionListener != null) {
+                    onPermissionListener.onClick(false);
+                }
+            }
+            return;
+        }
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
     }
 }

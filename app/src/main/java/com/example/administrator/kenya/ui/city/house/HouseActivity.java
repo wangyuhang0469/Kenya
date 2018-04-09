@@ -3,12 +3,23 @@ package com.example.administrator.kenya.ui.city.house;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 
+import com.alibaba.fastjson.JSON;
 import com.example.administrator.kenya.R;
 import com.example.administrator.kenya.adapter.HouseAdapter;
 import com.example.administrator.kenya.base.BaseActivity;
 import com.example.administrator.kenya.classes.House;
+import com.example.administrator.kenya.constants.AppConstants;
+import com.jwenfeng.library.pulltorefresh.BaseRefreshListener;
+import com.jwenfeng.library.pulltorefresh.PullToRefreshLayout;
+import com.zhy.http.okhttp.OkHttpUtils;
+import com.zhy.http.okhttp.builder.PostFormBuilder;
+import com.zhy.http.okhttp.callback.StringCallback;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,31 +27,92 @@ import java.util.List;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import okhttp3.Call;
 
 public class HouseActivity extends BaseActivity {
 
     @Bind(R.id.recyclerView)
     RecyclerView recyclerView;
-
-    private List<House> houseList;
+    @Bind(R.id.pullToRefreshLayout)
+    PullToRefreshLayout pullToRefreshLayout;
+    private PostFormBuilder postFormBuilder;
+    private int cpageNum = 1;
+    private StringCallback StringCallback;
+    private List<House> housesList = new ArrayList<>();
+    private HouseAdapter houseadapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_house);
         ButterKnife.bind(this);
-        houseList = new ArrayList<>();
-        for (int i = 0; i < 8; i++) {
-            House house = new House();
-            house.setTitle("出租，恒大御景半岛，精装两室");
-            houseList.add(house);
-        }
-        LinearLayoutManager layoutmanager = new LinearLayoutManager(this);
-        recyclerView.setLayoutManager(layoutmanager);
-        HouseAdapter adapter = new HouseAdapter(this, houseList);
-        recyclerView.setAdapter(adapter);
+        initOKHttp();
+        initView();
+        postFormBuilder.addParams("pn", cpageNum + "").build().execute(StringCallback);
     }
 
+    private void initOKHttp() {
+        postFormBuilder = OkHttpUtils.post()
+                .url(AppConstants.BASE_URL + "/kenya/Lease/selectByFile")
+                .addParams("pn", cpageNum + "");
+
+        StringCallback = new StringCallback() {
+            @Override
+            public void onError(Call call, Exception e, int id) {
+                //防止因Activity释放导致内部控件空指针
+                if (pullToRefreshLayout != null) {
+                    pullToRefreshLayout.finishLoadMore();
+                    toast("加载失败");
+                    e.printStackTrace();
+                }
+            }
+
+            @Override
+            public void onResponse(String response, int id) {
+                Log.d("kang", "111111" + response);
+                //防止因Activity释放导致内部控件空指针
+                if (pullToRefreshLayout != null) {
+                    cpageNum++;
+                    List<House> addList = null;
+                    try {
+                        JSONObject jsonObject = new JSONObject(response);
+                        if (jsonObject.getString("code").equals("000")) {
+                            pullToRefreshLayout.setCanLoadMore(true);
+                        } else {
+                            pullToRefreshLayout.setCanLoadMore(false);
+                        }
+                        response = jsonObject.getString("result");
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                    addList = JSON.parseArray(response, House.class);
+                    housesList.addAll(addList);
+                    houseadapter.notifyDataSetChanged();
+                    pullToRefreshLayout.finishLoadMore();
+                }
+            }
+        };
+    }
+
+    //初始化组件
+    private void initView() {
+        houseadapter = new HouseAdapter(this, housesList);
+        LinearLayoutManager layoutmanager = new LinearLayoutManager(this);
+        recyclerView.setLayoutManager(layoutmanager);
+        recyclerView.setAdapter(houseadapter);
+        pullToRefreshLayout.setCanRefresh(false);
+        pullToRefreshLayout.setCanLoadMore(false);
+        pullToRefreshLayout.setRefreshListener(new BaseRefreshListener() {
+            @Override
+            public void refresh() {
+            }
+
+            @Override
+            public void loadMore() {
+                postFormBuilder.addParams("pn", cpageNum + "").tag(this).build().execute(StringCallback);
+            }
+        });
+    }
 
     @OnClick({R.id.back, R.id.release})
     public void onViewClicked(View view) {
@@ -52,5 +124,10 @@ public class HouseActivity extends BaseActivity {
                 startActivity(HouseInfoActivity.class, null);
                 break;
         }
+    }
+
+    @OnClick({R.id.house_search_bar, R.id.tv_search})
+    public void onViewClicked2(View view) {
+        startActivity(HouseSearchActivity.class, null);
     }
 }

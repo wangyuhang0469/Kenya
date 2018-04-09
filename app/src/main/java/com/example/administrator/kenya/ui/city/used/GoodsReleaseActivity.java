@@ -6,6 +6,7 @@ import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -17,6 +18,7 @@ import com.example.administrator.kenya.R;
 import com.example.administrator.kenya.base.BaseActivity;
 import com.example.administrator.kenya.classes.Goods;
 import com.example.administrator.kenya.classes.User;
+import com.example.administrator.kenya.constants.AppConstants;
 import com.example.administrator.kenya.model.image_selector.MultiImageSelectorActivity;
 import com.example.administrator.kenya.ui.main.LoadingDialog;
 import com.zhy.http.okhttp.OkHttpUtils;
@@ -41,7 +43,7 @@ public class GoodsReleaseActivity extends BaseActivity {
     TextView title;
 
 
-    @Bind({R.id.images,R.id.image1, R.id.image2, R.id.image3, R.id.image4})
+    @Bind({R.id.images, R.id.image1, R.id.image2, R.id.image3, R.id.image4})
     List<ImageView> imageViews;
     @Bind(R.id.goodsname)
     EditText goodsname;
@@ -129,17 +131,17 @@ public class GoodsReleaseActivity extends BaseActivity {
                 loadingDialog.show();
 
                 PostFormBuilder postFormBuilder = OkHttpUtils.post();
-                for (int i = 0 ; i < mResults.size() ; i ++){
+                for (int i = 0; i < mResults.size(); i++) {
                     File file = new File(mResults.get(i));
-                    postFormBuilder.addFile("logoFil" ,file.getName(),file);
+                    postFormBuilder.addFile("logoFil", file.getName(), file);
                 }
-                postFormBuilder.url("http://192.168.1.106:8080/kenYa-test/saveSurvey")
+                postFormBuilder.url(AppConstants.BASE_URL + "/kenYa-test/saveSurvey")
                         .addParams("userId", "1")
                         .addParams("goodsName", goodsname.getText().toString())
-                        .addParams("goodsDesc",goodsdesc.getText().toString())
-                        .addParams("goodsPrice" , goodsprice.getText().toString())
-                        .addParams("goodUserName" , goodsusername.getText().toString())
-                        .addParams("goodsPhone" , goodsphone.getText().toString())
+                        .addParams("goodsDesc", goodsdesc.getText().toString())
+                        .addParams("goodsPrice", goodsprice.getText().toString())
+                        .addParams("goodUserName", goodsusername.getText().toString())
+                        .addParams("goodsPhone", goodsphone.getText().toString())
                         .build()
                         .execute(new StringCallback() {
                             @Override
@@ -150,18 +152,22 @@ public class GoodsReleaseActivity extends BaseActivity {
 
                             @Override
                             public void onResponse(String response, int id) {
+
+                                Log.d("kang", "11111111" + response);
                                 log(response);
 
                                 try {
                                     JSONObject jsonObject = new JSONObject(response);
-                                    if (jsonObject.getString("code").equals("000")){
-                                        Goods goods = JSON.parseObject(jsonObject.getString("data"),Goods.class);
+                                    if (jsonObject.getString("code").equals("000")) {
+                                        Log.d("kang", "11111111" + jsonObject.getString("code"));
+                                        Goods goods = JSON.parseObject(jsonObject.getString("data"), Goods.class);
+                                        Log.d("kang", "222222222" + jsonObject.getString("data"));
                                         Bundle bundle = new Bundle();
-                                        bundle.putSerializable("goods",goods);
+                                        bundle.putSerializable("goods", goods);
                                         toast("发布成功");
-                                        startActivity(GoodsDetailsActivity.class,bundle);
+                                        startActivity(GoodsDetailsActivity.class, bundle);
                                         finish();
-                                    }else {
+                                    } else {
                                         toast(jsonObject.getString("message"));
                                     }
                                 } catch (JSONException e) {
@@ -223,10 +229,11 @@ public class GoodsReleaseActivity extends BaseActivity {
         }
     }
 
-    @OnClick({R.id.images,R.id.image1, R.id.image2, R.id.image3, R.id.image4})
+    @OnClick({R.id.images, R.id.image1, R.id.image2, R.id.image3, R.id.image4})
     public void onViewClicked2(View view) {
 
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED || ActivityCompat.checkSelfPermission(this, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
+
             ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.CAMERA}, 1);
         } else {
             startCamera();

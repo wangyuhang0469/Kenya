@@ -1,20 +1,21 @@
 package com.example.administrator.kenya.ui.city.house;
 
-import android.app.Activity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.TextView;
 
 import com.example.administrator.kenya.R;
 import com.example.administrator.kenya.base.BaseActivity;
+import com.example.administrator.kenya.classes.House;
 import com.example.administrator.kenya.tools.GlideImageLoader;
 import com.youth.banner.Banner;
 import com.youth.banner.listener.OnBannerListener;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 public class HouseDetailActivity extends BaseActivity {
 
@@ -22,6 +23,17 @@ public class HouseDetailActivity extends BaseActivity {
     TextView title;
     @Bind(R.id.banner)
     Banner banner;
+    @Bind(R.id.house_detail_desc)
+    TextView houseDetailDesc;
+    @Bind(R.id.house_detail_price)
+    TextView houseDetailPrice;
+    @Bind(R.id.house_detail_home)
+    TextView houseDetailHome;
+    @Bind(R.id.house_username)
+    TextView houseUsername;
+    @Bind(R.id.house_phone)
+    TextView housePhone;
+    private House house;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,13 +41,13 @@ public class HouseDetailActivity extends BaseActivity {
         setContentView(R.layout.activity_house_detail);
         ButterKnife.bind(this);
         title.setText("房屋详情");
-
-        List<String> imageList = new ArrayList<>();
-        imageList.add("http://img10.soufunimg.com/viewimage/agents/2016_07/16/M02/07/B0/wKgHFFeJ14GIOQPPAACxeVCfl2gAAMBFgFiqCYAALGR861/722x542.jpg");
-        imageList.add("http://bjstatic.centaline.com.cn/Images/20161029/055455_6f8228ae-5e10-4e08-b778-ddb3326776a1.jpg");
-        imageList.add("http://img3n.soufunimg.com/viewimage/agents/2015_06/08/M01/0E/14/wKgFk1V1aaGIO2pVAAOJ_381io4AAWAJACRjpAAA4oX332/722x542.jpg");
-
-        initBanner(imageList);
+        house = (House) getIntent().getExtras().getSerializable("house");
+        initBanner(house.getHouseImageUrlList());
+        houseDetailDesc.setText(house.getLeasedesc());
+        houseDetailPrice.setText("$" + house.getLeaseprice() + "/月");
+        houseDetailHome.setText(house.getLeasehome());
+        houseUsername.setText(house.getLeasename());
+        housePhone.setText("手机：" + house.getLeasephone());
     }
 
     private void initBanner(List<String> imageUrlList) {
@@ -46,5 +58,16 @@ public class HouseDetailActivity extends BaseActivity {
                 toast("点击了" + (position + 1));
             }
         });
+    }
+
+    @OnClick({R.id.back, R.id.call})
+    public void onViewClicked(View view) {
+        switch (view.getId()) {
+            case R.id.back:
+                finish();
+                break;
+            case R.id.call:
+                break;
+        }
     }
 }

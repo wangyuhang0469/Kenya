@@ -3,6 +3,8 @@ package com.example.administrator.kenya.classes;
 import android.util.Log;
 import android.widget.Toast;
 
+import com.example.administrator.kenya.constants.AppConstants;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -11,7 +13,7 @@ import java.util.List;
  * Created by Administrator on 2018/3/24.
  */
 
-public class Goods implements Serializable{
+public class Goods implements Serializable {
 
     String goodsid;
     String goodsname;
@@ -133,18 +135,18 @@ public class Goods implements Serializable{
     }
 
 
-    public List<String> getImageUrlList(){
+    public List<String> getImageUrlList() {
         List<String> imageUrlList = new ArrayList<>();
         if (!goodsimgs.equals(""))
-            imageUrlList.add("http://192.168.1.106:8080"+goodsimgs);
+            imageUrlList.add(AppConstants.BASE_URL + goodsimgs);
         if (!goodsimg1.equals(""))
-            imageUrlList.add("http://192.168.1.106:8080"+goodsimg1);
+            imageUrlList.add(AppConstants.BASE_URL + goodsimg1);
         if (!goodsimg2.equals(""))
-            imageUrlList.add("http://192.168.1.106:8080"+goodsimg2);
+            imageUrlList.add(AppConstants.BASE_URL + goodsimg2);
         if (!goodsimg3.equals(""))
-            imageUrlList.add("http://192.168.1.106:8080"+goodsimg3);
+            imageUrlList.add(AppConstants.BASE_URL + goodsimg3);
         if (!goodsimg4.equals(""))
-            imageUrlList.add("http://192.168.1.106:8080"+goodsimg4);
+            imageUrlList.add(AppConstants.BASE_URL + goodsimg4);
 
         return imageUrlList;
     }

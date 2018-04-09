@@ -1,45 +1,245 @@
 package com.example.administrator.kenya.classes;
 
+import com.example.administrator.kenya.constants.AppConstants;
+
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Created by Administrator on 2018/3/24.
  */
 
-public class House {
+public class House implements Serializable {
 
-    String title;
-    String name;
-    String price;
-    String phone;
 
-    public String getTitle() {
-        return title;
+    /**
+     * leaseid : 1
+     * leaseimgs : wqdwqdwqd
+     * leasename : dd
+     * leaseprice : 11.0
+     * leasephone : 1111111
+     * leasesquare : dd
+     * leaseaddress : dd
+     * leasehome : dd
+     * leaseimg1 : ad
+     * leaseimg2 : asd
+     * leaseimg3 : asd
+     * leaseimg4 : asd
+     * userid : 1
+     * leasedesc : ddd
+     * leaseIms : null
+     * leaseIm1 : null
+     * leaseIm2 : null
+     * leaseIm3 : null
+     * leaseIm4 : null
+     * user_phoneNumber : 1111113
+     */
+
+    private int leaseid;
+    private String leaseimgs;
+    private String leasename;
+    private String leaseprice;
+    private String leasephone;
+    private String leasesquare;
+    private String leaseaddress;
+    private String leasehome;
+    private String leaseimg1;
+    private String leaseimg2;
+    private String leaseimg3;
+    private String leaseimg4;
+    private String userid;
+    private String leasedesc;
+    private Object leaseIms;
+    private Object leaseIm1;
+    private Object leaseIm2;
+    private Object leaseIm3;
+    private Object leaseIm4;
+    private String user_phoneNumber;
+
+    public int getLeaseid() {
+        return leaseid;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
+    public void setLeaseid(int leaseid) {
+        this.leaseid = leaseid;
     }
 
-    public String getName() {
-        return name;
+    public String getLeaseimgs() {
+        return leaseimgs;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setLeaseimgs(String leaseimgs) {
+        this.leaseimgs = leaseimgs;
     }
 
-    public String getPrice() {
-        return price;
+    public String getLeaseprice() {
+        return leaseprice;
     }
 
-    public void setPrice(String price) {
-        this.price = price;
+    public void setLeaseprice(String leaseprice) {
+        this.leaseprice = leaseprice;
     }
 
-    public String getPhone() {
-        return phone;
+    public String getUserid() {
+        return userid;
     }
 
-    public void setPhone(String phone) {
-        this.phone = phone;
+    public void setUserid(String userid) {
+        this.userid = userid;
+    }
+
+    public String getLeasename() {
+        return leasename;
+    }
+
+    public void setLeasename(String leasename) {
+        this.leasename = leasename;
+    }
+
+
+    public String getLeasephone() {
+        return leasephone;
+    }
+
+    public void setLeasephone(String leasephone) {
+        this.leasephone = leasephone;
+    }
+
+    public String getLeasesquare() {
+        return leasesquare;
+    }
+
+    public void setLeasesquare(String leasesquare) {
+        this.leasesquare = leasesquare;
+    }
+
+    public String getLeaseaddress() {
+        return leaseaddress;
+    }
+
+    public void setLeaseaddress(String leaseaddress) {
+        this.leaseaddress = leaseaddress;
+    }
+
+    public String getLeasehome() {
+        return leasehome;
+    }
+
+    public void setLeasehome(String leasehome) {
+        this.leasehome = leasehome;
+    }
+
+    public String getLeaseimg1() {
+        return leaseimg1;
+    }
+
+    public void setLeaseimg1(String leaseimg1) {
+        this.leaseimg1 = leaseimg1;
+    }
+
+    public String getLeaseimg2() {
+        return leaseimg2;
+    }
+
+    public void setLeaseimg2(String leaseimg2) {
+        this.leaseimg2 = leaseimg2;
+    }
+
+    public String getLeaseimg3() {
+        return leaseimg3;
+    }
+
+    public void setLeaseimg3(String leaseimg3) {
+        this.leaseimg3 = leaseimg3;
+    }
+
+    public String getLeaseimg4() {
+        return leaseimg4;
+    }
+
+    public void setLeaseimg4(String leaseimg4) {
+        this.leaseimg4 = leaseimg4;
+    }
+
+
+    public String getLeasedesc() {
+        return leasedesc;
+    }
+
+    public void setLeasedesc(String leasedesc) {
+        this.leasedesc = leasedesc;
+    }
+
+    public Object getLeaseIms() {
+        return leaseIms;
+    }
+
+    public void setLeaseIms(Object leaseIms) {
+        this.leaseIms = leaseIms;
+    }
+
+    public Object getLeaseIm1() {
+        return leaseIm1;
+    }
+
+    public void setLeaseIm1(Object leaseIm1) {
+        this.leaseIm1 = leaseIm1;
+    }
+
+    public Object getLeaseIm2() {
+        return leaseIm2;
+    }
+
+    public void setLeaseIm2(Object leaseIm2) {
+        this.leaseIm2 = leaseIm2;
+    }
+
+    public Object getLeaseIm3() {
+        return leaseIm3;
+    }
+
+    public void setLeaseIm3(Object leaseIm3) {
+        this.leaseIm3 = leaseIm3;
+    }
+
+    public Object getLeaseIm4() {
+        return leaseIm4;
+    }
+
+    public void setLeaseIm4(Object leaseIm4) {
+        this.leaseIm4 = leaseIm4;
+    }
+
+    public String getUser_phoneNumber() {
+        return user_phoneNumber;
+    }
+
+    public void setUser_phoneNumber(String user_phoneNumber) {
+        this.user_phoneNumber = user_phoneNumber;
+    }
+
+    public List<String> getHouseImageUrlList() {
+        List<String> houseimageUrlList = new ArrayList<>();
+
+
+//        houseimageUrlList.add(leaseimgs);
+//        houseimageUrlList.add(leaseimg1);
+//        houseimageUrlList.add(leaseimg2);
+//        houseimageUrlList.add(leaseimg3);
+//        houseimageUrlList.add(leaseimg4);
+
+
+        if (!leaseimgs.equals(""))
+            houseimageUrlList.add(AppConstants.BASE_URL + leaseimgs);
+        if (!leaseimg1.equals(""))
+            houseimageUrlList.add(AppConstants.BASE_URL + leaseimg1);
+        if (!leaseimg2.equals(""))
+            houseimageUrlList.add(AppConstants.BASE_URL + leaseimg2);
+        if (!leaseimg3.equals(""))
+            houseimageUrlList.add(AppConstants.BASE_URL + leaseimg3);
+        if (!leaseimg4.equals(""))
+            houseimageUrlList.add(AppConstants.BASE_URL + leaseimg4);
+        return houseimageUrlList;
     }
 }

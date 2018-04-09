@@ -314,7 +314,6 @@ public class ResumeinfoActivity extends BaseActivity implements View.OnClickList
                     if (bundle != null) {
                         Bitmap image = bundle.getParcelable("data");
                         resumeInfoPhoto.setImageBitmap(image);
-
                     }
                     break;
                 default:
