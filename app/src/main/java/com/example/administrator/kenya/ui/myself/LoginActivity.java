@@ -12,6 +12,7 @@ import com.example.administrator.kenya.MainActivity;
 import com.example.administrator.kenya.R;
 import com.example.administrator.kenya.base.BaseActivity;
 import com.example.administrator.kenya.classes.User;
+import com.example.administrator.kenya.constants.AppConstants;
 import com.zhy.http.okhttp.OkHttpUtils;
 import com.zhy.http.okhttp.callback.StringCallback;
 
@@ -64,7 +65,7 @@ public class LoginActivity extends BaseActivity {
     public void login() {
         lock = true;
         OkHttpUtils.get()
-                .url("http://47.93.6.164/kenYa-test/user/login")
+                .url(AppConstants.BASE_URL +"/kenya/user/login")
                 .addParams("userPhoneNumber", phone.getText().toString())
                 .addParams("userPsw", password.getText().toString())
                 .build()

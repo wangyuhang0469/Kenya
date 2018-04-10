@@ -9,6 +9,7 @@ import android.widget.EditText;
 
 import com.example.administrator.kenya.R;
 import com.example.administrator.kenya.base.BaseActivity;
+import com.example.administrator.kenya.constants.AppConstants;
 import com.zhy.http.okhttp.OkHttpUtils;
 import com.zhy.http.okhttp.callback.StringCallback;
 
@@ -68,7 +69,7 @@ public class RegisterActivity extends BaseActivity {
     private void register() {
         lock = true;
         OkHttpUtils.get()
-                .url("http://47.93.6.164/kenYa-test/user/register")
+                .url(AppConstants.BASE_URL +"/kenya/user/register")
                 .addParams("userPhoneNumber", phone.getText().toString())
                 .addParams("userName", userName.getText().toString())
                 .addParams("userPsw", password1.getText().toString())

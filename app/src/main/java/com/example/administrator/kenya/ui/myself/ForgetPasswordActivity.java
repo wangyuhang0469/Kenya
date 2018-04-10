@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 import com.example.administrator.kenya.R;
 import com.example.administrator.kenya.base.BaseActivity;
+import com.example.administrator.kenya.constants.AppConstants;
 import com.zhy.http.okhttp.OkHttpUtils;
 import com.zhy.http.okhttp.callback.StringCallback;
 
@@ -77,7 +78,7 @@ public class ForgetPasswordActivity extends BaseActivity {
     private void update() {
         lock = true;
         OkHttpUtils.get()
-                .url("http://47.93.6.164/kenYa-test/user/updatePassWord")
+                .url(AppConstants.BASE_URL +"/kenya/user/updatePassWord")
                 .addParams("userPhoneNumber", phone.getText().toString())
                 .addParams("userPsw", password1.getText().toString())
                 .build()

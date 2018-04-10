@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.zhy.autolayout.AutoRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.administrator.kenya.ui.city.life.LifeActivity">
+
+    <com.zhy.autolayout.AutoRelativeLayout
+        android:id="@+id/title_bar"
+        android:layout_width="match_parent"
+        android:layout_height="144px"
+        android:background="@color/base_bg">
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_centerInParent="true"
+            android:ellipsize="end"
+            android:gravity="center"
+            android:maxEms="10"
+            android:singleLine="true"
+            android:textColor="@color/textBlack1"
+            android:textSize="18sp"
+            android:text="生活服务"/>
+
+        <ImageView
+            android:id="@+id/back"
+            android:layout_width="84px"
+            android:layout_height="match_parent"
+            android:layout_centerVertical="true"
+            android:paddingBottom="44px"
+            android:paddingTop="44px"
+            android:src="@drawable/back2" />
+
+        <TextView
+            android:id="@+id/classification"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:gravity="center|right"
+            android:text="类别"
+            android:paddingRight="80px"
+            android:paddingLeft="30px"
+            android:textColor="@color/textgreen1" />
+
+        <ImageView
+            android:id="@+id/xiala"
+            android:layout_width="30px"
+            android:layout_height="match_parent"
+            android:layout_marginRight="30px"
+            android:layout_alignParentRight="true"
+            android:src="@drawable/icon_xiala0"/>
+
+
+    </com.zhy.autolayout.AutoRelativeLayout>
+
+    <View
+        android:id="@+id/view_line"
+        android:layout_width="match_parent"
+        android:layout_height="2px"
+        android:background="@color/line1"
+        android:layout_below="@id/title_bar"/>
+
+
+    <com.jwenfeng.library.pulltorefresh.PullToRefreshLayout
+        android:id="@+id/pullToRefreshLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/release"
+        android:layout_below="@+id/title_bar">
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+    </com.jwenfeng.library.pulltorefresh.PullToRefreshLayout>
+
+
+
+    <TextView
+        android:id="@+id/release"
+        android:layout_width="match_parent"
+        android:layout_height="160px"
+        android:layout_alignParentBottom="true"
+        android:background="@color/theme_btn"
+        android:gravity="center"
+        android:text="发布"
+        android:textColor="@color/white"
+        android:textSize="17sp" />
+
+    <View
+        android:id="@+id/black"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/touming_black"
+        android:layout_below="@+id/title_bar"
+        android:visibility="gone"/>
+
+</com.zhy.autolayout.AutoRelativeLayout>
