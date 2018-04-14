@@ -65,6 +65,9 @@ public class GoodsReleaseActivity extends BaseActivity {
         ButterKnife.bind(this);
         title.setText("发布");
 
+        goodsusername.setText(User.getInstance().getUserName());
+        goodsphone.setText(User.getInstance().getUserPhonenumber());
+
     }
 
     @Override
@@ -81,7 +84,6 @@ public class GoodsReleaseActivity extends BaseActivity {
                 for (String result : mResults) {
                     sb.append(result).append("\n");
                 }
-                goodsdesc.setText(mResults.toString());
                 for (int i = 0; i < 5; i++) {
                     if (i < mResults.size()) {
                         Glide.with(this)
@@ -135,8 +137,8 @@ public class GoodsReleaseActivity extends BaseActivity {
                     File file = new File(mResults.get(i));
                     postFormBuilder.addFile("logoFil", file.getName(), file);
                 }
-                postFormBuilder.url(AppConstants.BASE_URL + "/kenYa-test/saveSurvey")
-                        .addParams("userId", "1")
+                postFormBuilder.url( AppConstants.BASE_URL + "/kenya/saveSurvey")
+                        .addParams("userId", User.getInstance().getUserId())
                         .addParams("goodsName", goodsname.getText().toString())
                         .addParams("goodsDesc", goodsdesc.getText().toString())
                         .addParams("goodsPrice", goodsprice.getText().toString())
@@ -147,6 +149,7 @@ public class GoodsReleaseActivity extends BaseActivity {
                             @Override
                             public void onError(Call call, Exception e, int id) {
                                 e.printStackTrace();
+                                toast("发布失败");
                                 loadingDialog.dismiss();
                             }
 
@@ -158,10 +161,9 @@ public class GoodsReleaseActivity extends BaseActivity {
 
                                 try {
                                     JSONObject jsonObject = new JSONObject(response);
+                                    log(response);
                                     if (jsonObject.getString("code").equals("000")) {
-                                        Log.d("kang", "11111111" + jsonObject.getString("code"));
-                                        Goods goods = JSON.parseObject(jsonObject.getString("data"), Goods.class);
-                                        Log.d("kang", "222222222" + jsonObject.getString("data"));
+                                        Goods goods = JSON.parseObject(jsonObject.getString("data1"), Goods.class);
                                         Bundle bundle = new Bundle();
                                         bundle.putSerializable("goods", goods);
                                         toast("发布成功");
@@ -177,54 +179,6 @@ public class GoodsReleaseActivity extends BaseActivity {
                             }
                         });
 
-////                File file = new File(mResults.get(0));
-//               PostFormBuilder postFormBuilder = OkHttpUtils.post()
-//                       .addFile("leaseIms" ,"tupian.png",new File(mResults.get(0)));
-//                for (int i = 1 ; i < mResults.size() ; i ++){
-////                    file = new File(mResults.get(i));
-//                    postFormBuilder.addFile("leaseIm"+i ,"tupian.png",new File(mResults.get(i)));
-//                }
-//                postFormBuilder.url("http://192.168.1.108:8080/kenya/Lease/inserLease")
-//                        .addParams("leasename", goodsname.getText().toString())
-//                        .addParams("leasedesc",goodsdesc.getText().toString())
-//                        .addParams("leaseprice" , goodsprice.getText().toString())
-//                        .addParams("leasephone" , goodsphone.getText().toString())
-//
-//                        .addParams("leasesquare" , "面积")
-//                        .addParams("leaseaddress" , "地址")
-//                        .addParams("leasehome" , "户型")
-//                        .addParams("userid" , "1")
-//                        .build()
-//                        .execute(new StringCallback() {
-//                            @Override
-//                            public void onError(Call call, Exception e, int id) {
-//                                e.printStackTrace();
-//                                loadingDialog.dismiss();
-//                                toast("加载失败");
-//                            }
-//
-//                            @Override
-//                            public void onResponse(String response, int id) {
-//                                log(response);
-//
-////                                try {
-////                                    JSONObject jsonObject = new JSONObject(response);
-////                                    if (jsonObject.getString("code").equals("000")){
-////                                        Goods goods = JSON.parseObject(jsonObject.getString("result"),Goods.class);
-////                                        Bundle bundle = new Bundle();
-////                                        bundle.putSerializable("goods",goods);
-////                                        toast("发布成功");
-////                                        startActivity(GoodsDetailsActivity.class,bundle);
-////                                        finish();
-////                                    }else {
-////                                        toast(jsonObject.getString("message"));
-////                                    }
-////                                } catch (JSONException e) {
-////                                    e.printStackTrace();
-////                                }
-
-//                            }
-//                        });
                 break;
         }
     }

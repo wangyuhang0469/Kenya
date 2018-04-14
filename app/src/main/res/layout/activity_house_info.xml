@@ -12,13 +12,14 @@
     <com.example.administrator.kenya.view.MyObervalbleScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginBottom="160px"
+        android:layout_above="@+id/release"
         android:layout_marginTop="144px">
 
         <com.zhy.autolayout.AutoLinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:paddingBottom="50px">
 
 
             <com.zhy.autolayout.AutoLinearLayout

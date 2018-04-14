@@ -237,7 +237,7 @@ public class UsedSearchActivity extends BaseActivity {
             holder.goodsimgs.setTag(list.get(position).getGoodsimgs());
 
             Glide.with(UsedSearchActivity.this)
-                    .load(list.get(position).getGoodsimgs())
+                    .load(AppConstants.BASE_URL + list.get(position).getGoodsimgs())
                     .asBitmap()
                     .placeholder(R.drawable.bg4dp_grey)
                     .into(new SimpleTarget<Bitmap>() {

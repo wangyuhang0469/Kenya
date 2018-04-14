@@ -134,7 +134,7 @@ public class HouseSearchActivity extends BaseActivity {
 
             @Override
             public void loadMore() {
-                postFormBuilder.addParams("pn", cpageNum + "").tag(this).build().execute(StringCallback);
+                postFormBuilder.addParams("pn", cpageNum + "").addParams("leaseName", keyword.getText().toString()).build().execute(StringCallback);
             }
         });
     }
@@ -150,7 +150,7 @@ public class HouseSearchActivity extends BaseActivity {
         } else if (lastKeyword.equals(keyword.getText().toString())) {
         } else {
             replacement();
-            postFormBuilder.addParams("pn", cpageNum + "").addParams("goodsName", keyword.getText().toString()).build().execute(StringCallback);
+            postFormBuilder.addParams("pn", cpageNum + "").addParams("leaseName", keyword.getText().toString()).build().execute(StringCallback);
         }
     }
 

@@ -27,7 +27,6 @@ public class Goods implements Serializable {
     String goodsphone;
     String userid;
     String goodsdesc;
-    String user_phoneNumber;
 
 
     public String getGoodsid() {
@@ -126,13 +125,7 @@ public class Goods implements Serializable {
         this.goodsdesc = goodsdesc;
     }
 
-    public String getUser_phoneNumber() {
-        return user_phoneNumber;
-    }
 
-    public void setUser_phoneNumber(String user_phoneNumber) {
-        this.user_phoneNumber = user_phoneNumber;
-    }
 
 
     public List<String> getImageUrlList() {

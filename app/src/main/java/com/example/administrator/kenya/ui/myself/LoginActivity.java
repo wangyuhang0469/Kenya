@@ -87,10 +87,11 @@ public class LoginActivity extends BaseActivity {
                             if (jsonObject.getString("code").equals("000")) {
                                 jsonObject = jsonObject.getJSONObject("data");
                                 User user = User.getInstance();
+                                user.setUserId(jsonObject.getString("userId"));
                                 user.setUserName(jsonObject.getString("userName"));
-                                user.setUserName(jsonObject.getString("userAge"));
-                                user.setUserName(jsonObject.getString("userPhonenumber"));
-                                user.setUserName(jsonObject.getString("userSex"));
+                                user.setUserAge(jsonObject.getString("userAge"));
+                                user.setUserPhonenumber(jsonObject.getString("userPhonenumber"));
+                                user.setUserSex(jsonObject.getString("userSex"));
                                 user.setStatus(true);
                                 startActivity(MainActivity.class, null);
                                 finish();

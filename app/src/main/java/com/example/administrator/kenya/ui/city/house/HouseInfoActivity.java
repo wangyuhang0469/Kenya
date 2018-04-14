@@ -24,6 +24,7 @@ import com.bumptech.glide.Glide;
 import com.example.administrator.kenya.R;
 import com.example.administrator.kenya.base.BaseActivity;
 import com.example.administrator.kenya.classes.House;
+import com.example.administrator.kenya.classes.User;
 import com.example.administrator.kenya.constants.AppConstants;
 import com.example.administrator.kenya.model.image_selector.MultiImageSelectorActivity;
 import com.example.administrator.kenya.ui.main.LoadingDialog;
@@ -77,6 +78,8 @@ public class HouseInfoActivity extends BaseActivity implements View.OnClickListe
         setContentView(R.layout.activity_house_info);
         ButterKnife.bind(this);
         title.setText("发布");
+        houseName.setText(User.getInstance().getUserName());
+        housePhone.setText(User.getInstance().getUserPhonenumber());
     }
 
     /*
@@ -264,7 +267,7 @@ public class HouseInfoActivity extends BaseActivity implements View.OnClickListe
                         .addParams("leasesquare", "120" + "m2")
                         .addParams("leaseaddress", "河北省石家庄市")
                         .addParams("leasehome", "2室2厅2卫")
-                        .addParams("userid", "2")
+                        .addParams("userid", User.getInstance().getUserId())
                         .build()
                         .execute(new StringCallback() {
                             @Override

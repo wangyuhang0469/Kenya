@@ -13,7 +13,8 @@
     <com.example.administrator.kenya.view.MyObervalbleScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="144px">
+        android:layout_marginTop="144px"
+        android:layout_marginBottom="160px">
 
         <com.zhy.autolayout.AutoLinearLayout
             android:layout_width="match_parent"

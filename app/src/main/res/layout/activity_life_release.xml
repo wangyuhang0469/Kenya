@@ -7,61 +7,62 @@
     android:background="@color/white"
     tools:context="com.example.administrator.kenya.ui.city.life.LifeReleaseActivity">
 
-    <include layout="@layout/title_bar2" />
+    <include layout="@layout/title_bar2"
+        android:id="@+id/include" />
 
     <com.example.administrator.kenya.view.MyObervalbleScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginBottom="160px"
-        android:layout_marginTop="144px">
+        android:layout_below="@+id/include"
+        android:layout_above="@+id/release">
 
         <com.zhy.autolayout.AutoLinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:paddingBottom="50px">
 
-
-            <com.zhy.autolayout.AutoLinearLayout
+            <Spinner
+                android:id="@+id/spinner"
                 android:layout_width="match_parent"
                 android:layout_height="150px"
+                android:background="#00000000"
+                android:spinnerMode="dialog"/>
+
+            <include layout="@layout/line" />
+
+
+            <EditText
+                android:id="@+id/livename"
+                style="@style/edit_base2"
+                android:layout_width="match_parent"
+                android:layout_height="150px"
+                android:gravity="center_vertical"
                 android:paddingLeft="30px"
-                android:paddingRight="30px">
+                android:hint="请输入标题"/>
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:gravity="center"
-                    android:text="标题"
-                    android:textColor="@color/textBlack2" />
-
-                <EditText
-                    android:id="@+id/goodsname"
-                    style="@style/edit_base"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center_vertical"
-                    android:hint="一句话描述下你的商品吧"
-                    android:paddingLeft="30px" />
-
-            </com.zhy.autolayout.AutoLinearLayout>
 
             <include layout="@layout/line" />
 
             <EditText
-                android:id="@+id/goodsdesc"
+                android:id="@+id/livedesc"
                 style="@style/edit_base"
                 android:layout_width="match_parent"
-                android:layout_height="530px"
+                android:layout_height="300px"
                 android:gravity="left"
-                android:hint="描述一下物品的细节或故事"
+                android:hint="请描述"
                 android:lineSpacingMultiplier="1.3"
                 android:paddingLeft="30px"
                 android:paddingRight="30px"
                 android:paddingTop="57px" />
 
+            <include layout="@layout/line" />
+
+
             <com.zhy.autolayout.AutoRelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30px">
 
                 <ImageView
                     android:id="@+id/images"
@@ -90,7 +91,8 @@
             <com.zhy.autolayout.AutoRelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="50px">
+                android:layout_marginTop="50px"
+                android:layout_marginBottom="30px">
 
                 <ImageView
                     android:id="@+id/image3"
@@ -108,19 +110,12 @@
 
             </com.zhy.autolayout.AutoRelativeLayout>
 
-            <EditText
-                android:id="@+id/goodsprice"
-                style="@style/edit_base2"
-                android:layout_width="match_parent"
-                android:layout_height="150px"
-                android:layout_marginTop="24px"
-                android:gravity="center"
-                android:hint="输入您想卖出的价格" />
+
 
             <include layout="@layout/line" />
 
             <EditText
-                android:id="@+id/goodsusername"
+                android:id="@+id/liveuser"
                 style="@style/edit_base2"
                 android:layout_width="match_parent"
                 android:layout_height="150px"
@@ -130,12 +125,12 @@
             <include layout="@layout/line" />
 
             <EditText
-                android:id="@+id/goodsphone"
+                android:id="@+id/livephone"
                 style="@style/edit_base2"
                 android:layout_width="match_parent"
                 android:layout_height="150px"
                 android:gravity="center"
-                android:hint="输入联系电话" />
+                android:hint="输入手机号" />
 
             <include layout="@layout/line" />
 

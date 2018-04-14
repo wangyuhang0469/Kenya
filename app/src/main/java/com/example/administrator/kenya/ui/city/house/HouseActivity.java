@@ -109,7 +109,7 @@ public class HouseActivity extends BaseActivity {
 
             @Override
             public void loadMore() {
-                postFormBuilder.addParams("pn", cpageNum + "").tag(this).build().execute(StringCallback);
+                postFormBuilder.addParams("pn", cpageNum + "").build().execute(StringCallback);
             }
         });
     }

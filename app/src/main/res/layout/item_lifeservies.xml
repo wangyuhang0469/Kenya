@@ -5,30 +5,30 @@
     android:background="@color/white">
 
     <ImageView
-        android:id="@+id/goodsimgs"
+        android:id="@+id/liveimgs"
         android:layout_width="350px"
         android:layout_height="250px"
         android:layout_margin="30px"/>
 
     <TextView
-        android:id="@+id/goodsname"
+        android:id="@+id/livename"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_toRightOf="@id/goodsimgs"
-        android:layout_alignTop="@id/goodsimgs"
+        android:layout_toRightOf="@id/liveimgs"
+        android:layout_alignTop="@id/liveimgs"
         android:textColor="@color/textBlack1"
         android:layout_marginRight="30px"
-        android:layout_marginTop="10px"/>
+        android:layout_marginTop="8px"/>
 
     <TextView
-        android:id="@+id/goodsphone"
+        android:id="@+id/livephone"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_toRightOf="@id/goodsimgs"
-        android:layout_alignBottom="@id/goodsimgs"
+        android:layout_toRightOf="@id/liveimgs"
+        android:layout_alignBottom="@id/liveimgs"
         android:textColor="@color/textBlack2"
         android:textSize="13sp"
-        android:layout_marginBottom="10px"/>
+        android:layout_marginBottom="8px"/>
     
     <TextView
         android:id="@+id/call"
@@ -40,17 +40,9 @@
         android:textSize="13sp"
         android:text="拨号"
         android:layout_alignParentRight="true"
-        android:layout_alignBottom="@id/goodsimgs"
+        android:layout_alignBottom="@id/liveimgs"
         android:layout_marginRight="30px"/>
 
-    <TextView
-        android:id="@+id/goodsprice"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textColor="@color/textgreen1"
-        android:textSize="17sp"
-        android:layout_toRightOf="@id/goodsimgs"
-        android:layout_above="@id/goodsphone"/>
 
     <View
         android:layout_width="match_parent"

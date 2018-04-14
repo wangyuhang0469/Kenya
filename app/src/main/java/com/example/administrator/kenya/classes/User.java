@@ -9,6 +9,7 @@ import java.io.Serializable;
 public class User implements Serializable {
 
 
+    private String userId = "";
     private String userName = "";
     private String userAge = "";
     private String userPhonenumber = "";
@@ -60,6 +61,14 @@ public class User implements Serializable {
 
 
     private User() {
+    }
+
+    public String getUserId() {
+        return userId;
+    }
+
+    public void setUserId(String userId) {
+        this.userId = userId;
     }
 
     private static class UserHolder {

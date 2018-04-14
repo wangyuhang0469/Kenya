@@ -131,7 +131,7 @@ public class UsedActivity extends BaseActivity {
             @Override
             public void loadMore() {
                 Log.d("kang", "111aaa" + cpageNum);
-                postFormBuilder.addParams("pn", cpageNum + "").tag(this).build().execute(StringCallback);
+                postFormBuilder.addParams("pn", cpageNum + "").build().execute(StringCallback);
             }
         });
     }
@@ -191,7 +191,7 @@ public class UsedActivity extends BaseActivity {
             holder.goodsimgs.setTag(list.get(position).getGoodsimgs());
 
             Glide.with(UsedActivity.this)
-                    .load(list.get(position).getGoodsimgs())
+                    .load(AppConstants.BASE_URL + list.get(position).getGoodsimgs())
                     .asBitmap()
                     .placeholder(R.drawable.bg4dp_grey)
                     .into(new SimpleTarget<Bitmap>() {
