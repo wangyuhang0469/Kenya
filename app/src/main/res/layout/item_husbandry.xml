@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.zhy.autolayout.AutoRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white">
+
+    <ImageView
+        android:id="@+id/framimgs"
+        android:layout_width="350px"
+        android:layout_height="250px"
+        android:layout_margin="30px"/>
+
+    <TextView
+        android:id="@+id/framname"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/framimgs"
+        android:layout_alignTop="@id/framimgs"
+        android:textColor="@color/textBlack1"
+        android:layout_marginRight="30px"
+        android:layout_marginTop="8px"/>
+
+    <TextView
+        android:id="@+id/framphone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/framimgs"
+        android:layout_alignBottom="@id/framimgs"
+        android:textColor="@color/textBlack2"
+        android:textSize="13sp"
+        android:layout_marginBottom="8px"/>
+    
+    <TextView
+        android:id="@+id/call"
+        android:layout_width="182px"
+        android:layout_height="62px"
+        android:background="@drawable/bg4dp_theme_btn"
+        android:gravity="center"
+        android:textColor="@color/white"
+        android:textSize="13sp"
+        android:text="拨号"
+        android:layout_alignParentRight="true"
+        android:layout_alignBottom="@id/framimgs"
+        android:layout_marginRight="30px"/>
+
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2px"
+        android:background="#989898"
+        android:layout_alignParentBottom="true"/>
+
+</com.zhy.autolayout.AutoRelativeLayout>

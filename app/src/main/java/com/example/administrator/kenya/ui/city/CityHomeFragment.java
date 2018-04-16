@@ -14,6 +14,7 @@ import com.example.administrator.kenya.base.BaseFragment;
 import com.example.administrator.kenya.tools.GlideImageLoader;
 import com.example.administrator.kenya.ui.city.friends.FriendsActivity;
 import com.example.administrator.kenya.ui.city.house.HouseActivity;
+import com.example.administrator.kenya.ui.city.husbandry.HusbandryActivity;
 import com.example.administrator.kenya.ui.city.job.JobActivity;
 import com.example.administrator.kenya.ui.city.life.LifeActivity;
 import com.example.administrator.kenya.ui.city.used.UsedActivity;
@@ -86,7 +87,7 @@ public class CityHomeFragment extends BaseFragment {
         ButterKnife.unbind(this);
     }
 
-    @OnClick({R.id.btn1, R.id.btn2, R.id.city_home_job, R.id.city_home_used, R.id.city_home_house, R.id.city_home_friends,R.id.city_home_life})
+    @OnClick({R.id.btn1, R.id.btn2, R.id.city_home_job, R.id.city_home_used, R.id.city_home_house, R.id.city_home_friends,R.id.city_home_life,R.id.city_home_husbandry})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.btn1:
@@ -107,6 +108,9 @@ public class CityHomeFragment extends BaseFragment {
                 break;
             case R.id.city_home_life:
                 startActivity(LifeActivity.class, null);
+                break;
+            case R.id.city_home_husbandry:
+                startActivity(HusbandryActivity.class, null);
                 break;
         }
     }
