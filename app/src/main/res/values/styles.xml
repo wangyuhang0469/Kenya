@@ -14,7 +14,7 @@
     </style>
 
     <style name="AppTheme.grey_action_bar" parent="AppTheme">
-        <item name="android:windowLightStatusBar">true</item>
+        <!--<item name="android:windowLightStatusBar">true</item>-->
         <item name="colorPrimaryDark">#f1f1f1</item>
     </style>
 
@@ -89,7 +89,6 @@
         <item name="android:gravity">center_vertical</item>
         <item name="android:paddingLeft">30px</item>
         <item name="android:background">@color/white</item>
-        <item name="android:paddingRight">16dp</item>
         <item name="android:layout_centerInParent">true</item>
     </style>
 
@@ -99,6 +98,13 @@
         <item name="android:layout_marginRight">26px</item>
         <item name="android:textSize">16sp</item>
         <item name="android:layout_marginLeft">10sp</item>
+    </style>
+
+    <style name="my_center_inter">
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_alignParentRight">true</item>
+        <item name="android:layout_marginRight">30px</item>
     </style>
     <!--Tab字体-->
     <style name="MyTabLayoutTextAppeara" parent="TextAppearance.AppCompat.Widget.ActionBar.Title.Inverse">
@@ -144,6 +150,19 @@
         <item name="android:windowEnterAnimation">@anim/window_in</item>
         <item name="android:windowExitAnimation">@anim/window_out</item>
     </style>
-
-
+    <!--招聘信息窗口样式-->
+    <style name="adverty_info_ll">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">150px</item>
+        <item name="android:textSize">38px</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:orientation">horizontal</item>
+        <item name="android:paddingLeft">30px</item>
+    </style>
+    <!--招聘信息窗口字体样式-->
+    <style name="adverty_info_tv">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/textBlack2</item>
+    </style>
 </resources>

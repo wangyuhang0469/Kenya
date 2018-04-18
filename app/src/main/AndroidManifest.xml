@@ -85,15 +85,32 @@
                 android:resource="@xml/file_paths" />
         </provider>
 
+        <activity android:name=".ui.city.findmoney.FindMoneyActivity" />
+        <activity android:name=".activity.AdvertyinfoActivity" />
         <activity
             android:name=".ui.city.life.LifeActivity"
             android:theme="@style/AppTheme.grey_action_bar" />
         <activity android:name=".ui.city.house.HouseSearchActivity" />
-        <activity android:name=".ui.city.life.LifeReleaseActivity" android:theme="@style/AppTheme.grey_action_bar"/>
-        <activity android:name=".ui.city.life.LifeDetailsActivity" android:theme="@style/AppTheme.grey_action_bar"/>
-        <activity android:name=".ui.city.husbandry.HusbandryActivity" android:theme="@style/AppTheme.grey_action_bar"/>
-        <activity android:name=".ui.city.husbandry.HusbandryDetailsActivity" android:theme="@style/AppTheme.grey_action_bar"/>
-        <activity android:name=".ui.city.husbandry.HusbandryReleaseActivity" android:theme="@style/AppTheme.grey_action_bar"/>
+        <activity android:name=".activity.JobDetailActivity" />
+        <activity android:name=".activity.DetailActivity" />
+        <activity android:name=".ui.city.news.NewsinfoActivity" />
+        <activity
+            android:name=".ui.city.life.LifeReleaseActivity"
+            android:theme="@style/AppTheme.grey_action_bar" />
+        <activity
+            android:name=".ui.city.life.LifeDetailsActivity"
+            android:theme="@style/AppTheme.grey_action_bar" />
+        <activity
+            android:name=".ui.city.husbandry.HusbandryActivity"
+            android:theme="@style/AppTheme.grey_action_bar" />
+        <activity
+            android:name=".ui.city.husbandry.HusbandryDetailsActivity"
+            android:theme="@style/AppTheme.grey_action_bar" />
+        <activity
+            android:name=".ui.city.husbandry.HusbandryReleaseActivity"
+            android:theme="@style/AppTheme.grey_action_bar" />
+        <activity android:name=".ui.city.findmoney.FindProjectdetailActivity" />
+        <activity android:name=".ui.city.findmoney.FindMonydetailActivity"></activity>
     </application>
 
 </manifest>

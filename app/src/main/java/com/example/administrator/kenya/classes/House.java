@@ -12,7 +12,6 @@ import java.util.List;
 
 public class House implements Serializable {
 
-
     /**
      * leaseid : 1
      * leaseimgs : wqdwqdwqd
@@ -219,15 +218,16 @@ public class House implements Serializable {
         this.user_phoneNumber = user_phoneNumber;
     }
 
+
     public List<String> getHouseImageUrlList() {
         List<String> houseimageUrlList = new ArrayList<>();
 
 
-//        houseimageUrlList.add(leaseimgs);
-//        houseimageUrlList.add(leaseimg1);
-//        houseimageUrlList.add(leaseimg2);
-//        houseimageUrlList.add(leaseimg3);
-//        houseimageUrlList.add(leaseimg4);
+        houseimageUrlList.add(leaseimgs);
+        houseimageUrlList.add(leaseimg1);
+        houseimageUrlList.add(leaseimg2);
+        houseimageUrlList.add(leaseimg3);
+        houseimageUrlList.add(leaseimg4);
 
 
         if (!leaseimgs.equals(""))

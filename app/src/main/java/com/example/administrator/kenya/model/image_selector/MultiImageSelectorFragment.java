@@ -366,14 +366,7 @@ public class MultiImageSelectorFragment extends Fragment {
                             e.printStackTrace();
                         }
                         intent.setAction(MediaStore.ACTION_IMAGE_CAPTURE);
-
-                                /*
-                                * 这里就是高版本需要注意的，需用使用FileProvider来获取Uri，同时需要注意getUriForFile
-                                * 方法第二个参数要与AndroidManifest.xml中provider的里面的属性authorities的值一致
-                                * */
                         intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
-//                        imageUriFromCamera = FileProvider.getUriForFile(getActivity(),
-//                                "com.example.a123.test1.fileprovider", mTmpFile);
                         intent.putExtra(MediaStore.EXTRA_OUTPUT, FileProvider.getUriForFile(getActivity(),
                                 "com.example.administrator.kenya.fileprovider", mTmpFile));
 
@@ -573,12 +566,10 @@ public class MultiImageSelectorFragment extends Fragment {
 
     public void onPermissionRequests(String permission, OnBooleanListener onBooleanListener) {
         onPermissionListener = onBooleanListener;
-        Log.d("MainActivity", "0");
         if (ContextCompat.checkSelfPermission(this.getActivity(),
                 permission)
                 != PackageManager.PERMISSION_GRANTED) {
             // Should we show an explanation?
-            Log.d("MainActivity", "1");
             if (ActivityCompat.shouldShowRequestPermissionRationale(this.getActivity(),
                     Manifest.permission.READ_CONTACTS)) {
                 //权限已有

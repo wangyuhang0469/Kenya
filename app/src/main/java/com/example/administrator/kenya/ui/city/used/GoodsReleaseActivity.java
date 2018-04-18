@@ -137,7 +137,7 @@ public class GoodsReleaseActivity extends BaseActivity {
                     File file = new File(mResults.get(i));
                     postFormBuilder.addFile("logoFil", file.getName(), file);
                 }
-                postFormBuilder.url( AppConstants.BASE_URL + "/kenya/saveSurvey")
+                postFormBuilder.url(AppConstants.BASE_URL + "/kenya/saveSurvey")
                         .addParams("userId", User.getInstance().getUserId())
                         .addParams("goodsName", goodsname.getText().toString())
                         .addParams("goodsDesc", goodsdesc.getText().toString())

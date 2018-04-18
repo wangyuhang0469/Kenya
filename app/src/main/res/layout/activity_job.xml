@@ -30,5 +30,6 @@
         android:layout_alignParentBottom="true"
         android:background="@color/theme_btn"
         android:gravity="center"
-        android:text="发布" />
+        android:text="发布"
+        android:visibility="gone" />
 </com.zhy.autolayout.AutoRelativeLayout>

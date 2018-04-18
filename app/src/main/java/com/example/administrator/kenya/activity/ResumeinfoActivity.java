@@ -18,31 +18,40 @@ import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.WindowManager;
-import android.widget.Button;
-import android.widget.ImageButton;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.PopupWindow;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.alibaba.fastjson.JSON;
 import com.example.administrator.kenya.R;
 import com.example.administrator.kenya.base.BaseActivity;
+import com.example.administrator.kenya.classes.Job;
 import com.example.administrator.kenya.ui.city.job.DatePickerDialog;
 import com.example.administrator.kenya.ui.city.job.OnBooleanListener;
 import com.example.administrator.kenya.utils.DateUtil;
-import com.example.administrator.kenya.view.RoundImageView;
 import com.zhy.autolayout.AutoLinearLayout;
 import com.zhy.autolayout.AutoRelativeLayout;
+import com.zhy.http.okhttp.OkHttpUtils;
+import com.zhy.http.okhttp.builder.PostFormBuilder;
+import com.zhy.http.okhttp.callback.StringCallback;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.lang.ref.WeakReference;
 import java.util.List;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import okhttp3.Call;
 
 public class ResumeinfoActivity extends BaseActivity implements View.OnClickListener, PopupWindow.OnDismissListener {
 
@@ -68,14 +77,22 @@ public class ResumeinfoActivity extends BaseActivity implements View.OnClickList
     AutoRelativeLayout personInfo;
     @Bind(R.id.resume_tv_phone)
     TextView resumeTvPhone;
-    @Bind(R.id.resume_tv_recm)
-    TextView resumeTvRecm;
     @Bind(R.id.resume_tv_recm_choose)
     TextView resumeTvRecmChoose;
     @Bind(R.id.resume_info_photo)
     ImageView resumeInfoPhoto;
     @Bind(R.id.resume_info_detail)
     TextView resumeInfoDetail;
+    @Bind(R.id.resume_info_men)
+    ImageView resumeInfoMen;
+    @Bind(R.id.resume_info_women)
+    ImageView resumeInfoWomen;
+    @Bind(R.id.resume_info_phone)
+    EditText resumeInfoPhone;
+    @Bind(R.id.resume_info_jobwant)
+    EditText resumeInfoJobwant;
+    @Bind(R.id.resume_tv_recm)
+    EditText resumeTvRecm;
     private Dialog dateDialog;
     private PopupWindow popupWindow;
 
@@ -91,6 +108,9 @@ public class ResumeinfoActivity extends BaseActivity implements View.OnClickList
     //剪裁请求码
     private static final int CROP_REQUEST_CODE = 3;
 
+    private String s;
+    private int sexvalue;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -98,9 +118,12 @@ public class ResumeinfoActivity extends BaseActivity implements View.OnClickList
         ButterKnife.bind(this);
     }
 
-    @OnClick({R.id.pick_time, R.id.resume_recm, R.id.ruseme_work_time, R.id.resume_info_photo, R.id.resume_info_detail})
+    @OnClick({R.id.back, R.id.pick_time, R.id.resume_recm, R.id.ruseme_work_time, R.id.resume_info_photo, R.id.resume_info_detail, R.id.resume_info_men, R.id.resume_info_women})
     public void onViewClicked(View view) {
         switch (view.getId()) {
+            case R.id.back:
+                finish();
+                break;
             case R.id.pick_time:
                 showDateDialog(DateUtil.getDateForString("1990-01-01"), "A");
                 break;
@@ -113,8 +136,58 @@ public class ResumeinfoActivity extends BaseActivity implements View.OnClickList
                 openPopupWindow(view);
                 break;
             case R.id.resume_info_detail:
-                Intent intent = new Intent(this, ResumeDetilActivity.class);
-                startActivity(intent);
+                File f2 = new File(s);
+                PostFormBuilder postFormBuilder = OkHttpUtils.post()
+                        .addFile("logoFile", "tupian.png", f2);
+                postFormBuilder.url("http://192.168.1.107:8080/kenya/jobSeeker/saveJobWant")
+                        .addParams("sex", sexvalue + "")
+                        .addParams("jobwant", resumeInfoJobwant.getText().toString())
+                        .addParams("phone", resumeInfoPhone.getText().toString())
+                        .addParams("birthday", resumeTimeBirday.getText().toString())
+                        .addParams("jointime", resumeTvTime.getText().toString())
+                        .addParams("hopesalary", " ")
+                        .addParams("persondesc", resumeTvRecm.getText().toString())
+                        .addParams("userId", "2")
+                        .build()
+                        .execute(new StringCallback() {
+                            @Override
+                            public void onError(Call call, Exception e, int id) {
+                                e.printStackTrace();
+                                toast("加载失败");
+                            }
+
+                            @Override
+                            public void onResponse(String response, int id) {
+                                Log.d("kang", "1111111111111111" + response);
+                                log(response);
+                                toast("加载成功");
+                                try {
+                                    JSONObject jsonObject = new JSONObject(response);
+                                    if (jsonObject.getString("code").equals("000")) {
+                                        Job job = JSON.parseObject(jsonObject.getString("data"), Job.class);
+                                        Bundle bundle = new Bundle();
+                                        bundle.putSerializable("job", job);
+                                        toast("发布成功");
+                                        startActivity(ResumeDetilActivity.class, bundle);
+                                        finish();
+                                    } else {
+                                        toast(jsonObject.getString("message"));
+                                    }
+                                } catch (JSONException e) {
+                                    e.printStackTrace();
+                                }
+                            }
+                        });
+                break;
+            case R.id.resume_info_men:
+                resumeInfoMen.setImageResource(R.mipmap.resume_sex_click);
+                resumeInfoWomen.setImageResource(R.mipmap.resume_sex2);
+                sexvalue = 0;
+                break;
+            case R.id.resume_info_women:
+                resumeInfoMen.setImageResource(R.mipmap.resume_sex);
+                resumeInfoWomen.setImageResource(R.mipmap.resume_sex_click2);
+                sexvalue = 1;
                 break;
         }
     }
@@ -126,11 +199,11 @@ public class ResumeinfoActivity extends BaseActivity implements View.OnClickList
             @Override
             public void onDateSelected(int[] dates) {
                 if (str.equals("A")) {
-                    resumeTimeBirday.setText(dates[0] + "-" + (dates[1] > 9 ? dates[1] : ("0" + dates[1])) + "-"
+                    resumeTimeBirday.setText(dates[0] + "/" + (dates[1] > 9 ? dates[1] : ("0" + dates[1])) + "/"
                             + (dates[2] > 9 ? dates[2] : ("0" + dates[2])));
                     resumeTimeBirdayChoose.setVisibility(View.GONE);
                 } else {
-                    resumeTvTime.setText(dates[0] + "-" + (dates[1] > 9 ? dates[1] : ("0" + dates[1])) + "-"
+                    resumeTvTime.setText(dates[0] + "/" + (dates[1] > 9 ? dates[1] : ("0" + dates[1])) + "/"
                             + (dates[2] > 9 ? dates[2] : ("0" + dates[2])));
                     resumeTvChoose.setVisibility(View.GONE);
                 }
@@ -272,7 +345,6 @@ public class ResumeinfoActivity extends BaseActivity implements View.OnClickList
             @Override
             public void onClick(boolean bln) {
                 if (bln) {
-
                 } else {
                     Toast.makeText(ResumeinfoActivity.this, "文件读写无法正常使用", Toast.LENGTH_SHORT).show();
                 }
@@ -297,7 +369,8 @@ public class ResumeinfoActivity extends BaseActivity implements View.OnClickList
                     }
                     break;
                 case CROP_IMAGE_U:
-                    final String s = getExternalCacheDir() + "/" + USER_CROP_IMAGE_NAME;
+                    s = getExternalCacheDir() + "/" + USER_CROP_IMAGE_NAME;
+                    Log.d("kang", "zzzzzzzzz" + s);
                     Bitmap imageBitmap = GetBitmap(s, 320, 320);
                     ByteArrayOutputStream baos = new ByteArrayOutputStream();
                     imageBitmap.compress(Bitmap.CompressFormat.PNG, 70, baos);
@@ -314,6 +387,8 @@ public class ResumeinfoActivity extends BaseActivity implements View.OnClickList
                     if (bundle != null) {
                         Bitmap image = bundle.getParcelable("data");
                         resumeInfoPhoto.setImageBitmap(image);
+                        s = saveImage("crop", image);
+                        Log.d("kang", "path" + s);
                     }
                     break;
                 default:
@@ -387,4 +462,25 @@ public class ResumeinfoActivity extends BaseActivity implements View.OnClickList
         intent.putExtra("return-data", true);
         startActivityForResult(intent, CROP_REQUEST_CODE);
     }
+
+    public String saveImage(String name, Bitmap bmp) {
+        File appDir = new File(Environment.getExternalStorageDirectory().getPath());
+        if (!appDir.exists()) {
+            appDir.mkdir();
+        }
+        String fileName = name + ".jpg";
+        Log.d("kang", "fileName" + fileName);
+        File file = new File(appDir, fileName);
+        try {
+            FileOutputStream fos = new FileOutputStream(file);
+            bmp.compress(Bitmap.CompressFormat.PNG, 100, fos);
+            fos.flush();
+            fos.close();
+            return file.getAbsolutePath();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
 }

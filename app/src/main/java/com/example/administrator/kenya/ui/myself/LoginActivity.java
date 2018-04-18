@@ -65,7 +65,7 @@ public class LoginActivity extends BaseActivity {
     public void login() {
         lock = true;
         OkHttpUtils.get()
-                .url(AppConstants.BASE_URL +"/kenya/user/login")
+                .url(AppConstants.BASE_URL + "/kenya/user/login")
                 .addParams("userPhoneNumber", phone.getText().toString())
                 .addParams("userPsw", password.getText().toString())
                 .build()
@@ -79,8 +79,6 @@ public class LoginActivity extends BaseActivity {
 
                     @Override
                     public void onResponse(String response, int id) {
-                        Log.d("kang", "sssssssssssss" + response);
-                        Log.d("kang", "2323" + id);
                         JSONObject jsonObject = null;
                         try {
                             jsonObject = new JSONObject(response);

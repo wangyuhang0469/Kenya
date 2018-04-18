@@ -5,9 +5,11 @@ import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.ViewPager;
+import android.util.Log;
 import android.widget.TextView;
 
 import com.example.administrator.kenya.R;
+import com.example.administrator.kenya.activity.AdvertyinfoActivity;
 import com.example.administrator.kenya.activity.ResumeinfoActivity;
 import com.example.administrator.kenya.adapter.MyViewPagerAdapter;
 
@@ -47,4 +49,5 @@ public class JobActivity extends FragmentActivity {
         Intent intent = new Intent(this, ResumeinfoActivity.class);
         startActivity(intent);
     }
+
 }

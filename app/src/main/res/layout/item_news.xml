@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.zhy.autolayout.AutoRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/news_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/news_image"
+        android:layout_marginRight="30px"
+        android:paddingLeft="30px"
+        android:paddingRight="30px"
+        android:paddingTop="10px"
+        android:text="柬埔寨部落少女渴望开学 想念老师同学"
+        android:textColor="@color/textBlack1"
+        android:textSize="46px" />
+
+    <TextView
+        android:id="@+id/news_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/news_image"
+        android:paddingBottom="10px"
+        android:paddingLeft="30px"
+        android:text="2017/12/12"
+        android:textColor="@color/textBlack3"
+        android:textSize="34px" />
+
+    <ImageView
+        android:id="@+id/news_image"
+        android:layout_width="320px"
+        android:layout_height="240px"
+        android:layout_alignParentRight="true"
+        android:layout_marginBottom="30px"
+        android:layout_marginRight="30px"
+        android:layout_marginTop="40px"
+        android:background="@drawable/linshi5" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2px"
+        android:layout_alignParentBottom="true"
+        android:background="#989898"
+        android:visibility="gone" />
+</com.zhy.autolayout.AutoRelativeLayout>

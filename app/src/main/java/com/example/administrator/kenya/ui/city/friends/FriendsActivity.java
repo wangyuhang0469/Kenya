@@ -34,7 +34,6 @@ public class FriendsActivity extends BaseActivity {
             friend.setName("你好！树先生");
             friendList.add(friend);
         }
-
         LinearLayoutManager layoutmanager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutmanager);
         FriendAdapter adapter = new FriendAdapter(this, friendList);

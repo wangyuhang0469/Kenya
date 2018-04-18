@@ -61,7 +61,6 @@ public class UsedActivity extends BaseActivity {
 
         initOKHttp();
         initView();
-        Log.d("kang", "111aaa" + cpageNum);
         postFormBuilder.addParams("pn", cpageNum + "").build().execute(StringCallback);
 
     }
@@ -130,6 +129,7 @@ public class UsedActivity extends BaseActivity {
 
             @Override
             public void loadMore() {
+                postFormBuilder.addParams("pn", cpageNum + "").tag(this).build().execute(StringCallback);
                 Log.d("kang", "111aaa" + cpageNum);
                 postFormBuilder.addParams("pn", cpageNum + "").build().execute(StringCallback);
             }

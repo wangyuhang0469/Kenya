@@ -1,4 +1,4 @@
-<com.zhy.autolayout.AutoLinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.zhy.autolayout.AutoRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -7,101 +7,27 @@
     tools:context="com.example.administrator.kenya.ui.city.job.TabFragment1">
 
     <!-- TODO: Update blank fragment layout -->
-    <com.zhy.autolayout.AutoLinearLayout
-        android:id="@+id/al_1"
+
+
+    <com.jwenfeng.library.pulltorefresh.PullToRefreshLayout
+        android:id="@+id/pullToRefreshLayout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:layout_height="match_parent"
+        android:layout_above="@+id/release"
+        android:layout_below="@+id/title_bar">
 
-        <TextView
-            android:id="@+id/textView1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:layout_gravity="center_vertical"
-            android:text="洗车工" />
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </com.jwenfeng.library.pulltorefresh.PullToRefreshLayout>
 
-        <TextView
-            android:id="@+id/textView_money"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:layout_gravity="center_vertical"
-            android:text="2000-5000元/月" />
-
-    </com.zhy.autolayout.AutoLinearLayout>
-
-    <include layout="@layout/line_max" />
-
-    <com.zhy.autolayout.AutoLinearLayout
-        android:id="@+id/al_2"
+    <TextView
+        android:id="@+id/city_home_job_fr1_release"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <TextView
-            android:id="@+id/textView2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:layout_gravity="center_vertical"
-            android:text="xxxxxy有限责任公司" />
-
-        <TextView
-            android:id="@+id/textView_mone2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:layout_gravity="center_vertical"
-            android:text="拨号" />
-    </com.zhy.autolayout.AutoLinearLayout>
-
-    <com.zhy.autolayout.AutoLinearLayout
-        android:id="@+id/al_3"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20px"
-        android:orientation="horizontal">
-
-        <TextView
-            android:id="@+id/textView3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:layout_gravity="center_vertical"
-            android:text="洗车工" />
-
-        <TextView
-            android:id="@+id/textView_money3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:layout_gravity="center_vertical"
-            android:text="2000-5000元/月" />
-
-    </com.zhy.autolayout.AutoLinearLayout>
-
-    <include layout="@layout/line_max" />
-
-    <com.zhy.autolayout.AutoLinearLayout
-        android:id="@+id/al_4"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <TextView
-            android:id="@+id/textView4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:layout_gravity="center_vertical"
-            android:text="xxxxxy有限责任公司" />
-
-        <TextView
-            android:id="@+id/textView_mone4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:layout_gravity="center_vertical"
-            android:text="拨号" />
-    </com.zhy.autolayout.AutoLinearLayout>
-
-</com.zhy.autolayout.AutoLinearLayout>
+        android:layout_height="160px"
+        android:layout_alignParentBottom="true"
+        android:background="@color/theme_btn"
+        android:gravity="center"
+        android:text="发布" />
+</com.zhy.autolayout.AutoRelativeLayout>

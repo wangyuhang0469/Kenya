@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.zhy.autolayout.AutoLinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="202px"
+    android:background="@color/base_bg"
+    android:orientation="vertical">
+
+    <ImageView
+        android:id="@+id/job_image"
+        android:layout_width="350px"
+        android:layout_height="250px"
+        android:layout_margin="30px"
+        android:background="@drawable/linshi4"
+        android:visibility="gone" />
+
+    <com.zhy.autolayout.AutoLinearLayout
+        android:id="@+id/job_ll_up"
+        android:layout_width="match_parent"
+        android:layout_height="143px"
+        android:background="@color/white"
+        android:gravity="center_vertical"
+        android:paddingLeft="30px">
+
+        <TextView
+            android:id="@+id/job_Title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="TA在找:"
+            android:textColor="@color/textBlack1" />
+
+        <TextView
+            android:id="@+id/job_want"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="程序员"
+            android:textColor="@color/textgreen1"
+            android:textSize="17sp" />
+
+    </com.zhy.autolayout.AutoLinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2px"
+        android:background="#989898" />
+
+    <com.zhy.autolayout.AutoRelativeLayout
+        android:id="@+id/job_ll_down"
+        android:layout_width="match_parent"
+        android:layout_height="149px"
+        android:layout_below="@id/job_ll_up"
+        android:background="@color/white"
+        android:gravity="center_vertical"
+        android:paddingLeft="30px">
+
+        <TextView
+            android:id="@+id/job_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="王小花"
+            android:textColor="@color/textBlack3"
+            android:textSize="13sp" />
+
+        <View
+            android:id="@+id/job_line1"
+            android:layout_width="1px"
+            android:layout_height="40px"
+            android:layout_marginLeft="10px"
+            android:layout_marginRight="10px"
+            android:layout_marginTop="10px"
+            android:layout_toRightOf="@id/job_name"
+            android:background="@color/textBlack3"></View>
+
+        <TextView
+            android:id="@+id/job_sex"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/job_line1"
+            android:text="女"
+            android:textColor="@color/textBlack3"
+            android:textSize="13sp" />
+
+        <View
+            android:id="@+id/job_line2"
+            android:layout_width="1px"
+            android:layout_height="40px"
+            android:layout_marginLeft="10px"
+            android:layout_marginRight="10px"
+            android:layout_marginTop="10px"
+            android:layout_toRightOf="@id/job_sex"
+            android:background="@color/textBlack3"></View>
+
+        <TextView
+            android:id="@+id/job_age"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/job_line2"
+            android:text="18岁"
+            android:textColor="@color/textBlack3"
+            android:textSize="13sp" />
+
+        <TextView
+            android:id="@+id/job_call"
+            android:layout_width="182px"
+            android:layout_height="62px"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="30px"
+            android:background="@drawable/bg4dp_theme_btn"
+            android:gravity="center"
+            android:text="拨号"
+            android:textColor="@color/white"
+            android:textSize="13sp" />
+    </com.zhy.autolayout.AutoRelativeLayout>
+
+    <TextView
+        android:id="@+id/job_phone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="手机：18532159723"
+        android:textColor="@color/textBlack2"
+        android:textSize="13sp"
+        android:visibility="gone" />
+
+</com.zhy.autolayout.AutoLinearLayout>

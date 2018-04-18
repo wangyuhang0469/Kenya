@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.zhy.autolayout.AutoRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.example.administrator.kenya.activity.JobDetailActivity">
+
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"></LinearLayout>
+
+    <com.zhy.autolayout.AutoRelativeLayout
+        android:id="@+id/job_deyail_title"
+        android:layout_width="395dp"
+        android:layout_height="41dp"
+        tools:layout_editor_absoluteX="8dp"
+        tools:layout_editor_absoluteY="0dp">
+
+        <ImageView
+            android:id="@+id/back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:adjustViewBounds="true"
+            android:padding="11dp"
+            android:src="@mipmap/resume_bank" />
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_centerInParent="true"
+            android:ellipsize="end"
+            android:gravity="center"
+            android:maxEms="10"
+            android:singleLine="true"
+            android:text="职位详情"
+            android:textSize="18sp" />
+    </com.zhy.autolayout.AutoRelativeLayout>
+
+    <com.zhy.autolayout.AutoRelativeLayout
+        android:id="@+id/job_detail_work"
+        android:layout_width="match_parent"
+        android:layout_height="250px"
+        android:layout_below="@id/job_deyail_title"
+        android:paddingLeft="30px">
+
+        <TextView
+            android:id="@+id/job_detail_jobtype"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="60px"
+            android:text="销售代表"
+            android:textSize="70px" />
+
+        <TextView
+            android:id="@+id/job_detail_pay"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/job_detail_jobtype"
+            android:layout_marginTop="50px"
+            android:text="3000-5000/月"
+            android:textSize="50px" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:paddingRight="30px"
+            android:text="经验不限"
+            android:textSize="38px" />
+
+    </com.zhy.autolayout.AutoRelativeLayout>
+
+
+    <View
+        android:id="@+id/job_detail_line_up"
+        android:layout_width="match_parent"
+        android:layout_height="2px"
+        android:layout_below="@+id/job_detail_work"
+        android:layout_marginTop="30px"
+        android:background="@color/base_bg"></View>
+
+    <TextView
+        android:id="@+id/job_detail_requie"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/job_detail_line_up"
+        android:layout_marginTop="20px"
+        android:gravity="center_horizontal"
+        android:text="职位要求:"
+        android:textSize="38px" />
+
+    <TextView
+        android:id="@+id/job_detail_desc"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/job_deyail_line_low"
+        android:layout_below="@+id/job_detail_requie"
+        android:layout_marginTop="50px"
+        android:paddingLeft="30px"
+        android:paddingRight="30px"
+        android:text="合肥京东方很舒服is地方金佛is度覅都是就看到飞机安吉积分撒毒贩就发生撒爱妃合肥会计师凡客上几分撒娇"
+        android:textSize="38px" />
+
+    <View
+        android:id="@+id/job_deyail_line_low"
+        android:layout_width="match_parent"
+        android:layout_height="20px"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="410px"
+        android:background="@color/base_bg" />
+
+    <com.zhy.autolayout.AutoRelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="252px"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="160px">
+
+        <ImageView
+            android:id="@+id/avatar"
+            android:layout_width="152px"
+            android:layout_height="152px"
+            android:layout_marginBottom="50px"
+            android:layout_marginLeft="30px"
+            android:layout_marginTop="50px"
+            android:src="@drawable/linshi4" />
+
+        <TextView
+            android:id="@+id/job_detail_person_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20px"
+            android:layout_marginTop="66px"
+            android:layout_toRightOf="@id/avatar"
+            android:text="王小花"
+            android:textColor="@color/textBlack1" />
+
+        <TextView
+            android:id="@+id/job_detail_person_phone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="66px"
+            android:layout_marginLeft="20px"
+            android:layout_toRightOf="@id/avatar"
+            android:text="15931127537"
+            android:textColor="@color/textgreen1" />
+
+    </com.zhy.autolayout.AutoRelativeLayout>
+
+    <TextView
+        android:id="@+id/job_detail_release"
+        android:layout_width="match_parent"
+        android:layout_height="160px"
+        android:layout_alignParentBottom="true"
+        android:background="@color/theme_btn"
+        android:gravity="center"
+        android:text="拨号" />
+</com.zhy.autolayout.AutoRelativeLayout>

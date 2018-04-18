@@ -1,0 +1,32 @@
+<com.zhy.autolayout.AutoRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/base_bg"
+    android:orientation="vertical"
+    tools:context="com.example.administrator.kenya.ui.city.findmoney.FindMoneyFragment1">
+
+    <com.jwenfeng.library.pulltorefresh.PullToRefreshLayout
+        android:id="@+id/pullToRefreshLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/release"
+        android:layout_below="@+id/title_bar">
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </com.jwenfeng.library.pulltorefresh.PullToRefreshLayout>
+
+    <TextView
+        android:id="@+id/city_home_job_fr1_release"
+        android:layout_width="match_parent"
+        android:layout_height="160px"
+        android:layout_alignParentBottom="true"
+        android:background="@color/theme_btn"
+        android:gravity="center"
+        android:text="发布"
+        android:visibility="gone" />
+
+</com.zhy.autolayout.AutoRelativeLayout>
