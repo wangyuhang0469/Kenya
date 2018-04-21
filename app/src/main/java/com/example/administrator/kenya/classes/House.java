@@ -12,30 +12,7 @@ import java.util.List;
 
 public class House implements Serializable {
 
-    /**
-     * leaseid : 1
-     * leaseimgs : wqdwqdwqd
-     * leasename : dd
-     * leaseprice : 11.0
-     * leasephone : 1111111
-     * leasesquare : dd
-     * leaseaddress : dd
-     * leasehome : dd
-     * leaseimg1 : ad
-     * leaseimg2 : asd
-     * leaseimg3 : asd
-     * leaseimg4 : asd
-     * userid : 1
-     * leasedesc : ddd
-     * leaseIms : null
-     * leaseIm1 : null
-     * leaseIm2 : null
-     * leaseIm3 : null
-     * leaseIm4 : null
-     * user_phoneNumber : 1111113
-     */
-
-    private int leaseid;
+    private String leaseid;
     private String leaseimgs;
     private String leasename;
     private String leaseprice;
@@ -49,18 +26,18 @@ public class House implements Serializable {
     private String leaseimg4;
     private String userid;
     private String leasedesc;
-    private Object leaseIms;
-    private Object leaseIm1;
-    private Object leaseIm2;
-    private Object leaseIm3;
-    private Object leaseIm4;
+    private String leaseIms;
+    private String leaseIm1;
+    private String leaseIm2;
+    private String leaseIm3;
+    private String leaseIm4;
     private String user_phoneNumber;
 
-    public int getLeaseid() {
+    public String getLeaseid() {
         return leaseid;
     }
 
-    public void setLeaseid(int leaseid) {
+    public void setLeaseid(String leaseid) {
         this.leaseid = leaseid;
     }
 
@@ -170,43 +147,43 @@ public class House implements Serializable {
         this.leasedesc = leasedesc;
     }
 
-    public Object getLeaseIms() {
+    public String getLeaseIms() {
         return leaseIms;
     }
 
-    public void setLeaseIms(Object leaseIms) {
+    public void setLeaseIms(String leaseIms) {
         this.leaseIms = leaseIms;
     }
 
-    public Object getLeaseIm1() {
+    public String getLeaseIm1() {
         return leaseIm1;
     }
 
-    public void setLeaseIm1(Object leaseIm1) {
+    public void setLeaseIm1(String leaseIm1) {
         this.leaseIm1 = leaseIm1;
     }
 
-    public Object getLeaseIm2() {
+    public String getLeaseIm2() {
         return leaseIm2;
     }
 
-    public void setLeaseIm2(Object leaseIm2) {
+    public void setLeaseIm2(String leaseIm2) {
         this.leaseIm2 = leaseIm2;
     }
 
-    public Object getLeaseIm3() {
+    public String getLeaseIm3() {
         return leaseIm3;
     }
 
-    public void setLeaseIm3(Object leaseIm3) {
+    public void setLeaseIm3(String leaseIm3) {
         this.leaseIm3 = leaseIm3;
     }
 
-    public Object getLeaseIm4() {
+    public String getLeaseIm4() {
         return leaseIm4;
     }
 
-    public void setLeaseIm4(Object leaseIm4) {
+    public void setLeaseIm4(String leaseIm4) {
         this.leaseIm4 = leaseIm4;
     }
 
@@ -218,27 +195,17 @@ public class House implements Serializable {
         this.user_phoneNumber = user_phoneNumber;
     }
 
-
     public List<String> getHouseImageUrlList() {
         List<String> houseimageUrlList = new ArrayList<>();
-
-
-        houseimageUrlList.add(leaseimgs);
-        houseimageUrlList.add(leaseimg1);
-        houseimageUrlList.add(leaseimg2);
-        houseimageUrlList.add(leaseimg3);
-        houseimageUrlList.add(leaseimg4);
-
-
-        if (!leaseimgs.equals(""))
+        if (!(leaseimgs == null || leaseimgs.equals("")))
             houseimageUrlList.add(AppConstants.BASE_URL + leaseimgs);
-        if (!leaseimg1.equals(""))
+        if (!(leaseimg1 == null || leaseimg1.equals("")))
             houseimageUrlList.add(AppConstants.BASE_URL + leaseimg1);
-        if (!leaseimg2.equals(""))
+        if (!(leaseimg2 == null || leaseimg2.equals("")))
             houseimageUrlList.add(AppConstants.BASE_URL + leaseimg2);
-        if (!leaseimg3.equals(""))
+        if (!(leaseimg3 == null || leaseimg3.equals("")))
             houseimageUrlList.add(AppConstants.BASE_URL + leaseimg3);
-        if (!leaseimg4.equals(""))
+        if (!(leaseimg4 == null || leaseimg4.equals("")))
             houseimageUrlList.add(AppConstants.BASE_URL + leaseimg4);
         return houseimageUrlList;
     }

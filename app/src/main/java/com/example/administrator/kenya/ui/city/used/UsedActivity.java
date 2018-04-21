@@ -99,12 +99,9 @@ public class UsedActivity extends BaseActivity {
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
-
                     addList = JSON.parseArray(response, Goods.class);
                     goodsList.addAll(addList);
                     myAdapter.notifyDataSetChanged();
-
-
                     pullToRefreshLayout.finishLoadMore();
                 }
             }
@@ -114,14 +111,12 @@ public class UsedActivity extends BaseActivity {
 
     //初始化组件
     private void initView() {
-
         myAdapter = new MyAdapter(goodsList);
         LinearLayoutManager layoutmanager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutmanager);
         recyclerView.setAdapter(myAdapter);
         pullToRefreshLayout.setCanRefresh(false);
         pullToRefreshLayout.setCanLoadMore(false);
-
         pullToRefreshLayout.setRefreshListener(new BaseRefreshListener() {
             @Override
             public void refresh() {
@@ -130,12 +125,9 @@ public class UsedActivity extends BaseActivity {
             @Override
             public void loadMore() {
                 postFormBuilder.addParams("pn", cpageNum + "").tag(this).build().execute(StringCallback);
-                Log.d("kang", "111aaa" + cpageNum);
-                postFormBuilder.addParams("pn", cpageNum + "").build().execute(StringCallback);
             }
         });
     }
-
 
     @OnClick({R.id.back, R.id.release})
     public void onViewClicked(View view) {
@@ -155,8 +147,6 @@ public class UsedActivity extends BaseActivity {
     }
 
     public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
-
-
         private List<Goods> list;
 
         public MyAdapter(List<Goods> list) {
@@ -187,7 +177,6 @@ public class UsedActivity extends BaseActivity {
             holder.goodsname.setText(list.get(position).getGoodsname());
             holder.goodsphone.setText("手机：" + list.get(position).getGoodsphone());
             holder.goodsprice.setText("$" + list.get(position).getGoodsprice());
-
             holder.goodsimgs.setTag(list.get(position).getGoodsimgs());
 
             Glide.with(UsedActivity.this)

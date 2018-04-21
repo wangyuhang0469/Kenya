@@ -7,7 +7,7 @@
 
     <TextView
         android:id="@+id/news_title"
-        android:layout_width="wrap_content"
+        android:layout_width="300sp"
         android:layout_height="wrap_content"
         android:layout_alignTop="@+id/news_image"
         android:layout_marginRight="30px"
@@ -16,7 +16,7 @@
         android:paddingTop="10px"
         android:text="柬埔寨部落少女渴望开学 想念老师同学"
         android:textColor="@color/textBlack1"
-        android:textSize="46px" />
+        android:textSize="18sp" />
 
     <TextView
         android:id="@+id/news_time"

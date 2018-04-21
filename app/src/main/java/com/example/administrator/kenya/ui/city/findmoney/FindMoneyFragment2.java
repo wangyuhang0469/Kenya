@@ -77,9 +77,10 @@ public class FindMoneyFragment2 extends Fragment {
         postFormBuilder.addParams("pn", cpageNum + "").build().execute(StringCallback);
         return view;
     }
+
     private void initOKHttp() {
         postFormBuilder = OkHttpUtils.post()
-                .url("http://192.168.1.106:8080/kenya/Project/selectByFile")
+                .url("http://192.168.1.107:8080/kenya/Project/selectByFile")
                 .addParams("pn", cpageNum + "");
 
         StringCallback = new StringCallback() {
@@ -92,6 +93,7 @@ public class FindMoneyFragment2 extends Fragment {
                     e.printStackTrace();
                 }
             }
+
             @Override
             public void onResponse(String response, int id) {
                 //防止因Activity释放导致内部控件空指针
@@ -118,6 +120,7 @@ public class FindMoneyFragment2 extends Fragment {
             }
         };
     }
+
     //初始化组件
     private void initView() {
         projectAdapter = new ProjectAdapter(getActivity(), projectList);
@@ -131,6 +134,7 @@ public class FindMoneyFragment2 extends Fragment {
             @Override
             public void refresh() {
             }
+
             @Override
             public void loadMore() {
                 postFormBuilder.addParams("pn", cpageNum + "").tag(this).build().execute(StringCallback);

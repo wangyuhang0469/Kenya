@@ -6,6 +6,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.administrator.kenya.R;
@@ -21,6 +22,8 @@ public class MyselfFragment extends Fragment {
 
     @Bind(R.id.title)
     TextView title;
+    @Bind(R.id.back)
+    ImageView back;
 
     public MyselfFragment() {
         // Required empty public constructor
@@ -33,6 +36,7 @@ public class MyselfFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_myself, container, false);
         ButterKnife.bind(this, view);
         title.setText("个人中心");
+        back.setVisibility(View.GONE);
         return view;
     }
 

@@ -42,7 +42,6 @@ public class GoodsReleaseActivity extends BaseActivity {
     @Bind(R.id.title)
     TextView title;
 
-
     @Bind({R.id.images, R.id.image1, R.id.image2, R.id.image3, R.id.image4})
     List<ImageView> imageViews;
     @Bind(R.id.goodsname)
@@ -77,7 +76,6 @@ public class GoodsReleaseActivity extends BaseActivity {
             if (resultCode == RESULT_OK) {
                 mResults = data.getStringArrayListExtra("select_result");
                 assert mResults != null;
-
                 // show results in textview
                 StringBuffer sb = new StringBuffer();
                 sb.append(String.format("Totally %d images selected:", mResults.size())).append("\n");
@@ -100,14 +98,12 @@ public class GoodsReleaseActivity extends BaseActivity {
         super.onActivityResult(requestCode, resultCode, data);
     }
 
-
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
 
         if (requestCode == 1) {
             boolean isAllGranted = true;
-
             // 判断是否所有的权限都已经授予了
             for (int grant : grantResults) {
                 if (grant != PackageManager.PERMISSION_GRANTED) {
@@ -115,7 +111,6 @@ public class GoodsReleaseActivity extends BaseActivity {
                     break;
                 }
             }
-
             if (isAllGranted) {
                 startCamera();
             }
@@ -155,10 +150,8 @@ public class GoodsReleaseActivity extends BaseActivity {
 
                             @Override
                             public void onResponse(String response, int id) {
-
                                 Log.d("kang", "11111111" + response);
                                 log(response);
-
                                 try {
                                     JSONObject jsonObject = new JSONObject(response);
                                     log(response);
@@ -185,9 +178,7 @@ public class GoodsReleaseActivity extends BaseActivity {
 
     @OnClick({R.id.images, R.id.image1, R.id.image2, R.id.image3, R.id.image4})
     public void onViewClicked2(View view) {
-
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED || ActivityCompat.checkSelfPermission(this, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
-
             ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.CAMERA}, 1);
         } else {
             startCamera();

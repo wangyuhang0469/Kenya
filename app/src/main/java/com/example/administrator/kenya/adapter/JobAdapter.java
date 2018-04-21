@@ -7,6 +7,7 @@ import android.graphics.drawable.BitmapDrawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -61,14 +62,9 @@ public class JobAdapter extends RecyclerView.Adapter<JobAdapter.ViewHolder> {
 
         holder.job_want.setText(list.get(position).getJobwant());
         holder.job_name.setText(list.get(position).getName());
-        if (list.get(position).getSex().equals("0")) {
-            holder.job_sex.setText("男");
-        } else {
-            holder.job_sex.setText("女");
-        }
+        holder.job_sex.setText(list.get(position).getSex());
         holder.job_age.setText(list.get(position).getAge() + "岁");
         holder.job_image.setTag(list.get(position).getHeadimg());
-
         Glide.with(context)
                 .load(list.get(position).getHeadimg())
                 .asBitmap()

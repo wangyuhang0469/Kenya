@@ -109,7 +109,7 @@ public class ResumeinfoActivity extends BaseActivity implements View.OnClickList
     private static final int CROP_REQUEST_CODE = 3;
 
     private String s;
-    private int sexvalue;
+    private String sexvalue;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -139,8 +139,8 @@ public class ResumeinfoActivity extends BaseActivity implements View.OnClickList
                 File f2 = new File(s);
                 PostFormBuilder postFormBuilder = OkHttpUtils.post()
                         .addFile("logoFile", "tupian.png", f2);
-                postFormBuilder.url("http://192.168.1.107:8080/kenya/jobSeeker/saveJobWant")
-                        .addParams("sex", sexvalue + "")
+                postFormBuilder.url("http://192.168.1.104:8080/kenya/jobSeeker/saveJobWant")
+                        .addParams("sex", sexvalue)
                         .addParams("jobwant", resumeInfoJobwant.getText().toString())
                         .addParams("phone", resumeInfoPhone.getText().toString())
                         .addParams("birthday", resumeTimeBirday.getText().toString())
@@ -182,12 +182,12 @@ public class ResumeinfoActivity extends BaseActivity implements View.OnClickList
             case R.id.resume_info_men:
                 resumeInfoMen.setImageResource(R.mipmap.resume_sex_click);
                 resumeInfoWomen.setImageResource(R.mipmap.resume_sex2);
-                sexvalue = 0;
+                sexvalue = "男";
                 break;
             case R.id.resume_info_women:
                 resumeInfoMen.setImageResource(R.mipmap.resume_sex);
                 resumeInfoWomen.setImageResource(R.mipmap.resume_sex_click2);
-                sexvalue = 1;
+                sexvalue = "女";
                 break;
         }
     }

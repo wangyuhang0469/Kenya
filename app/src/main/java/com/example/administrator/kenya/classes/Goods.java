@@ -138,7 +138,6 @@ public class Goods implements Serializable {
             imageUrlList.add(AppConstants.BASE_URL + goodsimg3);
         if (!goodsimg4.equals(""))
             imageUrlList.add(AppConstants.BASE_URL + goodsimg4);
-
         return imageUrlList;
     }
 }

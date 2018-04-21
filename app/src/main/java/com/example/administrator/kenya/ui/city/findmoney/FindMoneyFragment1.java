@@ -88,9 +88,10 @@ public class FindMoneyFragment1 extends Fragment {
 
         return view;
     }
+
     private void initOKHttp() {
         postFormBuilder = OkHttpUtils.post()
-                .url("http://192.168.1.106:8080/kenya/Funds/selectbyfile")
+                .url("http://192.168.1.107:8080/kenya/Funds/selectbyfile")
                 .addParams("pn", cpageNum + "");
 
         StringCallback = new StringCallback() {
@@ -103,6 +104,7 @@ public class FindMoneyFragment1 extends Fragment {
                     e.printStackTrace();
                 }
             }
+
             @Override
             public void onResponse(String response, int id) {
                 Log.d("kang", "111111" + response);

@@ -44,7 +44,7 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import okhttp3.Call;
 
-public class HouseInfoActivity extends BaseActivity implements View.OnClickListener, PopupWindow.OnDismissListener {
+public class HouseInfoActivity extends BaseActivity {
 
     @Bind(R.id.title)
     TextView title;
@@ -62,15 +62,7 @@ public class HouseInfoActivity extends BaseActivity implements View.OnClickListe
     EditText housePenson;
     @Bind(R.id.house_phone)
     EditText housePhone;
-    private PopupWindow popupWindow;
-
     private ArrayList<String> mResults = new ArrayList<>();
-    public final String USER_IMAGE_NAME = "image.png";
-    public final String USER_CROP_IMAGE_NAME = "temporary.png";
-    public Uri imageUriFromCamera;
-    public Uri cropImageUri;
-    public final int GET_IMAGE_BY_CAMERA_U = 5001;
-    public final int CROP_IMAGE_U = 5003;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -78,84 +70,14 @@ public class HouseInfoActivity extends BaseActivity implements View.OnClickListe
         setContentView(R.layout.activity_house_info);
         ButterKnife.bind(this);
         title.setText("发布");
-        houseName.setText(User.getInstance().getUserName());
+
+        housePenson.setText(User.getInstance().getUserName());
         housePhone.setText(User.getInstance().getUserPhonenumber());
     }
-
-    /*
-    *打开底部选择框*/
-    private void openPopupWindow(View v) {
-        //防止重复按按钮
-        if (popupWindow != null && popupWindow.isShowing()) {
-            return;
-        }
-        //设置PopupWindow的View
-        View view = LayoutInflater.from(this).inflate(R.layout.view_popupwindow, null);
-        popupWindow = new PopupWindow(view, RelativeLayout.LayoutParams.MATCH_PARENT,
-                RelativeLayout.LayoutParams.WRAP_CONTENT);
-        //设置背景,这个没什么效果，不添加会报错
-        popupWindow.setBackgroundDrawable(new BitmapDrawable());
-        //设置点击弹窗外隐藏自身
-        popupWindow.setFocusable(true);
-        popupWindow.setOutsideTouchable(true);
-        //设置动画
-        popupWindow.setAnimationStyle(R.style.PopupWindow);
-        //设置位置
-        popupWindow.showAtLocation(v, Gravity.BOTTOM, 0, 0);
-        //设置消失监听
-        popupWindow.setOnDismissListener(this);
-        //设置PopupWindow的View点击事件
-        setOnPopupViewClick(view);
-        //设置背景色
-        setBackgroundAlpha(0.5f);
-    }
-
-    private void setOnPopupViewClick(View view) {
-        TextView tv_pick_phone, tv_pick_zone, tv_cancel;
-        tv_pick_phone = (TextView) view.findViewById(R.id.tv_pick_phone);
-        tv_pick_zone = (TextView) view.findViewById(R.id.tv_pick_zone);
-        tv_cancel = (TextView) view.findViewById(R.id.tv_cancel);
-        tv_pick_phone.setOnClickListener(this);
-        tv_pick_zone.setOnClickListener(this);
-        tv_cancel.setOnClickListener(this);
-    }
-
-    //设置屏幕背景透明效果
-    public void setBackgroundAlpha(float alpha) {
-        getWindow().addFlags(WindowManager.LayoutParams.FLAG_DIM_BEHIND);
-        WindowManager.LayoutParams lp = getWindow().getAttributes();
-        lp.alpha = alpha;
-        getWindow().setAttributes(lp);
-    }
-
-    @Override
-    public void onDismiss() {
-        setBackgroundAlpha(1);
-    }
-
-    @Override
-    public void onClick(View v) {
-        switch (v.getId()) {
-            case R.id.tv_pick_phone:
-                // getPicFromCamera();
-                popupWindow.dismiss();
-                break;
-            case R.id.tv_pick_zone:
-                //getPicFromAlbm();
-                popupWindow.dismiss();
-                break;
-            case R.id.tv_cancel:
-                popupWindow.dismiss();
-                break;
-        }
-
-    }
-
 
     /**
      * 发布合并前
      */
-
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         // get selected images from selector
@@ -164,14 +86,12 @@ public class HouseInfoActivity extends BaseActivity implements View.OnClickListe
             if (resultCode == RESULT_OK) {
                 mResults = data.getStringArrayListExtra("select_result");
                 assert mResults != null;
-
                 // show results in textview
                 StringBuffer sb = new StringBuffer();
                 sb.append(String.format("Totally %d images selected:", mResults.size())).append("\n");
                 for (String result : mResults) {
                     sb.append(result).append("\n");
                 }
-                houseInfoDesc.setText(mResults.toString());
                 for (int i = 0; i < 5; i++) {
                     if (i < mResults.size()) {
                         Glide.with(this)
@@ -230,17 +150,6 @@ public class HouseInfoActivity extends BaseActivity implements View.OnClickListe
         }
         startActivityForResult(intent, 2);
     }
-    // http://192.168.1.103:8080/kenya/Lease/inserLease?
-    // leasename=ddd
-    // &leaseprice=123
-    // &leasephone=13931860236
-    // &leasesquare=JJFLy
-    // &leaseaddress=jjfly
-    // &leasehome=jjfly
-    // &leasedesc=详情
-    // &leaseIms=图片路径
-    // &leaseIm1=图片路径
-    // &userid=2
 
     @OnClick({R.id.back, R.id.release})
     public void onViewClicked(View view) {
@@ -251,22 +160,19 @@ public class HouseInfoActivity extends BaseActivity implements View.OnClickListe
             case R.id.release:
                 final LoadingDialog loadingDialog = new LoadingDialog(HouseInfoActivity.this);
                 loadingDialog.show();
-                File file = new File(mResults.get(0));
-                PostFormBuilder postFormBuilder = OkHttpUtils.post()
-                        .addFile("leaseIms", "tupian.png", new File(mResults.get(0)));
-                for (int i = 1; i < mResults.size(); i++) {
-                    file = new File(mResults.get(i));
-                    postFormBuilder.addFile("leaseIm" + i, "tupian.png", new File(mResults.get(i)));
+
+                PostFormBuilder postFormBuilder = OkHttpUtils.post();
+                for (int i = 0; i < mResults.size(); i++) {
+                    File file = new File(mResults.get(i));
+                    postFormBuilder.addFile("files", file.getName(), file);
                 }
                 postFormBuilder.url(AppConstants.BASE_URL + "/kenya/Lease/inserLease")
                         .addParams("leasename", houseName.getText().toString())
                         .addParams("leasedesc", houseInfoDesc.getText().toString())
                         .addParams("leaseprice", housePrice.getText().toString())
                         .addParams("leasephone", housePhone.getText().toString())
-
-                        .addParams("leasesquare", "120" + "m2")
-                        .addParams("leaseaddress", "河北省石家庄市")
-                        .addParams("leasehome", "2室2厅2卫")
+                        .addParams("leasesquare", "")
+                        .addParams("leaseaddress", "")
                         .addParams("userid", User.getInstance().getUserId())
                         .build()
                         .execute(new StringCallback() {
@@ -279,7 +185,6 @@ public class HouseInfoActivity extends BaseActivity implements View.OnClickListe
 
                             @Override
                             public void onResponse(String response, int id) {
-
                                 log(response);
                                 try {
                                     JSONObject jsonObject = new JSONObject(response);

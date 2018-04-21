@@ -107,7 +107,6 @@ public class NewsinfoActivity extends BaseActivity {
                 }
             }
         };
-
     }
 
     //初始化组件

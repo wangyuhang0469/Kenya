@@ -24,7 +24,6 @@ public class JobDetailActivity extends BaseActivity {
     TextView jobDetailPersonPhone;
     @Bind(R.id.job_detail_jobtype)
     TextView jobDetailJobtype;
-
     private Company company;
 
     @Override
@@ -32,14 +31,12 @@ public class JobDetailActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_job_detail);
         ButterKnife.bind(this);
-
         company = (Company) getIntent().getExtras().getSerializable("company");
         jobDetailJobtype.setText(company.getCompanystation());
         jobDetailPay.setText(company.getCompanystationsalary() + "/月");
         jobDetailDesc.setText(company.getCompanydesc());
         jobDetailPersonName.setText(company.getCompanyname());
         jobDetailPersonPhone.setText(company.getCompanyphone());
-
     }
 
     @OnClick({R.id.back, R.id.job_detail_release})

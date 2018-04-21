@@ -40,21 +40,17 @@
         android:layout_alignParentStart="true"
         android:layout_below="@id/person_info"
         android:orientation="vertical">
-
         <TextView
             android:layout_width="match_parent"
             android:layout_height="227px"
             android:background="@color/theme_btn" />
-
         <include layout="@layout/line" />
-
         <TextView
             android:layout_width="match_parent"
             android:layout_height="256px"
             android:gravity="center"
             android:text="头像，一份好工作的开始"
             android:textColor="@color/textgreen1" />
-
         <include layout="@layout/line" />
 
 
@@ -231,5 +227,7 @@
         android:layout_alignParentStart="true"
         android:background="@color/theme_btn"
         android:gravity="center"
-        android:text="保存" />
+        android:text="保存"
+        android:textColor="@color/white"
+        android:textSize="17sp" />
 </com.zhy.autolayout.AutoRelativeLayout>

@@ -37,7 +37,6 @@ public class FundsAdapter extends RecyclerView.Adapter<FundsAdapter.ViewHolder> 
         this.list = list;
         this.context = context;
     }
-
     public class ViewHolder extends RecyclerView.ViewHolder {
         TextView funds_Title, funds_phone, funds_price;
         ImageView funds_image;
@@ -66,7 +65,7 @@ public class FundsAdapter extends RecyclerView.Adapter<FundsAdapter.ViewHolder> 
         holder.funds_image.setTag(list.get(position).getFundsimgs());
 
         Glide.with(context)
-                .load("http://192.168.1.106:8080" + list.get(position).getFundsimgs())
+                .load("http://192.168.1.107:8080" + list.get(position).getFundsimgs())
                 .asBitmap()
                 .placeholder(R.drawable.bg4dp_grey)
                 .into(new SimpleTarget<Bitmap>() {

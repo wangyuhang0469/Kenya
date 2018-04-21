@@ -99,8 +99,6 @@ public class UsedSearchActivity extends BaseActivity {
                 if (pullToRefreshLayout != null) {
                     cpageNum++;
                     lastKeyword = keyword.getText().toString();
-
-
                     List<Goods> addList = null;
                     try {
                         JSONObject jsonObject = new JSONObject(response);
@@ -131,7 +129,6 @@ public class UsedSearchActivity extends BaseActivity {
 
     }
 
-
     private void initView() {
 
         myAdapter = new MyAdapter(goodsList);
@@ -152,7 +149,6 @@ public class UsedSearchActivity extends BaseActivity {
             }
         });
 
-
         pullToRefreshLayout.setCanRefresh(false);
         pullToRefreshLayout.setCanLoadMore(false);
         pullToRefreshLayout.setRefreshListener(new BaseRefreshListener() {
@@ -166,7 +162,6 @@ public class UsedSearchActivity extends BaseActivity {
             }
         });
     }
-
 
     private void replacement() {
         goodsList.clear();
@@ -233,9 +228,7 @@ public class UsedSearchActivity extends BaseActivity {
             holder.goodsname.setText(list.get(position).getGoodsname());
             holder.goodsphone.setText("手机：" + list.get(position).getGoodsphone());
             holder.goodsprice.setText("$" + list.get(position).getGoodsprice());
-
             holder.goodsimgs.setTag(list.get(position).getGoodsimgs());
-
             Glide.with(UsedSearchActivity.this)
                     .load(AppConstants.BASE_URL + list.get(position).getGoodsimgs())
                     .asBitmap()

@@ -93,7 +93,7 @@ public class TabFragment2 extends Fragment {
 
     private void initOKHttp() {
         postFormBuilder = OkHttpUtils.post()
-                .url("http://192.168.1.102:8080/kenya/recruit/pageQuery")
+                .url("http://192.168.1.104:8080/kenya/recruit/pageQuery")
                 .addParams("currPage", cpageNum + "");
 
         StringCallback = new StringCallback() {

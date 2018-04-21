@@ -14,7 +14,7 @@
     </style>
 
     <style name="AppTheme.grey_action_bar" parent="AppTheme">
-        <!--<item name="android:windowLightStatusBar">true</item>-->
+        <item name="android:windowLightStatusBar">true</item>
         <item name="colorPrimaryDark">#f1f1f1</item>
     </style>
 

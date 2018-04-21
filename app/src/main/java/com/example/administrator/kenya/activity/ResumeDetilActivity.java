@@ -39,7 +39,6 @@ public class ResumeDetilActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_resume_detil);
         ButterKnife.bind(this);
-
         job = (Job) getIntent().getExtras().getSerializable("job");
         resumeDetailName.setText(job.getName());
         resumeDetailPrice.setText("期望薪资:" + job.getHopesalary());
@@ -47,7 +46,7 @@ public class ResumeDetilActivity extends Activity {
         resumeDetailExperience.setText(job.getJointime());
         resumeDetailDesc.setText(job.getPersondesc());
         resumeDetailPhone.setText(job.getPhone());
-        Glide.with(this).load("http://192.168.1.107:8080" + job.getHeadimg()).diskCacheStrategy(DiskCacheStrategy.ALL).transform(new GlideCircleTransform(this)).into(resumeDetilImg);
+        Glide.with(this).load("http://192.168.1.104:8080" + job.getHeadimg()).diskCacheStrategy(DiskCacheStrategy.ALL).transform(new GlideCircleTransform(this)).into(resumeDetilImg);
     }
 
     @OnClick({R.id.back, R.id.resume_detail_job_release})

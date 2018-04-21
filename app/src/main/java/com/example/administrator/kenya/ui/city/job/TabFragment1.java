@@ -102,7 +102,7 @@ public class TabFragment1 extends Fragment {
 
     private void initOKHttp() {
         postFormBuilder = OkHttpUtils.post()
-                .url("http://192.168.1.102:8080/kenya/jobSeeker/pageQuery")
+                .url("http://192.168.1.104:8080/kenya/jobSeeker/pageQuery")
                 .addParams("currPage", cpageNum + "");
 
         StringCallback = new StringCallback() {
@@ -134,7 +134,6 @@ public class TabFragment1 extends Fragment {
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
-
                     addList = JSON.parseArray(response, Job.class);
                     jobList.addAll(addList);
                     jobAdapter.notifyDataSetChanged();
@@ -161,6 +160,7 @@ public class TabFragment1 extends Fragment {
             @Override
             public void loadMore() {
                 postFormBuilder.addParams("currPage", cpageNum + "").tag(this).build().execute(StringCallback);
+
             }
         });
     }

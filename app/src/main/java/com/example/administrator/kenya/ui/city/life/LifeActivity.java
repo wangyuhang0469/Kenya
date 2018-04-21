@@ -104,7 +104,6 @@ public class LifeActivity extends BaseActivity {
             @Override
             public void refresh() {
             }
-
             @Override
             public void loadMore() {
                 Log.d("kang", "111aaa" + cpageNum);
@@ -152,15 +151,11 @@ public class LifeActivity extends BaseActivity {
                     addList = JSON.parseArray(response, LifeServices.class);
                     lifeServicesList.addAll(addList);
                     myAdapter.notifyDataSetChanged();
-
-
                     pullToRefreshLayout.finishLoadMore();
                 }
             }
         };
-
     }
-
 
     private void initPopupWindow(){
         final View popContentView = LayoutInflater.from(this).inflate(R.layout.popupwindow_life, null);
@@ -225,8 +220,6 @@ public class LifeActivity extends BaseActivity {
     }
 
     public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
-
-
         private List<LifeServices> list;
 
         public MyAdapter(List<LifeServices> list) {
@@ -242,7 +235,6 @@ public class LifeActivity extends BaseActivity {
                 livename = (TextView) itemView.findViewById(R.id.livename);
                 livephone = (TextView) itemView.findViewById(R.id.livephone);
                 liveimgs = (ImageView) itemView.findViewById(R.id.liveimgs);
-
             }
         }
 
@@ -273,9 +265,6 @@ public class LifeActivity extends BaseActivity {
                         }
                     });
 
-
-
-
             holder.itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -285,11 +274,9 @@ public class LifeActivity extends BaseActivity {
                 }
             });
         }
-
         @Override
         public int getItemCount() {
             return list == null ? 0 : list.size();
         }
-
     }
 }

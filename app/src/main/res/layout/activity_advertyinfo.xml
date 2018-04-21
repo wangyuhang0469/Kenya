@@ -181,5 +181,7 @@
         android:layout_alignParentBottom="true"
         android:background="@color/theme_btn"
         android:gravity="center"
-        android:text="保存" />
+        android:text="保存"
+        android:textColor="@color/white"
+        android:textSize="17sp" />
 </com.zhy.autolayout.AutoRelativeLayout>
