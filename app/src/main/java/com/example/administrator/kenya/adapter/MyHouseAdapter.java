@@ -100,7 +100,7 @@ public class MyHouseAdapter extends RecyclerView.Adapter<MyHouseAdapter.ViewHold
         holder.house_image.setTag(list.get(position).getLeaseimgs());
 
         Glide.with(context)
-                .load(list.get(position).getLeaseimgs())
+                .load(AppConstants.BASE_URL + list.get(position).getLeaseimgs())
                 .asBitmap()
                 .placeholder(R.drawable.bg4dp_grey)
                 .into(new SimpleTarget<Bitmap>() {

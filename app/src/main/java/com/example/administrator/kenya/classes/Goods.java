@@ -126,8 +126,8 @@ public class Goods implements Serializable {
     }
 
 
-    public List<String> getImageUrlList() {
-        List<String> imageUrlList = new ArrayList<>();
+    public ArrayList<String> getImageUrlList() {
+        ArrayList<String> imageUrlList = new ArrayList<>();
         if (!goodsimgs.equals(""))
             imageUrlList.add(AppConstants.BASE_URL + goodsimgs);
         if (!goodsimg1.equals(""))

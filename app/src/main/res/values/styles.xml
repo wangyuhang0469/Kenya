@@ -3,19 +3,21 @@
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
         <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/theme</item>
-        <item name="colorPrimaryDark">@color/green_action_bar</item>
+        <item name="colorPrimary">#f1f1f1</item>
+        <item name="colorPrimaryDark">#f1f1f1</item>
         <item name="colorAccent">@color/colorAccent</item>
         <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowLightStatusBar">true</item>
     </style>
 
     <style name="AppTheme.dark_action_bar" parent="AppTheme">
         <item name="colorPrimaryDark">#4b4b4b</item>
+        <item name="android:windowLightStatusBar">false</item>
     </style>
 
-    <style name="AppTheme.grey_action_bar" parent="AppTheme">
-        <item name="android:windowLightStatusBar">true</item>
-        <item name="colorPrimaryDark">#f1f1f1</item>
+    <style name="AppTheme.green_action_bar" parent="AppTheme">
+        <item name="android:windowLightStatusBar">false</item>
+        <item name="colorPrimaryDark">@color/green_action_bar</item>
     </style>
 
 
@@ -23,7 +25,7 @@
         <!-- 窗口设为无标题 -->
         <item name="android:windowNoTitle">true</item>
         <!-- 窗口浮现在activity之上 -->
-        <item name="android:windowIsFloating">false</item>
+        <item name="android:windowIsFloating">true</item>
         <!-- 背景透明 -->
         <item name="android:windowBackground">@color/touming</item>
         <!-- 背景模糊 -->

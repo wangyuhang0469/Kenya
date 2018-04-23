@@ -15,7 +15,7 @@
         android:roundIcon="@drawable/app_launcher"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity" />
+        <activity android:name=".MainActivity" android:theme="@style/AppTheme.green_action_bar" />
         <activity android:name=".base.BaseActivity" />
         <activity
             android:name=".ui.main.IntroActivity"
@@ -47,34 +47,6 @@
             android:name="design_height"
             android:value="1920" />
 
-        <activity
-            android:name=".ui.city.job.JobActivity"
-            android:theme="@style/AppTheme.dark_action_bar" />
-        <activity
-            android:name=".ui.myself.FindPasswordActivity"
-            android:theme="@style/AppTheme.dark_action_bar" />
-        <activity android:name=".activity.ResumeinfoActivity" />
-        <activity android:name=".activity.ResumeDetilActivity" />
-        <activity
-            android:name=".ui.city.used.UsedActivity"
-            android:theme="@style/AppTheme.grey_action_bar" />
-        <activity
-            android:name=".ui.city.used.UsedSearchActivity"
-            android:theme="@style/AppTheme.grey_action_bar" />
-        <activity
-            android:name=".ui.city.used.GoodsDetailsActivity"
-            android:theme="@style/AppTheme.grey_action_bar" />
-        <activity
-            android:name=".ui.city.used.GoodsReleaseActivity"
-            android:theme="@style/AppTheme.grey_action_bar" />
-        <activity
-            android:name=".model.image_selector.MultiImageSelectorActivity"
-            android:theme="@style/AppTheme.grey_action_bar" />
-        <activity android:name=".ui.city.house.HouseActivity" />
-        <activity android:name=".ui.city.house.HouseDetailActivity" />
-        <activity android:name=".ui.city.house.HouseInfoActivity" />
-        <activity android:name=".ui.city.friends.FriendsActivity" />
-
         <provider
             android:name="android.support.v4.content.FileProvider"
             android:authorities="com.example.administrator.kenya.fileprovider"
@@ -85,33 +57,40 @@
                 android:resource="@xml/file_paths" />
         </provider>
 
+
+        <activity
+            android:name=".ui.city.job.JobActivity"
+            android:theme="@style/AppTheme.dark_action_bar" />
+        <activity
+            android:name=".ui.myself.FindPasswordActivity"
+            android:theme="@style/AppTheme.dark_action_bar" />
+        <activity android:name=".activity.ResumeinfoActivity" />
+        <activity android:name=".activity.ResumeDetilActivity" />
+        <activity android:name=".ui.city.used.UsedActivity" />
+        <activity android:name=".ui.city.used.UsedSearchActivity" />
+        <activity android:name=".ui.city.used.GoodsDetailsActivity" />
+        <activity android:name=".ui.city.used.GoodsReleaseActivity" />
+        <activity android:name=".model.image_selector.MultiImageSelectorActivity" />
+        <activity android:name=".ui.city.house.HouseActivity" />
+        <activity android:name=".ui.city.house.HouseDetailActivity" />
+        <activity android:name=".ui.city.house.HouseInfoActivity" />
+        <activity android:name=".ui.city.friends.FriendsActivity" />
+
         <activity android:name=".ui.city.findmoney.FindMoneyActivity" />
         <activity android:name=".activity.AdvertyinfoActivity" />
-        <activity
-            android:name=".ui.city.life.LifeActivity"
-            android:theme="@style/AppTheme.grey_action_bar" />
+        <activity android:name=".ui.city.life.LifeActivity" />
         <activity android:name=".ui.city.house.HouseSearchActivity" />
         <activity android:name=".activity.JobDetailActivity" />
         <activity android:name=".activity.DetailActivity" />
         <activity android:name=".ui.city.news.NewsinfoActivity" />
-        <activity
-            android:name=".ui.city.life.LifeReleaseActivity"
-            android:theme="@style/AppTheme.grey_action_bar" />
-        <activity
-            android:name=".ui.city.life.LifeDetailsActivity"
-            android:theme="@style/AppTheme.grey_action_bar" />
-        <activity
-            android:name=".ui.city.husbandry.HusbandryActivity"
-            android:theme="@style/AppTheme.grey_action_bar" />
-        <activity
-            android:name=".ui.city.husbandry.HusbandryDetailsActivity"
-            android:theme="@style/AppTheme.grey_action_bar" />
-        <activity
-            android:name=".ui.city.husbandry.HusbandryReleaseActivity"
-            android:theme="@style/AppTheme.grey_action_bar" />
+        <activity android:name=".ui.city.life.LifeReleaseActivity" />
+        <activity android:name=".ui.city.life.LifeDetailsActivity" />
+        <activity android:name=".ui.city.husbandry.HusbandryActivity" />
+        <activity android:name=".ui.city.husbandry.HusbandryDetailsActivity" />
+        <activity android:name=".ui.city.husbandry.HusbandryReleaseActivity" />
         <activity android:name=".ui.city.findmoney.FindProjectdetailActivity" />
-        <activity android:name=".ui.city.findmoney.FindMonydetailActivity"></activity>
-        <activity android:name=".ui.myself.myrelease.MyReleaseActivity"></activity>
+        <activity android:name=".ui.city.findmoney.FindMonydetailActivity" />
+        <activity android:name=".ui.myself.myrelease.MyReleaseActivity" />
     </application>
 
 </manifest>

@@ -1,5 +1,6 @@
 package com.example.administrator.kenya.ui.city.used;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.widget.TextView;
 
@@ -7,6 +8,7 @@ import com.example.administrator.kenya.R;
 import com.example.administrator.kenya.base.BaseActivity;
 import com.example.administrator.kenya.classes.Goods;
 import com.example.administrator.kenya.tools.GlideImageLoader;
+import com.example.administrator.kenya.ui.main.PreviewDialog;
 import com.youth.banner.Banner;
 import com.youth.banner.listener.OnBannerListener;
 
@@ -35,6 +37,8 @@ public class GoodsDetailsActivity extends BaseActivity {
 
     private Goods goods;
 
+    private Context context;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,6 +49,7 @@ public class GoodsDetailsActivity extends BaseActivity {
 
         goods = (Goods) getIntent().getExtras().getSerializable("goods");
 
+        context = this;
 
         initBanner(goods.getImageUrlList());
 
@@ -54,7 +59,6 @@ public class GoodsDetailsActivity extends BaseActivity {
         goodsusername.setText(goods.getGoodsusername());
         goodsphone.setText("手机号：" + goods.getGoodsphone());
 
-
     }
 
     private void initBanner(List<String> imageUrlList) {
@@ -62,7 +66,7 @@ public class GoodsDetailsActivity extends BaseActivity {
         banner.setOnBannerListener(new OnBannerListener() {
             @Override
             public void OnBannerClick(int position) {
-                toast("点击了" + (position + 1));
+                new PreviewDialog(context , goods.getImageUrlList().get(position)).show();
             }
         });
     }
