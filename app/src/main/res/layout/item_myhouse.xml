@@ -9,7 +9,10 @@
         android:id="@+id/house_image"
         android:layout_width="350px"
         android:layout_height="250px"
-        android:layout_margin="30px"/>
+        android:layout_marginTop="30px"
+        android:layout_marginLeft="30px"
+        android:layout_marginRight="30px"
+        android:layout_marginBottom="50px"/>
 
     <TextView
         android:id="@+id/house_Title"
@@ -29,18 +32,20 @@
         android:textColor="@color/textBlack2"
         android:textSize="13sp" />
 
+
+
     <TextView
-        android:id="@+id/house_call"
-        android:layout_width="182px"
-        android:layout_height="62px"
+        android:id="@+id/delete"
+        android:layout_width="156px"
+        android:layout_height="70px"
         android:layout_alignBottom="@id/house_image"
         android:layout_alignParentRight="true"
         android:layout_marginRight="30px"
-        android:background="@drawable/bg4dp_theme_btn"
+        android:text="删除"
+        android:textSize="13sp"
+        android:textColor="@color/textgreen1"
         android:gravity="center"
-        android:text="拨号"
-        android:textColor="@color/white"
-        android:textSize="13sp" />
+        android:background="@drawable/bg4dp_theme_white"/>
 
     <TextView
         android:id="@+id/house_home"
@@ -61,10 +66,12 @@
         android:textColor="@color/textgreen1"
         android:textSize="17sp" />
 
+
+
     <View
         android:layout_width="match_parent"
-        android:layout_height="2px"
+        android:layout_height="20px"
         android:layout_alignParentBottom="true"
-        android:background="#989898" />
+        android:background="@color/base_bg" />
 
 </com.zhy.autolayout.AutoRelativeLayout>

@@ -111,6 +111,7 @@
             android:theme="@style/AppTheme.grey_action_bar" />
         <activity android:name=".ui.city.findmoney.FindProjectdetailActivity" />
         <activity android:name=".ui.city.findmoney.FindMonydetailActivity"></activity>
+        <activity android:name=".ui.myself.myrelease.MyReleaseActivity"></activity>
     </application>
 
 </manifest>

@@ -20,6 +20,7 @@ import com.bumptech.glide.request.target.SimpleTarget;
 import com.example.administrator.kenya.R;
 import com.example.administrator.kenya.activity.ResumeDetilActivity;
 import com.example.administrator.kenya.classes.Job;
+import com.example.administrator.kenya.constants.AppConstants;
 
 import java.util.List;
 
@@ -66,7 +67,7 @@ public class JobAdapter extends RecyclerView.Adapter<JobAdapter.ViewHolder> {
         holder.job_age.setText(list.get(position).getAge() + "岁");
         holder.job_image.setTag(list.get(position).getHeadimg());
         Glide.with(context)
-                .load(list.get(position).getHeadimg())
+                .load(AppConstants.BASE_URL + list.get(position).getHeadimg())
                 .asBitmap()
                 .placeholder(R.drawable.bg4dp_grey)
                 .into(new SimpleTarget<Bitmap>() {

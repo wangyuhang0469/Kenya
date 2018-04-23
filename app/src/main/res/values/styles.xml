@@ -34,6 +34,7 @@
         <item name="android:windowFrame">@null</item>
         <!-- 全屏 -->
         <item name="android:windowFullscreen">false</item>
+
     </style>
 
     <style name="btn">

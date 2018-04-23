@@ -20,6 +20,7 @@ import com.example.administrator.kenya.R;
 import com.example.administrator.kenya.activity.JobDetailActivity;
 import com.example.administrator.kenya.classes.Company;
 import com.example.administrator.kenya.classes.House;
+import com.example.administrator.kenya.constants.AppConstants;
 import com.example.administrator.kenya.ui.city.house.HouseDetailActivity;
 
 import java.util.List;
@@ -68,7 +69,7 @@ public class CompanyAdapter extends RecyclerView.Adapter<CompanyAdapter.ViewHold
         holder.company_image.setTag(list.get(position).getCompanyimg0());
 
         Glide.with(context)
-                .load(list.get(position).getCompanyimg0())
+                .load(AppConstants.BASE_URL + list.get(position).getCompanyimg0())
                 .asBitmap()
                 .placeholder(R.drawable.bg4dp_grey)
                 .into(new SimpleTarget<Bitmap>() {

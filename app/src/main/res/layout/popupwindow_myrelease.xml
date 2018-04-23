@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.zhy.autolayout.AutoLinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white">
+
+    <com.example.administrator.kenya.view.MyRadioGroup
+        android:id="@+id/myRadioGroup"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.zhy.autolayout.AutoLinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+    <com.zhy.autolayout.AutoLinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <RadioButton
+            android:id="@+id/radioButton1"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="88px"
+            android:text="租房"
+            android:button="@null"
+            android:background="@drawable/popup_bg"
+            android:textColor="@drawable/popup_textcolor"
+            android:layout_margin="30px"
+            android:gravity="center"
+            android:checked="true"/>
+
+        <RadioButton
+            android:id="@+id/radioButton2"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="88px"
+            android:text="二手"
+            android:button="@null"
+            android:background="@drawable/popup_bg"
+            android:textColor="@drawable/popup_textcolor"
+            android:layout_margin="30px"
+            android:gravity="center" />
+
+        <RadioButton
+            android:id="@+id/radioButton3"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="88px"
+            android:text="求职"
+            android:button="@null"
+            android:background="@drawable/popup_bg"
+            android:textColor="@drawable/popup_textcolor"
+            android:layout_margin="30px"
+            android:gravity="center" />
+
+
+        <RadioButton
+            android:id="@+id/radioButton4"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="88px"
+            android:text="招聘"
+            android:button="@null"
+            android:background="@drawable/popup_bg"
+            android:textColor="@drawable/popup_textcolor"
+            android:layout_margin="30px"
+            android:gravity="center" />
+
+
+
+
+    </com.zhy.autolayout.AutoLinearLayout>
+
+
+        <com.zhy.autolayout.AutoLinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <RadioButton
+                android:id="@+id/radioButton5"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="88px"
+                android:text="生活服务"
+                android:button="@null"
+                android:background="@drawable/popup_bg"
+                android:textColor="@drawable/popup_textcolor"
+                android:layout_margin="30px"
+                android:gravity="center" />
+
+            <RadioButton
+                android:id="@+id/radioButton6"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="88px"
+                android:text="农林牧"
+                android:button="@null"
+                android:background="@drawable/popup_bg"
+                android:textColor="@drawable/popup_textcolor"
+                android:layout_margin="30px"
+                android:gravity="center" />
+
+            <RadioButton
+                android:id="@+id/radioButton7"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="88px"
+                android:text="交友"
+                android:button="@null"
+                android:background="@drawable/popup_bg"
+                android:textColor="@drawable/popup_textcolor"
+                android:layout_margin="30px"
+                android:gravity="center" />
+
+
+            <View
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_margin="30px"/>
+
+
+        </com.zhy.autolayout.AutoLinearLayout>
+
+        </com.zhy.autolayout.AutoLinearLayout>
+    </com.example.administrator.kenya.view.MyRadioGroup>
+</com.zhy.autolayout.AutoLinearLayout>

@@ -21,12 +21,12 @@ public class Company implements Serializable {
      * companydesc : null
      */
 
-    private int companyid;
+    private String companyid;
     private String companyname;
     private String companystation;
     private String companystationsalary;
     private String companyphone;
-    private int userid;
+    private String userid;
     private String companystationdesc;
     private String companyaddress;
     private String companydesc;
@@ -37,11 +37,11 @@ public class Company implements Serializable {
     private String companyimg4;
     private String companyimg5;
 
-    public int getCompanyid() {
+    public String getCompanyid() {
         return companyid;
     }
 
-    public void setCompanyid(int companyid) {
+    public void setCompanyid(String companyid) {
         this.companyid = companyid;
     }
 
@@ -77,11 +77,11 @@ public class Company implements Serializable {
         this.companyphone = companyphone;
     }
 
-    public int getUserid() {
+    public String getUserid() {
         return userid;
     }
 
-    public void setUserid(int userid) {
+    public void setUserid(String userid) {
         this.userid = userid;
     }
 

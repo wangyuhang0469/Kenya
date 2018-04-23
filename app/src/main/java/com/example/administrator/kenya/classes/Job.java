@@ -20,8 +20,8 @@ public class Job implements Serializable {
      * persondesc : null
      */
 
-    private int jobid;
-    private int userid;
+    private String jobid;
+    private String userid;
     private String name;
     private String headimg;
     private String sex;
@@ -51,19 +51,19 @@ public class Job implements Serializable {
 
     private String hopesalary;
 
-    public int getJobid() {
+    public String getJobid() {
         return jobid;
     }
 
-    public void setJobid(int jobid) {
+    public void setJobid(String jobid) {
         this.jobid = jobid;
     }
 
-    public int getUserid() {
+    public String getUserid() {
         return userid;
     }
 
-    public void setUserid(int userid) {
+    public void setUserid(String userid) {
         this.userid = userid;
     }
 

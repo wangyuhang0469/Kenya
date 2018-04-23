@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.zhy.autolayout.AutoRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white">
+
+    <ImageView
+        android:id="@+id/goodsimgs"
+        android:layout_width="350px"
+        android:layout_height="250px"
+        android:layout_margin="30px"/>
+
+    <TextView
+        android:id="@+id/goodsname"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/goodsimgs"
+        android:layout_alignTop="@id/goodsimgs"
+        android:textColor="@color/textBlack1"
+        android:layout_marginRight="30px"
+        android:layout_marginTop="10px"/>
+
+    <TextView
+        android:id="@+id/goodsphone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/goodsimgs"
+        android:layout_alignBottom="@id/goodsimgs"
+        android:textColor="@color/textBlack2"
+        android:textSize="13sp"
+        android:layout_marginBottom="10px"/>
+
+    <TextView
+        android:id="@+id/delete"
+        android:layout_width="156px"
+        android:layout_height="70px"
+        android:layout_alignBottom="@id/goodsimgs"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="30px"
+        android:text="删除"
+        android:textSize="13sp"
+        android:textColor="@color/textgreen1"
+        android:gravity="center"
+        android:background="@drawable/bg4dp_theme_white"/>
+
+    <TextView
+        android:id="@+id/goodsprice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/textgreen1"
+        android:textSize="17sp"
+        android:layout_toRightOf="@id/goodsimgs"
+        android:layout_above="@id/goodsphone"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="20px"
+        android:layout_alignParentBottom="true"
+        android:background="@color/base_bg" />
+
+</com.zhy.autolayout.AutoRelativeLayout>

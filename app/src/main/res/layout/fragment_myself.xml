@@ -32,6 +32,8 @@
                 <com.zhy.autolayout.AutoRelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:id="@+id/myName">
                     android:layout_marginTop="20px">
 
                     <TextView
@@ -66,6 +68,7 @@
                 android:orientation="vertical">
 
                 <com.zhy.autolayout.AutoRelativeLayout
+                    android:id="@+id/myAddress"
                     style="@style/my_center_bar"
                     android:layout_marginTop="20px">
 
@@ -89,7 +92,9 @@
 
                 <include layout="@layout/line" />
 
-                <com.zhy.autolayout.AutoRelativeLayout style="@style/my_center_bar">
+                <com.zhy.autolayout.AutoRelativeLayout
+                    style="@style/my_center_bar"
+                    android:id="@+id/myRelease">
 
                     <ImageView
                         android:id="@+id/my_center_infor"
@@ -110,7 +115,9 @@
 
                 <include layout="@layout/line" />
 
-                <com.zhy.autolayout.AutoRelativeLayout style="@style/my_center_bar">
+                <com.zhy.autolayout.AutoRelativeLayout
+                    android:id="@+id/myCar"
+                    style="@style/my_center_bar">
 
                     <ImageView
                         android:id="@+id/my_center_bink"
@@ -131,7 +138,9 @@
 
             </com.zhy.autolayout.AutoLinearLayout>
 
-            <com.zhy.autolayout.AutoRelativeLayout style="@style/my_center_bar">
+            <com.zhy.autolayout.AutoRelativeLayout
+                android:id="@+id/myPoint"
+                style="@style/my_center_bar">
 
                 <ImageView
                     android:id="@+id/my_center_points"
@@ -152,7 +161,9 @@
 
             <include layout="@layout/line" />
 
-            <com.zhy.autolayout.AutoRelativeLayout style="@style/my_center_bar">
+            <com.zhy.autolayout.AutoRelativeLayout
+                android:id="@+id/myVallet"
+                style="@style/my_center_bar">
 
                 <ImageView
                     android:id="@+id/my_center_purse"

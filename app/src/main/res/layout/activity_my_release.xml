@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.administrator.kenya.ui.city.life.LifeActivity">
+    tools:context="com.example.administrator.kenya.ui.city.life.LifeActivity"
+    android:background="@color/base_bg">
 
     <com.zhy.autolayout.AutoRelativeLayout
         android:id="@+id/title_bar"
@@ -23,7 +24,7 @@
             android:singleLine="true"
             android:textColor="@color/textBlack1"
             android:textSize="18sp"
-            android:text="生活服务"/>
+            android:text="我的发布"/>
 
         <ImageView
             android:id="@+id/back"
@@ -58,32 +59,15 @@
     </com.zhy.autolayout.AutoRelativeLayout>
 
 
-    <com.jwenfeng.library.pulltorefresh.PullToRefreshLayout
-        android:id="@+id/pullToRefreshLayout"
+
+    <RelativeLayout
+        android:id="@+id/fragment_container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_above="@+id/release"
-        android:layout_below="@+id/title_bar">
-
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/recyclerView"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
-
-    </com.jwenfeng.library.pulltorefresh.PullToRefreshLayout>
+        android:layout_below="@+id/title_bar"/>
 
 
-
-    <TextView
-        android:id="@+id/release"
-        android:layout_width="match_parent"
-        android:layout_height="160px"
-        android:layout_alignParentBottom="true"
-        android:background="@color/theme_btn"
-        android:gravity="center"
-        android:text="发布"
-        android:textColor="@color/white"
-        android:textSize="17sp" />
 
     <View
         android:id="@+id/black"
