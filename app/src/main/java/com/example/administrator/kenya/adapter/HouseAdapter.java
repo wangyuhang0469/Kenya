@@ -1,5 +1,6 @@
 package com.example.administrator.kenya.adapter;
 
+import android.app.Application;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -19,6 +20,7 @@ import com.bumptech.glide.request.target.SimpleTarget;
 import com.example.administrator.kenya.R;
 import com.example.administrator.kenya.classes.Goods;
 import com.example.administrator.kenya.classes.House;
+import com.example.administrator.kenya.constants.AppConstants;
 import com.example.administrator.kenya.ui.city.house.HouseDetailActivity;
 import com.example.administrator.kenya.ui.city.used.UsedActivity;
 
@@ -68,7 +70,7 @@ public class HouseAdapter extends RecyclerView.Adapter<HouseAdapter.ViewHolder> 
         holder.house_image.setTag(list.get(position).getLeaseimgs());
 
         Glide.with(context)
-                .load(list.get(position).getLeaseimgs())
+                .load(AppConstants.BASE_URL + list.get(position).getLeaseimgs())
                 .asBitmap()
                 .placeholder(R.drawable.bg4dp_grey)
                 .into(new SimpleTarget<Bitmap>() {

@@ -15,6 +15,7 @@ import com.alibaba.fastjson.JSON;
 import com.example.administrator.kenya.R;
 import com.example.administrator.kenya.adapter.ProjectAdapter;
 import com.example.administrator.kenya.classes.Project;
+import com.example.administrator.kenya.constants.AppConstants;
 import com.jwenfeng.library.pulltorefresh.BaseRefreshListener;
 import com.jwenfeng.library.pulltorefresh.PullToRefreshLayout;
 import com.zhy.http.okhttp.OkHttpUtils;
@@ -80,7 +81,7 @@ public class FindMoneyFragment2 extends Fragment {
 
     private void initOKHttp() {
         postFormBuilder = OkHttpUtils.post()
-                .url("http://192.168.1.107:8080/kenya/Project/selectByFile")
+                .url(AppConstants.BASE_URL + "/kenya/Project/selectByFile")
                 .addParams("pn", cpageNum + "");
 
         StringCallback = new StringCallback() {

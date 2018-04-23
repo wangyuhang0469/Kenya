@@ -29,6 +29,8 @@ import com.alibaba.fastjson.JSON;
 import com.example.administrator.kenya.R;
 import com.example.administrator.kenya.base.BaseActivity;
 import com.example.administrator.kenya.classes.Job;
+import com.example.administrator.kenya.classes.User;
+import com.example.administrator.kenya.constants.AppConstants;
 import com.example.administrator.kenya.ui.city.job.DatePickerDialog;
 import com.example.administrator.kenya.ui.city.job.OnBooleanListener;
 import com.example.administrator.kenya.utils.DateUtil;
@@ -93,6 +95,8 @@ public class ResumeinfoActivity extends BaseActivity implements View.OnClickList
     EditText resumeInfoJobwant;
     @Bind(R.id.resume_tv_recm)
     EditText resumeTvRecm;
+    @Bind(R.id.resume_info_jobname)
+    EditText resumeInfoJobname;
     private Dialog dateDialog;
     private PopupWindow popupWindow;
 
@@ -139,15 +143,16 @@ public class ResumeinfoActivity extends BaseActivity implements View.OnClickList
                 File f2 = new File(s);
                 PostFormBuilder postFormBuilder = OkHttpUtils.post()
                         .addFile("logoFile", "tupian.png", f2);
-                postFormBuilder.url("http://192.168.1.104:8080/kenya/jobSeeker/saveJobWant")
+                postFormBuilder.url(AppConstants.BASE_URL + "/kenya/jobSeeker/saveJobWant")
                         .addParams("sex", sexvalue)
+                        .addParams("name", resumeInfoJobname.getText().toString())
                         .addParams("jobwant", resumeInfoJobwant.getText().toString())
                         .addParams("phone", resumeInfoPhone.getText().toString())
                         .addParams("birthday", resumeTimeBirday.getText().toString())
                         .addParams("jointime", resumeTvTime.getText().toString())
                         .addParams("hopesalary", " ")
                         .addParams("persondesc", resumeTvRecm.getText().toString())
-                        .addParams("userId", "2")
+                        .addParams("userId", User.getInstance().getUserId())
                         .build()
                         .execute(new StringCallback() {
                             @Override

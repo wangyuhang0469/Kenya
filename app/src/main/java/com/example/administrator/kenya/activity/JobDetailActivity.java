@@ -24,6 +24,8 @@ public class JobDetailActivity extends BaseActivity {
     TextView jobDetailPersonPhone;
     @Bind(R.id.job_detail_jobtype)
     TextView jobDetailJobtype;
+    @Bind(R.id.job_detail_how_long)
+    TextView jobDetailHowLong;
     private Company company;
 
     @Override
@@ -34,9 +36,10 @@ public class JobDetailActivity extends BaseActivity {
         company = (Company) getIntent().getExtras().getSerializable("company");
         jobDetailJobtype.setText(company.getCompanystation());
         jobDetailPay.setText(company.getCompanystationsalary() + "/月");
-        jobDetailDesc.setText(company.getCompanydesc());
+        jobDetailDesc.setText(company.getCompanystationdesc());
         jobDetailPersonName.setText(company.getCompanyname());
         jobDetailPersonPhone.setText(company.getCompanyphone());
+        jobDetailHowLong.setText(company.getCompanyimg5());
     }
 
     @OnClick({R.id.back, R.id.job_detail_release})

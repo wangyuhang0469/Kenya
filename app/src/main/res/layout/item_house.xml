@@ -9,7 +9,7 @@
         android:id="@+id/house_image"
         android:layout_width="350px"
         android:layout_height="250px"
-        android:layout_margin="30px"/>
+        android:layout_margin="30px" />
 
     <TextView
         android:id="@+id/house_Title"
@@ -26,6 +26,7 @@
         android:layout_height="wrap_content"
         android:layout_alignBottom="@id/house_image"
         android:layout_toRightOf="@id/house_image"
+        android:text="手机：18532159723"
         android:textColor="@color/textBlack2"
         android:textSize="13sp" />
 
@@ -48,6 +49,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/house_Title"
         android:layout_toRightOf="@id/house_image"
+        android:text="2室•88m2•建华"
         android:textColor="@color/textBlack3"
         android:textSize="13sp" />
 
@@ -58,6 +60,7 @@
         android:layout_above="@id/house_phone"
         android:layout_marginBottom="10px"
         android:layout_toRightOf="@id/house_image"
+        android:text="1100元"
         android:textColor="@color/textgreen1"
         android:textSize="17sp" />
 

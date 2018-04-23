@@ -11,6 +11,7 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.example.administrator.kenya.R;
 import com.example.administrator.kenya.classes.GlideCircleTransform;
 import com.example.administrator.kenya.classes.Job;
+import com.example.administrator.kenya.constants.AppConstants;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -46,7 +47,7 @@ public class ResumeDetilActivity extends Activity {
         resumeDetailExperience.setText(job.getJointime());
         resumeDetailDesc.setText(job.getPersondesc());
         resumeDetailPhone.setText(job.getPhone());
-        Glide.with(this).load("http://192.168.1.104:8080" + job.getHeadimg()).diskCacheStrategy(DiskCacheStrategy.ALL).transform(new GlideCircleTransform(this)).into(resumeDetilImg);
+        Glide.with(this).load(AppConstants.BASE_URL + job.getHeadimg()).diskCacheStrategy(DiskCacheStrategy.ALL).transform(new GlideCircleTransform(this)).into(resumeDetilImg);
     }
 
     @OnClick({R.id.back, R.id.resume_detail_job_release})

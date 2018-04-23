@@ -85,7 +85,7 @@ public class Company implements Serializable {
         this.userid = userid;
     }
 
-    public Object getCompanystationdesc() {
+    public String getCompanystationdesc() {
         return companystationdesc;
     }
 
@@ -93,7 +93,7 @@ public class Company implements Serializable {
         this.companystationdesc = companystationdesc;
     }
 
-    public Object getCompanyaddress() {
+    public String getCompanyaddress() {
         return companyaddress;
     }
 
@@ -101,7 +101,7 @@ public class Company implements Serializable {
         this.companyaddress = companyaddress;
     }
 
-    public String  getCompanydesc() {
+    public String getCompanydesc() {
         return companydesc;
     }
 

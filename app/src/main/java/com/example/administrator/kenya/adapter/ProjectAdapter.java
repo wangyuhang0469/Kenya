@@ -19,6 +19,7 @@ import com.bumptech.glide.request.target.SimpleTarget;
 import com.example.administrator.kenya.R;
 import com.example.administrator.kenya.classes.Funds;
 import com.example.administrator.kenya.classes.Project;
+import com.example.administrator.kenya.constants.AppConstants;
 import com.example.administrator.kenya.ui.city.findmoney.FindProjectdetailActivity;
 
 import java.util.List;
@@ -65,7 +66,7 @@ public class ProjectAdapter extends RecyclerView.Adapter<ProjectAdapter.ViewHold
         holder.project_image.setTag(list.get(position).getProjectimgs());
 
         Glide.with(context)
-                .load("http://192.168.1.104:8080" + list.get(position).getProjectimgs())
+                .load(AppConstants.BASE_URL + list.get(position).getProjectimgs())
                 .asBitmap()
                 .placeholder(R.drawable.bg4dp_grey)
                 .into(new SimpleTarget<Bitmap>() {

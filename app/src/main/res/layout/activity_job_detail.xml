@@ -65,6 +65,7 @@
             android:textSize="50px" />
 
         <TextView
+            android:id="@+id/job_detail_how_long"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"

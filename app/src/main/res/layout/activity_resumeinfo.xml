@@ -40,17 +40,21 @@
         android:layout_alignParentStart="true"
         android:layout_below="@id/person_info"
         android:orientation="vertical">
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="227px"
             android:background="@color/theme_btn" />
+
         <include layout="@layout/line" />
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="256px"
             android:gravity="center"
             android:text="头像，一份好工作的开始"
             android:textColor="@color/textgreen1" />
+
         <include layout="@layout/line" />
 
 
@@ -61,6 +65,7 @@
             android:orientation="vertical">
 
             <EditText
+                android:id="@+id/resume_info_jobname"
                 style="@style/edit_base2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

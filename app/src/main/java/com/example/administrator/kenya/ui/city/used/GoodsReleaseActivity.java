@@ -126,7 +126,6 @@ public class GoodsReleaseActivity extends BaseActivity {
             case R.id.release:
                 final LoadingDialog loadingDialog = new LoadingDialog(GoodsReleaseActivity.this);
                 loadingDialog.show();
-
                 PostFormBuilder postFormBuilder = OkHttpUtils.post();
                 for (int i = 0; i < mResults.size(); i++) {
                     File file = new File(mResults.get(i));

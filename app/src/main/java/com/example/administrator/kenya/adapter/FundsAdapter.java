@@ -19,6 +19,7 @@ import com.bumptech.glide.request.target.SimpleTarget;
 import com.example.administrator.kenya.R;
 import com.example.administrator.kenya.classes.Funds;
 import com.example.administrator.kenya.classes.House;
+import com.example.administrator.kenya.constants.AppConstants;
 import com.example.administrator.kenya.ui.city.findmoney.FindMonydetailActivity;
 import com.example.administrator.kenya.ui.city.house.HouseDetailActivity;
 
@@ -37,6 +38,7 @@ public class FundsAdapter extends RecyclerView.Adapter<FundsAdapter.ViewHolder> 
         this.list = list;
         this.context = context;
     }
+
     public class ViewHolder extends RecyclerView.ViewHolder {
         TextView funds_Title, funds_phone, funds_price;
         ImageView funds_image;
@@ -65,7 +67,7 @@ public class FundsAdapter extends RecyclerView.Adapter<FundsAdapter.ViewHolder> 
         holder.funds_image.setTag(list.get(position).getFundsimgs());
 
         Glide.with(context)
-                .load("http://192.168.1.107:8080" + list.get(position).getFundsimgs())
+                .load(AppConstants.BASE_URL + list.get(position).getFundsimgs())
                 .asBitmap()
                 .placeholder(R.drawable.bg4dp_grey)
                 .into(new SimpleTarget<Bitmap>() {

@@ -91,7 +91,7 @@ public class FindMoneyFragment1 extends Fragment {
 
     private void initOKHttp() {
         postFormBuilder = OkHttpUtils.post()
-                .url("http://192.168.1.107:8080/kenya/Funds/selectbyfile")
+                .url(AppConstants.BASE_URL + "/kenya/Funds/selectbyfile")
                 .addParams("pn", cpageNum + "");
 
         StringCallback = new StringCallback() {

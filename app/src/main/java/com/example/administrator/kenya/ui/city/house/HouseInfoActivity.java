@@ -18,6 +18,7 @@ import android.widget.ImageView;
 import android.widget.PopupWindow;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.alibaba.fastjson.JSON;
 import com.bumptech.glide.Glide;
@@ -158,6 +159,26 @@ public class HouseInfoActivity extends BaseActivity {
                 finish();
                 break;
             case R.id.release:
+                if ("".equals(houseName.getText().toString())) {
+                    toast("请输入标题");
+                    return;
+                }
+                if (houseInfoDesc.getText().toString() == null || houseInfoDesc.getText().toString().equals("")) {
+                    toast("请输信息详情");
+                    return;
+                }
+                if (housePrice.getText().toString() == null || housePrice.getText().toString().equals("")) {
+                    toast("请输入租房的价格");
+                    return;
+                }
+                if (housePhone.getText().toString() == null || housePhone.getText().toString().equals("")) {
+                    toast("请输入联系电话");
+                    return;
+                }
+                if (mResults == null && mResults.size() <= 0) {
+                    toast("请选择图片");
+                    return;
+                }
                 final LoadingDialog loadingDialog = new LoadingDialog(HouseInfoActivity.this);
                 loadingDialog.show();
 
@@ -180,7 +201,7 @@ public class HouseInfoActivity extends BaseActivity {
                             public void onError(Call call, Exception e, int id) {
                                 e.printStackTrace();
                                 loadingDialog.dismiss();
-                                toast("加载失败");
+                                toast("发布失败");
                             }
 
                             @Override

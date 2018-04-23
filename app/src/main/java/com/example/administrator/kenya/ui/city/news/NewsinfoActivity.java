@@ -68,7 +68,7 @@ public class NewsinfoActivity extends BaseActivity {
 
     private void initOKHttp() {
         postFormBuilder = OkHttpUtils.post()
-                .url("http://192.168.1.102:8080/kenya/news/pageQuery")
+                .url(AppConstants.BASE_URL + "/kenya/news/pageQuery")
                 .addParams("page", cpageNum + "");
 
         StringCallback = new StringCallback() {

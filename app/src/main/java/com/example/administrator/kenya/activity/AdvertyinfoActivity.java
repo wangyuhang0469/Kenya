@@ -3,12 +3,15 @@ package com.example.administrator.kenya.activity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.ImageView;
 
 import com.alibaba.fastjson.JSON;
 import com.example.administrator.kenya.R;
 import com.example.administrator.kenya.base.BaseActivity;
 import com.example.administrator.kenya.classes.Company;
+import com.example.administrator.kenya.classes.User;
+import com.example.administrator.kenya.constants.AppConstants;
 import com.zhy.http.okhttp.OkHttpUtils;
 import com.zhy.http.okhttp.builder.PostFormBuilder;
 import com.zhy.http.okhttp.callback.StringCallback;
@@ -27,6 +30,18 @@ public class AdvertyinfoActivity extends BaseActivity {
     boolean img;
     @Bind(R.id.adverty_info_choose)
     ImageView advertyInfoChoose;
+    @Bind(R.id.adverty_info_work_name)
+    EditText advertyInfoWorkName;
+    @Bind(R.id.adverty_info_work_money)
+    EditText advertyInfoWorkMoney;
+    @Bind(R.id.adverty_info_work_quiret)
+    EditText advertyInfoWorkQuiret;
+    @Bind(R.id.adverty_info_jion_time)
+    EditText advertyInfoJionTime;
+    @Bind(R.id.adverty_info_company_name)
+    EditText advertyInfoCompanyName;
+    @Bind(R.id.adverty_info_company_phone)
+    EditText advertyInfoCompanyPhone;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,14 +58,14 @@ public class AdvertyinfoActivity extends BaseActivity {
                 break;
             case R.id.adverty_info_detail:
                 PostFormBuilder postFormBuilder = OkHttpUtils.post();
-                postFormBuilder.url("http://192.168.1.107:8080/kenya/recruit/publish")
-                        .addParams("companyname", "狮顺联合")
-                        .addParams("companystationdesc", "主要销售汽车")
-                        .addParams("companyphone", "15931127537")
-                        .addParams("companyaddress", "河北省")
-                        .addParams("companystation", "销售代表")
-                        .addParams("companystationsalary", "300")
-                        .addParams("userid", "2")
+                postFormBuilder.url(AppConstants.BASE_URL + "/kenya/recruit/publish")
+                        .addParams("companyname", advertyInfoCompanyName.getText().toString())
+                        .addParams("companystationdesc", advertyInfoWorkQuiret.getText().toString())
+                        .addParams("companyphone", advertyInfoCompanyPhone.getText().toString())
+                        .addParams("companyimg5", advertyInfoJionTime.getText().toString())//添加的是工作年限信息
+                        .addParams("companystation", advertyInfoWorkName.getText().toString())
+                        .addParams("companystationsalary", advertyInfoWorkMoney.getText().toString())
+                        .addParams("userid", User.getInstance().getUserId())
                         .build()
                         .execute(new StringCallback() {
                             @Override

@@ -15,6 +15,7 @@ import com.alibaba.fastjson.JSON;
 import com.example.administrator.kenya.R;
 import com.example.administrator.kenya.base.BaseFragment;
 import com.example.administrator.kenya.classes.News;
+import com.example.administrator.kenya.constants.AppConstants;
 import com.example.administrator.kenya.interfaces.BannerItemClickListener;
 import com.example.administrator.kenya.tools.GlideImageLoader;
 import com.example.administrator.kenya.ui.city.findmoney.FindMoneyActivity;
@@ -48,7 +49,6 @@ import okhttp3.Call;
  */
 public class CityHomeFragment extends BaseFragment {
 
-
     @Bind(R.id.banner)
     Banner banner;
     @Bind(R.id.back)
@@ -74,7 +74,6 @@ public class CityHomeFragment extends BaseFragment {
 
         initOKHttp();
         postFormBuilder.addParams("page", 1 + "").build().execute(StringCallback);
-
 
         List<String> imageList = new ArrayList<>();
         imageList.add("http://img011.hc360.cn/k1/M0B/24/D0/wKhQwFdjdHSER6NQAAAAADZsFuo401.jpg");
@@ -142,7 +141,7 @@ public class CityHomeFragment extends BaseFragment {
 
     private void initOKHttp() {
         postFormBuilder = OkHttpUtils.post()
-                .url("http://192.168.1.102:8080/kenya/news/pageQuery")
+                .url(AppConstants.BASE_URL + "/kenya/news/pageQuery")
                 .addParams("page", 1 + "");
         StringCallback = new StringCallback() {
             @Override
