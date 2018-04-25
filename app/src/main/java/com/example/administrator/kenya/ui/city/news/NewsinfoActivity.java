@@ -1,29 +1,17 @@
 package com.example.administrator.kenya.ui.city.news;
 
-import android.graphics.Bitmap;
-import android.graphics.drawable.BitmapDrawable;
-import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.alibaba.fastjson.JSON;
-import com.bumptech.glide.Glide;
-import com.bumptech.glide.request.animation.GlideAnimation;
-import com.bumptech.glide.request.target.SimpleTarget;
 import com.example.administrator.kenya.R;
 import com.example.administrator.kenya.adapter.NewsAdapter;
 import com.example.administrator.kenya.base.BaseActivity;
-import com.example.administrator.kenya.classes.Goods;
 import com.example.administrator.kenya.classes.News;
 import com.example.administrator.kenya.constants.AppConstants;
-import com.example.administrator.kenya.ui.city.used.GoodsDetailsActivity;
 import com.jwenfeng.library.pulltorefresh.BaseRefreshListener;
 import com.jwenfeng.library.pulltorefresh.PullToRefreshLayout;
 import com.zhy.http.okhttp.OkHttpUtils;
@@ -38,6 +26,7 @@ import java.util.List;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 import okhttp3.Call;
 
 public class NewsinfoActivity extends BaseActivity {
@@ -108,7 +97,6 @@ public class NewsinfoActivity extends BaseActivity {
             }
         };
     }
-
     //初始化组件
     private void initView() {
         newsAdapter = new NewsAdapter(this, newsList);
@@ -121,11 +109,14 @@ public class NewsinfoActivity extends BaseActivity {
             @Override
             public void refresh() {
             }
-
             @Override
             public void loadMore() {
                 postFormBuilder.addParams("pn", cpageNum + "").tag(this).build().execute(StringCallback);
             }
         });
+    }
+    @OnClick(R.id.back)
+    public void onViewClicked() {
+        finish();
     }
 }

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.zhy.autolayout.AutoRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.example.administrator.kenya.ui.city.news.NewsWebActivity">
+
+    <include layout="@layout/title_bar2" />
+
+    <RelativeLayout
+        android:id="@+id/web_parent"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="144px"
+        android:background="@color/white"
+        android:paddingLeft="20px"
+        android:paddingRight="20px">
+
+        <WebView
+            android:id="@+id/news_web"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"></WebView>
+    </RelativeLayout>
+</com.zhy.autolayout.AutoRelativeLayout>

@@ -3,22 +3,13 @@ package com.example.administrator.kenya.ui.city.house;
 import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.graphics.drawable.BitmapDrawable;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
-import android.util.Log;
-import android.view.Gravity;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.WindowManager;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.PopupWindow;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.alibaba.fastjson.JSON;
 import com.bumptech.glide.Glide;
@@ -63,6 +54,10 @@ public class HouseInfoActivity extends BaseActivity {
     EditText housePenson;
     @Bind(R.id.house_phone)
     EditText housePhone;
+    @Bind(R.id.house_square)
+    EditText houseSquare;
+    @Bind(R.id.house_address)
+    EditText houseAddress;
     private ArrayList<String> mResults = new ArrayList<>();
 
     @Override
@@ -192,8 +187,8 @@ public class HouseInfoActivity extends BaseActivity {
                         .addParams("leasedesc", houseInfoDesc.getText().toString())
                         .addParams("leaseprice", housePrice.getText().toString())
                         .addParams("leasephone", housePhone.getText().toString())
-                        .addParams("leasesquare", "")
-                        .addParams("leaseaddress", "")
+                        .addParams("leasesquare", houseSquare.getText().toString())
+                        .addParams("leaseaddress", houseAddress.getText().toString())
                         .addParams("userid", User.getInstance().getUserId())
                         .build()
                         .execute(new StringCallback() {

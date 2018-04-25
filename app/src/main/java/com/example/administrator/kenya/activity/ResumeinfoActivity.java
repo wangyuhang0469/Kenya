@@ -119,6 +119,15 @@ public class ResumeinfoActivity extends BaseActivity implements View.OnClickList
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_resumeinfo);
+        resumeTvRecm.setOnFocusChangeListener(new android.view.View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (hasFocus) {
+                    resumeTvRecmChoose.setVisibility(View.GONE);
+                } else {
+                }
+            }
+        });
         ButterKnife.bind(this);
     }
 

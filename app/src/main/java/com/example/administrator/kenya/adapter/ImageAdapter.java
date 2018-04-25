@@ -30,7 +30,7 @@ public class ImageAdapter extends RecyclerView.Adapter<ImageAdapter.ViewHolder> 
     private List<String> imaUrls;
     private Context context;
 
-    public ImageAdapter(Context context ,List<String> list) {
+    public ImageAdapter(Context context, List<String> list) {
         this.imaUrls = list;
         this.context = context;
     }
@@ -44,7 +44,6 @@ public class ImageAdapter extends RecyclerView.Adapter<ImageAdapter.ViewHolder> 
         }
     }
 
-
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.itme_image, parent, false);
@@ -55,7 +54,6 @@ public class ImageAdapter extends RecyclerView.Adapter<ImageAdapter.ViewHolder> 
     public void onBindViewHolder(final ViewHolder holder, final int position) {
 
         holder.imageView.setTag(imaUrls.get(position));
-
         Glide.with(context)
                 .load(imaUrls.get(position))
                 .asBitmap()
@@ -68,13 +66,7 @@ public class ImageAdapter extends RecyclerView.Adapter<ImageAdapter.ViewHolder> 
                         }
                     }
                 });
-
-
-
     }
-
-
-
 
     @Override
     public int getItemCount() {

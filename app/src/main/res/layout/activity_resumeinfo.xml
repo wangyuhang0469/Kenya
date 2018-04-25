@@ -32,196 +32,208 @@
 
     </com.zhy.autolayout.AutoRelativeLayout>
 
-    <com.zhy.autolayout.AutoLinearLayout
+    <com.example.administrator.kenya.view.MyObervalbleScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
         android:layout_below="@id/person_info"
-        android:orientation="vertical">
+        android:layout_marginBottom="200px">
 
-        <TextView
+        <com.zhy.autolayout.AutoRelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="227px"
-            android:background="@color/theme_btn" />
-
-        <include layout="@layout/line" />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="256px"
-            android:gravity="center"
-            android:text="头像，一份好工作的开始"
-            android:textColor="@color/textgreen1" />
-
-        <include layout="@layout/line" />
-
-
-        <com.zhy.autolayout.AutoLinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="256px"
-            android:gravity="center"
-            android:orientation="vertical">
-
-            <EditText
-                android:id="@+id/resume_info_jobname"
-                style="@style/edit_base2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:hint="输入姓名"
-                android:textColorHint="@color/textBlack2" />
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10sp">
-
-                <ImageView
-                    android:id="@+id/resume_info_men"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="10sp"
-                    android:src="@mipmap/resume_sex" />
-
-                <ImageView
-                    android:id="@+id/resume_info_women"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="10sp"
-                    android:src="@mipmap/resume_sex2" />
-            </LinearLayout>
-
-        </com.zhy.autolayout.AutoLinearLayout>
-
-        <include layout="@layout/line" />
-
-        <EditText
-            android:id="@+id/resume_info_jobwant"
-            style="@style/edit_base2"
-            android:layout_width="match_parent"
-            android:layout_height="256px"
-            android:gravity="center"
-            android:hint="请输入求职意向"
-            android:textColorHint="@color/textBlack3" />
-
-        <include layout="@layout/line" />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="256px"
-            android:gravity="center"
-            android:orientation="vertical">
-
-            <TextView
-                android:id="@+id/resume_tv_phone"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="手机号" />
-
-            <EditText
-                android:id="@+id/resume_info_phone"
-                style="@style/edit_base2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:hint="15931127537"
-                android:inputType="number|numberDecimal" />
-        </LinearLayout>
-
-        <include layout="@layout/line" />
-
-        <com.zhy.autolayout.AutoLinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="301px">
+            android:layout_height="wrap_content">
 
             <com.zhy.autolayout.AutoLinearLayout
-                android:id="@+id/pick_time"
-                android:layout_width="0dp"
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:gravity="center"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/resume_time_birday"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="出生年份" />
+                    android:layout_width="match_parent"
+                    android:layout_height="227px"
+                    android:background="@color/theme_btn" />
+
+                <include layout="@layout/line" />
 
                 <TextView
-                    android:id="@+id/resume_time_birday_choose"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="请选择" />
-            </com.zhy.autolayout.AutoLinearLayout>
+                    android:layout_width="match_parent"
+                    android:layout_height="256px"
+                    android:gravity="center"
+                    android:text="头像，一份好工作的开始"
+                    android:textColor="@color/textgreen1" />
 
-            <View
-                android:layout_width="1px"
-                android:layout_height="50dp"
-                android:layout_gravity="center"
-                android:background="#ddd" />
+                <include layout="@layout/line" />
 
-            <com.zhy.autolayout.AutoLinearLayout
-                android:id="@+id/resume_recm"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:orientation="vertical">
+                <com.zhy.autolayout.AutoLinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="256px"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <EditText
+                        android:id="@+id/resume_info_jobname"
+                        style="@style/edit_base2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:hint="输入姓名"
+                        android:textColorHint="@color/textBlack2" />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10sp">
+
+                        <ImageView
+                            android:id="@+id/resume_info_men"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="10sp"
+                            android:src="@mipmap/resume_sex" />
+
+                        <ImageView
+                            android:id="@+id/resume_info_women"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10sp"
+                            android:src="@mipmap/resume_sex2" />
+                    </LinearLayout>
+
+                </com.zhy.autolayout.AutoLinearLayout>
+
+                <include layout="@layout/line" />
 
                 <EditText
-                    android:id="@+id/resume_tv_recm"
+                    android:id="@+id/resume_info_jobwant"
                     style="@style/edit_base2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:hint="个人介绍"
-                    android:textColorHint="@color/textBlack2" />
+                    android:layout_width="match_parent"
+                    android:layout_height="256px"
+                    android:gravity="center"
+                    android:hint="请输入求职意向"
+                    android:textColorHint="@color/textBlack3" />
 
-                <TextView
-                    android:id="@+id/resume_tv_recm_choose"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="请输入" />
+                <include layout="@layout/line" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="256px"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/resume_tv_phone"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="手机号" />
+
+                    <EditText
+                        android:id="@+id/resume_info_phone"
+                        style="@style/edit_base2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:hint="15931127537"
+                        android:inputType="number|numberDecimal" />
+                </LinearLayout>
+
+                <include layout="@layout/line" />
+
+                <com.zhy.autolayout.AutoLinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="301px">
+
+                    <com.zhy.autolayout.AutoLinearLayout
+                        android:id="@+id/pick_time"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/resume_time_birday"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="出生年份" />
+
+                        <TextView
+                            android:id="@+id/resume_time_birday_choose"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="请选择" />
+                    </com.zhy.autolayout.AutoLinearLayout>
+
+                    <View
+                        android:layout_width="1px"
+                        android:layout_height="50dp"
+                        android:layout_gravity="center"
+                        android:background="#ddd" />
+
+                    <com.zhy.autolayout.AutoLinearLayout
+                        android:id="@+id/resume_recm"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <EditText
+                            android:id="@+id/resume_tv_recm"
+                            style="@style/edit_base2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:hint="个人介绍"
+                            android:textColorHint="@color/textBlack2" />
+
+                        <TextView
+                            android:id="@+id/resume_tv_recm_choose"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="请输入" />
+                    </com.zhy.autolayout.AutoLinearLayout>
+
+                    <View
+                        android:layout_width="1px"
+                        android:layout_height="50dp"
+                        android:layout_gravity="center"
+                        android:background="#ddd" />
+
+                    <com.zhy.autolayout.AutoLinearLayout
+                        android:id="@+id/ruseme_work_time"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/resume_tv_time"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="工作时间" />
+
+                        <TextView
+                            android:id="@+id/resume_tv_choose"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="请选择" />
+                    </com.zhy.autolayout.AutoLinearLayout>
+                </com.zhy.autolayout.AutoLinearLayout>
             </com.zhy.autolayout.AutoLinearLayout>
 
-            <View
-                android:layout_width="1px"
-                android:layout_height="50dp"
-                android:layout_gravity="center"
-                android:background="#ddd" />
+            <com.example.administrator.kenya.view.RoundImageView
+                android:id="@+id/resume_info_photo"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="30dp"
+                android:scaleType="fitXY"
+                android:src="@mipmap/resum_photo" />
 
-            <com.zhy.autolayout.AutoLinearLayout
-                android:id="@+id/ruseme_work_time"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:orientation="vertical">
+        </com.zhy.autolayout.AutoRelativeLayout>
 
-                <TextView
-                    android:id="@+id/resume_tv_time"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="工作时间" />
-
-                <TextView
-                    android:id="@+id/resume_tv_choose"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="请选择" />
-            </com.zhy.autolayout.AutoLinearLayout>
-        </com.zhy.autolayout.AutoLinearLayout>
-    </com.zhy.autolayout.AutoLinearLayout>
-
-    <com.example.administrator.kenya.view.RoundImageView
-        android:id="@+id/resume_info_photo"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="65dp"
-        android:scaleType="fitXY"
-        android:src="@mipmap/resum_photo" />
+    </com.example.administrator.kenya.view.MyObervalbleScrollView>
 
     <TextView
         android:id="@+id/resume_info_detail"

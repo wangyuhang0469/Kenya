@@ -9,17 +9,6 @@ import java.util.List;
  */
 
 public class Company implements Serializable {
-    /**
-     * companyid : 67
-     * companyname : 公司名字
-     * companystation : 公司招聘岗位
-     * companystationsalary : 3.33333333E8
-     * companyphone : 公司手机号
-     * userid : 4
-     * companystationdesc : null
-     * companyaddress : null
-     * companydesc : null
-     */
 
     private String companyid;
     private String companyname;

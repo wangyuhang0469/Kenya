@@ -15,7 +15,9 @@
         android:roundIcon="@drawable/app_launcher"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity" android:theme="@style/AppTheme.green_action_bar" />
+        <activity
+            android:name=".MainActivity"
+            android:theme="@style/AppTheme.green_action_bar" />
         <activity android:name=".base.BaseActivity" />
         <activity
             android:name=".ui.main.IntroActivity"
@@ -57,7 +59,6 @@
                 android:resource="@xml/file_paths" />
         </provider>
 
-
         <activity
             android:name=".ui.city.job.JobActivity"
             android:theme="@style/AppTheme.dark_action_bar" />
@@ -75,7 +76,6 @@
         <activity android:name=".ui.city.house.HouseDetailActivity" />
         <activity android:name=".ui.city.house.HouseInfoActivity" />
         <activity android:name=".ui.city.friends.FriendsActivity" />
-
         <activity android:name=".ui.city.findmoney.FindMoneyActivity" />
         <activity android:name=".activity.AdvertyinfoActivity" />
         <activity android:name=".ui.city.life.LifeActivity" />
@@ -83,6 +83,7 @@
         <activity android:name=".activity.JobDetailActivity" />
         <activity android:name=".activity.DetailActivity" />
         <activity android:name=".ui.city.news.NewsinfoActivity" />
+        <activity android:name=".ui.city.news.NewsWebActivity" />
         <activity android:name=".ui.city.life.LifeReleaseActivity" />
         <activity android:name=".ui.city.life.LifeDetailsActivity" />
         <activity android:name=".ui.city.husbandry.HusbandryActivity" />
@@ -92,5 +93,4 @@
         <activity android:name=".ui.city.findmoney.FindMonydetailActivity" />
         <activity android:name=".ui.myself.myrelease.MyReleaseActivity" />
     </application>
-
 </manifest>

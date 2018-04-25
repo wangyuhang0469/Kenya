@@ -30,8 +30,6 @@
         android:layout_toRightOf="@id/image_sex"
         android:gravity="center_vertical"
         android:textColor="@color/textBlack1" />
-
-
     <TextView
         android:id="@+id/call"
         android:layout_width="208px"

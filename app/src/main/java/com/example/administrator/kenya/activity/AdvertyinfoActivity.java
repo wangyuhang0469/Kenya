@@ -48,6 +48,8 @@ public class AdvertyinfoActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_advertyinfo);
         ButterKnife.bind(this);
+
+
     }
 
     @OnClick({R.id.back, R.id.adverty_info_detail, R.id.adverty_info_choose})
@@ -57,6 +59,12 @@ public class AdvertyinfoActivity extends BaseActivity {
                 finish();
                 break;
             case R.id.adverty_info_detail:
+                String price;
+                if (img == true) {
+                    price = advertyInfoWorkMoney.getText().toString();
+                } else {
+                    price = "面议";
+                }
                 PostFormBuilder postFormBuilder = OkHttpUtils.post();
                 postFormBuilder.url(AppConstants.BASE_URL + "/kenya/recruit/publish")
                         .addParams("companyname", advertyInfoCompanyName.getText().toString())
@@ -64,7 +72,7 @@ public class AdvertyinfoActivity extends BaseActivity {
                         .addParams("companyphone", advertyInfoCompanyPhone.getText().toString())
                         .addParams("companyimg5", advertyInfoJionTime.getText().toString())//添加的是工作年限信息
                         .addParams("companystation", advertyInfoWorkName.getText().toString())
-                        .addParams("companystationsalary", advertyInfoWorkMoney.getText().toString())
+                        .addParams("companystationsalary", price)
                         .addParams("userid", User.getInstance().getUserId())
                         .build()
                         .execute(new StringCallback() {
@@ -101,9 +109,15 @@ public class AdvertyinfoActivity extends BaseActivity {
                 type++;
                 if (type % 2 == 0) {
                     advertyInfoChoose.setImageResource(R.mipmap.mianyi);
+                    advertyInfoWorkMoney.setFocusableInTouchMode(true);
+                    advertyInfoWorkMoney.setFocusable(true);
+                    advertyInfoWorkMoney.requestFocus();
                     img = true;
                 } else {
                     advertyInfoChoose.setImageResource(R.mipmap.mianyi2);
+                    advertyInfoWorkMoney.setText("");
+                    advertyInfoWorkMoney.setFocusable(false);
+                    advertyInfoWorkMoney.setFocusableInTouchMode(false);
                     img = false;
                 }
                 break;

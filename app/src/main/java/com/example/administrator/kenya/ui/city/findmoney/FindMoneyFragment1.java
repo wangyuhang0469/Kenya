@@ -85,7 +85,6 @@ public class FindMoneyFragment1 extends Fragment {
         initOKHttp();
         initView();
         postFormBuilder.addParams("pn", cpageNum + "").build().execute(StringCallback);
-
         return view;
     }
 

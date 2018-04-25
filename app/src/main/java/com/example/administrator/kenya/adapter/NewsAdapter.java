@@ -20,6 +20,7 @@ import com.example.administrator.kenya.R;
 import com.example.administrator.kenya.classes.House;
 import com.example.administrator.kenya.classes.News;
 import com.example.administrator.kenya.ui.city.house.HouseDetailActivity;
+import com.example.administrator.kenya.ui.city.news.NewsWebActivity;
 
 import java.util.List;
 
@@ -79,9 +80,9 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.ViewHolder> {
             public void onClick(View view) {
                 Bundle bundle = new Bundle();
                 bundle.putSerializable("news", list.get(position));
-//                Intent intent = new Intent(context, HouseDetailActivity.class);
-//                intent.putExtras(bundle);
-//                context.startActivity(intent);
+                Intent intent = new Intent(context, NewsWebActivity.class);
+                intent.putExtras(bundle);
+                context.startActivity(intent);
             }
         });
     }

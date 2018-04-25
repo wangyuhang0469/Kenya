@@ -141,6 +141,4 @@
             android:textColor="@color/white"
             android:textSize="13sp" />
     </com.zhy.autolayout.AutoRelativeLayout>
-
-
 </com.zhy.autolayout.AutoRelativeLayout>

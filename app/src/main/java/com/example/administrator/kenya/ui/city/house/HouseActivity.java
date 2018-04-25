@@ -50,7 +50,6 @@ public class HouseActivity extends BaseActivity {
         initView();
         postFormBuilder.addParams("pn", cpageNum + "").build().execute(StringCallback);
     }
-
     private void initOKHttp() {
         postFormBuilder = OkHttpUtils.post()
                 .url(AppConstants.BASE_URL + "/kenya/Lease/selectByFile")
@@ -93,7 +92,6 @@ public class HouseActivity extends BaseActivity {
             }
         };
     }
-
     //初始化组件
     private void initView() {
         houseadapter = new HouseAdapter(this, housesList);

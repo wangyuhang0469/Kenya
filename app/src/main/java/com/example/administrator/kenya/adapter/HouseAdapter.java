@@ -67,21 +67,23 @@ public class HouseAdapter extends RecyclerView.Adapter<HouseAdapter.ViewHolder> 
         holder.house_phone.setText("手机：" + list.get(position).getLeasephone());
         holder.house_home.setText(list.get(position).getLeasehome());
         holder.house_price.setText("$" + list.get(position).getLeaseprice());
-        holder.house_image.setTag(list.get(position).getLeaseimgs());
+//        holder.house_image.setTag(list.get(position).getLeaseimgs());
 
         Glide.with(context)
                 .load(AppConstants.BASE_URL + list.get(position).getLeaseimgs())
-                .asBitmap()
-                .placeholder(R.drawable.bg4dp_grey)
-                .into(new SimpleTarget<Bitmap>() {
-                    @Override
-                    public void onResourceReady(Bitmap resource, GlideAnimation<? super Bitmap> glideAnimation) {
-                        String tag = (String) holder.house_image.getTag();
-                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN && tag != null && tag.equals(list.get(position).getLeaseimgs())) {
-                            holder.house_image.setBackground(new BitmapDrawable(resource));   //设置背景
-                        }
-                    }
-                });
+                .centerCrop()
+                .into(holder.house_image);
+//                .asBitmap()
+//                .placeholder(R.drawable.bg4dp_grey)
+//                .into(new SimpleTarget<Bitmap>() {
+//                    @Override
+//                    public void onResourceReady(Bitmap resource, GlideAnimation<? super Bitmap> glideAnimation) {
+//                        String tag = (String) holder.house_image.getTag();
+//                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN && tag != null && tag.equals(list.get(position).getLeaseimgs())) {
+//                            holder.house_image.setBackground(new BitmapDrawable(resource));   //设置背景
+//                        }
+//                    }
+//                });
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
