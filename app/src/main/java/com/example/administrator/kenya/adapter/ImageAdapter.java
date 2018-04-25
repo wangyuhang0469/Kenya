@@ -16,6 +16,7 @@ import com.bumptech.glide.request.animation.GlideAnimation;
 import com.bumptech.glide.request.target.SimpleTarget;
 import com.example.administrator.kenya.R;
 import com.example.administrator.kenya.constants.AppConstants;
+import com.example.administrator.kenya.ui.main.PreviewDialog;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,7 +31,7 @@ public class ImageAdapter extends RecyclerView.Adapter<ImageAdapter.ViewHolder> 
     private List<String> imaUrls;
     private Context context;
 
-    public ImageAdapter(Context context, List<String> list) {
+    public ImageAdapter(Context context ,List<String> list) {
         this.imaUrls = list;
         this.context = context;
     }
@@ -44,6 +45,7 @@ public class ImageAdapter extends RecyclerView.Adapter<ImageAdapter.ViewHolder> 
         }
     }
 
+
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.itme_image, parent, false);
@@ -54,19 +56,38 @@ public class ImageAdapter extends RecyclerView.Adapter<ImageAdapter.ViewHolder> 
     public void onBindViewHolder(final ViewHolder holder, final int position) {
 
         holder.imageView.setTag(imaUrls.get(position));
+//        holder.imageView.setTag(imaUrls.get(position));
+
         Glide.with(context)
                 .load(imaUrls.get(position))
-                .asBitmap()
-                .into(new SimpleTarget<Bitmap>() {
-                    @Override
-                    public void onResourceReady(Bitmap resource, GlideAnimation<? super Bitmap> glideAnimation) {
-                        String tag = (String) holder.imageView.getTag();
-                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN && tag != null && tag.equals(imaUrls.get(position))) {
-                            holder.imageView.setBackground(new BitmapDrawable(resource));   //设置背景
-                        }
-                    }
-                });
+                .centerCrop()
+                .into(holder.imageView);
+
+//                .asBitmap()
+//                .into(new SimpleTarget<Bitmap>() {
+//                    @Override
+//                    public void onResourceReady(Bitmap resource, GlideAnimation<? super Bitmap> glideAnimation) {
+//                        String tag = (String) holder.imageView.getTag();
+//                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN && tag != null && tag.equals(imaUrls.get(position))) {
+//                            holder.imageView.setBackground(new BitmapDrawable(resource));   //设置背景
+//                        }
+//                    }
+//                });
+
+        holder.imageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                new PreviewDialog(context ,imaUrls,position).show();
+
+            }
+        });
+
+
+
     }
+
+
+
 
     @Override
     public int getItemCount() {

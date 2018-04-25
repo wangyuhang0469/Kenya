@@ -149,6 +149,7 @@ public class ResumeinfoActivity extends BaseActivity implements View.OnClickList
                 openPopupWindow(view);
                 break;
             case R.id.resume_info_detail:
+
                 File f2 = new File(s);
                 PostFormBuilder postFormBuilder = OkHttpUtils.post()
                         .addFile("logoFile", "tupian.png", f2);

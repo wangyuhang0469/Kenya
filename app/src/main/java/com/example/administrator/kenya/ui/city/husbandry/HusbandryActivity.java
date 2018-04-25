@@ -254,22 +254,26 @@ public class HusbandryActivity extends BaseActivity {
         public void onBindViewHolder(final ViewHolder holder, final int position) {
             holder.framname.setText(list.get(position).getFramname());
             holder.framphone.setText("手机：" + list.get(position).getFramphone());
-            holder.framimgs.setTag(list.get(position).getFramimgs());
+//            holder.framimgs.setTag(list.get(position).getFramimgs());
 //
             Glide.with(HusbandryActivity.this)
                     .load(AppConstants.BASE_URL + list.get(position).getFramimgs())
-                    .asBitmap()
-                    .placeholder(R.drawable.bg4dp_grey)
                     .centerCrop()
-                    .into(new SimpleTarget<Bitmap>() {
-                        @Override
-                        public void onResourceReady(Bitmap resource, GlideAnimation<? super Bitmap> glideAnimation) {
-                            String tag = (String) holder.framimgs.getTag();
-                            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN && tag != null && tag.equals(list.get(position).getFramimgs())) {
-                                holder.framimgs.setBackground(new BitmapDrawable(resource));   //设置背景
-                            }
-                        }
-                    });
+                    .placeholder(R.drawable.img_loading)
+                    .into(holder.framimgs);
+
+//                    .asBitmap()
+//                    .placeholder(R.drawable.bg4dp_grey)
+//                    .centerCrop()
+//                    .into(new SimpleTarget<Bitmap>() {
+//                        @Override
+//                        public void onResourceReady(Bitmap resource, GlideAnimation<? super Bitmap> glideAnimation) {
+//                            String tag = (String) holder.framimgs.getTag();
+//                            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN && tag != null && tag.equals(list.get(position).getFramimgs())) {
+//                                holder.framimgs.setBackground(new BitmapDrawable(resource));   //设置背景
+//                            }
+//                        }
+//                    });
 
 
 

@@ -17,7 +17,7 @@ public class WelcomeActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
-        getWindow().getDecorView().setBackgroundResource(R.drawable.linshi2);
+        getWindow().getDecorView().setBackgroundResource(R.drawable.welcome);
 
         super.onCreate(savedInstanceState);
 //        setContentView(R.layout.activity_welcome2);

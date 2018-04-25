@@ -65,20 +65,24 @@ public class JobAdapter extends RecyclerView.Adapter<JobAdapter.ViewHolder> {
         holder.job_name.setText(list.get(position).getName());
         holder.job_sex.setText(list.get(position).getSex());
         holder.job_age.setText(list.get(position).getAge() + "岁");
-        holder.job_image.setTag(list.get(position).getHeadimg());
+//        holder.job_image.setTag(list.get(position).getHeadimg());
         Glide.with(context)
                 .load(AppConstants.BASE_URL + list.get(position).getHeadimg())
-                .asBitmap()
-                .placeholder(R.drawable.bg4dp_grey)
-                .into(new SimpleTarget<Bitmap>() {
-                    @Override
-                    public void onResourceReady(Bitmap resource, GlideAnimation<? super Bitmap> glideAnimation) {
-                        String tag = (String) holder.job_image.getTag();
-                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN && tag != null && tag.equals(list.get(position).getHeadimg())) {
-                            holder.job_image.setBackground(new BitmapDrawable(resource));   //设置背景
-                        }
-                    }
-                });
+                .centerCrop()
+                .placeholder(R.drawable.img_loading)
+                .into(holder.job_image);
+
+//                .asBitmap()
+//                .placeholder(R.drawable.bg4dp_grey)
+//                .into(new SimpleTarget<Bitmap>() {
+//                    @Override
+//                    public void onResourceReady(Bitmap resource, GlideAnimation<? super Bitmap> glideAnimation) {
+//                        String tag = (String) holder.job_image.getTag();
+//                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN && tag != null && tag.equals(list.get(position).getHeadimg())) {
+//                            holder.job_image.setBackground(new BitmapDrawable(resource));   //设置背景
+//                        }
+//                    }
+//                });
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override

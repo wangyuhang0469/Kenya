@@ -109,30 +109,37 @@ public class MyReleaseActivity extends BaseActivity {
                     case R.id.radioButton1:
                         fragmentTransaction.hide(fragments[currentTabIndex]).show(fragments[0]).commit();
                         currentTabIndex = 0;
+                        classification.setText("租房");
                         break;
                     case R.id.radioButton2:
                         fragmentTransaction.hide(fragments[currentTabIndex]).show(fragments[1]).commit();
                         currentTabIndex = 1;
+                        classification.setText("二手");
                         break;
                     case R.id.radioButton3:
                         fragmentTransaction.hide(fragments[currentTabIndex]).show(fragments[2]).commit();
                         currentTabIndex = 2;
+                        classification.setText("求职");
                         break;
                     case R.id.radioButton4:
                         fragmentTransaction.hide(fragments[currentTabIndex]).show(fragments[3]).commit();
                         currentTabIndex = 3;
+                        classification.setText("招聘");
                         break;
                     case R.id.radioButton5:
                         fragmentTransaction.hide(fragments[currentTabIndex]).show(fragments[4]).commit();
                         currentTabIndex = 4;
+                        classification.setText("生活服务");
                         break;
                     case R.id.radioButton6:
                         fragmentTransaction.hide(fragments[currentTabIndex]).show(fragments[5]).commit();
                         currentTabIndex = 5;
+                        classification.setText("农林牧");
                         break;
                     case R.id.radioButton7:
                         fragmentTransaction.hide(fragments[currentTabIndex]).show(fragments[6]).commit();
                         currentTabIndex = 6;
+                        classification.setText("交友");
                         break;
                 }
 

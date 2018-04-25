@@ -130,7 +130,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="150px"
                 android:gravity="center"
-                android:hint="输入手机号" />
+                android:hint="输入手机号"
+                android:inputType="phone"/>
 
             <include layout="@layout/line" />
 

@@ -36,6 +36,8 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import okhttp3.Call;
+import top.zibin.luban.Luban;
+import top.zibin.luban.OnCompressListener;
 
 public class GoodsReleaseActivity extends BaseActivity {
 
@@ -56,6 +58,7 @@ public class GoodsReleaseActivity extends BaseActivity {
     EditText goodsphone;
 
     private ArrayList<String> mResults = new ArrayList<>();
+    private ArrayList<File> compressFile = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -124,53 +127,47 @@ public class GoodsReleaseActivity extends BaseActivity {
                 finish();
                 break;
             case R.id.release:
-                final LoadingDialog loadingDialog = new LoadingDialog(GoodsReleaseActivity.this);
-                loadingDialog.show();
-                PostFormBuilder postFormBuilder = OkHttpUtils.post();
-                for (int i = 0; i < mResults.size(); i++) {
-                    File file = new File(mResults.get(i));
-                    postFormBuilder.addFile("logoFil", file.getName(), file);
-                }
-                postFormBuilder.url(AppConstants.BASE_URL + "/kenya/saveSurvey")
-                        .addParams("userId", User.getInstance().getUserId())
-                        .addParams("goodsName", goodsname.getText().toString())
-                        .addParams("goodsDesc", goodsdesc.getText().toString())
-                        .addParams("goodsPrice", goodsprice.getText().toString())
-                        .addParams("goodUserName", goodsusername.getText().toString())
-                        .addParams("goodsPhone", goodsphone.getText().toString())
-                        .build()
-                        .execute(new StringCallback() {
-                            @Override
-                            public void onError(Call call, Exception e, int id) {
-                                e.printStackTrace();
-                                toast("发布失败");
-                                loadingDialog.dismiss();
-                            }
+                if ( goodsphone.getText().length()==0){
+                    toast("请输入标题");
+                }else if (goodsdesc.getText().length() == 0){
+                    toast("请输入描述");
+                }else if (goodsprice.getText().length()==0){
+                    toast("请输入价格");
+                }else if (goodsusername.getText().length()==0){
+                    toast("请输入联系人");
+                }else if (goodsphone.getText().length()==0){
+                    toast("请输入联系电话");
+                }else if (mResults == null || mResults.size() == 0){
+                    toast("请选择图片");
+                }else {
+                    final LoadingDialog loadingDialog = new LoadingDialog(GoodsReleaseActivity.this);
+                    loadingDialog.show();
 
-                            @Override
-                            public void onResponse(String response, int id) {
-                                Log.d("kang", "11111111" + response);
-                                log(response);
-                                try {
-                                    JSONObject jsonObject = new JSONObject(response);
-                                    log(response);
-                                    if (jsonObject.getString("code").equals("000")) {
-                                        Goods goods = JSON.parseObject(jsonObject.getString("data1"), Goods.class);
-                                        Bundle bundle = new Bundle();
-                                        bundle.putSerializable("goods", goods);
-                                        toast("发布成功");
-                                        startActivity(GoodsDetailsActivity.class, bundle);
-                                        finish();
-                                    } else {
-                                        toast(jsonObject.getString("message"));
+                    for (int i = 0; i < mResults.size() ; i++) {
+                        Luban.with(this)
+                                .load(mResults.get(i))
+                                .ignoreBy(150)
+                                .setTargetDir(getExternalCacheDir().toString())
+                                .setCompressListener(new OnCompressListener() {
+                                    @Override
+                                    public void onStart() {
                                     }
-                                } catch (JSONException e) {
-                                    e.printStackTrace();
-                                }
-                                loadingDialog.dismiss();
-                            }
-                        });
 
+                                    @Override
+                                    public void onSuccess(File file) {
+                                        compressFile.add(file);
+                                        if (compressFile.size() == mResults.size()){
+                                            send(loadingDialog);
+                                        }
+                                    }
+
+                                    @Override
+                                    public void onError(Throwable e) {
+
+                                    }
+                                }).launch();
+                    }
+                }
                 break;
         }
     }
@@ -197,6 +194,52 @@ public class GoodsReleaseActivity extends BaseActivity {
             intent.putExtra(MultiImageSelectorActivity.EXTRA_DEFAULT_SELECTED_LIST, mResults);
         }
         startActivityForResult(intent, 2);
+    }
+
+
+    private void send(final LoadingDialog loadingDialog){
+
+        PostFormBuilder postFormBuilder = OkHttpUtils.post();
+        for (int i = 0; i < compressFile.size(); i++) {
+            postFormBuilder.addFile("logoFil", compressFile.get(i).getName(), compressFile.get(i));
+        }
+        postFormBuilder.url(AppConstants.BASE_URL + "/kenya/saveSurvey")
+                .addParams("userId", User.getInstance().getUserId())
+                .addParams("goodsName", goodsname.getText().toString())
+                .addParams("goodsDesc", goodsdesc.getText().toString())
+                .addParams("goodsPrice", goodsprice.getText().toString())
+                .addParams("goodUserName", goodsusername.getText().toString())
+                .addParams("goodsPhone", goodsphone.getText().toString())
+                .build()
+                .execute(new StringCallback() {
+                    @Override
+                    public void onError(Call call, Exception e, int id) {
+                        e.printStackTrace();
+                        toast("发布失败");
+                        loadingDialog.dismiss();
+                    }
+
+                    @Override
+                    public void onResponse(String response, int id) {
+                        try {
+                            JSONObject jsonObject = new JSONObject(response);
+                            log(response);
+                            if (jsonObject.getString("code").equals("000")) {
+                                Goods goods = JSON.parseObject(jsonObject.getString("data1"), Goods.class);
+                                Bundle bundle = new Bundle();
+                                bundle.putSerializable("goods", goods);
+                                toast("发布成功");
+                                startActivity(GoodsDetailsActivity.class, bundle);
+                                finish();
+                            } else {
+                                toast(jsonObject.getString("message"));
+                            }
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                        loadingDialog.dismiss();
+                    }
+                });
     }
 
 }

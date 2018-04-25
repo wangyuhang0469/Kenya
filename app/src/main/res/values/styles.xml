@@ -35,7 +35,7 @@
         <!--&lt;!&ndash; 边框 &ndash;&gt;-->
         <item name="android:windowFrame">@null</item>
         <!-- 全屏 -->
-        <item name="android:windowFullscreen">false</item>
+        <item name="android:windowFullscreen">true</item>
 
     </style>
 

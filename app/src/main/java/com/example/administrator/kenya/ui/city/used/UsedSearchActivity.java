@@ -228,20 +228,25 @@ public class UsedSearchActivity extends BaseActivity {
             holder.goodsname.setText(list.get(position).getGoodsname());
             holder.goodsphone.setText("手机：" + list.get(position).getGoodsphone());
             holder.goodsprice.setText("$" + list.get(position).getGoodsprice());
-            holder.goodsimgs.setTag(list.get(position).getGoodsimgs());
+//            holder.goodsimgs.setTag(list.get(position).getGoodsimgs());
             Glide.with(UsedSearchActivity.this)
                     .load(AppConstants.BASE_URL + list.get(position).getGoodsimgs())
-                    .asBitmap()
-                    .placeholder(R.drawable.bg4dp_grey)
-                    .into(new SimpleTarget<Bitmap>() {
-                        @Override
-                        public void onResourceReady(Bitmap resource, GlideAnimation<? super Bitmap> glideAnimation) {
-                            String tag = (String) holder.goodsimgs.getTag();
-                            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN && tag != null && tag.equals(list.get(position).getGoodsimgs())) {
-                                holder.goodsimgs.setBackground(new BitmapDrawable(resource));   //设置背景
-                            }
-                        }
-                    });
+                    .centerCrop()
+                    .placeholder(R.drawable.img_loading)
+                    .into(holder.goodsimgs);
+
+
+//                    .asBitmap()
+//                    .placeholder(R.drawable.bg4dp_grey)
+//                    .into(new SimpleTarget<Bitmap>() {
+//                        @Override
+//                        public void onResourceReady(Bitmap resource, GlideAnimation<? super Bitmap> glideAnimation) {
+//                            String tag = (String) holder.goodsimgs.getTag();
+//                            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN && tag != null && tag.equals(list.get(position).getGoodsimgs())) {
+//                                holder.goodsimgs.setBackground(new BitmapDrawable(resource));   //设置背景
+//                            }
+//                        }
+//                    });
 
             holder.itemView.setOnClickListener(new View.OnClickListener() {
                 @Override

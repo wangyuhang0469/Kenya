@@ -15,8 +15,11 @@ import android.widget.TextView;
 
 import com.alibaba.fastjson.JSON;
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.resource.drawable.GlideDrawable;
+import com.bumptech.glide.request.RequestListener;
 import com.bumptech.glide.request.animation.GlideAnimation;
 import com.bumptech.glide.request.target.SimpleTarget;
+import com.bumptech.glide.request.target.Target;
 import com.example.administrator.kenya.R;
 import com.example.administrator.kenya.base.BaseActivity;
 import com.example.administrator.kenya.classes.Goods;
@@ -178,15 +181,16 @@ public class UsedActivity extends BaseActivity {
             holder.goodsphone.setText("手机：" + list.get(position).getGoodsphone());
             holder.goodsprice.setText("$" + list.get(position).getGoodsprice());
 //            holder.goodsimgs.setTag(list.get(position).getGoodsimgs());
+//            holder.goodsimgs.setBackgroundResource(R.drawable.bg4dp_grey);
 
             Glide.with(UsedActivity.this)
                     .load(AppConstants.BASE_URL + list.get(position).getGoodsimgs())
                     .centerCrop()
+                    .placeholder(R.drawable.img_loading)
                     .into(holder.goodsimgs);
 
 
 //                    .asBitmap()
-//                    .placeholder(R.drawable.bg4dp_grey)
 //                    .into(new SimpleTarget<Bitmap>() {
 //                        @Override
 //                        public void onResourceReady(Bitmap resource, GlideAnimation<? super Bitmap> glideAnimation) {

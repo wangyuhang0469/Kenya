@@ -60,21 +60,25 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.ViewHolder> {
     public void onBindViewHolder(final ViewHolder holder, final int position) {
         holder.news_title.setText(list.get(position).getNewstitle());
         holder.news_time.setText(list.get(position).getNewscreatetime());
-        holder.news_image.setTag(list.get(position).getNewsimg0());
+//        holder.news_image.setTag(list.get(position).getNewsimg0());
 
         Glide.with(context)
                 .load(list.get(position).getNewsimg0())
-                .asBitmap()
-                .placeholder(R.drawable.bg4dp_grey)
-                .into(new SimpleTarget<Bitmap>() {
-                    @Override
-                    public void onResourceReady(Bitmap resource, GlideAnimation<? super Bitmap> glideAnimation) {
-                        String tag = (String) holder.news_image.getTag();
-                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN && tag != null && tag.equals(list.get(position).getNewsimg0())) {
-                            holder.news_image.setBackground(new BitmapDrawable(resource));   //设置背景
-                        }
-                    }
-                });
+                .centerCrop()
+                .placeholder(R.drawable.img_loading)
+                .into(holder.news_image);
+
+//                .asBitmap()
+//                .placeholder(R.drawable.bg4dp_grey)
+//                .into(new SimpleTarget<Bitmap>() {
+//                    @Override
+//                    public void onResourceReady(Bitmap resource, GlideAnimation<? super Bitmap> glideAnimation) {
+//                        String tag = (String) holder.news_image.getTag();
+//                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN && tag != null && tag.equals(list.get(position).getNewsimg0())) {
+//                            holder.news_image.setBackground(new BitmapDrawable(resource));   //设置背景
+//                        }
+//                    }
+//                });
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

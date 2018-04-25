@@ -39,6 +39,8 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import okhttp3.Call;
+import top.zibin.luban.Luban;
+import top.zibin.luban.OnCompressListener;
 
 public class HusbandryReleaseActivity extends BaseActivity {
 
@@ -59,6 +61,7 @@ public class HusbandryReleaseActivity extends BaseActivity {
 
 
     private ArrayList<String> mResults = new ArrayList<>();
+    private ArrayList<File> compressFile = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,7 +75,7 @@ public class HusbandryReleaseActivity extends BaseActivity {
         framphone.setText(User.getInstance().getUserPhonenumber());
 
         List<String> types = new ArrayList<>();
-        types.add("请选择服务类型");
+        types.add("请选择类型");
         types.add("动植物种苗");
         types.add("农作物");
         types.add("畜禽养殖");
@@ -161,54 +164,49 @@ public class HusbandryReleaseActivity extends BaseActivity {
                 break;
             case R.id.release:
 
-                final LoadingDialog loadingDialog = new LoadingDialog(HusbandryReleaseActivity.this);
-                loadingDialog.show();
+                if (spinner.getSelectedItem().toString().equals("请选择类型")) {
+                    toast("请选择类型");
+                } else if (framname.getText().length()==0){
+                    toast("请输入标题");
+                }else if (framdesc.getText().length() == 0) {
+                    toast("请输入详情");
+                }else if (framuser.getText().length()==0) {
+                    toast("请输入联系人");
+                }else if (framphone.getText().length()==0) {
+                    toast("请输入联系电话");
+                }else if (mResults == null || mResults.size() <= 0) {
+                    toast("请选择图片");
+                }else {
+                    final LoadingDialog loadingDialog = new LoadingDialog(HusbandryReleaseActivity.this);
+                    loadingDialog.show();
 
-                PostFormBuilder postFormBuilder = OkHttpUtils.post();
-                for (int i = 0; i < mResults.size(); i++) {
-                    File file = new File(mResults.get(i));
-                    postFormBuilder.addFile("files", file.getName(), file);
-                }
-                postFormBuilder.url(AppConstants.BASE_URL + "/kenya/Fram/insertfram")
-                        .addParams("userid", User.getInstance().getUserId())
-                        .addParams("framtype", spinner.getSelectedItem().toString())
-                        .addParams("framname", framname.getText().toString())
-                        .addParams("framdesc", framdesc.getText().toString())
-                        .addParams("framuser", framuser.getText().toString())
-                        .addParams("framphone", framphone.getText().toString())
-                        .build()
-                        .execute(new StringCallback() {
-                            @Override
-                            public void onError(Call call, Exception e, int id) {
-                                e.printStackTrace();
-                                toast("发布失败");
-                                loadingDialog.dismiss();
-                            }
-
-                            @Override
-                            public void onResponse(String response, int id) {
-
-                                log(response);
-
-                                try {
-                                    JSONObject jsonObject = new JSONObject(response);
-                                    log(response);
-                                    if (jsonObject.getString("code").equals("000")) {
-                                        Husbandry husbandry = JSON.parseObject(jsonObject.getString("result"), Husbandry.class);
-                                        Bundle bundle = new Bundle();
-                                        bundle.putSerializable("Husbandry", husbandry);
-                                        toast("发布成功");
-                                        startActivity(HusbandryDetailsActivity.class, bundle);
-                                        finish();
-                                    } else {
-                                        toast(jsonObject.getString("message"));
+                    for (int i = 0; i < mResults.size(); i++) {
+                        Luban.with(this)
+                                .load(mResults.get(i))
+                                .ignoreBy(150)
+                                .setTargetDir(getExternalCacheDir().toString())
+                                .setCompressListener(new OnCompressListener() {
+                                    @Override
+                                    public void onStart() {
                                     }
-                                } catch (JSONException e) {
-                                    e.printStackTrace();
-                                }
-                                loadingDialog.dismiss();
-                            }
-                        });
+
+                                    @Override
+                                    public void onSuccess(File file) {
+                                        compressFile.add(file);
+                                        if (compressFile.size() == mResults.size()) {
+                                            send(loadingDialog);
+                                        }
+                                    }
+
+                                    @Override
+                                    public void onError(Throwable e) {
+
+                                    }
+                                }).launch();
+                    }
+                }
+
+
                 break;
         }
     }
@@ -221,5 +219,52 @@ public class HusbandryReleaseActivity extends BaseActivity {
         } else {
             startCamera();
         }
+    }
+
+    private void send(final LoadingDialog loadingDialog){
+
+
+        PostFormBuilder postFormBuilder = OkHttpUtils.post();
+        for (int i = 0; i < compressFile.size(); i++) {
+            postFormBuilder.addFile("files", compressFile.get(i).getName(), compressFile.get(i));
+        }
+        postFormBuilder.url(AppConstants.BASE_URL + "/kenya/Fram/insertfram")
+                .addParams("userid", User.getInstance().getUserId())
+                .addParams("framtype", spinner.getSelectedItem().toString())
+                .addParams("framname", framname.getText().toString())
+                .addParams("framdesc", framdesc.getText().toString())
+                .addParams("framuser", framuser.getText().toString())
+                .addParams("framphone", framphone.getText().toString())
+                .build()
+                .execute(new StringCallback() {
+                    @Override
+                    public void onError(Call call, Exception e, int id) {
+                        e.printStackTrace();
+                        toast("发布失败");
+                        loadingDialog.dismiss();
+                    }
+
+                    @Override
+                    public void onResponse(String response, int id) {
+
+                        try {
+                            JSONObject jsonObject = new JSONObject(response);
+                            log(response);
+                            if (jsonObject.getString("code").equals("000")) {
+                                Husbandry husbandry = JSON.parseObject(jsonObject.getString("result"), Husbandry.class);
+                                Bundle bundle = new Bundle();
+                                bundle.putSerializable("Husbandry", husbandry);
+                                toast("发布成功");
+                                startActivity(HusbandryDetailsActivity.class, bundle);
+                                finish();
+                            } else {
+                                toast(jsonObject.getString("message"));
+                            }
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                        loadingDialog.dismiss();
+                    }
+                });
     }
 }

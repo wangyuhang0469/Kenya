@@ -13,7 +13,7 @@
         android:gravity="center"
         android:text="登录"
         android:textColor="@color/textBlack1"
-        android:textSize="18sp" />
+        android:textSize="18sp"/>
 
     <com.zhy.autolayout.AutoLinearLayout
         android:layout_width="match_parent"
@@ -24,14 +24,14 @@
         android:paddingRight="30px">
 
         <ImageView
-            android:layout_width="220px"
-            android:layout_height="220px"
-            android:layout_marginTop="50px"
+            android:layout_width="480px"
+            android:layout_height="480px"
+            android:layout_marginTop="10px"
             android:src="@drawable/logo" />
 
         <com.zhy.autolayout.AutoLinearLayout
             style="@style/bar1"
-            android:layout_marginTop="120px">
+            android:layout_marginTop="10px">
 
             <ImageView
                 android:layout_width="38px"

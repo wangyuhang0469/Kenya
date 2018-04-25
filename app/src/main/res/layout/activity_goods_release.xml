@@ -116,7 +116,8 @@
                 android:layout_height="150px"
                 android:layout_marginTop="24px"
                 android:gravity="center"
-                android:hint="输入您想卖出的价格" />
+                android:hint="输入您想卖出的价格"
+                android:inputType="number"/>
 
             <include layout="@layout/line" />
 
@@ -136,7 +137,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="150px"
                 android:gravity="center"
-                android:hint="输入联系电话" />
+                android:hint="输入联系电话"
+                android:inputType="phone"/>
 
             <include layout="@layout/line" />
 

@@ -85,6 +85,7 @@ public class HouseSearchActivity extends BaseActivity {
                 //防止因Activity释放导致内部控件空指针
                 if (pullToRefreshLayout != null) {
                     cpageNum++;
+                    lastKeyword = keyword.getText().toString();
                     List<House> addList = null;
                     try {
                         JSONObject jsonObject = new JSONObject(response);
@@ -134,7 +135,7 @@ public class HouseSearchActivity extends BaseActivity {
 
             @Override
             public void loadMore() {
-                postFormBuilder.addParams("pn", cpageNum + "").addParams("leaseName", keyword.getText().toString()).build().execute(StringCallback);
+                postFormBuilder.addParams("pn", cpageNum + "").addParams("leaseName", lastKeyword).build().execute(StringCallback);
             }
         });
     }

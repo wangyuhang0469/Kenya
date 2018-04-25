@@ -72,6 +72,7 @@ public class HouseAdapter extends RecyclerView.Adapter<HouseAdapter.ViewHolder> 
         Glide.with(context)
                 .load(AppConstants.BASE_URL + list.get(position).getLeaseimgs())
                 .centerCrop()
+                .placeholder(R.drawable.img_loading)
                 .into(holder.house_image);
 //                .asBitmap()
 //                .placeholder(R.drawable.bg4dp_grey)

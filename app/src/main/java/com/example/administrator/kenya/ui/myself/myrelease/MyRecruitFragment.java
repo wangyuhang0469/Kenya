@@ -184,21 +184,25 @@ public class MyRecruitFragment extends BaseFragment {
             holder.company_Title.setText(list.get(position).getCompanystation() + ":");
             holder.company_home.setText(list.get(position).getCompanyname());
             holder.company_price.setText(list.get(position).getCompanystationsalary() + "元/月");
-            holder.company_image.setTag(list.get(position).getCompanyimg0());
+//            holder.company_image.setTag(list.get(position).getCompanyimg0());
 
             Glide.with(context)
                     .load(AppConstants.BASE_URL + list.get(position).getCompanyimg0())
-                    .asBitmap()
-                    .placeholder(R.drawable.bg4dp_grey)
-                    .into(new SimpleTarget<Bitmap>() {
-                        @Override
-                        public void onResourceReady(Bitmap resource, GlideAnimation<? super Bitmap> glideAnimation) {
-                            String tag = (String) holder.company_image.getTag();
-                            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN && tag != null && tag.equals(list.get(position).getCompanyimg0())) {
-                                holder.company_image.setBackground(new BitmapDrawable(resource));   //设置背景
-                            }
-                        }
-                    });
+                    .centerCrop()
+                    .placeholder(R.drawable.img_loading)
+                    .into(holder.company_image);
+
+//                    .asBitmap()
+//                    .placeholder(R.drawable.bg4dp_grey)
+//                    .into(new SimpleTarget<Bitmap>() {
+//                        @Override
+//                        public void onResourceReady(Bitmap resource, GlideAnimation<? super Bitmap> glideAnimation) {
+//                            String tag = (String) holder.company_image.getTag();
+//                            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN && tag != null && tag.equals(list.get(position).getCompanyimg0())) {
+//                                holder.company_image.setBackground(new BitmapDrawable(resource));   //设置背景
+//                            }
+//                        }
+//                    });
 
             holder.itemView.setOnClickListener(new View.OnClickListener() {
                 @Override

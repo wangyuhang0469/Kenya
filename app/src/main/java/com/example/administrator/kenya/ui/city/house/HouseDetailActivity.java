@@ -8,6 +8,7 @@ import com.example.administrator.kenya.R;
 import com.example.administrator.kenya.base.BaseActivity;
 import com.example.administrator.kenya.classes.House;
 import com.example.administrator.kenya.tools.GlideImageLoader;
+import com.example.administrator.kenya.ui.main.PreviewDialog;
 import com.youth.banner.Banner;
 import com.youth.banner.listener.OnBannerListener;
 
@@ -55,7 +56,7 @@ public class HouseDetailActivity extends BaseActivity {
         banner.setOnBannerListener(new OnBannerListener() {
             @Override
             public void OnBannerClick(int position) {
-                toast("点击了" + (position + 1));
+                new PreviewDialog(HouseDetailActivity.this , house.getHouseImageUrlList(),position).show();
             }
         });
     }

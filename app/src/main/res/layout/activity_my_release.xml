@@ -42,7 +42,7 @@
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
             android:gravity="center|right"
-            android:text="类别"
+            android:text="租房"
             android:paddingRight="80px"
             android:paddingLeft="30px"
             android:textColor="@color/textgreen1" />

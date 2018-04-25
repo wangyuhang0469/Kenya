@@ -31,13 +31,12 @@
 
     <ImageView
         android:id="@+id/news_image"
-        android:layout_width="320px"
-        android:layout_height="240px"
+        android:layout_width="360px"
+        android:layout_height="270px"
         android:layout_alignParentRight="true"
         android:layout_marginBottom="30px"
         android:layout_marginRight="30px"
-        android:layout_marginTop="40px"
-        android:background="@drawable/linshi5" />
+        android:layout_marginTop="40px"/>
 
     <View
         android:layout_width="match_parent"

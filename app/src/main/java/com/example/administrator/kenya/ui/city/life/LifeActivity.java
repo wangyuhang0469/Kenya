@@ -40,6 +40,7 @@ import com.zhy.http.okhttp.callback.StringCallback;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -248,22 +249,26 @@ public class LifeActivity extends BaseActivity {
         public void onBindViewHolder(final ViewHolder holder, final int position) {
             holder.livename.setText(list.get(position).getLivename());
             holder.livephone.setText("手机：" + list.get(position).getLivephone());
-            holder.liveimgs.setTag(list.get(position).getLiveimgs());
+//            holder.liveimgs.setTag(list.get(position).getLiveimgs());
 //
             Glide.with(LifeActivity.this)
                     .load(AppConstants.BASE_URL + list.get(position).getLiveimgs())
-                    .asBitmap()
-                    .placeholder(R.drawable.bg4dp_grey)
                     .centerCrop()
-                    .into(new SimpleTarget<Bitmap>() {
-                        @Override
-                        public void onResourceReady(Bitmap resource, GlideAnimation<? super Bitmap> glideAnimation) {
-                            String tag = (String) holder.liveimgs.getTag();
-                            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN && tag != null && tag.equals(list.get(position).getLiveimgs())) {
-                                holder.liveimgs.setBackground(new BitmapDrawable(resource));   //设置背景
-                            }
-                        }
-                    });
+                    .placeholder(R.drawable.img_loading)
+                    .into(holder.liveimgs);
+
+//                    .asBitmap()
+//                    .placeholder(R.drawable.bg4dp_grey)
+//                    .centerCrop()
+//                    .into(new SimpleTarget<Bitmap>() {
+//                        @Override
+//                        public void onResourceReady(Bitmap resource, GlideAnimation<? super Bitmap> glideAnimation) {
+//                            String tag = (String) holder.liveimgs.getTag();
+//                            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN && tag != null && tag.equals(list.get(position).getLiveimgs())) {
+//                                holder.liveimgs.setBackground(new BitmapDrawable(resource));   //设置背景
+//                            }
+//                        }
+//                    });
 
             holder.itemView.setOnClickListener(new View.OnClickListener() {
                 @Override

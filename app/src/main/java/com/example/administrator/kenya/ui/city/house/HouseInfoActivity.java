@@ -3,13 +3,22 @@ package com.example.administrator.kenya.ui.city.house;
 import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.drawable.BitmapDrawable;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
+import android.util.Log;
+import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.PopupWindow;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.alibaba.fastjson.JSON;
 import com.bumptech.glide.Glide;
@@ -35,6 +44,8 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import okhttp3.Call;
+import top.zibin.luban.Luban;
+import top.zibin.luban.OnCompressListener;
 
 public class HouseInfoActivity extends BaseActivity {
 
@@ -59,6 +70,7 @@ public class HouseInfoActivity extends BaseActivity {
     @Bind(R.id.house_address)
     EditText houseAddress;
     private ArrayList<String> mResults = new ArrayList<>();
+    private ArrayList<File> compressFile = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -154,73 +166,97 @@ public class HouseInfoActivity extends BaseActivity {
                 finish();
                 break;
             case R.id.release:
-                if ("".equals(houseName.getText().toString())) {
+                if (houseName.getText().length()==0) {
                     toast("请输入标题");
-                    return;
-                }
-                if (houseInfoDesc.getText().toString() == null || houseInfoDesc.getText().toString().equals("")) {
-                    toast("请输信息详情");
-                    return;
-                }
-                if (housePrice.getText().toString() == null || housePrice.getText().toString().equals("")) {
+                } else if (houseSquare.getText().length()==0){
+                    toast("请输入户型信息");
+                }else if (houseAddress.getText().length()==0){
+                    toast("请输入房子位置");
+                }else if (houseInfoDesc.getText().length() == 0) {
+                    toast("请输入详情");
+                }else if (housePrice.getText().length()==0) {
                     toast("请输入租房的价格");
-                    return;
-                }
-                if (housePhone.getText().toString() == null || housePhone.getText().toString().equals("")) {
+                }else if (houseName.getText().length()==0) {
+                    toast("请输入联系人");
+                }else if (housePhone.getText().length()==0) {
                     toast("请输入联系电话");
-                    return;
-                }
-                if (mResults == null && mResults.size() <= 0) {
+                }else if (mResults == null || mResults.size() <= 0) {
                     toast("请选择图片");
-                    return;
-                }
-                final LoadingDialog loadingDialog = new LoadingDialog(HouseInfoActivity.this);
-                loadingDialog.show();
+                }else {
+                    //弹出框
+                    final LoadingDialog loadingDialog = new LoadingDialog(HouseInfoActivity.this);
+                    loadingDialog.show();
 
-                PostFormBuilder postFormBuilder = OkHttpUtils.post();
-                for (int i = 0; i < mResults.size(); i++) {
-                    File file = new File(mResults.get(i));
-                    postFormBuilder.addFile("files", file.getName(), file);
-                }
-                postFormBuilder.url(AppConstants.BASE_URL + "/kenya/Lease/inserLease")
-                        .addParams("leasename", houseName.getText().toString())
-                        .addParams("leasedesc", houseInfoDesc.getText().toString())
-                        .addParams("leaseprice", housePrice.getText().toString())
-                        .addParams("leasephone", housePhone.getText().toString())
-                        .addParams("leasesquare", houseSquare.getText().toString())
-                        .addParams("leaseaddress", houseAddress.getText().toString())
-                        .addParams("userid", User.getInstance().getUserId())
-                        .build()
-                        .execute(new StringCallback() {
-                            @Override
-                            public void onError(Call call, Exception e, int id) {
-                                e.printStackTrace();
-                                loadingDialog.dismiss();
-                                toast("发布失败");
-                            }
-
-                            @Override
-                            public void onResponse(String response, int id) {
-                                log(response);
-                                try {
-                                    JSONObject jsonObject = new JSONObject(response);
-                                    if (jsonObject.getString("code").equals("000")) {
-                                        House house = JSON.parseObject(jsonObject.getString("result"), House.class);
-                                        Bundle bundle = new Bundle();
-                                        bundle.putSerializable("house", house);
-                                        toast("发布成功");
-                                        startActivity(HouseDetailActivity.class, bundle);
-                                        finish();
-                                    } else {
-                                        toast(jsonObject.getString("message"));
+                    for (int i = 0; i < mResults.size(); i++) {
+                        Luban.with(this)
+                                .load(mResults.get(i))
+                                .ignoreBy(150)
+                                .setTargetDir(getExternalCacheDir().toString())
+                                .setCompressListener(new OnCompressListener() {
+                                    @Override
+                                    public void onStart() {
                                     }
-                                } catch (JSONException e) {
-                                    e.printStackTrace();
-                                }
-                                loadingDialog.dismiss();
-                            }
-                        });
+
+                                    @Override
+                                    public void onSuccess(File file) {
+                                        compressFile.add(file);
+                                        if (compressFile.size() == mResults.size()) {
+                                            send(loadingDialog);
+                                        }
+                                    }
+                                    @Override
+                                    public void onError(Throwable e) {
+                                    }
+                                }).launch();
+                    }
+                }
                 break;
         }
+    }
+
+    private void send(final LoadingDialog loadingDialog){
+        PostFormBuilder postFormBuilder = OkHttpUtils.post();
+            for (int i = 0; i < mResults.size(); i++) {
+                File file = new File(mResults.get(i));
+                postFormBuilder.addFile("files", file.getName(), file);
+            }
+
+        postFormBuilder.url(AppConstants.BASE_URL + "/kenya/Lease/inserLease")
+                .addParams("leasename", houseName.getText().toString())
+                .addParams("leasedesc", houseInfoDesc.getText().toString())
+                .addParams("leaseprice", housePrice.getText().toString())
+                .addParams("leasephone", housePhone.getText().toString())
+                .addParams("leasesquare", houseSquare.getText().toString())
+                .addParams("leaseaddress", houseAddress.getText().toString())
+                .addParams("userid", User.getInstance().getUserId())
+                .build()
+                .execute(new StringCallback() {
+                    @Override
+                    public void onError(Call call, Exception e, int id) {
+                        e.printStackTrace();
+                        loadingDialog.dismiss();
+                        toast("发布失败");
+                    }
+
+                    @Override
+                    public void onResponse(String response, int id) {
+                        try {
+                            JSONObject jsonObject = new JSONObject(response);
+                            if (jsonObject.getString("code").equals("000")) {
+                                House house = JSON.parseObject(jsonObject.getString("result"), House.class);
+                                Bundle bundle = new Bundle();
+                                bundle.putSerializable("house", house);
+                                toast("发布成功");
+                                startActivity(HouseDetailActivity.class, bundle);
+                                finish();
+                            } else {
+                                toast(jsonObject.getString("message"));
+                            }
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                        loadingDialog.dismiss();
+                    }
+                });
     }
 }

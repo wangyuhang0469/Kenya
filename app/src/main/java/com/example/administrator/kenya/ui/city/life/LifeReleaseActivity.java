@@ -38,6 +38,8 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import okhttp3.Call;
+import top.zibin.luban.Luban;
+import top.zibin.luban.OnCompressListener;
 
 public class LifeReleaseActivity extends BaseActivity {
 
@@ -58,7 +60,7 @@ public class LifeReleaseActivity extends BaseActivity {
 
 
     private ArrayList<String> mResults = new ArrayList<>();
-
+    private ArrayList<File> compressFile = new ArrayList<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -159,55 +161,50 @@ public class LifeReleaseActivity extends BaseActivity {
                 break;
             case R.id.release:
 
-                final LoadingDialog loadingDialog = new LoadingDialog(LifeReleaseActivity.this);
-                loadingDialog.show();
-
-                PostFormBuilder postFormBuilder = OkHttpUtils.post();
-                for (int i = 0; i < mResults.size(); i++) {
-                    File file = new File(mResults.get(i));
-                    postFormBuilder.addFile("files", file.getName(), file);
-                }
-                postFormBuilder.url(AppConstants.BASE_URL + "/kenya/Live/filesUpload")
-                        .addParams("userid", User.getInstance().getUserId())
-                        .addParams("livetype", spinner.getSelectedItem().toString())
-                        .addParams("livename", livename.getText().toString())
-                        .addParams("livedesc", livedesc.getText().toString())
-                        .addParams("liveuser", liveuser.getText().toString())
-                        .addParams("livephone", livephone.getText().toString())
-                        .build()
-                        .execute(new StringCallback() {
-                            @Override
-                            public void onError(Call call, Exception e, int id) {
-                                e.printStackTrace();
-                                toast("发布失败");
-                                loadingDialog.dismiss();
-                            }
-
-                            @Override
-                            public void onResponse(String response, int id) {
-
-                                Log.d("kang", "11111111" + response);
-                                log(response);
-
-                                try {
-                                    JSONObject jsonObject = new JSONObject(response);
-                                    log(response);
-                                    if (jsonObject.getString("code").equals("000")) {
-                                        LifeServices lifeServices = JSON.parseObject(jsonObject.getString("result"), LifeServices.class);
-                                        Bundle bundle = new Bundle();
-                                        bundle.putSerializable("lifeServices", lifeServices);
-                                        toast("发布成功");
-                                        startActivity(LifeDetailsActivity.class, bundle);
-                                        finish();
-                                    } else {
-                                        toast(jsonObject.getString("message"));
+                if (spinner.getSelectedItem().toString().equals("请选择服务类型")) {
+                    toast("请选择服务类型");
+                } else if (livename.getText().length()==0){
+                    toast("请输入标题");
+                }else if (livedesc.getText().length() == 0) {
+                    toast("请输入详情");
+                }else if (liveuser.getText().length()==0) {
+                    toast("请输入联系人");
+                }else if (livephone.getText().length()==0) {
+                    toast("请输入联系电话");
+                }else if (mResults == null || mResults.size() <= 0) {
+                    toast("请选择图片");
+                }else {
+                    for (int i = 0; i < mResults.size(); i++) {
+                        final LoadingDialog loadingDialog = new LoadingDialog(LifeReleaseActivity.this);
+                        loadingDialog.show();
+                        Luban.with(this)
+                                .load(mResults.get(i))
+                                .ignoreBy(150)
+                                .setTargetDir(getExternalCacheDir().toString())
+                                .setCompressListener(new OnCompressListener() {
+                                    @Override
+                                    public void onStart() {
                                     }
-                                } catch (JSONException e) {
-                                    e.printStackTrace();
-                                }
-                                loadingDialog.dismiss();
-                            }
-                        });
+
+                                    @Override
+                                    public void onSuccess(File file) {
+                                        compressFile.add(file);
+                                        if (compressFile.size() == mResults.size()) {
+                                            send(loadingDialog);
+                                        }
+                                    }
+
+                                    @Override
+                                    public void onError(Throwable e) {
+
+                                    }
+                                }).launch();
+                    }
+                }
+
+
+
+
                 break;
         }
     }
@@ -220,5 +217,50 @@ public class LifeReleaseActivity extends BaseActivity {
         } else {
             startCamera();
         }
+    }
+
+    private void send(final LoadingDialog loadingDialog){
+        PostFormBuilder postFormBuilder = OkHttpUtils.post();
+        for (int i = 0; i < compressFile.size(); i++) {
+            postFormBuilder.addFile("files",compressFile.get(i).getName(), compressFile.get(i));
+        }
+        postFormBuilder.url(AppConstants.BASE_URL + "/kenya/Live/filesUpload")
+                .addParams("userid", User.getInstance().getUserId())
+                .addParams("livetype", spinner.getSelectedItem().toString())
+                .addParams("livename", livename.getText().toString())
+                .addParams("livedesc", livedesc.getText().toString())
+                .addParams("liveuser", liveuser.getText().toString())
+                .addParams("livephone", livephone.getText().toString())
+                .build()
+                .execute(new StringCallback() {
+                    @Override
+                    public void onError(Call call, Exception e, int id) {
+                        e.printStackTrace();
+                        toast("发布失败");
+                        loadingDialog.dismiss();
+                    }
+
+                    @Override
+                    public void onResponse(String response, int id) {
+
+                        try {
+                            JSONObject jsonObject = new JSONObject(response);
+                            log(response);
+                            if (jsonObject.getString("code").equals("000")) {
+                                LifeServices lifeServices = JSON.parseObject(jsonObject.getString("result"), LifeServices.class);
+                                Bundle bundle = new Bundle();
+                                bundle.putSerializable("lifeServices", lifeServices);
+                                toast("发布成功");
+                                startActivity(LifeDetailsActivity.class, bundle);
+                                finish();
+                            } else {
+                                toast(jsonObject.getString("message"));
+                            }
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                        loadingDialog.dismiss();
+                    }
+                });
     }
 }
