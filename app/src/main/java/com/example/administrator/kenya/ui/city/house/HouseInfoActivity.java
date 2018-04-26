@@ -216,9 +216,8 @@ public class HouseInfoActivity extends BaseActivity {
 
     private void send(final LoadingDialog loadingDialog) {
         PostFormBuilder postFormBuilder = OkHttpUtils.post();
-        for (int i = 0; i < mResults.size(); i++) {
-            File file = new File(mResults.get(i));
-            postFormBuilder.addFile("files", file.getName(), file);
+        for (int i = 0; i < compressFile.size(); i++) {
+            postFormBuilder.addFile("files", compressFile.get(i).getName(), compressFile.get(i));
         }
 
         postFormBuilder.url(AppConstants.BASE_URL + "/kenya/Lease/inserLease")

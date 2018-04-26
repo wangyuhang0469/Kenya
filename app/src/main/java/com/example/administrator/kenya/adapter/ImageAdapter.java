@@ -55,7 +55,6 @@ public class ImageAdapter extends RecyclerView.Adapter<ImageAdapter.ViewHolder> 
     @Override
     public void onBindViewHolder(final ViewHolder holder, final int position) {
 
-        holder.imageView.setTag(imaUrls.get(position));
 //        holder.imageView.setTag(imaUrls.get(position));
 
         Glide.with(context)

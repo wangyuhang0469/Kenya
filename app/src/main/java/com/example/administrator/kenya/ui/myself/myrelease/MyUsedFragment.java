@@ -1,9 +1,6 @@
 package com.example.administrator.kenya.ui.myself.myrelease;
 
 
-import android.graphics.Bitmap;
-import android.graphics.drawable.BitmapDrawable;
-import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
@@ -17,8 +14,6 @@ import android.widget.TextView;
 
 import com.alibaba.fastjson.JSON;
 import com.bumptech.glide.Glide;
-import com.bumptech.glide.request.animation.GlideAnimation;
-import com.bumptech.glide.request.target.SimpleTarget;
 import com.example.administrator.kenya.R;
 import com.example.administrator.kenya.base.BaseFragment;
 import com.example.administrator.kenya.classes.Goods;
@@ -26,7 +21,6 @@ import com.example.administrator.kenya.classes.User;
 import com.example.administrator.kenya.constants.AppConstants;
 import com.example.administrator.kenya.interfaces.DeleteSuccessfulListener;
 import com.example.administrator.kenya.ui.city.used.GoodsDetailsActivity;
-import com.example.administrator.kenya.ui.city.used.UsedActivity;
 import com.example.administrator.kenya.ui.main.DeleteDialog;
 import com.jwenfeng.library.pulltorefresh.BaseRefreshListener;
 import com.jwenfeng.library.pulltorefresh.PullToRefreshLayout;
@@ -56,6 +50,10 @@ public class MyUsedFragment extends BaseFragment {
     RecyclerView recyclerView;
     @Bind(R.id.pullToRefreshLayout)
     PullToRefreshLayout pullToRefreshLayout;
+    @Bind(R.id.nothing)
+    ImageView nothing;
+    @Bind(R.id.text)
+    TextView text;
 
 
     private MyUsedAdapter myUsedAdapter;
@@ -83,9 +81,9 @@ public class MyUsedFragment extends BaseFragment {
 
     private void initOKHttp() {
         postFormBuilder = OkHttpUtils.post()
-                .url( AppConstants.BASE_URL + "/kenya/user/selectByUserId")
+                .url(AppConstants.BASE_URL + "/kenya/user/selectByUserId")
                 .addParams("pn", cpageNum + "")
-                .addParams("Type","二手")
+                .addParams("Type", "二手")
                 .addParams("userid", User.getInstance().getUserId());
 
         stringCallback = new StringCallback() {
@@ -121,7 +119,13 @@ public class MyUsedFragment extends BaseFragment {
                     addList = JSON.parseArray(response, Goods.class);
                     goodsList.addAll(addList);
                     myUsedAdapter.notifyDataSetChanged();
-
+//                    if (goodsList.size() == 0) {
+//                        nothing.setVisibility(View.VISIBLE);
+//                        text.setVisibility(View.VISIBLE);
+//                    } else {
+//                        nothing.setVisibility(View.GONE);
+//                        text.setVisibility(View.GONE);
+//                    }
 
                     pullToRefreshLayout.finishLoadMore();
                 }
@@ -169,7 +173,7 @@ public class MyUsedFragment extends BaseFragment {
         }
 
         public class ViewHolder extends RecyclerView.ViewHolder {
-            TextView goodsname, goodsphone, goodsprice,delete;
+            TextView goodsname, goodsphone, goodsprice, delete;
             ImageView goodsimgs;
 
             public ViewHolder(View itemView) {
@@ -226,10 +230,10 @@ public class MyUsedFragment extends BaseFragment {
             holder.delete.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Map<String,String> params = new HashMap<String, String>();
-                    params.put("Type","二手");
-                    params.put("id",list.get(position).getGoodsid());
-                    DeleteDialog deleteDialog = new DeleteDialog(getContext(),AppConstants.BASE_URL + "/kenya/user/deleteByUserId" , params);
+                    Map<String, String> params = new HashMap<String, String>();
+                    params.put("Type", "二手");
+                    params.put("id", list.get(position).getGoodsid());
+                    DeleteDialog deleteDialog = new DeleteDialog(getContext(), AppConstants.BASE_URL + "/kenya/user/deleteByUserId", params);
                     deleteDialog.setDeleteSuccessfulListener(new DeleteSuccessfulListener() {
                         @Override
                         public void success() {

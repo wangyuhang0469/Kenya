@@ -58,7 +58,6 @@ public class MyHouseFragment extends BaseFragment {
         View view = inflater.inflate(R.layout.fragment_my_house, container, false);
         ButterKnife.bind(this, view);
 
-
         initView();
 
         initOKHttp();

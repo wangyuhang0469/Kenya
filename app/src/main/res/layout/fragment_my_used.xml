@@ -6,9 +6,30 @@
     tools:context="com.example.administrator.kenya.ui.myself.myrelease.MyUsedFragment">
 
 
+    <com.zhy.autolayout.AutoRelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recyclerView"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
+        
+        <ImageView
+            android:id="@+id/nothing"
+            android:layout_width="230px"
+            android:layout_height="302px"
+            android:layout_above="@+id/text"
+            android:layout_centerHorizontal="true"
+            android:visibility="visible"
+            android:src="@drawable/nothing"/>
 
+        <TextView
+            android:id="@+id/text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="什么也没有..."
+            android:textColor="@color/textBlack3"
+            android:layout_centerInParent="true"
+            android:paddingTop="20px"/>
+    </com.zhy.autolayout.AutoRelativeLayout>
 </com.jwenfeng.library.pulltorefresh.PullToRefreshLayout>

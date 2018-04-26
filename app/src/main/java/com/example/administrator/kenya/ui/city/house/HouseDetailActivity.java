@@ -36,6 +36,8 @@ public class HouseDetailActivity extends BaseActivity {
     TextView housePhone;
     @Bind(R.id.house_detail_address)
     TextView houseDetailAddress;
+    @Bind(R.id.house_detail_name)
+    TextView houseDetailName;
     private House house;
 
     @Override
@@ -46,6 +48,7 @@ public class HouseDetailActivity extends BaseActivity {
         title.setText("房屋详情");
         house = (House) getIntent().getExtras().getSerializable("house");
         initBanner(house.getHouseImageUrlList());
+        houseDetailName.setText(house.getLeasename());
         houseDetailDesc.setText(house.getLeasedesc());
         houseDetailPrice.setText("$" + house.getLeaseprice() + "/月");
         houseDetailHome.setText(house.getLeasesquare());
