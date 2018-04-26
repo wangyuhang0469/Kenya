@@ -3,9 +3,6 @@ package com.example.administrator.kenya.ui.myself.myrelease;
 
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.drawable.BitmapDrawable;
-import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
@@ -20,11 +17,8 @@ import android.widget.Toast;
 
 import com.alibaba.fastjson.JSON;
 import com.bumptech.glide.Glide;
-import com.bumptech.glide.request.animation.GlideAnimation;
-import com.bumptech.glide.request.target.SimpleTarget;
 import com.example.administrator.kenya.R;
 import com.example.administrator.kenya.activity.ResumeDetilActivity;
-import com.example.administrator.kenya.adapter.JobAdapter;
 import com.example.administrator.kenya.base.BaseFragment;
 import com.example.administrator.kenya.classes.Job;
 import com.example.administrator.kenya.classes.User;
@@ -59,6 +53,10 @@ public class MyApplyJobFragment extends BaseFragment {
     RecyclerView recyclerView;
     @Bind(R.id.pullToRefreshLayout)
     PullToRefreshLayout pullToRefreshLayout;
+    @Bind(R.id.nothing)
+    ImageView nothing;
+    @Bind(R.id.text)
+    TextView text;
 
     private MyJobAdapter myJobAdapter;
     private List<Job> jobList = new ArrayList<>();
@@ -83,9 +81,9 @@ public class MyApplyJobFragment extends BaseFragment {
 
     private void initOKHttp() {
         postFormBuilder = OkHttpUtils.post()
-                .url( AppConstants.BASE_URL + "/kenya/user/selectByUserId")
+                .url(AppConstants.BASE_URL + "/kenya/user/selectByUserId")
                 .addParams("pn", cpageNum + "")
-                .addParams("Type","求职")
+                .addParams("Type", "求职")
                 .addParams("userid", User.getInstance().getUserId());
 
         stringCallback = new StringCallback() {
@@ -120,6 +118,13 @@ public class MyApplyJobFragment extends BaseFragment {
                     addList = JSON.parseArray(response, Job.class);
                     jobList.addAll(addList);
                     myJobAdapter.notifyDataSetChanged();
+                    if (jobList.size() == 0) {
+                        nothing.setVisibility(View.VISIBLE);
+                        text.setVisibility(View.VISIBLE);
+                    } else {
+                        nothing.setVisibility(View.GONE);
+                        text.setVisibility(View.GONE);
+                    }
                     pullToRefreshLayout.finishLoadMore();
                 }
             }
@@ -160,7 +165,7 @@ public class MyApplyJobFragment extends BaseFragment {
         }
 
         public class ViewHolder extends RecyclerView.ViewHolder {
-            TextView job_want, job_name, job_sex, job_age,delete;
+            TextView job_want, job_name, job_sex, job_age, delete;
             ImageView job_image;
 
             public ViewHolder(View itemView) {
@@ -219,10 +224,10 @@ public class MyApplyJobFragment extends BaseFragment {
             holder.delete.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Map<String,String> params = new HashMap<String, String>();
-                    params.put("Type","求职");
-                    params.put("id",list.get(position).getJobid());
-                    DeleteDialog deleteDialog = new DeleteDialog(context, AppConstants.BASE_URL + "/kenya/user/deleteByUserId" , params);
+                    Map<String, String> params = new HashMap<String, String>();
+                    params.put("Type", "求职");
+                    params.put("id", list.get(position).getJobid());
+                    DeleteDialog deleteDialog = new DeleteDialog(context, AppConstants.BASE_URL + "/kenya/user/deleteByUserId", params);
                     deleteDialog.setDeleteSuccessfulListener(new DeleteSuccessfulListener() {
                         @Override
                         public void success() {

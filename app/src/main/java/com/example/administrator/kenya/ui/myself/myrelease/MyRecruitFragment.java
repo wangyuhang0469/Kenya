@@ -3,9 +3,6 @@ package com.example.administrator.kenya.ui.myself.myrelease;
 
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.drawable.BitmapDrawable;
-import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
@@ -20,8 +17,6 @@ import android.widget.Toast;
 
 import com.alibaba.fastjson.JSON;
 import com.bumptech.glide.Glide;
-import com.bumptech.glide.request.animation.GlideAnimation;
-import com.bumptech.glide.request.target.SimpleTarget;
 import com.example.administrator.kenya.R;
 import com.example.administrator.kenya.activity.JobDetailActivity;
 import com.example.administrator.kenya.base.BaseFragment;
@@ -58,6 +53,10 @@ public class MyRecruitFragment extends BaseFragment {
     RecyclerView recyclerView;
     @Bind(R.id.pullToRefreshLayout)
     PullToRefreshLayout pullToRefreshLayout;
+    @Bind(R.id.nothing)
+    ImageView nothing;
+    @Bind(R.id.text)
+    TextView text;
 
     private MyCompanyAdapter myCompanyAdapter;
     private List<Company> companyList = new ArrayList<>();
@@ -83,9 +82,9 @@ public class MyRecruitFragment extends BaseFragment {
 
     private void initOKHttp() {
         postFormBuilder = OkHttpUtils.post()
-                .url( AppConstants.BASE_URL + "/kenya/user/selectByUserId")
+                .url(AppConstants.BASE_URL + "/kenya/user/selectByUserId")
                 .addParams("pn", cpageNum + "")
-                .addParams("Type","招聘")
+                .addParams("Type", "招聘")
                 .addParams("userid", User.getInstance().getUserId());
 
         stringCallback = new StringCallback() {
@@ -121,6 +120,13 @@ public class MyRecruitFragment extends BaseFragment {
                     addList = JSON.parseArray(response, Company.class);
                     companyList.addAll(addList);
                     myCompanyAdapter.notifyDataSetChanged();
+                    if (companyList.size() == 0) {
+                        nothing.setVisibility(View.VISIBLE);
+                        text.setVisibility(View.VISIBLE);
+                    } else {
+                        nothing.setVisibility(View.GONE);
+                        text.setVisibility(View.GONE);
+                    }
                     pullToRefreshLayout.finishLoadMore();
                 }
             }
@@ -159,7 +165,7 @@ public class MyRecruitFragment extends BaseFragment {
         }
 
         public class ViewHolder extends RecyclerView.ViewHolder {
-            TextView company_Title, company_home, company_price,delete;
+            TextView company_Title, company_home, company_price, delete;
             ImageView company_image;
 
             public ViewHolder(View itemView) {
@@ -218,10 +224,10 @@ public class MyRecruitFragment extends BaseFragment {
             holder.delete.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Map<String,String> params = new HashMap<String, String>();
-                    params.put("Type","招聘");
-                    params.put("id",list.get(position).getCompanyid());
-                    DeleteDialog deleteDialog = new DeleteDialog(context, AppConstants.BASE_URL + "/kenya/user/deleteByUserId" , params);
+                    Map<String, String> params = new HashMap<String, String>();
+                    params.put("Type", "招聘");
+                    params.put("id", list.get(position).getCompanyid());
+                    DeleteDialog deleteDialog = new DeleteDialog(context, AppConstants.BASE_URL + "/kenya/user/deleteByUserId", params);
                     deleteDialog.setDeleteSuccessfulListener(new DeleteSuccessfulListener() {
                         @Override
                         public void success() {

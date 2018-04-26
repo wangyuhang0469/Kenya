@@ -9,10 +9,11 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.alibaba.fastjson.JSON;
 import com.example.administrator.kenya.R;
-import com.example.administrator.kenya.adapter.HouseAdapter;
 import com.example.administrator.kenya.adapter.MyHouseAdapter;
 import com.example.administrator.kenya.base.BaseFragment;
 import com.example.administrator.kenya.classes.House;
@@ -44,6 +45,10 @@ public class MyHouseFragment extends BaseFragment {
     RecyclerView recyclerView;
     @Bind(R.id.pullToRefreshLayout)
     PullToRefreshLayout pullToRefreshLayout;
+    @Bind(R.id.nothing)
+    ImageView nothing;
+    @Bind(R.id.text)
+    TextView text;
 
     private PostFormBuilder postFormBuilder;
     private int cpageNum = 1;
@@ -69,9 +74,9 @@ public class MyHouseFragment extends BaseFragment {
 
     private void initOKHttp() {
         postFormBuilder = OkHttpUtils.post()
-                .url( AppConstants.BASE_URL + "/kenya/user/selectByUserId")
+                .url(AppConstants.BASE_URL + "/kenya/user/selectByUserId")
                 .addParams("pn", cpageNum + "")
-                .addParams("Type","租房")
+                .addParams("Type", "租房")
                 .addParams("userid", User.getInstance().getUserId());
 
         stringCallback = new StringCallback() {
@@ -106,6 +111,13 @@ public class MyHouseFragment extends BaseFragment {
                     addList = JSON.parseArray(response, House.class);
                     housesList.addAll(addList);
                     myHouseAdapter.notifyDataSetChanged();
+                    if (housesList.size() == 0) {
+                        nothing.setVisibility(View.VISIBLE);
+                        text.setVisibility(View.VISIBLE);
+                    } else {
+                        nothing.setVisibility(View.GONE);
+                        text.setVisibility(View.GONE);
+                    }
                     pullToRefreshLayout.finishLoadMore();
                 }
             }

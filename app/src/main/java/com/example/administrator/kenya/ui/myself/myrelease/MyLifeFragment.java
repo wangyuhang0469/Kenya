@@ -1,9 +1,6 @@
 package com.example.administrator.kenya.ui.myself.myrelease;
 
 
-import android.graphics.Bitmap;
-import android.graphics.drawable.BitmapDrawable;
-import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
@@ -18,15 +15,12 @@ import android.widget.TextView;
 
 import com.alibaba.fastjson.JSON;
 import com.bumptech.glide.Glide;
-import com.bumptech.glide.request.animation.GlideAnimation;
-import com.bumptech.glide.request.target.SimpleTarget;
 import com.example.administrator.kenya.R;
 import com.example.administrator.kenya.base.BaseFragment;
 import com.example.administrator.kenya.classes.LifeServices;
 import com.example.administrator.kenya.classes.User;
 import com.example.administrator.kenya.constants.AppConstants;
 import com.example.administrator.kenya.interfaces.DeleteSuccessfulListener;
-import com.example.administrator.kenya.ui.city.life.LifeActivity;
 import com.example.administrator.kenya.ui.city.life.LifeDetailsActivity;
 import com.example.administrator.kenya.ui.main.DeleteDialog;
 import com.jwenfeng.library.pulltorefresh.BaseRefreshListener;
@@ -57,6 +51,10 @@ public class MyLifeFragment extends BaseFragment {
     RecyclerView recyclerView;
     @Bind(R.id.pullToRefreshLayout)
     PullToRefreshLayout pullToRefreshLayout;
+    @Bind(R.id.nothing)
+    ImageView nothing;
+    @Bind(R.id.text)
+    TextView text;
 
     private PopupWindow popupWindow;
     private String keyword = "不限";
@@ -109,9 +107,9 @@ public class MyLifeFragment extends BaseFragment {
 
     private void initOKHttp() {
         postFormBuilder = OkHttpUtils.post()
-                .url( AppConstants.BASE_URL + "/kenya/user/selectByUserId")
+                .url(AppConstants.BASE_URL + "/kenya/user/selectByUserId")
                 .addParams("pn", cpageNum + "")
-                .addParams("Type","生活服务")
+                .addParams("Type", "生活服务")
                 .addParams("userid", User.getInstance().getUserId());
 
         stringCallback = new StringCallback() {
@@ -147,7 +145,13 @@ public class MyLifeFragment extends BaseFragment {
                     addList = JSON.parseArray(response, LifeServices.class);
                     lifeServicesList.addAll(addList);
                     myLifeAdapter.notifyDataSetChanged();
-
+                    if (lifeServicesList.size() == 0) {
+                        nothing.setVisibility(View.VISIBLE);
+                        text.setVisibility(View.VISIBLE);
+                    } else {
+                        nothing.setVisibility(View.GONE);
+                        text.setVisibility(View.GONE);
+                    }
 
                     pullToRefreshLayout.finishLoadMore();
                 }
@@ -167,7 +171,7 @@ public class MyLifeFragment extends BaseFragment {
         }
 
         public class ViewHolder extends RecyclerView.ViewHolder {
-            TextView livename, livephone,delete;
+            TextView livename, livephone, delete;
             ImageView liveimgs;
 
             public ViewHolder(View itemView) {
@@ -212,8 +216,6 @@ public class MyLifeFragment extends BaseFragment {
 //                    });
 
 
-
-
             holder.itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -226,10 +228,10 @@ public class MyLifeFragment extends BaseFragment {
             holder.delete.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Map<String,String> params = new HashMap<String, String>();
-                    params.put("Type","生活服务");
-                    params.put("id",list.get(position).getLiveid());
-                    DeleteDialog deleteDialog = new DeleteDialog(getContext(),AppConstants.BASE_URL + "/kenya/user/deleteByUserId" , params);
+                    Map<String, String> params = new HashMap<String, String>();
+                    params.put("Type", "生活服务");
+                    params.put("id", list.get(position).getLiveid());
+                    DeleteDialog deleteDialog = new DeleteDialog(getContext(), AppConstants.BASE_URL + "/kenya/user/deleteByUserId", params);
                     deleteDialog.setDeleteSuccessfulListener(new DeleteSuccessfulListener() {
                         @Override
                         public void success() {

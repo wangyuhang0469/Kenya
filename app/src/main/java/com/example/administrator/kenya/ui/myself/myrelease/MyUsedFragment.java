@@ -119,13 +119,13 @@ public class MyUsedFragment extends BaseFragment {
                     addList = JSON.parseArray(response, Goods.class);
                     goodsList.addAll(addList);
                     myUsedAdapter.notifyDataSetChanged();
-//                    if (goodsList.size() == 0) {
-//                        nothing.setVisibility(View.VISIBLE);
-//                        text.setVisibility(View.VISIBLE);
-//                    } else {
-//                        nothing.setVisibility(View.GONE);
-//                        text.setVisibility(View.GONE);
-//                    }
+                    if (goodsList.size() == 0) {
+                        nothing.setVisibility(View.VISIBLE);
+                        text.setVisibility(View.VISIBLE);
+                    } else {
+                        nothing.setVisibility(View.GONE);
+                        text.setVisibility(View.GONE);
+                    }
 
                     pullToRefreshLayout.finishLoadMore();
                 }
