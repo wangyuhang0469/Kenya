@@ -166,27 +166,26 @@ public class HouseInfoActivity extends BaseActivity {
                 finish();
                 break;
             case R.id.release:
-                if (houseName.getText().length()==0) {
+                if (houseName.getText().length() == 0) {
                     toast("请输入标题");
-                } else if (houseSquare.getText().length()==0){
+                } else if (houseSquare.getText().length() == 0) {
                     toast("请输入户型信息");
-                }else if (houseAddress.getText().length()==0){
+                } else if (houseAddress.getText().length() == 0) {
                     toast("请输入房子位置");
-                }else if (houseInfoDesc.getText().length() == 0) {
+                } else if (houseInfoDesc.getText().length() == 0) {
                     toast("请输入详情");
-                }else if (housePrice.getText().length()==0) {
+                } else if (housePrice.getText().length() == 0) {
                     toast("请输入租房的价格");
-                }else if (houseName.getText().length()==0) {
+                } else if (houseName.getText().length() == 0) {
                     toast("请输入联系人");
-                }else if (housePhone.getText().length()==0) {
+                } else if (housePhone.getText().length() == 0) {
                     toast("请输入联系电话");
-                }else if (mResults == null || mResults.size() <= 0) {
+                } else if (mResults == null || mResults.size() <= 0) {
                     toast("请选择图片");
-                }else {
+                } else {
                     //弹出框
                     final LoadingDialog loadingDialog = new LoadingDialog(HouseInfoActivity.this);
                     loadingDialog.show();
-
                     for (int i = 0; i < mResults.size(); i++) {
                         Luban.with(this)
                                 .load(mResults.get(i))
@@ -204,6 +203,7 @@ public class HouseInfoActivity extends BaseActivity {
                                             send(loadingDialog);
                                         }
                                     }
+
                                     @Override
                                     public void onError(Throwable e) {
                                     }
@@ -214,12 +214,12 @@ public class HouseInfoActivity extends BaseActivity {
         }
     }
 
-    private void send(final LoadingDialog loadingDialog){
+    private void send(final LoadingDialog loadingDialog) {
         PostFormBuilder postFormBuilder = OkHttpUtils.post();
-            for (int i = 0; i < mResults.size(); i++) {
-                File file = new File(mResults.get(i));
-                postFormBuilder.addFile("files", file.getName(), file);
-            }
+        for (int i = 0; i < mResults.size(); i++) {
+            File file = new File(mResults.get(i));
+            postFormBuilder.addFile("files", file.getName(), file);
+        }
 
         postFormBuilder.url(AppConstants.BASE_URL + "/kenya/Lease/inserLease")
                 .addParams("leasename", houseName.getText().toString())

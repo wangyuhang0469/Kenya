@@ -44,17 +44,6 @@
         android:textSize="13sp" />
 
     <TextView
-        android:id="@+id/funds_home"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/funds_Title"
-        android:layout_toRightOf="@id/funds_image"
-        android:text="2室•88m2•建华"
-        android:textColor="@color/textBlack3"
-        android:textSize="13sp"
-        android:visibility="gone" />
-
-    <TextView
         android:id="@+id/funds_price"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

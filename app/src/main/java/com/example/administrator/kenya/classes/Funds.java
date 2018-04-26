@@ -20,6 +20,16 @@ public class Funds implements Serializable {
     private String fundsimg2;
     private String fundsimg3;
     private String fundsimg4;
+
+    public String getFundsuser() {
+        return fundsuser;
+    }
+
+    public void setFundsuser(String fundsuser) {
+        this.fundsuser = fundsuser;
+    }
+
+    private String fundsuser;
     private int adminid;
 
     public int getFundsid() {
@@ -113,8 +123,6 @@ public class Funds implements Serializable {
 
     public List<String> getFundsImageUrlList() {
         List<String> fundsimageUrlList = new ArrayList<>();
-
-
         fundsimageUrlList.add(fundsimgs);
         fundsimageUrlList.add(fundsimg1);
         fundsimageUrlList.add(fundsimg2);

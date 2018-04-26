@@ -40,7 +40,7 @@ public class JobAdapter extends RecyclerView.Adapter<JobAdapter.ViewHolder> {
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         TextView job_want, job_name, job_sex, job_age;
-        ImageView job_image;
+        // ImageView job_image;
 
         public ViewHolder(View itemView) {
             super(itemView);
@@ -48,7 +48,7 @@ public class JobAdapter extends RecyclerView.Adapter<JobAdapter.ViewHolder> {
             job_name = (TextView) itemView.findViewById(R.id.job_name);
             job_sex = (TextView) itemView.findViewById(R.id.job_sex);
             job_age = (TextView) itemView.findViewById(R.id.job_age);
-            job_image = (ImageView) itemView.findViewById(R.id.job_image);
+            //job_image = (ImageView) itemView.findViewById(R.id.job_image);
         }
     }
 
@@ -65,12 +65,12 @@ public class JobAdapter extends RecyclerView.Adapter<JobAdapter.ViewHolder> {
         holder.job_name.setText(list.get(position).getName());
         holder.job_sex.setText(list.get(position).getSex());
         holder.job_age.setText(list.get(position).getAge() + "岁");
-//        holder.job_image.setTag(list.get(position).getHeadimg());
-        Glide.with(context)
-                .load(AppConstants.BASE_URL + list.get(position).getHeadimg())
-                .centerCrop()
-                .placeholder(R.drawable.img_loading)
-                .into(holder.job_image);
+        // holder.job_image.setTag(list.get(position).getHeadimg());
+//        Glide.with(context)
+//                .load(AppConstants.BASE_URL + list.get(position).getHeadimg())
+//                .centerCrop()
+//                .placeholder(R.drawable.img_loading);
+//                .into(holder.job_image);
 
 //                .asBitmap()
 //                .placeholder(R.drawable.bg4dp_grey)

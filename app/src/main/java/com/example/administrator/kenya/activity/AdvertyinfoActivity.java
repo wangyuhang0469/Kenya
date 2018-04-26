@@ -48,8 +48,6 @@ public class AdvertyinfoActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_advertyinfo);
         ButterKnife.bind(this);
-
-
     }
 
     @OnClick({R.id.back, R.id.adverty_info_detail, R.id.adverty_info_choose})
@@ -64,6 +62,19 @@ public class AdvertyinfoActivity extends BaseActivity {
                     price = advertyInfoWorkMoney.getText().toString();
                 } else {
                     price = "面议";
+                }
+                if (advertyInfoWorkName.getText().length() == 0) {
+                    toast("请输入招聘类型");
+                } else if (price.length() == 0) {
+                    toast("请输入月薪");
+                } else if (advertyInfoWorkQuiret.getText().length() == 0) {
+                    toast("请输入职位描述");
+                } else if (advertyInfoJionTime.getText().length() == 0) {
+                    toast("请输入要求工作年限");
+                } else if (advertyInfoCompanyName.getText().length() == 0) {
+                    toast("请输入公司名称");
+                } else if (advertyInfoCompanyPhone.getText().length() == 0) {
+                    toast("请输入公司联系方式");
                 }
                 PostFormBuilder postFormBuilder = OkHttpUtils.post();
                 postFormBuilder.url(AppConstants.BASE_URL + "/kenya/recruit/publish")

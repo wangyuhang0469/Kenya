@@ -29,7 +29,6 @@ public class FindMoneyActivity extends FragmentActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_find_money);
         ButterKnife.bind(this);
-
         Bundle bundle = getIntent().getExtras();
         findmoneyvalue = bundle.getString("findmoney");
         if (pager != null) {

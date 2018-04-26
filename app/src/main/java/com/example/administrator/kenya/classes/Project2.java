@@ -8,7 +8,7 @@ import java.util.List;
  * Created by 123 on 2018/4/12.
  */
 
-public class Project implements Serializable {
+public class Project2 implements Serializable {
 
     private int projectid;
     private String projectname;
@@ -130,8 +130,6 @@ public class Project implements Serializable {
 
     public List<String> getProjectImageUrlList() {
         List<String> projectimageUrlList = new ArrayList<>();
-
-
         projectimageUrlList.add(projectimgs);
         projectimageUrlList.add(projectimg1);
         projectimageUrlList.add(projectimg2);

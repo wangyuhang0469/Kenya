@@ -21,10 +21,20 @@
             android:background="@color/white"
             android:orientation="vertical">
 
+            <TextView
+                android:id="@+id/find_money_detail_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30px"
+                android:gravity="center_horizontal"
+                android:text="广发银行"
+                android:textSize="46px" />
+
             <com.youth.banner.Banner
                 android:id="@+id/banner"
                 android:layout_width="match_parent"
                 android:layout_height="800px"
+                android:layout_marginTop="30px"
                 app:delay_time="5000"
                 app:indicator_drawable_selected="@drawable/bg4dp_theme_btn"
                 app:indicator_height="7.5dp"
@@ -32,9 +42,9 @@
                 app:indicator_width="7.5dp" />
 
             <TextView
-                android:id="@+id/house_detail_desc"
+                android:id="@+id/find_money_detail_desc"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="504px"
                 android:layout_marginLeft="30px"
                 android:layout_marginRight="30px"
                 android:layout_marginTop="40px"
@@ -42,31 +52,10 @@
                 android:text="1.闪电借款:极速小额借款,线上全自动化信审"
                 android:textSize="38px" />
 
-            <TextView
-                android:id="@+id/house_detail_price"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="30px"
-                android:text="2.额度灵活，小额轻松借,大额高至5万！"
-                android:textSize="38px" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="30px"
-                android:text="3.盛大开放撒打发u较为阿尔加粉丝多架飞机萨达"
-                android:textSize="38px" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="30px"
-                android:text="5.与哈佛ID沙发谁带啊念佛is毒贩"
-                android:textSize="38px" />
-
             <View
                 android:layout_width="match_parent"
                 android:layout_height="20px"
+                android:layout_marginTop="20px"
                 android:background="@color/base_bg" />
 
             <TextView
@@ -102,7 +91,6 @@
         android:layout_alignParentBottom="true"
         android:background="@color/base_bg">
 
-
         <ImageView
             android:id="@+id/avatar"
             android:layout_width="wrap_content"
@@ -112,7 +100,7 @@
             android:src="@drawable/linshi4" />
 
         <TextView
-            android:id="@+id/framuser"
+            android:id="@+id/finduser"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="34px"
@@ -120,7 +108,7 @@
             android:textColor="@color/textBlack1" />
 
         <TextView
-            android:id="@+id/framphone"
+            android:id="@+id/findphone"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"

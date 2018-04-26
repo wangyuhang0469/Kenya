@@ -56,8 +56,6 @@
     </style>
     <!--登陆界面填写样式-->
     <style name="edit_base">
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">150px</item>
         <item name="android:gravity">bottom</item>
         <item name="android:paddingBottom">30px</item>
         <item name="android:textCursorDrawable">@null</item>
@@ -67,8 +65,9 @@
         <item name="android:textColorHint">@color/textBlack3</item>
     </style>
 
-
     <style name="edit_base2">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">150px</item>
         <item name="android:gravity">center_vertical</item>
         <item name="android:textCursorDrawable">@null</item>
         <item name="android:background">@null</item>

@@ -33,42 +33,46 @@
                 app:indicator_width="7.5dp" />
 
             <TextView
-                android:id="@+id/house_detail_desc"
+                android:id="@+id/project_detail_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="44px"
                 android:layout_marginLeft="30px"
                 android:layout_marginRight="30px"
-                android:layout_marginTop="30px"
+                android:layout_marginTop="40px"
                 android:lineSpacingMultiplier="1.3"
                 android:text="荣事达智能洗衣"
                 android:textColor="@color/textBlack2"
                 android:textSize="50px" />
 
             <TextView
-                android:id="@+id/house_detail_price"
+                android:id="@+id/project_detail_price"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="30px"
+                android:layout_marginTop="40px"
                 android:text="投资额度：5-10万"
                 android:textColor="@color/textgreen1"
                 android:textSize="50px" />
 
             <TextView
+                android:id="@+id/project_detail_type"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="30px"
-                android:text="总部：合肥" />
+                android:layout_marginTop="20px"
+                android:text="所属行业：生活服务类" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="30px"
-                android:text="所属行业：生活服务类" />
+                android:layout_marginTop="20px"
+                android:text="总部：合肥" />
 
             <View
                 android:layout_width="match_parent"
                 android:layout_height="20px"
+                android:layout_marginTop="30px"
                 android:background="@color/base_bg" />
 
             <TextView
@@ -87,11 +91,14 @@
                 android:background="@color/line1" />
 
             <TextView
-                android:id="@+id/house_detail_home"
+                android:id="@+id/project_detail_desc"
                 android:layout_width="match_parent"
                 android:layout_height="150px"
                 android:gravity="center"
-                android:text="卡缴费哈师大合肥IE儿科答复后ID司法局iufposdjvasfksdjfi交话费迪欧撒u哦"
+                android:paddingLeft="30px"
+                android:paddingRight="30px"
+                android:text=""
+                android:textColor="@color/textBlack2"
                 android:textSize="38px" />
         </com.zhy.autolayout.AutoLinearLayout>
     </com.example.administrator.kenya.view.MyObervalbleScrollView>
@@ -102,7 +109,6 @@
         android:layout_alignParentBottom="true"
         android:background="@color/base_bg">
 
-
         <ImageView
             android:id="@+id/avatar"
             android:layout_width="wrap_content"
@@ -112,7 +118,7 @@
             android:src="@drawable/linshi4" />
 
         <TextView
-            android:id="@+id/framuser"
+            android:id="@+id/porject_user"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="34px"
@@ -120,7 +126,7 @@
             android:textColor="@color/textBlack1" />
 
         <TextView
-            android:id="@+id/framphone"
+            android:id="@+id/project_phone"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"

@@ -54,14 +54,10 @@ public class HouseSearchActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_house_search);
         ButterKnife.bind(this);
-
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_VISIBLE);
-
         initView();
-
         initOKHttp();
     }
-
     private void initOKHttp() {
         postFormBuilder = OkHttpUtils.post()
                 .url(AppConstants.BASE_URL + "/kenya/Lease/selectByFile")
@@ -78,7 +74,6 @@ public class HouseSearchActivity extends BaseActivity {
                     e.printStackTrace();
                 }
             }
-
             @Override
             public void onResponse(String response, int id) {
                 Log.d("kang", "111111" + response);
@@ -125,14 +120,12 @@ public class HouseSearchActivity extends BaseActivity {
                 return true;
             }
         });
-
         pullToRefreshLayout.setCanRefresh(false);
         pullToRefreshLayout.setCanLoadMore(false);
         pullToRefreshLayout.setRefreshListener(new BaseRefreshListener() {
             @Override
             public void refresh() {
             }
-
             @Override
             public void loadMore() {
                 postFormBuilder.addParams("pn", cpageNum + "").addParams("leaseName", lastKeyword).build().execute(StringCallback);

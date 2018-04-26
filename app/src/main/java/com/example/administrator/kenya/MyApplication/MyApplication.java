@@ -48,7 +48,6 @@ public class MyApplication extends Application {
         return message;
     }
 
-
     /*添加activity*/
     public void addActivity(Activity activity) {
         if (activityList == null) {
@@ -107,6 +106,5 @@ public class MyApplication extends Application {
                 finishActivity(activityList.get(i));
             }
         }
-
     }
 }

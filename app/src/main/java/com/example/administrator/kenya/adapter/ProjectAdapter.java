@@ -18,7 +18,7 @@ import com.bumptech.glide.request.animation.GlideAnimation;
 import com.bumptech.glide.request.target.SimpleTarget;
 import com.example.administrator.kenya.R;
 import com.example.administrator.kenya.classes.Funds;
-import com.example.administrator.kenya.classes.Project;
+import com.example.administrator.kenya.classes.Project2;
 import com.example.administrator.kenya.constants.AppConstants;
 import com.example.administrator.kenya.ui.city.findmoney.FindProjectdetailActivity;
 
@@ -30,10 +30,10 @@ import java.util.List;
 
 public class ProjectAdapter extends RecyclerView.Adapter<ProjectAdapter.ViewHolder> {
 
-    private List<Project> list;
+    private List<Project2> list;
     private Context context;
 
-    public ProjectAdapter(Context context, List<Project> list) {
+    public ProjectAdapter(Context context, List<Project2> list) {
         this.list = list;
         this.context = context;
     }
@@ -87,7 +87,7 @@ public class ProjectAdapter extends RecyclerView.Adapter<ProjectAdapter.ViewHold
             @Override
             public void onClick(View view) {
                 Bundle bundle = new Bundle();
-                bundle.putSerializable("project", list.get(position).getProjectimgs());
+                bundle.putSerializable("project2", list.get(position));
                 Intent intent = new Intent(context, FindProjectdetailActivity.class);
                 intent.putExtras(bundle);
                 context.startActivity(intent);

@@ -69,7 +69,7 @@ public class RegisterActivity extends BaseActivity {
     private void register() {
         lock = true;
         OkHttpUtils.get()
-                .url(AppConstants.BASE_URL +"/kenya/user/register")
+                .url(AppConstants.BASE_URL + "/kenya/user/register")
                 .addParams("userPhoneNumber", phone.getText().toString())
                 .addParams("userName", userName.getText().toString())
                 .addParams("userPsw", password1.getText().toString())
@@ -86,8 +86,6 @@ public class RegisterActivity extends BaseActivity {
 
                     @Override
                     public void onResponse(String response, int id) {
-                        Log.d("kang", "11111111" + response);
-                        Log.d("kang", "22222" + id);
                         JSONObject jsonObject = null;
                         try {
                             jsonObject = new JSONObject(response);

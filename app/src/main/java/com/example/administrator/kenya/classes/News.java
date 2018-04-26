@@ -7,15 +7,6 @@ import java.io.Serializable;
  */
 
 public class News implements Serializable {
-    /**
-     * newsid : 2
-     * newstitle : 2
-     * newsimg0 : null
-     * newsimg1 : null
-     * newsauthor : KangSir
-     * newscreatetime : null
-     * newstext : null
-     */
 
     private int newsid;
     private String newstitle;

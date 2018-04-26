@@ -38,9 +38,6 @@ public class PreviewDialog extends Dialog{
         this.beginPosition = beginPosition;
     }
 
-
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

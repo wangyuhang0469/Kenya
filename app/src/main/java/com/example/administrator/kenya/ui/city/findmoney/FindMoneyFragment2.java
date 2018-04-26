@@ -14,7 +14,7 @@ import android.widget.Toast;
 import com.alibaba.fastjson.JSON;
 import com.example.administrator.kenya.R;
 import com.example.administrator.kenya.adapter.ProjectAdapter;
-import com.example.administrator.kenya.classes.Project;
+import com.example.administrator.kenya.classes.Project2;
 import com.example.administrator.kenya.constants.AppConstants;
 import com.jwenfeng.library.pulltorefresh.BaseRefreshListener;
 import com.jwenfeng.library.pulltorefresh.PullToRefreshLayout;
@@ -49,7 +49,7 @@ public class FindMoneyFragment2 extends Fragment {
     private int cpageNum = 1;
     private com.zhy.http.okhttp.callback.StringCallback StringCallback;
 
-    private List<Project> projectList;
+    private List<Project2> projectList;
 
     private ProjectAdapter projectAdapter;
 
@@ -101,7 +101,7 @@ public class FindMoneyFragment2 extends Fragment {
                 Log.d("kang", "111111" + response);
                 if (pullToRefreshLayout != null) {
                     cpageNum++;
-                    List<Project> addList = null;
+                    List<Project2> addList = null;
                     try {
                         JSONObject jsonObject = new JSONObject(response);
                         if (jsonObject.getString("code").equals("000")) {
@@ -113,7 +113,7 @@ public class FindMoneyFragment2 extends Fragment {
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
-                    addList = JSON.parseArray(response, Project.class);
+                    addList = JSON.parseArray(response, Project2.class);
                     projectList.addAll(addList);
                     projectAdapter.notifyDataSetChanged();
                     pullToRefreshLayout.finishLoadMore();

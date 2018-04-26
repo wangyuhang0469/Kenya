@@ -37,7 +37,6 @@ public class NewsinfoActivity extends BaseActivity {
     RecyclerView recyclerView;
     @Bind(R.id.pullToRefreshLayout)
     PullToRefreshLayout pullToRefreshLayout;
-
     private NewsAdapter newsAdapter;
     private List<News> newsList = new ArrayList<>();
     private int cpageNum = 1;

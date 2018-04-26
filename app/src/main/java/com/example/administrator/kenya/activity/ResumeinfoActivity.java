@@ -149,50 +149,66 @@ public class ResumeinfoActivity extends BaseActivity implements View.OnClickList
                 openPopupWindow(view);
                 break;
             case R.id.resume_info_detail:
-
-                File f2 = new File(s);
-                PostFormBuilder postFormBuilder = OkHttpUtils.post()
-                        .addFile("logoFile", "tupian.png", f2);
-                postFormBuilder.url(AppConstants.BASE_URL + "/kenya/jobSeeker/saveJobWant")
-                        .addParams("sex", sexvalue)
-                        .addParams("name", resumeInfoJobname.getText().toString())
-                        .addParams("jobwant", resumeInfoJobwant.getText().toString())
-                        .addParams("phone", resumeInfoPhone.getText().toString())
-                        .addParams("birthday", resumeTimeBirday.getText().toString())
-                        .addParams("jointime", resumeTvTime.getText().toString())
-                        .addParams("hopesalary", " ")
-                        .addParams("persondesc", resumeTvRecm.getText().toString())
-                        .addParams("userId", User.getInstance().getUserId())
-                        .build()
-                        .execute(new StringCallback() {
-                            @Override
-                            public void onError(Call call, Exception e, int id) {
-                                e.printStackTrace();
-                                toast("加载失败");
-                            }
-
-                            @Override
-                            public void onResponse(String response, int id) {
-                                Log.d("kang", "1111111111111111" + response);
-                                log(response);
-                                toast("加载成功");
-                                try {
-                                    JSONObject jsonObject = new JSONObject(response);
-                                    if (jsonObject.getString("code").equals("000")) {
-                                        Job job = JSON.parseObject(jsonObject.getString("data"), Job.class);
-                                        Bundle bundle = new Bundle();
-                                        bundle.putSerializable("job", job);
-                                        toast("发布成功");
-                                        startActivity(ResumeDetilActivity.class, bundle);
-                                        finish();
-                                    } else {
-                                        toast(jsonObject.getString("message"));
-                                    }
-                                } catch (JSONException e) {
+                if (s.length() == 0) {
+                    toast("请上传头像");
+                } else if (resumeInfoJobname.getText().length() == 0) {
+                    toast("请输入姓名");
+                } else if (sexvalue.equals("")) {
+                    toast("请选择性别");
+                } else if (resumeInfoJobwant.getText().length() == 0) {
+                    toast("请输入求职意向");
+                } else if (resumeInfoPhone.getText().length() == 0) {
+                    toast("请输入手机号");
+                } else if (resumeTimeBirday.getText().length() == 0) {
+                    toast("请输选择出生年月");
+                } else if (resumeTvRecmChoose.getText().length() == 0) {
+                    toast("请输入个人介绍");
+                } else if (resumeTvTime.getText().length() == 0) {
+                    toast("请选择开始工作时间");
+                } else {
+                    File f2 = new File(s);
+                    PostFormBuilder postFormBuilder = OkHttpUtils.post()
+                            .addFile("logoFile", "tupian.png", f2);
+                    postFormBuilder.url(AppConstants.BASE_URL + "/kenya/jobSeeker/saveJobWant")
+                            .addParams("sex", sexvalue)
+                            .addParams("name", resumeInfoJobname.getText().toString())
+                            .addParams("jobwant", resumeInfoJobwant.getText().toString())
+                            .addParams("phone", resumeInfoPhone.getText().toString())
+                            .addParams("birthday", resumeTimeBirday.getText().toString())
+                            .addParams("jointime", resumeTvTime.getText().toString())
+                            .addParams("persondesc", resumeTvRecm.getText().toString())
+                            .addParams("userId", User.getInstance().getUserId())
+                            .build()
+                            .execute(new StringCallback() {
+                                @Override
+                                public void onError(Call call, Exception e, int id) {
                                     e.printStackTrace();
+                                    toast("加载失败");
                                 }
-                            }
-                        });
+
+                                @Override
+                                public void onResponse(String response, int id) {
+                                    Log.d("kang", "1111111111111111" + response);
+                                    log(response);
+                                    toast("加载成功");
+                                    try {
+                                        JSONObject jsonObject = new JSONObject(response);
+                                        if (jsonObject.getString("code").equals("000")) {
+                                            Job job = JSON.parseObject(jsonObject.getString("data"), Job.class);
+                                            Bundle bundle = new Bundle();
+                                            bundle.putSerializable("job", job);
+                                            toast("发布成功");
+                                            startActivity(ResumeDetilActivity.class, bundle);
+                                            finish();
+                                        } else {
+                                            toast(jsonObject.getString("message"));
+                                        }
+                                    } catch (JSONException e) {
+                                        e.printStackTrace();
+                                    }
+                                }
+                            });
+                }
                 break;
             case R.id.resume_info_men:
                 resumeInfoMen.setImageResource(R.mipmap.resume_sex_click);
@@ -309,7 +325,6 @@ public class ResumeinfoActivity extends BaseActivity implements View.OnClickList
 
     public void camer() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-
             onPermissionRequests(Manifest.permission.CAMERA, new OnBooleanListener() {
                 @Override
                 public void onClick(boolean bln) {

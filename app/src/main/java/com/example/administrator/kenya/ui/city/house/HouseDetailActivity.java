@@ -34,6 +34,8 @@ public class HouseDetailActivity extends BaseActivity {
     TextView houseUsername;
     @Bind(R.id.house_phone)
     TextView housePhone;
+    @Bind(R.id.house_detail_address)
+    TextView houseDetailAddress;
     private House house;
 
     @Override
@@ -46,7 +48,8 @@ public class HouseDetailActivity extends BaseActivity {
         initBanner(house.getHouseImageUrlList());
         houseDetailDesc.setText(house.getLeasedesc());
         houseDetailPrice.setText("$" + house.getLeaseprice() + "/月");
-        houseDetailHome.setText(house.getLeasehome());
+        houseDetailHome.setText(house.getLeasesquare());
+        houseDetailAddress.setText(house.getLeaseaddress());
         houseUsername.setText(house.getLeasename());
         housePhone.setText("手机：" + house.getLeasephone());
     }
@@ -56,7 +59,7 @@ public class HouseDetailActivity extends BaseActivity {
         banner.setOnBannerListener(new OnBannerListener() {
             @Override
             public void OnBannerClick(int position) {
-                new PreviewDialog(HouseDetailActivity.this , house.getHouseImageUrlList(),position).show();
+                new PreviewDialog(HouseDetailActivity.this, house.getHouseImageUrlList(), position).show();
             }
         });
     }

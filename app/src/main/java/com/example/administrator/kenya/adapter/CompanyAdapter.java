@@ -41,7 +41,7 @@ public class CompanyAdapter extends RecyclerView.Adapter<CompanyAdapter.ViewHold
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         TextView company_Title, company_phone, company_home, company_price;
-        ImageView company_image;
+        //ImageView company_image;
 
         public ViewHolder(View itemView) {
             super(itemView);
@@ -49,7 +49,7 @@ public class CompanyAdapter extends RecyclerView.Adapter<CompanyAdapter.ViewHold
             company_phone = (TextView) itemView.findViewById(R.id.company_phone);
             company_home = (TextView) itemView.findViewById(R.id.company_home);
             company_price = (TextView) itemView.findViewById(R.id.company_price);
-            company_image = (ImageView) itemView.findViewById(R.id.company_image);
+            // company_image = (ImageView) itemView.findViewById(R.id.company_image);
         }
     }
 
@@ -68,11 +68,11 @@ public class CompanyAdapter extends RecyclerView.Adapter<CompanyAdapter.ViewHold
         holder.company_price.setText(list.get(position).getCompanystationsalary() + "元/月");
 //        holder.company_image.setTag(list.get(position).getCompanyimg0());
 
-        Glide.with(context)
-                .load(AppConstants.BASE_URL + list.get(position).getCompanyimg0())
-                .centerCrop()
-                .placeholder(R.drawable.img_loading)
-                .into(holder.company_image);
+//        Glide.with(context)
+//                .load(AppConstants.BASE_URL + list.get(position).getCompanyimg0())
+//                .centerCrop()
+//                .placeholder(R.drawable.img_loading);
+//                .into(holder.company_image);
 
 //                .asBitmap()
 //                .placeholder(R.drawable.bg4dp_grey)
