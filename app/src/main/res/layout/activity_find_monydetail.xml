@@ -97,7 +97,7 @@
             android:layout_height="match_parent"
             android:layout_margin="30px"
             android:adjustViewBounds="true"
-            android:src="@drawable/linshi4" />
+            android:src="@drawable/avatar" />
 
         <TextView
             android:id="@+id/finduser"

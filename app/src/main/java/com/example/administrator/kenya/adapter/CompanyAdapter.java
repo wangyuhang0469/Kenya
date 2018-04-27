@@ -22,6 +22,7 @@ import com.example.administrator.kenya.classes.Company;
 import com.example.administrator.kenya.classes.House;
 import com.example.administrator.kenya.constants.AppConstants;
 import com.example.administrator.kenya.ui.city.house.HouseDetailActivity;
+import com.example.administrator.kenya.ui.main.CallPhoneDialog;
 
 import java.util.List;
 
@@ -40,7 +41,7 @@ public class CompanyAdapter extends RecyclerView.Adapter<CompanyAdapter.ViewHold
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        TextView company_Title, company_phone, company_home, company_price;
+        TextView company_Title, company_phone, company_home, company_price,call;
         //ImageView company_image;
 
         public ViewHolder(View itemView) {
@@ -49,6 +50,7 @@ public class CompanyAdapter extends RecyclerView.Adapter<CompanyAdapter.ViewHold
             company_phone = (TextView) itemView.findViewById(R.id.company_phone);
             company_home = (TextView) itemView.findViewById(R.id.company_home);
             company_price = (TextView) itemView.findViewById(R.id.company_price);
+            call = (TextView) itemView.findViewById(R.id.company_call);
             // company_image = (ImageView) itemView.findViewById(R.id.company_image);
         }
     }
@@ -68,6 +70,12 @@ public class CompanyAdapter extends RecyclerView.Adapter<CompanyAdapter.ViewHold
         holder.company_price.setText(list.get(position).getCompanystationsalary() + "元/月");
 //        holder.company_image.setTag(list.get(position).getCompanyimg0());
 
+        holder.call.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                new CallPhoneDialog(context,list.get(position).getCompanyphone()).show();
+            }
+        });
 //        Glide.with(context)
 //                .load(AppConstants.BASE_URL + list.get(position).getCompanyimg0())
 //                .centerCrop()

@@ -124,7 +124,7 @@
                     android:layout_marginBottom="50px"
                     android:layout_marginLeft="30px"
                     android:layout_marginTop="50px"
-                    android:src="@drawable/linshi4" />
+                    android:src="@drawable/avatar" />
 
                 <TextView
                     android:id="@+id/house_username"

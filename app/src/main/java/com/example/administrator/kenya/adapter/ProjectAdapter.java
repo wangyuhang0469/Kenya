@@ -21,6 +21,7 @@ import com.example.administrator.kenya.classes.Funds;
 import com.example.administrator.kenya.classes.Project2;
 import com.example.administrator.kenya.constants.AppConstants;
 import com.example.administrator.kenya.ui.city.findmoney.FindProjectdetailActivity;
+import com.example.administrator.kenya.ui.main.CallPhoneDialog;
 
 import java.util.List;
 
@@ -39,7 +40,7 @@ public class ProjectAdapter extends RecyclerView.Adapter<ProjectAdapter.ViewHold
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        TextView project_Title, project_phone, project_price;
+        TextView project_Title, project_phone, project_price,call;
         ImageView project_image;
 
         public ViewHolder(View itemView) {
@@ -47,6 +48,7 @@ public class ProjectAdapter extends RecyclerView.Adapter<ProjectAdapter.ViewHold
             project_Title = (TextView) itemView.findViewById(R.id.project_Title);
             project_phone = (TextView) itemView.findViewById(R.id.project_phone);
             project_price = (TextView) itemView.findViewById(R.id.project_price);
+            call = (TextView) itemView.findViewById(R.id.project_call);
             project_image = (ImageView) itemView.findViewById(R.id.project_image);
         }
     }
@@ -64,6 +66,13 @@ public class ProjectAdapter extends RecyclerView.Adapter<ProjectAdapter.ViewHold
         holder.project_phone.setText("手机：" + list.get(position).getProjectphone());
         holder.project_price.setText("$" + list.get(position).getProjectprice());
 //        holder.project_image.setTag(list.get(position).getProjectimgs());
+
+        holder.call.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                new CallPhoneDialog(context,list.get(position).getProjectphone()).show();
+            }
+        });
 
         Glide.with(context)
                 .load(AppConstants.BASE_URL + list.get(position).getProjectimgs())

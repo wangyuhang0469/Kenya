@@ -24,6 +24,7 @@ import com.example.administrator.kenya.R;
 import com.example.administrator.kenya.base.BaseActivity;
 import com.example.administrator.kenya.classes.Goods;
 import com.example.administrator.kenya.constants.AppConstants;
+import com.example.administrator.kenya.ui.main.CallPhoneDialog;
 import com.jwenfeng.library.pulltorefresh.BaseRefreshListener;
 import com.jwenfeng.library.pulltorefresh.PullToRefreshLayout;
 import com.zhy.http.okhttp.OkHttpUtils;
@@ -155,7 +156,7 @@ public class UsedActivity extends BaseActivity {
         }
 
         public class ViewHolder extends RecyclerView.ViewHolder {
-            TextView goodsname, goodsphone, goodsprice;
+            TextView goodsname, goodsphone, goodsprice,call;
             ImageView goodsimgs;
 
             public ViewHolder(View itemView) {
@@ -163,6 +164,7 @@ public class UsedActivity extends BaseActivity {
                 goodsname = (TextView) itemView.findViewById(R.id.goodsname);
                 goodsphone = (TextView) itemView.findViewById(R.id.goodsphone);
                 goodsprice = (TextView) itemView.findViewById(R.id.goodsprice);
+                call = (TextView) itemView.findViewById(R.id.call);
                 goodsimgs = (ImageView) itemView.findViewById(R.id.goodsimgs);
             }
         }
@@ -180,6 +182,13 @@ public class UsedActivity extends BaseActivity {
             holder.goodsprice.setText("$" + list.get(position).getGoodsprice());
 //            holder.goodsimgs.setTag(list.get(position).getGoodsimgs());
 //            holder.goodsimgs.setBackgroundResource(R.drawable.bg4dp_grey);
+
+            holder.call.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    new CallPhoneDialog(UsedActivity.this,list.get(position).getGoodsphone()).show();
+                }
+            });
 
             Glide.with(UsedActivity.this)
                     .load(AppConstants.BASE_URL + list.get(position).getGoodsimgs())

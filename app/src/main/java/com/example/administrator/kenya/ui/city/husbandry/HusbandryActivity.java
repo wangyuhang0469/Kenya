@@ -29,6 +29,7 @@ import com.example.administrator.kenya.classes.Husbandry;
 import com.example.administrator.kenya.constants.AppConstants;
 import com.example.administrator.kenya.ui.city.life.LifeDetailsActivity;
 import com.example.administrator.kenya.ui.city.life.LifeReleaseActivity;
+import com.example.administrator.kenya.ui.main.CallPhoneDialog;
 import com.example.administrator.kenya.view.MyRadioGroup;
 import com.jwenfeng.library.pulltorefresh.BaseRefreshListener;
 import com.jwenfeng.library.pulltorefresh.PullToRefreshLayout;
@@ -232,13 +233,14 @@ public class HusbandryActivity extends BaseActivity {
         }
 
         public class ViewHolder extends RecyclerView.ViewHolder {
-            TextView framname, framphone;
+            TextView framname, framphone,call;
             ImageView framimgs;
 
             public ViewHolder(View itemView) {
                 super(itemView);
                 framname = (TextView) itemView.findViewById(R.id.framname);
                 framphone = (TextView) itemView.findViewById(R.id.framphone);
+                call = (TextView) itemView.findViewById(R.id.call);
                 framimgs = (ImageView) itemView.findViewById(R.id.framimgs);
 
             }
@@ -255,6 +257,12 @@ public class HusbandryActivity extends BaseActivity {
             holder.framname.setText(list.get(position).getFramname());
             holder.framphone.setText("手机：" + list.get(position).getFramphone());
 //            holder.framimgs.setTag(list.get(position).getFramimgs());
+            holder.call.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    new CallPhoneDialog(HusbandryActivity.this,list.get(position).getFramphone()).show();
+                }
+            });
 //
             Glide.with(HusbandryActivity.this)
                     .load(AppConstants.BASE_URL + list.get(position).getFramimgs())

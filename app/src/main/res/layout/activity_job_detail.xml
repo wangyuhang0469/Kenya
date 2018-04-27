@@ -119,6 +119,15 @@
 
     </com.example.administrator.kenya.view.MyObervalbleScrollView>
 
+
+    <!-- <View
+         android:id="@+id/job_deyail_line_low"
+         android:layout_width="match_parent"
+         android:layout_height="20px"
+         android:layout_alignParentBottom="true"
+         android:layout_marginBottom="410px"
+         android:background="@color/base_bg" />-->
+
     <com.zhy.autolayout.AutoRelativeLayout
         android:layout_width="match_parent"
         android:layout_height="180px"
@@ -131,7 +140,7 @@
             android:layout_height="match_parent"
             android:layout_margin="30px"
             android:adjustViewBounds="true"
-            android:src="@drawable/linshi4" />
+            android:src="@drawable/avatar" />
 
         <TextView
             android:id="@+id/job_detail_person_name"

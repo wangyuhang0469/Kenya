@@ -8,6 +8,7 @@ import com.example.administrator.kenya.R;
 import com.example.administrator.kenya.base.BaseActivity;
 import com.example.administrator.kenya.classes.Project2;
 import com.example.administrator.kenya.tools.GlideImageLoader;
+import com.example.administrator.kenya.ui.main.CallPhoneDialog;
 import com.example.administrator.kenya.ui.main.PreviewDialog;
 import com.youth.banner.Banner;
 import com.youth.banner.listener.OnBannerListener;
@@ -69,6 +70,7 @@ public class FindProjectdetailActivity extends BaseActivity {
                 finish();
                 break;
             case R.id.call:
+                new CallPhoneDialog(this,project2.getProjectphone()).show();
                 break;
         }
     }

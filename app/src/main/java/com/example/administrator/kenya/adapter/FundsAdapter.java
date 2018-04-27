@@ -22,6 +22,7 @@ import com.example.administrator.kenya.classes.House;
 import com.example.administrator.kenya.constants.AppConstants;
 import com.example.administrator.kenya.ui.city.findmoney.FindMonydetailActivity;
 import com.example.administrator.kenya.ui.city.house.HouseDetailActivity;
+import com.example.administrator.kenya.ui.main.CallPhoneDialog;
 
 import java.util.List;
 
@@ -40,7 +41,7 @@ public class FundsAdapter extends RecyclerView.Adapter<FundsAdapter.ViewHolder> 
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        TextView funds_Title, funds_phone, funds_price;
+        TextView funds_Title, funds_phone, funds_price,call;
         ImageView funds_image;
 
         public ViewHolder(View itemView) {
@@ -48,6 +49,7 @@ public class FundsAdapter extends RecyclerView.Adapter<FundsAdapter.ViewHolder> 
             funds_Title = (TextView) itemView.findViewById(R.id.funds_Title);
             funds_phone = (TextView) itemView.findViewById(R.id.funds_phone);
             funds_price = (TextView) itemView.findViewById(R.id.funds_price);
+            call = (TextView) itemView.findViewById(R.id.funds_call);
             funds_image = (ImageView) itemView.findViewById(R.id.funds_image);
         }
     }
@@ -65,6 +67,13 @@ public class FundsAdapter extends RecyclerView.Adapter<FundsAdapter.ViewHolder> 
         holder.funds_phone.setText("手机：" + list.get(position).getFundsphone());
         holder.funds_price.setText("$" + list.get(position).getFundsprice());
 //        holder.funds_image.setTag(list.get(position).getFundsimgs());
+
+        holder.call.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                new CallPhoneDialog(context,list.get(position).getFundsphone()).show();
+            }
+        });
 
         Glide.with(context)
                 .load(AppConstants.BASE_URL + list.get(position).getFundsimgs())

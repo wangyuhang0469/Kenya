@@ -7,6 +7,7 @@ import android.widget.TextView;
 import com.example.administrator.kenya.R;
 import com.example.administrator.kenya.base.BaseActivity;
 import com.example.administrator.kenya.classes.Company;
+import com.example.administrator.kenya.ui.main.CallPhoneDialog;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -52,6 +53,7 @@ public class JobDetailActivity extends BaseActivity {
                 finish();
                 break;
             case R.id.job_detail_release:
+                new CallPhoneDialog(this,company.getCompanyphone()).show();
                 break;
         }
     }

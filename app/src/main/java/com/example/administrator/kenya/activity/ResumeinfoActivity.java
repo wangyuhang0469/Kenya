@@ -149,7 +149,7 @@ public class ResumeinfoActivity extends BaseActivity implements View.OnClickList
                 openPopupWindow(view);
                 break;
             case R.id.resume_info_detail:
-                if (s.length() == 0) {
+                if (s==null || s.length() == 0) {
                     toast("请上传头像");
                 } else if (resumeInfoJobname.getText().length() == 0) {
                     toast("请输入姓名");

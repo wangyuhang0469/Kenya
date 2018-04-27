@@ -21,6 +21,7 @@ import com.example.administrator.kenya.R;
 import com.example.administrator.kenya.activity.ResumeDetilActivity;
 import com.example.administrator.kenya.classes.Job;
 import com.example.administrator.kenya.constants.AppConstants;
+import com.example.administrator.kenya.ui.main.CallPhoneDialog;
 
 import java.util.List;
 
@@ -39,7 +40,7 @@ public class JobAdapter extends RecyclerView.Adapter<JobAdapter.ViewHolder> {
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        TextView job_want, job_name, job_sex, job_age;
+        TextView job_want, job_name, job_sex, job_age,call;
         // ImageView job_image;
 
         public ViewHolder(View itemView) {
@@ -48,6 +49,7 @@ public class JobAdapter extends RecyclerView.Adapter<JobAdapter.ViewHolder> {
             job_name = (TextView) itemView.findViewById(R.id.job_name);
             job_sex = (TextView) itemView.findViewById(R.id.job_sex);
             job_age = (TextView) itemView.findViewById(R.id.job_age);
+            call = (TextView) itemView.findViewById(R.id.job_call);
             //job_image = (ImageView) itemView.findViewById(R.id.job_image);
         }
     }
@@ -65,6 +67,13 @@ public class JobAdapter extends RecyclerView.Adapter<JobAdapter.ViewHolder> {
         holder.job_name.setText(list.get(position).getName());
         holder.job_sex.setText(list.get(position).getSex());
         holder.job_age.setText(list.get(position).getAge() + "岁");
+
+        holder.call.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                new CallPhoneDialog(context,list.get(position).getPhone()).show();
+            }
+        });
         // holder.job_image.setTag(list.get(position).getHeadimg());
 //        Glide.with(context)
 //                .load(AppConstants.BASE_URL + list.get(position).getHeadimg())

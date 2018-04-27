@@ -12,6 +12,7 @@ import com.example.administrator.kenya.R;
 import com.example.administrator.kenya.classes.GlideCircleTransform;
 import com.example.administrator.kenya.classes.Job;
 import com.example.administrator.kenya.constants.AppConstants;
+import com.example.administrator.kenya.ui.main.CallPhoneDialog;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -57,6 +58,7 @@ public class ResumeDetilActivity extends Activity {
                 finish();
                 break;
             case R.id.resume_detail_job_release:
+                new CallPhoneDialog(this,job.getPhone()).show();
                 break;
         }
     }

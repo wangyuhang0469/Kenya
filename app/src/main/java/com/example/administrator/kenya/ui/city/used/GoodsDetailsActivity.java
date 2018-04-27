@@ -2,12 +2,14 @@ package com.example.administrator.kenya.ui.city.used;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.TextView;
 
 import com.example.administrator.kenya.R;
 import com.example.administrator.kenya.base.BaseActivity;
 import com.example.administrator.kenya.classes.Goods;
 import com.example.administrator.kenya.tools.GlideImageLoader;
+import com.example.administrator.kenya.ui.main.CallPhoneDialog;
 import com.example.administrator.kenya.ui.main.PreviewDialog;
 import com.youth.banner.Banner;
 import com.youth.banner.listener.OnBannerListener;
@@ -71,8 +73,16 @@ public class GoodsDetailsActivity extends BaseActivity {
         });
     }
 
-    @OnClick(R.id.back)
-    public void onViewClicked() {
-        finish();
+
+    @OnClick({R.id.back, R.id.call})
+    public void onViewClicked(View view) {
+        switch (view.getId()) {
+            case R.id.back:
+                finish();
+                break;
+            case R.id.call:
+                new CallPhoneDialog(this,goods.getGoodsphone()).show();
+                break;
+        }
     }
 }

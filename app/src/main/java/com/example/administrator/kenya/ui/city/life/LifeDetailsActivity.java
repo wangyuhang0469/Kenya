@@ -10,6 +10,7 @@ import com.example.administrator.kenya.R;
 import com.example.administrator.kenya.adapter.ImageAdapter;
 import com.example.administrator.kenya.base.BaseActivity;
 import com.example.administrator.kenya.classes.LifeServices;
+import com.example.administrator.kenya.ui.main.CallPhoneDialog;
 import com.example.administrator.kenya.view.ExStaggeredGridLayoutManager;
 
 import butterknife.Bind;
@@ -39,6 +40,8 @@ public class LifeDetailsActivity extends BaseActivity {
     @Bind(R.id.call)
     TextView call;
 
+    private LifeServices lifeServices;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,7 +49,7 @@ public class LifeDetailsActivity extends BaseActivity {
         ButterKnife.bind(this);
 
         title.setText("详情");
-        LifeServices lifeServices = (LifeServices) getIntent().getExtras().getSerializable("lifeServices");
+        lifeServices = (LifeServices) getIntent().getExtras().getSerializable("lifeServices");
         livename.setText(lifeServices.getLivename());
         livetype.setText("服务类型  " + lifeServices.getLivetype());
         livedesc.setText(lifeServices.getLivedesc());
@@ -73,6 +76,7 @@ public class LifeDetailsActivity extends BaseActivity {
                 finish();
                 break;
             case R.id.call:
+                new CallPhoneDialog(this,lifeServices.getLivephone()).show();
                 break;
         }
     }

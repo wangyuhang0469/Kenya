@@ -29,6 +29,8 @@ import com.example.administrator.kenya.base.BaseActivity;
 import com.example.administrator.kenya.classes.Goods;
 import com.example.administrator.kenya.classes.LifeServices;
 import com.example.administrator.kenya.constants.AppConstants;
+import com.example.administrator.kenya.ui.city.husbandry.HusbandryActivity;
+import com.example.administrator.kenya.ui.main.CallPhoneDialog;
 import com.example.administrator.kenya.view.MyRadioGroup;
 import com.jwenfeng.library.pulltorefresh.BaseRefreshListener;
 import com.jwenfeng.library.pulltorefresh.PullToRefreshLayout;
@@ -229,13 +231,14 @@ public class LifeActivity extends BaseActivity {
         }
 
         public class ViewHolder extends RecyclerView.ViewHolder {
-            TextView livename, livephone;
+            TextView livename, livephone,call;
             ImageView liveimgs;
 
             public ViewHolder(View itemView) {
                 super(itemView);
                 livename = (TextView) itemView.findViewById(R.id.livename);
                 livephone = (TextView) itemView.findViewById(R.id.livephone);
+                call = (TextView) itemView.findViewById(R.id.call);
                 liveimgs = (ImageView) itemView.findViewById(R.id.liveimgs);
             }
         }
@@ -251,6 +254,13 @@ public class LifeActivity extends BaseActivity {
             holder.livename.setText(list.get(position).getLivename());
             holder.livephone.setText("手机：" + list.get(position).getLivephone());
 //            holder.liveimgs.setTag(list.get(position).getLiveimgs());
+
+            holder.call.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    new CallPhoneDialog(LifeActivity.this,list.get(position).getLivephone()).show();
+                }
+            });
 //
             Glide.with(LifeActivity.this)
                     .load(AppConstants.BASE_URL + list.get(position).getLiveimgs())

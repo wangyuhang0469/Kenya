@@ -26,6 +26,7 @@ import com.example.administrator.kenya.R;
 import com.example.administrator.kenya.base.BaseActivity;
 import com.example.administrator.kenya.classes.Goods;
 import com.example.administrator.kenya.constants.AppConstants;
+import com.example.administrator.kenya.ui.main.CallPhoneDialog;
 import com.jwenfeng.library.pulltorefresh.BaseRefreshListener;
 import com.jwenfeng.library.pulltorefresh.PullToRefreshLayout;
 import com.zhy.http.okhttp.OkHttpUtils;
@@ -204,7 +205,7 @@ public class UsedSearchActivity extends BaseActivity {
         }
 
         public class ViewHolder extends RecyclerView.ViewHolder {
-            TextView goodsname, goodsphone, goodsprice;
+            TextView goodsname, goodsphone, goodsprice,call;
             ImageView goodsimgs;
 
             public ViewHolder(View itemView) {
@@ -212,6 +213,7 @@ public class UsedSearchActivity extends BaseActivity {
                 goodsname = (TextView) itemView.findViewById(R.id.goodsname);
                 goodsphone = (TextView) itemView.findViewById(R.id.goodsphone);
                 goodsprice = (TextView) itemView.findViewById(R.id.goodsprice);
+                call = (TextView) itemView.findViewById(R.id.call);
                 goodsimgs = (ImageView) itemView.findViewById(R.id.goodsimgs);
             }
         }
@@ -228,6 +230,14 @@ public class UsedSearchActivity extends BaseActivity {
             holder.goodsphone.setText("手机：" + list.get(position).getGoodsphone());
             holder.goodsprice.setText("$" + list.get(position).getGoodsprice());
 //            holder.goodsimgs.setTag(list.get(position).getGoodsimgs());
+
+            holder.call.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    new CallPhoneDialog(UsedSearchActivity.this,list.get(position).getGoodsphone()).show();
+                }
+            });
+
             Glide.with(UsedSearchActivity.this)
                     .load(AppConstants.BASE_URL + list.get(position).getGoodsimgs())
                     .centerCrop()

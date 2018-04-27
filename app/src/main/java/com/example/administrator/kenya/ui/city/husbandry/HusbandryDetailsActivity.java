@@ -11,6 +11,7 @@ import com.example.administrator.kenya.adapter.ImageAdapter;
 import com.example.administrator.kenya.base.BaseActivity;
 import com.example.administrator.kenya.classes.Husbandry;
 import com.example.administrator.kenya.classes.LifeServices;
+import com.example.administrator.kenya.ui.main.CallPhoneDialog;
 import com.example.administrator.kenya.view.ExStaggeredGridLayoutManager;
 
 import butterknife.Bind;
@@ -42,6 +43,8 @@ public class HusbandryDetailsActivity extends BaseActivity {
     @Bind(R.id.framphone)
     TextView framphone;
 
+    private Husbandry husbandry;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,7 +52,7 @@ public class HusbandryDetailsActivity extends BaseActivity {
         ButterKnife.bind(this);
 
         title.setText("详情");
-        Husbandry husbandry = (Husbandry) getIntent().getExtras().getSerializable("Husbandry");
+        husbandry = (Husbandry) getIntent().getExtras().getSerializable("Husbandry");
         framname.setText(husbandry.getFramname());
         framtype.setText("服务类型  " + husbandry.getFramtype());
         framdesc.setText(husbandry.getFramdesc());
@@ -76,6 +79,7 @@ public class HusbandryDetailsActivity extends BaseActivity {
                 finish();
                 break;
             case R.id.call:
+                new CallPhoneDialog(this,husbandry.getFramphone()).show();
                 break;
         }
     }

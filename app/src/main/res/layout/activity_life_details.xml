@@ -115,7 +115,7 @@
             android:id="@+id/avatar"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:src="@drawable/linshi4"
+            android:src="@drawable/avatar"
             android:adjustViewBounds="true"
             android:layout_margin="30px"/>
 

@@ -63,7 +63,7 @@
                     android:id="@+id/resume_detil_img"
                     android:layout_width="248px"
                     android:layout_height="248px"
-                    android:src="@drawable/linshi4" />
+                    android:src="@drawable/avatar" />
 
                 <com.zhy.autolayout.AutoLinearLayout
                     android:layout_width="wrap_content"

@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
@@ -23,6 +24,7 @@ import com.example.administrator.kenya.classes.House;
 import com.example.administrator.kenya.constants.AppConstants;
 import com.example.administrator.kenya.ui.city.house.HouseDetailActivity;
 import com.example.administrator.kenya.ui.city.used.UsedActivity;
+import com.example.administrator.kenya.ui.main.CallPhoneDialog;
 
 import java.util.List;
 
@@ -41,7 +43,7 @@ public class HouseAdapter extends RecyclerView.Adapter<HouseAdapter.ViewHolder> 
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        TextView house_Title, house_phone, house_home, house_price;
+        TextView house_Title, house_phone, house_home, house_price,call;
         ImageView house_image;
 
         public ViewHolder(View itemView) {
@@ -50,6 +52,7 @@ public class HouseAdapter extends RecyclerView.Adapter<HouseAdapter.ViewHolder> 
             house_phone = (TextView) itemView.findViewById(R.id.house_phone);
             house_home = (TextView) itemView.findViewById(R.id.house_home);
             house_price = (TextView) itemView.findViewById(R.id.house_price);
+            call = (TextView) itemView.findViewById(R.id.house_call);
             house_image = (ImageView) itemView.findViewById(R.id.house_image);
         }
     }
@@ -67,6 +70,14 @@ public class HouseAdapter extends RecyclerView.Adapter<HouseAdapter.ViewHolder> 
         holder.house_phone.setText("手机：" + list.get(position).getLeasephone());
         holder.house_home.setText(list.get(position).getLeasehome());
         holder.house_price.setText("$" + list.get(position).getLeaseprice());
+
+        holder.call.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                new CallPhoneDialog(context,list.get(position).getLeasephone()).show();
+            }
+        });
+
 //        holder.house_image.setTag(list.get(position).getLeaseimgs());
 
         Glide.with(context)

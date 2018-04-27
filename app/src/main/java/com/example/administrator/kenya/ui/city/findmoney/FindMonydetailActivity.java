@@ -8,6 +8,7 @@ import android.widget.TextView;
 import com.example.administrator.kenya.R;
 import com.example.administrator.kenya.classes.Funds;
 import com.example.administrator.kenya.tools.GlideImageLoader;
+import com.example.administrator.kenya.ui.main.CallPhoneDialog;
 import com.example.administrator.kenya.ui.main.PreviewDialog;
 import com.youth.banner.Banner;
 import com.youth.banner.listener.OnBannerListener;
@@ -65,6 +66,7 @@ public class FindMonydetailActivity extends Activity {
                 finish();
                 break;
             case R.id.find_money_call:
+                new CallPhoneDialog(this,funds.getFundsphone()).show();
                 break;
         }
     }
