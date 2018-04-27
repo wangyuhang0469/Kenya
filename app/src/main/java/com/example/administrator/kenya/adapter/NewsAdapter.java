@@ -19,6 +19,7 @@ import com.bumptech.glide.request.target.SimpleTarget;
 import com.example.administrator.kenya.R;
 import com.example.administrator.kenya.classes.House;
 import com.example.administrator.kenya.classes.News;
+import com.example.administrator.kenya.constants.AppConstants;
 import com.example.administrator.kenya.ui.city.house.HouseDetailActivity;
 import com.example.administrator.kenya.ui.city.news.NewsWebActivity;
 
@@ -63,7 +64,7 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.ViewHolder> {
 //        holder.news_image.setTag(list.get(position).getNewsimg0());
 
         Glide.with(context)
-                .load(list.get(position).getNewsimg0())
+                .load(AppConstants.BASE_URL + list.get(position).getNewsimg0())
                 .centerCrop()
                 .placeholder(R.drawable.img_loading)
                 .into(holder.news_image);

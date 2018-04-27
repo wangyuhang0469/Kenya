@@ -105,6 +105,7 @@ public class LifeActivity extends BaseActivity {
             @Override
             public void refresh() {
             }
+
             @Override
             public void loadMore() {
                 Log.d("kang", "111aaa" + cpageNum);
@@ -158,7 +159,7 @@ public class LifeActivity extends BaseActivity {
         };
     }
 
-    private void initPopupWindow(){
+    private void initPopupWindow() {
         final View popContentView = LayoutInflater.from(this).inflate(R.layout.popupwindow_life, null);
         popupWindow = new PopupWindow(popContentView, RelativeLayout.LayoutParams.MATCH_PARENT,
                 RelativeLayout.LayoutParams.WRAP_CONTENT);
@@ -215,7 +216,7 @@ public class LifeActivity extends BaseActivity {
                 black.setVisibility(View.VISIBLE);
                 break;
             case R.id.release:
-                startActivity(LifeReleaseActivity.class,null);
+                startActivity(LifeReleaseActivity.class, null);
                 break;
         }
     }
@@ -279,6 +280,7 @@ public class LifeActivity extends BaseActivity {
                 }
             });
         }
+
         @Override
         public int getItemCount() {
             return list == null ? 0 : list.size();

@@ -66,7 +66,7 @@ public class GoodsDetailsActivity extends BaseActivity {
         banner.setOnBannerListener(new OnBannerListener() {
             @Override
             public void OnBannerClick(int position) {
-                new PreviewDialog(GoodsDetailsActivity.this , goods.getImageUrlList(),position).show();
+                new PreviewDialog(GoodsDetailsActivity.this, goods.getImageUrlList(), position).show();
             }
         });
     }

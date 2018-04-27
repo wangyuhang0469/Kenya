@@ -61,7 +61,6 @@ public class UsedActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_used);
         ButterKnife.bind(this);
-
         initOKHttp();
         initView();
         postFormBuilder.addParams("pn", cpageNum + "").build().execute(StringCallback);
@@ -86,7 +85,6 @@ public class UsedActivity extends BaseActivity {
 
             @Override
             public void onResponse(String response, int id) {
-                Log.d("kang", "111111" + response);
                 //防止因Activity释放导致内部控件空指针
                 if (pullToRefreshLayout != null) {
                     cpageNum++;

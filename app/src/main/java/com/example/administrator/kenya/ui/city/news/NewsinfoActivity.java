@@ -72,7 +72,6 @@ public class NewsinfoActivity extends BaseActivity {
 
             @Override
             public void onResponse(String response, int id) {
-                Log.d("kang", "111111" + response);
                 //防止因Activity释放导致内部控件空指针
                 if (pullToRefreshLayout != null) {
                     cpageNum++;
@@ -96,6 +95,7 @@ public class NewsinfoActivity extends BaseActivity {
             }
         };
     }
+
     //初始化组件
     private void initView() {
         newsAdapter = new NewsAdapter(this, newsList);
@@ -108,12 +108,14 @@ public class NewsinfoActivity extends BaseActivity {
             @Override
             public void refresh() {
             }
+
             @Override
             public void loadMore() {
                 postFormBuilder.addParams("pn", cpageNum + "").tag(this).build().execute(StringCallback);
             }
         });
     }
+
     @OnClick(R.id.back)
     public void onViewClicked() {
         finish();

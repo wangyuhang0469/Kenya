@@ -13,7 +13,6 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 public class JobDetailActivity extends BaseActivity {
-
     @Bind(R.id.job_detail_pay)
     TextView jobDetailPay;
     @Bind(R.id.job_detail_desc)
@@ -35,7 +34,11 @@ public class JobDetailActivity extends BaseActivity {
         ButterKnife.bind(this);
         company = (Company) getIntent().getExtras().getSerializable("company");
         jobDetailJobtype.setText(company.getCompanystation());
-        jobDetailPay.setText(company.getCompanystationsalary() + "/月");
+        if (company.getCompanystationsalary().equals("-1")) {
+            jobDetailPay.setText("月薪:面议");
+        } else {
+            jobDetailPay.setText("月薪:" + company.getCompanystationsalary() + "/月");
+        }
         jobDetailDesc.setText(company.getCompanystationdesc());
         jobDetailPersonName.setText(company.getCompanyname());
         jobDetailPersonPhone.setText(company.getCompanyphone());

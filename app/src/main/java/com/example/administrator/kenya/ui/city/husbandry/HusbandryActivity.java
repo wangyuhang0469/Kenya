@@ -114,7 +114,7 @@ public class HusbandryActivity extends BaseActivity {
 
     private void initOKHttp() {
         postFormBuilder = OkHttpUtils.post()
-                .url(AppConstants.BASE_URL +  "/kenya/Fram/selectbytype")
+                .url(AppConstants.BASE_URL + "/kenya/Fram/selectbytype")
                 .addParams("framType", keyword)
                 .addParams("pn", cpageNum + "");
 
@@ -160,7 +160,7 @@ public class HusbandryActivity extends BaseActivity {
     }
 
 
-    private void initPopupWindow(){
+    private void initPopupWindow() {
         final View popContentView = LayoutInflater.from(this).inflate(R.layout.popupwindow_husbandry, null);
         popupWindow = new PopupWindow(popContentView, RelativeLayout.LayoutParams.MATCH_PARENT,
                 RelativeLayout.LayoutParams.WRAP_CONTENT);
@@ -217,7 +217,7 @@ public class HusbandryActivity extends BaseActivity {
                 black.setVisibility(View.VISIBLE);
                 break;
             case R.id.release:
-                startActivity(HusbandryReleaseActivity.class,null);
+                startActivity(HusbandryReleaseActivity.class, null);
                 break;
         }
     }
@@ -274,8 +274,6 @@ public class HusbandryActivity extends BaseActivity {
 //                            }
 //                        }
 //                    });
-
-
 
 
             holder.itemView.setOnClickListener(new View.OnClickListener() {

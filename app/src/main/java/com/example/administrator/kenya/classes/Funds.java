@@ -1,5 +1,7 @@
 package com.example.administrator.kenya.classes;
 
+import com.example.administrator.kenya.constants.AppConstants;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -123,11 +125,16 @@ public class Funds implements Serializable {
 
     public List<String> getFundsImageUrlList() {
         List<String> fundsimageUrlList = new ArrayList<>();
-        fundsimageUrlList.add(fundsimgs);
-        fundsimageUrlList.add(fundsimg1);
-        fundsimageUrlList.add(fundsimg2);
-        fundsimageUrlList.add(fundsimg3);
-        fundsimageUrlList.add(fundsimg4);
+        if (!(fundsimgs == null || fundsimgs.equals("")))
+            fundsimageUrlList.add(AppConstants.BASE_URL + fundsimgs);
+        if (!(fundsimg1 == null || fundsimg1.equals("")))
+            fundsimageUrlList.add(AppConstants.BASE_URL + fundsimg1);
+        if (!(fundsimg2 == null || fundsimg2.equals("")))
+            fundsimageUrlList.add(AppConstants.BASE_URL + fundsimg2);
+        if (!(fundsimg3 == null || fundsimg3.equals("")))
+            fundsimageUrlList.add(AppConstants.BASE_URL + fundsimg3);
+        if (!(fundsimg4 == null || fundsimg4.equals("")))
+            fundsimageUrlList.add(AppConstants.BASE_URL + fundsimg4);
         return fundsimageUrlList;
     }
 

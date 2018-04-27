@@ -26,8 +26,7 @@ import okhttp3.Call;
 
 public class AdvertyinfoActivity extends BaseActivity {
 
-    int type = 0;
-    boolean img;
+
     @Bind(R.id.adverty_info_choose)
     ImageView advertyInfoChoose;
     @Bind(R.id.adverty_info_work_name)
@@ -42,6 +41,9 @@ public class AdvertyinfoActivity extends BaseActivity {
     EditText advertyInfoCompanyName;
     @Bind(R.id.adverty_info_company_phone)
     EditText advertyInfoCompanyPhone;
+    private String price;
+    private int type = 0;
+    boolean img;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,11 +59,10 @@ public class AdvertyinfoActivity extends BaseActivity {
                 finish();
                 break;
             case R.id.adverty_info_detail:
-                String price;
                 if (img == true) {
                     price = advertyInfoWorkMoney.getText().toString();
-                } else {
-                    price = "面议";
+                } else if (img == false) {
+                    price = "-1";
                 }
                 if (advertyInfoWorkName.getText().length() == 0) {
                     toast("请输入招聘类型");
@@ -75,46 +76,46 @@ public class AdvertyinfoActivity extends BaseActivity {
                     toast("请输入公司名称");
                 } else if (advertyInfoCompanyPhone.getText().length() == 0) {
                     toast("请输入公司联系方式");
-                }
-                PostFormBuilder postFormBuilder = OkHttpUtils.post();
-                postFormBuilder.url(AppConstants.BASE_URL + "/kenya/recruit/publish")
-                        .addParams("companyname", advertyInfoCompanyName.getText().toString())
-                        .addParams("companystationdesc", advertyInfoWorkQuiret.getText().toString())
-                        .addParams("companyphone", advertyInfoCompanyPhone.getText().toString())
-                        .addParams("companyimg5", advertyInfoJionTime.getText().toString())//添加的是工作年限信息
-                        .addParams("companystation", advertyInfoWorkName.getText().toString())
-                        .addParams("companystationsalary", price)
-                        .addParams("userid", User.getInstance().getUserId())
-                        .build()
-                        .execute(new StringCallback() {
-                            @Override
-                            public void onError(Call call, Exception e, int id) {
-                                e.printStackTrace();
-                                toast("加载失败");
-                            }
-
-                            @Override
-                            public void onResponse(String response, int id) {
-                                Log.d("kang", "1111111111111111" + response);
-                                log(response);
-                                toast("加载成功");
-                                try {
-                                    JSONObject jsonObject = new JSONObject(response);
-                                    if (jsonObject.getString("code").equals("000")) {
-                                        Company company = JSON.parseObject(jsonObject.getString("data"), Company.class);
-                                        Bundle bundle = new Bundle();
-                                        bundle.putSerializable("company", company);
-                                        toast("发布成功");
-                                        startActivity(JobDetailActivity.class, bundle);
-                                        finish();
-                                    } else {
-                                        toast(jsonObject.getString("message"));
-                                    }
-                                } catch (JSONException e) {
+                } else {
+                    PostFormBuilder postFormBuilder = OkHttpUtils.post();
+                    postFormBuilder.url(AppConstants.BASE_URL + "/kenya/recruit/publish")
+                            .addParams("companyname", advertyInfoCompanyName.getText().toString())
+                            .addParams("companystationdesc", advertyInfoWorkQuiret.getText().toString())
+                            .addParams("companyphone", advertyInfoCompanyPhone.getText().toString())
+                            .addParams("companyimg5", advertyInfoJionTime.getText().toString())//添加的是工作年限信息
+                            .addParams("companystation", advertyInfoWorkName.getText().toString())
+                            .addParams("companystationsalary", price)
+                            .addParams("userid", User.getInstance().getUserId())
+                            .build()
+                            .execute(new StringCallback() {
+                                @Override
+                                public void onError(Call call, Exception e, int id) {
                                     e.printStackTrace();
+                                    toast("加载失败");
                                 }
-                            }
-                        });
+
+                                @Override
+                                public void onResponse(String response, int id) {
+                                    log(response);
+                                    toast("加载成功");
+                                    try {
+                                        JSONObject jsonObject = new JSONObject(response);
+                                        if (jsonObject.getString("code").equals("000")) {
+                                            Company company = JSON.parseObject(jsonObject.getString("data"), Company.class);
+                                            Bundle bundle = new Bundle();
+                                            bundle.putSerializable("company", company);
+                                            toast("发布成功");
+                                            startActivity(JobDetailActivity.class, bundle);
+                                            finish();
+                                        } else {
+                                            toast(jsonObject.getString("message"));
+                                        }
+                                    } catch (JSONException e) {
+                                        e.printStackTrace();
+                                    }
+                                }
+                            });
+                }
                 break;
             case R.id.adverty_info_choose:
                 type++;

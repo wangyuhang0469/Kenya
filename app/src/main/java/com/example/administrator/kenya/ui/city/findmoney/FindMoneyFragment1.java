@@ -37,8 +37,6 @@ import okhttp3.Call;
  * A simple {@link Fragment} subclass.
  */
 public class FindMoneyFragment1 extends Fragment {
-
-
     private static final String ARG_PARAM1 = "param1";
     @Bind(R.id.recyclerView)
     RecyclerView recyclerView;
@@ -48,7 +46,6 @@ public class FindMoneyFragment1 extends Fragment {
 
     private FundsAdapter fundsAdapter;
     private List<Funds> fundsList;
-
     //请求数据参数
     private PostFormBuilder postFormBuilder;
     private int cpageNum = 1;
@@ -80,7 +77,6 @@ public class FindMoneyFragment1 extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_find_money_fragment1, container, false);
         ButterKnife.bind(this, view);
-
         fundsList = new ArrayList<>();
         initOKHttp();
         initView();
@@ -92,7 +88,6 @@ public class FindMoneyFragment1 extends Fragment {
         postFormBuilder = OkHttpUtils.post()
                 .url(AppConstants.BASE_URL + "/kenya/Funds/selectbyfile")
                 .addParams("pn", cpageNum + "");
-
         StringCallback = new StringCallback() {
             @Override
             public void onError(Call call, Exception e, int id) {
@@ -106,7 +101,6 @@ public class FindMoneyFragment1 extends Fragment {
 
             @Override
             public void onResponse(String response, int id) {
-                Log.d("kang", "111111" + response);
                 //防止因Activity释放导致内部控件空指针
                 if (pullToRefreshLayout != null) {
                     cpageNum++;
@@ -129,9 +123,7 @@ public class FindMoneyFragment1 extends Fragment {
                 }
             }
         };
-
     }
-
     //初始化组件
     private void initView() {
         fundsAdapter = new FundsAdapter(getActivity(), fundsList);
@@ -144,18 +136,15 @@ public class FindMoneyFragment1 extends Fragment {
             @Override
             public void refresh() {
             }
-
             @Override
             public void loadMore() {
                 postFormBuilder.addParams("pn", cpageNum + "").tag(this).build().execute(StringCallback);
             }
         });
     }
-
     @Override
     public void onDestroyView() {
         super.onDestroyView();
         ButterKnife.unbind(this);
     }
-
 }

@@ -58,6 +58,7 @@ public class HouseSearchActivity extends BaseActivity {
         initView();
         initOKHttp();
     }
+
     private void initOKHttp() {
         postFormBuilder = OkHttpUtils.post()
                 .url(AppConstants.BASE_URL + "/kenya/Lease/selectByFile")
@@ -74,6 +75,7 @@ public class HouseSearchActivity extends BaseActivity {
                     e.printStackTrace();
                 }
             }
+
             @Override
             public void onResponse(String response, int id) {
                 Log.d("kang", "111111" + response);
@@ -126,6 +128,7 @@ public class HouseSearchActivity extends BaseActivity {
             @Override
             public void refresh() {
             }
+
             @Override
             public void loadMore() {
                 postFormBuilder.addParams("pn", cpageNum + "").addParams("leaseName", lastKeyword).build().execute(StringCallback);

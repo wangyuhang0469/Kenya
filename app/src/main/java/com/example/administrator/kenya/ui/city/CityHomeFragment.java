@@ -1,6 +1,7 @@
 package com.example.administrator.kenya.ui.city;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.util.Log;
@@ -24,6 +25,7 @@ import com.example.administrator.kenya.ui.city.house.HouseActivity;
 import com.example.administrator.kenya.ui.city.husbandry.HusbandryActivity;
 import com.example.administrator.kenya.ui.city.job.JobActivity;
 import com.example.administrator.kenya.ui.city.life.LifeActivity;
+import com.example.administrator.kenya.ui.city.news.NewsWebActivity;
 import com.example.administrator.kenya.ui.city.news.NewsinfoActivity;
 import com.example.administrator.kenya.ui.city.used.UsedActivity;
 import com.example.administrator.kenya.view.TextBannerView;
@@ -61,6 +63,7 @@ public class CityHomeFragment extends BaseFragment {
     private PostFormBuilder postFormBuilder;
     private StringCallback StringCallback;
 
+    List<News> newsList = new ArrayList<>();
     List<String> data;
 
     @Override
@@ -152,7 +155,6 @@ public class CityHomeFragment extends BaseFragment {
 
             @Override
             public void onResponse(String response, int id) {
-                Log.d("kang", "111111" + response);
                 //防止因Activity释放导致内部控件空指针
                 List<News> addList = null;
                 try {
@@ -165,16 +167,21 @@ public class CityHomeFragment extends BaseFragment {
                     e.printStackTrace();
                 }
                 addList = JSON.parseArray(response, News.class);
+                newsList.addAll(addList);
                 for (int i = 0; i < addList.size(); i++) {
                     String str = addList.get(i).getNewstitle();
                     data.add(str);
-                    Log.d("kang", str);
                 }
                 marqueeView1.setDatas(data);
                 marqueeView1.setItemOnClickListener(new BannerItemClickListener() {
                     @Override
                     public void onItemClick(String data, int position) {
-                        Toast.makeText(getActivity(), String.valueOf(position) + "》》》》" + data, Toast.LENGTH_SHORT).show();
+                        // Toast.makeText(getActivity(), String.valueOf(position) + "》》》》" + data, Toast.LENGTH_SHORT).show();
+                        Bundle bundle = new Bundle();
+                        bundle.putSerializable("news", newsList.get(position));
+                        Intent intent = new Intent(getActivity(), NewsWebActivity.class);
+                        intent.putExtras(bundle);
+                        startActivity(intent);
                     }
                 });
             }

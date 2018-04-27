@@ -1,5 +1,7 @@
 package com.example.administrator.kenya.classes;
 
+import com.example.administrator.kenya.constants.AppConstants;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -130,11 +132,16 @@ public class Project2 implements Serializable {
 
     public List<String> getProjectImageUrlList() {
         List<String> projectimageUrlList = new ArrayList<>();
-        projectimageUrlList.add(projectimgs);
-        projectimageUrlList.add(projectimg1);
-        projectimageUrlList.add(projectimg2);
-        projectimageUrlList.add(projectimg3);
-        projectimageUrlList.add(projectimg4);
+        if (!(projectimgs == null || projectimgs.equals("")))
+            projectimageUrlList.add(AppConstants.BASE_URL + projectimgs);
+        if (!(projectimg1 == null || projectimg1.equals("")))
+            projectimageUrlList.add(AppConstants.BASE_URL + projectimg1);
+        if (!(projectimg2 == null || projectimg2.equals("")))
+            projectimageUrlList.add(AppConstants.BASE_URL + projectimg2);
+        if (!(projectimg3 == null || projectimg3.equals("")))
+            projectimageUrlList.add(AppConstants.BASE_URL + projectimg3);
+        if (!(projectimg4 == null || projectimg4.equals("")))
+            projectimageUrlList.add(AppConstants.BASE_URL + projectimg4);
         return projectimageUrlList;
     }
 }

@@ -118,7 +118,6 @@ public class TabFragment1 extends Fragment {
 
             @Override
             public void onResponse(String response, int id) {
-                Log.d("kang", "111111RESPPNSE" + response);
                 //防止因Activity释放导致内部控件空指针
                 if (pullToRefreshLayout != null) {
                     cpageNum++;

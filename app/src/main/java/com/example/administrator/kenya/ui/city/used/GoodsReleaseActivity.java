@@ -127,23 +127,23 @@ public class GoodsReleaseActivity extends BaseActivity {
                 finish();
                 break;
             case R.id.release:
-                if ( goodsphone.getText().length()==0){
+                if (goodsphone.getText().length() == 0) {
                     toast("请输入标题");
-                }else if (goodsdesc.getText().length() == 0){
+                } else if (goodsdesc.getText().length() == 0) {
                     toast("请输入描述");
-                }else if (goodsprice.getText().length()==0){
+                } else if (goodsprice.getText().length() == 0) {
                     toast("请输入价格");
-                }else if (goodsusername.getText().length()==0){
+                } else if (goodsusername.getText().length() == 0) {
                     toast("请输入联系人");
-                }else if (goodsphone.getText().length()==0){
+                } else if (goodsphone.getText().length() == 0) {
                     toast("请输入联系电话");
-                }else if (mResults == null || mResults.size() == 0){
+                } else if (mResults == null || mResults.size() == 0) {
                     toast("请选择图片");
-                }else {
+                } else {
                     final LoadingDialog loadingDialog = new LoadingDialog(GoodsReleaseActivity.this);
                     loadingDialog.show();
 
-                    for (int i = 0; i < mResults.size() ; i++) {
+                    for (int i = 0; i < mResults.size(); i++) {
                         Luban.with(this)
                                 .load(mResults.get(i))
                                 .ignoreBy(150)
@@ -156,7 +156,7 @@ public class GoodsReleaseActivity extends BaseActivity {
                                     @Override
                                     public void onSuccess(File file) {
                                         compressFile.add(file);
-                                        if (compressFile.size() == mResults.size()){
+                                        if (compressFile.size() == mResults.size()) {
                                             send(loadingDialog);
                                         }
                                     }
@@ -197,7 +197,7 @@ public class GoodsReleaseActivity extends BaseActivity {
     }
 
 
-    private void send(final LoadingDialog loadingDialog){
+    private void send(final LoadingDialog loadingDialog) {
 
         PostFormBuilder postFormBuilder = OkHttpUtils.post();
         for (int i = 0; i < compressFile.size(); i++) {

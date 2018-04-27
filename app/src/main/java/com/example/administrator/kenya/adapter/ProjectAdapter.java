@@ -70,7 +70,6 @@ public class ProjectAdapter extends RecyclerView.Adapter<ProjectAdapter.ViewHold
                 .centerCrop()
                 .placeholder(R.drawable.img_loading)
                 .into(holder.project_image);
-
 //                .asBitmap()
 //                .placeholder(R.drawable.bg4dp_grey)
 //                .into(new SimpleTarget<Bitmap>() {

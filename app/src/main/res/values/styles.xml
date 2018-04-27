@@ -112,7 +112,7 @@
     </style>
     <!--Tab字体-->
     <style name="MyTabLayoutTextAppeara" parent="TextAppearance.AppCompat.Widget.ActionBar.Title.Inverse">
-        <item name="android:textSize">20sp</item>
+        <item name="android:textSize">18sp</item>
         <item name="android:textColor">@color/grey</item>
     </style>
     <!--选择时间的样式-->

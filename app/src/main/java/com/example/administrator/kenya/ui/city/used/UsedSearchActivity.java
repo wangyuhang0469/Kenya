@@ -121,7 +121,6 @@ public class UsedSearchActivity extends BaseActivity {
                         pullToRefreshLayout.setCanLoadMore(false);
                     }
                     myAdapter.notifyDataSetChanged();
-
                     pullToRefreshLayout.finishLoadMore();
                 }
             }

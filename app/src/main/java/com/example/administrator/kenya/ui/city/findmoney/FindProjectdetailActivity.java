@@ -7,6 +7,12 @@ import android.widget.TextView;
 import com.example.administrator.kenya.R;
 import com.example.administrator.kenya.base.BaseActivity;
 import com.example.administrator.kenya.classes.Project2;
+import com.example.administrator.kenya.tools.GlideImageLoader;
+import com.example.administrator.kenya.ui.main.PreviewDialog;
+import com.youth.banner.Banner;
+import com.youth.banner.listener.OnBannerListener;
+
+import java.util.List;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -27,6 +33,8 @@ public class FindProjectdetailActivity extends BaseActivity {
     TextView projectDetailType;
     @Bind(R.id.project_detail_desc)
     TextView projectDetailDesc;
+    @Bind(R.id.banner)
+    Banner banner;
     private Project2 project2;
 
     @Override
@@ -36,11 +44,22 @@ public class FindProjectdetailActivity extends BaseActivity {
         ButterKnife.bind(this);
         title.setText("项目详情");
         project2 = (Project2) getIntent().getExtras().getSerializable("project2");
+        initBanner(project2.getProjectImageUrlList());
         projectDetailName.setText(project2.getProjectname());
         projectDetailPrice.setText("投资额度:" + project2.getProjectprice());
         projectDetailDesc.setText(project2.getProjectdesc());
         porjectUser.setText(project2.getProjectuser());
         projectPhone.setText(project2.getProjectphone());
+    }
+
+    private void initBanner(List<String> imageUrlList) {
+        banner.setImages(imageUrlList).setImageLoader(new GlideImageLoader()).start();
+        banner.setOnBannerListener(new OnBannerListener() {
+            @Override
+            public void OnBannerClick(int position) {
+                new PreviewDialog(FindProjectdetailActivity.this, project2.getProjectImageUrlList(), position).show();
+            }
+        });
     }
 
     @OnClick({R.id.back, R.id.call})

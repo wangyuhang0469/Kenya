@@ -36,8 +36,6 @@ import okhttp3.Call;
  * A simple {@link Fragment} subclass.
  */
 public class FindMoneyFragment2 extends Fragment {
-
-
     private static final String ARG_PARAM1 = "param1";
     @Bind(R.id.recyclerView)
     RecyclerView recyclerView;
@@ -64,7 +62,6 @@ public class FindMoneyFragment2 extends Fragment {
     public FindMoneyFragment2() {
         // Required empty public constructor
     }
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -98,7 +95,7 @@ public class FindMoneyFragment2 extends Fragment {
             @Override
             public void onResponse(String response, int id) {
                 //防止因Activity释放导致内部控件空指针
-                Log.d("kang", "111111" + response);
+                Log.d("kang", "11111" + response);
                 if (pullToRefreshLayout != null) {
                     cpageNum++;
                     List<Project2> addList = null;
@@ -130,7 +127,6 @@ public class FindMoneyFragment2 extends Fragment {
         recyclerView.setAdapter(projectAdapter);
         pullToRefreshLayout.setCanRefresh(false);
         pullToRefreshLayout.setCanLoadMore(false);
-
         pullToRefreshLayout.setRefreshListener(new BaseRefreshListener() {
             @Override
             public void refresh() {

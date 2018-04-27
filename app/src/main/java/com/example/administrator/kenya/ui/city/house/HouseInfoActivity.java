@@ -219,7 +219,6 @@ public class HouseInfoActivity extends BaseActivity {
         for (int i = 0; i < compressFile.size(); i++) {
             postFormBuilder.addFile("files", compressFile.get(i).getName(), compressFile.get(i));
         }
-
         postFormBuilder.url(AppConstants.BASE_URL + "/kenya/Lease/inserLease")
                 .addParams("leasename", houseName.getText().toString())
                 .addParams("leasedesc", houseInfoDesc.getText().toString())

@@ -4,7 +4,7 @@ import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.ViewPager;
-import android.widget.TextView;
+import android.widget.ImageView;
 
 import com.example.administrator.kenya.R;
 import com.example.administrator.kenya.adapter.MyViewPagerAdapter;
@@ -19,8 +19,8 @@ public class FindMoneyActivity extends FragmentActivity {
     TabLayout tabLayout;
     @Bind(R.id.pager)
     ViewPager pager;
-    @Bind(R.id.city_find_money_release)
-    TextView cityFindMoneyRelease;
+    @Bind(R.id.find_money_back)
+    ImageView findMoneyBack;
     private MyViewPagerAdapter adapter;
     String findmoneyvalue;
 
@@ -47,7 +47,8 @@ public class FindMoneyActivity extends FragmentActivity {
         tabLayout.setupWithViewPager(viewPager);
     }
 
-    @OnClick(R.id.city_find_money_release)
+    @OnClick(R.id.find_money_back)
     public void onViewClicked() {
+        finish();
     }
 }
