@@ -12,7 +12,6 @@
         android:id="@+id/view"
         android:layout_width="0dp"
         android:layout_height="0dp"/>
-
     <include layout="@layout/title_bar2" />
 
     <com.example.administrator.kenya.view.MyObervalbleScrollView

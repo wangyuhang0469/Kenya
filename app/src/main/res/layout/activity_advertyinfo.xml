@@ -88,7 +88,7 @@
                     android:layout_alignParentRight="true"
                     android:layout_marginRight="150px"
                     android:layout_toLeftOf="@+id/resume_info_mianyi"
-                    android:paddingTop="8px"
+                    android:padding="8px"
                     android:src="@mipmap/mianyi" />
 
                 <TextView

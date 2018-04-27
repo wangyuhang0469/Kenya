@@ -10,7 +10,7 @@
     <ImageView
         android:id="@+id/find_money_back"
         android:layout_width="wrap_content"
-        android:layout_height="60dp"
+        android:layout_height="144px"
         android:adjustViewBounds="true"
         android:padding="11dp"
         android:src="@mipmap/resume_bank" />
@@ -18,13 +18,13 @@
     <android.support.design.widget.TabLayout
         android:id="@+id/tab_layout"
         android:layout_width="match_parent"
-        android:layout_height="60dp"
+        android:layout_height="144px"
+        android:layout_marginRight="22dp"
         android:layout_toRightOf="@+id/find_money_back"
         app:tabIndicatorColor="@color/base_bg"
         app:tabSelectedTextColor="@color/textBlack1"
         app:tabTextAppearance="@style/MyTabLayoutTextAppeara" />
     <!--app:tabMode="scrollable"-->
-
 
     <android.support.v4.view.ViewPager
         android:id="@+id/pager"

@@ -79,7 +79,7 @@
                         android:layout_height="wrap_content"
                         android:gravity="center"
                         android:hint="输入姓名"
-                        android:textColorHint="@color/textBlack2" />
+                        android:textColorHint="@color/textBlack3" />
 
                     <LinearLayout
                         android:layout_width="wrap_content"
@@ -133,7 +133,7 @@
                         style="@style/edit_base2"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:hint="15931127537"
+                        android:hint="请输入手机号"
                         android:inputType="number|numberDecimal" />
                 </LinearLayout>
 
@@ -211,7 +211,7 @@
                             android:id="@+id/resume_tv_time"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="工作时间" />
+                            android:text="入职时间" />
 
                         <TextView
                             android:id="@+id/resume_tv_choose"
