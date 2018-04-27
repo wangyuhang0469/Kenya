@@ -9,17 +9,18 @@
 
     <com.zhy.autolayout.AutoRelativeLayout
         android:id="@+id/job_deyail_title"
-        android:layout_width="395dp"
-        android:layout_height="41dp"
-        tools:layout_editor_absoluteX="8dp"
-        tools:layout_editor_absoluteY="0dp">
+        android:layout_width="match_parent"
+        android:layout_height="144px"
+        android:background="@color/base_bg"
+        tools:layout_editor_absoluteX="8px"
+        tools:layout_editor_absoluteY="0px">
 
         <ImageView
             android:id="@+id/back"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="144px"
             android:adjustViewBounds="true"
-            android:padding="11dp"
+            android:padding="11px"
             android:src="@mipmap/resume_bank" />
 
         <TextView
@@ -45,6 +46,7 @@
         <com.zhy.autolayout.AutoLinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:background="@color/white"
             android:orientation="vertical">
 
             <com.zhy.autolayout.AutoRelativeLayout
@@ -116,15 +118,6 @@
         </com.zhy.autolayout.AutoLinearLayout>
 
     </com.example.administrator.kenya.view.MyObervalbleScrollView>
-
-
-    <!-- <View
-         android:id="@+id/job_deyail_line_low"
-         android:layout_width="match_parent"
-         android:layout_height="20px"
-         android:layout_alignParentBottom="true"
-         android:layout_marginBottom="410px"
-         android:background="@color/base_bg" />-->
 
     <com.zhy.autolayout.AutoRelativeLayout
         android:layout_width="match_parent"

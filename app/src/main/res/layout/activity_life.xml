@@ -21,9 +21,9 @@
             android:gravity="center"
             android:maxEms="10"
             android:singleLine="true"
+            android:text="生活服务"
             android:textColor="@color/textBlack1"
-            android:textSize="18sp"
-            android:text="生活服务"/>
+            android:textSize="18sp" />
 
         <ImageView
             android:id="@+id/back"
@@ -41,18 +41,18 @@
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
             android:gravity="center|right"
-            android:text="类别"
-            android:paddingRight="80px"
             android:paddingLeft="30px"
+            android:paddingRight="80px"
+            android:text="类别"
             android:textColor="@color/textgreen1" />
 
         <ImageView
             android:id="@+id/xiala"
             android:layout_width="30px"
             android:layout_height="match_parent"
-            android:layout_marginRight="30px"
             android:layout_alignParentRight="true"
-            android:src="@drawable/icon_xiala0"/>
+            android:layout_marginRight="30px"
+            android:src="@drawable/icon_xiala0" />
 
 
     </com.zhy.autolayout.AutoRelativeLayout>
@@ -73,7 +73,6 @@
     </com.jwenfeng.library.pulltorefresh.PullToRefreshLayout>
 
 
-
     <TextView
         android:id="@+id/release"
         android:layout_width="match_parent"
@@ -89,8 +88,8 @@
         android:id="@+id/black"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/touming_black"
         android:layout_below="@+id/title_bar"
-        android:visibility="gone"/>
+        android:background="@color/touming_black"
+        android:visibility="gone" />
 
 </com.zhy.autolayout.AutoRelativeLayout>

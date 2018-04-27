@@ -149,7 +149,6 @@ public class MyReleaseActivity extends BaseActivity {
     }
 
     protected void initView() {
-
         myHouseFragment = new MyHouseFragment();
         myUsedFragment = new MyUsedFragment();
         myApplyJobFragment = new MyApplyJobFragment();

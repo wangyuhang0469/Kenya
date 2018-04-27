@@ -12,14 +12,14 @@
         android:layout_width="wrap_content"
         android:layout_height="144px"
         android:adjustViewBounds="true"
-        android:padding="11dp"
+        android:padding="11px"
         android:src="@mipmap/resume_bank" />
 
     <android.support.design.widget.TabLayout
         android:id="@+id/tab_layout"
         android:layout_width="match_parent"
         android:layout_height="144px"
-        android:layout_marginRight="22dp"
+        android:layout_marginRight="22px"
         android:layout_toRightOf="@+id/find_money_back"
         app:tabIndicatorColor="@color/base_bg"
         app:tabSelectedTextColor="@color/textBlack1"
@@ -32,5 +32,4 @@
         android:layout_height="match_parent"
         android:layout_above="@+id/city_home_job_release"
         android:layout_below="@id/tab_layout" />
-
 </com.zhy.autolayout.AutoRelativeLayout>

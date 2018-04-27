@@ -138,12 +138,12 @@ public class ResumeinfoActivity extends BaseActivity implements View.OnClickList
                 finish();
                 break;
             case R.id.pick_time:
-                showDateDialog(DateUtil.getDateForString("1990-01-01"), "A");
+                showDateDialog(DateUtil.getDateForString("2000-01-01"), "A");
                 break;
             case R.id.resume_recm:
                 break;
             case R.id.ruseme_work_time:
-                showDateDialog(DateUtil.getDateForString("1990-01-01"), "B");
+                showDateDialog(DateUtil.getDateForString("2010-01-01"), "B");
                 break;
             case R.id.resume_info_photo:
                 openPopupWindow(view);
@@ -282,7 +282,6 @@ public class ResumeinfoActivity extends BaseActivity implements View.OnClickList
         //设置背景色
         setBackgroundAlpha(0.5f);
     }
-
     private void setOnPopupViewClick(View view) {
         TextView tv_pick_phone, tv_pick_zone, tv_cancel;
         tv_pick_phone = (TextView) view.findViewById(R.id.tv_pick_phone);

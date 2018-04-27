@@ -59,7 +59,6 @@ public class CityHomeFragment extends BaseFragment {
     TextView title;
     @Bind(R.id.marqueeView1)
     TextBannerView marqueeView1;
-
     private PostFormBuilder postFormBuilder;
     private StringCallback StringCallback;
 
