@@ -9,46 +9,18 @@ import java.io.Serializable;
 public class User implements Serializable {
 
 
-    private String userId = "";
-    private String userName = "";
-    private String userAge = "";
-    private String userPhonenumber = "";
-    private String userSex = "";
+    private String userId;
+    private String userName;
+    private String userPsw;
+    private String userSex;
+    private String userPhonenumber;
+    private String userHavecar;
+    private String userBirthday;
+    private String userPortrait;
     private Boolean status = false;
 
 
-    public String getUserAge() {
-        return userAge;
-    }
 
-    public void setUserAge(String userAge) {
-        this.userAge = userAge;
-    }
-
-    public String getUserPhonenumber() {
-        return userPhonenumber;
-    }
-
-    public void setUserPhonenumber(String userPhonenumber) {
-        this.userPhonenumber = userPhonenumber;
-    }
-
-    public String getUserSex() {
-        return userSex;
-    }
-
-    public void setUserSex(String userSex) {
-        this.userSex = userSex;
-    }
-
-
-    public String getUserName() {
-        return userName;
-    }
-
-    public void setUserName(String userName) {
-        this.userName = userName;
-    }
 
     public Boolean getStatus() {
         return status;
@@ -69,6 +41,64 @@ public class User implements Serializable {
     public void setUserId(String userId) {
         this.userId = userId;
     }
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
+    public String getUserPsw() {
+        return userPsw;
+    }
+
+    public void setUserPsw(String userPsw) {
+        this.userPsw = userPsw;
+    }
+
+    public String getUserSex() {
+        return userSex;
+    }
+
+    public void setUserSex(String userSex) {
+        this.userSex = userSex;
+    }
+
+    public String getUserPhonenumber() {
+        return userPhonenumber;
+    }
+
+    public void setUserPhonenumber(String userPhonenumber) {
+        this.userPhonenumber = userPhonenumber;
+    }
+
+    public String getUserHavecar() {
+        return userHavecar;
+    }
+
+    public void setUserHavecar(String userHavecar) {
+        this.userHavecar = userHavecar;
+    }
+
+    public String getUserBirthday() {
+        return userBirthday;
+    }
+
+    public void setUserBirthday(String userBirthday) {
+        this.userBirthday = userBirthday;
+    }
+
+    public String getUserPortrait() {
+        return userPortrait;
+    }
+
+    public void setUserPortrait(String userPortrait) {
+        this.userPortrait = userPortrait;
+    }
+
+
 
     private static class UserHolder {
         static final User INSTANCE = new User();
