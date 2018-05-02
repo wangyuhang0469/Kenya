@@ -89,7 +89,7 @@
     <!--个人中心item布局-->
     <style name="my_center_bar">
         <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">160px</item>
+        <item name="android:layout_height">150px</item>
         <item name="android:gravity">center_vertical</item>
         <item name="android:paddingLeft">30px</item>
         <item name="android:background">@color/white</item>

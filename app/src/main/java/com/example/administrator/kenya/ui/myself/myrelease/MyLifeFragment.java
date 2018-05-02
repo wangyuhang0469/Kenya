@@ -20,7 +20,7 @@ import com.example.administrator.kenya.base.BaseFragment;
 import com.example.administrator.kenya.classes.LifeServices;
 import com.example.administrator.kenya.classes.User;
 import com.example.administrator.kenya.constants.AppConstants;
-import com.example.administrator.kenya.interfaces.DeleteSuccessfulListener;
+import com.example.administrator.kenya.interfaces.OnSuccessfulListener;
 import com.example.administrator.kenya.ui.city.life.LifeDetailsActivity;
 import com.example.administrator.kenya.ui.main.DeleteDialog;
 import com.jwenfeng.library.pulltorefresh.BaseRefreshListener;
@@ -232,7 +232,7 @@ public class MyLifeFragment extends BaseFragment {
                     params.put("Type", "生活服务");
                     params.put("id", list.get(position).getLiveid());
                     DeleteDialog deleteDialog = new DeleteDialog(getContext(), AppConstants.BASE_URL + "/kenya/user/deleteByUserId", params);
-                    deleteDialog.setDeleteSuccessfulListener(new DeleteSuccessfulListener() {
+                    deleteDialog.setOnSuccessfulListener(new OnSuccessfulListener() {
                         @Override
                         public void success() {
                             list.remove(position);

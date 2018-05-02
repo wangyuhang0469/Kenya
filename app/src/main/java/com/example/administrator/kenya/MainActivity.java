@@ -1,5 +1,6 @@
 package com.example.administrator.kenya;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
@@ -147,5 +148,11 @@ public class MainActivity extends BaseActivity {
                 onTabSelect(index);
                 break;
         }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        myselfFragment.onActivityResult(requestCode,resultCode,data);
     }
 }

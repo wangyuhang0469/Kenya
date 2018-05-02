@@ -23,7 +23,7 @@ import com.example.administrator.kenya.base.BaseFragment;
 import com.example.administrator.kenya.classes.Job;
 import com.example.administrator.kenya.classes.User;
 import com.example.administrator.kenya.constants.AppConstants;
-import com.example.administrator.kenya.interfaces.DeleteSuccessfulListener;
+import com.example.administrator.kenya.interfaces.OnSuccessfulListener;
 import com.example.administrator.kenya.ui.main.DeleteDialog;
 import com.jwenfeng.library.pulltorefresh.BaseRefreshListener;
 import com.jwenfeng.library.pulltorefresh.PullToRefreshLayout;
@@ -228,7 +228,7 @@ public class MyApplyJobFragment extends BaseFragment {
                     params.put("Type", "求职");
                     params.put("id", list.get(position).getJobid());
                     DeleteDialog deleteDialog = new DeleteDialog(context, AppConstants.BASE_URL + "/kenya/user/deleteByUserId", params);
-                    deleteDialog.setDeleteSuccessfulListener(new DeleteSuccessfulListener() {
+                    deleteDialog.setOnSuccessfulListener(new OnSuccessfulListener() {
                         @Override
                         public void success() {
                             list.remove(position);

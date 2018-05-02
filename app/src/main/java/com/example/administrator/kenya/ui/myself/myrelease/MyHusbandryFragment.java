@@ -18,7 +18,7 @@ import com.example.administrator.kenya.base.BaseFragment;
 import com.example.administrator.kenya.classes.Husbandry;
 import com.example.administrator.kenya.classes.User;
 import com.example.administrator.kenya.constants.AppConstants;
-import com.example.administrator.kenya.interfaces.DeleteSuccessfulListener;
+import com.example.administrator.kenya.interfaces.OnSuccessfulListener;
 import com.example.administrator.kenya.ui.city.husbandry.HusbandryDetailsActivity;
 import com.example.administrator.kenya.ui.main.DeleteDialog;
 import com.jwenfeng.library.pulltorefresh.BaseRefreshListener;
@@ -224,7 +224,7 @@ public class MyHusbandryFragment extends BaseFragment {
                     params.put("Type", "农林牧");
                     params.put("id", list.get(position).getFramid());
                     DeleteDialog deleteDialog = new DeleteDialog(getContext(), AppConstants.BASE_URL + "/kenya/user/deleteByUserId", params);
-                    deleteDialog.setDeleteSuccessfulListener(new DeleteSuccessfulListener() {
+                    deleteDialog.setOnSuccessfulListener(new OnSuccessfulListener() {
                         @Override
                         public void success() {
                             list.remove(position);

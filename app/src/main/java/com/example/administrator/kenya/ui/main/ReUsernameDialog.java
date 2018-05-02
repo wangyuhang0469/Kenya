@@ -6,10 +6,14 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.view.KeyEvent;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.administrator.kenya.R;
+import com.example.administrator.kenya.classes.User;
+import com.example.administrator.kenya.constants.AppConstants;
+import com.example.administrator.kenya.interfaces.OnReUsernameSuccessfulListener;
 import com.example.administrator.kenya.interfaces.OnSuccessfulListener;
 import com.zhy.http.okhttp.OkHttpUtils;
 import com.zhy.http.okhttp.callback.StringCallback;
@@ -22,42 +26,43 @@ import java.util.Map;
 import okhttp3.Call;
 
 
-public class DeleteDialog extends Dialog{
+public class ReUsernameDialog extends Dialog{
 
-    private TextView information;
+    private EditText information;
     private TextView yes;
     private TextView no;
-    private String url;
-    private Map<String,String> params;
-    private OnSuccessfulListener onSuccessfulListener;
+    private OnReUsernameSuccessfulListener onReUsernameSuccessfulListener;
 
-    public DeleteDialog(@NonNull Context context,String url, Map<String,String> params) {
+
+    public ReUsernameDialog(@NonNull Context context) {
         super(context, R.style.FullScreenDialog);
-        this.url = url;
-        this.params = params;
     }
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.delete_dialog);
+        setContentView(R.layout.re_username_dialog);
 
-        information =(TextView) findViewById(R.id.information);
+        information =(EditText) findViewById(R.id.information);
         yes =(TextView) findViewById(R.id.yes);
         no =(TextView) findViewById(R.id.no);
 
         yes.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                delete();
+                if (information.getText().length()!=0){
+                    send();
+                }else {
+                    Toast.makeText(getContext(), "请输出用户名", Toast.LENGTH_SHORT).show();
+                }
             }
         });
 
         no.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                DeleteDialog.this.dismiss();
+                ReUsernameDialog.this.dismiss();
             }
         });
     }
@@ -72,19 +77,20 @@ public class DeleteDialog extends Dialog{
     }
 
 
-    private void delete(){
-        information.setText("删除中...");
+    private void send(){
+        information.setText("修改中...");
 
         OkHttpUtils.post()
-                .url(url)
-                .params(params)
+                .url(AppConstants.BASE_URL + "/kenya/user/update")
+                .addParams("id", User.getInstance().getUserId())
+                .addParams("userName",information.getText().toString())
                 .build()
                 .execute(new StringCallback() {
                     @Override
                     public void onError(Call call, Exception e, int id) {
                         e.printStackTrace();
-                        Toast.makeText(getContext(), "删除失败", Toast.LENGTH_SHORT).show();
-                        DeleteDialog.this.dismiss();
+                        Toast.makeText(getContext(), "修改失败", Toast.LENGTH_SHORT).show();
+                        ReUsernameDialog.this.dismiss();
                     }
 
                     @Override
@@ -92,23 +98,27 @@ public class DeleteDialog extends Dialog{
                         try {
                             JSONObject jsonObject = new JSONObject(response);
                             if (jsonObject.getString("code").equals("000")){
-                                Toast.makeText(getContext(), "删除成功", Toast.LENGTH_SHORT).show();
-                                if (onSuccessfulListener != null)
-                                    onSuccessfulListener.success();
+                                Toast.makeText(getContext(), "修改成功", Toast.LENGTH_SHORT).show();
+                                User.getInstance().setUserName(information.getText().toString());
+                                if (onReUsernameSuccessfulListener != null)
+                                    onReUsernameSuccessfulListener.success(information.getText().toString());
+                                ReUsernameDialog.this.dismiss();
                             }else {
-                                Toast.makeText(getContext(), jsonObject.getString("result"), Toast.LENGTH_SHORT).show();
+                                Toast.makeText(getContext(), jsonObject.getString("message"), Toast.LENGTH_SHORT).show();
                             }
-                            DeleteDialog.this.dismiss();
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
                     }
                 });
 
+
     }
 
-    public void setOnSuccessfulListener(OnSuccessfulListener onSuccessfulListener){
-        this.onSuccessfulListener = onSuccessfulListener;
+
+    public void setOnReUsernameSuccessfulListener(OnReUsernameSuccessfulListener onReUsernameSuccessfulListener){
+        this.onReUsernameSuccessfulListener = onReUsernameSuccessfulListener;
     }
+
 
 }

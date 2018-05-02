@@ -6,9 +6,6 @@ package com.example.administrator.kenya.adapter;
 
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.drawable.BitmapDrawable;
-import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -18,36 +15,12 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
-import com.bumptech.glide.request.animation.GlideAnimation;
-import com.bumptech.glide.request.target.SimpleTarget;
 import com.example.administrator.kenya.R;
 import com.example.administrator.kenya.classes.House;
 import com.example.administrator.kenya.constants.AppConstants;
-import com.example.administrator.kenya.interfaces.DeleteSuccessfulListener;
+import com.example.administrator.kenya.interfaces.OnSuccessfulListener;
 import com.example.administrator.kenya.ui.city.house.HouseDetailActivity;
 
-import android.content.Context;
-import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.drawable.BitmapDrawable;
-import android.os.Build;
-import android.os.Bundle;
-import android.support.v7.widget.RecyclerView;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.TextView;
-import android.widget.Toast;
-
-import com.bumptech.glide.Glide;
-import com.bumptech.glide.request.animation.GlideAnimation;
-import com.bumptech.glide.request.target.SimpleTarget;
-import com.example.administrator.kenya.R;
-import com.example.administrator.kenya.classes.Goods;
-import com.example.administrator.kenya.classes.House;
-import com.example.administrator.kenya.ui.city.house.HouseDetailActivity;
-import com.example.administrator.kenya.ui.city.used.UsedActivity;
 import com.example.administrator.kenya.ui.main.DeleteDialog;
 
 import java.util.HashMap;
@@ -135,7 +108,7 @@ public class MyHouseAdapter extends RecyclerView.Adapter<MyHouseAdapter.ViewHold
                 params.put("Type","租房");
                 params.put("id",list.get(position).getLeaseid());
                 DeleteDialog deleteDialog = new DeleteDialog(context, AppConstants.BASE_URL + "/kenya/user/deleteByUserId" , params);
-                deleteDialog.setDeleteSuccessfulListener(new DeleteSuccessfulListener() {
+                deleteDialog.setOnSuccessfulListener(new OnSuccessfulListener() {
                     @Override
                     public void success() {
                         list.remove(position);

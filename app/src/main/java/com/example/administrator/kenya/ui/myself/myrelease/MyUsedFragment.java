@@ -19,7 +19,7 @@ import com.example.administrator.kenya.base.BaseFragment;
 import com.example.administrator.kenya.classes.Goods;
 import com.example.administrator.kenya.classes.User;
 import com.example.administrator.kenya.constants.AppConstants;
-import com.example.administrator.kenya.interfaces.DeleteSuccessfulListener;
+import com.example.administrator.kenya.interfaces.OnSuccessfulListener;
 import com.example.administrator.kenya.ui.city.used.GoodsDetailsActivity;
 import com.example.administrator.kenya.ui.main.DeleteDialog;
 import com.jwenfeng.library.pulltorefresh.BaseRefreshListener;
@@ -234,7 +234,7 @@ public class MyUsedFragment extends BaseFragment {
                     params.put("Type", "二手");
                     params.put("id", list.get(position).getGoodsid());
                     DeleteDialog deleteDialog = new DeleteDialog(getContext(), AppConstants.BASE_URL + "/kenya/user/deleteByUserId", params);
-                    deleteDialog.setDeleteSuccessfulListener(new DeleteSuccessfulListener() {
+                    deleteDialog.setOnSuccessfulListener(new OnSuccessfulListener() {
                         @Override
                         public void success() {
                             list.remove(position);
