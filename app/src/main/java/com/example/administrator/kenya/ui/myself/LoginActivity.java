@@ -40,7 +40,6 @@ public class LoginActivity extends BaseActivity {
         setContentView(R.layout.activity_login);
         ButterKnife.bind(this);
     }
-
     @OnClick({R.id.login, R.id.forgetPassword, R.id.Register})
     public void onViewClicked(View view) {
         switch (view.getId()) {

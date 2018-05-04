@@ -28,31 +28,31 @@
                     android:layout_width="230px"
                     android:layout_height="230px"
                     android:layout_marginTop="50px"
-                    android:src="@drawable/avatar"/>
+                    android:src="@drawable/avatar" />
 
                 <com.zhy.autolayout.AutoRelativeLayout
+                    android:id="@+id/myName"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:gravity="center_vertical"
-                    android:id="@+id/myName"
-                    android:paddingTop="20px"
-                    android:paddingBottom="30px"
                     android:layout_marginLeft="200px"
-                    android:layout_marginRight="200px">
+                    android:layout_marginRight="200px"
+                    android:gravity="center_vertical"
+                    android:paddingBottom="30px"
+                    android:paddingTop="20px">
 
                     <TextView
                         android:id="@+id/my_center_name"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_centerInParent="true"
-                        android:textColor="@color/textBlack1"/>
+                        android:textColor="@color/textBlack1" />
 
                     <ImageView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
                         android:layout_marginLeft="10px"
                         android:layout_toRightOf="@+id/my_center_name"
-                        android:layout_centerVertical="true"
                         android:src="@mipmap/my_center_writer" />
                 </com.zhy.autolayout.AutoRelativeLayout>
 
@@ -61,7 +61,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="52px"
-                    android:textColor="@color/textBlack1"/>
+                    android:textColor="@color/textBlack1" />
 
             </com.zhy.autolayout.AutoLinearLayout>
 
@@ -69,9 +69,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/base_bg"
-                android:paddingTop="20px"
+                android:orientation="vertical"
                 android:paddingBottom="20px"
-                android:orientation="vertical">
+                android:paddingTop="20px">
 
                 <com.zhy.autolayout.AutoRelativeLayout
                     android:id="@+id/myAddress"
@@ -97,8 +97,8 @@
                 <include layout="@layout/line" />
 
                 <com.zhy.autolayout.AutoRelativeLayout
-                    style="@style/my_center_bar"
-                    android:id="@+id/myRelease">
+                    android:id="@+id/myRelease"
+                    style="@style/my_center_bar">
 
                     <ImageView
                         android:id="@+id/my_center_infor"
@@ -187,6 +187,13 @@
             </com.zhy.autolayout.AutoRelativeLayout>
 
             <include layout="@layout/line" />
+
+            <Button
+                android:id="@+id/btn"
+                android:layout_width="500px"
+                android:layout_height="150px"
+                android:layout_gravity="center"
+                android:layout_marginTop="80px" />
         </com.zhy.autolayout.AutoLinearLayout>
     </com.example.administrator.kenya.view.MyObervalbleScrollView>
 

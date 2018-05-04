@@ -14,24 +14,24 @@
         <ImageView
             android:id="@+id/back"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:adjustViewBounds="true"
-            android:padding="11dp"
+            android:padding="41px"
             android:src="@mipmap/resume_bank" />
 
         <TextView
             android:id="@+id/title"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
             android:ellipsize="end"
             android:gravity="center"
             android:maxEms="10"
             android:singleLine="true"
             android:text="编辑简历"
-            android:textSize="18sp"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true" />
+            android:textSize="18sp" />
 
     </com.zhy.autolayout.AutoRelativeLayout>
 
@@ -226,9 +226,9 @@
             <com.example.administrator.kenya.view.RoundImageView
                 android:id="@+id/resume_info_photo"
                 android:layout_width="280px"
-                android:layout_height="280px"
+                android:layout_height="260px"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="80px"
+                android:layout_marginTop="70px"
                 android:scaleType="fitXY"
                 android:src="@mipmap/resum_photo" />
         </com.zhy.autolayout.AutoRelativeLayout>

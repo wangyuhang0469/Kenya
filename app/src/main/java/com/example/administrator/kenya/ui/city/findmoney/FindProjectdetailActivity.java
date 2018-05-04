@@ -52,7 +52,6 @@ public class FindProjectdetailActivity extends BaseActivity {
         porjectUser.setText(project2.getProjectuser());
         projectPhone.setText(project2.getProjectphone());
     }
-
     private void initBanner(List<String> imageUrlList) {
         banner.setImages(imageUrlList).setImageLoader(new GlideImageLoader()).start();
         banner.setOnBannerListener(new OnBannerListener() {

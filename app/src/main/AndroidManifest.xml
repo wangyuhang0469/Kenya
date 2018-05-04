@@ -93,5 +93,8 @@
         <activity android:name=".ui.city.findmoney.FindProjectdetailActivity" />
         <activity android:name=".ui.city.findmoney.FindMonydetailActivity" />
         <activity android:name=".ui.myself.myrelease.MyReleaseActivity" />
+        <activity android:name=".ui.city.job.JobSearchActivity" />
+        <activity android:name=".ui.city.job.CompanySeachActivity"></activity>
     </application>
+
 </manifest>

@@ -22,7 +22,6 @@ public class FriendsActivity extends BaseActivity {
     RecyclerView recyclerView;
 
     private List<Friend> friendList;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

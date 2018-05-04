@@ -1,10 +1,16 @@
 package com.example.administrator.kenya.activity;
 
+
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Spinner;
+import android.widget.TextView;
 
 import com.alibaba.fastjson.JSON;
 import com.example.administrator.kenya.R;
@@ -18,6 +24,9 @@ import com.zhy.http.okhttp.callback.StringCallback;
 
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -35,12 +44,12 @@ public class AdvertyinfoActivity extends BaseActivity {
     EditText advertyInfoWorkMoney;
     @Bind(R.id.adverty_info_work_quiret)
     EditText advertyInfoWorkQuiret;
-    @Bind(R.id.adverty_info_jion_time)
-    EditText advertyInfoJionTime;
     @Bind(R.id.adverty_info_company_name)
     EditText advertyInfoCompanyName;
     @Bind(R.id.adverty_info_company_phone)
     EditText advertyInfoCompanyPhone;
+    @Bind(R.id.spinner)
+    Spinner spinner;
     private String price;
     private int type = 0;
     boolean img;
@@ -50,6 +59,18 @@ public class AdvertyinfoActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_advertyinfo);
         ButterKnife.bind(this);
+        List<String> types = new ArrayList<>();
+        types.add("请选择类型");
+        types.add("不限");
+        types.add("应届生");
+        types.add("1年以内");
+        types.add("1-3年");
+        types.add("3-5年");
+        types.add("5-10年");
+        types.add("10年以上");
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, R.layout.spinner_simple, R.id.spinner_tv, types);
+        adapter.setDropDownViewResource(R.layout.item_spinner);
+        spinner.setAdapter(adapter);
     }
 
     @OnClick({R.id.back, R.id.adverty_info_detail, R.id.adverty_info_choose})
@@ -70,8 +91,8 @@ public class AdvertyinfoActivity extends BaseActivity {
                     toast("请输入月薪");
                 } else if (advertyInfoWorkQuiret.getText().length() == 0) {
                     toast("请输入职位描述");
-                } else if (advertyInfoJionTime.getText().length() == 0) {
-                    toast("请输入要求工作年限");
+                } else if (spinner.getSelectedItem().toString().equals("请选择类型")) {
+                    toast("请选择类型");
                 } else if (advertyInfoCompanyName.getText().length() == 0) {
                     toast("请输入公司名称");
                 } else if (advertyInfoCompanyPhone.getText().length() == 0) {
@@ -82,7 +103,7 @@ public class AdvertyinfoActivity extends BaseActivity {
                             .addParams("companyname", advertyInfoCompanyName.getText().toString())
                             .addParams("companystationdesc", advertyInfoWorkQuiret.getText().toString())
                             .addParams("companyphone", advertyInfoCompanyPhone.getText().toString())
-                            .addParams("companyimg5", advertyInfoJionTime.getText().toString())//添加的是工作年限信息
+                            .addParams("companyimg5", spinner.getSelectedItem().toString())//添加的是工作年限信息
                             .addParams("companystation", advertyInfoWorkName.getText().toString())
                             .addParams("companystationsalary", price)
                             .addParams("userid", User.getInstance().getUserId())
@@ -96,6 +117,7 @@ public class AdvertyinfoActivity extends BaseActivity {
 
                                 @Override
                                 public void onResponse(String response, int id) {
+                                    Log.d("kang", "hhhhhhh" + response);
                                     log(response);
                                     toast("加载成功");
                                     try {

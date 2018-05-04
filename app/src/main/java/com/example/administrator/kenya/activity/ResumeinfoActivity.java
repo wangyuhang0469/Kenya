@@ -54,6 +54,8 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import okhttp3.Call;
+import top.zibin.luban.Luban;
+import top.zibin.luban.OnCompressListener;
 
 public class ResumeinfoActivity extends BaseActivity implements View.OnClickListener, PopupWindow.OnDismissListener {
 
@@ -149,7 +151,7 @@ public class ResumeinfoActivity extends BaseActivity implements View.OnClickList
                 openPopupWindow(view);
                 break;
             case R.id.resume_info_detail:
-                if (s==null || s.length() == 0) {
+                if (s == null || s.length() == 0) {
                     toast("请上传头像");
                 } else if (resumeInfoJobname.getText().length() == 0) {
                     toast("请输入姓名");
@@ -160,14 +162,36 @@ public class ResumeinfoActivity extends BaseActivity implements View.OnClickList
                 } else if (resumeInfoPhone.getText().length() == 0) {
                     toast("请输入手机号");
                 } else if (resumeTimeBirday.getText().length() == 0) {
-                    toast("请输选择出生年月");
+                    toast("请选择出生年月");
                 } else if (resumeTvRecmChoose.getText().length() == 0) {
                     toast("请输入个人介绍");
                 } else if (resumeTvTime.getText().length() == 0) {
                     toast("请选择开始工作时间");
                 } else {
+                    Log.d("kang", "aaaaaaaaaa" + s);
+//                    Luban.with(this)
+//                            .load(s)
+//                            .ignoreBy(150)
+//                            .setTargetDir(getExternalCacheDir().toString())
+//                            .setCompressListener(new OnCompressListener() {
+//                                @Override
+//                                public void onStart() {
+//                                }
+//
+//                                @Override
+//                                public void onSuccess(File file) {
+//                                    Log.d("kang", "BBBBBBBBBBBB" + file);
+//                                    s = String.valueOf(file);
+//                                    Log.d("kang", "CCCCCCCCCCCCC" + s);
+//                                }
+//
+//                                @Override
+//                                public void onError(Throwable e) {
+//                                }
+//                            }).launch();
                     File f2 = new File(s);
-                    PostFormBuilder postFormBuilder = OkHttpUtils.post()
+                    Log.d("kang", "DDDDDDDDDDDDDD" + f2);
+                    final PostFormBuilder postFormBuilder = OkHttpUtils.post()
                             .addFile("logoFile", "tupian.png", f2);
                     postFormBuilder.url(AppConstants.BASE_URL + "/kenya/jobSeeker/saveJobWant")
                             .addParams("sex", sexvalue)
@@ -188,7 +212,7 @@ public class ResumeinfoActivity extends BaseActivity implements View.OnClickList
 
                                 @Override
                                 public void onResponse(String response, int id) {
-                                    Log.d("kang", "1111111111111111" + response);
+                                    Log.d("kang", "11111111111111111111" + response);
                                     log(response);
                                     toast("加载成功");
                                     try {
@@ -282,6 +306,7 @@ public class ResumeinfoActivity extends BaseActivity implements View.OnClickList
         //设置背景色
         setBackgroundAlpha(0.5f);
     }
+
     private void setOnPopupViewClick(View view) {
         TextView tv_pick_phone, tv_pick_zone, tv_cancel;
         tv_pick_phone = (TextView) view.findViewById(R.id.tv_pick_phone);

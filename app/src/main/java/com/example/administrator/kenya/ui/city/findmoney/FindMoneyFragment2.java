@@ -91,11 +91,9 @@ public class FindMoneyFragment2 extends Fragment {
                     e.printStackTrace();
                 }
             }
-
             @Override
             public void onResponse(String response, int id) {
                 //防止因Activity释放导致内部控件空指针
-                Log.d("kang", "11111" + response);
                 if (pullToRefreshLayout != null) {
                     cpageNum++;
                     List<Project2> addList = null;
@@ -131,7 +129,6 @@ public class FindMoneyFragment2 extends Fragment {
             @Override
             public void refresh() {
             }
-
             @Override
             public void loadMore() {
                 postFormBuilder.addParams("pn", cpageNum + "").tag(this).build().execute(StringCallback);

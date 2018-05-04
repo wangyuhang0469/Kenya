@@ -130,13 +130,10 @@ public class UsedSearchActivity extends BaseActivity {
     }
 
     private void initView() {
-
         myAdapter = new MyAdapter(goodsList);
         LinearLayoutManager layoutmanager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutmanager);
         recyclerView.setAdapter(myAdapter);
-
-
         keyword.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
@@ -148,7 +145,6 @@ public class UsedSearchActivity extends BaseActivity {
                 return true;
             }
         });
-
         pullToRefreshLayout.setCanRefresh(false);
         pullToRefreshLayout.setCanLoadMore(false);
         pullToRefreshLayout.setRefreshListener(new BaseRefreshListener() {
@@ -167,7 +163,6 @@ public class UsedSearchActivity extends BaseActivity {
         goodsList.clear();
         cpageNum = 1;
     }
-
 
     private void searchEvent() {
         if (keyword.getText().length() == 0) {
@@ -194,9 +189,7 @@ public class UsedSearchActivity extends BaseActivity {
         }
     }
 
-
     public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
-
 
         private List<Goods> list;
 
@@ -205,7 +198,7 @@ public class UsedSearchActivity extends BaseActivity {
         }
 
         public class ViewHolder extends RecyclerView.ViewHolder {
-            TextView goodsname, goodsphone, goodsprice,call;
+            TextView goodsname, goodsphone, goodsprice, call;
             ImageView goodsimgs;
 
             public ViewHolder(View itemView) {
@@ -234,7 +227,7 @@ public class UsedSearchActivity extends BaseActivity {
             holder.call.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    new CallPhoneDialog(UsedSearchActivity.this,list.get(position).getGoodsphone()).show();
+                    new CallPhoneDialog(UsedSearchActivity.this, list.get(position).getGoodsphone()).show();
                 }
             });
 

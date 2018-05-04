@@ -27,17 +27,16 @@ public class CallPhoneDialog extends Dialog {
         this.phone = phone;
     }
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.call_phone_dialog);
 
-        information =(TextView) findViewById(R.id.information);
-        yes =(TextView) findViewById(R.id.yes);
-        no =(TextView) findViewById(R.id.no);
+        information = (TextView) findViewById(R.id.information);
+        yes = (TextView) findViewById(R.id.yes);
+        no = (TextView) findViewById(R.id.no);
 
-        information.setText("您确定要给"+phone+"拨打电话吗？");
+        information.setText("您确定要给" + phone + "拨打电话吗？");
 
         no.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -45,7 +44,6 @@ public class CallPhoneDialog extends Dialog {
                 CallPhoneDialog.this.dismiss();
             }
         });
-
         yes.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -58,9 +56,7 @@ public class CallPhoneDialog extends Dialog {
         });
 
 
-
     }
-
 
 
 }

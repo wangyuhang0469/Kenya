@@ -90,7 +90,7 @@ public class MyselfFragment extends BaseFragment {
         ButterKnife.unbind(this);
     }
 
-    @OnClick({R.id.myName, R.id.myAddress, R.id.myRelease, R.id.myCar, R.id.myPoint, R.id.myVallet, R.id.avatar, R.id.my_center_name})
+    @OnClick({R.id.myName, R.id.myAddress, R.id.myRelease, R.id.myCar, R.id.myPoint, R.id.myVallet, R.id.avatar, R.id.my_center_name, R.id.btn})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.myName:
@@ -117,6 +117,8 @@ public class MyselfFragment extends BaseFragment {
             case R.id.avatar:
                 break;
             case R.id.my_center_name:
+                break;
+            case R.id.btn:
                 break;
         }
     }
@@ -174,8 +176,8 @@ public class MyselfFragment extends BaseFragment {
 
         OkHttpUtils.post()
                 .url(AppConstants.BASE_URL + "/kenya/user/update")
-                .addFile("file",file.getName(),file)
-                .addParams("id",User.getInstance().getUserId())
+                .addFile("file", file.getName(), file)
+                .addParams("id", User.getInstance().getUserId())
                 .build()
                 .execute(new StringCallback() {
                     @Override
@@ -191,7 +193,7 @@ public class MyselfFragment extends BaseFragment {
                         try {
                             JSONObject jsonObject = new JSONObject(response);
                             toast(jsonObject.getString("message"));
-                            if (jsonObject.getString("code").equals("000")){
+                            if (jsonObject.getString("code").equals("000")) {
                                 Glide.with(getContext())
                                         .load(mResults.get(0))
                                         .into(avatar);
@@ -205,4 +207,6 @@ public class MyselfFragment extends BaseFragment {
                 });
 
     }
+
+
 }

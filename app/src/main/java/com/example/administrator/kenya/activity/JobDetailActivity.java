@@ -53,7 +53,7 @@ public class JobDetailActivity extends BaseActivity {
                 finish();
                 break;
             case R.id.job_detail_release:
-                new CallPhoneDialog(this,company.getCompanyphone()).show();
+                new CallPhoneDialog(this, company.getCompanyphone()).show();
                 break;
         }
     }

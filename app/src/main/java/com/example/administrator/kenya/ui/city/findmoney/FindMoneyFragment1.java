@@ -43,7 +43,6 @@ public class FindMoneyFragment1 extends Fragment {
     @Bind(R.id.pullToRefreshLayout)
     PullToRefreshLayout pullToRefreshLayout;
     private String mParam1;
-
     private FundsAdapter fundsAdapter;
     private List<Funds> fundsList;
     //请求数据参数
@@ -58,7 +57,6 @@ public class FindMoneyFragment1 extends Fragment {
         fragment.setArguments(args);
         return fragment;
     }
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -66,7 +64,6 @@ public class FindMoneyFragment1 extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
         }
     }
-
     public FindMoneyFragment1() {
         // Required empty public constructor
     }
@@ -98,7 +95,6 @@ public class FindMoneyFragment1 extends Fragment {
                     e.printStackTrace();
                 }
             }
-
             @Override
             public void onResponse(String response, int id) {
                 //防止因Activity释放导致内部控件空指针
@@ -136,6 +132,7 @@ public class FindMoneyFragment1 extends Fragment {
             @Override
             public void refresh() {
             }
+
             @Override
             public void loadMore() {
                 postFormBuilder.addParams("pn", cpageNum + "").tag(this).build().execute(StringCallback);

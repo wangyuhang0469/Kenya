@@ -13,7 +13,7 @@ public class Company implements Serializable {
     private String companyid;
     private String companyname;
     private String companystation;
-    private String companystationsalary;
+    private Object companystationsalary;
     private String companyphone;
     private String userid;
     private String companystationdesc;
@@ -50,11 +50,11 @@ public class Company implements Serializable {
         this.companystation = companystation;
     }
 
-    public String getCompanystationsalary() {
+    public Object getCompanystationsalary() {
         return companystationsalary;
     }
 
-    public void setCompanystationsalary(String companystationsalary) {
+    public void setCompanystationsalary(Object companystationsalary) {
         this.companystationsalary = companystationsalary;
     }
 

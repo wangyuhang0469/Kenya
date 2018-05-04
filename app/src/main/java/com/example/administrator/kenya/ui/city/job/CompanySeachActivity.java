@@ -1,9 +1,8 @@
-package com.example.administrator.kenya.ui.city.house;
+package com.example.administrator.kenya.ui.city.job;
 
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.WindowManager;
@@ -13,9 +12,9 @@ import android.widget.TextView;
 
 import com.alibaba.fastjson.JSON;
 import com.example.administrator.kenya.R;
-import com.example.administrator.kenya.adapter.HouseAdapter;
+import com.example.administrator.kenya.adapter.CompanyAdapter;
 import com.example.administrator.kenya.base.BaseActivity;
-import com.example.administrator.kenya.classes.House;
+import com.example.administrator.kenya.classes.Company;
 import com.example.administrator.kenya.constants.AppConstants;
 import com.jwenfeng.library.pulltorefresh.BaseRefreshListener;
 import com.jwenfeng.library.pulltorefresh.PullToRefreshLayout;
@@ -34,25 +33,25 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import okhttp3.Call;
 
-public class HouseSearchActivity extends BaseActivity {
+public class CompanySeachActivity extends BaseActivity {
 
     @Bind(R.id.keyword)
     EditText keyword;
-    @Bind(R.id.pullToRefreshLayout)
-    PullToRefreshLayout pullToRefreshLayout;
     @Bind(R.id.recyclerView)
     RecyclerView recyclerView;
+    @Bind(R.id.pullToRefreshLayout)
+    PullToRefreshLayout pullToRefreshLayout;
     private PostFormBuilder postFormBuilder;
     private int cpageNum = 1;
-    private StringCallback StringCallback;
-    private List<House> housesList = new ArrayList<>();
-    private HouseAdapter houseadapter;
     private String lastKeyword = "";
+    private List<Company> companyList = new ArrayList<>();
+    private CompanyAdapter companyAdapter;
+    private StringCallback StringCallback;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_house_search);
+        setContentView(R.layout.activity_company_seach);
         ButterKnife.bind(this);
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_VISIBLE);
         initView();
@@ -61,9 +60,9 @@ public class HouseSearchActivity extends BaseActivity {
 
     private void initOKHttp() {
         postFormBuilder = OkHttpUtils.post()
-                .url(AppConstants.BASE_URL + "/kenya/Lease/selectByFile")
-                .addParams("pn", cpageNum + "")
-                .addParams("LeaseName", keyword.getText().toString());
+                .url(AppConstants.BASE_URL + "/kenya/recruit/pageQuery")
+                .addParams("currPage", cpageNum + "")
+                .addParams("pagetext", keyword.getText().toString());
 
         StringCallback = new StringCallback() {
             @Override
@@ -82,21 +81,23 @@ public class HouseSearchActivity extends BaseActivity {
                 if (pullToRefreshLayout != null) {
                     cpageNum++;
                     lastKeyword = keyword.getText().toString();
-                    List<House> addList = null;
+                    List<Company> addList = null;
                     try {
                         JSONObject jsonObject = new JSONObject(response);
                         if (jsonObject.getString("code").equals("000")) {
                             pullToRefreshLayout.setCanLoadMore(true);
+                        } else if (jsonObject.getString("totalCount").equals("0")) {
+                            toast("暂时还没有公司招聘相关职位");
                         } else {
                             pullToRefreshLayout.setCanLoadMore(false);
                         }
-                        response = jsonObject.getString("result");
+                        response = jsonObject.getString("lists");
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
-                    addList = JSON.parseArray(response, House.class);
-                    housesList.addAll(addList);
-                    houseadapter.notifyDataSetChanged();
+                    addList = JSON.parseArray(response, Company.class);
+                    companyList.addAll(addList);
+                    companyAdapter.notifyDataSetChanged();
                     pullToRefreshLayout.finishLoadMore();
                 }
             }
@@ -105,11 +106,10 @@ public class HouseSearchActivity extends BaseActivity {
 
     //初始化组件
     private void initView() {
-        houseadapter = new HouseAdapter(this, housesList);
+        companyAdapter = new CompanyAdapter(this, companyList);
         LinearLayoutManager layoutmanager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutmanager);
-        recyclerView.setAdapter(houseadapter);
-
+        recyclerView.setAdapter(companyAdapter);
         keyword.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
@@ -130,13 +130,13 @@ public class HouseSearchActivity extends BaseActivity {
 
             @Override
             public void loadMore() {
-                postFormBuilder.addParams("pn", cpageNum + "").addParams("leaseName", lastKeyword).build().execute(StringCallback);
+                postFormBuilder.addParams("currPage", cpageNum + "").addParams("pagetext", lastKeyword).build().execute(StringCallback);
             }
         });
     }
 
     private void replacement() {
-        housesList.clear();
+        companyList.clear();
         cpageNum = 1;
     }
 
@@ -146,9 +146,10 @@ public class HouseSearchActivity extends BaseActivity {
         } else if (lastKeyword.equals(keyword.getText().toString())) {
         } else {
             replacement();
-            postFormBuilder.addParams("pn", cpageNum + "").addParams("leaseName", keyword.getText().toString()).build().execute(StringCallback);
+            postFormBuilder.addParams("currPage", cpageNum + "").addParams("pagetext", keyword.getText().toString()).build().execute(StringCallback);
         }
     }
+
 
     @OnClick({R.id.back, R.id.tv_search})
     public void onViewClicked(View view) {

@@ -58,7 +58,7 @@ public class ResumeDetilActivity extends Activity {
                 finish();
                 break;
             case R.id.resume_detail_job_release:
-                new CallPhoneDialog(this,job.getPhone()).show();
+                new CallPhoneDialog(this, job.getPhone()).show();
                 break;
         }
     }

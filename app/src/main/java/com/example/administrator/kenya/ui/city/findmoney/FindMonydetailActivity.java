@@ -66,7 +66,7 @@ public class FindMonydetailActivity extends Activity {
                 finish();
                 break;
             case R.id.find_money_call:
-                new CallPhoneDialog(this,funds.getFundsphone()).show();
+                new CallPhoneDialog(this, funds.getFundsphone()).show();
                 break;
         }
     }

@@ -41,7 +41,7 @@ public class CompanyAdapter extends RecyclerView.Adapter<CompanyAdapter.ViewHold
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        TextView company_Title, company_phone, company_home, company_price,call;
+        TextView company_Title, company_phone, company_home, company_price, call;
         //ImageView company_image;
 
         public ViewHolder(View itemView) {
@@ -60,20 +60,25 @@ public class CompanyAdapter extends RecyclerView.Adapter<CompanyAdapter.ViewHold
         View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_company, parent, false);
         return new ViewHolder(v);
     }
-
     @Override
     public void onBindViewHolder(final ViewHolder holder, final int position) {
 
         holder.company_Title.setText(list.get(position).getCompanystation() + ":");
         holder.company_phone.setText(list.get(position).getCompanyphone());
         holder.company_home.setText(list.get(position).getCompanyname());
-        holder.company_price.setText(list.get(position).getCompanystationsalary() + "元/月");
+        if (list.get(position).getCompanystationsalary() == null) {
+
+        } else if (list.get(position).getCompanystationsalary().equals("-1")) {
+            holder.company_price.setText("面议");
+        } else {
+            holder.company_price.setText(list.get(position).getCompanystationsalary() + "元/月");
+        }
 //        holder.company_image.setTag(list.get(position).getCompanyimg0());
 
         holder.call.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                new CallPhoneDialog(context,list.get(position).getCompanyphone()).show();
+                new CallPhoneDialog(context, list.get(position).getCompanyphone()).show();
             }
         });
 //        Glide.with(context)

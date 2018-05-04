@@ -17,7 +17,7 @@
             android:layout_width="wrap_content"
             android:layout_height="144px"
             android:adjustViewBounds="true"
-            android:padding="11px"
+            android:padding="41px"
             android:src="@mipmap/resume_bank" />
 
         <TextView
@@ -31,9 +31,7 @@
             android:singleLine="true"
             android:text="发布职位"
             android:textSize="18sp" />
-
     </com.zhy.autolayout.AutoRelativeLayout>
-
 
     <com.example.administrator.kenya.view.MyObervalbleScrollView
         android:layout_width="match_parent"
@@ -69,7 +67,7 @@
                 <TextView
                     android:id="@+id/adverty_yuexin"
                     style="@style/adverty_info_tv"
-                    android:text="月       薪" />
+                    android:text="月        薪" />
 
                 <EditText
                     android:id="@+id/adverty_info_work_money"
@@ -85,9 +83,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
-                    android:layout_marginRight="150px"
+                    android:layout_marginRight="155px"
                     android:layout_toLeftOf="@+id/resume_info_mianyi"
-                    android:padding="8px"
+                    android:padding="12px"
                     android:src="@mipmap/mianyi" />
 
                 <TextView
@@ -97,7 +95,6 @@
                     android:layout_alignParentRight="true"
                     android:layout_marginRight="30px"
                     android:text="面议" />
-
             </com.zhy.autolayout.AutoRelativeLayout>
 
             <include layout="@layout/line" />
@@ -125,20 +122,37 @@
 
             <include layout="@layout/line" />
 
-            <com.zhy.autolayout.AutoLinearLayout style="@style/adverty_info_ll">
+            <com.zhy.autolayout.AutoRelativeLayout
+                android:id="@+id/adverty_info_time_choose"
+                style="@style/adverty_info_ll">
+
+                <Spinner
+                    android:id="@+id/spinner"
+                    android:layout_width="match_parent"
+                    android:layout_height="150px"
+                    android:layout_marginLeft="36px"
+                    android:layout_toRightOf="@+id/adverty_info_work_time"
+                    android:background="#00000000"
+                    android:spinnerMode="dialog" />
 
                 <TextView
+                    android:id="@+id/adverty_info_work_time"
                     style="@style/adverty_info_tv"
+                    android:layout_marginTop="45px"
                     android:text="工作年限" />
+                <!--<TextView-->
+                <!--android:id="@+id/adverty_info_jion_time"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_marginLeft="80px"-->
+                <!--android:layout_toRightOf="@+id/adverty_info_work_time"-->
+                <!--android:hint="不限" />-->
+                <ImageView
+                    style="@style/my_center_inter"
+                    android:layout_marginTop="45px"
+                    android:src="@mipmap/my_center_inter2" />
 
-                <EditText
-                    android:id="@+id/adverty_info_jion_time"
-                    style="@style/edit_base2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="80px"
-                    android:hint="不限" />
-            </com.zhy.autolayout.AutoLinearLayout>
+            </com.zhy.autolayout.AutoRelativeLayout>
 
             <include layout="@layout/line" />
 

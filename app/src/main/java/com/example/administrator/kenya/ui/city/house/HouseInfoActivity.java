@@ -82,7 +82,6 @@ public class HouseInfoActivity extends BaseActivity {
         housePenson.setText(User.getInstance().getUserName());
         housePhone.setText(User.getInstance().getUserPhonenumber());
     }
-
     /**
      * 发布合并前
      */

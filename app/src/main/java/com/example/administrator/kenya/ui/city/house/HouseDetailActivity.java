@@ -20,7 +20,6 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 public class HouseDetailActivity extends BaseActivity {
-
     @Bind(R.id.title)
     TextView title;
     @Bind(R.id.banner)
@@ -75,7 +74,7 @@ public class HouseDetailActivity extends BaseActivity {
                 finish();
                 break;
             case R.id.call:
-                new CallPhoneDialog(this,house.getLeasephone()).show();
+                new CallPhoneDialog(this, house.getLeasephone()).show();
                 break;
         }
     }
