@@ -18,7 +18,8 @@
         android:layout_alignTop="@id/funds_image"
         android:layout_marginRight="30px"
         android:layout_toRightOf="@id/funds_image"
-        android:textColor="@color/textBlack1" />
+        android:textColor="@color/textBlack1"
+        android:layout_marginTop="10px"/>
 
     <TextView
         android:id="@+id/funds_phone"
@@ -26,9 +27,9 @@
         android:layout_height="wrap_content"
         android:layout_alignBottom="@id/funds_image"
         android:layout_toRightOf="@id/funds_image"
-        android:text="手机：18532159723"
         android:textColor="@color/textBlack2"
-        android:textSize="13sp" />
+        android:textSize="13sp"
+        android:layout_marginBottom="10px"/>
 
     <TextView
         android:id="@+id/funds_call"
@@ -48,9 +49,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_above="@id/funds_phone"
-        android:layout_marginBottom="10px"
         android:layout_toRightOf="@id/funds_image"
-        android:text="1100元"
         android:textColor="@color/textgreen1"
         android:textSize="17sp" />
 

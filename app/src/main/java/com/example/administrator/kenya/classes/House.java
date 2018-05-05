@@ -26,12 +26,17 @@ public class House implements Serializable {
     private String leaseimg4;
     private String userid;
     private String leasedesc;
-    private String leaseIms;
-    private String leaseIm1;
-    private String leaseIm2;
-    private String leaseIm3;
-    private String leaseIm4;
-    private String user_phoneNumber;
+    private Issuer user;
+
+    public Issuer getUser() {
+        return user;
+    }
+
+    public void setUser(Issuer user) {
+        this.user = user;
+    }
+
+
 
     public String getLeaseid() {
         return leaseid;
@@ -147,53 +152,7 @@ public class House implements Serializable {
         this.leasedesc = leasedesc;
     }
 
-    public String getLeaseIms() {
-        return leaseIms;
-    }
 
-    public void setLeaseIms(String leaseIms) {
-        this.leaseIms = leaseIms;
-    }
-
-    public String getLeaseIm1() {
-        return leaseIm1;
-    }
-
-    public void setLeaseIm1(String leaseIm1) {
-        this.leaseIm1 = leaseIm1;
-    }
-
-    public String getLeaseIm2() {
-        return leaseIm2;
-    }
-
-    public void setLeaseIm2(String leaseIm2) {
-        this.leaseIm2 = leaseIm2;
-    }
-
-    public String getLeaseIm3() {
-        return leaseIm3;
-    }
-
-    public void setLeaseIm3(String leaseIm3) {
-        this.leaseIm3 = leaseIm3;
-    }
-
-    public String getLeaseIm4() {
-        return leaseIm4;
-    }
-
-    public void setLeaseIm4(String leaseIm4) {
-        this.leaseIm4 = leaseIm4;
-    }
-
-    public String getUser_phoneNumber() {
-        return user_phoneNumber;
-    }
-
-    public void setUser_phoneNumber(String user_phoneNumber) {
-        this.user_phoneNumber = user_phoneNumber;
-    }
 
     public List<String> getHouseImageUrlList() {
         List<String> houseimageUrlList = new ArrayList<>();

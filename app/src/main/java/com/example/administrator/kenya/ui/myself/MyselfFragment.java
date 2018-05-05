@@ -17,11 +17,9 @@ import com.example.administrator.kenya.classes.User;
 import com.example.administrator.kenya.constants.AppConstants;
 import com.example.administrator.kenya.interfaces.OnReUsernameSuccessfulListener;
 import com.example.administrator.kenya.model.image_selector.MultiImageSelectorActivity;
-import com.example.administrator.kenya.ui.city.used.GoodsReleaseActivity;
 import com.example.administrator.kenya.ui.main.LoadingDialog;
 import com.example.administrator.kenya.ui.main.ReUsernameDialog;
 import com.example.administrator.kenya.ui.myself.myrelease.MyReleaseActivity;
-import com.example.administrator.kenya.view.RoundImageView;
 import com.zhy.http.okhttp.OkHttpUtils;
 import com.zhy.http.okhttp.callback.StringCallback;
 
@@ -30,7 +28,6 @@ import org.json.JSONObject;
 
 import java.io.File;
 import java.util.ArrayList;
-import java.util.List;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -90,7 +87,7 @@ public class MyselfFragment extends BaseFragment {
         ButterKnife.unbind(this);
     }
 
-    @OnClick({R.id.myName, R.id.myAddress, R.id.myRelease, R.id.myCar, R.id.myPoint, R.id.myVallet, R.id.avatar, R.id.my_center_name, R.id.btn})
+    @OnClick({R.id.myName,R.id.myAddress, R.id.myRelease, R.id.myCar, R.id.myPoint, R.id.myVallet, R.id.avatar, R.id.btn})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.myName:
@@ -116,8 +113,7 @@ public class MyselfFragment extends BaseFragment {
                 break;
             case R.id.avatar:
                 break;
-            case R.id.my_center_name:
-                break;
+
             case R.id.btn:
                 break;
         }
@@ -175,7 +171,7 @@ public class MyselfFragment extends BaseFragment {
     private void send(File file) {
 
         OkHttpUtils.post()
-                .url(AppConstants.BASE_URL + "/kenya/user/update")
+                .url(AppConstants.BASE_URL + "/kenya/user/updatePortrait")
                 .addFile("file", file.getName(), file)
                 .addParams("id", User.getInstance().getUserId())
                 .build()
@@ -207,6 +203,7 @@ public class MyselfFragment extends BaseFragment {
                 });
 
     }
+
 
 
 }

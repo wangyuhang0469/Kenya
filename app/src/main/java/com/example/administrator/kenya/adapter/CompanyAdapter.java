@@ -84,7 +84,7 @@ public class CompanyAdapter extends RecyclerView.Adapter<CompanyAdapter.ViewHold
 //        Glide.with(context)
 //                .load(AppConstants.BASE_URL + list.get(position).getCompanyimg0())
 //                .centerCrop()
-//                .placeholder(R.drawable.img_loading);
+//                .placeholder(R.drawable.img_loading1);
 //                .into(holder.company_image);
 
 //                .asBitmap()

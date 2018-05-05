@@ -2,11 +2,14 @@ package com.example.administrator.kenya.ui.city.findmoney;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.example.administrator.kenya.R;
 import com.example.administrator.kenya.base.BaseActivity;
 import com.example.administrator.kenya.classes.Project2;
+import com.example.administrator.kenya.constants.AppConstants;
 import com.example.administrator.kenya.tools.GlideImageLoader;
 import com.example.administrator.kenya.ui.main.CallPhoneDialog;
 import com.example.administrator.kenya.ui.main.PreviewDialog;
@@ -36,6 +39,10 @@ public class FindProjectdetailActivity extends BaseActivity {
     TextView projectDetailDesc;
     @Bind(R.id.banner)
     Banner banner;
+    @Bind(R.id.project_detail_address)
+    TextView projectDetailAddress;
+    @Bind(R.id.avatar)
+    ImageView avatar;
     private Project2 project2;
 
     @Override
@@ -47,11 +54,21 @@ public class FindProjectdetailActivity extends BaseActivity {
         project2 = (Project2) getIntent().getExtras().getSerializable("project2");
         initBanner(project2.getProjectImageUrlList());
         projectDetailName.setText(project2.getProjectname());
-        projectDetailPrice.setText("投资额度:" + project2.getProjectprice());
+        projectDetailPrice.setText("投资额度：" + project2.getProjectprice());
+        projectDetailType.setText("所属行业："+project2.getProjecttype());
+        projectDetailAddress.setText("位置："+project2.getProjectaddress());
         projectDetailDesc.setText(project2.getProjectdesc());
         porjectUser.setText(project2.getProjectuser());
         projectPhone.setText(project2.getProjectphone());
+
+        Glide.with(this).load(AppConstants.BASE_URL + project2.getProjecthead())
+                .centerCrop()
+                .dontAnimate()//防止设置placeholder导致第一次不显示网络图片,只显示默认图片的问题
+                .error(R.drawable.avatar)
+                .placeholder(R.drawable.avatar)
+                .into(avatar);
     }
+
     private void initBanner(List<String> imageUrlList) {
         banner.setImages(imageUrlList).setImageLoader(new GlideImageLoader()).start();
         banner.setOnBannerListener(new OnBannerListener() {
@@ -69,7 +86,7 @@ public class FindProjectdetailActivity extends BaseActivity {
                 finish();
                 break;
             case R.id.call:
-                new CallPhoneDialog(this,project2.getProjectphone()).show();
+                new CallPhoneDialog(this, project2.getProjectphone()).show();
                 break;
         }
     }

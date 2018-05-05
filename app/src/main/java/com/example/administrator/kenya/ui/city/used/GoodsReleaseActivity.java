@@ -17,6 +17,7 @@ import com.bumptech.glide.Glide;
 import com.example.administrator.kenya.R;
 import com.example.administrator.kenya.base.BaseActivity;
 import com.example.administrator.kenya.classes.Goods;
+import com.example.administrator.kenya.classes.Issuer;
 import com.example.administrator.kenya.classes.User;
 import com.example.administrator.kenya.constants.AppConstants;
 import com.example.administrator.kenya.model.image_selector.MultiImageSelectorActivity;
@@ -69,6 +70,8 @@ public class GoodsReleaseActivity extends BaseActivity {
 
         goodsusername.setText(User.getInstance().getUserName());
         goodsphone.setText(User.getInstance().getUserPhonenumber());
+
+        goodsname.requestFocus();
 
     }
 
@@ -226,6 +229,8 @@ public class GoodsReleaseActivity extends BaseActivity {
                             log(response);
                             if (jsonObject.getString("code").equals("000")) {
                                 Goods goods = JSON.parseObject(jsonObject.getString("data1"), Goods.class);
+                                Issuer issuer = JSON.parseObject(jsonObject.getString("data"), Issuer.class);
+                                goods.setUser(issuer);
                                 Bundle bundle = new Bundle();
                                 bundle.putSerializable("goods", goods);
                                 toast("发布成功");

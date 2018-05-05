@@ -5,8 +5,10 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.example.administrator.kenya.R;
 import com.example.administrator.kenya.classes.Funds;
+import com.example.administrator.kenya.constants.AppConstants;
 import com.example.administrator.kenya.tools.GlideImageLoader;
 import com.example.administrator.kenya.ui.main.CallPhoneDialog;
 import com.example.administrator.kenya.ui.main.PreviewDialog;
@@ -18,6 +20,7 @@ import java.util.List;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import de.hdodenhof.circleimageview.CircleImageView;
 
 public class FindMonydetailActivity extends Activity {
 
@@ -33,6 +36,10 @@ public class FindMonydetailActivity extends Activity {
     TextView findMoneyDetailTitle;
     @Bind(R.id.banner)
     Banner banner;
+    @Bind(R.id.find_money_detail_advantage)
+    TextView findMoneyDetailAdvantage;
+    @Bind(R.id.avatar)
+    CircleImageView avatar;
     private Funds funds;
 
     @Override
@@ -47,6 +54,15 @@ public class FindMonydetailActivity extends Activity {
         findMoneyCompanyInfo.setText(funds.getFundsdesc());
         finduser.setText(funds.getFundsuser());
         findphone.setText(funds.getFundsphone());
+        findMoneyDetailAdvantage.setText(funds.getFundadvantage());
+
+        Glide.with(this).load(AppConstants.BASE_URL + funds.getFundshead())
+                .centerCrop()
+                .dontAnimate()//防止设置placeholder导致第一次不显示网络图片,只显示默认图片的问题
+                .error(R.drawable.avatar)
+                .placeholder(R.drawable.avatar)
+                .into(avatar);
+
     }
 
     private void initBanner(List<String> imageUrlList) {

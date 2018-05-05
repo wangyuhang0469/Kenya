@@ -78,10 +78,9 @@ public class ReUsernameDialog extends Dialog{
 
 
     private void send(){
-        information.setText("修改中...");
 
         OkHttpUtils.post()
-                .url(AppConstants.BASE_URL + "/kenya/user/update")
+                .url(AppConstants.BASE_URL + "/kenya/user/updateuserName")
                 .addParams("id", User.getInstance().getUserId())
                 .addParams("userName",information.getText().toString())
                 .build()
@@ -90,7 +89,6 @@ public class ReUsernameDialog extends Dialog{
                     public void onError(Call call, Exception e, int id) {
                         e.printStackTrace();
                         Toast.makeText(getContext(), "修改失败", Toast.LENGTH_SHORT).show();
-                        ReUsernameDialog.this.dismiss();
                     }
 
                     @Override

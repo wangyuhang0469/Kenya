@@ -16,19 +16,21 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignTop="@id/house_image"
+        android:layout_marginTop="10px"
         android:layout_marginRight="30px"
         android:layout_toRightOf="@id/house_image"
         android:textColor="@color/textBlack1" />
 
+
     <TextView
-        android:id="@+id/house_phone"
+        android:id="@+id/house_address"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignBottom="@id/house_image"
         android:layout_toRightOf="@id/house_image"
-        android:text="手机：18532159723"
         android:textColor="@color/textBlack2"
-        android:textSize="13sp" />
+        android:textSize="13sp"
+        android:layout_marginBottom="10px"/>
 
     <TextView
         android:id="@+id/house_call"
@@ -41,7 +43,8 @@
         android:gravity="center"
         android:text="拨号"
         android:textColor="@color/white"
-        android:textSize="13sp" />
+        android:textSize="13sp"
+        android:visibility="gone"/>
 
     <TextView
         android:id="@+id/house_home"
@@ -49,18 +52,25 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/house_Title"
         android:layout_toRightOf="@id/house_image"
-        android:text="2室•88m2•建华"
         android:textColor="@color/textBlack3"
-        android:textSize="13sp" />
+        android:textSize="13sp"/>
+
+    <TextView
+        android:id="@+id/house_square"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@id/house_home"
+        android:layout_toRightOf="@id/house_home"
+        android:textColor="@color/textBlack3"
+        android:textSize="13sp"
+        android:layout_marginLeft="20px"/>
 
     <TextView
         android:id="@+id/house_price"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@id/house_phone"
-        android:layout_marginBottom="10px"
+        android:layout_above="@id/house_address"
         android:layout_toRightOf="@id/house_image"
-        android:text="1100元"
         android:textColor="@color/textgreen1"
         android:textSize="17sp" />
 

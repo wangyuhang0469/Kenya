@@ -78,7 +78,7 @@ public class JobAdapter extends RecyclerView.Adapter<JobAdapter.ViewHolder> {
 //        Glide.with(context)
 //                .load(AppConstants.BASE_URL + list.get(position).getHeadimg())
 //                .centerCrop()
-//                .placeholder(R.drawable.img_loading);
+//                .placeholder(R.drawable.img_loading1);
 //                .into(holder.job_image);
 
 //                .asBitmap()

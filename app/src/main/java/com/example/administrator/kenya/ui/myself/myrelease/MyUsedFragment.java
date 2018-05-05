@@ -203,7 +203,7 @@ public class MyUsedFragment extends BaseFragment {
             Glide.with(getContext())
                     .load(AppConstants.BASE_URL + list.get(position).getGoodsimgs())
                     .centerCrop()
-                    .placeholder(R.drawable.img_loading)
+                    .placeholder(R.drawable.img_loading1)
                     .into(holder.goodsimgs);
 
 //                    .asBitmap()

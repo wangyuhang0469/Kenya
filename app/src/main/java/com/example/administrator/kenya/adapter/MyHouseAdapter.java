@@ -43,14 +43,15 @@ public class MyHouseAdapter extends RecyclerView.Adapter<MyHouseAdapter.ViewHold
 
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        TextView house_Title, house_phone, house_home, house_price,house_delete;
+        TextView house_Title, house_square,house_address, house_home, house_price,house_delete;
         ImageView house_image;
 
         public ViewHolder(View itemView) {
             super(itemView);
             house_Title = (TextView) itemView.findViewById(R.id.house_Title);
-            house_phone = (TextView) itemView.findViewById(R.id.house_phone);
             house_home = (TextView) itemView.findViewById(R.id.house_home);
+            house_square = (TextView) itemView.findViewById(R.id.house_square);
+            house_address = (TextView) itemView.findViewById(R.id.house_address);
             house_price = (TextView) itemView.findViewById(R.id.house_price);
             house_delete = (TextView) itemView.findViewById(R.id.delete);
             house_image = (ImageView) itemView.findViewById(R.id.house_image);
@@ -67,14 +68,16 @@ public class MyHouseAdapter extends RecyclerView.Adapter<MyHouseAdapter.ViewHold
     public void onBindViewHolder(final ViewHolder holder, final int position) {
 
         holder.house_Title.setText(list.get(position).getLeasename());
-        holder.house_phone.setText("手机：" + list.get(position).getLeasephone());
         holder.house_home.setText(list.get(position).getLeasehome());
-        holder.house_price.setText("$" + list.get(position).getLeaseprice());
+        holder.house_square.setText(list.get(position).getLeasesquare()+"㎡");
+        holder.house_address.setText(list.get(position).getLeaseaddress());
+        holder.house_price.setText("/-" + list.get(position).getLeaseprice());
+
 //        holder.house_image.setTag(list.get(position).getLeaseimgs());
 
         Glide.with(context)
                 .load(AppConstants.BASE_URL + list.get(position).getLeaseimgs())
-                .placeholder(R.drawable.img_loading)
+                .placeholder(R.drawable.img_loading1)
                 .centerCrop()
                 .into(holder.house_image);
 

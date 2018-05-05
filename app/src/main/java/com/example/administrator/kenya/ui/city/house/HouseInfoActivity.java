@@ -3,22 +3,13 @@ package com.example.administrator.kenya.ui.city.house;
 import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.graphics.drawable.BitmapDrawable;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
-import android.util.Log;
-import android.view.Gravity;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.WindowManager;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.PopupWindow;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.alibaba.fastjson.JSON;
 import com.bumptech.glide.Glide;
@@ -69,6 +60,8 @@ public class HouseInfoActivity extends BaseActivity {
     EditText houseSquare;
     @Bind(R.id.house_address)
     EditText houseAddress;
+    @Bind(R.id.house_home)
+    EditText houseHome;
     private ArrayList<String> mResults = new ArrayList<>();
     private ArrayList<File> compressFile = new ArrayList<>();
 
@@ -81,6 +74,8 @@ public class HouseInfoActivity extends BaseActivity {
 
         housePenson.setText(User.getInstance().getUserName());
         housePhone.setText(User.getInstance().getUserPhonenumber());
+
+        houseName.requestFocus();
     }
     /**
      * 发布合并前
@@ -167,8 +162,10 @@ public class HouseInfoActivity extends BaseActivity {
             case R.id.release:
                 if (houseName.getText().length() == 0) {
                     toast("请输入标题");
-                } else if (houseSquare.getText().length() == 0) {
+                } else if (houseHome.getText().length() == 0) {
                     toast("请输入户型信息");
+                } else if (houseSquare.getText().length() == 0) {
+                    toast("请输入房屋面积");
                 } else if (houseAddress.getText().length() == 0) {
                     toast("请输入房子位置");
                 } else if (houseInfoDesc.getText().length() == 0) {
@@ -224,6 +221,7 @@ public class HouseInfoActivity extends BaseActivity {
                 .addParams("leaseprice", housePrice.getText().toString())
                 .addParams("leasephone", housePhone.getText().toString())
                 .addParams("leasesquare", houseSquare.getText().toString())
+                .addParams("leasehome", houseHome.getText().toString())
                 .addParams("leaseaddress", houseAddress.getText().toString())
                 .addParams("userid", User.getInstance().getUserId())
                 .build()

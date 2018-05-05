@@ -1,10 +1,7 @@
 package com.example.administrator.kenya.ui.city.life;
 
-import android.graphics.Bitmap;
 import android.graphics.Color;
-import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.ColorDrawable;
-import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.widget.LinearLayoutManager;
@@ -20,16 +17,11 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.alibaba.fastjson.JSON;
-import com.bumptech.glide.DrawableRequestBuilder;
 import com.bumptech.glide.Glide;
-import com.bumptech.glide.request.animation.GlideAnimation;
-import com.bumptech.glide.request.target.SimpleTarget;
 import com.example.administrator.kenya.R;
 import com.example.administrator.kenya.base.BaseActivity;
-import com.example.administrator.kenya.classes.Goods;
 import com.example.administrator.kenya.classes.LifeServices;
 import com.example.administrator.kenya.constants.AppConstants;
-import com.example.administrator.kenya.ui.city.husbandry.HusbandryActivity;
 import com.example.administrator.kenya.ui.main.CallPhoneDialog;
 import com.example.administrator.kenya.view.MyRadioGroup;
 import com.jwenfeng.library.pulltorefresh.BaseRefreshListener;
@@ -42,7 +34,6 @@ import com.zhy.http.okhttp.callback.StringCallback;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -265,7 +256,7 @@ public class LifeActivity extends BaseActivity {
             Glide.with(LifeActivity.this)
                     .load(AppConstants.BASE_URL + list.get(position).getLiveimgs())
                     .centerCrop()
-                    .placeholder(R.drawable.img_loading)
+                    .placeholder(R.drawable.img_loading1)
                     .into(holder.liveimgs);
 
 //                    .asBitmap()

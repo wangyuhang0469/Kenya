@@ -2,9 +2,6 @@ package com.example.administrator.kenya.adapter;
 
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.drawable.BitmapDrawable;
-import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -14,13 +11,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
-import com.bumptech.glide.request.animation.GlideAnimation;
-import com.bumptech.glide.request.target.SimpleTarget;
 import com.example.administrator.kenya.R;
-import com.example.administrator.kenya.classes.House;
 import com.example.administrator.kenya.classes.News;
 import com.example.administrator.kenya.constants.AppConstants;
-import com.example.administrator.kenya.ui.city.house.HouseDetailActivity;
 import com.example.administrator.kenya.ui.city.news.NewsWebActivity;
 
 import java.util.List;
@@ -66,7 +59,7 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.ViewHolder> {
         Glide.with(context)
                 .load(AppConstants.BASE_URL + list.get(position).getNewsimg0())
                 .centerCrop()
-                .placeholder(R.drawable.img_loading)
+                .placeholder(R.drawable.img_loading1)
                 .into(holder.news_image);
 
 //                .asBitmap()

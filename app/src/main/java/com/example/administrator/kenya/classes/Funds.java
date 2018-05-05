@@ -16,23 +16,35 @@ public class Funds implements Serializable {
     private String fundsname;
     private String fundsprice;
     private String fundsdesc;
+    private String fundadvantage;
     private String fundsphone;
     private String fundsimgs;
     private String fundsimg1;
     private String fundsimg2;
     private String fundsimg3;
     private String fundsimg4;
+    private String fundsuser;
+    private String fundshead;
+    private String adminid;
+
 
     public String getFundsuser() {
         return fundsuser;
     }
 
+    public String getFundadvantage() {
+        return fundadvantage;
+    }
+
+    public void setFundadvantage(String fundadvantage) {
+        this.fundadvantage = fundadvantage;
+    }
+
+
     public void setFundsuser(String fundsuser) {
         this.fundsuser = fundsuser;
     }
 
-    private String fundsuser;
-    private int adminid;
 
     public int getFundsid() {
         return fundsid;
@@ -114,14 +126,23 @@ public class Funds implements Serializable {
         this.fundsimg4 = fundsimg4;
     }
 
-    public int getAdminid() {
+
+
+    public String getFundshead() {
+        return fundshead;
+    }
+
+    public void setFundshead(String fundshead) {
+        this.fundshead = fundshead;
+    }
+
+    public String getAdminid() {
         return adminid;
     }
 
-    public void setAdminid(int adminid) {
+    public void setAdminid(String adminid) {
         this.adminid = adminid;
     }
-
 
     public List<String> getFundsImageUrlList() {
         List<String> fundsimageUrlList = new ArrayList<>();
@@ -137,5 +158,4 @@ public class Funds implements Serializable {
             fundsimageUrlList.add(AppConstants.BASE_URL + fundsimg4);
         return fundsimageUrlList;
     }
-
 }

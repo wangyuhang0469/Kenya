@@ -1,12 +1,8 @@
 package com.example.administrator.kenya.ui.city.used;
 
-import android.graphics.Bitmap;
-import android.graphics.drawable.BitmapDrawable;
-import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,11 +11,6 @@ import android.widget.TextView;
 
 import com.alibaba.fastjson.JSON;
 import com.bumptech.glide.Glide;
-import com.bumptech.glide.load.resource.drawable.GlideDrawable;
-import com.bumptech.glide.request.RequestListener;
-import com.bumptech.glide.request.animation.GlideAnimation;
-import com.bumptech.glide.request.target.SimpleTarget;
-import com.bumptech.glide.request.target.Target;
 import com.example.administrator.kenya.R;
 import com.example.administrator.kenya.base.BaseActivity;
 import com.example.administrator.kenya.classes.Goods;
@@ -193,7 +184,7 @@ public class UsedActivity extends BaseActivity {
             Glide.with(UsedActivity.this)
                     .load(AppConstants.BASE_URL + list.get(position).getGoodsimgs())
                     .centerCrop()
-                    .placeholder(R.drawable.img_loading)
+                    .placeholder(R.drawable.img_loading1)
                     .into(holder.goodsimgs);
 
 

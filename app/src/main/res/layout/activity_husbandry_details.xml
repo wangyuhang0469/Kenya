@@ -109,13 +109,17 @@
         android:layout_alignParentBottom="true"
         android:background="@color/base_bg">
 
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.3dp"
+            android:background="@color/line7"/>
 
-        <ImageView
+
+        <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/avatar"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
+            android:layout_width="120px"
+            android:layout_height="120px"
             android:src="@drawable/avatar"
-            android:adjustViewBounds="true"
             android:layout_margin="30px"/>
 
         <TextView

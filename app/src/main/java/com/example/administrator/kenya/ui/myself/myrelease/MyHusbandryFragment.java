@@ -192,7 +192,7 @@ public class MyHusbandryFragment extends BaseFragment {
             Glide.with(getContext())
                     .load(AppConstants.BASE_URL + list.get(position).getFramimgs())
                     .centerCrop()
-                    .placeholder(R.drawable.img_loading)
+                    .placeholder(R.drawable.img_loading1)
                     .into(holder.framimgs);
 
 //                    .asBitmap()

@@ -1,17 +1,18 @@
 package com.example.administrator.kenya.ui.main;
 
-import android.app.Activity;
-import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 
-import com.example.administrator.kenya.MainActivity;
 import com.example.administrator.kenya.R;
+import com.example.administrator.kenya.base.BaseActivity;
 import com.example.administrator.kenya.ui.myself.LoginActivity;
 
+import butterknife.ButterKnife;
+import butterknife.OnClick;
 
-public class WelcomeActivity extends Activity {
+
+public class WelcomeActivity extends BaseActivity {
 
 
     @Override
@@ -20,22 +21,20 @@ public class WelcomeActivity extends Activity {
         getWindow().getDecorView().setBackgroundResource(R.drawable.welcome);
 
         super.onCreate(savedInstanceState);
-//        setContentView(R.layout.activity_welcome2);
+//        setContentView(R.layout.activity_welcome);
 
 
         Handler handler = new Handler(Looper.getMainLooper());
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
-                Intent intent = new Intent(WelcomeActivity.this, LoginActivity.class);
-                startActivity(intent);
+                startActivity(LoginActivity.class, null);
                 finish();
-                overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
-
             }
         }, 3000);
-
+//
     }
+
 }
 
 

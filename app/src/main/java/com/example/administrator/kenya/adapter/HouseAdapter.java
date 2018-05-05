@@ -1,12 +1,7 @@
 package com.example.administrator.kenya.adapter;
 
-import android.app.Application;
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.drawable.BitmapDrawable;
-import android.net.Uri;
-import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -16,14 +11,10 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
-import com.bumptech.glide.request.animation.GlideAnimation;
-import com.bumptech.glide.request.target.SimpleTarget;
 import com.example.administrator.kenya.R;
-import com.example.administrator.kenya.classes.Goods;
 import com.example.administrator.kenya.classes.House;
 import com.example.administrator.kenya.constants.AppConstants;
 import com.example.administrator.kenya.ui.city.house.HouseDetailActivity;
-import com.example.administrator.kenya.ui.city.used.UsedActivity;
 import com.example.administrator.kenya.ui.main.CallPhoneDialog;
 
 import java.util.List;
@@ -43,14 +34,15 @@ public class HouseAdapter extends RecyclerView.Adapter<HouseAdapter.ViewHolder> 
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        TextView house_Title, house_phone, house_home, house_price,call;
+        TextView house_Title, house_square,house_address, house_home, house_price,call;
         ImageView house_image;
 
         public ViewHolder(View itemView) {
             super(itemView);
             house_Title = (TextView) itemView.findViewById(R.id.house_Title);
-            house_phone = (TextView) itemView.findViewById(R.id.house_phone);
             house_home = (TextView) itemView.findViewById(R.id.house_home);
+            house_square = (TextView) itemView.findViewById(R.id.house_square);
+            house_address = (TextView) itemView.findViewById(R.id.house_address);
             house_price = (TextView) itemView.findViewById(R.id.house_price);
             call = (TextView) itemView.findViewById(R.id.house_call);
             house_image = (ImageView) itemView.findViewById(R.id.house_image);
@@ -67,9 +59,10 @@ public class HouseAdapter extends RecyclerView.Adapter<HouseAdapter.ViewHolder> 
     public void onBindViewHolder(final ViewHolder holder, final int position) {
 
         holder.house_Title.setText(list.get(position).getLeasename());
-        holder.house_phone.setText("手机：" + list.get(position).getLeasephone());
         holder.house_home.setText(list.get(position).getLeasehome());
-        holder.house_price.setText("$" + list.get(position).getLeaseprice());
+        holder.house_square.setText(list.get(position).getLeasesquare()+"㎡");
+        holder.house_address.setText(list.get(position).getLeaseaddress());
+        holder.house_price.setText("/-" + list.get(position).getLeaseprice()+"/月");
 
         holder.call.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -83,7 +76,7 @@ public class HouseAdapter extends RecyclerView.Adapter<HouseAdapter.ViewHolder> 
         Glide.with(context)
                 .load(AppConstants.BASE_URL + list.get(position).getLeaseimgs())
                 .centerCrop()
-                .placeholder(R.drawable.img_loading)
+                .placeholder(R.drawable.img_loading1)
                 .into(holder.house_image);
 //                .asBitmap()
 //                .placeholder(R.drawable.bg4dp_grey)

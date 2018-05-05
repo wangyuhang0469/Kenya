@@ -1,15 +1,11 @@
 package com.example.administrator.kenya.ui.city.husbandry;
 
-import android.graphics.Bitmap;
 import android.graphics.Color;
-import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.ColorDrawable;
-import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,14 +17,10 @@ import android.widget.TextView;
 
 import com.alibaba.fastjson.JSON;
 import com.bumptech.glide.Glide;
-import com.bumptech.glide.request.animation.GlideAnimation;
-import com.bumptech.glide.request.target.SimpleTarget;
 import com.example.administrator.kenya.R;
 import com.example.administrator.kenya.base.BaseActivity;
 import com.example.administrator.kenya.classes.Husbandry;
 import com.example.administrator.kenya.constants.AppConstants;
-import com.example.administrator.kenya.ui.city.life.LifeDetailsActivity;
-import com.example.administrator.kenya.ui.city.life.LifeReleaseActivity;
 import com.example.administrator.kenya.ui.main.CallPhoneDialog;
 import com.example.administrator.kenya.view.MyRadioGroup;
 import com.jwenfeng.library.pulltorefresh.BaseRefreshListener;
@@ -266,7 +258,7 @@ public class HusbandryActivity extends BaseActivity {
             Glide.with(HusbandryActivity.this)
                     .load(AppConstants.BASE_URL + list.get(position).getFramimgs())
                     .centerCrop()
-                    .placeholder(R.drawable.img_loading)
+                    .placeholder(R.drawable.img_loading1)
                     .into(holder.framimgs);
 
 //                    .asBitmap()

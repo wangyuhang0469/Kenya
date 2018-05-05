@@ -86,7 +86,7 @@ public class HusbandryReleaseActivity extends BaseActivity {
         adapter.setDropDownViewResource(R.layout.item_spinner);
         spinner.setAdapter(adapter);
 
-
+        framname.requestFocus();
     }
 
     @Override

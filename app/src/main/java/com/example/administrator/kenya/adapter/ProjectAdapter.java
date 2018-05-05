@@ -2,9 +2,6 @@ package com.example.administrator.kenya.adapter;
 
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.drawable.BitmapDrawable;
-import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -14,10 +11,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
-import com.bumptech.glide.request.animation.GlideAnimation;
-import com.bumptech.glide.request.target.SimpleTarget;
 import com.example.administrator.kenya.R;
-import com.example.administrator.kenya.classes.Funds;
 import com.example.administrator.kenya.classes.Project2;
 import com.example.administrator.kenya.constants.AppConstants;
 import com.example.administrator.kenya.ui.city.findmoney.FindProjectdetailActivity;
@@ -77,7 +71,7 @@ public class ProjectAdapter extends RecyclerView.Adapter<ProjectAdapter.ViewHold
         Glide.with(context)
                 .load(AppConstants.BASE_URL + list.get(position).getProjectimgs())
                 .centerCrop()
-                .placeholder(R.drawable.img_loading)
+                .placeholder(R.drawable.img_loading1)
                 .into(holder.project_image);
 //                .asBitmap()
 //                .placeholder(R.drawable.bg4dp_grey)

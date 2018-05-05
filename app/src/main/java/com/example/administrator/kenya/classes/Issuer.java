@@ -11,8 +11,12 @@ public class Issuer implements Serializable{
     String userName;
     String userPsw;
     String userSex;
-    String userAge;
     String userPhonenumber;
+    String userHavecar;
+    String userBirthday;
+    String userPortrait;
+    String userProhibit;
+
 
     public String getUserId() {
         return userId;
@@ -46,19 +50,43 @@ public class Issuer implements Serializable{
         this.userSex = userSex;
     }
 
-    public String getUserAge() {
-        return userAge;
-    }
-
-    public void setUserAge(String userAge) {
-        this.userAge = userAge;
-    }
-
     public String getUserPhonenumber() {
         return userPhonenumber;
     }
 
     public void setUserPhonenumber(String userPhonenumber) {
         this.userPhonenumber = userPhonenumber;
+    }
+
+    public String getUserHavecar() {
+        return userHavecar;
+    }
+
+    public void setUserHavecar(String userHavecar) {
+        this.userHavecar = userHavecar;
+    }
+
+    public String getUserBirthday() {
+        return userBirthday;
+    }
+
+    public void setUserBirthday(String userBirthday) {
+        this.userBirthday = userBirthday;
+    }
+
+    public String getUserPortrait() {
+        return userPortrait;
+    }
+
+    public void setUserPortrait(String userPortrait) {
+        this.userPortrait = userPortrait;
+    }
+
+    public String getUserProhibit() {
+        return userProhibit;
+    }
+
+    public void setUserProhibit(String userProhibit) {
+        this.userProhibit = userProhibit;
     }
 }

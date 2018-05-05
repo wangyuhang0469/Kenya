@@ -83,7 +83,7 @@ public class LifeReleaseActivity extends BaseActivity {
         adapter.setDropDownViewResource(R.layout.item_spinner);
         spinner.setAdapter(adapter);
 
-
+        livename.requestFocus();
     }
 
     @Override

@@ -22,9 +22,36 @@ public class Project2 implements Serializable {
     private String projectimg2;
     private String projectimg3;
     private String projectimg4;
-    private int adminid;
+    private String adminid;
     private String projectuser;
     private String projectaddress;
+    private String projecttype;
+    private String projecthead;
+
+    public String getProjecthead() {
+        return projecthead;
+    }
+
+    public void setProjecthead(String projecthead) {
+        this.projecthead = projecthead;
+    }
+
+    public String getAdminid() {
+        return adminid;
+    }
+
+    public void setAdminid(String adminid) {
+        this.adminid = adminid;
+    }
+
+    public String getProjecttype() {
+        return projecttype;
+    }
+
+    public void setProjecttype(String projecttype) {
+        this.projecttype = projecttype;
+    }
+
 
     public int getProjectid() {
         return projectid;
@@ -104,14 +131,6 @@ public class Project2 implements Serializable {
 
     public void setProjectimg4(String projectimg4) {
         this.projectimg4 = projectimg4;
-    }
-
-    public int getAdminid() {
-        return adminid;
-    }
-
-    public void setAdminid(int adminid) {
-        this.adminid = adminid;
     }
 
     public String getProjectuser() {

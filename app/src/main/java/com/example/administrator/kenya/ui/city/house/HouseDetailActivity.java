@@ -2,11 +2,15 @@ package com.example.administrator.kenya.ui.city.house;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.example.administrator.kenya.R;
 import com.example.administrator.kenya.base.BaseActivity;
 import com.example.administrator.kenya.classes.House;
+import com.example.administrator.kenya.classes.User;
+import com.example.administrator.kenya.constants.AppConstants;
 import com.example.administrator.kenya.tools.GlideImageLoader;
 import com.example.administrator.kenya.ui.main.CallPhoneDialog;
 import com.example.administrator.kenya.ui.main.PreviewDialog;
@@ -38,6 +42,10 @@ public class HouseDetailActivity extends BaseActivity {
     TextView houseDetailAddress;
     @Bind(R.id.house_detail_name)
     TextView houseDetailName;
+    @Bind(R.id.house_detail_square)
+    TextView houseDetailSquare;
+    @Bind(R.id.avatar)
+    ImageView avatar;
     private House house;
 
     @Override
@@ -50,11 +58,19 @@ public class HouseDetailActivity extends BaseActivity {
         initBanner(house.getHouseImageUrlList());
         houseDetailName.setText(house.getLeasename());
         houseDetailDesc.setText(house.getLeasedesc());
-        houseDetailPrice.setText("$" + house.getLeaseprice() + "/月");
-        houseDetailHome.setText(house.getLeasesquare());
+        houseDetailPrice.setText("/-" + house.getLeaseprice() + "/月");
+        houseDetailHome.setText(house.getLeasehome());
+        houseDetailSquare.setText(house.getLeasesquare() + "㎡");
         houseDetailAddress.setText(house.getLeaseaddress());
-        houseUsername.setText(house.getLeasename());
+        houseUsername.setText(house.getUser().getUserName());
         housePhone.setText("手机：" + house.getLeasephone());
+
+        Glide.with(this).load(AppConstants.BASE_URL + house.getUser().getUserPortrait())
+                .centerCrop()
+                .dontAnimate()//防止设置placeholder导致第一次不显示网络图片,只显示默认图片的问题
+                .error(R.drawable.avatar)
+                .placeholder(R.drawable.avatar)
+                .into(avatar);
     }
 
     private void initBanner(List<String> imageUrlList) {

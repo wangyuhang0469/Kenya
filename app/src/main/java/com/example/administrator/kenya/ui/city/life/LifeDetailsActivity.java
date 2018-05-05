@@ -6,10 +6,12 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.example.administrator.kenya.R;
 import com.example.administrator.kenya.adapter.ImageAdapter;
 import com.example.administrator.kenya.base.BaseActivity;
 import com.example.administrator.kenya.classes.LifeServices;
+import com.example.administrator.kenya.constants.AppConstants;
 import com.example.administrator.kenya.ui.main.CallPhoneDialog;
 import com.example.administrator.kenya.view.ExStaggeredGridLayoutManager;
 
@@ -63,6 +65,13 @@ public class LifeDetailsActivity extends BaseActivity {
         ImageAdapter imageAdapter = new ImageAdapter(this, lifeServices.getImageUrlList());
         recyclerView.setAdapter(imageAdapter);
         recyclerView.setNestedScrollingEnabled(false);
+
+        Glide.with(this).load(AppConstants.BASE_URL + lifeServices.getUser().getUserPortrait())
+                .centerCrop()
+                .dontAnimate()//防止设置placeholder导致第一次不显示网络图片,只显示默认图片的问题
+                .error(R.drawable.avatar)
+                .placeholder(R.drawable.avatar)
+                .into(avatar);
 
         view.setFocusable(true);
         view.setFocusableInTouchMode(true);

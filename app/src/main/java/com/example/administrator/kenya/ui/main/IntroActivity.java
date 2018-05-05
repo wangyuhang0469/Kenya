@@ -50,7 +50,7 @@ public class IntroActivity extends AppIntro {
         intent.setClass(getApplicationContext(), LoginActivity.class);
         startActivity(intent);
         finish();
-        overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
+//        overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
     }
 
     @Override

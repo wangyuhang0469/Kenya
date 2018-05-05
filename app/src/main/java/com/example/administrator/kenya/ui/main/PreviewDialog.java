@@ -98,13 +98,13 @@ public class PreviewDialog extends Dialog{
                         }
                     })
                     .into(photoView);
+            Log.e("====================", "onResourceReady: "+ url );
 
             container.addView(photoView);
 
         photoView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(context, "dddd", Toast.LENGTH_SHORT).show();
                 PreviewDialog.this.dismiss();
             }
         });

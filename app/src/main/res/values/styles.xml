@@ -8,6 +8,19 @@
         <item name="colorAccent">@color/colorAccent</item>
         <item name="android:windowIsTranslucent">true</item>
         <item name="android:windowLightStatusBar">true</item>
+
+    </style>
+
+    <!-- Application theme. -->
+
+    <style name="Fullscreen" parent="AppTheme">
+
+        <item name="android:windowNoTitle">true</item>
+
+        <item name="android:windowFullscreen">true</item>
+
+        <item name="android:windowIsTranslucent">true</item>
+
     </style>
 
     <style name="AppTheme.dark_action_bar" parent="AppTheme">

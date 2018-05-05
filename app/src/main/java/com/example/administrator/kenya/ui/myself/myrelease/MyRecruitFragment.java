@@ -195,7 +195,7 @@ public class MyRecruitFragment extends BaseFragment {
             Glide.with(context)
                     .load(AppConstants.BASE_URL + list.get(position).getCompanyimg0())
                     .centerCrop()
-                    .placeholder(R.drawable.img_loading)
+                    .placeholder(R.drawable.img_loading1)
                     .into(holder.company_image);
 
 //                    .asBitmap()

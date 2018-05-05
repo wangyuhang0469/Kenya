@@ -199,7 +199,7 @@ public class MyLifeFragment extends BaseFragment {
             Glide.with(getContext())
                     .load(AppConstants.BASE_URL + list.get(position).getLiveimgs())
                     .centerCrop()
-                    .placeholder(R.drawable.img_loading)
+                    .placeholder(R.drawable.img_loading1)
                     .into(holder.liveimgs);
 
 //                    .asBitmap()

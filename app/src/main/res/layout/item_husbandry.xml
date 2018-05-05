@@ -18,7 +18,7 @@
         android:layout_alignTop="@id/framimgs"
         android:textColor="@color/textBlack1"
         android:layout_marginRight="30px"
-        android:layout_marginTop="8px"/>
+        android:layout_marginTop="10px"/>
 
     <TextView
         android:id="@+id/framphone"
@@ -28,7 +28,7 @@
         android:layout_alignBottom="@id/framimgs"
         android:textColor="@color/textBlack2"
         android:textSize="13sp"
-        android:layout_marginBottom="8px"/>
+        android:layout_marginBottom="10px"/>
     
     <TextView
         android:id="@+id/call"

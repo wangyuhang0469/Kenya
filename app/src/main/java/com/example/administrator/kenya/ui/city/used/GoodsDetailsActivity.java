@@ -1,13 +1,14 @@
 package com.example.administrator.kenya.ui.city.used;
 
-import android.content.Context;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.example.administrator.kenya.R;
 import com.example.administrator.kenya.base.BaseActivity;
 import com.example.administrator.kenya.classes.Goods;
+import com.example.administrator.kenya.constants.AppConstants;
 import com.example.administrator.kenya.tools.GlideImageLoader;
 import com.example.administrator.kenya.ui.main.CallPhoneDialog;
 import com.example.administrator.kenya.ui.main.PreviewDialog;
@@ -19,6 +20,7 @@ import java.util.List;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import de.hdodenhof.circleimageview.CircleImageView;
 
 public class GoodsDetailsActivity extends BaseActivity {
 
@@ -36,10 +38,11 @@ public class GoodsDetailsActivity extends BaseActivity {
     TextView goodsphone;
     @Bind(R.id.goodsname)
     TextView goodsname;
+    @Bind(R.id.avatar)
+    CircleImageView avatar;
 
     private Goods goods;
 
-    private Context context;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,7 +54,6 @@ public class GoodsDetailsActivity extends BaseActivity {
 
         goods = (Goods) getIntent().getExtras().getSerializable("goods");
 
-        context = this;
 
         initBanner(goods.getImageUrlList());
 
@@ -60,6 +62,13 @@ public class GoodsDetailsActivity extends BaseActivity {
         goodsdesc.setText(goods.getGoodsdesc());
         goodsusername.setText(goods.getGoodsusername());
         goodsphone.setText("手机号：" + goods.getGoodsphone());
+
+        Glide.with(this).load(AppConstants.BASE_URL + goods.getUser().getUserPortrait())
+                .centerCrop()
+                .dontAnimate()//防止设置placeholder导致第一次不显示网络图片,只显示默认图片的问题
+                .error(R.drawable.avatar)
+                .placeholder(R.drawable.avatar)
+                .into(avatar);
 
     }
 
@@ -81,7 +90,7 @@ public class GoodsDetailsActivity extends BaseActivity {
                 finish();
                 break;
             case R.id.call:
-                new CallPhoneDialog(this,goods.getGoodsphone()).show();
+                new CallPhoneDialog(this, goods.getGoodsphone()).show();
                 break;
         }
     }
