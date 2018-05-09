@@ -86,12 +86,31 @@
         android:textColor="@color/white"
         android:textSize="17sp" />
 
+    <ImageView
+        android:id="@+id/nothing"
+        android:layout_width="230px"
+        android:layout_height="302px"
+        android:layout_above="@+id/text"
+        android:layout_centerHorizontal="true"
+        android:visibility="gone"
+        android:src="@drawable/nothing"/>
+
+    <TextView
+        android:id="@+id/text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="什么也没有..."
+        android:textColor="@color/textBlack3"
+        android:layout_centerInParent="true"
+        android:paddingTop="20px"
+        android:visibility="gone"/>
+
     <View
         android:id="@+id/black"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/touming_black"
         android:layout_below="@+id/title_bar"
-        android:visibility="gone"/>
+        android:background="@color/touming_black"
+        android:visibility="gone" />
 
 </com.zhy.autolayout.AutoRelativeLayout>

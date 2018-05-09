@@ -189,12 +189,7 @@
 
             <include layout="@layout/line" />
 
-            <Button
-                android:id="@+id/btn"
-                android:layout_width="500px"
-                android:layout_height="150px"
-                android:layout_gravity="center"
-                android:layout_marginTop="80px" />
+
         </com.zhy.autolayout.AutoLinearLayout>
     </com.example.administrator.kenya.view.MyObervalbleScrollView>
 

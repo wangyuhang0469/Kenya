@@ -55,6 +55,10 @@ public class HusbandryActivity extends BaseActivity {
     RecyclerView recyclerView;
     @Bind(R.id.pullToRefreshLayout)
     PullToRefreshLayout pullToRefreshLayout;
+    @Bind(R.id.nothing)
+    ImageView nothing;
+    @Bind(R.id.text)
+    TextView text;
 
 
     private PopupWindow popupWindow;
@@ -142,7 +146,13 @@ public class HusbandryActivity extends BaseActivity {
                     addList = JSON.parseArray(response, Husbandry.class);
                     husbandryList.addAll(addList);
                     myAdapter.notifyDataSetChanged();
-
+                    if (husbandryList.size() == 0) {
+                        nothing.setVisibility(View.VISIBLE);
+                        text.setVisibility(View.VISIBLE);
+                    } else {
+                        nothing.setVisibility(View.GONE);
+                        text.setVisibility(View.GONE);
+                    }
 
                     pullToRefreshLayout.finishLoadMore();
                 }
@@ -224,7 +234,7 @@ public class HusbandryActivity extends BaseActivity {
         }
 
         public class ViewHolder extends RecyclerView.ViewHolder {
-            TextView framname, framphone,call;
+            TextView framname, framphone, call;
             ImageView framimgs;
 
             public ViewHolder(View itemView) {
@@ -251,7 +261,7 @@ public class HusbandryActivity extends BaseActivity {
             holder.call.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    new CallPhoneDialog(HusbandryActivity.this,list.get(position).getFramphone()).show();
+                    new CallPhoneDialog(HusbandryActivity.this, list.get(position).getFramphone()).show();
                 }
             });
 //

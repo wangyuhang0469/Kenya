@@ -56,6 +56,10 @@ public class LifeActivity extends BaseActivity {
     RecyclerView recyclerView;
     @Bind(R.id.pullToRefreshLayout)
     PullToRefreshLayout pullToRefreshLayout;
+    @Bind(R.id.nothing)
+    ImageView nothing;
+    @Bind(R.id.text)
+    TextView text;
 
 
     private PopupWindow popupWindow;
@@ -146,6 +150,13 @@ public class LifeActivity extends BaseActivity {
                     addList = JSON.parseArray(response, LifeServices.class);
                     lifeServicesList.addAll(addList);
                     myAdapter.notifyDataSetChanged();
+                    if (lifeServicesList.size() == 0) {
+                        nothing.setVisibility(View.VISIBLE);
+                        text.setVisibility(View.VISIBLE);
+                    } else {
+                        nothing.setVisibility(View.GONE);
+                        text.setVisibility(View.GONE);
+                    }
                     pullToRefreshLayout.finishLoadMore();
                 }
             }
@@ -222,7 +233,7 @@ public class LifeActivity extends BaseActivity {
         }
 
         public class ViewHolder extends RecyclerView.ViewHolder {
-            TextView livename, livephone,call;
+            TextView livename, livephone, call;
             ImageView liveimgs;
 
             public ViewHolder(View itemView) {
@@ -249,7 +260,7 @@ public class LifeActivity extends BaseActivity {
             holder.call.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    new CallPhoneDialog(LifeActivity.this,list.get(position).getLivephone()).show();
+                    new CallPhoneDialog(LifeActivity.this, list.get(position).getLivephone()).show();
                 }
             });
 //

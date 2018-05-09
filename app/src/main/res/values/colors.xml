@@ -10,6 +10,7 @@
     <color name="textgreen1">#46bd76</color>
     <color name="textgreen2">#19ad5e</color>
     <color name="base_bg">#f5f5f5</color>
+    <color name="base_bg2">#fafafa</color>
     <color name="touming_black">#33000000</color>
 
     <color name="theme">#00b062</color>

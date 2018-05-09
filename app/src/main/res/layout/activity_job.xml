@@ -58,21 +58,27 @@
 
     </com.zhy.autolayout.AutoRelativeLayout>
 
+
     <android.support.design.widget.TabLayout
         android:id="@+id/tab_layout"
         android:layout_width="match_parent"
-        android:layout_height="144px"
+        android:layout_height="130px"
         android:layout_below="@+id/job_title_bar"
-        app:tabIndicatorColor="@color/theme"
-        app:tabSelectedTextColor="@color/theme"
+        android:background="@color/white"
+        app:tabIndicatorColor="@color/textgreen1"
+        app:tabSelectedTextColor="@color/textgreen1"
         app:tabTextAppearance="@style/MyTabLayoutTextAppeara" />
+
+
+
     <!--app:tabMode="scrollable"-->
     <android.support.v4.view.ViewPager
         android:id="@+id/pager"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_above="@+id/city_home_job_release"
-        android:layout_below="@id/tab_layout" />
+        android:layout_below="@id/tab_layout"
+        android:background="@color/base_bg"/>
 
     <TextView
         android:id="@+id/city_home_job_release"
@@ -83,4 +89,10 @@
         android:gravity="center"
         android:text="发布"
         android:visibility="gone" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.3dp"
+        android:background="@color/line7"
+        android:layout_below="@id/tab_layout"/>
 </com.zhy.autolayout.AutoRelativeLayout>

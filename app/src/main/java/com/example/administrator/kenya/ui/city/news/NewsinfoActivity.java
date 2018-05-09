@@ -57,7 +57,7 @@ public class NewsinfoActivity extends BaseActivity {
     private void initOKHttp() {
         postFormBuilder = OkHttpUtils.post()
                 .url(AppConstants.BASE_URL + "/kenya/news/pageQuery")
-                .addParams("page", cpageNum + "");
+                    .addParams("page", cpageNum + "");
 
         StringCallback = new StringCallback() {
             @Override
@@ -111,7 +111,7 @@ public class NewsinfoActivity extends BaseActivity {
 
             @Override
             public void loadMore() {
-                postFormBuilder.addParams("pn", cpageNum + "").tag(this).build().execute(StringCallback);
+                postFormBuilder.addParams("page", cpageNum + "").tag(this).build().execute(StringCallback);
             }
         });
     }

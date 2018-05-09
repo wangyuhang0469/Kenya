@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <com.zhy.autolayout.AutoLinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="302px"
-    android:background="@color/base_bg"
+    android:layout_height="wrap_content"
     android:orientation="vertical">
 
     <ImageView
@@ -25,7 +24,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginRight="30px"
-            android:text="程序员:"
             android:textColor="@color/textBlack1" />
 
         <TextView
@@ -41,7 +39,7 @@
 
     <View
         android:layout_width="match_parent"
-        android:layout_height="2px"
+        android:layout_height="1px"
         android:background="#989898" />
 
     <com.zhy.autolayout.AutoRelativeLayout
@@ -57,7 +55,6 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/company_Title"
             android:layout_toRightOf="@id/company_image"
-            android:text="河北狮顺汽车有限公司"
             android:textColor="@color/textBlack3"
             android:textSize="13sp" />
 
@@ -83,6 +80,11 @@
         android:textColor="@color/textBlack2"
         android:textSize="13sp"
         android:visibility="gone" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="20px"
+        android:background="@color/touming" />
 
 
 </com.zhy.autolayout.AutoLinearLayout>

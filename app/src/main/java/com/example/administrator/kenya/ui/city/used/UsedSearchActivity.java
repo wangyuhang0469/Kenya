@@ -45,6 +45,10 @@ public class UsedSearchActivity extends BaseActivity {
     PullToRefreshLayout pullToRefreshLayout;
     @Bind(R.id.keyword)
     EditText keyword;
+    @Bind(R.id.nothing)
+    ImageView nothing;
+    @Bind(R.id.text)
+    TextView text;
 
     private MyAdapter myAdapter;
     private List<Goods> goodsList = new ArrayList<>();
@@ -61,7 +65,8 @@ public class UsedSearchActivity extends BaseActivity {
         setContentView(R.layout.activity_used_search);
         ButterKnife.bind(this);
 
-        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_VISIBLE);
+        //自动 弹出输入法切不挤压原布局
+        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN|WindowManager.LayoutParams.SOFT_INPUT_STATE_VISIBLE);
 
         initOKHttp();
 
@@ -107,14 +112,15 @@ public class UsedSearchActivity extends BaseActivity {
                     }
 
                     addList = JSON.parseArray(response, Goods.class);
-                    if (addList.size() > 0) {
-                        goodsList.addAll(addList);
-                    } else {
-//                        goodsList.clear();
-                        toast("查询无数据");
-                        pullToRefreshLayout.setCanLoadMore(false);
-                    }
+                    goodsList.addAll(addList);
                     myAdapter.notifyDataSetChanged();
+                    if (goodsList.size() == 0) {
+                        nothing.setVisibility(View.VISIBLE);
+                        text.setVisibility(View.VISIBLE);
+                    } else {
+                        nothing.setVisibility(View.GONE);
+                        text.setVisibility(View.GONE);
+                    }
                     pullToRefreshLayout.finishLoadMore();
                 }
             }

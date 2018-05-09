@@ -3,14 +3,13 @@ package com.example.administrator.kenya.ui.city.job;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.WindowManager;
 import android.view.inputmethod.EditorInfo;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.alibaba.fastjson.JSON;
 import com.example.administrator.kenya.R;
@@ -42,6 +41,10 @@ public class JobSearchActivity extends BaseActivity {
     RecyclerView recyclerView;
     @Bind(R.id.pullToRefreshLayout)
     PullToRefreshLayout pullToRefreshLayout;
+    @Bind(R.id.nothing)
+    ImageView nothing;
+    @Bind(R.id.text)
+    TextView text;
     private PostFormBuilder postFormBuilder;
     private int cpageNum = 1;
     private String lastKeyword = "";
@@ -54,7 +57,7 @@ public class JobSearchActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_job_search);
         ButterKnife.bind(this);
-        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_VISIBLE);
+        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN | WindowManager.LayoutParams.SOFT_INPUT_STATE_VISIBLE);
         initView();
         initOKHttp();
     }
@@ -87,9 +90,7 @@ public class JobSearchActivity extends BaseActivity {
                         JSONObject jsonObject = new JSONObject(response);
                         if (jsonObject.getString("code").equals("000")) {
                             pullToRefreshLayout.setCanLoadMore(true);
-                        } else if (jsonObject.getString("totalCount").equals("0")) {
-                            toast("暂时还没有求职者求职相关职位");
-                        } else {
+                        }else {
                             pullToRefreshLayout.setCanLoadMore(false);
                         }
                         response = jsonObject.getString("lists");
@@ -99,6 +100,13 @@ public class JobSearchActivity extends BaseActivity {
                     addList = JSON.parseArray(response, Job.class);
                     jobList.addAll(addList);
                     jobAdapter.notifyDataSetChanged();
+                    if (jobList.size() == 0) {
+                        nothing.setVisibility(View.VISIBLE);
+                        text.setVisibility(View.VISIBLE);
+                    } else {
+                        nothing.setVisibility(View.GONE);
+                        text.setVisibility(View.GONE);
+                    }
                     pullToRefreshLayout.finishLoadMore();
                 }
             }

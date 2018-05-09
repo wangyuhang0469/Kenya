@@ -87,7 +87,7 @@ public class MyselfFragment extends BaseFragment {
         ButterKnife.unbind(this);
     }
 
-    @OnClick({R.id.myName,R.id.myAddress, R.id.myRelease, R.id.myCar, R.id.myPoint, R.id.myVallet, R.id.avatar, R.id.btn})
+    @OnClick({R.id.myName,R.id.myAddress, R.id.myRelease, R.id.myCar, R.id.myPoint, R.id.myVallet, R.id.avatar})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.myName:
@@ -114,8 +114,6 @@ public class MyselfFragment extends BaseFragment {
             case R.id.avatar:
                 break;
 
-            case R.id.btn:
-                break;
         }
     }
 

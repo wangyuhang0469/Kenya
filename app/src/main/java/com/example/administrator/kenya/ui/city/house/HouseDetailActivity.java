@@ -62,7 +62,7 @@ public class HouseDetailActivity extends BaseActivity {
         houseDetailHome.setText(house.getLeasehome());
         houseDetailSquare.setText(house.getLeasesquare() + "㎡");
         houseDetailAddress.setText(house.getLeaseaddress());
-        houseUsername.setText(house.getUser().getUserName());
+        houseUsername.setText(house.getLeaseuser());
         housePhone.setText("手机：" + house.getLeasephone());
 
         Glide.with(this).load(AppConstants.BASE_URL + house.getUser().getUserPortrait())

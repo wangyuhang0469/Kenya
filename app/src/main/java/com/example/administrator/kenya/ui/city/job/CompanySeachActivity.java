@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.WindowManager;
 import android.view.inputmethod.EditorInfo;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.alibaba.fastjson.JSON;
@@ -41,6 +42,10 @@ public class CompanySeachActivity extends BaseActivity {
     RecyclerView recyclerView;
     @Bind(R.id.pullToRefreshLayout)
     PullToRefreshLayout pullToRefreshLayout;
+    @Bind(R.id.nothing)
+    ImageView nothing;
+    @Bind(R.id.text)
+    TextView text;
     private PostFormBuilder postFormBuilder;
     private int cpageNum = 1;
     private String lastKeyword = "";
@@ -53,7 +58,7 @@ public class CompanySeachActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_company_seach);
         ButterKnife.bind(this);
-        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_VISIBLE);
+        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN | WindowManager.LayoutParams.SOFT_INPUT_STATE_VISIBLE);
         initView();
         initOKHttp();
     }
@@ -86,8 +91,6 @@ public class CompanySeachActivity extends BaseActivity {
                         JSONObject jsonObject = new JSONObject(response);
                         if (jsonObject.getString("code").equals("000")) {
                             pullToRefreshLayout.setCanLoadMore(true);
-                        } else if (jsonObject.getString("totalCount").equals("0")) {
-                            toast("暂时还没有公司招聘相关职位");
                         } else {
                             pullToRefreshLayout.setCanLoadMore(false);
                         }
@@ -98,6 +101,13 @@ public class CompanySeachActivity extends BaseActivity {
                     addList = JSON.parseArray(response, Company.class);
                     companyList.addAll(addList);
                     companyAdapter.notifyDataSetChanged();
+                    if (companyList.size() == 0) {
+                        nothing.setVisibility(View.VISIBLE);
+                        text.setVisibility(View.VISIBLE);
+                    } else {
+                        nothing.setVisibility(View.GONE);
+                        text.setVisibility(View.GONE);
+                    }
                     pullToRefreshLayout.finishLoadMore();
                 }
             }

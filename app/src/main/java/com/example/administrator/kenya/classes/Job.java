@@ -30,6 +30,7 @@ public class Job implements Serializable {
     private String birthday;
     private String jointime;
     private String persondesc;
+    private String age;
 
     public String getAge() {
         return age;
@@ -39,7 +40,6 @@ public class Job implements Serializable {
         this.age = age;
     }
 
-    private String age;
 
     public String getHopesalary() {
         return hopesalary;

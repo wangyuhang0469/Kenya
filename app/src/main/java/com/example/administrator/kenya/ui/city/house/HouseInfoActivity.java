@@ -172,7 +172,7 @@ public class HouseInfoActivity extends BaseActivity {
                     toast("请输入详情");
                 } else if (housePrice.getText().length() == 0) {
                     toast("请输入租房的价格");
-                } else if (houseName.getText().length() == 0) {
+                } else if (housePenson.getText().length() == 0) {
                     toast("请输入联系人");
                 } else if (housePhone.getText().length() == 0) {
                     toast("请输入联系电话");
@@ -220,6 +220,7 @@ public class HouseInfoActivity extends BaseActivity {
                 .addParams("leasedesc", houseInfoDesc.getText().toString())
                 .addParams("leaseprice", housePrice.getText().toString())
                 .addParams("leasephone", housePhone.getText().toString())
+                .addParams("leaseuser", housePenson.getText().toString())
                 .addParams("leasesquare", houseSquare.getText().toString())
                 .addParams("leasehome", houseHome.getText().toString())
                 .addParams("leaseaddress", houseAddress.getText().toString())

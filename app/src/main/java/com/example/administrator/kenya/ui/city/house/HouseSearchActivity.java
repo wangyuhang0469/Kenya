@@ -3,12 +3,12 @@ package com.example.administrator.kenya.ui.city.house;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.WindowManager;
 import android.view.inputmethod.EditorInfo;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.alibaba.fastjson.JSON;
@@ -42,6 +42,10 @@ public class HouseSearchActivity extends BaseActivity {
     PullToRefreshLayout pullToRefreshLayout;
     @Bind(R.id.recyclerView)
     RecyclerView recyclerView;
+    @Bind(R.id.nothing)
+    ImageView nothing;
+    @Bind(R.id.text)
+    TextView text;
     private PostFormBuilder postFormBuilder;
     private int cpageNum = 1;
     private StringCallback StringCallback;
@@ -54,7 +58,8 @@ public class HouseSearchActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_house_search);
         ButterKnife.bind(this);
-        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_VISIBLE);
+        //自动 弹出输入法切不挤压原布局
+        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN | WindowManager.LayoutParams.SOFT_INPUT_STATE_VISIBLE);
         initView();
         initOKHttp();
     }
@@ -97,6 +102,13 @@ public class HouseSearchActivity extends BaseActivity {
                     addList = JSON.parseArray(response, House.class);
                     housesList.addAll(addList);
                     houseadapter.notifyDataSetChanged();
+                    if (housesList.size() == 0) {
+                        nothing.setVisibility(View.VISIBLE);
+                        text.setVisibility(View.VISIBLE);
+                    } else {
+                        nothing.setVisibility(View.GONE);
+                        text.setVisibility(View.GONE);
+                    }
                     pullToRefreshLayout.finishLoadMore();
                 }
             }

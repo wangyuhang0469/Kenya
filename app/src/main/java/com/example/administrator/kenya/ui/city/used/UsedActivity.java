@@ -147,7 +147,7 @@ public class UsedActivity extends BaseActivity {
         }
 
         public class ViewHolder extends RecyclerView.ViewHolder {
-            TextView goodsname, goodsphone, goodsprice,call;
+            TextView goodsname, goodsphone, goodsprice, call;
             ImageView goodsimgs;
 
             public ViewHolder(View itemView) {
@@ -177,7 +177,7 @@ public class UsedActivity extends BaseActivity {
             holder.call.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    new CallPhoneDialog(UsedActivity.this,list.get(position).getGoodsphone()).show();
+                    new CallPhoneDialog(UsedActivity.this, list.get(position).getGoodsphone()).show();
                 }
             });
 
