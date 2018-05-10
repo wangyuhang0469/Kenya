@@ -18,10 +18,12 @@ import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.PopupWindow;
 import android.widget.RelativeLayout;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -34,10 +36,12 @@ import com.example.administrator.kenya.constants.AppConstants;
 import com.example.administrator.kenya.ui.city.job.DatePickerDialog;
 import com.example.administrator.kenya.ui.city.job.OnBooleanListener;
 import com.example.administrator.kenya.utils.DateUtil;
+import com.example.administrator.kenya.view.RoundImageView;
 import com.zhy.autolayout.AutoLinearLayout;
 import com.zhy.autolayout.AutoRelativeLayout;
 import com.zhy.http.okhttp.OkHttpUtils;
 import com.zhy.http.okhttp.builder.PostFormBuilder;
+import com.zhy.http.okhttp.callback.BitmapCallback;
 import com.zhy.http.okhttp.callback.StringCallback;
 
 import org.json.JSONException;
@@ -48,14 +52,13 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.lang.ref.WeakReference;
+import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import okhttp3.Call;
-import top.zibin.luban.Luban;
-import top.zibin.luban.OnCompressListener;
 
 public class ResumeinfoActivity extends BaseActivity implements View.OnClickListener, PopupWindow.OnDismissListener {
 
@@ -79,12 +82,8 @@ public class ResumeinfoActivity extends BaseActivity implements View.OnClickList
     TextView title;
     @Bind(R.id.person_info)
     AutoRelativeLayout personInfo;
-    @Bind(R.id.resume_tv_phone)
-    TextView resumeTvPhone;
     @Bind(R.id.resume_tv_recm_choose)
     TextView resumeTvRecmChoose;
-    @Bind(R.id.resume_info_photo)
-    ImageView resumeInfoPhoto;
     @Bind(R.id.resume_info_detail)
     TextView resumeInfoDetail;
     @Bind(R.id.resume_info_men)
@@ -99,6 +98,10 @@ public class ResumeinfoActivity extends BaseActivity implements View.OnClickList
     EditText resumeTvRecm;
     @Bind(R.id.resume_info_jobname)
     EditText resumeInfoJobname;
+    @Bind(R.id.spinner)
+    Spinner spinner;
+    @Bind(R.id.resume_info_photo)
+    RoundImageView resumeInfoPhoto;
     private Dialog dateDialog;
     private PopupWindow popupWindow;
 
@@ -116,12 +119,13 @@ public class ResumeinfoActivity extends BaseActivity implements View.OnClickList
 
     private String s;
     private String sexvalue;
+    private User user = User.getInstance();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_resumeinfo);
-        resumeTvRecm.setOnFocusChangeListener(new android.view.View.OnFocusChangeListener() {
+        resumeTvRecm.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
                 if (hasFocus) {
@@ -131,6 +135,25 @@ public class ResumeinfoActivity extends BaseActivity implements View.OnClickList
             }
         });
         ButterKnife.bind(this);
+        List<String> types = new ArrayList<>();
+        types.add(getResources().getString(R.string.working_experience));
+        types.add(getResources().getString(R.string.no_experience));
+        types.add(getResources().getString(R.string.recent_graduate));
+        types.add(getResources().getString(R.string.one_year_below));
+        types.add(getResources().getString(R.string.one_to_three_years));
+        types.add(getResources().getString(R.string.three_to_five_years));
+        types.add(getResources().getString(R.string.five_to_ten_years));
+        types.add(getResources().getString(R.string.ten_years_and_above));
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, R.layout.spinner_simple, R.id.spinner_tv, types);
+        adapter.setDropDownViewResource(R.layout.item_spinner);
+        spinner.setAdapter(adapter);
+        resumeInfoJobname.setText(user.getUserName());
+        resumeInfoPhone.setText(user.getUserPhonenumber());
+        if (!User.getInstance().getUserPortrait().equals("")) {
+            upload(AppConstants.BASE_URL + User.getInstance().getUserPortrait());
+        } else {
+        }
+
     }
 
     @OnClick({R.id.back, R.id.pick_time, R.id.resume_recm, R.id.ruseme_work_time, R.id.resume_info_photo, R.id.resume_info_detail, R.id.resume_info_men, R.id.resume_info_women})
@@ -145,7 +168,6 @@ public class ResumeinfoActivity extends BaseActivity implements View.OnClickList
             case R.id.resume_recm:
                 break;
             case R.id.ruseme_work_time:
-                showDateDialog(DateUtil.getDateForString("2010-01-01"), "B");
                 break;
             case R.id.resume_info_photo:
                 openPopupWindow(view);
@@ -190,7 +212,6 @@ public class ResumeinfoActivity extends BaseActivity implements View.OnClickList
 //                                }
 //                            }).launch();
                     File f2 = new File(s);
-                    Log.d("kang", "DDDDDDDDDDDDDD" + f2);
                     final PostFormBuilder postFormBuilder = OkHttpUtils.post()
                             .addFile("logoFile", "tupian.png", f2);
                     postFormBuilder.url(AppConstants.BASE_URL + "/kenya/jobSeeker/saveJobWant")
@@ -212,7 +233,6 @@ public class ResumeinfoActivity extends BaseActivity implements View.OnClickList
 
                                 @Override
                                 public void onResponse(String response, int id) {
-                                    Log.d("kang", "11111111111111111111" + response);
                                     log(response);
                                     toast("加载成功");
                                     try {
@@ -245,6 +265,20 @@ public class ResumeinfoActivity extends BaseActivity implements View.OnClickList
                 sexvalue = "女";
                 break;
         }
+    }
+
+    /*加载图片*/
+    public void upload(String url) {
+        OkHttpUtils.get().url(url).build().execute(new BitmapCallback() {
+            @Override
+            public void onError(Call call, Exception e, int id) {
+            }
+
+            @Override
+            public void onResponse(Bitmap response, int id) {
+                resumeInfoPhoto.setImageBitmap(response);
+            }
+        });
     }
 
     /* 用户生日时间*/
@@ -368,7 +402,6 @@ public class ResumeinfoActivity extends BaseActivity implements View.OnClickList
                     }
                 }
             });
-
         } else {
             imageUriFromCamera = createImagePathUri(ResumeinfoActivity.this);
             Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
@@ -424,7 +457,6 @@ public class ResumeinfoActivity extends BaseActivity implements View.OnClickList
                     break;
                 case CROP_IMAGE_U:
                     s = getExternalCacheDir() + "/" + USER_CROP_IMAGE_NAME;
-                    Log.d("kang", "zzzzzzzzz" + s);
                     Bitmap imageBitmap = GetBitmap(s, 320, 320);
                     ByteArrayOutputStream baos = new ByteArrayOutputStream();
                     imageBitmap.compress(Bitmap.CompressFormat.PNG, 70, baos);
@@ -442,7 +474,6 @@ public class ResumeinfoActivity extends BaseActivity implements View.OnClickList
                         Bitmap image = bundle.getParcelable("data");
                         resumeInfoPhoto.setImageBitmap(image);
                         s = saveImage("crop", image);
-                        Log.d("kang", "path" + s);
                     }
                     break;
                 default:
@@ -523,7 +554,6 @@ public class ResumeinfoActivity extends BaseActivity implements View.OnClickList
             appDir.mkdir();
         }
         String fileName = name + ".jpg";
-        Log.d("kang", "fileName" + fileName);
         File file = new File(appDir, fileName);
         try {
             FileOutputStream fos = new FileOutputStream(file);

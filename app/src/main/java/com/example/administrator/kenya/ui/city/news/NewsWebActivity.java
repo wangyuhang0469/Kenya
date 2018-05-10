@@ -33,7 +33,7 @@ public class NewsWebActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_news_web);
         ButterKnife.bind(this);
-        title.setText("新闻详情");
+        title.setText(getResources().getString(R.string.news_details));
         news = (News) getIntent().getExtras().getSerializable("news");
         initdata();
     }

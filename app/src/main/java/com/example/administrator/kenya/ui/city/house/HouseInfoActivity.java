@@ -70,13 +70,14 @@ public class HouseInfoActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_house_info);
         ButterKnife.bind(this);
-        title.setText("发布");
+        title.setText(getResources().getString(R.string.post));
 
         housePenson.setText(User.getInstance().getUserName());
         housePhone.setText(User.getInstance().getUserPhonenumber());
 
         houseName.requestFocus();
     }
+
     /**
      * 发布合并前
      */

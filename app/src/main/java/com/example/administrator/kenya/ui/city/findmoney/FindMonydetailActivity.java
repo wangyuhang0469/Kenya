@@ -47,7 +47,7 @@ public class FindMonydetailActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_find_monydetail);
         ButterKnife.bind(this);
-        title.setText("资金详情");
+        title.setText(getResources().getString(R.string.funds_details));
         funds = (Funds) getIntent().getExtras().getSerializable("funds");
         initBanner(funds.getFundsImageUrlList());
         findMoneyDetailTitle.setText(funds.getFundsname());

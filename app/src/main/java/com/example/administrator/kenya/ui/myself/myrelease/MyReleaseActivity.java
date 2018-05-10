@@ -105,41 +105,41 @@ public class MyReleaseActivity extends BaseActivity {
             @Override
             public void onCheckedChanged(MyRadioGroup group, int checkedId) {
                 FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
-                switch (checkedId){
+                switch (checkedId) {
                     case R.id.radioButton1:
                         fragmentTransaction.hide(fragments[currentTabIndex]).show(fragments[0]).commit();
                         currentTabIndex = 0;
-                        classification.setText("租房");
+                        classification.setText(getResources().getString(R.string.rental_services));
                         break;
                     case R.id.radioButton2:
                         fragmentTransaction.hide(fragments[currentTabIndex]).show(fragments[1]).commit();
                         currentTabIndex = 1;
-                        classification.setText("二手");
+                        classification.setText(getResources().getString(R.string.second_hand_goods));
                         break;
                     case R.id.radioButton3:
                         fragmentTransaction.hide(fragments[currentTabIndex]).show(fragments[2]).commit();
                         currentTabIndex = 2;
-                        classification.setText("求职");
+                        classification.setText(getResources().getString(R.string.job_wanted));
                         break;
                     case R.id.radioButton4:
                         fragmentTransaction.hide(fragments[currentTabIndex]).show(fragments[3]).commit();
                         currentTabIndex = 3;
-                        classification.setText("招聘");
+                        classification.setText(getResources().getString(R.string.recruitment));
                         break;
                     case R.id.radioButton5:
                         fragmentTransaction.hide(fragments[currentTabIndex]).show(fragments[4]).commit();
                         currentTabIndex = 4;
-                        classification.setText("生活服务");
+                        classification.setText(getResources().getString(R.string.domestic_services));
                         break;
                     case R.id.radioButton6:
                         fragmentTransaction.hide(fragments[currentTabIndex]).show(fragments[5]).commit();
                         currentTabIndex = 5;
-                        classification.setText("农林牧");
+                        classification.setText(getResources().getString(R.string.farm_product));
                         break;
                     case R.id.radioButton7:
                         fragmentTransaction.hide(fragments[currentTabIndex]).show(fragments[6]).commit();
                         currentTabIndex = 6;
-                        classification.setText("交友");
+                        classification.setText(getResources().getString(R.string.find_friends));
                         break;
                 }
 
@@ -168,8 +168,6 @@ public class MyReleaseActivity extends BaseActivity {
                 .show(fragments[0]).commit();
     }
 
-
-
     @OnClick({R.id.back, R.id.classification})
     public void onViewClicked(View view) {
         switch (view.getId()) {
@@ -184,7 +182,6 @@ public class MyReleaseActivity extends BaseActivity {
                 break;
         }
     }
-
 
 
 }

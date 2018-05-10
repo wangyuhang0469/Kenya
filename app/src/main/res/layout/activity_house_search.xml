@@ -34,7 +34,7 @@
                 style="@style/edit_base2"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:hint="输入你想找的" />
+                android:hint="@string/enter_your_searcff" />
 
         </com.zhy.autolayout.AutoLinearLayout>
 
@@ -54,7 +54,7 @@
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
             android:gravity="center"
-            android:text="搜索"
+            android:text="@string/search_tool"
             android:textColor="@color/textBlack1" />
 
     </com.zhy.autolayout.AutoRelativeLayout>
@@ -69,7 +69,6 @@
             android:id="@+id/recyclerView"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
-
     </com.jwenfeng.library.pulltorefresh.PullToRefreshLayout>
 
     <ImageView

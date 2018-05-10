@@ -32,7 +32,7 @@ public class FindPasswordActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_find_password);
         ButterKnife.bind(this);
-        title.setText("重置密码");
+        title.setText(getResources().getString(R.string.reset_password));
     }
 
     @OnClick({R.id.back, R.id.updatePassword_conmit})

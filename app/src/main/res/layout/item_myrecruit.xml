@@ -66,11 +66,11 @@
             android:layout_alignBottom="@id/liveimgs"
             android:layout_alignParentRight="true"
             android:layout_marginRight="30px"
-            android:text="删除"
-            android:textSize="13sp"
-            android:textColor="@color/textgreen1"
+            android:background="@drawable/bg4dp_theme_white"
             android:gravity="center"
-            android:background="@drawable/bg4dp_theme_white"/>
+            android:text="@string/delete"
+            android:textColor="@color/textgreen1"
+            android:textSize="13sp" />
 
     </com.zhy.autolayout.AutoRelativeLayout>
 

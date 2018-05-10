@@ -32,7 +32,7 @@
             android:gravity="center"
             android:maxEms="10"
             android:singleLine="true"
-            android:text="简历详情"
+            android:text="@string/resume_details"
             android:textSize="18sp" />
     </com.zhy.autolayout.AutoRelativeLayout>
 
@@ -102,12 +102,12 @@
 
                 <TextView
                     style="@style/detail_tv"
-                    android:text="求职意向" />
+                    android:text="@string/job_intension" />
 
                 <TextView
                     android:id="@+id/resume_detial_jobwant"
                     style="@style/detail_tv_content"
-                    android:text="洗车工" />
+                    android:text="@string/waiterss" />
 
             </com.zhy.autolayout.AutoLinearLayout>
 
@@ -120,12 +120,12 @@
 
                 <TextView
                     style="@style/detail_tv"
-                    android:text="工作经验" />
+                    android:text="@string/working_experience" />
 
                 <TextView
                     android:id="@+id/resume_detail_experience"
                     style="@style/detail_tv_content"
-                    android:text="3-5年" />
+                    android:text="@string/three_to_five_years" />
 
             </com.zhy.autolayout.AutoLinearLayout>
 
@@ -138,7 +138,7 @@
 
                 <TextView
                     style="@style/detail_tv"
-                    android:text="个人介绍" />
+                    android:text="@string/personal_introduction" />
 
                 <TextView
                     android:id="@+id/resume_detail_desc"
@@ -161,7 +161,7 @@
 
                 <TextView
                     style="@style/detail_tv"
-                    android:text="手机号：" />
+                    android:text="@string/phone_no." />
 
                 <TextView
                     android:id="@+id/resume_detail_phone"
@@ -179,7 +179,7 @@
         android:layout_alignParentBottom="true"
         android:background="@color/theme_btn"
         android:gravity="center"
-        android:text="拨号"
+        android:text="@string/call"
         android:textColor="@color/white"
         android:textSize="17sp" />
 </com.zhy.autolayout.AutoRelativeLayout>

@@ -39,9 +39,9 @@ public class FindMoneyActivity extends FragmentActivity {
     private void setupViewPager(ViewPager viewPager) {
         adapter = new MyViewPagerAdapter(getSupportFragmentManager(), this);
         if (findmoneyvalue.equals("A")) {
-            adapter.addFragment(new FindMoneyFragment1().newInstance("Page1"), "项目找资金");
+            adapter.addFragment(new FindMoneyFragment1().newInstance("Page1"), getResources().getString(R.string.projects_to_fund));
         } else {
-            adapter.addFragment(new FindMoneyFragment2().newInstance("Page2"), "资金找项目");
+            adapter.addFragment(new FindMoneyFragment2().newInstance("Page2"), getResources().getString(R.string.funds_for_projects));
         }
         viewPager.setAdapter(adapter);
         tabLayout.setupWithViewPager(viewPager);

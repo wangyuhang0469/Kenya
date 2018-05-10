@@ -48,7 +48,7 @@ public class ForgetPasswordActivity extends BaseActivity {
         setContentView(R.layout.activity_forget_password);
         ButterKnife.bind(this);
 
-        title.setText("找回密码");
+        title.setText(getResources().getString(R.string.password_recovery));
     }
 
 
@@ -60,7 +60,7 @@ public class ForgetPasswordActivity extends BaseActivity {
     @OnClick(R.id.updatePassword)
     public void onViewClicked() {
         if (lock) {
-        } else if (phone.getText().length() == 0 ||  password1.getText().length() == 0 || password2.getText().length() == 0) {
+        } else if (phone.getText().length() == 0 || password1.getText().length() == 0 || password2.getText().length() == 0) {
             toast("请填写完整信息");
         } else if (!password1.getText().toString().equals(password2.getText().toString())) {
             toast("密码输入不一致");
@@ -78,7 +78,7 @@ public class ForgetPasswordActivity extends BaseActivity {
     private void update() {
         lock = true;
         OkHttpUtils.get()
-                .url(AppConstants.BASE_URL +"/kenya/user/updatePassWord")
+                .url(AppConstants.BASE_URL + "/kenya/user/updatePassWord")
                 .addParams("userPhoneNumber", phone.getText().toString())
                 .addParams("userPsw", password1.getText().toString())
                 .build()
@@ -109,6 +109,7 @@ public class ForgetPasswordActivity extends BaseActivity {
                 });
 
     }
+
     /*
     *倒计时
     * */

@@ -32,7 +32,7 @@
             android:gravity="center"
             android:maxEms="10"
             android:singleLine="true"
-            android:text="职位详情"
+            android:text="@string/job_description"
             android:textSize="18sp" />
     </com.zhy.autolayout.AutoRelativeLayout>
 
@@ -101,7 +101,7 @@
                 android:layout_below="@+id/job_detail_line_up"
                 android:layout_marginTop="20px"
                 android:gravity="center_horizontal"
-                android:text="职位要求:"
+                android:text="@string/job_requirements"
                 android:textSize="38px" />
 
             <TextView
@@ -130,7 +130,7 @@
         <View
             android:layout_width="match_parent"
             android:layout_height="0.3dp"
-            android:background="@color/line7"/>
+            android:background="@color/line7" />
 
         <ImageView
             android:id="@+id/avatar"
@@ -166,7 +166,7 @@
             android:layout_marginRight="30px"
             android:background="@drawable/bg15dp_theme_btn"
             android:gravity="center"
-            android:text="拨号"
+            android:text="@string/call"
             android:textColor="@color/white"
             android:textSize="13sp" />
     </com.zhy.autolayout.AutoRelativeLayout>

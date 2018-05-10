@@ -17,30 +17,30 @@
         android:layout_height="wrap_content"
         android:layout_alignTop="@id/funds_image"
         android:layout_marginRight="30px"
+        android:layout_marginTop="10px"
         android:layout_toRightOf="@id/funds_image"
-        android:textColor="@color/textBlack1"
-        android:layout_marginTop="10px"/>
+        android:textColor="@color/textBlack1" />
 
     <TextView
         android:id="@+id/funds_phone"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignBottom="@id/funds_image"
+        android:layout_marginBottom="10px"
         android:layout_toRightOf="@id/funds_image"
         android:textColor="@color/textBlack2"
-        android:textSize="13sp"
-        android:layout_marginBottom="10px"/>
+        android:textSize="13sp" />
 
     <TextView
         android:id="@+id/funds_call"
         android:layout_width="182px"
         android:layout_height="62px"
-        android:layout_alignBottom="@id/funds_image"
-        android:layout_alignParentRight="true"
-        android:layout_marginRight="30px"
+        android:layout_alignBottom="@+id/funds_image"
+        android:layout_alignEnd="@+id/funds_Title"
+        android:layout_alignRight="@+id/funds_Title"
         android:background="@drawable/bg4dp_theme_btn"
         android:gravity="center"
-        android:text="拨号"
+        android:text="@string/call"
         android:textColor="@color/white"
         android:textSize="13sp" />
 

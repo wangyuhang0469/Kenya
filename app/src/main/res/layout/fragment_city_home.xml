@@ -23,10 +23,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="480px"
                 app:delay_time="3000"
+                app:indicator_drawable_selected="@drawable/bg4dp_theme_btn"
                 app:indicator_height="6.5dp"
                 app:indicator_margin="3dp"
-                app:indicator_width="6.5dp"
-                app:indicator_drawable_selected="@drawable/bg4dp_theme_btn"/>
+                app:indicator_width="6.5dp" />
 
             <com.zhy.autolayout.AutoLinearLayout
                 android:layout_width="match_parent"
@@ -52,7 +52,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="20px"
-                        android:text="租房"
+                        android:text="@string/rental_services"
                         android:textColor="@color/textBlack1"
                         android:textSize="12sp" />
 
@@ -77,7 +77,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="20px"
-                        android:text="二手"
+                        android:text="@string/second_hand_goods"
                         android:textColor="@color/textBlack1"
                         android:textSize="12sp" />
 
@@ -102,7 +102,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="20px"
-                        android:text="招聘"
+                        android:text="@string/recruitment"
                         android:textColor="@color/textBlack1"
                         android:textSize="12sp" />
 
@@ -137,10 +137,9 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="20px"
-                        android:text="生活服务"
+                        android:text="@string/domestic_services"
                         android:textColor="@color/textBlack1"
                         android:textSize="12sp" />
-
 
                 </com.zhy.autolayout.AutoLinearLayout>
 
@@ -162,7 +161,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="20px"
-                        android:text="农林牧"
+                        android:text="@string/farm_products"
                         android:textColor="@color/textBlack1"
                         android:textSize="12sp" />
 
@@ -187,7 +186,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="20px"
-                        android:text="交友"
+                        android:text="@string/find_friends"
                         android:textColor="@color/textBlack1"
                         android:textSize="12sp" />
 
@@ -239,7 +238,7 @@
                     android:layout_alignParentRight="true"
                     android:layout_centerVertical="true"
                     android:layout_marginRight="60px"
-                    android:text="更多"
+                    android:text="@string/more"
                     android:textColor="@color/textBlack1"
                     android:textSize="13sp" />
 
@@ -271,7 +270,7 @@
                     android:layout_weight="1"
                     android:background="@drawable/bg10dp_green"
                     android:gravity="center"
-                    android:text="有项目找资金"
+                    android:text="@string/projects_to_fund"
                     android:textColor="@color/white" />
 
 
@@ -284,7 +283,7 @@
                     android:layout_weight="1"
                     android:background="@drawable/bg10dp_blue"
                     android:gravity="center"
-                    android:text="有资金找项目"
+                    android:text="@string/funds_for_projects"
                     android:textColor="@color/white" />
             </com.zhy.autolayout.AutoLinearLayout>
         </com.zhy.autolayout.AutoLinearLayout>

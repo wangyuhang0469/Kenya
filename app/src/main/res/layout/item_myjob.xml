@@ -101,14 +101,16 @@
             android:id="@+id/delete"
             android:layout_width="156px"
             android:layout_height="70px"
-            android:layout_alignBottom="@id/liveimgs"
-            android:layout_alignParentRight="true"
-            android:layout_marginRight="30px"
-            android:text="删除"
+            android:layout_marginRight="8dp"
+            android:text="@string/delete"
             android:textSize="13sp"
             android:textColor="@color/textgreen1"
             android:gravity="center"
-            android:background="@drawable/bg4dp_theme_white"/>
+            android:background="@drawable/bg4dp_theme_white"
+            android:layout_alignTop="@+id/job_age"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="8dp" />
 
     </com.zhy.autolayout.AutoRelativeLayout>
 

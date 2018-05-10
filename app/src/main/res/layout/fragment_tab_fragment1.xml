@@ -29,7 +29,7 @@
         android:layout_alignParentBottom="true"
         android:background="@color/theme_btn"
         android:gravity="center"
-        android:text="发布求职信息"
+        android:text="@string/post"
         android:textColor="@color/white"
         android:textSize="17sp" />
 </com.zhy.autolayout.AutoRelativeLayout>

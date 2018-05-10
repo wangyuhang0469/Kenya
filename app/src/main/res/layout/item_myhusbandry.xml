@@ -1,34 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
 <com.zhy.autolayout.AutoRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/white">
+    android:background="@color/white"
+    android:orientation="vertical">
 
     <ImageView
         android:id="@+id/framimgs"
         android:layout_width="360px"
         android:layout_height="270px"
-        android:layout_margin="30px"/>
+        android:layout_margin="30px" />
 
     <TextView
         android:id="@+id/framname"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_toRightOf="@id/framimgs"
         android:layout_alignTop="@id/framimgs"
-        android:textColor="@color/textBlack1"
         android:layout_marginRight="30px"
-        android:layout_marginTop="8px"/>
+        android:layout_marginTop="8px"
+        android:layout_toRightOf="@id/framimgs"
+        android:textColor="@color/textBlack1" />
 
     <TextView
         android:id="@+id/framphone"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_toRightOf="@id/framimgs"
         android:layout_alignBottom="@id/framimgs"
+        android:layout_marginBottom="8px"
+        android:layout_toRightOf="@id/framimgs"
         android:textColor="@color/textBlack2"
-        android:textSize="13sp"
-        android:layout_marginBottom="8px"/>
+        android:textSize="13sp" />
 
     <TextView
         android:id="@+id/delete"
@@ -37,11 +38,11 @@
         android:layout_alignBottom="@id/framimgs"
         android:layout_alignParentRight="true"
         android:layout_marginRight="30px"
-        android:text="删除"
-        android:textSize="13sp"
-        android:textColor="@color/textgreen1"
+        android:background="@drawable/bg4dp_theme_white"
         android:gravity="center"
-        android:background="@drawable/bg4dp_theme_white"/>
+        android:text="@string/delete"
+        android:textColor="@color/textgreen1"
+        android:textSize="13sp" />
 
 
     <View

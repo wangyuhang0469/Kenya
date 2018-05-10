@@ -99,7 +99,6 @@ public class MyLifeFragment extends BaseFragment {
 
             @Override
             public void loadMore() {
-                Log.d("kang", "111aaa" + cpageNum);
                 postFormBuilder.addParams("liveType", keyword).addParams("pn", cpageNum + "").build().execute(stringCallback);
             }
         });
@@ -125,7 +124,6 @@ public class MyLifeFragment extends BaseFragment {
 
             @Override
             public void onResponse(String response, int id) {
-                Log.d("kang", "111111" + response);
                 //防止因Activity释放导致内部控件空指针
                 if (pullToRefreshLayout != null) {
                     cpageNum++;

@@ -21,7 +21,7 @@
             android:gravity="center"
             android:maxEms="10"
             android:singleLine="true"
-            android:text="生活服务"
+            android:text="@string/domestic_services"
             android:textColor="@color/textBlack1"
             android:textSize="18sp" />
 
@@ -43,7 +43,7 @@
             android:gravity="center|right"
             android:paddingLeft="30px"
             android:paddingRight="80px"
-            android:text="类别"
+            android:text="@string/category"
             android:textColor="@color/textgreen1" />
 
         <ImageView
@@ -80,7 +80,7 @@
         android:layout_alignParentBottom="true"
         android:background="@color/theme_btn"
         android:gravity="center"
-        android:text="发布"
+        android:text="@string/post"
         android:textColor="@color/white"
         android:textSize="17sp" />
 

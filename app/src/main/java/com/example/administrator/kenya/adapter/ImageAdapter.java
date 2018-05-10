@@ -31,7 +31,7 @@ public class ImageAdapter extends RecyclerView.Adapter<ImageAdapter.ViewHolder> 
     private List<String> imaUrls;
     private Context context;
 
-    public ImageAdapter(Context context ,List<String> list) {
+    public ImageAdapter(Context context, List<String> list) {
         this.imaUrls = list;
         this.context = context;
     }
@@ -51,7 +51,6 @@ public class ImageAdapter extends RecyclerView.Adapter<ImageAdapter.ViewHolder> 
         View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.itme_image, parent, false);
         return new ViewHolder(v);
     }
-
     @Override
     public void onBindViewHolder(final ViewHolder holder, final int position) {
 
@@ -77,17 +76,11 @@ public class ImageAdapter extends RecyclerView.Adapter<ImageAdapter.ViewHolder> 
         holder.imageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                new PreviewDialog(context ,imaUrls,position).show();
+                new PreviewDialog(context, imaUrls, position).show();
 
             }
         });
-
-
-
     }
-
-
-
 
     @Override
     public int getItemCount() {

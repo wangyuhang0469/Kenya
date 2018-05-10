@@ -50,13 +50,13 @@ public class FindProjectdetailActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_find_projectdetail);
         ButterKnife.bind(this);
-        title.setText("项目详情");
+        title.setText(getResources().getString(R.string.projects_details));
         project2 = (Project2) getIntent().getExtras().getSerializable("project2");
         initBanner(project2.getProjectImageUrlList());
         projectDetailName.setText(project2.getProjectname());
         projectDetailPrice.setText("投资额度：" + project2.getProjectprice());
-        projectDetailType.setText("所属行业："+project2.getProjecttype());
-        projectDetailAddress.setText("位置："+project2.getProjectaddress());
+        projectDetailType.setText("所属行业：" + project2.getProjecttype());
+        projectDetailAddress.setText("位置：" + project2.getProjectaddress());
         projectDetailDesc.setText(project2.getProjectdesc());
         porjectUser.setText(project2.getProjectuser());
         projectPhone.setText(project2.getProjectphone());

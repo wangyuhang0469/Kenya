@@ -12,11 +12,10 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="144px"
-        android:textSize="18sp"
-        android:textColor="@color/textBlack1"
         android:gravity="center"
-        android:text="注册"/>
-
+        android:text="@string/registration"
+        android:textColor="@color/textBlack1"
+        android:textSize="18sp" />
 
     <com.zhy.autolayout.AutoLinearLayout
         android:layout_width="match_parent"
@@ -30,17 +29,17 @@
             <ImageView
                 android:layout_width="44px"
                 android:layout_height="38px"
-                android:src="@mipmap/login_user2"
-                android:layout_marginBottom="40px" />
+                android:layout_marginBottom="40px"
+                android:src="@mipmap/login_user2" />
 
             <EditText
                 android:id="@+id/phone"
                 style="@style/edit_base"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:hint="请输入手机号"
+                android:hint="@string/enter_phone_no."
                 android:inputType="phone"
-                android:paddingLeft="20px"/>
+                android:paddingLeft="20px" />
         </com.zhy.autolayout.AutoLinearLayout>
 
         <include layout="@layout/line_max" />
@@ -64,7 +63,7 @@
                 android:layout_alignParentTop="true"
                 android:layout_toEndOf="@id/img001"
                 android:layout_toStartOf="@+id/getVerifyCode"
-                android:hint="请输入验证码"
+                android:hint="@string/enter_sent_code"
                 android:inputType="number"
                 android:paddingLeft="20px" />
 
@@ -75,7 +74,7 @@
                 android:layout_alignParentRight="true"
                 android:layout_centerInParent="true"
                 android:background="@drawable/bg4dp_theme_btn"
-                android:text="获取"
+                android:text="@string/acquire"
                 android:textColor="@color/white"
                 android:textSize="13sp" />
         </com.zhy.autolayout.AutoRelativeLayout>
@@ -95,7 +94,7 @@
                 style="@style/edit_base"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:hint="请输入姓名"
+                android:hint="@string/enter_your_nick_name"
                 android:paddingLeft="20px" />
         </com.zhy.autolayout.AutoLinearLayout>
 
@@ -114,7 +113,7 @@
                 style="@style/edit_base"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:hint="请输入密码(8-16位数字或字母)"
+                android:hint="@string/enter_password_8_16_digit_or_alphabet"
                 android:inputType="textPassword"
                 android:paddingLeft="20px" />
         </com.zhy.autolayout.AutoLinearLayout>
@@ -134,13 +133,12 @@
                 style="@style/edit_base"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:hint="请确认密码(8-16位数字或字母)"
+                android:hint="@string/confirm_password_8_16_digit_or_alphabet"
                 android:inputType="textPassword"
                 android:paddingLeft="20px" />
         </com.zhy.autolayout.AutoLinearLayout>
 
         <include layout="@layout/line_max" />
-
 
     </com.zhy.autolayout.AutoLinearLayout>
 
@@ -149,7 +147,6 @@
         style="@style/btn"
         android:layout_marginTop="100px"
         android:background="@drawable/bg4dp_theme_btn"
-        android:text="注册"
+        android:text="@string/registration"
         android:textColor="@color/white" />
-
 </com.zhy.autolayout.AutoLinearLayout>

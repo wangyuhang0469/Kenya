@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -89,7 +90,6 @@ public class HusbandryActivity extends BaseActivity {
 
     //初始化组件
     private void initView() {
-
         myAdapter = new MyAdapter(husbandryList);
         LinearLayoutManager layoutmanager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutmanager);
@@ -196,6 +196,22 @@ public class HusbandryActivity extends BaseActivity {
             public void onCheckedChanged(MyRadioGroup group, int checkedId) {
                 RadioButton radioButton = (RadioButton) popContentView.findViewById(checkedId);
                 keyword = radioButton.getText().toString();
+                if (keyword.equals("No Experience")) {
+                    keyword = "不限";
+                } else if (keyword.equals("Pets ＆ Seeds")) {
+                    keyword = "动植物种苗";
+                } else if (keyword.equals("Crops")) {
+                    keyword = "农作物";
+                } else if (keyword.equals("Livestock ＆ Poultry")) {
+                    keyword = "畜禽养殖";
+                } else if (keyword.equals("Agricultural Machinery")) {
+                    keyword = "农机设备";
+                } else if (keyword.equals("Pesticides ＆ Fertilizer")) {
+                    keyword = "农药肥料";
+                } else if (keyword.equals("Others")) {
+                    keyword = "其他";
+                } else {
+                }
                 husbandryList.clear();
                 myAdapter.notifyDataSetChanged();
                 cpageNum = 1;
@@ -204,7 +220,6 @@ public class HusbandryActivity extends BaseActivity {
             }
         });
     }
-
 
     @OnClick({R.id.back, R.id.classification, R.id.release})
     public void onViewClicked(View view) {
@@ -270,7 +285,6 @@ public class HusbandryActivity extends BaseActivity {
                     .centerCrop()
                     .placeholder(R.drawable.img_loading1)
                     .into(holder.framimgs);
-
 //                    .asBitmap()
 //                    .placeholder(R.drawable.bg4dp_grey)
 //                    .centerCrop()
@@ -283,7 +297,6 @@ public class HusbandryActivity extends BaseActivity {
 //                            }
 //                        }
 //                    });
-
 
             holder.itemView.setOnClickListener(new View.OnClickListener() {
                 @Override

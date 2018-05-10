@@ -17,9 +17,9 @@
         android:layout_height="wrap_content"
         android:layout_alignTop="@id/project_image"
         android:layout_marginRight="30px"
+        android:layout_marginTop="10px"
         android:layout_toRightOf="@id/project_image"
-        android:textColor="@color/textBlack1"
-        android:layout_marginTop="10px"/>
+        android:textColor="@color/textBlack1" />
 
     <TextView
         android:id="@+id/project_phone"
@@ -27,20 +27,20 @@
         android:layout_height="wrap_content"
         android:layout_alignBottom="@id/project_image"
         android:layout_toRightOf="@id/project_image"
+        android:paddingBottom="10px"
         android:textColor="@color/textBlack2"
-        android:textSize="13sp"
-        android:paddingBottom="10px"/>
+        android:textSize="13sp" />
 
     <TextView
         android:id="@+id/project_call"
         android:layout_width="182px"
         android:layout_height="62px"
-        android:layout_alignBottom="@id/project_image"
-        android:layout_alignParentRight="true"
-        android:layout_marginRight="30px"
+        android:layout_alignEnd="@+id/project_Title"
+        android:layout_alignRight="@+id/project_Title"
+        android:layout_below="@+id/project_price"
         android:background="@drawable/bg4dp_theme_btn"
         android:gravity="center"
-        android:text="拨号"
+        android:text="@string/call"
         android:textColor="@color/white"
         android:textSize="13sp" />
 

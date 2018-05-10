@@ -9,10 +9,10 @@
         android:id="@+id/house_image"
         android:layout_width="360px"
         android:layout_height="270px"
-        android:layout_marginTop="30px"
+        android:layout_marginBottom="50px"
         android:layout_marginLeft="30px"
         android:layout_marginRight="30px"
-        android:layout_marginBottom="50px"/>
+        android:layout_marginTop="30px" />
 
 
     <TextView
@@ -20,8 +20,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignTop="@id/house_image"
-        android:layout_marginTop="10px"
         android:layout_marginRight="30px"
+        android:layout_marginTop="10px"
         android:layout_toRightOf="@id/house_image"
         android:textColor="@color/textBlack1" />
 
@@ -30,10 +30,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignBottom="@id/house_image"
+        android:layout_marginBottom="10px"
         android:layout_toRightOf="@id/house_image"
         android:textColor="@color/textBlack2"
-        android:textSize="13sp"
-        android:layout_marginBottom="10px"/>
+        android:textSize="13sp" />
 
 
     <TextView
@@ -43,11 +43,11 @@
         android:layout_alignBottom="@id/house_image"
         android:layout_alignParentRight="true"
         android:layout_marginRight="30px"
-        android:text="删除"
-        android:textSize="13sp"
-        android:textColor="@color/textgreen1"
+        android:background="@drawable/bg4dp_theme_white"
         android:gravity="center"
-        android:background="@drawable/bg4dp_theme_white"/>
+        android:text="@string/delete"
+        android:textColor="@color/textgreen1"
+        android:textSize="13sp" />
 
     <TextView
         android:id="@+id/house_home"
@@ -56,17 +56,17 @@
         android:layout_below="@id/house_Title"
         android:layout_toRightOf="@id/house_image"
         android:textColor="@color/textBlack3"
-        android:textSize="13sp"/>
+        android:textSize="13sp" />
 
     <TextView
         android:id="@+id/house_square"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignTop="@id/house_home"
+        android:layout_marginLeft="20px"
         android:layout_toRightOf="@id/house_home"
         android:textColor="@color/textBlack3"
-        android:textSize="13sp"
-        android:layout_marginLeft="20px"/>
+        android:textSize="13sp" />
 
     <TextView
         android:id="@+id/house_price"

@@ -69,19 +69,18 @@ public class HusbandryReleaseActivity extends BaseActivity {
         setContentView(R.layout.activity_husbandry_release);
         ButterKnife.bind(this);
 
-        title.setText("发布");
-
+        title.setText(getResources().getString(R.string.post));
         framuser.setText(User.getInstance().getUserName());
         framphone.setText(User.getInstance().getUserPhonenumber());
 
         List<String> types = new ArrayList<>();
-        types.add("请选择类型");
-        types.add("动植物种苗");
-        types.add("农作物");
-        types.add("畜禽养殖");
-        types.add("农机设备");
-        types.add("农药肥料");
-        types.add("其他");
+        types.add(getResources().getString(R.string.enter_your_category));
+        types.add(getResources().getString(R.string.animal_and_plants_growing));
+        types.add(getResources().getString(R.string.crops));
+        types.add(getResources().getString(R.string.livestock_and_poultry));
+        types.add(getResources().getString(R.string.agricultvral_machinery));
+        types.add(getResources().getString(R.string.pesticides_and_fertilizer));
+        types.add(getResources().getString(R.string.others));
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, R.layout.spinner_simple, R.id.spinner_tv, types);
         adapter.setDropDownViewResource(R.layout.item_spinner);
         spinner.setAdapter(adapter);
@@ -166,17 +165,17 @@ public class HusbandryReleaseActivity extends BaseActivity {
 
                 if (spinner.getSelectedItem().toString().equals("请选择类型")) {
                     toast("请选择类型");
-                } else if (framname.getText().length()==0){
+                } else if (framname.getText().length() == 0) {
                     toast("请输入标题");
-                }else if (framdesc.getText().length() == 0) {
+                } else if (framdesc.getText().length() == 0) {
                     toast("请输入详情");
-                }else if (framuser.getText().length()==0) {
+                } else if (framuser.getText().length() == 0) {
                     toast("请输入联系人");
-                }else if (framphone.getText().length()==0) {
+                } else if (framphone.getText().length() == 0) {
                     toast("请输入联系电话");
-                }else if (mResults == null || mResults.size() <= 0) {
+                } else if (mResults == null || mResults.size() <= 0) {
                     toast("请选择图片");
-                }else {
+                } else {
                     final LoadingDialog loadingDialog = new LoadingDialog(HusbandryReleaseActivity.this);
                     loadingDialog.show();
 
@@ -221,7 +220,7 @@ public class HusbandryReleaseActivity extends BaseActivity {
         }
     }
 
-    private void send(final LoadingDialog loadingDialog){
+    private void send(final LoadingDialog loadingDialog) {
 
 
         PostFormBuilder postFormBuilder = OkHttpUtils.post();

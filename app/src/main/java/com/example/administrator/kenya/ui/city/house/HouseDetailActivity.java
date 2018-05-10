@@ -53,7 +53,7 @@ public class HouseDetailActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_house_detail);
         ButterKnife.bind(this);
-        title.setText("房屋详情");
+        title.setText(getResources().getString(R.string.house_details));
         house = (House) getIntent().getExtras().getSerializable("house");
         initBanner(house.getHouseImageUrlList());
         houseDetailName.setText(house.getLeasename());

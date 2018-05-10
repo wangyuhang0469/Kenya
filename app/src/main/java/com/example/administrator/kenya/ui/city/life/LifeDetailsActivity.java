@@ -50,7 +50,7 @@ public class LifeDetailsActivity extends BaseActivity {
         setContentView(R.layout.activity_life_details);
         ButterKnife.bind(this);
 
-        title.setText("详情");
+        title.setText(getResources().getString(R.string.details));
         lifeServices = (LifeServices) getIntent().getExtras().getSerializable("lifeServices");
         livename.setText(lifeServices.getLivename());
         livetype.setText("服务类型  " + lifeServices.getLivetype());
@@ -85,7 +85,7 @@ public class LifeDetailsActivity extends BaseActivity {
                 finish();
                 break;
             case R.id.call:
-                new CallPhoneDialog(this,lifeServices.getLivephone()).show();
+                new CallPhoneDialog(this, lifeServices.getLivephone()).show();
                 break;
         }
     }

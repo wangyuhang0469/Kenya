@@ -4,69 +4,69 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:background="@color/base_bg"
+    android:orientation="vertical"
     tools:context="com.example.administrator.kenya.ui.city.used.GoodsDetailsActivity">
 
-    <include layout="@layout/title_bar2"/>
+    <include layout="@layout/title_bar2" />
 
     <com.example.administrator.kenya.view.MyObervalbleScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="144px"
-        android:layout_marginBottom="160px">
+        android:layout_marginBottom="160px"
+        android:layout_marginTop="144px">
 
         <com.zhy.autolayout.AutoLinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:background="@color/white">
+            android:background="@color/white"
+            android:orientation="vertical">
 
             <com.youth.banner.Banner
                 android:id="@+id/banner"
                 android:layout_width="match_parent"
                 android:layout_height="810px"
                 app:delay_time="5000"
+                app:indicator_drawable_selected="@drawable/bg4dp_theme_btn"
                 app:indicator_height="7.5dp"
                 app:indicator_margin="5dp"
-                app:indicator_width="7.5dp"
-                app:indicator_drawable_selected="@drawable/bg4dp_theme_btn"/>
+                app:indicator_width="7.5dp" />
 
             <TextView
                 android:id="@+id/goodsname"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/textBlack1"
-                android:textSize="19sp"
-                android:lineSpacingMultiplier="1.1"
+                android:layout_marginLeft="30px"
                 android:layout_marginTop="36px"
-                android:layout_marginLeft="30px"/>
+                android:lineSpacingMultiplier="1.1"
+                android:textColor="@color/textBlack1"
+                android:textSize="19sp" />
 
 
             <TextView
                 android:id="@+id/goodsprice"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/textgreen1"
-                android:textSize="20sp"
+                android:layout_marginLeft="30px"
                 android:layout_marginTop="26px"
-                android:layout_marginLeft="30px"/>
+                android:textColor="@color/textgreen1"
+                android:textSize="20sp" />
 
             <TextView
                 android:id="@+id/goodsdesc"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColor="@color/textBlack2"
-                android:lineSpacingMultiplier="1.3"
-                android:layout_marginTop="26px"
+                android:layout_marginBottom="40px"
                 android:layout_marginLeft="30px"
                 android:layout_marginRight="30px"
-                android:layout_marginBottom="40px"/>
+                android:layout_marginTop="26px"
+                android:lineSpacingMultiplier="1.3"
+                android:textColor="@color/textBlack2" />
 
             <View
                 android:layout_width="match_parent"
                 android:layout_height="20px"
-                android:background="@color/base_bg"/>
+                android:background="@color/base_bg" />
 
             <com.zhy.autolayout.AutoRelativeLayout
                 android:layout_width="match_parent"
@@ -76,35 +76,33 @@
                     android:id="@+id/avatar"
                     android:layout_width="152px"
                     android:layout_height="152px"
+                    android:layout_marginBottom="50px"
                     android:layout_marginLeft="30px"
                     android:layout_marginTop="50px"
-                    android:layout_marginBottom="50px"
-                    android:src="@drawable/avatar"/>
+                    android:src="@drawable/avatar" />
 
                 <TextView
                     android:id="@+id/goodsusername"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/textBlack1"
-                    android:layout_toRightOf="@id/avatar"
+                    android:layout_marginLeft="20px"
                     android:layout_marginTop="66px"
-                    android:layout_marginLeft="20px"/>
+                    android:layout_toRightOf="@id/avatar"
+                    android:textColor="@color/textBlack1" />
 
                 <TextView
                     android:id="@+id/goodsphone"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/textgreen1"
-                    android:layout_toRightOf="@id/avatar"
                     android:layout_alignParentBottom="true"
                     android:layout_marginBottom="66px"
-                    android:layout_marginLeft="20px"/>
+                    android:layout_marginLeft="20px"
+                    android:layout_toRightOf="@id/avatar"
+                    android:textColor="@color/textgreen1" />
 
             </com.zhy.autolayout.AutoRelativeLayout>
 
         </com.zhy.autolayout.AutoLinearLayout>
-
-
 
 
     </com.example.administrator.kenya.view.MyObervalbleScrollView>
@@ -116,8 +114,8 @@
         android:layout_alignParentBottom="true"
         android:background="@color/theme_btn"
         android:gravity="center"
-        android:text="拨号"
+        android:text="@string/call"
         android:textColor="@color/white"
-        android:textSize="17sp"/>
+        android:textSize="17sp" />
 
 </com.zhy.autolayout.AutoRelativeLayout>

@@ -50,7 +50,7 @@ public class GoodsDetailsActivity extends BaseActivity {
         setContentView(R.layout.activity_goods_details);
         ButterKnife.bind(this);
 
-        title.setText("物品详情");
+        title.setText(getResources().getString(R.string.goods_detail));
 
         goods = (Goods) getIntent().getExtras().getSerializable("goods");
 

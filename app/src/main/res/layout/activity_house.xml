@@ -31,7 +31,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="输入你想找的"
+                android:text="@string/enter_your_searcff"
                 android:textColor="@color/textBlack3" />
 
         </com.zhy.autolayout.AutoLinearLayout>
@@ -52,7 +52,7 @@
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
             android:gravity="center"
-            android:text="搜索"
+            android:text="@string/search_tool"
             android:textColor="@color/textBlack1" />
     </com.zhy.autolayout.AutoRelativeLayout>
 
@@ -81,7 +81,7 @@
         android:layout_alignParentBottom="true"
         android:background="@color/theme_btn"
         android:gravity="center"
-        android:text="发布"
+        android:text="@string/post"
         android:textColor="@color/white"
         android:textSize="17sp" />
 </com.zhy.autolayout.AutoRelativeLayout>

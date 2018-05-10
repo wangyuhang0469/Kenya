@@ -53,7 +53,7 @@ public class HusbandryDetailsActivity extends BaseActivity {
         setContentView(R.layout.activity_husbandry_details);
         ButterKnife.bind(this);
 
-        title.setText("详情");
+        title.setText(getResources().getString(R.string.details));
         husbandry = (Husbandry) getIntent().getExtras().getSerializable("Husbandry");
         framname.setText(husbandry.getFramname());
         framtype.setText("服务类型  " + husbandry.getFramtype());
@@ -88,7 +88,7 @@ public class HusbandryDetailsActivity extends BaseActivity {
                 finish();
                 break;
             case R.id.call:
-                new CallPhoneDialog(this,husbandry.getFramphone()).show();
+                new CallPhoneDialog(this, husbandry.getFramphone()).show();
                 break;
         }
     }

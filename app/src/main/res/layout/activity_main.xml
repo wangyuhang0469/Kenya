@@ -1,117 +1,124 @@
 <com.zhy.autolayout.AutoRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent" >
+    android:layout_height="match_parent">
 
 
     <com.zhy.autolayout.AutoLinearLayout
         android:id="@+id/main_bottom"
         android:layout_width="match_parent"
         android:layout_height="160px"
-        android:gravity="center_vertical"
-        android:orientation="horizontal"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
-        android:background="#fff">
+        android:background="#fff"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
 
         <LinearLayout
             android:id="@+id/tab_1"
-            android:layout_weight="1"
             android:layout_width="10dp"
             android:layout_height="match_parent"
+            android:layout_weight="1"
             android:gravity="center"
             android:orientation="vertical">
+
             <ImageView
                 android:layout_width="60dp"
                 android:layout_height="30dp"
-                android:src="@drawable/tab1"
+                android:layout_gravity="center"
                 android:padding="3dp"
-                android:layout_gravity="center"/>
+                android:src="@drawable/tab1" />
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="同 城"
                 android:layout_gravity="center_horizontal"
-                android:textSize="12dp"
-                android:textColor="@drawable/tab_textcolor"/>
+                android:text="@string/same_city"
+                android:textColor="@drawable/tab_textcolor"
+                android:textSize="12dp" />
         </LinearLayout>
 
         <LinearLayout
-            android:layout_weight="1"
-
             android:id="@+id/tab_2"
+
             android:layout_width="10dp"
             android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:gravity="center">
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+
             <ImageView
                 android:layout_width="60dp"
                 android:layout_height="30dp"
-                android:src="@drawable/tab2"
+                android:layout_gravity="center"
                 android:padding="3dp"
-                android:layout_gravity="center"/>
+                android:src="@drawable/tab2" />
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="打 车"
                 android:layout_gravity="center_horizontal"
+                android:text="@string/car_poll"
                 android:textColor="@drawable/tab_textcolor"
-                android:textSize="12dp"
-                />
+                android:textSize="12dp" />
         </LinearLayout>
 
 
         <LinearLayout
-            android:layout_weight="1"
             android:id="@+id/tab_3"
             android:layout_width="10dp"
             android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:gravity="center">
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+
             <ImageView
                 android:layout_width="60dp"
                 android:layout_height="30dp"
-                android:src="@drawable/tab3"
+                android:layout_gravity="center"
                 android:padding="3dp"
-                android:layout_gravity="center"/>
+                android:src="@drawable/tab3" />
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="商 场"
                 android:layout_gravity="center_horizontal"
-                android:textSize="12dp"
-                android:textColor="@drawable/tab_textcolor"/>
+                android:text="@string/shop_online"
+                android:textColor="@drawable/tab_textcolor"
+                android:textSize="12dp" />
         </LinearLayout>
-
 
 
         <LinearLayout
-            android:layout_weight="1"
             android:id="@+id/tab_4"
             android:layout_width="10dp"
             android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:gravity="center">
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+
             <ImageView
                 android:layout_width="60dp"
                 android:layout_height="30dp"
-                android:src="@drawable/tab4"
+                android:layout_gravity="center"
                 android:padding="3dp"
-                android:layout_gravity="center"/>
+                android:src="@drawable/tab4" />
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="个人中心"
                 android:layout_gravity="center_horizontal"
-                android:textSize="12dp"
-                android:textColor="@drawable/tab_textcolor"/>
+                android:text="@string/personal"
+                android:textColor="@drawable/tab_textcolor"
+                android:textSize="12dp" />
         </LinearLayout>
 
     </com.zhy.autolayout.AutoLinearLayout>
+
     <View
         android:layout_width="match_parent"
         android:layout_height="1px"
-        android:background="#989898"
-        android:layout_alignTop="@id/main_bottom" />
+        android:layout_alignTop="@id/main_bottom"
+        android:background="#989898" />
 
     <RelativeLayout
         android:id="@+id/fragment_container"

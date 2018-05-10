@@ -66,7 +66,7 @@ public class GoodsReleaseActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_goods_release);
         ButterKnife.bind(this);
-        title.setText("发布");
+        title.setText(getResources().getString(R.string.post));
 
         goodsusername.setText(User.getInstance().getUserName());
         goodsphone.setText(User.getInstance().getUserPhonenumber());

@@ -74,7 +74,7 @@ public class CityHomeFragment extends BaseFragment {
         View view = inflater.inflate(R.layout.fragment_city_home, container, false);
         ButterKnife.bind(this, view);
 
-        title.setText("同城");
+        title.setText(getResources().getString(R.string.same_city));
         back.setVisibility(View.GONE);
 
         initOKHttp();
@@ -90,7 +90,6 @@ public class CityHomeFragment extends BaseFragment {
         initBanner(imageList);
         return view;
     }
-
     private void initBanner(List<String> imageUrlList) {
         banner.setImages(imageUrlList).setImageLoader(new GlideImageLoader()).start();
         banner.setOnBannerListener(new OnBannerListener() {

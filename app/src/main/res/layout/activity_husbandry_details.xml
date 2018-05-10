@@ -4,21 +4,22 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:background="@color/base_bg"
+    android:orientation="vertical"
     tools:context="com.example.administrator.kenya.ui.city.life.LifeDetailsActivity">
 
     <View
         android:id="@+id/view"
         android:layout_width="0dp"
-        android:layout_height="0dp"/>
+        android:layout_height="0dp" />
+
     <include layout="@layout/title_bar2" />
 
     <com.example.administrator.kenya.view.MyObervalbleScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="144px"
         android:layout_marginBottom="180px"
+        android:layout_marginTop="144px"
         android:fillViewport="true">
 
         <com.zhy.autolayout.AutoLinearLayout
@@ -26,77 +27,78 @@
             android:layout_height="match_parent"
             android:orientation="vertical">
 
-    <com.zhy.autolayout.AutoLinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:background="@color/white">
+            <com.zhy.autolayout.AutoLinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/framname"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="30px"
-            android:textColor="@color/textBlack1"
-            android:lineSpacingMultiplier="1.1"
-            android:textSize="18sp"/>
+                <TextView
+                    android:id="@+id/framname"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="30px"
+                    android:lineSpacingMultiplier="1.1"
+                    android:textColor="@color/textBlack1"
+                    android:textSize="18sp" />
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="2px"
-            android:background="@color/textgreen1"
-            android:layout_marginLeft="30px"
-            android:layout_marginRight="30px"/>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2px"
+                    android:layout_marginLeft="30px"
+                    android:layout_marginRight="30px"
+                    android:background="@color/textgreen1" />
 
-        <TextView
-            android:id="@+id/framtype"
-            android:layout_width="wrap_content"
-            android:layout_height="150px"
-            android:layout_marginLeft="30px"
-            android:gravity="center"
-            android:textColor="@color/textBlack2"/>
+                <TextView
+                    android:id="@+id/framtype"
+                    android:layout_width="wrap_content"
+                    android:layout_height="150px"
+                    android:layout_marginLeft="30px"
+                    android:gravity="center"
+                    android:textColor="@color/textBlack2" />
 
-    </com.zhy.autolayout.AutoLinearLayout>
+            </com.zhy.autolayout.AutoLinearLayout>
 
-    <com.zhy.autolayout.AutoLinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/white"
-        android:orientation="vertical"
-        android:layout_marginTop="20px">
-        
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="@color/textgreen1"
-            android:layout_marginLeft="30px"
-            android:text="服务详情"
-            android:gravity="center"
-            android:layout_marginTop="30px"
-            android:layout_marginBottom="20px"/>
+            <com.zhy.autolayout.AutoLinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20px"
+                android:background="@color/white"
+                android:orientation="vertical">
 
-        <include layout="@layout/line"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="20px"
+                    android:layout_marginLeft="30px"
+                    android:layout_marginTop="30px"
+                    android:gravity="center"
+                    android:text="服务详情"
+                    android:textColor="@color/textgreen1" />
 
-        <TextView
-            android:id="@+id/framdesc"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textColor="@color/textBlack2"
-            android:lineSpacingMultiplier="1.3"
-            android:layout_margin="30px"/>
+                <include layout="@layout/line" />
 
-    </com.zhy.autolayout.AutoLinearLayout>
+                <TextView
+                    android:id="@+id/framdesc"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="30px"
+                    android:lineSpacingMultiplier="1.3"
+                    android:textColor="@color/textBlack2" />
+
+            </com.zhy.autolayout.AutoLinearLayout>
 
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
-            <android.support.v7.widget.RecyclerView
-                android:id="@+id/recyclerView"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@color/white"
-                android:layout_marginTop="20px"
-                android:padding="20px"/>
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/recyclerView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20px"
+                    android:background="@color/white"
+                    android:padding="20px" />
             </RelativeLayout>
         </com.zhy.autolayout.AutoLinearLayout>
 
@@ -112,49 +114,48 @@
         <View
             android:layout_width="match_parent"
             android:layout_height="0.3dp"
-            android:background="@color/line7"/>
+            android:background="@color/line7" />
 
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/avatar"
             android:layout_width="120px"
             android:layout_height="120px"
-            android:src="@drawable/avatar"
-            android:layout_margin="30px"/>
+            android:layout_margin="30px"
+            android:src="@drawable/avatar" />
 
         <TextView
             android:id="@+id/framuser"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/textBlack1"
+            android:layout_marginTop="34px"
             android:layout_toRightOf="@id/avatar"
-            android:layout_marginTop="34px"/>
+            android:textColor="@color/textBlack1" />
 
         <TextView
             android:id="@+id/framphone"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/textgreen1"
-            android:layout_toRightOf="@id/avatar"
             android:layout_alignParentBottom="true"
-            android:layout_marginBottom="34px"/>
-        
+            android:layout_marginBottom="34px"
+            android:layout_toRightOf="@id/avatar"
+            android:textColor="@color/textgreen1" />
+
         <TextView
             android:id="@+id/call"
             android:layout_width="180px"
             android:layout_height="80px"
-            android:background="@drawable/bg15dp_theme_btn"
-            android:textColor="@color/white"
-            android:gravity="center"
-            android:text="拨号"
-            android:textSize="13sp"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
-            android:layout_marginRight="30px"/>
+            android:layout_marginRight="30px"
+            android:background="@drawable/bg15dp_theme_btn"
+            android:gravity="center"
+            android:text="@string/call"
+            android:textColor="@color/white"
+            android:textSize="13sp" />
 
 
     </com.zhy.autolayout.AutoRelativeLayout>
-
 
 
 </com.zhy.autolayout.AutoRelativeLayout>

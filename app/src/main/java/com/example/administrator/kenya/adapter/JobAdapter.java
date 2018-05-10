@@ -40,7 +40,7 @@ public class JobAdapter extends RecyclerView.Adapter<JobAdapter.ViewHolder> {
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        TextView job_want, job_name, job_sex, job_age,call;
+        TextView job_want, job_name, job_sex, job_age, call;
         // ImageView job_image;
 
         public ViewHolder(View itemView) {
@@ -71,7 +71,7 @@ public class JobAdapter extends RecyclerView.Adapter<JobAdapter.ViewHolder> {
         holder.call.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                new CallPhoneDialog(context,list.get(position).getPhone()).show();
+                new CallPhoneDialog(context, list.get(position).getPhone()).show();
             }
         });
         // holder.job_image.setTag(list.get(position).getHeadimg());

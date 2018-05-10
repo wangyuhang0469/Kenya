@@ -60,6 +60,7 @@ public class CompanyAdapter extends RecyclerView.Adapter<CompanyAdapter.ViewHold
         View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_company, parent, false);
         return new ViewHolder(v);
     }
+
     @Override
     public void onBindViewHolder(final ViewHolder holder, final int position) {
 

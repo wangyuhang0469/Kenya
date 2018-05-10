@@ -24,7 +24,7 @@
                 android:id="@+id/house_name"
                 style="@style/edit_base2"
                 android:gravity="center_vertical"
-                android:hint="请输入标题"
+                android:hint="@string/enter_your_title"
                 android:paddingLeft="30px" />
 
             <include layout="@layout/line" />
@@ -33,7 +33,7 @@
                 android:id="@+id/house_home"
                 style="@style/edit_base2"
                 android:gravity="center_vertical"
-                android:hint="请输入您的户型信息"
+                android:hint="@string/please_choose_the_type_of_hoose_e.g._one_bedroom"
                 android:paddingLeft="30px" />
 
             <include layout="@layout/line" />
@@ -42,9 +42,9 @@
                 android:id="@+id/house_square"
                 style="@style/edit_base2"
                 android:gravity="center_vertical"
-                android:hint="请输入您的房屋面积"
-                android:paddingLeft="30px"
-                android:inputType="number"/>
+                android:hint="@string/enter_the_size_of_house_in_square_metres"
+                android:inputType="number"
+                android:paddingLeft="30px" />
 
             <include layout="@layout/line" />
 
@@ -52,7 +52,7 @@
                 android:id="@+id/house_address"
                 style="@style/edit_base2"
                 android:gravity="center_vertical"
-                android:hint="请输入您的房子位置信息"
+                android:hint="@string/enter_the_exact_location"
                 android:paddingLeft="30px" />
 
             <include layout="@layout/line" />
@@ -67,7 +67,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:gravity="left"
-                    android:hint="描述一下房子的大致情况"
+                    android:hint="@string/describe_in_words_about_other_details_of_your_house"
                     android:lineSpacingMultiplier="1.3"
                     android:paddingLeft="30px"
                     android:paddingRight="30px"
@@ -138,7 +138,7 @@
                 android:layout_height="150px"
                 android:layout_marginTop="24px"
                 android:gravity="center"
-                android:hint="输入您想出租的价格/月"
+                android:hint="@string/mothly_rent"
                 android:inputType="number" />
 
             <include layout="@layout/line" />
@@ -149,7 +149,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="150px"
                 android:gravity="center"
-                android:hint="输入联系人" />
+                android:hint="@string/enter_personal_contacts" />
 
             <include layout="@layout/line" />
 
@@ -159,7 +159,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="150px"
                 android:gravity="center"
-                android:hint="输入联系电话"
+                android:hint="@string/phone_number"
                 android:inputType="phone" />
 
             <include layout="@layout/line" />
@@ -173,7 +173,7 @@
         android:layout_alignParentBottom="true"
         android:background="@color/theme_btn"
         android:gravity="center"
-        android:text="发布"
+        android:text="@string/post"
         android:textColor="@color/white"
         android:textSize="17sp" />
 </com.zhy.autolayout.AutoRelativeLayout>

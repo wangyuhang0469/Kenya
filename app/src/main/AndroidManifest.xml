@@ -11,6 +11,7 @@
     <application
         android:name=".base.MyApplication"
         android:allowBackup="true"
+        android:configChanges="locale"
         android:icon="@drawable/app_launcher"
         android:label="@string/app_name"
         android:roundIcon="@drawable/app_launcher"
@@ -38,7 +39,6 @@
         <activity android:name=".StartActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -94,7 +94,10 @@
         <activity android:name=".ui.city.findmoney.FindMonydetailActivity" />
         <activity android:name=".ui.myself.myrelease.MyReleaseActivity" />
         <activity android:name=".ui.city.job.JobSearchActivity" />
-        <activity android:name=".ui.city.job.CompanySeachActivity"></activity>
+        <activity android:name=".ui.city.job.CompanySeachActivity" />
+        <activity
+            android:name=".ui.myself.aboutus.AboutUsActivity"
+            android:theme="@style/AppTheme.green_action_bar"></activity>
     </application>
 
 </manifest>

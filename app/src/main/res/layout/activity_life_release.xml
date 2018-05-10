@@ -39,7 +39,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="150px"
                 android:gravity="center_vertical"
-                android:hint="请输入标题"
+                android:hint="@string/enter_your_title"
                 android:paddingLeft="30px" />
 
 
@@ -51,7 +51,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="300px"
                 android:gravity="left"
-                android:hint="请描述"
+                android:hint="@string/please_describe"
                 android:lineSpacingMultiplier="1.3"
                 android:paddingLeft="30px"
                 android:paddingRight="30px"
@@ -120,7 +120,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="150px"
                 android:gravity="center"
-                android:hint="输入联系人" />
+                android:hint="@string/enter_personal_contacts" />
 
             <include layout="@layout/line" />
 
@@ -130,7 +130,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="150px"
                 android:gravity="center"
-                android:hint="输入手机号" />
+                android:hint="@string/contact_number" />
 
             <include layout="@layout/line" />
 

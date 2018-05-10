@@ -48,7 +48,7 @@ public class NewsinfoActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_newsinfo);
         ButterKnife.bind(this);
-        title.setText("新闻中心");
+        title.setText(getResources().getString(R.string.news));
         initOKHttp();
         initView();
         postFormBuilder.addParams("pn", cpageNum + "").build().execute(StringCallback);

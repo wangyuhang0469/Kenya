@@ -88,7 +88,7 @@
                     <TextView
                         style="@style/my_center_tv"
                         android:layout_toRightOf="@id/my_center_address"
-                        android:text="我的收获地址" />
+                        android:text="@string/receiver_address" />
 
                     <ImageView
                         style="@style/my_center_inter"
@@ -134,7 +134,7 @@
                     <TextView
                         style="@style/my_center_tv"
                         android:layout_toRightOf="@id/my_center_bink"
-                        android:text="我要申请电车" />
+                        android:text="@string/request_a_taxi" />
 
                     <ImageView
                         style="@style/my_center_inter"
@@ -157,7 +157,7 @@
                 <TextView
                     style="@style/my_center_tv"
                     android:layout_toRightOf="@id/my_center_points"
-                    android:text="我的积分" />
+                    android:text="@string/disscoont_point" />
 
                 <ImageView
                     style="@style/my_center_inter"
@@ -180,7 +180,7 @@
                 <TextView
                     style="@style/my_center_tv"
                     android:layout_toRightOf="@id/my_center_purse"
-                    android:text="我的钱包" />
+                    android:text="@string/my_wellet" />
 
                 <ImageView
                     style="@style/my_center_inter"
@@ -189,7 +189,28 @@
 
             <include layout="@layout/line" />
 
+            <com.zhy.autolayout.AutoRelativeLayout
+                android:id="@+id/about_us"
+                style="@style/my_center_bar">
 
+                <ImageView
+                    android:id="@+id/my_center_myself"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="2dp"
+                    android:src="@mipmap/about_us_server" />
+
+                <TextView
+                    style="@style/my_center_tv"
+                    android:layout_toRightOf="@id/my_center_myself"
+                    android:text="@string/about_us" />
+
+                <ImageView
+                    style="@style/my_center_inter"
+                    android:src="@mipmap/my_center_inter2" />
+            </com.zhy.autolayout.AutoRelativeLayout>
+
+            <include layout="@layout/line" />
         </com.zhy.autolayout.AutoLinearLayout>
     </com.example.administrator.kenya.view.MyObervalbleScrollView>
 

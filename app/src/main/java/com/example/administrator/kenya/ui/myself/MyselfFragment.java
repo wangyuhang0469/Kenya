@@ -19,6 +19,7 @@ import com.example.administrator.kenya.interfaces.OnReUsernameSuccessfulListener
 import com.example.administrator.kenya.model.image_selector.MultiImageSelectorActivity;
 import com.example.administrator.kenya.ui.main.LoadingDialog;
 import com.example.administrator.kenya.ui.main.ReUsernameDialog;
+import com.example.administrator.kenya.ui.myself.aboutus.AboutUsActivity;
 import com.example.administrator.kenya.ui.myself.myrelease.MyReleaseActivity;
 import com.zhy.http.okhttp.OkHttpUtils;
 import com.zhy.http.okhttp.callback.StringCallback;
@@ -68,7 +69,7 @@ public class MyselfFragment extends BaseFragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_myself, container, false);
         ButterKnife.bind(this, view);
-        title.setText("个人中心");
+        title.setText(getResources().getString(R.string.personal));
         back.setVisibility(View.GONE);
         myCenterName.setText(user.getUserName());
         Glide.with(this).load(AppConstants.BASE_URL + User.getInstance().getUserPortrait())
@@ -86,8 +87,7 @@ public class MyselfFragment extends BaseFragment {
         super.onDestroyView();
         ButterKnife.unbind(this);
     }
-
-    @OnClick({R.id.myName,R.id.myAddress, R.id.myRelease, R.id.myCar, R.id.myPoint, R.id.myVallet, R.id.avatar})
+    @OnClick({R.id.myName, R.id.myAddress, R.id.myRelease, R.id.myCar, R.id.myPoint, R.id.myVallet, R.id.about_us})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.myName:
@@ -111,9 +111,9 @@ public class MyselfFragment extends BaseFragment {
                 break;
             case R.id.myVallet:
                 break;
-            case R.id.avatar:
+            case R.id.about_us:
+                startActivity(AboutUsActivity.class, null);
                 break;
-
         }
     }
 
@@ -199,9 +199,5 @@ public class MyselfFragment extends BaseFragment {
                         loadingDialog = null;
                     }
                 });
-
     }
-
-
-
 }

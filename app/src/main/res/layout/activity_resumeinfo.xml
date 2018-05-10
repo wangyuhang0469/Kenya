@@ -30,7 +30,7 @@
             android:gravity="center"
             android:maxEms="10"
             android:singleLine="true"
-            android:text="编辑简历"
+            android:text="@string/edit_your_resume"
             android:textSize="18sp" />
 
     </com.zhy.autolayout.AutoRelativeLayout>
@@ -62,7 +62,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="256px"
                     android:gravity="center"
-                    android:text="头像，一份好工作的开始"
+                    android:text="@string/take_photo"
                     android:textColor="@color/textgreen1" />
 
                 <include layout="@layout/line" />
@@ -79,7 +79,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:gravity="center"
-                        android:hint="输入姓名"
+                        android:hint="@string/enter_your_name"
                         android:textColorHint="@color/textBlack3" />
 
                     <LinearLayout
@@ -112,7 +112,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="256px"
                     android:gravity="center"
-                    android:hint="请输入求职意向"
+                    android:hint="@string/please_enter_your_job_description"
                     android:textColorHint="@color/textBlack3" />
 
                 <include layout="@layout/line" />
@@ -123,18 +123,12 @@
                     android:gravity="center"
                     android:orientation="vertical">
 
-                    <TextView
-                        android:id="@+id/resume_tv_phone"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="手机号" />
-
                     <EditText
                         android:id="@+id/resume_info_phone"
                         style="@style/edit_base2"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:hint="请输入手机号"
+                        android:hint="@string/please_enter_your_phone_no."
                         android:inputType="number|numberDecimal" />
                 </LinearLayout>
 
@@ -156,13 +150,15 @@
                             android:id="@+id/resume_time_birday"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="出生年份" />
+                            android:gravity="center"
+                            android:text="@string/date_of_birth_year" />
 
                         <TextView
                             android:id="@+id/resume_time_birday_choose"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="请选择" />
+                            android:text="请选择"
+                            android:visibility="gone" />
                     </com.zhy.autolayout.AutoLinearLayout>
 
                     <View
@@ -184,14 +180,16 @@
                             style="@style/edit_base2"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:hint="个人介绍"
+                            android:gravity="center"
+                            android:hint="@string/personal_introduction"
                             android:textColorHint="@color/textBlack2" />
 
                         <TextView
                             android:id="@+id/resume_tv_recm_choose"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="请输入" />
+                            android:text="请输入"
+                            android:visibility="gone" />
                     </com.zhy.autolayout.AutoLinearLayout>
 
                     <View
@@ -208,17 +206,29 @@
                         android:gravity="center"
                         android:orientation="vertical">
 
+                        <Spinner
+                            android:id="@+id/spinner"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="36px"
+                            android:layout_toRightOf="@+id/adverty_info_work_time"
+                            android:background="#00000000"
+                            android:spinnerMode="dialog" />
+
                         <TextView
                             android:id="@+id/resume_tv_time"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="入职时间" />
+                            android:gravity="center"
+                            android:text="@string/working_experience"
+                            android:visibility="gone" />
 
                         <TextView
                             android:id="@+id/resume_tv_choose"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="请选择" />
+                            android:text="请选择"
+                            android:visibility="gone" />
                     </com.zhy.autolayout.AutoLinearLayout>
                 </com.zhy.autolayout.AutoLinearLayout>
             </com.zhy.autolayout.AutoLinearLayout>
@@ -226,11 +236,11 @@
             <com.example.administrator.kenya.view.RoundImageView
                 android:id="@+id/resume_info_photo"
                 android:layout_width="280px"
-                android:layout_height="260px"
+                android:layout_height="280px"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="70px"
+                android:layout_marginTop="50px"
                 android:scaleType="fitXY"
-                android:src="@mipmap/resum_photo" />
+                android:src="@drawable/avatar" />
         </com.zhy.autolayout.AutoRelativeLayout>
 
     </com.example.administrator.kenya.view.MyObervalbleScrollView>
@@ -243,7 +253,7 @@
         android:layout_alignParentLeft="true"
         android:background="@color/theme_btn"
         android:gravity="center"
-        android:text="保存"
+        android:text="@string/send"
         android:textColor="@color/white"
         android:textSize="17sp" />
 </com.zhy.autolayout.AutoRelativeLayout>

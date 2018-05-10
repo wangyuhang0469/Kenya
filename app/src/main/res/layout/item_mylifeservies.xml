@@ -37,7 +37,7 @@
         android:layout_alignBottom="@id/liveimgs"
         android:layout_alignParentRight="true"
         android:layout_marginRight="30px"
-        android:text="删除"
+        android:text="@string/delete"
         android:textSize="13sp"
         android:textColor="@color/textgreen1"
         android:gravity="center"

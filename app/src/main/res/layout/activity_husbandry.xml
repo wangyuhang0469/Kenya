@@ -21,9 +21,9 @@
             android:gravity="center"
             android:maxEms="10"
             android:singleLine="true"
+            android:text="@string/farm_products"
             android:textColor="@color/textBlack1"
-            android:textSize="18sp"
-            android:text="农林牧"/>
+            android:textSize="18sp" />
 
         <ImageView
             android:id="@+id/back"
@@ -41,22 +41,21 @@
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
             android:gravity="center|right"
-            android:text="类别"
-            android:paddingRight="80px"
             android:paddingLeft="30px"
+            android:paddingRight="80px"
+            android:text="@string/category"
             android:textColor="@color/textgreen1" />
 
         <ImageView
             android:id="@+id/xiala"
             android:layout_width="30px"
             android:layout_height="match_parent"
-            android:layout_marginRight="30px"
             android:layout_alignParentRight="true"
-            android:src="@drawable/icon_xiala0"/>
+            android:layout_marginRight="30px"
+            android:src="@drawable/icon_xiala0" />
 
 
     </com.zhy.autolayout.AutoRelativeLayout>
-
 
 
     <com.jwenfeng.library.pulltorefresh.PullToRefreshLayout
@@ -74,7 +73,6 @@
     </com.jwenfeng.library.pulltorefresh.PullToRefreshLayout>
 
 
-
     <TextView
         android:id="@+id/release"
         android:layout_width="match_parent"
@@ -82,7 +80,7 @@
         android:layout_alignParentBottom="true"
         android:background="@color/theme_btn"
         android:gravity="center"
-        android:text="发布"
+        android:text="@string/post"
         android:textColor="@color/white"
         android:textSize="17sp" />
 

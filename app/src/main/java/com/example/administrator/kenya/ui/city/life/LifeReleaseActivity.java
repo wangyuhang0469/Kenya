@@ -61,24 +61,25 @@ public class LifeReleaseActivity extends BaseActivity {
 
     private ArrayList<String> mResults = new ArrayList<>();
     private ArrayList<File> compressFile = new ArrayList<>();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_life_release);
         ButterKnife.bind(this);
 
-        title.setText("发布");
+        title.setText(getResources().getString(R.string.post));
 
         liveuser.setText(User.getInstance().getUserName());
         livephone.setText(User.getInstance().getUserPhonenumber());
 
         List<String> types = new ArrayList<>();
-        types.add("请选择服务类型");
-        types.add("保洁");
-        types.add("搬家");
-        types.add("维修");
-        types.add("回收");
-        types.add("其他");
+        types.add(getResources().getString(R.string.enter_your_category));
+        types.add(getResources().getString(R.string.cleaning_service));
+        types.add(getResources().getString(R.string.moving_service));
+        types.add(getResources().getString(R.string.repairing_services));
+        types.add(getResources().getString(R.string.recycle_items));
+        types.add(getResources().getString(R.string.others));
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, R.layout.spinner_simple, R.id.spinner_tv, types);
         adapter.setDropDownViewResource(R.layout.item_spinner);
         spinner.setAdapter(adapter);
@@ -163,17 +164,17 @@ public class LifeReleaseActivity extends BaseActivity {
 
                 if (spinner.getSelectedItem().toString().equals("请选择服务类型")) {
                     toast("请选择服务类型");
-                } else if (livename.getText().length()==0){
+                } else if (livename.getText().length() == 0) {
                     toast("请输入标题");
-                }else if (livedesc.getText().length() == 0) {
+                } else if (livedesc.getText().length() == 0) {
                     toast("请输入详情");
-                }else if (liveuser.getText().length()==0) {
+                } else if (liveuser.getText().length() == 0) {
                     toast("请输入联系人");
-                }else if (livephone.getText().length()==0) {
+                } else if (livephone.getText().length() == 0) {
                     toast("请输入联系电话");
-                }else if (mResults == null || mResults.size() <= 0) {
+                } else if (mResults == null || mResults.size() <= 0) {
                     toast("请选择图片");
-                }else {
+                } else {
                     for (int i = 0; i < mResults.size(); i++) {
                         final LoadingDialog loadingDialog = new LoadingDialog(LifeReleaseActivity.this);
                         loadingDialog.show();
@@ -203,8 +204,6 @@ public class LifeReleaseActivity extends BaseActivity {
                 }
 
 
-
-
                 break;
         }
     }
@@ -219,10 +218,10 @@ public class LifeReleaseActivity extends BaseActivity {
         }
     }
 
-    private void send(final LoadingDialog loadingDialog){
+    private void send(final LoadingDialog loadingDialog) {
         PostFormBuilder postFormBuilder = OkHttpUtils.post();
         for (int i = 0; i < compressFile.size(); i++) {
-            postFormBuilder.addFile("files",compressFile.get(i).getName(), compressFile.get(i));
+            postFormBuilder.addFile("files", compressFile.get(i).getName(), compressFile.get(i));
         }
         postFormBuilder.url(AppConstants.BASE_URL + "/kenya/Live/filesUpload")
                 .addParams("userid", User.getInstance().getUserId())

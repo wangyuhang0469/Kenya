@@ -90,7 +90,6 @@ public class LifeActivity extends BaseActivity {
 
     //初始化组件
     private void initView() {
-
         myAdapter = new MyAdapter(lifeServicesList);
         LinearLayoutManager layoutmanager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutmanager);
@@ -105,7 +104,6 @@ public class LifeActivity extends BaseActivity {
 
             @Override
             public void loadMore() {
-                Log.d("kang", "111aaa" + cpageNum);
                 postFormBuilder.addParams("liveType", keyword).addParams("pn", cpageNum + "").build().execute(StringCallback);
             }
         });
@@ -130,7 +128,6 @@ public class LifeActivity extends BaseActivity {
 
             @Override
             public void onResponse(String response, int id) {
-                Log.d("kang", "111111" + response);
                 //防止因Activity释放导致内部控件空指针
                 if (pullToRefreshLayout != null) {
                     cpageNum++;
@@ -146,7 +143,6 @@ public class LifeActivity extends BaseActivity {
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
-
                     addList = JSON.parseArray(response, LifeServices.class);
                     lifeServicesList.addAll(addList);
                     myAdapter.notifyDataSetChanged();
@@ -197,6 +193,21 @@ public class LifeActivity extends BaseActivity {
             public void onCheckedChanged(MyRadioGroup group, int checkedId) {
                 RadioButton radioButton = (RadioButton) popContentView.findViewById(checkedId);
                 keyword = radioButton.getText().toString();
+                if (keyword.equals("No Experience")) {
+                    keyword = "不限";
+                } else if (keyword.equals("Cleaning Service")) {
+                    keyword = "保洁";
+                } else if (keyword.equals("Moving Service")) {
+                    keyword = "搬家";
+                } else if (keyword.equals("Repairing Services")) {
+                    keyword = "维修";
+                } else if (keyword.equals("Recycle Items")) {
+                    keyword = "回收";
+                } else if (keyword.equals("Others")) {
+                    keyword = "其他";
+                } else {
+
+                }
                 lifeServicesList.clear();
                 myAdapter.notifyDataSetChanged();
                 cpageNum = 1;

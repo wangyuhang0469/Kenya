@@ -29,14 +29,16 @@
             android:gravity="center"
             android:maxEms="10"
             android:singleLine="true"
-            android:text="发布职位"
+            android:text="@string/job_position"
             android:textSize="18sp" />
     </com.zhy.autolayout.AutoRelativeLayout>
 
     <com.example.administrator.kenya.view.MyObervalbleScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/person_info"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/person_info"
         android:layout_marginBottom="200px">
 
         <com.zhy.autolayout.AutoLinearLayout
@@ -49,7 +51,7 @@
 
                 <TextView
                     style="@style/adverty_info_tv"
-                    android:text="我要招聘" />
+                    android:text="@string/job_recroitment" />
 
                 <EditText
                     android:id="@+id/adverty_info_work_name"
@@ -57,7 +59,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="80px"
-                    android:hint="销售代表" />
+                    android:hint="@string/waiterss" />
             </com.zhy.autolayout.AutoLinearLayout>
 
             <include layout="@layout/line" />
@@ -67,7 +69,7 @@
                 <TextView
                     android:id="@+id/adverty_yuexin"
                     style="@style/adverty_info_tv"
-                    android:text="月        薪" />
+                    android:text="@string/monthly_salary" />
 
                 <EditText
                     android:id="@+id/adverty_info_work_money"
@@ -94,33 +96,11 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
                     android:layout_marginRight="30px"
-                    android:text="面议" />
+                    android:text="@string/salary" />
             </com.zhy.autolayout.AutoRelativeLayout>
 
             <include layout="@layout/line" />
 
-            <com.zhy.autolayout.AutoLinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="200px"
-                android:gravity="center_vertical"
-                android:orientation="horizontal"
-                android:paddingLeft="30px">
-
-                <TextView
-                    style="@style/adverty_info_tv"
-                    android:text="职位描述" />
-
-                <EditText
-                    android:id="@+id/adverty_info_work_quiret"
-                    style="@style/edit_base2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="80px"
-                    android:hint="表达能力强，有销售经验者优先" />
-
-            </com.zhy.autolayout.AutoLinearLayout>
-
-            <include layout="@layout/line" />
 
             <com.zhy.autolayout.AutoRelativeLayout
                 android:id="@+id/adverty_info_time_choose"
@@ -139,14 +119,8 @@
                     android:id="@+id/adverty_info_work_time"
                     style="@style/adverty_info_tv"
                     android:layout_marginTop="45px"
-                    android:text="工作年限" />
-                <!--<TextView-->
-                <!--android:id="@+id/adverty_info_jion_time"-->
-                <!--android:layout_width="wrap_content"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:layout_marginLeft="80px"-->
-                <!--android:layout_toRightOf="@+id/adverty_info_work_time"-->
-                <!--android:hint="不限" />-->
+                    android:text="@string/working_experience" />
+
                 <ImageView
                     style="@style/my_center_inter"
                     android:layout_marginTop="45px"
@@ -160,7 +134,7 @@
 
                 <TextView
                     style="@style/adverty_info_tv"
-                    android:text="公司名称" />
+                    android:text="@string/company_name" />
 
                 <EditText
                     android:id="@+id/adverty_info_company_name"
@@ -168,7 +142,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="80px"
-                    android:hint="请输入公司名称" />
+                    android:hint="@string/please_enter_the_company_name." />
             </com.zhy.autolayout.AutoLinearLayout>
 
             <include layout="@layout/line" />
@@ -177,7 +151,7 @@
 
                 <TextView
                     style="@style/adverty_info_tv"
-                    android:text="联系电话" />
+                    android:text="@string/contact_number" />
 
                 <EditText
                     android:id="@+id/adverty_info_company_phone"
@@ -185,14 +159,36 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="80px"
-                    android:hint="请输入联系电话"
+                    android:hint="@string/please_enter_your_contact_number."
                     android:inputType="number|numberDecimal" />
+            </com.zhy.autolayout.AutoLinearLayout>
+
+            <include layout="@layout/line" />
+
+            <com.zhy.autolayout.AutoLinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:minHeight="150px"
+                android:orientation="horizontal"
+                android:paddingLeft="30px">
+
+                <TextView
+                    style="@style/adverty_info_tv"
+                    android:text="@string/description_of_job_vacancy" />
+
+                <EditText
+                    android:id="@+id/adverty_info_work_quiret"
+                    style="@style/edit_base2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="80px"
+                    android:hint="@string/Project_experience_strong_communication_skill_nice_personality" />
             </com.zhy.autolayout.AutoLinearLayout>
 
             <include layout="@layout/line" />
         </com.zhy.autolayout.AutoLinearLayout>
     </com.example.administrator.kenya.view.MyObervalbleScrollView>
-
 
     <TextView
         android:id="@+id/adverty_info_detail"
@@ -201,7 +197,7 @@
         android:layout_alignParentBottom="true"
         android:background="@color/theme_btn"
         android:gravity="center"
-        android:text="保存"
+        android:text="@string/send"
         android:textColor="@color/white"
         android:textSize="17sp" />
 </com.zhy.autolayout.AutoRelativeLayout>
