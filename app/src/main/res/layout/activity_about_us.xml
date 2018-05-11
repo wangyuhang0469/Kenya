@@ -58,7 +58,7 @@
                     android:id="@+id/about_us_tv"
                     style="@style/my_center_tv"
                     android:layout_toRightOf="@id/about_us_phone"
-                    android:text="@string/contant_us"
+                    android:text="@string/contant_us2"
                     android:textColor="@color/textBlack1" />
 
                 <TextView
@@ -72,7 +72,6 @@
                     android:layout_marginTop="2dp"
                     android:src="@mipmap/my_center_inter2" />
             </com.zhy.autolayout.AutoRelativeLayout>
-
         </com.zhy.autolayout.AutoLinearLayout>
     </com.example.administrator.kenya.view.MyObervalbleScrollView>
 </com.zhy.autolayout.AutoLinearLayout>

@@ -91,8 +91,9 @@
                     android:text="@string/sex" />
 
                 <TextView
+                    android:id="@+id/resume_detail_sex"
                     style="@style/detail_tv_content"
-                    android:text=""
+                    android:text="女"
                     android:textSize="46px" />
             </com.zhy.autolayout.AutoLinearLayout>
 
@@ -106,8 +107,9 @@
                     android:text="@string/age" />
 
                 <TextView
+                    android:id="@+id/resume_detail_age"
                     style="@style/detail_tv_content"
-                    android:text=""
+                    android:text="21"
                     android:textSize="46px" />
             </com.zhy.autolayout.AutoLinearLayout>
 

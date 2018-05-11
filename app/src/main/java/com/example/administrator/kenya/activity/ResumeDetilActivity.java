@@ -34,6 +34,10 @@ public class ResumeDetilActivity extends Activity {
     TextView resumeDetailPhone;
     @Bind(R.id.resume_detil_img)
     ImageView resumeDetilImg;
+    @Bind(R.id.resume_detail_sex)
+    TextView resumeDetailSex;
+    @Bind(R.id.resume_detail_age)
+    TextView resumeDetailAge;
     private Job job;
 
     @Override
@@ -48,6 +52,8 @@ public class ResumeDetilActivity extends Activity {
         resumeDetailExperience.setText(job.getJointime());
         resumeDetailDesc.setText(job.getPersondesc());
         resumeDetailPhone.setText(job.getPhone());
+        resumeDetailSex.setText(job.getSex());
+        resumeDetailAge.setText(job.getAge());
         Glide.with(this).load(AppConstants.BASE_URL + job.getHeadimg()).diskCacheStrategy(DiskCacheStrategy.ALL).transform(new GlideCircleTransform(this)).into(resumeDetilImg);
     }
 

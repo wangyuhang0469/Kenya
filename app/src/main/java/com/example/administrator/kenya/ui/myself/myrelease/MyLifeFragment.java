@@ -59,7 +59,6 @@ public class MyLifeFragment extends BaseFragment {
     private PopupWindow popupWindow;
     private String keyword = "不限";
 
-
     private int cpageNum = 1;
 
     private MyLifeAdapter myLifeAdapter;

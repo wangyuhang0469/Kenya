@@ -52,7 +52,7 @@ public class AdvertyinfoActivity extends BaseActivity {
     Spinner spinner;
     private String price;
     private int type = 0;
-    boolean img;
+    boolean img = true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -117,6 +117,7 @@ public class AdvertyinfoActivity extends BaseActivity {
 
                                 @Override
                                 public void onResponse(String response, int id) {
+                                    Log.d("kang", "1111111111111111" + response);
                                     log(response);
                                     toast("加载成功");
                                     try {

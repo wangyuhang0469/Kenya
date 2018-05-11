@@ -56,7 +56,6 @@ public class MyHusbandryFragment extends BaseFragment {
 
     private String keyword = "不限";
 
-
     private int cpageNum = 1;
 
     private MyHusbandryAdapter myHusbandryAdapter;

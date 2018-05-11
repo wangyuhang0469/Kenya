@@ -56,8 +56,8 @@
                 <EditText
                     android:id="@+id/adverty_info_work_name"
                     style="@style/edit_base2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
                     android:layout_marginLeft="80px"
                     android:hint="@string/waiterss" />
             </com.zhy.autolayout.AutoLinearLayout>
@@ -74,11 +74,13 @@
                 <EditText
                     android:id="@+id/adverty_info_work_money"
                     style="@style/edit_base2"
-                    android:layout_width="wrap_content"
+                    android:layout_width="900px"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="80px"
                     android:layout_toRightOf="@+id/adverty_yuexin"
-                    android:hint="5000-8000元" />
+                    android:digits="1234567890-"
+                    android:hint="5000-8000元"
+                    android:inputType="numberDecimal" />
 
                 <ImageView
                     android:id="@+id/adverty_info_choose"
@@ -139,8 +141,8 @@
                 <EditText
                     android:id="@+id/adverty_info_company_name"
                     style="@style/edit_base2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
                     android:layout_marginLeft="80px"
                     android:hint="@string/please_enter_the_company_name." />
             </com.zhy.autolayout.AutoLinearLayout>
@@ -156,8 +158,8 @@
                 <EditText
                     android:id="@+id/adverty_info_company_phone"
                     style="@style/edit_base2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
                     android:layout_marginLeft="80px"
                     android:hint="@string/please_enter_your_contact_number."
                     android:inputType="number|numberDecimal" />
@@ -182,7 +184,7 @@
                 <EditText
                     android:id="@+id/adverty_info_work_quiret"
                     style="@style/edit_base2"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/advery_info_vacancy"
                     android:layout_margin="10px"

@@ -111,7 +111,7 @@
                     <TextView
                         style="@style/my_center_tv"
                         android:layout_toRightOf="@id/my_center_infor"
-                        android:text="我发布的信息" />
+                        android:text="@string/my_post_history" />
 
                     <ImageView
                         style="@style/my_center_inter"

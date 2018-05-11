@@ -6,7 +6,6 @@
     <!--<string name="login">login</string>-->
     <!--<string name="next">Next</string>-->
     <string name="sure">Sure</string>
-
     <!--login 登录-->
     <string name="login">Login</string>
     <!--注册-->
@@ -38,7 +37,8 @@
     <string name="Please_select_a_type">Please select a type</string>
     <string name="Project_experience_strong_communication_skill_nice_personality">Project experience, strong communication skill, nice personality.</string>
     <string name="about_us">About Us</string>
-    <string name="contant_us">Contact Us:</string>
+    <string name="contant_us">Contact Us</string>
+    <string name="contant_us2">Contact Us:</string>
     <string name="job_requirements">Job Requirements</string>
     <string name="job_information">Job Information</string>
     <string name="recruitment_information">Recruitment Information</string>
@@ -52,10 +52,10 @@
     <string name="no_experience">No Experience</string>
     <string name="recent_graduate">Recent Graduate</string>
     <string name="one_year_below">One Year Below</string>
-    <string name="one_to_three_years">One To Three Years</string>
-    <string name="three_to_five_years">Three To Five Years</string>
-    <string name="five_to_ten_years">Five To Ten Years</string>
-    <string name="ten_years_and_above">Ten Years And Above</string>
+    <string name="one_to_three_years">1-3 Years</string>
+    <string name="three_to_five_years">3-5 Years</string>
+    <string name="five_to_ten_years">5-10 Years</string>
+    <string name="ten_years_and_above">10 Years And Above</string>
     <string name="title_please_enter_your_topic">Title (Topic) Please Enter Your Topic</string>
     <string name="topic">Topic</string>
     <string name="please_choose_the_type_of_hoose_e.g._one_bedroom">Please Choose The Type Of House  e.g.One Bedroom</string>
@@ -197,7 +197,7 @@
     <!--<string name="domestic_services">生活服务</string>-->
     <string name="search_tool">Search Tool</string>
     <string name="enter_your_searcff">Enter Your Searcff</string>
-    <string name="call">Calls</string>
+    <string name="call">CALL</string>
     <string name="job_application">Job Application</string>
     <string name="workers_recruitment">Workes Recruitment</string>
     <string name="car_washer">Car Washer</string>

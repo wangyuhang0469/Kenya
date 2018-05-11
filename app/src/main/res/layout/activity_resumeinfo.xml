@@ -175,21 +175,21 @@
                         android:gravity="center"
                         android:orientation="vertical">
 
-                        <EditText
+                        <TextView
                             android:id="@+id/resume_tv_recm"
                             style="@style/edit_base2"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:gravity="center"
                             android:hint="@string/personal_introduction"
-                            android:textColorHint="@color/textBlack2"
-                            android:visibility="gone" />
+                            android:textColorHint="@color/textBlack2" />
 
                         <TextView
                             android:id="@+id/resume_tv_recm_choose"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="请输入" />
+                            android:text="请输入"
+                            android:visibility="gone" />
                     </com.zhy.autolayout.AutoLinearLayout>
 
                     <View
@@ -210,9 +210,9 @@
                             android:id="@+id/spinner"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="36px"
                             android:layout_toRightOf="@+id/adverty_info_work_time"
                             android:background="#00000000"
+                            android:gravity="center"
                             android:spinnerMode="dialog" />
 
                         <TextView

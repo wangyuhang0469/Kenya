@@ -36,9 +36,9 @@ public class JobDetailActivity extends BaseActivity {
         company = (Company) getIntent().getExtras().getSerializable("company");
         jobDetailJobtype.setText(company.getCompanystation());
         if (company.getCompanystationsalary().equals("-1")) {
-            jobDetailPay.setText("月薪:面议");
+            jobDetailPay.setText(getResources().getString(R.string.monthly_salary) + ":" + getResources().getString(R.string.salary));
         } else {
-            jobDetailPay.setText("月薪:" + company.getCompanystationsalary() + "/月");
+            jobDetailPay.setText(getResources().getString(R.string.monthly_salary) + ":" + company.getCompanystationsalary() + "/" + getResources().getString(R.string.month));
         }
         jobDetailDesc.setText(company.getCompanystationdesc());
         jobDetailPersonName.setText(company.getCompanyname());

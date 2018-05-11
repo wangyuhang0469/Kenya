@@ -38,6 +38,7 @@ import com.example.administrator.kenya.constants.AppConstants;
 import com.example.administrator.kenya.interfaces.OnPersonalIntroductionsListener;
 import com.example.administrator.kenya.ui.city.job.DatePickerDialog;
 import com.example.administrator.kenya.ui.city.job.OnBooleanListener;
+import com.example.administrator.kenya.ui.main.LoadingDialog;
 import com.example.administrator.kenya.ui.main.PersonalIntroductionsDialog;
 import com.example.administrator.kenya.utils.DateUtil;
 import com.example.administrator.kenya.view.RoundImageView;
@@ -67,7 +68,6 @@ import top.zibin.luban.Luban;
 import top.zibin.luban.OnCompressListener;
 
 public class ResumeinfoActivity extends BaseActivity implements View.OnClickListener, PopupWindow.OnDismissListener {
-
     @Bind(R.id.pick_time)
     AutoLinearLayout pickTime;
     @Bind(R.id.resume_time_birday)
@@ -101,7 +101,7 @@ public class ResumeinfoActivity extends BaseActivity implements View.OnClickList
     @Bind(R.id.resume_info_jobwant)
     EditText resumeInfoJobwant;
     @Bind(R.id.resume_tv_recm)
-    EditText resumeTvRecm;
+    TextView resumeTvRecm;
     @Bind(R.id.resume_info_jobname)
     EditText resumeInfoJobname;
     @Bind(R.id.spinner)
@@ -124,12 +124,15 @@ public class ResumeinfoActivity extends BaseActivity implements View.OnClickList
 
     private String s;
     private String sexvalue;
-    private User user = User.getInstance();
+    private User user;
+    private String contentvalue;
+    private LoadingDialog loadingDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_resumeinfo);
+        user = User.getInstance();
         resumeTvRecm.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
@@ -154,9 +157,10 @@ public class ResumeinfoActivity extends BaseActivity implements View.OnClickList
         spinner.setAdapter(adapter);
         resumeInfoJobname.setText(user.getUserName());
         resumeInfoPhone.setText(user.getUserPhonenumber());
-        if (user.getUserPortrait().equals("")) {
-
+        if (user.getUserPortrait().isEmpty() || user.getUserPortrait().equals("null")) {
         } else {
+            loadingDialog = new LoadingDialog(this);
+            loadingDialog.show();
             upload(AppConstants.BASE_URL + User.getInstance().getUserPortrait());
         }
     }
@@ -175,10 +179,10 @@ public class ResumeinfoActivity extends BaseActivity implements View.OnClickList
                 personalIntroductionsDialog.setOnPersonalIntroductionsListener(new OnPersonalIntroductionsListener() {
                     @Override
                     public void success(String content) {
-                        resumeTvRecmChoose.setText(content);
+                        contentvalue = content;
+                        resumeTvRecm.setText(getResources().getString(R.string.finish));
                     }
                 });
-                //  personalIntroductionsDialog.getWindow().setGravity(Gravity.BOTTOM);
                 personalIntroductionsDialog.show();
                 break;
             case R.id.ruseme_work_time:
@@ -199,7 +203,7 @@ public class ResumeinfoActivity extends BaseActivity implements View.OnClickList
                     toast("请输入手机号");
                 } else if (resumeTimeBirday.getText().length() == 0) {
                     toast("请选择出生年月");
-                } else if (resumeTvRecmChoose.getText().length() == 0) {
+                } else if (contentvalue.length() == 0) {
                     toast("请输入个人介绍");
                 } else if (resumeTvTime.getText().length() == 0) {
                     toast("请选择开始工作时间");
@@ -226,7 +230,7 @@ public class ResumeinfoActivity extends BaseActivity implements View.OnClickList
                                             .addParams("phone", resumeInfoPhone.getText().toString())
                                             .addParams("birthday", resumeTimeBirday.getText().toString())
                                             .addParams("jointime", spinner.getSelectedItem().toString())
-                                            .addParams("persondesc", resumeTvRecm.getText().toString())
+                                            .addParams("persondesc", contentvalue)
                                             .addParams("userId", User.getInstance().getUserId())
                                             .build()
                                             .execute(new StringCallback() {
@@ -238,6 +242,7 @@ public class ResumeinfoActivity extends BaseActivity implements View.OnClickList
 
                                                 @Override
                                                 public void onResponse(String response, int id) {
+                                                    Log.d("kang", "11111111111" + response);
                                                     log(response);
                                                     toast("加载成功");
                                                     try {
@@ -289,6 +294,7 @@ public class ResumeinfoActivity extends BaseActivity implements View.OnClickList
             public void onResponse(Bitmap response, int id) {
                 resumeInfoPhoto.setImageBitmap(response);
                 s = saveImage("crop", response);
+                loadingDialog.dismiss();
             }
         });
     }
@@ -420,7 +426,6 @@ public class ResumeinfoActivity extends BaseActivity implements View.OnClickList
                     imageUriFromCamera);
             startActivityForResult(intent, GET_IMAGE_BY_CAMERA_U);
         }
-
     }
 
     public File createImagePathFile(Activity activity) {
