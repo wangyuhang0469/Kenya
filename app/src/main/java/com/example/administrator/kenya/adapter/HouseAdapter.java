@@ -32,7 +32,6 @@ public class HouseAdapter extends RecyclerView.Adapter<HouseAdapter.ViewHolder> 
         this.list = list;
         this.context = context;
     }
-
     public class ViewHolder extends RecyclerView.ViewHolder {
         TextView house_Title, house_square,house_address, house_home, house_price,call;
         ImageView house_image;
@@ -54,10 +53,8 @@ public class HouseAdapter extends RecyclerView.Adapter<HouseAdapter.ViewHolder> 
         View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_house, parent, false);
         return new ViewHolder(v);
     }
-
     @Override
     public void onBindViewHolder(final ViewHolder holder, final int position) {
-
         holder.house_Title.setText(list.get(position).getLeasename());
         holder.house_home.setText(list.get(position).getLeasehome());
         holder.house_square.setText(list.get(position).getLeasesquare()+"㎡");

@@ -37,8 +37,8 @@ public class JobActivity extends FragmentActivity {
 
     private void setupViewPager(ViewPager viewPager) {
         adapter = new MyViewPagerAdapter(getSupportFragmentManager(), this);
-        adapter.addFragment(new TabFragment1().newInstance("Page1"), getResources().getString(R.string.job_search));
-        adapter.addFragment(new TabFragment2().newInstance("Page2"), getResources().getString(R.string.job_recroitment));
+        adapter.addFragment(new TabFragment1().newInstance("Page1"), getResources().getString(R.string.job_information));
+        adapter.addFragment(new TabFragment2().newInstance("Page2"), getResources().getString(R.string.recruitment_information));
         viewPager.setAdapter(adapter);
         tabLayout.setupWithViewPager(viewPager);
     }

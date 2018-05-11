@@ -5,5 +5,5 @@ package com.example.administrator.kenya.interfaces;
  */
 
 public interface OnReUsernameSuccessfulListener {
-    void  success(String newUsername);
+    void success(String newUsername);
 }

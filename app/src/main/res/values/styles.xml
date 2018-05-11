@@ -49,8 +49,8 @@
         <item name="android:windowFrame">@null</item>
         <!-- 全屏 -->
         <item name="android:windowFullscreen">true</item>
-
     </style>
+
 
     <style name="btn">
         <item name="android:layout_width">1014px</item>
@@ -146,10 +146,9 @@
     </style>
     <!--简历详情字体的设置-->
     <style name="detail_tv">
-        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_width">416px</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_marginLeft">30px</item>
-        <item name="android:layout_marginTop">20px</item>
         <item name="android:textSize">46px</item>
         <item name="android:textColor">@color/textBlack3</item>
     </style>
@@ -157,9 +156,8 @@
     <style name="detail_tv_content">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:layout_marginTop">116px</item>
-        <item name="android:gravity">center_horizontal</item>
         <item name="android:textColor">@color/textBlack1</item>
+        <item name="android:textSize">46px</item>
     </style>
 
     <!--底部弹出对话框样式-->
@@ -181,5 +179,10 @@
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:textColor">@color/textBlack2</item>
+    </style>
+
+    <style name="take_photo_anim" parent="android:Animation">
+        <item name="android:windowEnterAnimation">@anim/pop_enter_anim</item>
+        <item name="android:windowExitAnimation">@anim/pop_exit_anim</item>
     </style>
 </resources>

@@ -61,7 +61,6 @@ public class ImageAdapter extends RecyclerView.Adapter<ImageAdapter.ViewHolder> 
                 .placeholder(R.drawable.img_loading2)
                 .centerCrop()
                 .into(holder.imageView);
-
 //                .asBitmap()
 //                .into(new SimpleTarget<Bitmap>() {
 //                    @Override

@@ -54,9 +54,9 @@
             <com.zhy.autolayout.AutoLinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="50px"
+                android:layout_marginBottom="47px"
                 android:layout_marginTop="56px"
-                android:gravity="center_vertical"
+                android:gravity="center"
                 android:paddingLeft="60px">
 
                 <ImageView
@@ -64,41 +64,57 @@
                     android:layout_width="248px"
                     android:layout_height="248px"
                     android:src="@drawable/avatar" />
-
-                <com.zhy.autolayout.AutoLinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:id="@+id/resume_detail_name"
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:layout_marginLeft="30px"
-                        android:gravity="center_vertical"
-                        android:text="王小花"
-                        android:textColor="@color/textBlack1"
-                        android:textSize="46px" />
-
-                    <TextView
-                        android:id="@+id/resume_detail_price"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="30px"
-                        android:layout_marginTop="10px"
-                        android:text="期望薪资:3000"
-                        android:textColor="@color/textBlack1"
-                        android:textSize="38px"
-                        android:visibility="gone" />
-                </com.zhy.autolayout.AutoLinearLayout>
-
             </com.zhy.autolayout.AutoLinearLayout>
-
 
             <com.zhy.autolayout.AutoLinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="276px"
-                android:orientation="vertical">
+                android:layout_height="wrap_content">
+
+                <TextView
+                    style="@style/detail_tv"
+                    android:text="@string/name" />
+
+                <TextView
+                    android:id="@+id/resume_detail_name"
+                    style="@style/detail_tv_content"
+                    android:text="王小花"
+                    android:textSize="46px" />
+            </com.zhy.autolayout.AutoLinearLayout>
+
+            <com.zhy.autolayout.AutoLinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="55px">
+
+                <TextView
+                    style="@style/detail_tv"
+                    android:text="@string/sex" />
+
+                <TextView
+                    style="@style/detail_tv_content"
+                    android:text=""
+                    android:textSize="46px" />
+            </com.zhy.autolayout.AutoLinearLayout>
+
+            <com.zhy.autolayout.AutoLinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="55px">
+
+                <TextView
+                    style="@style/detail_tv"
+                    android:text="@string/age" />
+
+                <TextView
+                    style="@style/detail_tv_content"
+                    android:text=""
+                    android:textSize="46px" />
+            </com.zhy.autolayout.AutoLinearLayout>
+
+            <com.zhy.autolayout.AutoLinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="55px">
 
                 <TextView
                     style="@style/detail_tv"
@@ -111,12 +127,11 @@
 
             </com.zhy.autolayout.AutoLinearLayout>
 
-            <include layout="@layout/line" />
 
             <com.zhy.autolayout.AutoLinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="276px"
-                android:orientation="vertical">
+                android:layout_height="wrap_content"
+                android:layout_marginTop="55px">
 
                 <TextView
                     style="@style/detail_tv"
@@ -129,35 +144,10 @@
 
             </com.zhy.autolayout.AutoLinearLayout>
 
-            <include layout="@layout/line" />
-
             <com.zhy.autolayout.AutoLinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="388px"
-                android:orientation="vertical">
-
-                <TextView
-                    style="@style/detail_tv"
-                    android:text="@string/personal_introduction" />
-
-                <TextView
-                    android:id="@+id/resume_detail_desc"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="30px"
-                    android:layout_marginRight="30px"
-                    android:layout_marginTop="30px"
-                    android:lineSpacingMultiplier="1.3"
-                    android:textColor="@color/textBlack2" />
-
-            </com.zhy.autolayout.AutoLinearLayout>
-
-            <include layout="@layout/line" />
-
-            <com.zhy.autolayout.AutoLinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="276px"
-                android:orientation="vertical">
+                android:layout_height="wrap_content"
+                android:layout_marginTop="55px">
 
                 <TextView
                     style="@style/detail_tv"
@@ -166,8 +156,60 @@
                 <TextView
                     android:id="@+id/resume_detail_phone"
                     style="@style/detail_tv_content"
-                    android:text="15931127537" />
+                    android:text="" />
             </com.zhy.autolayout.AutoLinearLayout>
+
+            <com.zhy.autolayout.AutoLinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="55px"
+                android:visibility="gone">
+
+                <TextView
+                    style="@style/detail_tv"
+                    android:text="期望薪资" />
+
+                <TextView
+                    android:id="@+id/resume_detail_price"
+                    style="@style/detail_tv_content"
+                    android:text="3000" />
+
+            </com.zhy.autolayout.AutoLinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="20px"
+                android:layout_marginTop="20px"
+                android:background="@color/base_bg" />
+
+            <TextView
+                style="@style/detail_tv"
+                android:layout_marginBottom="20px"
+                android:layout_marginTop="20px"
+                android:text="@string/personal_introduction"
+                android:textColor="@color/textgreen3" />
+
+            <include layout="@layout/line" />
+
+            <com.zhy.autolayout.AutoLinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/resume_detail_desc"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="20px"
+                    android:layout_marginLeft="30px"
+                    android:layout_marginRight="30px"
+                    android:layout_marginTop="20px"
+                    android:lineSpacingMultiplier="1.3"
+                    android:textColor="@color/textBlack2" />
+
+                <include layout="@layout/line" />
+            </com.zhy.autolayout.AutoLinearLayout>
+
         </com.zhy.autolayout.AutoLinearLayout>
 
     </com.example.administrator.kenya.view.MyObervalbleScrollView>

@@ -87,6 +87,7 @@ public class MyselfFragment extends BaseFragment {
         super.onDestroyView();
         ButterKnife.unbind(this);
     }
+
     @OnClick({R.id.myName, R.id.myAddress, R.id.myRelease, R.id.myCar, R.id.myPoint, R.id.myVallet, R.id.about_us})
     public void onViewClicked(View view) {
         switch (view.getId()) {

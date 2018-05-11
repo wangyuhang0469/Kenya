@@ -33,8 +33,6 @@ public class DatePickerDialog extends Dialog {
 
         void onCancel();
     }
-
-
     private static final class Params {
         private boolean shadow = true;
         private boolean canCancel = true;

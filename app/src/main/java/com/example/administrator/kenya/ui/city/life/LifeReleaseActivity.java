@@ -83,7 +83,6 @@ public class LifeReleaseActivity extends BaseActivity {
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, R.layout.spinner_simple, R.id.spinner_tv, types);
         adapter.setDropDownViewResource(R.layout.item_spinner);
         spinner.setAdapter(adapter);
-
         livename.requestFocus();
     }
 
@@ -161,7 +160,6 @@ public class LifeReleaseActivity extends BaseActivity {
                 finish();
                 break;
             case R.id.release:
-
                 if (spinner.getSelectedItem().toString().equals("请选择服务类型")) {
                     toast("请选择服务类型");
                 } else if (livename.getText().length() == 0) {
@@ -219,13 +217,27 @@ public class LifeReleaseActivity extends BaseActivity {
     }
 
     private void send(final LoadingDialog loadingDialog) {
+        String spinnervalue;
+        if (spinner.getSelectedItem().toString().equals("Cleaning Service")) {
+            spinnervalue = "保洁";
+        } else if (spinner.getSelectedItem().toString().equals("Moving Service")) {
+            spinnervalue = "搬家";
+        } else if (spinner.getSelectedItem().toString().equals("Repairing Services")) {
+            spinnervalue = "维修";
+        } else if (spinner.getSelectedItem().toString().equals("Recycle Items")) {
+            spinnervalue = "回收";
+        } else if (spinner.getSelectedItem().toString().equals("Others")) {
+            spinnervalue = "其他";
+        } else {
+            spinnervalue = spinner.getSelectedItem().toString();
+        }
         PostFormBuilder postFormBuilder = OkHttpUtils.post();
         for (int i = 0; i < compressFile.size(); i++) {
             postFormBuilder.addFile("files", compressFile.get(i).getName(), compressFile.get(i));
         }
         postFormBuilder.url(AppConstants.BASE_URL + "/kenya/Live/filesUpload")
                 .addParams("userid", User.getInstance().getUserId())
-                .addParams("livetype", spinner.getSelectedItem().toString())
+                .addParams("livetype", spinnervalue)
                 .addParams("livename", livename.getText().toString())
                 .addParams("livedesc", livedesc.getText().toString())
                 .addParams("liveuser", liveuser.getText().toString())

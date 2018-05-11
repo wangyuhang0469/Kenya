@@ -162,7 +162,6 @@ public class HusbandryReleaseActivity extends BaseActivity {
                 finish();
                 break;
             case R.id.release:
-
                 if (spinner.getSelectedItem().toString().equals("请选择类型")) {
                     toast("请选择类型");
                 } else if (framname.getText().length() == 0) {
@@ -221,15 +220,29 @@ public class HusbandryReleaseActivity extends BaseActivity {
     }
 
     private void send(final LoadingDialog loadingDialog) {
-
-
+        String apinnervalue;
+        if (spinner.getSelectedItem().toString().equals("Pets ＆ Seeds")) {
+            apinnervalue = "动植物种苗";
+        } else if (spinner.getSelectedItem().toString().equals("Crops")) {
+            apinnervalue = "农作物";
+        } else if (spinner.getSelectedItem().toString().equals("Livestock ＆ Poultry")) {
+            apinnervalue = "畜禽养殖";
+        } else if (spinner.getSelectedItem().toString().equals("Agricultural Machinery")) {
+            apinnervalue = "农机设备";
+        } else if (spinner.getSelectedItem().toString().equals("Pesticides ＆ Fertilizer")) {
+            apinnervalue = "农药肥料";
+        } else if (spinner.getSelectedItem().toString().equals("Others")) {
+            apinnervalue = "其他";
+        } else {
+            apinnervalue = spinner.getSelectedItem().toString();
+        }
         PostFormBuilder postFormBuilder = OkHttpUtils.post();
         for (int i = 0; i < compressFile.size(); i++) {
             postFormBuilder.addFile("files", compressFile.get(i).getName(), compressFile.get(i));
         }
         postFormBuilder.url(AppConstants.BASE_URL + "/kenya/Fram/insertfram")
                 .addParams("userid", User.getInstance().getUserId())
-                .addParams("framtype", spinner.getSelectedItem().toString())
+                .addParams("framtype", apinnervalue)
                 .addParams("framname", framname.getText().toString())
                 .addParams("framdesc", framdesc.getText().toString())
                 .addParams("framuser", framuser.getText().toString())

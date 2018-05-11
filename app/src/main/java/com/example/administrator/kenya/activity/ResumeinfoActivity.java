@@ -14,9 +14,11 @@ import android.os.Environment;
 import android.provider.MediaStore;
 import android.support.v4.content.FileProvider;
 import android.util.Log;
+import android.view.Display;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
@@ -33,8 +35,10 @@ import com.example.administrator.kenya.base.BaseActivity;
 import com.example.administrator.kenya.classes.Job;
 import com.example.administrator.kenya.classes.User;
 import com.example.administrator.kenya.constants.AppConstants;
+import com.example.administrator.kenya.interfaces.OnPersonalIntroductionsListener;
 import com.example.administrator.kenya.ui.city.job.DatePickerDialog;
 import com.example.administrator.kenya.ui.city.job.OnBooleanListener;
+import com.example.administrator.kenya.ui.main.PersonalIntroductionsDialog;
 import com.example.administrator.kenya.utils.DateUtil;
 import com.example.administrator.kenya.view.RoundImageView;
 import com.zhy.autolayout.AutoLinearLayout;
@@ -59,6 +63,8 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import okhttp3.Call;
+import top.zibin.luban.Luban;
+import top.zibin.luban.OnCompressListener;
 
 public class ResumeinfoActivity extends BaseActivity implements View.OnClickListener, PopupWindow.OnDismissListener {
 
@@ -105,7 +111,6 @@ public class ResumeinfoActivity extends BaseActivity implements View.OnClickList
     private Dialog dateDialog;
     private PopupWindow popupWindow;
 
-
     public final String USER_IMAGE_NAME = "image.png";
     public final String USER_CROP_IMAGE_NAME = "temporary.png";
     public Uri imageUriFromCamera;
@@ -149,11 +154,11 @@ public class ResumeinfoActivity extends BaseActivity implements View.OnClickList
         spinner.setAdapter(adapter);
         resumeInfoJobname.setText(user.getUserName());
         resumeInfoPhone.setText(user.getUserPhonenumber());
-        if (!User.getInstance().getUserPortrait().equals("")) {
-            upload(AppConstants.BASE_URL + User.getInstance().getUserPortrait());
-        } else {
-        }
+        if (user.getUserPortrait().equals("")) {
 
+        } else {
+            upload(AppConstants.BASE_URL + User.getInstance().getUserPortrait());
+        }
     }
 
     @OnClick({R.id.back, R.id.pick_time, R.id.resume_recm, R.id.ruseme_work_time, R.id.resume_info_photo, R.id.resume_info_detail, R.id.resume_info_men, R.id.resume_info_women})
@@ -166,6 +171,15 @@ public class ResumeinfoActivity extends BaseActivity implements View.OnClickList
                 showDateDialog(DateUtil.getDateForString("2000-01-01"), "A");
                 break;
             case R.id.resume_recm:
+                PersonalIntroductionsDialog personalIntroductionsDialog = new PersonalIntroductionsDialog(this);
+                personalIntroductionsDialog.setOnPersonalIntroductionsListener(new OnPersonalIntroductionsListener() {
+                    @Override
+                    public void success(String content) {
+                        resumeTvRecmChoose.setText(content);
+                    }
+                });
+                //  personalIntroductionsDialog.getWindow().setGravity(Gravity.BOTTOM);
+                personalIntroductionsDialog.show();
                 break;
             case R.id.ruseme_work_time:
                 break;
@@ -173,7 +187,7 @@ public class ResumeinfoActivity extends BaseActivity implements View.OnClickList
                 openPopupWindow(view);
                 break;
             case R.id.resume_info_detail:
-                if (s == null || s.length() == 0) {
+                if (resumeInfoPhoto == null) {
                     toast("请上传头像");
                 } else if (resumeInfoJobname.getText().length() == 0) {
                     toast("请输入姓名");
@@ -190,68 +204,65 @@ public class ResumeinfoActivity extends BaseActivity implements View.OnClickList
                 } else if (resumeTvTime.getText().length() == 0) {
                     toast("请选择开始工作时间");
                 } else {
-                    Log.d("kang", "aaaaaaaaaa" + s);
-//                    Luban.with(this)
-//                            .load(s)
-//                            .ignoreBy(150)
-//                            .setTargetDir(getExternalCacheDir().toString())
-//                            .setCompressListener(new OnCompressListener() {
-//                                @Override
-//                                public void onStart() {
-//                                }
-//
-//                                @Override
-//                                public void onSuccess(File file) {
-//                                    Log.d("kang", "BBBBBBBBBBBB" + file);
-//                                    s = String.valueOf(file);
-//                                    Log.d("kang", "CCCCCCCCCCCCC" + s);
-//                                }
-//
-//                                @Override
-//                                public void onError(Throwable e) {
-//                                }
-//                            }).launch();
-                    File f2 = new File(s);
-                    final PostFormBuilder postFormBuilder = OkHttpUtils.post()
-                            .addFile("logoFile", "tupian.png", f2);
-                    postFormBuilder.url(AppConstants.BASE_URL + "/kenya/jobSeeker/saveJobWant")
-                            .addParams("sex", sexvalue)
-                            .addParams("name", resumeInfoJobname.getText().toString())
-                            .addParams("jobwant", resumeInfoJobwant.getText().toString())
-                            .addParams("phone", resumeInfoPhone.getText().toString())
-                            .addParams("birthday", resumeTimeBirday.getText().toString())
-                            .addParams("jointime", resumeTvTime.getText().toString())
-                            .addParams("persondesc", resumeTvRecm.getText().toString())
-                            .addParams("userId", User.getInstance().getUserId())
-                            .build()
-                            .execute(new StringCallback() {
+                    Luban.with(this)
+                            .load(s)
+                            .ignoreBy(150)
+                            .setTargetDir(getExternalCacheDir().toString())
+                            .setCompressListener(new OnCompressListener() {
                                 @Override
-                                public void onError(Call call, Exception e, int id) {
-                                    e.printStackTrace();
-                                    toast("加载失败");
+                                public void onStart() {
                                 }
 
                                 @Override
-                                public void onResponse(String response, int id) {
-                                    log(response);
-                                    toast("加载成功");
-                                    try {
-                                        JSONObject jsonObject = new JSONObject(response);
-                                        if (jsonObject.getString("code").equals("000")) {
-                                            Job job = JSON.parseObject(jsonObject.getString("data"), Job.class);
-                                            Bundle bundle = new Bundle();
-                                            bundle.putSerializable("job", job);
-                                            toast("发布成功");
-                                            startActivity(ResumeDetilActivity.class, bundle);
-                                            finish();
-                                        } else {
-                                            toast(jsonObject.getString("message"));
-                                        }
-                                    } catch (JSONException e) {
-                                        e.printStackTrace();
-                                    }
+                                public void onSuccess(File file) {
+                                    s = String.valueOf(file);
+                                    File f2 = new File(s);
+                                    final PostFormBuilder postFormBuilder = OkHttpUtils.post()
+                                            .addFile("logoFile", "tupian.png", f2);
+                                    postFormBuilder.url(AppConstants.BASE_URL + "/kenya/jobSeeker/saveJobWant")
+                                            .addParams("sex", sexvalue)
+                                            .addParams("name", resumeInfoJobname.getText().toString())
+                                            .addParams("jobwant", resumeInfoJobwant.getText().toString())
+                                            .addParams("phone", resumeInfoPhone.getText().toString())
+                                            .addParams("birthday", resumeTimeBirday.getText().toString())
+                                            .addParams("jointime", spinner.getSelectedItem().toString())
+                                            .addParams("persondesc", resumeTvRecm.getText().toString())
+                                            .addParams("userId", User.getInstance().getUserId())
+                                            .build()
+                                            .execute(new StringCallback() {
+                                                @Override
+                                                public void onError(Call call, Exception e, int id) {
+                                                    e.printStackTrace();
+                                                    toast("加载失败");
+                                                }
+
+                                                @Override
+                                                public void onResponse(String response, int id) {
+                                                    log(response);
+                                                    toast("加载成功");
+                                                    try {
+                                                        JSONObject jsonObject = new JSONObject(response);
+                                                        if (jsonObject.getString("code").equals("000")) {
+                                                            Job job = JSON.parseObject(jsonObject.getString("data"), Job.class);
+                                                            Bundle bundle = new Bundle();
+                                                            bundle.putSerializable("job", job);
+                                                            toast("发布成功");
+                                                            startActivity(ResumeDetilActivity.class, bundle);
+                                                            finish();
+                                                        } else {
+                                                            toast(jsonObject.getString("message"));
+                                                        }
+                                                    } catch (JSONException e) {
+                                                        e.printStackTrace();
+                                                    }
+                                                }
+                                            });
                                 }
-                            });
+
+                                @Override
+                                public void onError(Throwable e) {
+                                }
+                            }).launch();
                 }
                 break;
             case R.id.resume_info_men:
@@ -268,7 +279,7 @@ public class ResumeinfoActivity extends BaseActivity implements View.OnClickList
     }
 
     /*加载图片*/
-    public void upload(String url) {
+    public void upload(final String url) {
         OkHttpUtils.get().url(url).build().execute(new BitmapCallback() {
             @Override
             public void onError(Call call, Exception e, int id) {
@@ -277,6 +288,7 @@ public class ResumeinfoActivity extends BaseActivity implements View.OnClickList
             @Override
             public void onResponse(Bitmap response, int id) {
                 resumeInfoPhoto.setImageBitmap(response);
+                s = saveImage("crop", response);
             }
         });
     }
@@ -395,7 +407,6 @@ public class ResumeinfoActivity extends BaseActivity implements View.OnClickList
                         imageUriFromCamera = FileProvider.getUriForFile(ResumeinfoActivity.this,
                                 "com.example.administrator.kenya.fileprovider", photoFile);
                         intent.putExtra(MediaStore.EXTRA_OUTPUT, imageUriFromCamera);
-
                         startActivityForResult(intent, GET_IMAGE_BY_CAMERA_U);
                     } else {
                         Toast.makeText(ResumeinfoActivity.this, "拍照无法正常使用", Toast.LENGTH_SHORT).show();

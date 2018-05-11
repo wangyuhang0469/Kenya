@@ -29,7 +29,6 @@
                 android:layout_height="150px"
                 android:background="#00000000"
                 android:spinnerMode="dialog" />
-
             <include layout="@layout/line" />
 
 

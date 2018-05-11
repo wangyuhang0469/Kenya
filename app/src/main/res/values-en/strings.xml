@@ -33,13 +33,18 @@
     <string name="acquire">Acquire</string>
     <string name="enter_your_target_positions">Enter your target positions</string>
     <string name="my_release">My Release</string>
-    <string name="job_intension">Job Intension</string>
+    <string name="job_intension">Job Intension:</string>
     <string name="goods_detail">Goods Detail</string>
     <string name="Please_select_a_type">Please select a type</string>
     <string name="Project_experience_strong_communication_skill_nice_personality">Project experience, strong communication skill, nice personality.</string>
     <string name="about_us">About Us</string>
-    <string name="contant_us">Contact Us</string>
+    <string name="contant_us">Contact Us:</string>
     <string name="job_requirements">Job Requirements</string>
+    <string name="job_information">Job Information</string>
+    <string name="recruitment_information">Recruitment Information</string>
+    <string name="name">Name:</string>
+    <string name="sex">Sex:</string>
+    <string name="age">Age:</string>
 
 
     <!--工作年限-->
@@ -52,6 +57,7 @@
     <string name="five_to_ten_years">Five To Ten Years</string>
     <string name="ten_years_and_above">Ten Years And Above</string>
     <string name="title_please_enter_your_topic">Title (Topic) Please Enter Your Topic</string>
+    <string name="topic">Topic</string>
     <string name="please_choose_the_type_of_hoose_e.g._one_bedroom">Please Choose The Type Of House  e.g.One Bedroom</string>
     <string name="enter_the_size_of_house_in_square_metres">Enter The Size Of House In Square Metres</string>
     <string name="enter_the_exact_location">Enter The Exact Location(Of The House)</string>

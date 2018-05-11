@@ -36,10 +36,10 @@
     <com.example.administrator.kenya.view.MyObervalbleScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_above="@+id/adverty_info_detail"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_below="@+id/person_info"
-        android:layout_marginBottom="200px">
+        android:layout_below="@+id/person_info">
 
         <com.zhy.autolayout.AutoLinearLayout
             android:layout_width="match_parent"
@@ -165,7 +165,7 @@
 
             <include layout="@layout/line" />
 
-            <com.zhy.autolayout.AutoLinearLayout
+            <com.zhy.autolayout.AutoRelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center_vertical"
@@ -174,7 +174,9 @@
                 android:paddingLeft="30px">
 
                 <TextView
+                    android:id="@+id/advery_info_vacancy"
                     style="@style/adverty_info_tv"
+                    android:layout_marginTop="30px"
                     android:text="@string/description_of_job_vacancy" />
 
                 <EditText
@@ -182,9 +184,12 @@
                     style="@style/edit_base2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_below="@+id/advery_info_vacancy"
+                    android:layout_margin="10px"
                     android:layout_marginLeft="80px"
-                    android:hint="@string/Project_experience_strong_communication_skill_nice_personality" />
-            </com.zhy.autolayout.AutoLinearLayout>
+                    android:hint="@string/Project_experience_strong_communication_skill_nice_personality"
+                    android:lineSpacingMultiplier="1.3" />
+            </com.zhy.autolayout.AutoRelativeLayout>
 
             <include layout="@layout/line" />
         </com.zhy.autolayout.AutoLinearLayout>

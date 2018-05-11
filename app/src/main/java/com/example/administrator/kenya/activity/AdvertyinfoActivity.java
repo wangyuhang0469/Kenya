@@ -117,7 +117,6 @@ public class AdvertyinfoActivity extends BaseActivity {
 
                                 @Override
                                 public void onResponse(String response, int id) {
-                                    Log.d("kang", "hhhhhhh" + response);
                                     log(response);
                                     toast("加载成功");
                                     try {
