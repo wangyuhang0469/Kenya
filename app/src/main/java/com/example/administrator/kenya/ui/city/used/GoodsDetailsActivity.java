@@ -56,7 +56,6 @@ public class GoodsDetailsActivity extends BaseActivity {
 
 
         initBanner(goods.getImageUrlList());
-
         goodsname.setText(goods.getGoodsname());
         goodsprice.setText("$" + goods.getGoodsprice());
         goodsdesc.setText(goods.getGoodsdesc());

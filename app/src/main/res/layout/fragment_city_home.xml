@@ -23,6 +23,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="480px"
                 app:delay_time="3000"
+                app:image_scale_type="fit_xy"
                 app:indicator_drawable_selected="@drawable/bg4dp_theme_btn"
                 app:indicator_height="6.5dp"
                 app:indicator_margin="3dp"

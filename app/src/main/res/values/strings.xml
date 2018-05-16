@@ -26,6 +26,7 @@
     <!--login 登录-->
     <string name="login">登录</string>
 
+
     <!--注册-->
     <string name="language">语言</string>
     <string name="registration">注册</string>
@@ -63,6 +64,11 @@
     <string name="name">姓名:</string>
     <string name="sex">性别:</string>
     <string name="age">年龄:</string>
+    <string name="company_information">公司信息</string>
+    <string name="program_introduction">项目简介</string>
+    <string name="location">位置</string>
+    <string name="investment_amounts">投资额度</string>
+    <string name="industry">所属行业</string>
 
 
     <!--工作年限-->
@@ -95,7 +101,7 @@
     <string name="others">其他</string>
     <string name="job_position">发布职位</string>
     <string name="sales_persons">销售代表</string>
-    <string name="monthly_salary">月               薪</string>
+    <string name="monthly_salary">月\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020薪</string>
     <string name="salary">面议</string>
     <string name="description_of_job_vacancy">职位描述</string>
 

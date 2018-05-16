@@ -80,7 +80,7 @@
                 android:layout_marginBottom="26px"
                 android:layout_marginLeft="30px"
                 android:layout_marginTop="26px"
-                android:text="项目简介" />
+                android:text="@string/program_introduction" />
 
             <View
                 android:layout_width="match_parent"

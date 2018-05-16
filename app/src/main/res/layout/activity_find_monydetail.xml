@@ -73,7 +73,7 @@
                 android:layout_marginLeft="30px"
                 android:layout_marginTop="22px"
                 android:gravity="center"
-                android:text="公司信息" />
+                android:text="@string/company_information" />
 
             <View
                 android:layout_width="match_parent"

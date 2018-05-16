@@ -96,7 +96,6 @@ public class LifeActivity extends BaseActivity {
         recyclerView.setAdapter(myAdapter);
         pullToRefreshLayout.setCanRefresh(false);
         pullToRefreshLayout.setCanLoadMore(false);
-
         pullToRefreshLayout.setRefreshListener(new BaseRefreshListener() {
             @Override
             public void refresh() {

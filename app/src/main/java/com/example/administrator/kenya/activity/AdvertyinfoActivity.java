@@ -68,7 +68,7 @@ public class AdvertyinfoActivity extends BaseActivity {
         types.add(getResources().getString(R.string.three_to_five_years));
         types.add(getResources().getString(R.string.five_to_ten_years));
         types.add(getResources().getString(R.string.ten_years_and_above));
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, R.layout.spinner_simple, R.id.spinner_tv, types);
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, R.layout.spinner_simpleadverty, R.id.spinner_tv, types);
         adapter.setDropDownViewResource(R.layout.item_spinner);
         spinner.setAdapter(adapter);
     }

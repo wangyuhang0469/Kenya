@@ -38,15 +38,16 @@
 
     <com.example.administrator.kenya.view.MyObervalbleScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="180px"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/job_detail_call"
         android:layout_marginTop="144px"
-        android:fillViewport="true"
+        android:background="@color/base_bg"
+        android:fillViewport="false"
         android:paddingBottom="20px">
 
         <com.zhy.autolayout.AutoLinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:background="@color/white"
             android:orientation="vertical">
 
@@ -55,6 +56,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="250px"
                 android:layout_below="@id/job_deyail_title"
+                android:background="@color/white"
                 android:paddingLeft="30px">
 
                 <TextView
@@ -100,6 +102,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/job_detail_line_up"
                 android:layout_marginTop="20px"
+                android:background="@color/white"
                 android:gravity="center_horizontal"
                 android:text="@string/job_requirements"
                 android:textSize="38px" />
@@ -113,6 +116,7 @@
                 android:layout_marginLeft="30px"
                 android:layout_marginRight="30px"
                 android:layout_marginTop="50px"
+                android:background="@color/white"
                 android:lineSpacingMultiplier="1.3"
                 android:text="分撒娇"
                 android:textColor="@color/textBlack2" />
@@ -122,6 +126,7 @@
     </com.example.administrator.kenya.view.MyObervalbleScrollView>
 
     <com.zhy.autolayout.AutoRelativeLayout
+        android:id="@+id/job_detail_call"
         android:layout_width="match_parent"
         android:layout_height="180px"
         android:layout_alignParentBottom="true"

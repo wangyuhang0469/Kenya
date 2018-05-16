@@ -34,7 +34,7 @@ public class FundsAdapter extends RecyclerView.Adapter<FundsAdapter.ViewHolder> 
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        TextView funds_Title, funds_phone, funds_price,call;
+        TextView funds_Title, funds_phone, funds_price, call;
         ImageView funds_image;
 
         public ViewHolder(View itemView) {
@@ -58,14 +58,14 @@ public class FundsAdapter extends RecyclerView.Adapter<FundsAdapter.ViewHolder> 
 
         holder.funds_Title.setText(list.get(position).getFundsname());
         holder.funds_phone.setText("手机：" + list.get(position).getFundsphone());
-        if (list.get(position).getFundsprice() != null && !list.get(position).getFundsprice().equals("") )
+        if (list.get(position).getFundsprice() != null && !list.get(position).getFundsprice().equals(""))
             holder.funds_price.setText("$" + list.get(position).getFundsprice());
 //        holder.funds_image.setTag(list.get(position).getFundsimgs());
 
         holder.call.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                new CallPhoneDialog(context,list.get(position).getFundsphone()).show();
+                new CallPhoneDialog(context, list.get(position).getFundsphone()).show();
             }
         });
 

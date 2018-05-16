@@ -34,12 +34,19 @@ public class NewsWebActivity extends BaseActivity {
         setContentView(R.layout.activity_news_web);
         ButterKnife.bind(this);
         title.setText(getResources().getString(R.string.news_details));
-        news = (News) getIntent().getExtras().getSerializable("news");
         initdata();
     }
 
     public void initdata() {
-        loadView(AppConstants.BASE_URL + news.getNewstext());
+        String content = getIntent().getExtras().getString("content");
+        if (content != null && !content.equals("")) {
+            loadView(AppConstants.BASE_URL + content);
+            newsWeb.loadUrl(AppConstants.BASE_URL + content);
+        } else {
+            news = (News) getIntent().getExtras().getSerializable("news");
+            loadView(AppConstants.BASE_URL + news.getNewstext());
+            newsWeb.loadUrl(AppConstants.BASE_URL + news.getNewstext());
+        }
         newsWebActivity = this;
         newsWeb.getSettings().setDefaultTextEncodingName("GB2312");
         WebSettings settings = newsWeb.getSettings();
@@ -48,7 +55,6 @@ public class NewsWebActivity extends BaseActivity {
         settings.setCacheMode(WebSettings.LOAD_NO_CACHE);
         settings.setAllowFileAccess(true);
         settings.setAppCacheEnabled(true);
-        newsWeb.loadUrl(AppConstants.BASE_URL + news.getNewstext());
     }
 
     private void loadView(String urlStr) {

@@ -1,27 +1,28 @@
 package com.example.administrator.kenya.ui.city;
 
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.alibaba.fastjson.JSON;
-import com.bumptech.glide.Glide;
 import com.example.administrator.kenya.R;
 import com.example.administrator.kenya.base.BaseFragment;
+import com.example.administrator.kenya.classes.Banners;
+import com.example.administrator.kenya.classes.Funds;
 import com.example.administrator.kenya.classes.News;
+import com.example.administrator.kenya.classes.Project2;
 import com.example.administrator.kenya.constants.AppConstants;
 import com.example.administrator.kenya.interfaces.BannerItemClickListener;
 import com.example.administrator.kenya.tools.GlideImageLoader;
 import com.example.administrator.kenya.ui.city.findmoney.FindMoneyActivity;
+import com.example.administrator.kenya.ui.city.findmoney.FindMonydetailActivity;
+import com.example.administrator.kenya.ui.city.findmoney.FindProjectdetailActivity;
 import com.example.administrator.kenya.ui.city.friends.FriendsActivity;
 import com.example.administrator.kenya.ui.city.house.HouseActivity;
 import com.example.administrator.kenya.ui.city.husbandry.HusbandryActivity;
@@ -33,7 +34,6 @@ import com.example.administrator.kenya.ui.city.used.UsedActivity;
 import com.example.administrator.kenya.view.TextBannerView;
 import com.youth.banner.Banner;
 import com.youth.banner.listener.OnBannerListener;
-import com.youth.banner.loader.ImageLoader;
 import com.zhy.http.okhttp.OkHttpUtils;
 import com.zhy.http.okhttp.builder.PostFormBuilder;
 import com.zhy.http.okhttp.callback.StringCallback;
@@ -53,7 +53,6 @@ import okhttp3.Call;
  * A simple {@link Fragment} subclass.
  */
 public class CityHomeFragment extends BaseFragment {
-
     @Bind(R.id.banner)
     Banner banner;
     @Bind(R.id.back)
@@ -64,38 +63,89 @@ public class CityHomeFragment extends BaseFragment {
     TextBannerView marqueeView1;
     private PostFormBuilder postFormBuilder;
     private StringCallback StringCallback;
-
     List<News> newsList = new ArrayList<>();
     List<String> data;
+
+    //轮播图
+    List<Banners> BannersList = new ArrayList<>();
+    private PostFormBuilder postFormBuilderbaners;
+    List<String> imageList;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_city_home, container, false);
         ButterKnife.bind(this, view);
-
         title.setText(getResources().getString(R.string.same_city));
         back.setVisibility(View.GONE);
-
         initOKHttp();
         postFormBuilder.addParams("page", 1 + "").build().execute(StringCallback);
-
-        List<String> imageList = new ArrayList<>();
-        imageList.add("http://img011.hc360.cn/k1/M0B/24/D0/wKhQwFdjdHSER6NQAAAAADZsFuo401.jpg");
-        imageList.add("https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=2351109249,2100272265&fm=27&gp=0.jpg");
-        imageList.add("http://pic.90sjimg.com/design/00/14/38/18/5581393a30663.jpg");
-
+        imageList = new ArrayList<>();
         data = new ArrayList<>();
-
-        initBanner(imageList);
+        initOkhttpBanner();
+        postFormBuilderbaners.addParams("page", 1 + "").build().execute(StringCallback);
         return view;
     }
+
     private void initBanner(List<String> imageUrlList) {
         banner.setImages(imageUrlList).setImageLoader(new GlideImageLoader()).start();
         banner.setOnBannerListener(new OnBannerListener() {
             @Override
             public void OnBannerClick(int position) {
-                toast("点击了" + (position + 1));
+                if (BannersList.get(position).getCategory().equals("funds-1")) {
+                    OkHttpUtils.get().url(AppConstants.BASE_URL + "/kenya/Funds/selectById?fundsid=" + BannersList.get(position).getCategoryId()).build().execute(new StringCallback() {
+                        @Override
+                        public void onError(Call call, Exception e, int id) {
+                            toast("资金轮播图加载失败");
+                        }
+
+                        @Override
+                        public void onResponse(String response, int id) {
+                            try {
+                                JSONObject jsonObject = new JSONObject(response);
+                                if (jsonObject.getString("code").equals("000")) {
+                                    Funds funds = JSON.parseObject(jsonObject.getString("result"), Funds.class);
+                                    Bundle bundle = new Bundle();
+                                    bundle.putSerializable("funds", funds);
+                                    startActivity(FindMonydetailActivity.class, bundle);
+                                } else {
+                                    toast(jsonObject.getString("message"));
+                                }
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }
+                        }
+                    });
+                } else if (BannersList.get(position).getCategory().equals("project-1")) {
+                    OkHttpUtils.get().url(AppConstants.BASE_URL + "/kenya/Project/selectById?projectid=" + BannersList.get(position).getCategoryId()).build().execute(new StringCallback() {
+                        @Override
+                        public void onError(Call call, Exception e, int id) {
+                            toast("项目轮播图加载失败");
+                        }
+
+                        @Override
+                        public void onResponse(String response, int id) {
+                            try {
+                                JSONObject jsonObject = new JSONObject(response);
+                                if (jsonObject.getString("code").equals("000")) {
+                                    Project2 project2 = JSON.parseObject(jsonObject.getString("result"), Project2.class);
+                                    Bundle bundle = new Bundle();
+                                    bundle.putSerializable("project2", project2);
+                                    startActivity(FindProjectdetailActivity.class, bundle);
+                                } else {
+                                    toast(jsonObject.getString("message"));
+                                }
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }
+                        }
+                    });
+                } else if (BannersList.get(position).getCategory().equals("url")) {
+                    Bundle bundle = new Bundle();
+                    bundle.putString("content", BannersList.get(position).getContent());
+                    startActivity(NewsWebActivity.class, bundle);
+                } else {
+                }
             }
         });
     }
@@ -177,15 +227,56 @@ public class CityHomeFragment extends BaseFragment {
                 marqueeView1.setItemOnClickListener(new BannerItemClickListener() {
                     @Override
                     public void onItemClick(String data, int position) {
-                        // Toast.makeText(getActivity(), String.valueOf(position) + "》》》》" + data, Toast.LENGTH_SHORT).show();
                         Bundle bundle = new Bundle();
                         bundle.putSerializable("news", newsList.get(position));
-                        Intent intent = new Intent(getActivity(), NewsWebActivity.class);
-                        intent.putExtras(bundle);
-                        startActivity(intent);
+                        startActivity(NewsWebActivity.class, bundle);
                     }
                 });
             }
         };
+    }
+
+    private void initOkhttpBanner() {
+        postFormBuilderbaners = OkHttpUtils.post()
+                .url(AppConstants.BASE_URL + "/kenya/content/pageQuery")
+                .addParams("page", 1 + "");
+        StringCallback = new StringCallback() {
+            @Override
+            public void onError(Call call, Exception e, int id) {
+                toast("加载失败");
+            }
+
+            @Override
+            public void onResponse(String response, int id) {
+                List<Banners> addList = null;
+                try {
+                    JSONObject jsonObject = new JSONObject(response);
+                    if (jsonObject.getString("code").equals("000")) {
+                    } else {
+                    }
+                    response = jsonObject.getString("rows");
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+                addList = JSON.parseArray(response, Banners.class);
+                BannersList.addAll(addList);
+                for (int i = 0; i < addList.size(); i++) {
+                    imageList.add(AppConstants.BASE_URL + addList.get(i).getPic());
+                }
+                initBanner(imageList);
+            }
+        };
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        marqueeView1.stopViewAnimator();
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        marqueeView1.startViewAnimator();
     }
 }

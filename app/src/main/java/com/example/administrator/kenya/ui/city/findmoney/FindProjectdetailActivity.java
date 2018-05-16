@@ -54,9 +54,9 @@ public class FindProjectdetailActivity extends BaseActivity {
         project2 = (Project2) getIntent().getExtras().getSerializable("project2");
         initBanner(project2.getProjectImageUrlList());
         projectDetailName.setText(project2.getProjectname());
-        projectDetailPrice.setText("投资额度：" + project2.getProjectprice());
-        projectDetailType.setText("所属行业：" + project2.getProjecttype());
-        projectDetailAddress.setText("位置：" + project2.getProjectaddress());
+        projectDetailPrice.setText(getResources().getString(R.string.investment_amounts) + project2.getProjectprice());
+        projectDetailType.setText(getResources().getString(R.string.industry) + project2.getProjecttype());
+        projectDetailAddress.setText(getResources().getString(R.string.location) + project2.getProjectaddress());
         projectDetailDesc.setText(project2.getProjectdesc());
         porjectUser.setText(project2.getProjectuser());
         projectPhone.setText(project2.getProjectphone());

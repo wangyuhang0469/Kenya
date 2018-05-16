@@ -195,7 +195,7 @@ public class ResumeinfoActivity extends BaseActivity implements View.OnClickList
                     toast("请上传头像");
                 } else if (resumeInfoJobname.getText().length() == 0) {
                     toast("请输入姓名");
-                } else if (sexvalue.equals("")) {
+                } else if (sexvalue == null || sexvalue == "") {
                     toast("请选择性别");
                 } else if (resumeInfoJobwant.getText().length() == 0) {
                     toast("请输入求职意向");
@@ -242,7 +242,6 @@ public class ResumeinfoActivity extends BaseActivity implements View.OnClickList
 
                                                 @Override
                                                 public void onResponse(String response, int id) {
-                                                    Log.d("kang", "11111111111" + response);
                                                     log(response);
                                                     toast("加载成功");
                                                     try {
