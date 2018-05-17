@@ -14,11 +14,9 @@ import android.os.Environment;
 import android.provider.MediaStore;
 import android.support.v4.content.FileProvider;
 import android.util.Log;
-import android.view.Display;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
@@ -203,9 +201,9 @@ public class ResumeinfoActivity extends BaseActivity implements View.OnClickList
                     toast("请输入手机号");
                 } else if (resumeTimeBirday.getText().length() == 0) {
                     toast("请选择出生年月");
-                } else if (contentvalue.length() == 0) {
+                } else if (contentvalue == null || contentvalue == "") {
                     toast("请输入个人介绍");
-                } else if (resumeTvTime.getText().length() == 0) {
+                } else if (spinner.getSelectedItem().toString().equals("工作年限") || spinner.getSelectedItem().toString().equals("Working Experience")) {
                     toast("请选择开始工作时间");
                 } else {
                     Luban.with(this)
@@ -272,12 +270,12 @@ public class ResumeinfoActivity extends BaseActivity implements View.OnClickList
             case R.id.resume_info_men:
                 resumeInfoMen.setImageResource(R.mipmap.resume_sex_click);
                 resumeInfoWomen.setImageResource(R.mipmap.resume_sex2);
-                sexvalue = "男";
+                sexvalue = getResources().getString(R.string.male);
                 break;
             case R.id.resume_info_women:
                 resumeInfoMen.setImageResource(R.mipmap.resume_sex);
                 resumeInfoWomen.setImageResource(R.mipmap.resume_sex_click2);
-                sexvalue = "女";
+                sexvalue = getResources().getString(R.string.female);
                 break;
         }
     }
@@ -305,11 +303,11 @@ public class ResumeinfoActivity extends BaseActivity implements View.OnClickList
             @Override
             public void onDateSelected(int[] dates) {
                 if (str.equals("A")) {
-                    resumeTimeBirday.setText(dates[0] + "/" + (dates[1] > 9 ? dates[1] : ("0" + dates[1])) + "/"
+                    resumeTimeBirday.setText(dates[0] + "-" + (dates[1] > 9 ? dates[1] : ("0" + dates[1])) + "-"
                             + (dates[2] > 9 ? dates[2] : ("0" + dates[2])));
                     resumeTimeBirdayChoose.setVisibility(View.GONE);
                 } else {
-                    resumeTvTime.setText(dates[0] + "/" + (dates[1] > 9 ? dates[1] : ("0" + dates[1])) + "/"
+                    resumeTvTime.setText(dates[0] + "-" + (dates[1] > 9 ? dates[1] : ("0" + dates[1])) + "-"
                             + (dates[2] > 9 ? dates[2] : ("0" + dates[2])));
                     resumeTvChoose.setVisibility(View.GONE);
                 }

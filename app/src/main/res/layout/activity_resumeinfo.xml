@@ -151,7 +151,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:gravity="center"
-                            android:text="@string/date_of_birth_year" />
+                            android:hint="@string/date_of_birth_year" />
 
                         <TextView
                             android:id="@+id/resume_time_birday_choose"
@@ -220,7 +220,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:gravity="center"
-                            android:text="@string/working_experience"
+                            android:hint="@string/working_experience"
                             android:visibility="gone" />
 
                         <TextView

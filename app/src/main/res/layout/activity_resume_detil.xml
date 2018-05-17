@@ -56,8 +56,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="47px"
                 android:layout_marginTop="56px"
-                android:gravity="center"
-                android:paddingLeft="60px">
+                android:gravity="center">
 
                 <ImageView
                     android:id="@+id/resume_detil_img"
