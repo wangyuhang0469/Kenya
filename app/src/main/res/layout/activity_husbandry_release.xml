@@ -130,7 +130,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="150px"
                 android:gravity="center"
-                android:hint="@string/phone_no."
+                android:hint="@string/enter_phone_number"
                 android:inputType="phone" />
 
             <include layout="@layout/line" />

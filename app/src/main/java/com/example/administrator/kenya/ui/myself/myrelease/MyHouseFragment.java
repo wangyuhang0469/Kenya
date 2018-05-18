@@ -19,6 +19,8 @@ import com.example.administrator.kenya.base.BaseFragment;
 import com.example.administrator.kenya.classes.House;
 import com.example.administrator.kenya.classes.User;
 import com.example.administrator.kenya.constants.AppConstants;
+import com.example.administrator.kenya.view.MyFootRefreshView;
+import com.example.administrator.kenya.view.MyHeadRefreshView;
 import com.jwenfeng.library.pulltorefresh.BaseRefreshListener;
 import com.jwenfeng.library.pulltorefresh.PullToRefreshLayout;
 import com.zhy.http.okhttp.OkHttpUtils;
@@ -85,7 +87,7 @@ public class MyHouseFragment extends BaseFragment {
                 //防止因Activity释放导致内部控件空指针
                 if (pullToRefreshLayout != null) {
                     pullToRefreshLayout.finishLoadMore();
-                    toast("加载失败");
+                    toast(getString(R.string.load_fail));
                     e.printStackTrace();
                 }
             }
@@ -133,6 +135,8 @@ public class MyHouseFragment extends BaseFragment {
 
         pullToRefreshLayout.setCanRefresh(false);
         pullToRefreshLayout.setCanLoadMore(false);
+        pullToRefreshLayout.setHeaderView(new MyHeadRefreshView(getContext()));
+        pullToRefreshLayout.setFooterView(new MyFootRefreshView(getContext()));
         pullToRefreshLayout.setRefreshListener(new BaseRefreshListener() {
             @Override
             public void refresh() {

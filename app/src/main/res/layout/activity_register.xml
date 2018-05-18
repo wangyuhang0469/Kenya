@@ -13,7 +13,7 @@
         android:layout_width="match_parent"
         android:layout_height="144px"
         android:gravity="center"
-        android:text="@string/registration"
+        android:text="@string/sign_in"
         android:textColor="@color/textBlack1"
         android:textSize="18sp" />
 
@@ -147,6 +147,6 @@
         style="@style/btn"
         android:layout_marginTop="100px"
         android:background="@drawable/bg4dp_theme_btn"
-        android:text="@string/registration"
+        android:text="@string/sign_in"
         android:textColor="@color/white" />
 </com.zhy.autolayout.AutoLinearLayout>

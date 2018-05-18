@@ -22,6 +22,8 @@ import com.example.administrator.kenya.constants.AppConstants;
 import com.example.administrator.kenya.interfaces.OnSuccessfulListener;
 import com.example.administrator.kenya.ui.city.used.GoodsDetailsActivity;
 import com.example.administrator.kenya.ui.main.DeleteDialog;
+import com.example.administrator.kenya.view.MyFootRefreshView;
+import com.example.administrator.kenya.view.MyHeadRefreshView;
 import com.jwenfeng.library.pulltorefresh.BaseRefreshListener;
 import com.jwenfeng.library.pulltorefresh.PullToRefreshLayout;
 import com.zhy.http.okhttp.OkHttpUtils;
@@ -92,7 +94,7 @@ public class MyUsedFragment extends BaseFragment {
                 //防止因Activity释放导致内部控件空指针
                 if (pullToRefreshLayout != null) {
                     pullToRefreshLayout.finishLoadMore();
-                    toast("加载失败");
+                    toast(getString(R.string.phone_no_));
                     e.printStackTrace();
                 }
             }
@@ -143,7 +145,8 @@ public class MyUsedFragment extends BaseFragment {
         recyclerView.setAdapter(myUsedAdapter);
         pullToRefreshLayout.setCanRefresh(false);
         pullToRefreshLayout.setCanLoadMore(false);
-
+        pullToRefreshLayout.setHeaderView(new MyHeadRefreshView(getContext()));
+        pullToRefreshLayout.setFooterView(new MyFootRefreshView(getContext()));
         pullToRefreshLayout.setRefreshListener(new BaseRefreshListener() {
             @Override
             public void refresh() {
@@ -195,8 +198,8 @@ public class MyUsedFragment extends BaseFragment {
         @Override
         public void onBindViewHolder(final ViewHolder holder, final int position) {
             holder.goodsname.setText(list.get(position).getGoodsname());
-            holder.goodsphone.setText("手机：" + list.get(position).getGoodsphone());
-            holder.goodsprice.setText("$" + list.get(position).getGoodsprice());
+            holder.goodsphone.setText(getString(R.string.phone_no_) + list.get(position).getGoodsphone());
+            holder.goodsprice.setText("KSh " + list.get(position).getGoodsprice());
 
 //            holder.goodsimgs.setTag(list.get(position).getGoodsimgs());
 

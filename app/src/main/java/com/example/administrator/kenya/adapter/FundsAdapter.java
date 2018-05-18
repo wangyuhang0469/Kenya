@@ -57,9 +57,9 @@ public class FundsAdapter extends RecyclerView.Adapter<FundsAdapter.ViewHolder> 
     public void onBindViewHolder(final ViewHolder holder, final int position) {
 
         holder.funds_Title.setText(list.get(position).getFundsname());
-        holder.funds_phone.setText("手机：" + list.get(position).getFundsphone());
-        if (list.get(position).getFundsprice() != null && !list.get(position).getFundsprice().equals(""))
-            holder.funds_price.setText("$" + list.get(position).getFundsprice());
+        holder.funds_phone.setText(context.getResources().getString(R.string.phone_no_) + list.get(position).getFundsphone());
+        if (list.get(position).getFundsprice() != null && !list.get(position).getFundsprice().equals("") )
+            holder.funds_price.setText("KSh " + list.get(position).getFundsprice());
 //        holder.funds_image.setTag(list.get(position).getFundsimgs());
 
         holder.call.setOnClickListener(new View.OnClickListener() {

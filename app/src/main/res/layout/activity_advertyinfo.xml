@@ -4,7 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.administrator.kenya.activity.AdvertyinfoActivity">
+    tools:context="com.example.administrator.kenya.activity.AdvertyinfoActivity"
+    android:background="@color/base_bg"
+    android:orientation="vertical">
 
     <com.zhy.autolayout.AutoRelativeLayout
         android:id="@+id/person_info"
@@ -36,31 +38,29 @@
     <com.example.administrator.kenya.view.MyObervalbleScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_above="@+id/adverty_info_detail"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/person_info">
+        android:layout_below="@+id/person_info"
+        android:layout_above="@+id/adverty_info_detail">
 
         <com.zhy.autolayout.AutoLinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/white"
             android:orientation="vertical">
 
-            <com.zhy.autolayout.AutoLinearLayout style="@style/adverty_info_ll">
+            <com.zhy.autolayout.AutoRelativeLayout style="@style/adverty_info_ll">
 
                 <TextView
+                    android:id="@+id/textView3"
                     style="@style/adverty_info_tv"
-                    android:text="@string/job_recroitment" />
+                    android:text="@string/job" />
 
                 <EditText
                     android:id="@+id/adverty_info_work_name"
                     style="@style/edit_base2"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_marginLeft="80px"
-                    android:hint="请输入招聘职位" />
-            </com.zhy.autolayout.AutoLinearLayout>
+                    android:layout_marginLeft="350px"
+                    android:hint="@string/enter_the_job" />
+            </com.zhy.autolayout.AutoRelativeLayout>
 
             <include layout="@layout/line" />
 
@@ -74,31 +74,31 @@
                 <EditText
                     android:id="@+id/adverty_info_work_money"
                     style="@style/edit_base2"
-                    android:layout_width="900px"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="80px"
-                    android:layout_toRightOf="@+id/adverty_yuexin"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="350px"
+                    android:layout_marginRight="260px"
                     android:digits="1234567890-"
-                    android:hint="5000-8000元"
+                    android:hint="e.g. 5000-8000"
                     android:inputType="numberDecimal" />
 
                 <ImageView
                     android:id="@+id/adverty_info_choose"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentRight="true"
-                    android:layout_marginRight="155px"
+                    android:layout_width="68px"
+                    android:layout_height="match_parent"
                     android:layout_toLeftOf="@+id/resume_info_mianyi"
-                    android:padding="12px"
+                    android:padding="16px"
+                    android:layout_centerVertical="true"
                     android:src="@mipmap/mianyi" />
 
                 <TextView
                     android:id="@+id/resume_info_mianyi"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
                     android:layout_alignParentRight="true"
-                    android:layout_marginRight="30px"
-                    android:text="@string/salary" />
+                    android:paddingRight="30px"
+                    android:text="@string/negotiable" />
             </com.zhy.autolayout.AutoRelativeLayout>
 
             <include layout="@layout/line" />
@@ -112,8 +112,7 @@
                     android:id="@+id/spinner"
                     android:layout_width="match_parent"
                     android:layout_height="150px"
-                    android:layout_marginLeft="80px"
-                    android:layout_toRightOf="@+id/adverty_info_work_time"
+                    android:layout_marginLeft="350px"
                     android:background="#00000000"
                     android:spinnerMode="dialog" />
 
@@ -125,14 +124,14 @@
 
                 <ImageView
                     style="@style/my_center_inter"
-                    android:layout_marginTop="45px"
+                    android:layout_centerVertical="true"
                     android:src="@mipmap/my_center_inter2" />
 
             </com.zhy.autolayout.AutoRelativeLayout>
 
             <include layout="@layout/line" />
 
-            <com.zhy.autolayout.AutoLinearLayout style="@style/adverty_info_ll">
+            <com.zhy.autolayout.AutoRelativeLayout style="@style/adverty_info_ll">
 
                 <TextView
                     style="@style/adverty_info_tv"
@@ -143,27 +142,27 @@
                     style="@style/edit_base2"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_marginLeft="80px"
-                    android:hint="@string/please_enter_the_company_name." />
-            </com.zhy.autolayout.AutoLinearLayout>
+                    android:layout_marginLeft="350px"
+                    android:hint="@string/please_enter_the_company_name" />
+            </com.zhy.autolayout.AutoRelativeLayout>
 
             <include layout="@layout/line" />
 
-            <com.zhy.autolayout.AutoLinearLayout style="@style/adverty_info_ll">
+            <com.zhy.autolayout.AutoRelativeLayout style="@style/adverty_info_ll">
 
                 <TextView
                     style="@style/adverty_info_tv"
-                    android:text="@string/contact_number" />
+                    android:text="@string/phone_no." />
 
                 <EditText
                     android:id="@+id/adverty_info_company_phone"
                     style="@style/edit_base2"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_marginLeft="80px"
-                    android:hint="@string/please_enter_your_contact_number."
+                    android:layout_marginLeft="350px"
+                    android:hint="@string/enter_phone_no."
                     android:inputType="number|numberDecimal" />
-            </com.zhy.autolayout.AutoLinearLayout>
+            </com.zhy.autolayout.AutoRelativeLayout>
 
             <include layout="@layout/line" />
 
@@ -171,14 +170,16 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center_vertical"
-                android:minHeight="150px"
                 android:orientation="horizontal"
-                android:paddingLeft="30px">
+                android:background="@color/white">
 
                 <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:id="@+id/advery_info_vacancy"
-                    style="@style/adverty_info_tv"
+                    android:textColor="@color/textBlack2"
                     android:layout_marginTop="30px"
+                    android:layout_marginLeft="30px"
                     android:text="@string/description_of_job_vacancy" />
 
                 <EditText
@@ -188,12 +189,17 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/advery_info_vacancy"
                     android:layout_margin="30px"
-                    android:layout_marginLeft="80px"
-                    android:hint="@string/Project_experience_strong_communication_skill_nice_personality"
+                    android:hint="@string/job_require"
                     android:lineSpacingMultiplier="1.3" />
             </com.zhy.autolayout.AutoRelativeLayout>
 
-            <include layout="@layout/line" />
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:layout_marginLeft="30px"
+                android:layout_marginRight="30px"
+                android:background="@color/view_line"
+                android:layout_marginBottom="100px"/>
         </com.zhy.autolayout.AutoLinearLayout>
     </com.example.administrator.kenya.view.MyObervalbleScrollView>
 
@@ -204,7 +210,7 @@
         android:layout_alignParentBottom="true"
         android:background="@color/theme_btn"
         android:gravity="center"
-        android:text="@string/send"
+        android:text="@string/post"
         android:textColor="@color/white"
         android:textSize="17sp" />
 </com.zhy.autolayout.AutoRelativeLayout>

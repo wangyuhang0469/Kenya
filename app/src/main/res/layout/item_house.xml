@@ -41,7 +41,7 @@
         android:layout_marginRight="30px"
         android:background="@drawable/bg4dp_theme_btn"
         android:gravity="center"
-        android:text="拨号"
+        android:text="@string/call"
         android:textColor="@color/white"
         android:textSize="13sp"
         android:visibility="gone"/>

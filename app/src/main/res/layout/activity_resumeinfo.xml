@@ -3,7 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.administrator.kenya.activity.ResumeinfoActivity">
+    tools:context="com.example.administrator.kenya.activity.ResumeinfoActivity"
+    android:background="@color/base_bg">
 
     <com.zhy.autolayout.AutoRelativeLayout
         android:id="@+id/person_info"
@@ -23,15 +24,15 @@
             android:id="@+id/title"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
             android:ellipsize="end"
             android:gravity="center"
             android:maxEms="10"
             android:singleLine="true"
             android:text="@string/edit_your_resume"
-            android:textSize="18sp" />
+            android:textSize="18sp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
 
     </com.zhy.autolayout.AutoRelativeLayout>
 
@@ -49,7 +50,8 @@
             <com.zhy.autolayout.AutoLinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:gravity="center_horizontal">
 
                 <TextView
                     android:layout_width="match_parent"
@@ -80,25 +82,25 @@
                         android:layout_height="wrap_content"
                         android:gravity="center"
                         android:hint="@string/enter_your_name"
+                        android:padding="20px"
                         android:textColorHint="@color/textBlack3" />
 
                     <LinearLayout
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="10sp">
+                        android:layout_height="wrap_content">
 
                         <ImageView
                             android:id="@+id/resume_info_men"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginRight="10px"
+                            android:layout_marginRight="15px"
                             android:src="@mipmap/resume_sex" />
 
                         <ImageView
                             android:id="@+id/resume_info_women"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="10px"
+                            android:layout_marginLeft="15px"
                             android:src="@mipmap/resume_sex2" />
                     </LinearLayout>
 
@@ -109,7 +111,7 @@
                 <EditText
                     android:id="@+id/resume_info_jobwant"
                     style="@style/edit_base2"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="256px"
                     android:gravity="center"
                     android:hint="@string/please_enter_your_job_description"
@@ -117,26 +119,24 @@
 
                 <include layout="@layout/line" />
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="256px"
-                    android:gravity="center"
-                    android:orientation="vertical">
+
 
                     <EditText
                         android:id="@+id/resume_info_phone"
                         style="@style/edit_base2"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_height="256px"
+                        android:gravity="center"
                         android:hint="@string/please_enter_your_phone_no."
                         android:inputType="number|numberDecimal" />
-                </LinearLayout>
+
 
                 <include layout="@layout/line" />
 
                 <com.zhy.autolayout.AutoLinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="301px">
+                    android:layout_height="300px"
+                    android:layout_marginBottom="40px">
 
                     <com.zhy.autolayout.AutoLinearLayout
                         android:id="@+id/pick_time"
@@ -151,21 +151,24 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:gravity="center"
-                            android:hint="@string/date_of_birth_year" />
+                            android:hint="@string/date_of_birth_year"
+                            android:textColor="@color/textBlack2"
+                            android:textColorHint="@color/textBlack2"/>
 
                         <TextView
                             android:id="@+id/resume_time_birday_choose"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="请选择"
-                            android:visibility="gone" />
+                            android:layout_marginTop="50px"
+                            android:visibility="gone"/>
                     </com.zhy.autolayout.AutoLinearLayout>
 
                     <View
                         android:layout_width="1px"
-                        android:layout_height="80px"
+                        android:layout_height="150px"
                         android:layout_gravity="center"
-                        android:background="#ddd" />
+                        android:background="@color/line1" />
 
                     <com.zhy.autolayout.AutoLinearLayout
                         android:id="@+id/resume_recm"
@@ -182,21 +185,22 @@
                             android:layout_height="wrap_content"
                             android:gravity="center"
                             android:hint="@string/personal_introduction"
-                            android:textColorHint="@color/textBlack2" />
+                            android:textColorHint="@color/textBlack2"/>
 
                         <TextView
                             android:id="@+id/resume_tv_recm_choose"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="请输入"
-                            android:visibility="gone" />
+                            android:layout_marginTop="50px"
+                            android:visibility="gone"/>
                     </com.zhy.autolayout.AutoLinearLayout>
 
                     <View
                         android:layout_width="1px"
-                        android:layout_height="80px"
+                        android:layout_height="150px"
                         android:layout_gravity="center"
-                        android:background="#ddd" />
+                        android:background="@color/line1" />
 
                     <com.zhy.autolayout.AutoLinearLayout
                         android:id="@+id/ruseme_work_time"
@@ -215,28 +219,26 @@
                             android:gravity="center"
                             android:spinnerMode="dialog" />
 
-                        <TextView
-                            android:id="@+id/resume_tv_time"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:gravity="center"
-                            android:hint="@string/working_experience"
-                            android:visibility="gone" />
+
 
                         <TextView
                             android:id="@+id/resume_tv_choose"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_marginTop="50px"
                             android:text="请选择"
-                            android:visibility="gone" />
+                            android:visibility="gone"/>
                     </com.zhy.autolayout.AutoLinearLayout>
+
+
+
                 </com.zhy.autolayout.AutoLinearLayout>
             </com.zhy.autolayout.AutoLinearLayout>
 
             <com.example.administrator.kenya.view.RoundImageView
                 android:id="@+id/resume_info_photo"
-                android:layout_width="280px"
-                android:layout_height="280px"
+                android:layout_width="250px"
+                android:layout_height="250px"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="50px"
                 android:scaleType="fitXY"

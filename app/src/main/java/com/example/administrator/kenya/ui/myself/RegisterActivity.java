@@ -56,9 +56,9 @@ public class RegisterActivity extends BaseActivity {
             case R.id.register:
                 if (lock) {
                 } else if (phone.getText().length() == 0 || userName.getText().length() == 0 || password1.getText().length() == 0 || password2.getText().length() == 0) {
-                    toast("请填写完整信息");
+                    toast(getResources().getString(R.string.enter_complete));
                 } else if (!password1.getText().toString().equals(password2.getText().toString())) {
-                    toast("密码输入不一致");
+                    toast(getResources().getString(R.string.passwords_not_math));
                 } else {
                     register();
                 }
@@ -70,16 +70,16 @@ public class RegisterActivity extends BaseActivity {
         lock = true;
         OkHttpUtils.get()
                 .url(AppConstants.BASE_URL + "/kenya/user/register")
-                .addParams("userPhoneNumber", phone.getText().toString())
+                .addParams("userPhonenumber", phone.getText().toString())
                 .addParams("userName", userName.getText().toString())
                 .addParams("userPsw", password1.getText().toString())
-                .addParams("userSex", "6")
-                .addParams("userAge", "99")
+//                .addParams("userSex", "6")
+//                .addParams("userAge", "99")
                 .build()
                 .execute(new StringCallback() {
                     @Override
                     public void onError(Call call, Exception e, int id) {
-                        toast("注册失败");
+                        toast(getResources().getString(R.string.register_failed));
                         lock = false;
                         e.printStackTrace();
                     }
@@ -90,7 +90,7 @@ public class RegisterActivity extends BaseActivity {
                         try {
                             jsonObject = new JSONObject(response);
                             if (jsonObject.getString("code").equals("000")) {
-                                toast("注册成功");
+                                toast(getResources().getString(R.string.register_successfully));
                                 finish();
                             } else {
                                 toast(jsonObject.getString("message"));
@@ -129,7 +129,7 @@ public class RegisterActivity extends BaseActivity {
         public void onFinish() {
             //重新给Button设置文字
             if (getVerifyCode != null) {
-                getVerifyCode.setText("重新获取");
+                getVerifyCode.setText("reacquire");
                 //设置可点击
                 getVerifyCode.setBackgroundDrawable(getResources().getDrawable(R.drawable.bg4dp_theme_btn));
                 getVerifyCode.setClickable(true);

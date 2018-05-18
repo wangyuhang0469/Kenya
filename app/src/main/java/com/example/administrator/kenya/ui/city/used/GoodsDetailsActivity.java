@@ -57,10 +57,10 @@ public class GoodsDetailsActivity extends BaseActivity {
 
         initBanner(goods.getImageUrlList());
         goodsname.setText(goods.getGoodsname());
-        goodsprice.setText("$" + goods.getGoodsprice());
+        goodsprice.setText("KSh " + goods.getGoodsprice());
         goodsdesc.setText(goods.getGoodsdesc());
         goodsusername.setText(goods.getGoodsusername());
-        goodsphone.setText("手机号：" + goods.getGoodsphone());
+        goodsphone.setText(getResources().getString(R.string.phone_no_)  + goods.getGoodsphone());
 
         Glide.with(this).load(AppConstants.BASE_URL + goods.getUser().getUserPortrait())
                 .centerCrop()

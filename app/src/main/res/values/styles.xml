@@ -114,12 +114,12 @@
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_marginRight">26px</item>
         <item name="android:textSize">16sp</item>
-        <item name="android:layout_marginLeft">10sp</item>
+        <item name="android:layout_marginLeft">10px</item>
     </style>
 
     <style name="my_center_inter">
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">40px</item>
+        <item name="android:layout_width">21px</item>
         <item name="android:layout_alignParentRight">true</item>
         <item name="android:layout_marginRight">30px</item>
     </style>
@@ -146,10 +146,10 @@
     </style>
     <!--简历详情字体的设置-->
     <style name="detail_tv">
-        <item name="android:layout_width">416px</item>
+        <item name="android:layout_width">386px</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_marginLeft">30px</item>
-        <item name="android:textSize">46px</item>
+        <item name="android:textSize">15sp</item>
         <item name="android:textColor">@color/textBlack3</item>
     </style>
 
@@ -157,7 +157,7 @@
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:textColor">@color/textBlack1</item>
-        <item name="android:textSize">46px</item>
+        <item name="android:textSize">15sp</item>
     </style>
 
     <!--底部弹出对话框样式-->
@@ -173,12 +173,14 @@
         <item name="android:gravity">center_vertical</item>
         <item name="android:orientation">horizontal</item>
         <item name="android:paddingLeft">30px</item>
+        <item name="android:background">@color/white</item>
     </style>
     <!--招聘信息窗口字体样式-->
     <style name="adverty_info_tv">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:textColor">@color/textBlack2</item>
+        <item name="android:layout_centerVertical">true</item>
     </style>
 
     <style name="take_photo_anim" parent="android:Animation">

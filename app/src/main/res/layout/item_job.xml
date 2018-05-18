@@ -25,16 +25,16 @@
             android:id="@+id/job_Title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="TA在找:"
+            android:text="@string/expected_job"
             android:textColor="@color/textBlack1" />
 
         <TextView
             android:id="@+id/job_want"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="程序员"
             android:textColor="@color/textgreen1"
-            android:textSize="17sp" />
+            android:textSize="17sp"
+            android:layout_marginLeft="10px"/>
 
     </com.zhy.autolayout.AutoLinearLayout>
 
@@ -56,8 +56,7 @@
             android:id="@+id/job_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="王小花"
-            android:textColor="@color/textBlack3"
+            android:textColor="@color/textBlack2"
             android:textSize="13sp" />
 
         <View
@@ -68,15 +67,14 @@
             android:layout_marginRight="10px"
             android:layout_marginTop="10px"
             android:layout_toRightOf="@id/job_name"
-            android:background="@color/textBlack3"></View>
+            android:background="@color/textBlack2"></View>
 
         <TextView
             android:id="@+id/job_sex"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_toRightOf="@id/job_line1"
-            android:text="女"
-            android:textColor="@color/textBlack3"
+            android:textColor="@color/textBlack2"
             android:textSize="13sp" />
 
         <View
@@ -87,16 +85,18 @@
             android:layout_marginRight="10px"
             android:layout_marginTop="10px"
             android:layout_toRightOf="@id/job_sex"
-            android:background="@color/textBlack3"></View>
+            android:background="@color/textBlack2"></View>
 
         <TextView
             android:id="@+id/job_age"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_toRightOf="@id/job_line2"
-            android:text="18岁"
-            android:textColor="@color/textBlack3"
-            android:textSize="13sp" />
+            android:textColor="@color/textBlack2"
+            android:textSize="13sp"
+            android:layout_alignBaseline="@+id/job_sex"
+            android:layout_alignBottom="@+id/job_sex"
+            android:layout_toRightOf="@+id/job_line2"
+            android:layout_toEndOf="@+id/job_line2" />
 
         <TextView
             android:id="@+id/job_call"

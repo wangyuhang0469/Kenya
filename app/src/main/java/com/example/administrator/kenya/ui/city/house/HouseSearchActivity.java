@@ -17,6 +17,8 @@ import com.example.administrator.kenya.adapter.HouseAdapter;
 import com.example.administrator.kenya.base.BaseActivity;
 import com.example.administrator.kenya.classes.House;
 import com.example.administrator.kenya.constants.AppConstants;
+import com.example.administrator.kenya.view.MyFootRefreshView;
+import com.example.administrator.kenya.view.MyHeadRefreshView;
 import com.jwenfeng.library.pulltorefresh.BaseRefreshListener;
 import com.jwenfeng.library.pulltorefresh.PullToRefreshLayout;
 import com.zhy.http.okhttp.OkHttpUtils;
@@ -76,7 +78,7 @@ public class HouseSearchActivity extends BaseActivity {
                 //防止因Activity释放导致内部控件空指针
                 if (pullToRefreshLayout != null) {
                     pullToRefreshLayout.finishLoadMore();
-                    toast("加载失败");
+                    toast(getResources().getString(R.string.load_fail));
                     e.printStackTrace();
                 }
             }
@@ -135,6 +137,8 @@ public class HouseSearchActivity extends BaseActivity {
         });
         pullToRefreshLayout.setCanRefresh(false);
         pullToRefreshLayout.setCanLoadMore(false);
+        pullToRefreshLayout.setHeaderView(new MyHeadRefreshView(this));
+        pullToRefreshLayout.setFooterView(new MyFootRefreshView(this));
         pullToRefreshLayout.setRefreshListener(new BaseRefreshListener() {
             @Override
             public void refresh() {
@@ -154,7 +158,7 @@ public class HouseSearchActivity extends BaseActivity {
 
     private void searchEvent() {
         if (keyword.getText().length() == 0) {
-            toast("请输入搜索内容");
+            toast(getResources().getString(R.string.enter_keyword_first));
         } else if (lastKeyword.equals(keyword.getText().toString())) {
         } else {
             replacement();

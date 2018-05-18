@@ -47,7 +47,7 @@ public class LoginActivity extends BaseActivity {
             case R.id.login:
                 if (lock) {
                 } else if (phone.getText().length() == 0 || password.getText().length() == 0) {
-                    toast("用户名或密码不能为空");
+                    toast(getResources().getString(R.string.enter_complete));
                 } else {
                     login();
                     // startActivity(MainActivity.class, null);
@@ -72,7 +72,7 @@ public class LoginActivity extends BaseActivity {
                 .execute(new StringCallback() {
                     @Override
                     public void onError(Call call, Exception e, int id) {
-                        toast("登录失败");
+                        toast(getResources().getString(R.string.login_failed));
                         lock = false;
                         e.printStackTrace();
                     }
@@ -96,7 +96,7 @@ public class LoginActivity extends BaseActivity {
                                 user.setStatus(true);
                                 startActivity(MainActivity.class, null);
                                 finish();
-                                toast("登录成功");
+                                toast(getResources().getString(R.string.login_successfully));
                             } else {
                                 toast(jsonObject.getString("message"));
                             }

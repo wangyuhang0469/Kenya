@@ -54,36 +54,35 @@
             <com.zhy.autolayout.AutoLinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="47px"
-                android:layout_marginTop="56px"
+                android:layout_marginTop="50px"
                 android:gravity="center">
 
                 <ImageView
                     android:id="@+id/resume_detil_img"
-                    android:layout_width="248px"
-                    android:layout_height="248px"
+                    android:layout_width="250px"
+                    android:layout_height="250px"
                     android:src="@drawable/avatar" />
             </com.zhy.autolayout.AutoLinearLayout>
 
             <com.zhy.autolayout.AutoLinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:layout_marginTop="45px">
 
                 <TextView
+                    android:id="@+id/textView2"
                     style="@style/detail_tv"
                     android:text="@string/name" />
 
                 <TextView
                     android:id="@+id/resume_detail_name"
-                    style="@style/detail_tv_content"
-                    android:text="王小花"
-                    android:textSize="46px" />
+                    style="@style/detail_tv_content"/>
             </com.zhy.autolayout.AutoLinearLayout>
 
             <com.zhy.autolayout.AutoLinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="55px">
+                android:layout_marginTop="50px">
 
                 <TextView
                     style="@style/detail_tv"
@@ -91,15 +90,13 @@
 
                 <TextView
                     android:id="@+id/resume_detail_sex"
-                    style="@style/detail_tv_content"
-                    android:text="女"
-                    android:textSize="46px" />
+                    style="@style/detail_tv_content" />
             </com.zhy.autolayout.AutoLinearLayout>
 
             <com.zhy.autolayout.AutoLinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="55px">
+                android:layout_marginTop="50px">
 
                 <TextView
                     style="@style/detail_tv"
@@ -107,15 +104,13 @@
 
                 <TextView
                     android:id="@+id/resume_detail_age"
-                    style="@style/detail_tv_content"
-                    android:text="21"
-                    android:textSize="46px" />
+                    style="@style/detail_tv_content" />
             </com.zhy.autolayout.AutoLinearLayout>
 
             <com.zhy.autolayout.AutoLinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="55px">
+                android:layout_marginTop="50px">
 
                 <TextView
                     style="@style/detail_tv"
@@ -123,8 +118,7 @@
 
                 <TextView
                     android:id="@+id/resume_detial_jobwant"
-                    style="@style/detail_tv_content"
-                    android:text="@string/waiterss" />
+                    style="@style/detail_tv_content"/>
 
             </com.zhy.autolayout.AutoLinearLayout>
 
@@ -132,7 +126,7 @@
             <com.zhy.autolayout.AutoLinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="55px">
+                android:layout_marginTop="50px">
 
                 <TextView
                     style="@style/detail_tv"
@@ -140,15 +134,14 @@
 
                 <TextView
                     android:id="@+id/resume_detail_experience"
-                    style="@style/detail_tv_content"
-                    android:text="@string/three_to_five_years" />
+                    style="@style/detail_tv_content" />
 
             </com.zhy.autolayout.AutoLinearLayout>
 
             <com.zhy.autolayout.AutoLinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="55px">
+                android:layout_marginTop="50px">
 
                 <TextView
                     style="@style/detail_tv"
@@ -163,7 +156,7 @@
             <com.zhy.autolayout.AutoLinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="55px"
+                android:layout_marginTop="50px"
                 android:visibility="gone">
 
                 <TextView
@@ -184,10 +177,13 @@
                 android:background="@color/base_bg" />
 
             <TextView
-                style="@style/detail_tv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_marginBottom="20px"
                 android:layout_marginTop="20px"
+                android:layout_marginLeft="30px"
                 android:text="@string/personal_introduction"
+                android:textSize="15sp"
                 android:textColor="@color/textgreen3" />
 
             <include layout="@layout/line" />

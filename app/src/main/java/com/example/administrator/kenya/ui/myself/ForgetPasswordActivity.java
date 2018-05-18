@@ -35,8 +35,6 @@ public class ForgetPasswordActivity extends BaseActivity {
     EditText password1;
     @Bind(R.id.password2)
     EditText password2;
-    @Bind(R.id.title)
-    TextView title;
 
     private boolean lock = false;
 
@@ -48,7 +46,6 @@ public class ForgetPasswordActivity extends BaseActivity {
         setContentView(R.layout.activity_forget_password);
         ButterKnife.bind(this);
 
-        title.setText(getResources().getString(R.string.password_recovery));
     }
 
 
@@ -61,18 +58,15 @@ public class ForgetPasswordActivity extends BaseActivity {
     public void onViewClicked() {
         if (lock) {
         } else if (phone.getText().length() == 0 || password1.getText().length() == 0 || password2.getText().length() == 0) {
-            toast("请填写完整信息");
+            toast(getResources().getString(R.string.enter_complete));
         } else if (!password1.getText().toString().equals(password2.getText().toString())) {
-            toast("密码输入不一致");
+            toast(getResources().getString(R.string.passwords_not_math));
         } else {
             update();
         }
     }
 
-    @OnClick(R.id.back)
-    public void onViewClicked2() {
-        finish();
-    }
+
 
 
     private void update() {
@@ -85,7 +79,7 @@ public class ForgetPasswordActivity extends BaseActivity {
                 .execute(new StringCallback() {
                     @Override
                     public void onError(Call call, Exception e, int id) {
-                        toast("修改失败");
+                        toast(getResources().getString(R.string.modify_failed));
                         lock = false;
                         e.printStackTrace();
                     }
@@ -96,7 +90,7 @@ public class ForgetPasswordActivity extends BaseActivity {
                         try {
                             jsonObject = new JSONObject(response);
                             if (jsonObject.getString("code").equals("000")) {
-                                toast("修改成功");
+                                toast(getResources().getString(R.string.modify_successfully));
                                 finish();
                             } else {
                                 toast(jsonObject.getString("message"));
@@ -135,7 +129,7 @@ public class ForgetPasswordActivity extends BaseActivity {
         public void onFinish() {
             //重新给Button设置文字
             if (getVerifyCode != null) {
-                getVerifyCode.setText("重新获取");
+                getVerifyCode.setText("reacquire");
                 getVerifyCode.setTextColor(getResources().getColor(R.color.textgreen1));
                 //设置可点击
                 getVerifyCode.setClickable(true);

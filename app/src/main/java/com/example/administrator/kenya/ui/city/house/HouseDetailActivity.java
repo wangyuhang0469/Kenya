@@ -58,12 +58,12 @@ public class HouseDetailActivity extends BaseActivity {
         initBanner(house.getHouseImageUrlList());
         houseDetailName.setText(house.getLeasename());
         houseDetailDesc.setText(house.getLeasedesc());
-        houseDetailPrice.setText("/-" + house.getLeaseprice() + "/月");
+        houseDetailPrice.setText("KSh " + house.getLeaseprice() + "/Month");
         houseDetailHome.setText(house.getLeasehome());
         houseDetailSquare.setText(house.getLeasesquare() + "㎡");
         houseDetailAddress.setText(house.getLeaseaddress());
         houseUsername.setText(house.getLeaseuser());
-        housePhone.setText("手机：" + house.getLeasephone());
+        housePhone.setText(getResources().getString(R.string.phone_no_)+ house.getLeasephone());
 
         Glide.with(this).load(AppConstants.BASE_URL + house.getUser().getUserPortrait())
                 .centerCrop()

@@ -73,7 +73,7 @@ public class DeleteDialog extends Dialog{
 
 
     private void delete(){
-        information.setText("删除中...");
+        information.setText("Loading...");
 
         OkHttpUtils.post()
                 .url(url)
@@ -83,7 +83,7 @@ public class DeleteDialog extends Dialog{
                     @Override
                     public void onError(Call call, Exception e, int id) {
                         e.printStackTrace();
-                        Toast.makeText(getContext(), "删除失败", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getContext(), getContext().getString(R.string.delete_failed), Toast.LENGTH_SHORT).show();
                         DeleteDialog.this.dismiss();
                     }
 
@@ -92,7 +92,7 @@ public class DeleteDialog extends Dialog{
                         try {
                             JSONObject jsonObject = new JSONObject(response);
                             if (jsonObject.getString("code").equals("000")){
-                                Toast.makeText(getContext(), "删除成功", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(getContext(), getContext().getString(R.string.delete_successfully), Toast.LENGTH_SHORT).show();
                                 if (onSuccessfulListener != null)
                                     onSuccessfulListener.success();
                             }else {

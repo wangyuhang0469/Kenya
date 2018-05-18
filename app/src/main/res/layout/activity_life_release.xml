@@ -129,7 +129,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="150px"
                 android:gravity="center"
-                android:hint="@string/contact_number" />
+                android:hint="@string/enter_phone_number" />
 
             <include layout="@layout/line" />
 
@@ -144,7 +144,7 @@
         android:layout_alignParentBottom="true"
         android:background="@color/theme_btn"
         android:gravity="center"
-        android:text="发布"
+        android:text="@string/post"
         android:textColor="@color/white"
         android:textSize="17sp" />
 

@@ -10,9 +10,9 @@
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:gravity="center"
-        android:hint="请输入用户名"
+        android:hint="Enter a new name"
         android:textSize="14sp"
-        android:paddingTop="8dp"
+        android:paddingTop="10dp"
         style="@style/edit_base"
         android:textColor="@color/textBlack1"/>
 
@@ -32,7 +32,7 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:gravity="center"
-            android:text="确定"
+            android:text="MODIFY"
             android:textSize="15sp"
             android:textColor="@color/textgreen1"/>
 
@@ -47,7 +47,7 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:gravity="center"
-            android:text="取消"
+            android:text="CANCEL"
             android:textSize="15sp"
             android:textColor="@color/textgreen1"/>
 

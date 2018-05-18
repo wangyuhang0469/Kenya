@@ -162,18 +162,18 @@ public class HusbandryReleaseActivity extends BaseActivity {
                 finish();
                 break;
             case R.id.release:
-                if (spinner.getSelectedItem().toString().equals("请选择类型")) {
-                    toast("请选择类型");
+                if (spinner.getSelectedItem().toString().equals(getResources().getString(R.string.enter_your_category))) {
+                    toast(getResources().getString(R.string.please) + getResources().getString(R.string.enter_your_category));
                 } else if (framname.getText().length() == 0) {
-                    toast("请输入标题");
+                    toast(getResources().getString(R.string.please) + getResources().getString(R.string.enter_your_title));
                 } else if (framdesc.getText().length() == 0) {
-                    toast("请输入详情");
+                    toast(getResources().getString(R.string.please) + getResources().getString(R.string.please_describe));
                 } else if (framuser.getText().length() == 0) {
-                    toast("请输入联系人");
+                    toast(getResources().getString(R.string.please) + getResources().getString(R.string.enter_personal_contacts));
                 } else if (framphone.getText().length() == 0) {
-                    toast("请输入联系电话");
+                    toast(getResources().getString(R.string.please) + getResources().getString(R.string.enter_phone_number));
                 } else if (mResults == null || mResults.size() <= 0) {
-                    toast("请选择图片");
+                    toast(getResources().getString(R.string.please) + getResources().getString(R.string.please_select_at_least_one_picture));
                 } else {
                     final LoadingDialog loadingDialog = new LoadingDialog(HusbandryReleaseActivity.this);
                     loadingDialog.show();
@@ -252,7 +252,7 @@ public class HusbandryReleaseActivity extends BaseActivity {
                     @Override
                     public void onError(Call call, Exception e, int id) {
                         e.printStackTrace();
-                        toast("发布失败");
+                        toast(getResources().getString(R.string.post_fail));
                         loadingDialog.dismiss();
                     }
 
@@ -266,7 +266,7 @@ public class HusbandryReleaseActivity extends BaseActivity {
                                 Husbandry husbandry = JSON.parseObject(jsonObject.getString("result"), Husbandry.class);
                                 Bundle bundle = new Bundle();
                                 bundle.putSerializable("Husbandry", husbandry);
-                                toast("发布成功");
+                                toast(getResources().getString(R.string.post_success));
                                 startActivity(HusbandryDetailsActivity.class, bundle);
                                 finish();
                             } else {

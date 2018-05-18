@@ -162,23 +162,23 @@ public class HouseInfoActivity extends BaseActivity {
                 break;
             case R.id.release:
                 if (houseName.getText().length() == 0) {
-                    toast("请输入标题");
+                    toast(getResources().getString(R.string.please) + getResources().getString(R.string.enter_your_title));
                 } else if (houseHome.getText().length() == 0) {
-                    toast("请输入户型信息");
+                    toast(getResources().getString(R.string.please) + getResources().getString(R.string.please_choose_the_type_of_hoose_e_g__one_bedroom));
                 } else if (houseSquare.getText().length() == 0) {
-                    toast("请输入房屋面积");
+                    toast(getResources().getString(R.string.please) + getResources().getString(R.string.enter_the_size_of_house_in_square_metres));
                 } else if (houseAddress.getText().length() == 0) {
-                    toast("请输入房子位置");
+                    toast(getResources().getString(R.string.please) + getResources().getString(R.string.enter_the_exact_location));
                 } else if (houseInfoDesc.getText().length() == 0) {
-                    toast("请输入详情");
+                    toast(getResources().getString(R.string.please) + getResources().getString(R.string.describe_in_words_about_other_details_of_your_house));
                 } else if (housePrice.getText().length() == 0) {
-                    toast("请输入租房的价格");
+                    toast(getResources().getString(R.string.please) + getResources().getString(R.string.mothly_rent));
                 } else if (housePenson.getText().length() == 0) {
-                    toast("请输入联系人");
+                    toast(getResources().getString(R.string.please) + getResources().getString(R.string.enter_personal_contacts));
                 } else if (housePhone.getText().length() == 0) {
-                    toast("请输入联系电话");
+                    toast(getResources().getString(R.string.please) + getResources().getString(R.string.enter_phone_number));
                 } else if (mResults == null || mResults.size() <= 0) {
-                    toast("请选择图片");
+                    toast(getResources().getString(R.string.please) + getResources().getString(R.string.please_select_at_least_one_picture));
                 } else {
                     //弹出框
                     final LoadingDialog loadingDialog = new LoadingDialog(HouseInfoActivity.this);
@@ -203,6 +203,8 @@ public class HouseInfoActivity extends BaseActivity {
 
                                     @Override
                                     public void onError(Throwable e) {
+                                        e.printStackTrace();
+                                        toast(getResources().getString(R.string.post_fail));
                                     }
                                 }).launch();
                     }
@@ -232,7 +234,7 @@ public class HouseInfoActivity extends BaseActivity {
                     public void onError(Call call, Exception e, int id) {
                         e.printStackTrace();
                         loadingDialog.dismiss();
-                        toast("发布失败");
+                        toast(getResources().getString(R.string.post_fail));
                     }
 
                     @Override
@@ -243,7 +245,7 @@ public class HouseInfoActivity extends BaseActivity {
                                 House house = JSON.parseObject(jsonObject.getString("result"), House.class);
                                 Bundle bundle = new Bundle();
                                 bundle.putSerializable("house", house);
-                                toast("发布成功");
+                                toast(getResources().getString(R.string.post_success));
                                 startActivity(HouseDetailActivity.class, bundle);
                                 finish();
                             } else {

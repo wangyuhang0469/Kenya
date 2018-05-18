@@ -66,7 +66,7 @@ public class JobAdapter extends RecyclerView.Adapter<JobAdapter.ViewHolder> {
         holder.job_want.setText(list.get(position).getJobwant());
         holder.job_name.setText(list.get(position).getName());
         holder.job_sex.setText(list.get(position).getSex());
-        holder.job_age.setText(list.get(position).getAge() + "岁");
+        holder.job_age.setText(list.get(position).getAge() + context.getString(R.string.years_old));
 
         holder.call.setOnClickListener(new View.OnClickListener() {
             @Override

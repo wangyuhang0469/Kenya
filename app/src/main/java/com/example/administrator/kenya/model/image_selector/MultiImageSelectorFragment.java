@@ -162,7 +162,7 @@ public class MultiImageSelectorFragment extends Fragment {
 
         mCategoryText = (TextView) view.findViewById(R.id.category_btn);
         // 初始化，加载所有图片
-        mCategoryText.setText(R.string.folder_all);
+        mCategoryText.setText(R.string.all_photos);
         mCategoryText.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -266,7 +266,7 @@ public class MultiImageSelectorFragment extends Fragment {
 
                         if (index == 0) {
                             getActivity().getSupportLoaderManager().restartLoader(LOADER_ALL, null, mLoaderCallback);
-                            mCategoryText.setText(R.string.folder_all);
+                            mCategoryText.setText(R.string.all_photos);
                             if (mIsShowCamera) {
                                 mImageAdapter.setShowCamera(true);
                             } else {
@@ -372,7 +372,7 @@ public class MultiImageSelectorFragment extends Fragment {
 
                         startActivityForResult(intent, REQUEST_CAMERA);
                     } else {
-                        Toast.makeText(getActivity(), "拍照无法正常使用", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getActivity(), getString(R.string.camera_not_working), Toast.LENGTH_SHORT).show();
                     }
                 }
             });
@@ -392,7 +392,7 @@ public class MultiImageSelectorFragment extends Fragment {
                     cameraIntent.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(mTmpFile));
                     startActivityForResult(cameraIntent, REQUEST_CAMERA);
                 } else {
-                    Toast.makeText(getActivity(), "图片错误", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), getString(R.string.image_error), Toast.LENGTH_SHORT).show();
                 }
             } else {
                 Toast.makeText(getActivity(), R.string.msg_no_camera, Toast.LENGTH_SHORT).show();

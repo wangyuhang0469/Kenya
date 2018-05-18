@@ -160,18 +160,18 @@ public class LifeReleaseActivity extends BaseActivity {
                 finish();
                 break;
             case R.id.release:
-                if (spinner.getSelectedItem().toString().equals("请选择服务类型")) {
-                    toast("请选择服务类型");
+                if (spinner.getSelectedItem().toString().equals(getResources().getString(R.string.enter_your_category))) {
+                    toast(getResources().getString(R.string.please) + getResources().getString(R.string.enter_your_category));
                 } else if (livename.getText().length() == 0) {
-                    toast("请输入标题");
+                    toast(getResources().getString(R.string.please) + getResources().getString(R.string.enter_your_title));
                 } else if (livedesc.getText().length() == 0) {
-                    toast("请输入详情");
+                    toast(getResources().getString(R.string.please) + getResources().getString(R.string.please_describe));
                 } else if (liveuser.getText().length() == 0) {
-                    toast("请输入联系人");
+                    toast(getResources().getString(R.string.please) + getResources().getString(R.string.enter_personal_contacts));
                 } else if (livephone.getText().length() == 0) {
-                    toast("请输入联系电话");
+                    toast(getResources().getString(R.string.please) + getResources().getString(R.string.enter_phone_number));
                 } else if (mResults == null || mResults.size() <= 0) {
-                    toast("请选择图片");
+                    toast(getResources().getString(R.string.please) + getResources().getString(R.string.please_select_at_least_one_picture));
                 } else {
                     for (int i = 0; i < mResults.size(); i++) {
                         final LoadingDialog loadingDialog = new LoadingDialog(LifeReleaseActivity.this);
@@ -247,7 +247,7 @@ public class LifeReleaseActivity extends BaseActivity {
                     @Override
                     public void onError(Call call, Exception e, int id) {
                         e.printStackTrace();
-                        toast("发布失败");
+                        toast(getResources().getString(R.string.post_fail));
                         loadingDialog.dismiss();
                     }
 

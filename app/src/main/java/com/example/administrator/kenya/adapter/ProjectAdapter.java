@@ -57,8 +57,8 @@ public class ProjectAdapter extends RecyclerView.Adapter<ProjectAdapter.ViewHold
     public void onBindViewHolder(final ViewHolder holder, final int position) {
 
         holder.project_Title.setText(list.get(position).getProjectname());
-        holder.project_phone.setText("手机：" + list.get(position).getProjectphone());
-        holder.project_price.setText("$" + list.get(position).getProjectprice());
+        holder.project_phone.setText(context.getResources().getString(R.string.phone_no_) + list.get(position).getProjectphone());
+        holder.project_price.setText("KSh " + list.get(position).getProjectprice());
 //        holder.project_image.setTag(list.get(position).getProjectimgs());
 
         holder.call.setOnClickListener(new View.OnClickListener() {

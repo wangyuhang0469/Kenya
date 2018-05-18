@@ -39,6 +39,7 @@
         <activity android:name=".StartActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -62,9 +63,6 @@
 
         <activity
             android:name=".ui.city.job.JobActivity"
-            android:theme="@style/AppTheme.dark_action_bar" />
-        <activity
-            android:name=".ui.myself.FindPasswordActivity"
             android:theme="@style/AppTheme.dark_action_bar" />
         <activity android:name=".activity.ResumeinfoActivity" />
         <activity android:name=".activity.ResumeDetilActivity" />
@@ -97,7 +95,8 @@
         <activity android:name=".ui.city.job.CompanySeachActivity" />
         <activity
             android:name=".ui.myself.aboutus.AboutUsActivity"
-            android:theme="@style/AppTheme.green_action_bar"></activity>
+            android:theme="@style/AppTheme.green_action_bar" />
+        <activity android:name=".ui.myself.myrelease.MyInformationActivity"></activity>
     </application>
 
 </manifest>

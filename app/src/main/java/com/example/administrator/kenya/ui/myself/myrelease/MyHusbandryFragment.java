@@ -21,6 +21,8 @@ import com.example.administrator.kenya.constants.AppConstants;
 import com.example.administrator.kenya.interfaces.OnSuccessfulListener;
 import com.example.administrator.kenya.ui.city.husbandry.HusbandryDetailsActivity;
 import com.example.administrator.kenya.ui.main.DeleteDialog;
+import com.example.administrator.kenya.view.MyFootRefreshView;
+import com.example.administrator.kenya.view.MyHeadRefreshView;
 import com.jwenfeng.library.pulltorefresh.BaseRefreshListener;
 import com.jwenfeng.library.pulltorefresh.PullToRefreshLayout;
 import com.zhy.http.okhttp.OkHttpUtils;
@@ -85,7 +87,8 @@ public class MyHusbandryFragment extends BaseFragment {
         recyclerView.setAdapter(myHusbandryAdapter);
         pullToRefreshLayout.setCanRefresh(false);
         pullToRefreshLayout.setCanLoadMore(false);
-
+        pullToRefreshLayout.setHeaderView(new MyHeadRefreshView(getContext()));
+        pullToRefreshLayout.setFooterView(new MyFootRefreshView(getContext()));
         pullToRefreshLayout.setRefreshListener(new BaseRefreshListener() {
             @Override
             public void refresh() {
@@ -111,7 +114,7 @@ public class MyHusbandryFragment extends BaseFragment {
                 //防止因Activity释放导致内部控件空指针
                 if (pullToRefreshLayout != null) {
                     pullToRefreshLayout.finishLoadMore();
-                    toast("加载失败");
+                    toast( getString(R.string.load_fail));
                     e.printStackTrace();
                 }
             }
@@ -185,7 +188,7 @@ public class MyHusbandryFragment extends BaseFragment {
         @Override
         public void onBindViewHolder(final ViewHolder holder, final int position) {
             holder.framname.setText(list.get(position).getFramname());
-            holder.framphone.setText("手机：" + list.get(position).getFramphone());
+            holder.framphone.setText( getString(R.string.phone_no_) + list.get(position).getFramphone());
 //            holder.framimgs.setTag(list.get(position).getFramimgs());
 //
             Glide.with(getContext())

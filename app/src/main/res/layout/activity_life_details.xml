@@ -73,7 +73,7 @@
                     android:layout_marginLeft="30px"
                     android:layout_marginTop="30px"
                     android:gravity="center"
-                    android:text="服务详情"
+                    android:text="@string/service_details"
                     android:textColor="@color/textgreen1" />
 
                 <include layout="@layout/line" />
@@ -145,14 +145,16 @@
             android:id="@+id/call"
             android:layout_width="180px"
             android:layout_height="80px"
-            android:layout_alignParentRight="true"
-            android:layout_centerVertical="true"
-            android:layout_marginRight="30px"
+            android:layout_marginRight="11dp"
             android:background="@drawable/bg15dp_theme_btn"
             android:gravity="center"
             android:text="@string/call"
             android:textColor="@color/white"
-            android:textSize="13sp" />
+            android:textSize="13sp"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="11dp" />
 
 
     </com.zhy.autolayout.AutoRelativeLayout>

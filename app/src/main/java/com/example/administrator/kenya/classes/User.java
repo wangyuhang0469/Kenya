@@ -1,5 +1,7 @@
 package com.example.administrator.kenya.classes;
 
+import com.example.administrator.kenya.constants.AppConstants;
+
 import java.io.Serializable;
 
 
@@ -91,7 +93,9 @@ public class User implements Serializable {
     }
 
     public String getUserPortrait() {
-        return userPortrait;
+        if (userPortrait == null||userPortrait.equals("null")|| userPortrait.equals(""))
+            return null;
+        return AppConstants.BASE_URL +userPortrait;
     }
 
     public void setUserPortrait(String userPortrait) {

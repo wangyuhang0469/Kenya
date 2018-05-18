@@ -47,7 +47,7 @@ public class ResumeDetilActivity extends Activity {
         ButterKnife.bind(this);
         job = (Job) getIntent().getExtras().getSerializable("job");
         resumeDetailName.setText(job.getName());
-        resumeDetailPrice.setText("期望薪资:" + job.getHopesalary());
+//        resumeDetailPrice.setText("期望薪资:" + job.getHopesalary());
         resumeDetialJobwant.setText(job.getJobwant());
         resumeDetailExperience.setText(job.getJointime());
         resumeDetailDesc.setText(job.getPersondesc());

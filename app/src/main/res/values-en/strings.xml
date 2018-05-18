@@ -1,16 +1,75 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <string name="please">Please \ </string>
+
+    <string name="load_fail">Load Failed</string>
+    <string name="post_success">Post Successfully</string>
+    <string name="post_fail">Post Failed</string>
+    <string name="nothing">Nothing...</string>
+    <string name="enter_keyword_first">Please Enter The Keywords First</string>
+    <string name="please_select_at_least_one_picture">Select At Least One Picture</string>
+    <string name="company_information">Company Information</string>
+    <string name="project_introduction">Project Introduction</string>
+    <string name="investment_amounts">Investment Amounts</string>
+    <string name="industry">Industry</string>
+    <string name="location">Location</string>
+    <string name="passwords_not_math">The two passwords don\'t match</string>
+    <string name="register_successfully">Register Successfully</string>
+    <string name="register_failed">Register Failed</string>
+    <string name="login_successfully">Login Successfully</string>
+    <string name="login_failed">Login Failed</string>
+    <string name="modify_successfully">Modify Successfully</string>
+    <string name="modify_failed">Modify Failed</string>
+    <string name="delete_successfully">Delete Successfully</string>
+    <string name="delete_failed">Delete Failed</string>
+    <string name="enter_complete">Please Enter Complete Information</string>
+    <string name="years_old">\  Years Old</string>
+    <string name="personal_information">Personal Information</string>
+    <string name="avatar">Avatar</string>
+    <string name="birthday">Birthday</string>
+
+    <string name="all_photos">All Photos</string>
+    <string name="preview">Preview</string>
+    <string name="msg_no_camera">No System Camera</string>
+    <string name="msg_amount_limit">Arriva Lamount Limit</string>
+    <string name="accomplish">ACCOMPLISH</string>
+    <string name="photo_unit">\  Pictures</string>
+    <string name="tip_take_photo">Take Photo</string>
+    <string name="select_image">Select Image</string>
+    <string name="camera_not_working">The Camera Is Not Working Properly</string>
+    <string name="image_error">Image Error</string>
+
+    <string name="loading">Loading...</string>
+    <string name="load_more">Load More</string>
+    <string name="refresh">Refresh</string>
+    <string name="choose_sex">Choose Sex</string>
+    <string name="choose_birthday">Choose Birthday</string>
+    <string name="enter_self_introduction">Enter Self-Introduction</string>
+    <string name="choose_working_experience">Choose Working Experience</string>
+    <string name="please_choose_avatar">Please Choose Avatar</string>
+    <string name="expected_job">Expected Job:</string>
+    <string name="job">Job</string>
+    <string name="enter_the_job">Enter The Job</string>
+    <string name="enter_monthly_salary">Enter Monthly Salary</string>
+
+
+
+    <string name="timepicker_year">YEAR</string>
+    <string name="timepicker_month">MONTH</string>
+    <string name="timepicker_day">DAY</string>
+
     <string name="app_name">Kenya</string>
     <!--login 登录-->
     <!--<string name="login">login</string>-->
     <!--<string name="next">Next</string>-->
-    <string name="sure">Sure</string>
+    <string name="sure">SURE</string>
+
     <!--login 登录-->
     <string name="login">Login</string>
     <!--注册-->
     <string name="language">Language</string>
-    <string name="registration">Registration</string>
+    <string name="sign_in">Sign In</string>
     <string name="enter_phone_no.">Enter Phone Number</string>
     <string name="enter_sent_code">Enter Sent Code</string>
     <string name="click_to_send_code">Cllick To Send Code</string>
@@ -25,36 +84,30 @@
     <string name="job_wanted">Job Wanted</string>
     <string name="business_services">Business Services</string>
     <string name="forget_password">Forget Password</string>
-    <string name="please_enter_the_company_name."> Please enter the company name.</string>
-    <string name="please_enter_your_contact_number.">Please enter your contact number.</string>
+    <string name="please_enter_the_company_name">Enter The Company Name</string>
+    <string name="enter_phone_number">Enter Your Phone Number</string>
     <string name="contact_number">Contact Number</string>
     <string name="company_name">Company Name</string>
     <string name="acquire">Acquire</string>
     <string name="enter_your_target_positions">Enter your target positions</string>
     <string name="my_release">My Release</string>
-    <string name="job_intension">Job Intension:</string>
+    <string name="job_intension">Job Intension</string>
     <string name="goods_detail">Goods Detail</string>
-    <string name="Please_select_a_type">Please select a type</string>
-    <string name="Project_experience_strong_communication_skill_nice_personality">Project experience, strong communication skill, nice personality.</string>
+    <string name="Please_select_a_type">Please Select A Type</string>
+    <string name="job_require">Briefly introduce the content of this work and the requirements of the applicant</string>
     <string name="about_us">About Us</string>
     <string name="contant_us">Contact Us</string>
-    <string name="contant_us2">Contact Us:</string>
     <string name="job_requirements">Job Requirements</string>
     <string name="job_information">Job Information</string>
     <string name="recruitment_information">Recruitment Information</string>
-    <string name="name">Name:</string>
-    <string name="sex">Sex:</string>
-    <string name="age">Age:</string>
-    <string name="company_information">Company Information</string>
-    <string name="program_introduction">Program Introduction</string>
-    <string name="location">Location:</string>
-    <string name="investment_amounts">Investment Amounts:ksh</string>
-    <string name="industry">Industry:</string>
+    <string name="name">Name</string>
+    <string name="sex">Sex</string>
+    <string name="age">Age</string>
 
 
     <!--工作年限-->
-    <string name="working_experience">Working Experience</string>
-    <string name="no_experience">No Experience</string>
+    <string name="working_experience">Experience</string>
+    <string name="unlimited">Unlimited</string>
     <string name="recent_graduate">Recent Graduate</string>
     <string name="one_year_below">One Year Below</string>
     <string name="one_to_three_years">1-3 Years</string>
@@ -63,28 +116,28 @@
     <string name="ten_years_and_above">10 Years And Above</string>
     <string name="title_please_enter_your_topic">Title (Topic) Please Enter Your Topic</string>
     <string name="topic">Topic</string>
-    <string name="please_choose_the_type_of_hoose_e.g._one_bedroom">Please Choose The Type Of House  e.g.One Bedroom</string>
+    <string name="please_choose_the_type_of_hoose_e.g._one_bedroom">Enter The Type Of House  e.g.One Bedroom</string>
     <string name="enter_the_size_of_house_in_square_metres">Enter The Size Of House In Square Metres</string>
     <string name="enter_the_exact_location">Enter The Exact Location(Of The House)</string>
-    <string name="mothly_rent">Monthly Rent</string>
+    <string name="mothly_rent">Enter Monthly Rent</string>
     <string name="phone_number">Phone Number</string>
     <string name="describe_in_words_about_other_details_of_your_house">Describe  In  Words About Other Details Of Your House</string>
 
     <!--请选择要发布的类别-->
-    <string name="enter_your_category">Enter Your  Category(Choose Your Category)</string>
+    <string name="enter_your_category">Choose Your Category</string>
     <string name="enter_your_title">Enter Your Title</string>
     <string name="please_describe">Please  Describe</string>
     <string name="enter_personal_contacts">Enter Personal Contacts </string>
-    <string name="dessribe_your_product_category">Describe Your Product Category</string>
+    <string name="dessribe_your_product">Describe Your Product</string>
     <string name="describe_in_details_about_your_product">Describe In Details Abouts Your Product</string>
     <string name="enter_your_selling_price">Enter Your Selling Prices</string>
     <string name="send">Send</string>
     <string name="others">Others</string>
-    <string name="job_position">JOB POSITION </string>
+    <string name="job_position">Job Position</string>
     <string name="sales_persons">Sales Persons</string>
     <string name="monthly_salary">Monthly Salary</string>
-    <string name="salary">Salary</string>
-    <string name="description_of_job_vacancy">Description Of Job Vacancy</string>
+    <string name="negotiable">Negotiable</string>
+    <string name="description_of_job_vacancy">Description Of Job</string>
 
     <!--招聘求职-->
     <string name="job_recruitment">Job Recruitment</string>
@@ -105,14 +158,14 @@
     <!--项目找资金-->
     <string name="projects_to_fund">Projects To Funds</string>
     <string name="funds_for_projects">Funds For Projects</string>
-    <string name="post">Post</string>
+    <string name="post">POST</string>
     <string name="details">Details</string>
     <string name="projects_details">Projects Details</string>
     <string name="funds_details">Funds Details</string>
     <string name="news_details">News Details</string>
     <string name="news">News</string>
     <string name="personal">Personal</string>
-    <string name="enter_your_nick_name">Enter Your Nick Name </string>
+    <string name="enter_your_nick_name">Enter Your Name</string>
     <string name="nick_name">Nick Name </string>
     <string name="change_personal_details">Change Personal Detail</string>
     <string name="receiver_address">Peceiver Address</string>
@@ -121,7 +174,7 @@
     <string name="my_wellet">My Wallet</string>
     <string name="disscoont_point">Discoont Point</string>
     <string name="confirm">Confirm</string>
-    <string name="cancel">Cancel</string>
+    <string name="cancel">CANCEL</string>
     <string name="farm_products">Farm Products</string>
     <string name="category">Category</string>
 
@@ -175,33 +228,33 @@
     <string name="recever_address">Receiver Address</string>
     <string name="prefffered_address">Preffered Address</string>
     <string name="edit">Edit</string>
-    <string name="delete">Delsete</string>
+    <string name="delete">DELETE</string>
 
     <!--返回-->
     <string name="back">Back</string>
     <string name="edit_your_resume">Edit Your Resume</string>
     <string name="resume_details">Resume Details</string>
-    <string name="take_photo">Take  Photo (For Job Application The Photo Most Be Clear)</string>
+    <string name="take_photo">The Photo Of Yourself</string>
     <string name="enter_your_name">Enter Your Name</string>
     <string name="male">Male</string>
     <string name="female">Female</string>
-    <string name="please_enter_your_job_description">Please Enter Your Job Description</string>
-    <string name="please_enter_your_phone_no.">Please Enter Your Phone Number</string>
-    <string name="date_of_birth_year">Date Of Birth Year</string>
-    <string name="personal_introduction">Personal  Introduction</string>
+    <string name="please_enter_your_job_description">Enter Your Job Description</string>
+    <string name="please_enter_your_phone_no.">Enter Your Phone Number</string>
+    <string name="date_of_birth_year">Birthday</string>
+    <string name="personal_introduction">Self-Introduction</string>
     <!--<string name="working_experience">工作时间</string>-->
     <string name="choose_the_year_of_birth">Choose The  Year Of Birth</string>
     <string name="choose_the_year_of_work">Choose The Year Of Worke</string>
     <!--<string name="confirm">保存</string>-->
     <string name="year">Year</string>
     <string name="month">Month</string>
-    <string name="finish">Finish</string>
+    <string name="Completed">Completed</string>
 
     <!--生活服务-->
 
     <!--<string name="domestic_services">生活服务</string>-->
-    <string name="search_tool">Search Tool</string>
-    <string name="enter_your_searcff">Enter Your Searcff</string>
+    <string name="search">Search</string>
+    <string name="enter_your_keyword">Enter your keyword</string>
     <string name="call">CALL</string>
     <string name="job_application">Job Application</string>
     <string name="workers_recruitment">Workes Recruitment</string>
@@ -212,6 +265,7 @@
     <string name="seourity_guard">Seourity Guard</string>
     <string name="receiptionist">Receiptionist</string>
     <string name="fersonal_driver">PERSONAT DRIVER</string>
+    <string name="service_details"> Service Details</string>
     <!--   <string name="post">发布</string>-->
 
 </resources>

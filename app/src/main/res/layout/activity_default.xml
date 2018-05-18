@@ -26,8 +26,9 @@
             android:layout_height="wrap_content"
             android:textColor="@color/theme_btn"
             android:textSize="18sp"
-            android:text="选择图片"
-            android:layout_centerInParent="true"/>
+            android:text="@string/select_image"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@id/btn_back"/>
 
 
 
@@ -36,7 +37,7 @@
             android:background="@drawable/action_btn"
             android:minHeight="1dp"
             android:minWidth="1dp"
-            android:text="完成"
+            android:text="@string/accomplish"
             android:layout_marginRight="16dp"
             android:paddingLeft="10dp"
             android:paddingRight="8dp"

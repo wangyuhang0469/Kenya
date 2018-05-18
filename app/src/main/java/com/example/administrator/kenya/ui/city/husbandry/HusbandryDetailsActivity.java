@@ -56,10 +56,10 @@ public class HusbandryDetailsActivity extends BaseActivity {
         title.setText(getResources().getString(R.string.details));
         husbandry = (Husbandry) getIntent().getExtras().getSerializable("Husbandry");
         framname.setText(husbandry.getFramname());
-        framtype.setText("服务类型  " + husbandry.getFramtype());
+        framtype.setText( getResources().getString(R.string.service_details) +"  " + husbandry.getFramtype());
         framdesc.setText(husbandry.getFramdesc());
         framuser.setText(husbandry.getFramuser());
-        framphone.setText(husbandry.getFramphone());
+        framphone.setText(getResources().getString(R.string.phone_no_)+ husbandry.getFramphone());
 
 
         ExStaggeredGridLayoutManager exStaggeredGridLayoutManager = new ExStaggeredGridLayoutManager(2, ExStaggeredGridLayoutManager.VERTICAL);

@@ -68,7 +68,6 @@ public class CityHomeFragment extends BaseFragment {
 
     //轮播图
     List<Banners> BannersList = new ArrayList<>();
-    private PostFormBuilder postFormBuilderbaners;
     List<String> imageList;
 
     @Override
@@ -83,7 +82,6 @@ public class CityHomeFragment extends BaseFragment {
         imageList = new ArrayList<>();
         data = new ArrayList<>();
         initOkhttpBanner();
-        postFormBuilderbaners.addParams("page", 1 + "").build().execute(StringCallback);
         return view;
     }
 
@@ -96,7 +94,7 @@ public class CityHomeFragment extends BaseFragment {
                     OkHttpUtils.get().url(AppConstants.BASE_URL + "/kenya/Funds/selectById?fundsid=" + BannersList.get(position).getCategoryId()).build().execute(new StringCallback() {
                         @Override
                         public void onError(Call call, Exception e, int id) {
-                            toast("资金轮播图加载失败");
+                            toast(getString(R.string.load_fail));
                         }
 
                         @Override
@@ -120,7 +118,7 @@ public class CityHomeFragment extends BaseFragment {
                     OkHttpUtils.get().url(AppConstants.BASE_URL + "/kenya/Project/selectById?projectid=" + BannersList.get(position).getCategoryId()).build().execute(new StringCallback() {
                         @Override
                         public void onError(Call call, Exception e, int id) {
-                            toast("项目轮播图加载失败");
+                            toast(R.string.load_fail);
                         }
 
                         @Override
@@ -201,7 +199,7 @@ public class CityHomeFragment extends BaseFragment {
             @Override
             public void onError(Call call, Exception e, int id) {
                 //防止因Activity释放导致内部控件空指针
-                toast("加载失败");
+                toast(getString(R.string.load_fail));
             }
 
             @Override
@@ -237,35 +235,38 @@ public class CityHomeFragment extends BaseFragment {
     }
 
     private void initOkhttpBanner() {
-        postFormBuilderbaners = OkHttpUtils.post()
-                .url(AppConstants.BASE_URL + "/kenya/content/pageQuery")
-                .addParams("page", 1 + "");
-        StringCallback = new StringCallback() {
-            @Override
-            public void onError(Call call, Exception e, int id) {
-                toast("加载失败");
-            }
 
-            @Override
-            public void onResponse(String response, int id) {
-                List<Banners> addList = null;
-                try {
-                    JSONObject jsonObject = new JSONObject(response);
-                    if (jsonObject.getString("code").equals("000")) {
-                    } else {
+        OkHttpUtils.post()
+                .url(AppConstants.BASE_URL + "/kenya/content/pageQuery")
+                .addParams("page", 1 + "")
+                .build()
+                .execute(new StringCallback() {
+                    @Override
+                    public void onError(Call call, Exception e, int id) {
+                        toast(getString(R.string.load_fail));
                     }
-                    response = jsonObject.getString("rows");
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-                addList = JSON.parseArray(response, Banners.class);
-                BannersList.addAll(addList);
-                for (int i = 0; i < addList.size(); i++) {
-                    imageList.add(AppConstants.BASE_URL + addList.get(i).getPic());
-                }
-                initBanner(imageList);
-            }
-        };
+
+                    @Override
+                    public void onResponse(String response, int id) {
+                        List<Banners> addList = null;
+                        try {
+                            JSONObject jsonObject = new JSONObject(response);
+                            if (jsonObject.getString("code").equals("000")) {
+                            } else {
+                            }
+                            response = jsonObject.getString("rows");
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                        addList = JSON.parseArray(response, Banners.class);
+                        BannersList.addAll(addList);
+                        for (int i = 0; i < addList.size(); i++) {
+                            imageList.add(AppConstants.BASE_URL + addList.get(i).getPic());
+                        }
+                        initBanner(imageList);
+                    }
+                });
+
     }
 
     @Override

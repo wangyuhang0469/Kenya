@@ -36,7 +36,7 @@ public class CallPhoneDialog extends Dialog {
         yes = (TextView) findViewById(R.id.yes);
         no = (TextView) findViewById(R.id.no);
 
-        information.setText("您确定要给" + phone + "拨打电话吗？");
+        information.setText("Call To " + phone + " ?");
 
         no.setOnClickListener(new View.OnClickListener() {
             @Override

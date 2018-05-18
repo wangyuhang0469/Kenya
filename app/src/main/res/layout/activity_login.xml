@@ -86,7 +86,7 @@
                 android:paddingLeft="30px"
                 android:paddingRight="60px"
                 android:paddingTop="20px"
-                android:text="@string/registration"
+                android:text="@string/sign_in"
                 android:textColor="@color/textBlack2"
                 android:textSize="13dp" />
 

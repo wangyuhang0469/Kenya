@@ -18,6 +18,8 @@ import com.example.administrator.kenya.activity.AdvertyinfoActivity;
 import com.example.administrator.kenya.adapter.CompanyAdapter;
 import com.example.administrator.kenya.classes.Company;
 import com.example.administrator.kenya.constants.AppConstants;
+import com.example.administrator.kenya.view.MyFootRefreshView;
+import com.example.administrator.kenya.view.MyHeadRefreshView;
 import com.jwenfeng.library.pulltorefresh.BaseRefreshListener;
 import com.jwenfeng.library.pulltorefresh.PullToRefreshLayout;
 import com.zhy.http.okhttp.OkHttpUtils;
@@ -103,7 +105,7 @@ public class TabFragment2 extends Fragment {
                 //防止因Activity释放导致内部控件空指针
                 if (pullToRefreshLayout != null) {
                     pullToRefreshLayout.finishLoadMore();
-                    Toast.makeText(getActivity(), "加载失败", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getActivity(), getString(R.string.load_fail), Toast.LENGTH_LONG).show();
                     e.printStackTrace();
                 }
             }
@@ -143,6 +145,8 @@ public class TabFragment2 extends Fragment {
         recyclerView.setAdapter(companyAdapter);
         pullToRefreshLayout.setCanRefresh(false);
         pullToRefreshLayout.setCanLoadMore(false);
+        pullToRefreshLayout.setHeaderView(new MyHeadRefreshView(getContext()));
+        pullToRefreshLayout.setFooterView(new MyFootRefreshView(getContext()));
         pullToRefreshLayout.setRefreshListener(new BaseRefreshListener() {
             @Override
             public void refresh() {

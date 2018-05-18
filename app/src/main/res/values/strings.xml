@@ -1,22 +1,65 @@
 <resources>
     <string name="app_name">Kenya</string>
 
+    <string name="please"></string>
+
+
+    <string name="load_fail">加载失败</string>
+    <string name="post_success">发布成功</string>
+    <string name="post_fail">发布失败</string>
+    <string name="nothing">什么也没有...</string>
+    <string name="enter_keyword_first">请先输入关键字</string>
+    <string name="please_select_at_least_one_picture">请至少选择一张图片</string>
+    <string name="company_information">公司信息</string>
+    <string name="project_introduction">项目简介</string>
+    <string name="investment_amounts">投资额度</string>
+    <string name="industry">所属行业</string>
+    <string name="location">位置</string>
+    <string name="passwords_not_math">两次输入密码不一致</string>
+    <string name="register_successfully">注册成功</string>
+    <string name="register_failed">注册失败</string>
+    <string name="login_successfully">登录成功</string>
+    <string name="login_failed">登录失败</string>
+    <string name="modify_successfully">修改成功</string>
+    <string name="modify_failed">修改失败</string>
+    <string name="delete_successfully">删除成功</string>
+    <string name="delete_failed">删除失败</string>
+    <string name="enter_complete">请输入完整信息</string>
+    <string name="years_old">岁</string>
+    <string name="personal_information">个人信息</string>
+    <string name="avatar">头像</string>
+    <string name="birthday">生日</string>
+    <string name="loading">加载中...</string>
+    <string name="load_more">上拉加载</string>
+    <string name="refresh">下拉刷新</string>
+    <string name="choose_sex">请选择性别</string>
+    <string name="choose_birthday">请选择出生年月</string>
+    <string name="enter_self_introduction">请输入个人介绍</string>
+    <string name="choose_working_experience">请选择工作经验</string>
+    <string name="please_choose_avatar">请选择头像</string>
+    <string name="expected_job">期望职位:</string>
+    <string name="job">工作</string>
+    <string name="enter_the_job">请输入招聘的职位</string>
+    <string name="enter_monthly_salary">请输入月薪</string>
+
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <!--时间上用到的-->
-    <string name="timepicker_finish">确认</string>
     <string name="timepicker_year">年</string>
     <string name="timepicker_month">月</string>
     <string name="timepicker_day">日</string>
 
 
-    <string name="folder_all">所有照片</string>
+    <string name="all_photos">所有照片</string>
     <string name="preview">预览</string>
     <string name="msg_no_camera">没有系统相机</string>
     <string name="msg_amount_limit">已经达到最高选择数量</string>
-    <string name="action_done">完成</string>
+    <string name="accomplish">完成</string>
     <string name="photo_unit">张</string>
     <string name="tip_take_photo">拍摄照片</string>
+    <string name="select_image">选择图片</string>
+    <string name="camera_not_working">相机无法正常使用</string>
+    <string name="image_error">图片错误</string>
 
     <!--login 登录-->
     <!--<string name="login">登录</string>-->
@@ -26,10 +69,9 @@
     <!--login 登录-->
     <string name="login">登录</string>
 
-
     <!--注册-->
     <string name="language">语言</string>
-    <string name="registration">注册</string>
+    <string name="sign_in">注册</string>
     <string name="enter_phone_no.">请输入手机号</string>
     <string name="enter_sent_code">请输入验证码</string>
     <string name="click_to_send_code">获取验证码</string>
@@ -44,36 +86,30 @@
     <string name="job_wanted">求职</string>
     <string name="business_services">商务服务</string>
     <string name="forget_password">忘记密码</string>
-    <string name="please_enter_the_company_name.">请输入公司名称</string>
-    <string name="please_enter_your_contact_number.">请输入联系电话</string>
+    <string name="please_enter_the_company_name">请输入公司名称</string>
+    <string name="enter_phone_number">请输入联系电话</string>
     <string name="contact_number">联系电话</string>
     <string name="company_name">公司名称</string>
     <string name="acquire">获取</string>
     <string name="enter_your_target_positions">请输入你的目标职位</string>
-    <string name="my_release">我的请求</string>
+    <string name="my_release">我的发布</string>
     <string name="job_intension">求职意向:</string>
     <string name="goods_detail">物品详情</string>
     <string name="Please_select_a_type">请选择类型</string>
-    <string name="Project_experience_strong_communication_skill_nice_personality">有项目经验者优先，表达能力强，有亲和力</string>
+    <string name="job_require">简单介绍下工作的内容及对应聘者的要求</string>
     <string name="about_us">关于我们</string>
-    <string name="contant_us">联系我们</string>
-    <string name="contant_us2">联系我们:</string>
+    <string name="contant_us">联系我们:</string>
     <string name="job_requirements">职位要求</string>
     <string name="job_information">求职信息</string>
     <string name="recruitment_information">招聘信息</string>
-    <string name="name">姓名:</string>
-    <string name="sex">性别:</string>
-    <string name="age">年龄:</string>
-    <string name="company_information">公司信息</string>
-    <string name="program_introduction">项目简介</string>
-    <string name="location">位置</string>
-    <string name="investment_amounts">投资额度</string>
-    <string name="industry">所属行业</string>
+    <string name="name">姓名</string>
+    <string name="sex">性别</string>
+    <string name="age">年龄</string>
 
 
     <!--工作年限-->
-    <string name="working_experience">工作年限</string>
-    <string name="no_experience">不限</string>
+    <string name="working_experience">工作经验</string>
+    <string name="unlimited">不限</string>
     <string name="recent_graduate">应届生</string>
     <string name="one_year_below">1年以内</string>
     <string name="one_to_three_years">1-3年</string>
@@ -82,27 +118,27 @@
     <string name="ten_years_and_above">10年以上</string>
     <string name="title_please_enter_your_topic">标题</string>
     <string name="topic">标题</string>
-    <string name="please_choose_the_type_of_hoose_e.g._one_bedroom">户型</string>
-    <string name="enter_the_size_of_house_in_square_metres">面积</string>
-    <string name="enter_the_exact_location">位置</string>
-    <string name="mothly_rent">租金</string>
+    <string name="please_choose_the_type_of_hoose_e.g._one_bedroom">请输入户型</string>
+    <string name="enter_the_size_of_house_in_square_metres">请输入面积</string>
+    <string name="enter_the_exact_location">请输入位置</string>
+    <string name="mothly_rent">请输入租金</string>
     <string name="phone_number">电话</string>
     <string name="describe_in_words_about_other_details_of_your_house">描述一下房子的概况</string>
 
     <!--请选择要发布的类别-->
-    <string name="enter_your_category">请选择要发布的类别</string>
+    <string name="enter_your_category">请选择类别</string>
     <string name="enter_your_title">请输入标题</string>
     <string name="please_describe">请描述</string>
     <string name="enter_personal_contacts">输入联系人</string>
-    <string name="dessribe_your_product_category">一句话描述下你的物品吧！</string>
-    <string name="describe_in_details_about_your_product">描述一下物品的细节和故事</string>
-    <string name="enter_your_selling_price">输入你想卖的价格</string>
+    <string name="dessribe_your_product">一句话描述下你的物品吧！</string>
+    <string name="describe_in_details_about_your_product">描述一下物品的细节</string>
+    <string name="enter_your_selling_price">输入价格</string>
     <string name="send">保存并发布</string>
     <string name="others">其他</string>
     <string name="job_position">发布职位</string>
     <string name="sales_persons">销售代表</string>
-    <string name="monthly_salary">月\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020薪</string>
-    <string name="salary">面议</string>
+    <string name="monthly_salary">月               薪</string>
+    <string name="negotiable">面议</string>
     <string name="description_of_job_vacancy">职位描述</string>
 
     <!--招聘求职-->
@@ -136,7 +172,7 @@
     <string name="change_personal_details">修改昵称</string>
     <string name="receiver_address">我的收获地址</string>
     <string name="my_post_history">我发布的信息</string>
-    <string name="request_a_taxi">我要申请电车</string>
+    <string name="request_a_taxi">申请成为车主</string>
     <string name="my_wellet">我的钱包</string>
     <string name="disscoont_point">我的积分</string>
     <string name="confirm">保存</string>
@@ -167,7 +203,7 @@
     <string name="choose_photo">选择照片</string>
     <string name="your_photo_callery">所有相册</string>
     <string name="receiver">收获人</string>
-    <string name="phone_no.">手机号码</string>
+    <string name="phone_no.">手机</string>
     <string name="enter_your_area_address">所在地区</string>
     <string name="street_address">详细地址</string>
     <string name="information_center">新闻中心</string>
@@ -200,7 +236,7 @@
     <string name="back">返回</string>
     <string name="edit_your_resume">编辑简历</string>
     <string name="resume_details">简历详情</string>
-    <string name="take_photo">头像，一份好工作的开始</string>
+    <string name="take_photo">你的照片</string>
     <string name="enter_your_name">输入姓名</string>
     <string name="male">男</string>
     <string name="female">女</string>
@@ -214,13 +250,13 @@
     <!--<string name="confirm">保存</string>-->
     <string name="year">年</string>
     <string name="month">月</string>
-    <string name="finish">已完成</string>
+    <string name="Completed">已完成</string>
 
     <!--生活服务-->
 
     <!--<string name="domestic_services">生活服务</string>-->
-    <string name="search_tool">搜索</string>
-    <string name="enter_your_searcff">输入你想找的</string>
+    <string name="search">搜索</string>
+    <string name="enter_your_keyword">请输入关键字</string>
     <string name="call">拨号</string>
     <string name="job_application">我要求职</string>
     <string name="workers_recruitment">我要招聘</string>
@@ -231,6 +267,7 @@
     <string name="seourity_guard">物业保安</string>
     <string name="receiptionist">大堂经理</string>
     <string name="fersonal_driver">专车司机</string>
+    <string name="service_details"> 服务详情</string>
     <!--   <string name="post">发布</string>-->
 
 </resources>

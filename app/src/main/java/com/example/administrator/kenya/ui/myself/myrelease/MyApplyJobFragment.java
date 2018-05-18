@@ -25,6 +25,8 @@ import com.example.administrator.kenya.classes.User;
 import com.example.administrator.kenya.constants.AppConstants;
 import com.example.administrator.kenya.interfaces.OnSuccessfulListener;
 import com.example.administrator.kenya.ui.main.DeleteDialog;
+import com.example.administrator.kenya.view.MyFootRefreshView;
+import com.example.administrator.kenya.view.MyHeadRefreshView;
 import com.jwenfeng.library.pulltorefresh.BaseRefreshListener;
 import com.jwenfeng.library.pulltorefresh.PullToRefreshLayout;
 import com.zhy.http.okhttp.OkHttpUtils;
@@ -92,7 +94,7 @@ public class MyApplyJobFragment extends BaseFragment {
                 //防止因Activity释放导致内部控件空指针
                 if (pullToRefreshLayout != null) {
                     pullToRefreshLayout.finishLoadMore();
-                    Toast.makeText(getActivity(), "加载失败", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getActivity(), getString(R.string.load_fail), Toast.LENGTH_LONG).show();
                     e.printStackTrace();
                 }
             }
@@ -139,6 +141,8 @@ public class MyApplyJobFragment extends BaseFragment {
         recyclerView.setAdapter(myJobAdapter);
         pullToRefreshLayout.setCanRefresh(false);
         pullToRefreshLayout.setCanLoadMore(false);
+        pullToRefreshLayout.setHeaderView(new MyHeadRefreshView(getContext()));
+        pullToRefreshLayout.setFooterView(new MyFootRefreshView(getContext()));
         pullToRefreshLayout.setRefreshListener(new BaseRefreshListener() {
             @Override
             public void refresh() {
@@ -189,7 +193,7 @@ public class MyApplyJobFragment extends BaseFragment {
             holder.job_want.setText(list.get(position).getJobwant());
             holder.job_name.setText(list.get(position).getName());
             holder.job_sex.setText(list.get(position).getSex());
-            holder.job_age.setText(list.get(position).getAge() + "岁");
+            holder.job_age.setText(list.get(position).getAge() + getString(R.string.years_old));
 //            holder.job_image.setTag(list.get(position).getHeadimg());
             Glide.with(context)
                     .load(AppConstants.BASE_URL + list.get(position).getHeadimg())

@@ -2,26 +2,16 @@ package com.example.administrator.kenya.adapter;
 
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.drawable.BitmapDrawable;
-import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.bumptech.glide.Glide;
-import com.bumptech.glide.request.animation.GlideAnimation;
-import com.bumptech.glide.request.target.SimpleTarget;
 import com.example.administrator.kenya.R;
 import com.example.administrator.kenya.activity.JobDetailActivity;
 import com.example.administrator.kenya.classes.Company;
-import com.example.administrator.kenya.classes.House;
-import com.example.administrator.kenya.constants.AppConstants;
-import com.example.administrator.kenya.ui.city.house.HouseDetailActivity;
 import com.example.administrator.kenya.ui.main.CallPhoneDialog;
 
 import java.util.List;
@@ -70,9 +60,9 @@ public class CompanyAdapter extends RecyclerView.Adapter<CompanyAdapter.ViewHold
         if (list.get(position).getCompanystationsalary() == null) {
 
         } else if (list.get(position).getCompanystationsalary().equals("-1")) {
-            holder.company_price.setText("面议");
+            holder.company_price.setText(context.getResources().getString(R.string.negotiable));
         } else {
-            holder.company_price.setText(list.get(position).getCompanystationsalary() + "元/月");
+            holder.company_price.setText("KSh " + list.get(position).getCompanystationsalary() + "/Month");
         }
 //        holder.company_image.setTag(list.get(position).getCompanyimg0());
 

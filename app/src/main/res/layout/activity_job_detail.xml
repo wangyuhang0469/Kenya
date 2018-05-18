@@ -54,27 +54,27 @@
             <com.zhy.autolayout.AutoRelativeLayout
                 android:id="@+id/job_detail_work"
                 android:layout_width="match_parent"
-                android:layout_height="250px"
+                android:layout_height="wrap_content"
                 android:layout_below="@id/job_deyail_title"
                 android:background="@color/white"
-                android:paddingLeft="30px">
+                android:paddingLeft="30px"
+                android:paddingBottom="30px">
 
                 <TextView
                     android:id="@+id/job_detail_jobtype"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="60px"
-                    android:text="销售代表"
-                    android:textSize="70px" />
+                    android:layout_marginTop="50px"
+                    android:textSize="24sp" />
 
                 <TextView
                     android:id="@+id/job_detail_pay"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_below="@id/job_detail_jobtype"
-                    android:layout_marginTop="50px"
-                    android:text="3000-5000/月"
-                    android:textSize="50px" />
+                    android:textColor="@color/textgreen1"
+                    android:textSize="16sp"
+                    android:layout_marginTop="40px"
+                    android:layout_below="@id/job_detail_jobtype"/>
 
                 <TextView
                     android:id="@+id/job_detail_how_long"
@@ -82,19 +82,12 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentBottom="true"
                     android:layout_alignParentRight="true"
-                    android:paddingRight="30px"
-                    android:text="经验不限"
-                    android:textSize="38px" />
+                    android:paddingRight="30px" />
 
             </com.zhy.autolayout.AutoRelativeLayout>
 
-            <View
-                android:id="@+id/job_detail_line_up"
-                android:layout_width="match_parent"
-                android:layout_height="2px"
-                android:layout_below="@+id/job_detail_work"
-                android:layout_marginTop="30px"
-                android:background="@color/base_bg"></View>
+
+           <include layout="@layout/line" />
 
             <TextView
                 android:id="@+id/job_detail_requie"
@@ -104,8 +97,7 @@
                 android:layout_marginTop="20px"
                 android:background="@color/white"
                 android:gravity="center_horizontal"
-                android:text="@string/job_requirements"
-                android:textSize="38px" />
+                android:text="@string/job_requirements"/>
 
             <TextView
                 android:id="@+id/job_detail_desc"
@@ -115,10 +107,10 @@
                 android:layout_below="@+id/job_detail_requie"
                 android:layout_marginLeft="30px"
                 android:layout_marginRight="30px"
-                android:layout_marginTop="50px"
+                android:layout_marginTop="40px"
+                android:layout_marginBottom="30px"
                 android:background="@color/white"
                 android:lineSpacingMultiplier="1.3"
-                android:text="分撒娇"
                 android:textColor="@color/textBlack2" />
 
         </com.zhy.autolayout.AutoLinearLayout>

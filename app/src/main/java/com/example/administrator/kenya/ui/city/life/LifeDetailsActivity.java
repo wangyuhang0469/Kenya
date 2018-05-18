@@ -53,10 +53,10 @@ public class LifeDetailsActivity extends BaseActivity {
         title.setText(getResources().getString(R.string.details));
         lifeServices = (LifeServices) getIntent().getExtras().getSerializable("lifeServices");
         livename.setText(lifeServices.getLivename());
-        livetype.setText("服务类型  " + lifeServices.getLivetype());
+        livetype.setText(getResources().getString(R.string.service_details) +"  " + lifeServices.getLivetype());
         livedesc.setText(lifeServices.getLivedesc());
         liveusername.setText(lifeServices.getLiveuser());
-        livephone.setText(lifeServices.getLivephone());
+        livephone.setText(getResources().getString(R.string.phone_no_)  +lifeServices.getLivephone());
 
 
         ExStaggeredGridLayoutManager exStaggeredGridLayoutManager = new ExStaggeredGridLayoutManager(2, ExStaggeredGridLayoutManager.VERTICAL);

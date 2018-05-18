@@ -28,6 +28,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.serializer.BooleanCodec;
 import com.example.administrator.kenya.R;
 import com.example.administrator.kenya.base.BaseActivity;
 import com.example.administrator.kenya.classes.Job;
@@ -66,6 +67,7 @@ import top.zibin.luban.Luban;
 import top.zibin.luban.OnCompressListener;
 
 public class ResumeinfoActivity extends BaseActivity implements View.OnClickListener, PopupWindow.OnDismissListener {
+
     @Bind(R.id.pick_time)
     AutoLinearLayout pickTime;
     @Bind(R.id.resume_time_birday)
@@ -74,12 +76,10 @@ public class ResumeinfoActivity extends BaseActivity implements View.OnClickList
     AutoLinearLayout resumeRecm;
     @Bind(R.id.ruseme_work_time)
     AutoLinearLayout rusemeWorkTime;
-    @Bind(R.id.resume_tv_time)
+    @Bind(R.id.resume_tv_choose)
     TextView resumeTvTime;
     @Bind(R.id.resume_time_birday_choose)
     TextView resumeTimeBirdayChoose;
-    @Bind(R.id.resume_tv_choose)
-    TextView resumeTvChoose;
     @Bind(R.id.back)
     ImageView back;
     @Bind(R.id.title)
@@ -123,8 +123,9 @@ public class ResumeinfoActivity extends BaseActivity implements View.OnClickList
     private String s;
     private String sexvalue;
     private User user;
-    private String contentvalue;
+    private String contentvalue="";
     private LoadingDialog loadingDialog;
+    private Boolean haveAvatar = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -143,7 +144,7 @@ public class ResumeinfoActivity extends BaseActivity implements View.OnClickList
         ButterKnife.bind(this);
         List<String> types = new ArrayList<>();
         types.add(getResources().getString(R.string.working_experience));
-        types.add(getResources().getString(R.string.no_experience));
+        types.add(getResources().getString(R.string.unlimited));
         types.add(getResources().getString(R.string.recent_graduate));
         types.add(getResources().getString(R.string.one_year_below));
         types.add(getResources().getString(R.string.one_to_three_years));
@@ -155,11 +156,9 @@ public class ResumeinfoActivity extends BaseActivity implements View.OnClickList
         spinner.setAdapter(adapter);
         resumeInfoJobname.setText(user.getUserName());
         resumeInfoPhone.setText(user.getUserPhonenumber());
-        if (user.getUserPortrait().isEmpty() || user.getUserPortrait().equals("null")) {
+        if (user.getUserPortrait() == null) {
         } else {
-            loadingDialog = new LoadingDialog(this);
-            loadingDialog.show();
-            upload(AppConstants.BASE_URL + User.getInstance().getUserPortrait());
+            upload(User.getInstance().getUserPortrait());
         }
     }
 
@@ -173,12 +172,12 @@ public class ResumeinfoActivity extends BaseActivity implements View.OnClickList
                 showDateDialog(DateUtil.getDateForString("2000-01-01"), "A");
                 break;
             case R.id.resume_recm:
-                PersonalIntroductionsDialog personalIntroductionsDialog = new PersonalIntroductionsDialog(this);
+                PersonalIntroductionsDialog personalIntroductionsDialog = new PersonalIntroductionsDialog(this,contentvalue);
                 personalIntroductionsDialog.setOnPersonalIntroductionsListener(new OnPersonalIntroductionsListener() {
                     @Override
                     public void success(String content) {
                         contentvalue = content;
-                        resumeTvRecm.setText(getResources().getString(R.string.finish));
+                        resumeTvRecm.setText(getResources().getString(R.string.Completed));
                     }
                 });
                 personalIntroductionsDialog.show();
@@ -189,23 +188,25 @@ public class ResumeinfoActivity extends BaseActivity implements View.OnClickList
                 openPopupWindow(view);
                 break;
             case R.id.resume_info_detail:
-                if (resumeInfoPhoto == null) {
-                    toast("请上传头像");
+                if (!haveAvatar) {
+                    toast(getString(R.string.please_choose_avatar));
                 } else if (resumeInfoJobname.getText().length() == 0) {
-                    toast("请输入姓名");
-                } else if (sexvalue == null || sexvalue == "") {
-                    toast("请选择性别");
+                    toast(getString(R.string.please) + getString(R.string.enter_your_name));
+                } else if (sexvalue == null || sexvalue.equals("")) {
+                    toast(getString(R.string.please) + getString(R.string.choose_sex));
                 } else if (resumeInfoJobwant.getText().length() == 0) {
-                    toast("请输入求职意向");
+                    toast(getString(R.string.please) + getString(R.string.please_enter_your_job_description));
                 } else if (resumeInfoPhone.getText().length() == 0) {
-                    toast("请输入手机号");
+                    toast(getString(R.string.please) + getString(R.string.enter_phone_number));
                 } else if (resumeTimeBirday.getText().length() == 0) {
-                    toast("请选择出生年月");
-                } else if (contentvalue == null || contentvalue == "") {
-                    toast("请输入个人介绍");
-                } else if (spinner.getSelectedItem().toString().equals("工作年限") || spinner.getSelectedItem().toString().equals("Working Experience")) {
-                    toast("请选择开始工作时间");
+                    toast(getString(R.string.please) + getString(R.string.choose_birthday));
+                } else if (contentvalue == null || contentvalue.equals("")) {
+                    toast(getString(R.string.please) + getString(R.string.enter_self_introduction));
+                } else if (spinner.getSelectedItem().toString().equals(getString(R.string.working_experience) )) {
+                    toast(getString(R.string.please) + getString(R.string.choose_working_experience));
                 } else {
+                    loadingDialog = new LoadingDialog(this);
+                    loadingDialog.show();
                     Luban.with(this)
                             .load(s)
                             .ignoreBy(150)
@@ -235,20 +236,20 @@ public class ResumeinfoActivity extends BaseActivity implements View.OnClickList
                                                 @Override
                                                 public void onError(Call call, Exception e, int id) {
                                                     e.printStackTrace();
-                                                    toast("加载失败");
+                                                    toast(getString(R.string.post_fail));
+                                                    loadingDialog.dismiss();
                                                 }
 
                                                 @Override
                                                 public void onResponse(String response, int id) {
                                                     log(response);
-                                                    toast("加载成功");
                                                     try {
                                                         JSONObject jsonObject = new JSONObject(response);
                                                         if (jsonObject.getString("code").equals("000")) {
                                                             Job job = JSON.parseObject(jsonObject.getString("data"), Job.class);
                                                             Bundle bundle = new Bundle();
                                                             bundle.putSerializable("job", job);
-                                                            toast("发布成功");
+                                                            toast(getString(R.string.post_success));
                                                             startActivity(ResumeDetilActivity.class, bundle);
                                                             finish();
                                                         } else {
@@ -257,12 +258,14 @@ public class ResumeinfoActivity extends BaseActivity implements View.OnClickList
                                                     } catch (JSONException e) {
                                                         e.printStackTrace();
                                                     }
+                                                    loadingDialog.dismiss();
                                                 }
                                             });
                                 }
 
                                 @Override
                                 public void onError(Throwable e) {
+                                    loadingDialog.dismiss();
                                 }
                             }).launch();
                 }
@@ -290,8 +293,8 @@ public class ResumeinfoActivity extends BaseActivity implements View.OnClickList
             @Override
             public void onResponse(Bitmap response, int id) {
                 resumeInfoPhoto.setImageBitmap(response);
+                haveAvatar = true;
                 s = saveImage("crop", response);
-                loadingDialog.dismiss();
             }
         });
     }
@@ -309,7 +312,7 @@ public class ResumeinfoActivity extends BaseActivity implements View.OnClickList
                 } else {
                     resumeTvTime.setText(dates[0] + "-" + (dates[1] > 9 ? dates[1] : ("0" + dates[1])) + "-"
                             + (dates[2] > 9 ? dates[2] : ("0" + dates[2])));
-                    resumeTvChoose.setVisibility(View.GONE);
+
                 }
             }
 
@@ -412,7 +415,7 @@ public class ResumeinfoActivity extends BaseActivity implements View.OnClickList
                         intent.putExtra(MediaStore.EXTRA_OUTPUT, imageUriFromCamera);
                         startActivityForResult(intent, GET_IMAGE_BY_CAMERA_U);
                     } else {
-                        Toast.makeText(ResumeinfoActivity.this, "拍照无法正常使用", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(ResumeinfoActivity.this, getString(R.string.camera_not_working), Toast.LENGTH_SHORT).show();
                     }
                 }
             });
@@ -423,6 +426,7 @@ public class ResumeinfoActivity extends BaseActivity implements View.OnClickList
                     imageUriFromCamera);
             startActivityForResult(intent, GET_IMAGE_BY_CAMERA_U);
         }
+
     }
 
     public File createImagePathFile(Activity activity) {
@@ -446,7 +450,7 @@ public class ResumeinfoActivity extends BaseActivity implements View.OnClickList
             public void onClick(boolean bln) {
                 if (bln) {
                 } else {
-                    Toast.makeText(ResumeinfoActivity.this, "文件读写无法正常使用", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(ResumeinfoActivity.this, "error", Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -474,6 +478,7 @@ public class ResumeinfoActivity extends BaseActivity implements View.OnClickList
                     ByteArrayOutputStream baos = new ByteArrayOutputStream();
                     imageBitmap.compress(Bitmap.CompressFormat.PNG, 70, baos);
                     resumeInfoPhoto.setImageBitmap(imageBitmap);
+                    haveAvatar = true;
                     break;
                 case ALBUM_REQUEST_CODE:
                     if (resultCode == RESULT_OK) {
@@ -486,6 +491,7 @@ public class ResumeinfoActivity extends BaseActivity implements View.OnClickList
                     if (bundle != null) {
                         Bitmap image = bundle.getParcelable("data");
                         resumeInfoPhoto.setImageBitmap(image);
+                        haveAvatar = true;
                         s = saveImage("crop", image);
                     }
                     break;

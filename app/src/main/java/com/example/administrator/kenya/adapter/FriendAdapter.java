@@ -53,7 +53,7 @@ public class FriendAdapter extends RecyclerView.Adapter<FriendAdapter.ViewHolder
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(context, "你好", Toast.LENGTH_LONG).show();
+                Toast.makeText(context, "hello", Toast.LENGTH_LONG).show();
             }
         });
     }

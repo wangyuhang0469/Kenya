@@ -59,7 +59,7 @@ public class HouseAdapter extends RecyclerView.Adapter<HouseAdapter.ViewHolder> 
         holder.house_home.setText(list.get(position).getLeasehome());
         holder.house_square.setText(list.get(position).getLeasesquare()+"㎡");
         holder.house_address.setText(list.get(position).getLeaseaddress());
-        holder.house_price.setText("/-" + list.get(position).getLeaseprice()+"/月");
+        holder.house_price.setText("KSh " + list.get(position).getLeaseprice()+"/Month");
 
         holder.call.setOnClickListener(new View.OnClickListener() {
             @Override

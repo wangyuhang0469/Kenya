@@ -131,17 +131,17 @@ public class GoodsReleaseActivity extends BaseActivity {
                 break;
             case R.id.release:
                 if (goodsphone.getText().length() == 0) {
-                    toast("请输入标题");
+                    toast(getResources().getString(R.string.please) + getResources().getString(R.string.enter_your_title));
                 } else if (goodsdesc.getText().length() == 0) {
-                    toast("请输入描述");
+                    toast(getResources().getString(R.string.please) + getResources().getString(R.string.describe_in_details_about_your_product));
                 } else if (goodsprice.getText().length() == 0) {
-                    toast("请输入价格");
+                    toast(getResources().getString(R.string.please) + getResources().getString(R.string.enter_your_selling_price));
                 } else if (goodsusername.getText().length() == 0) {
-                    toast("请输入联系人");
+                    toast(getResources().getString(R.string.please) + getResources().getString(R.string.enter_personal_contacts));
                 } else if (goodsphone.getText().length() == 0) {
-                    toast("请输入联系电话");
+                    toast(getResources().getString(R.string.please) + getResources().getString(R.string.enter_phone_number));
                 } else if (mResults == null || mResults.size() == 0) {
-                    toast("请选择图片");
+                    toast(getResources().getString(R.string.please) + getResources().getString(R.string.please_select_at_least_one_picture));
                 } else {
                     final LoadingDialog loadingDialog = new LoadingDialog(GoodsReleaseActivity.this);
                     loadingDialog.show();
@@ -218,7 +218,7 @@ public class GoodsReleaseActivity extends BaseActivity {
                     @Override
                     public void onError(Call call, Exception e, int id) {
                         e.printStackTrace();
-                        toast("发布失败");
+                        toast(getResources().getString(R.string.post_fail));
                         loadingDialog.dismiss();
                     }
 
@@ -233,7 +233,7 @@ public class GoodsReleaseActivity extends BaseActivity {
                                 goods.setUser(issuer);
                                 Bundle bundle = new Bundle();
                                 bundle.putSerializable("goods", goods);
-                                toast("发布成功");
+                                toast(getResources().getString(R.string.post_success));
                                 startActivity(GoodsDetailsActivity.class, bundle);
                                 finish();
                             } else {

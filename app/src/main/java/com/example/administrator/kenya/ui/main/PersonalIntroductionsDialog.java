@@ -11,6 +11,7 @@ import android.view.KeyEvent;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.TextView;
 
 import com.example.administrator.kenya.R;
@@ -25,11 +26,12 @@ public class PersonalIntroductionsDialog extends Dialog {
     private TextView information;
     private TextView yes;
     private TextView no;
+    private String text;
     private OnPersonalIntroductionsListener onPersonalIntroductionsListener;
 
-    public PersonalIntroductionsDialog(Context context) {
+    public PersonalIntroductionsDialog(Context context,String text) {
         super(context, R.style.FullScreenDialog);
-
+        this.text = text;
     }
 
     @Override
@@ -41,9 +43,13 @@ public class PersonalIntroductionsDialog extends Dialog {
         yes = (TextView) findViewById(R.id.yes);
         no = (TextView) findViewById(R.id.no);
 
+        information.setText(text);
+
         no.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                InputMethodManager im = (InputMethodManager) getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
+                im.hideSoftInputFromWindow(information.getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
                 PersonalIntroductionsDialog.this.dismiss();
             }
         });
@@ -52,6 +58,8 @@ public class PersonalIntroductionsDialog extends Dialog {
             public void onClick(View view) {
                 if (onPersonalIntroductionsListener != null)
                     onPersonalIntroductionsListener.success(information.getText().toString());
+                InputMethodManager im = (InputMethodManager) getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
+                im.hideSoftInputFromWindow(information.getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
                 PersonalIntroductionsDialog.this.dismiss();
             }
         });

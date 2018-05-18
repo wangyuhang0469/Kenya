@@ -25,6 +25,8 @@ import com.example.administrator.kenya.classes.User;
 import com.example.administrator.kenya.constants.AppConstants;
 import com.example.administrator.kenya.interfaces.OnSuccessfulListener;
 import com.example.administrator.kenya.ui.main.DeleteDialog;
+import com.example.administrator.kenya.view.MyFootRefreshView;
+import com.example.administrator.kenya.view.MyHeadRefreshView;
 import com.jwenfeng.library.pulltorefresh.BaseRefreshListener;
 import com.jwenfeng.library.pulltorefresh.PullToRefreshLayout;
 import com.zhy.http.okhttp.OkHttpUtils;
@@ -93,7 +95,7 @@ public class MyRecruitFragment extends BaseFragment {
                 //防止因Activity释放导致内部控件空指针
                 if (pullToRefreshLayout != null) {
                     pullToRefreshLayout.finishLoadMore();
-                    Toast.makeText(getActivity(), "加载失败", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getActivity(),  getString(R.string.load_fail), Toast.LENGTH_LONG).show();
                     e.printStackTrace();
                 }
             }
@@ -140,6 +142,8 @@ public class MyRecruitFragment extends BaseFragment {
         recyclerView.setAdapter(myCompanyAdapter);
         pullToRefreshLayout.setCanRefresh(false);
         pullToRefreshLayout.setCanLoadMore(false);
+        pullToRefreshLayout.setHeaderView(new MyHeadRefreshView(getContext()));
+        pullToRefreshLayout.setFooterView(new MyFootRefreshView(getContext()));
         pullToRefreshLayout.setRefreshListener(new BaseRefreshListener() {
             @Override
             public void refresh() {
@@ -188,7 +192,7 @@ public class MyRecruitFragment extends BaseFragment {
 
             holder.company_Title.setText(list.get(position).getCompanystation() + ":");
             holder.company_home.setText(list.get(position).getCompanyname());
-            holder.company_price.setText(list.get(position).getCompanystationsalary() + "元/月");
+            holder.company_price.setText("KSh " + list.get(position).getCompanystationsalary() + "/Month");
 //            holder.company_image.setTag(list.get(position).getCompanyimg0());
 
             Glide.with(context)

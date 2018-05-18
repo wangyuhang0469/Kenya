@@ -11,6 +11,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.administrator.kenya.R;
+import com.example.administrator.kenya.classes.MessageEvent2;
 import com.example.administrator.kenya.classes.User;
 import com.example.administrator.kenya.constants.AppConstants;
 import com.example.administrator.kenya.interfaces.OnReUsernameSuccessfulListener;
@@ -18,6 +19,7 @@ import com.example.administrator.kenya.interfaces.OnSuccessfulListener;
 import com.zhy.http.okhttp.OkHttpUtils;
 import com.zhy.http.okhttp.callback.StringCallback;
 
+import org.greenrobot.eventbus.EventBus;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -54,7 +56,7 @@ public class ReUsernameDialog extends Dialog{
                 if (information.getText().length()!=0){
                     send();
                 }else {
-                    Toast.makeText(getContext(), "请输出用户名", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getContext(), "Please enter a new name", Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -79,16 +81,17 @@ public class ReUsernameDialog extends Dialog{
 
     private void send(){
 
+        final String userName = information.getText().toString();
         OkHttpUtils.post()
                 .url(AppConstants.BASE_URL + "/kenya/user/updateuserName")
                 .addParams("id", User.getInstance().getUserId())
-                .addParams("userName",information.getText().toString())
+                .addParams("userName",userName)
                 .build()
                 .execute(new StringCallback() {
                     @Override
                     public void onError(Call call, Exception e, int id) {
                         e.printStackTrace();
-                        Toast.makeText(getContext(), "修改失败", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getContext(), "Modify Fail", Toast.LENGTH_SHORT).show();
                     }
 
                     @Override
@@ -96,10 +99,12 @@ public class ReUsernameDialog extends Dialog{
                         try {
                             JSONObject jsonObject = new JSONObject(response);
                             if (jsonObject.getString("code").equals("000")){
-                                Toast.makeText(getContext(), "修改成功", Toast.LENGTH_SHORT).show();
-                                User.getInstance().setUserName(information.getText().toString());
+                                Toast.makeText(getContext(), "Modify Success", Toast.LENGTH_SHORT).show();
+                                User.getInstance().setUserName(userName);
                                 if (onReUsernameSuccessfulListener != null)
-                                    onReUsernameSuccessfulListener.success(information.getText().toString());
+                                    onReUsernameSuccessfulListener.success(userName);
+                                EventBus.getDefault().post(new MessageEvent2(userName));
+                                User.getInstance().setUserName(userName);
                                 ReUsernameDialog.this.dismiss();
                             }else {
                                 Toast.makeText(getContext(), jsonObject.getString("message"), Toast.LENGTH_SHORT).show();

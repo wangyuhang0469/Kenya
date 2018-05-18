@@ -17,6 +17,9 @@ import com.example.administrator.kenya.ui.main.BlankFragment;
 import com.example.administrator.kenya.ui.main.IntroActivity;
 import com.example.administrator.kenya.ui.main.WelcomeActivity;
 import com.example.administrator.kenya.ui.myself.MyselfFragment;
+import com.example.administrator.kenya.utils.DeviceUuidFactory;
+
+import org.greenrobot.eventbus.EventBus;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -50,7 +53,6 @@ public class MainActivity extends BaseActivity {
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
         initView();
-        log("aaaaaaaaaaaaaaaaaaaa");
     }
 
 
@@ -151,8 +153,11 @@ public class MainActivity extends BaseActivity {
     }
 
     @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        myselfFragment.onActivityResult(requestCode,resultCode,data);
+    protected void onDestroy() {
+        super.onDestroy();
+        if (EventBus.getDefault().isRegistered(this)) {
+            EventBus.getDefault().unregister(this);
+        }
     }
+
 }

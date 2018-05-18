@@ -31,7 +31,7 @@
                     android:checked="true"
                     android:gravity="center"
                     android:minHeight="88px"
-                    android:text="@string/no_experience"
+                    android:text="@string/unlimited"
                     android:textColor="@drawable/popup_textcolor" />
 
                 <RadioButton

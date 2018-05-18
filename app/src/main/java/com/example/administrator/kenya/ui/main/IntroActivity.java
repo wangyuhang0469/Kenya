@@ -31,7 +31,7 @@ public class IntroActivity extends AppIntro {
         setSeparatorColor(getResources().getColor(R.color.touming));
         showStatusBar(false);
         showSkipButton(false);
-        setDoneText("立即体验");
+        setDoneText("ENTER");
 
 //            SharedPreferences.Editor e = getPrefs.edit();
 //            e.putBoolean("firstStart", false);

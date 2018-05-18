@@ -75,7 +75,7 @@ public class CompanySeachActivity extends BaseActivity {
                 //防止因Activity释放导致内部控件空指针
                 if (pullToRefreshLayout != null) {
                     pullToRefreshLayout.finishLoadMore();
-                    toast("加载失败");
+                    toast(getString(R.string.load_fail));
                     e.printStackTrace();
                 }
             }
@@ -152,7 +152,7 @@ public class CompanySeachActivity extends BaseActivity {
 
     private void searchEvent() {
         if (keyword.getText().length() == 0) {
-            toast("请输入搜索内容");
+            toast( getString(R.string.please) +  getString(R.string.enter_keyword_first));
         } else if (lastKeyword.equals(keyword.getText().toString())) {
         } else {
             replacement();

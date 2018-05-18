@@ -89,7 +89,7 @@ public class MultiImageSelectorActivity extends FragmentActivity implements Mult
         // 完成按钮
         mSubmitButton = (Button) findViewById(R.id.commit);
         if (resultList == null || resultList.size() <= 0) {
-            mSubmitButton.setText(R.string.action_done);
+            mSubmitButton.setText(R.string.accomplish);
             mSubmitButton.setEnabled(false);
         } else {
             updateDoneText();
@@ -111,7 +111,7 @@ public class MultiImageSelectorActivity extends FragmentActivity implements Mult
 
     private void updateDoneText() {
         mSubmitButton.setText(String.format("%s(%d/%d)",
-                getString(R.string.action_done), resultList.size(), mDefaultCount));
+                getString(R.string.accomplish), resultList.size(), mDefaultCount));
     }
 
     @Override
@@ -145,7 +145,7 @@ public class MultiImageSelectorActivity extends FragmentActivity implements Mult
         updateDoneText();
         // 当为选择图片时候的状态
         if (resultList.size() == 0) {
-            mSubmitButton.setText(R.string.action_done);
+            mSubmitButton.setText(R.string.accomplish);
             mSubmitButton.setEnabled(false);
         }
     }

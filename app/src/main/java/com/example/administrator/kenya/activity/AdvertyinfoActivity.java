@@ -1,16 +1,12 @@
 package com.example.administrator.kenya.activity;
 
 
-import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
-import android.widget.TextView;
 
 import com.alibaba.fastjson.JSON;
 import com.example.administrator.kenya.R;
@@ -61,7 +57,7 @@ public class AdvertyinfoActivity extends BaseActivity {
         ButterKnife.bind(this);
         List<String> types = new ArrayList<>();
         types.add(getResources().getString(R.string.Please_select_a_type));
-        types.add(getResources().getString(R.string.no_experience));
+        types.add(getResources().getString(R.string.unlimited));
         types.add(getResources().getString(R.string.recent_graduate));
         types.add(getResources().getString(R.string.one_year_below));
         types.add(getResources().getString(R.string.one_to_three_years));
@@ -73,7 +69,7 @@ public class AdvertyinfoActivity extends BaseActivity {
         spinner.setAdapter(adapter);
     }
 
-    @OnClick({R.id.back, R.id.adverty_info_detail, R.id.adverty_info_choose})
+    @OnClick({R.id.back, R.id.adverty_info_detail})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.back:
@@ -86,17 +82,17 @@ public class AdvertyinfoActivity extends BaseActivity {
                     price = "-1";
                 }
                 if (advertyInfoWorkName.getText().length() == 0) {
-                    toast("请输入招聘类型");
+                    toast(getString(R.string.please) + getString(R.string.enter_the_job));
                 } else if (price.length() == 0) {
-                    toast("请输入月薪");
-                } else if (advertyInfoWorkQuiret.getText().length() == 0) {
-                    toast("请输入职位描述");
-                } else if (spinner.getSelectedItem().toString().equals("请选择类型")) {
-                    toast("请选择类型");
+                    toast(getString(R.string.please) + getString(R.string.enter_monthly_salary));
+                } else if (spinner.getSelectedItem().toString().equals(getString(R.string.Please_select_a_type))) {
+                    toast(getString(R.string.Please_select_a_type));
                 } else if (advertyInfoCompanyName.getText().length() == 0) {
-                    toast("请输入公司名称");
+                    toast(getString(R.string.please) + getString(R.string.please_enter_the_company_name));
                 } else if (advertyInfoCompanyPhone.getText().length() == 0) {
-                    toast("请输入公司联系方式");
+                    toast(getString(R.string.please) + getString(R.string.enter_phone_no_));
+                } else if (advertyInfoWorkQuiret.getText().length() == 0) {
+                    toast(getString(R.string.please) + getString(R.string.please_enter_your_job_description));
                 } else {
                     PostFormBuilder postFormBuilder = OkHttpUtils.post();
                     postFormBuilder.url(AppConstants.BASE_URL + "/kenya/recruit/publish")
@@ -112,21 +108,18 @@ public class AdvertyinfoActivity extends BaseActivity {
                                 @Override
                                 public void onError(Call call, Exception e, int id) {
                                     e.printStackTrace();
-                                    toast("加载失败");
+                                    toast(getString(R.string.post_fail));
                                 }
 
                                 @Override
                                 public void onResponse(String response, int id) {
-                                    Log.d("kang", "1111111111111111" + response);
-                                    log(response);
-                                    toast("加载成功");
                                     try {
                                         JSONObject jsonObject = new JSONObject(response);
                                         if (jsonObject.getString("code").equals("000")) {
                                             Company company = JSON.parseObject(jsonObject.getString("data"), Company.class);
                                             Bundle bundle = new Bundle();
                                             bundle.putSerializable("company", company);
-                                            toast("发布成功");
+                                            toast(getString(R.string.post_success));
                                             startActivity(JobDetailActivity.class, bundle);
                                             finish();
                                         } else {
@@ -139,22 +132,27 @@ public class AdvertyinfoActivity extends BaseActivity {
                             });
                 }
                 break;
-            case R.id.adverty_info_choose:
-                type++;
-                if (type % 2 == 0) {
-                    advertyInfoChoose.setImageResource(R.mipmap.mianyi);
-                    advertyInfoWorkMoney.setFocusableInTouchMode(true);
-                    advertyInfoWorkMoney.setFocusable(true);
-                    advertyInfoWorkMoney.requestFocus();
-                    img = true;
-                } else {
-                    advertyInfoChoose.setImageResource(R.mipmap.mianyi2);
-                    advertyInfoWorkMoney.setText("");
-                    advertyInfoWorkMoney.setFocusable(false);
-                    advertyInfoWorkMoney.setFocusableInTouchMode(false);
-                    img = false;
-                }
-                break;
+
         }
+    }
+
+    @OnClick({R.id.adverty_info_choose, R.id.resume_info_mianyi})
+    public void onViewClicked2(View view) {
+        type++;
+        if (type % 2 == 0) {
+            advertyInfoChoose.setImageResource(R.mipmap.mianyi);
+            advertyInfoWorkMoney.setText("");
+            advertyInfoWorkMoney.setFocusableInTouchMode(true);
+            advertyInfoWorkMoney.setFocusable(true);
+            advertyInfoWorkMoney.requestFocus();
+            img = true;
+        } else {
+            advertyInfoChoose.setImageResource(R.mipmap.mianyi2);
+            advertyInfoWorkMoney.setText(getString(R.string.negotiable));
+            advertyInfoWorkMoney.setFocusable(false);
+            advertyInfoWorkMoney.setFocusableInTouchMode(false);
+            img = false;
+        }
+
     }
 }
