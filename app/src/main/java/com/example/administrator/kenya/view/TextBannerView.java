@@ -75,7 +75,6 @@ public class TextBannerView extends RelativeLayout {
     private BannerItemClickListener mListener;
     private boolean isStarted;
 
-
     public TextBannerView(Context context) {
         this(context, null);
     }
@@ -149,7 +148,6 @@ public class TextBannerView extends RelativeLayout {
                 mListener.onItemClick(mDatas.get(position), position);
             }
         });
-
     }
 
     /**
@@ -193,7 +191,6 @@ public class TextBannerView extends RelativeLayout {
         }
     }
 
-
     /**
      * 设置进入动画和离开动画
      *
@@ -209,7 +206,6 @@ public class TextBannerView extends RelativeLayout {
         outAnim.setDuration(animDuration);
         mViewFlipper.setOutAnimation(outAnim);
     }
-
 
     /**
      * 设置数据集合
@@ -232,15 +228,12 @@ public class TextBannerView extends RelativeLayout {
 
     }
 
-
     /**
      * 设置点击监听事件回调
      */
     public void setItemOnClickListener(BannerItemClickListener listener) {
         this.mListener = listener;
     }
-
-
     @Override
     protected void onDetachedFromWindow() {
         super.onDetachedFromWindow();

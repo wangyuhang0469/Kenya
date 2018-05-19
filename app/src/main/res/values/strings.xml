@@ -76,9 +76,9 @@
     <string name="enter_sent_code">请输入验证码</string>
     <string name="click_to_send_code">获取验证码</string>
     <string name="enter_password">请输入密码</string>
-    <string name="enter_password_8_16_digit_or_alphabet">请输入密码(8-16位数字或密码)</string>
+    <string name="enter_password_8_16_digit_or_alphabet">请输入密码(8-16位数字或字母)</string>
     <string name="confirm_password">请再次输入密码</string>
-    <string name="confirm_password_8_16_digit_or_alphabet">请确认密码(8-16位数字或密码)</string>
+    <string name="confirm_password_8_16_digit_or_alphabet">请确认密码(8-16位数字或字母)</string>
     <string name="registration_confirmed">注册</string>
     <string name="rental_services">租房</string>
     <string name="second_hand_goods">二手</string>
