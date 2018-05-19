@@ -4,6 +4,7 @@ package com.example.administrator.kenya.ui.city;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -38,6 +39,8 @@ import com.zhy.http.okhttp.OkHttpUtils;
 import com.zhy.http.okhttp.builder.PostFormBuilder;
 import com.zhy.http.okhttp.callback.StringCallback;
 
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -65,7 +68,6 @@ public class CityHomeFragment extends BaseFragment {
     private StringCallback StringCallback;
     List<News> newsList = new ArrayList<>();
     List<String> data;
-
     //轮播图
     List<Banners> BannersList = new ArrayList<>();
     List<String> imageList;
@@ -75,6 +77,7 @@ public class CityHomeFragment extends BaseFragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_city_home, container, false);
         ButterKnife.bind(this, view);
+        EventBus.getDefault().register(this);
         title.setText(getResources().getString(R.string.same_city));
         back.setVisibility(View.GONE);
         initOKHttp();
@@ -235,7 +238,6 @@ public class CityHomeFragment extends BaseFragment {
     }
 
     private void initOkhttpBanner() {
-
         OkHttpUtils.post()
                 .url(AppConstants.BASE_URL + "/kenya/content/pageQuery")
                 .addParams("page", 1 + "")
@@ -266,7 +268,6 @@ public class CityHomeFragment extends BaseFragment {
                         initBanner(imageList);
                     }
                 });
-
     }
 
     @Override
@@ -280,4 +281,16 @@ public class CityHomeFragment extends BaseFragment {
         super.onResume();
         marqueeView1.startViewAnimator();
     }
+
+    @Subscribe
+    public void onEvent(String str) {
+        if (marqueeView1 != null) {
+            if (str.equals("1")) {
+                marqueeView1.stopViewAnimator();
+            } else {
+                marqueeView1.startViewAnimator();
+            }
+        }
+    }
+
 }

@@ -18,6 +18,7 @@ import com.example.administrator.kenya.ui.main.IntroActivity;
 import com.example.administrator.kenya.ui.main.WelcomeActivity;
 import com.example.administrator.kenya.ui.myself.MyselfFragment;
 import com.example.administrator.kenya.utils.DeviceUuidFactory;
+import com.example.administrator.kenya.view.TextBannerView;
 
 import org.greenrobot.eventbus.EventBus;
 
@@ -55,7 +56,6 @@ public class MainActivity extends BaseActivity {
         initView();
     }
 
-
     protected void initView() {
         linearLayouts = new LinearLayout[4];
         linearLayouts[0] = tab1;
@@ -78,7 +78,6 @@ public class MainActivity extends BaseActivity {
                 .show(cityHomeFragment).commit();
     }
 
-
     public void onTabSelect(int index) {
         if (currentTabIndex != index) {
             FragmentTransaction trx = getSupportFragmentManager().beginTransaction();
@@ -88,23 +87,18 @@ public class MainActivity extends BaseActivity {
             }
             trx.show(fragments[index]).commit();
         }
-
         linearLayouts[currentTabIndex].setSelected(false);
         linearLayouts[index].setSelected(true);
         currentTabIndex = index;
     }
 
-
     // 判断是否第一次启动来决定跳转不同的欢迎界面
     private void isFirstStart() {
         SharedPreferences getPrefs = PreferenceManager.getDefaultSharedPreferences(getBaseContext());
-
         boolean isFirstStart = getPrefs.getBoolean("firstStart", true);
 
         if (isFirstStart) {
-
             startActivity(IntroActivity.class, null);
-
             SharedPreferences.Editor e = getPrefs.edit();
             e.putBoolean("firstStart", false);
             e.apply();
@@ -150,6 +144,10 @@ public class MainActivity extends BaseActivity {
                 onTabSelect(index);
                 break;
         }
+        if (index != 0)
+            EventBus.getDefault().postSticky("1");
+        else
+            EventBus.getDefault().postSticky("0");
     }
 
     @Override

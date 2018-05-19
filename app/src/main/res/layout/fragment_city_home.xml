@@ -207,10 +207,10 @@
                     android:id="@+id/image1"
                     android:layout_width="144px"
                     android:layout_height="match_parent"
-                    android:layout_marginTop="28px"
-                    android:layout_marginBottom="28px"
                     android:layout_gravity="center_vertical"
+                    android:layout_marginBottom="28px"
                     android:layout_marginLeft="30px"
+                    android:layout_marginTop="28px"
                     android:src="@mipmap/city_home_news" />
 
                 <de.hdodenhof.circleimageview.CircleImageView
@@ -252,7 +252,6 @@
                     android:layout_marginRight="20px"
                     android:layout_toLeftOf="@id/tv1"
                     android:background="#656565" />
-
             </com.zhy.autolayout.AutoRelativeLayout>
 
 

@@ -91,7 +91,6 @@ public class MyApplication extends Application {
 
     /*结束activity*/
     public void finishActivity(Activity activity) {
-
         if (activity != null) {
             activityList.remove(activity);
             activity.finish();

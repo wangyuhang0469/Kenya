@@ -4,11 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.administrator.kenya.ui.myself.myrelease.MyInformationActivity"
+    android:background="@color/base_bg"
     android:orientation="vertical"
-    android:background="@color/base_bg">
+    tools:context="com.example.administrator.kenya.ui.myself.myrelease.MyInformationActivity">
 
-    <include layout="@layout/title_bar2"/>
+    <include layout="@layout/title_bar2" />
 
     <com.zhy.autolayout.AutoRelativeLayout
         android:id="@+id/avatarBar"
@@ -17,25 +17,25 @@
 
         <TextView
             style="@style/my_center_tv"
+            android:layout_centerVertical="true"
             android:text="@string/avatar"
             android:textColor="@color/textBlack1"
-            android:textSize="16sp"
-            android:layout_centerVertical="true"/>
+            android:textSize="16sp" />
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/avatar"
             android:layout_width="180px"
             android:layout_height="180px"
             android:layout_centerVertical="true"
-            android:src="@drawable/avatar"
-            android:layout_toLeftOf="@+id/go" />
+            android:layout_toLeftOf="@+id/go"
+            android:src="@drawable/avatar" />
 
         <ImageView
             android:id="@+id/go"
             style="@style/my_center_inter"
-            android:src="@mipmap/my_center_inter2"
             android:layout_centerVertical="true"
-            android:layout_marginLeft="30px"/>
+            android:layout_marginLeft="30px"
+            android:src="@mipmap/my_center_inter2" />
     </com.zhy.autolayout.AutoRelativeLayout>
 
     <include layout="@layout/line" />
@@ -57,10 +57,10 @@
             android:id="@+id/userName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_toLeftOf="@+id/go2"
             android:layout_centerVertical="true"
+            android:layout_toLeftOf="@+id/go2"
             android:textColor="@color/textBlack3"
-            android:textSize="16sp"/>
+            android:textSize="16sp" />
 
         <ImageView
             android:id="@+id/go2"
@@ -119,10 +119,10 @@
             android:id="@+id/sex"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_toLeftOf="@+id/go4"
             android:layout_centerVertical="true"
+            android:layout_toLeftOf="@+id/go4"
             android:textColor="@color/textBlack3"
-            android:textSize="16sp"/>
+            android:textSize="16sp" />
 
         <ImageView
             android:id="@+id/go4"
@@ -150,16 +150,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
-            android:layout_marginRight="30px"
             android:layout_centerVertical="true"
+            android:layout_marginRight="30px"
             android:textColor="@color/textBlack3"
-            android:textSize="16sp"/>
+            android:textSize="16sp" />
 
 
     </com.zhy.autolayout.AutoRelativeLayout>
-
-
-
 
 
 </com.zhy.autolayout.AutoLinearLayout>

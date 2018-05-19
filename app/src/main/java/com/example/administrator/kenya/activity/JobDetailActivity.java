@@ -38,11 +38,11 @@ public class JobDetailActivity extends BaseActivity {
         if (company.getCompanystationsalary().equals("-1")) {
             jobDetailPay.setText(getResources().getString(R.string.monthly_salary) + ":" + getResources().getString(R.string.negotiable));
         } else {
-            jobDetailPay.setText(getResources().getString(R.string.monthly_salary) + ":" + company.getCompanystationsalary() + "/" + getResources().getString(R.string.month));
+            jobDetailPay.setText(getResources().getString(R.string.monthly_salary) + getResources().getString(R.string.ksh) + company.getCompanystationsalary() + "/" + getResources().getString(R.string.month));
         }
         jobDetailDesc.setText(company.getCompanystationdesc());
         jobDetailPersonName.setText(company.getCompanyname());
-        jobDetailPersonPhone.setText(getString(R.string.phone_no_)+ company.getCompanyphone());
+        jobDetailPersonPhone.setText(getString(R.string.phone_no_) + company.getCompanyphone());
         jobDetailHowLong.setText(company.getCompanyimg5());
     }
 

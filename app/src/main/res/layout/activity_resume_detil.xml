@@ -76,7 +76,7 @@
 
                 <TextView
                     android:id="@+id/resume_detail_name"
-                    style="@style/detail_tv_content"/>
+                    style="@style/detail_tv_content" />
             </com.zhy.autolayout.AutoLinearLayout>
 
             <com.zhy.autolayout.AutoLinearLayout
@@ -118,7 +118,7 @@
 
                 <TextView
                     android:id="@+id/resume_detial_jobwant"
-                    style="@style/detail_tv_content"/>
+                    style="@style/detail_tv_content" />
 
             </com.zhy.autolayout.AutoLinearLayout>
 
@@ -180,11 +180,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="20px"
-                android:layout_marginTop="20px"
                 android:layout_marginLeft="30px"
+                android:layout_marginTop="20px"
                 android:text="@string/personal_introduction"
-                android:textSize="15sp"
-                android:textColor="@color/textgreen3" />
+                android:textColor="@color/textgreen3"
+                android:textSize="15sp" />
 
             <include layout="@layout/line" />
 

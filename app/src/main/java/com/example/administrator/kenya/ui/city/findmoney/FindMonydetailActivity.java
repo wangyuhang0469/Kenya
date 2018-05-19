@@ -53,7 +53,7 @@ public class FindMonydetailActivity extends Activity {
         findMoneyDetailTitle.setText(funds.getFundsname());
         findMoneyCompanyInfo.setText(funds.getFundsdesc());
         finduser.setText(funds.getFundsuser());
-        findphone.setText(getResources().getString(R.string.phone_no_)  +funds.getFundsphone());
+        findphone.setText(getResources().getString(R.string.phone_no_) + funds.getFundsphone());
         findMoneyDetailAdvantage.setText(funds.getFundadvantage());
 
         Glide.with(this).load(AppConstants.BASE_URL + funds.getFundshead())
@@ -64,7 +64,6 @@ public class FindMonydetailActivity extends Activity {
                 .into(avatar);
 
     }
-
     private void initBanner(List<String> imageUrlList) {
         banner.setImages(imageUrlList).setImageLoader(new GlideImageLoader()).start();
         banner.setOnBannerListener(new OnBannerListener() {

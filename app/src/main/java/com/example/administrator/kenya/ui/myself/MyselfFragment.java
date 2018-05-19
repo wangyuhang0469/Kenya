@@ -1,7 +1,6 @@
 package com.example.administrator.kenya.ui.myself;
 
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -16,11 +15,7 @@ import com.example.administrator.kenya.base.BaseFragment;
 import com.example.administrator.kenya.classes.MessageEvent;
 import com.example.administrator.kenya.classes.MessageEvent2;
 import com.example.administrator.kenya.classes.User;
-import com.example.administrator.kenya.constants.AppConstants;
-import com.example.administrator.kenya.interfaces.OnReUsernameSuccessfulListener;
-import com.example.administrator.kenya.model.image_selector.MultiImageSelectorActivity;
 import com.example.administrator.kenya.ui.main.LoadingDialog;
-import com.example.administrator.kenya.ui.main.ReUsernameDialog;
 import com.example.administrator.kenya.ui.myself.aboutus.AboutUsActivity;
 import com.example.administrator.kenya.ui.myself.myrelease.MyInformationActivity;
 import com.example.administrator.kenya.ui.myself.myrelease.MyReleaseActivity;
@@ -66,7 +61,6 @@ public class MyselfFragment extends BaseFragment {
         View view = inflater.inflate(R.layout.fragment_myself, container, false);
         ButterKnife.bind(this, view);
         EventBus.getDefault().register(this);
-
         title.setText(getResources().getString(R.string.personal));
         back.setVisibility(View.GONE);
         myCenterName.setText(user.getUserName());
@@ -114,17 +108,14 @@ public class MyselfFragment extends BaseFragment {
                 .into(avatar);
     }
 
-
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void Event2(MessageEvent2 messageEvent2) {
         myCenterName.setText(messageEvent2.getMseeage());
     }
 
-
     @OnClick({R.id.avatar, R.id.myName, R.id.phone})
     public void onViewClicked2(View view) {
-        startActivity(MyInformationActivity.class,null);
+        startActivity(MyInformationActivity.class, null);
     }
-
 
 }

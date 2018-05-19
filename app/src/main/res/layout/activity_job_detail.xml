@@ -14,7 +14,6 @@
         android:background="@color/base_bg"
         tools:layout_editor_absoluteX="8px"
         tools:layout_editor_absoluteY="0px">
-
         <ImageView
             android:id="@+id/back"
             android:layout_width="wrap_content"
@@ -22,7 +21,6 @@
             android:adjustViewBounds="true"
             android:padding="41px"
             android:src="@mipmap/resume_bank" />
-
         <TextView
             android:id="@+id/title"
             android:layout_width="match_parent"
@@ -57,8 +55,8 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/job_deyail_title"
                 android:background="@color/white"
-                android:paddingLeft="30px"
-                android:paddingBottom="30px">
+                android:paddingBottom="30px"
+                android:paddingLeft="30px">
 
                 <TextView
                     android:id="@+id/job_detail_jobtype"
@@ -71,10 +69,10 @@
                     android:id="@+id/job_detail_pay"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/textgreen1"
-                    android:textSize="16sp"
+                    android:layout_below="@id/job_detail_jobtype"
                     android:layout_marginTop="40px"
-                    android:layout_below="@id/job_detail_jobtype"/>
+                    android:textColor="@color/textgreen1"
+                    android:textSize="16sp" />
 
                 <TextView
                     android:id="@+id/job_detail_how_long"
@@ -86,8 +84,7 @@
 
             </com.zhy.autolayout.AutoRelativeLayout>
 
-
-           <include layout="@layout/line" />
+            <include layout="@layout/line" />
 
             <TextView
                 android:id="@+id/job_detail_requie"
@@ -97,18 +94,17 @@
                 android:layout_marginTop="20px"
                 android:background="@color/white"
                 android:gravity="center_horizontal"
-                android:text="@string/job_requirements"/>
-
+                android:text="@string/job_requirements" />
             <TextView
                 android:id="@+id/job_detail_desc"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_above="@+id/job_deyail_line_low"
                 android:layout_below="@+id/job_detail_requie"
+                android:layout_marginBottom="30px"
                 android:layout_marginLeft="30px"
                 android:layout_marginRight="30px"
                 android:layout_marginTop="40px"
-                android:layout_marginBottom="30px"
                 android:background="@color/white"
                 android:lineSpacingMultiplier="1.3"
                 android:textColor="@color/textBlack2" />

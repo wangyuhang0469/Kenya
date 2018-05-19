@@ -30,8 +30,6 @@ import butterknife.OnClick;
 import okhttp3.Call;
 
 public class AdvertyinfoActivity extends BaseActivity {
-
-
     @Bind(R.id.adverty_info_choose)
     ImageView advertyInfoChoose;
     @Bind(R.id.adverty_info_work_name)
@@ -132,7 +130,6 @@ public class AdvertyinfoActivity extends BaseActivity {
                             });
                 }
                 break;
-
         }
     }
 

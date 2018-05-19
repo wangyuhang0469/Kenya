@@ -54,7 +54,6 @@
     <string name="enter_monthly_salary">Enter Monthly Salary</string>
 
 
-
     <string name="timepicker_year">YEAR</string>
     <string name="timepicker_month">MONTH</string>
     <string name="timepicker_day">DAY</string>
@@ -97,12 +96,15 @@
     <string name="job_require">Briefly introduce the content of this work and the requirements of the applicant</string>
     <string name="about_us">About Us</string>
     <string name="contant_us">Contact Us</string>
+    <string name="contant_us1">Contact Us:</string>
     <string name="job_requirements">Job Requirements</string>
     <string name="job_information">Job Information</string>
     <string name="recruitment_information">Recruitment Information</string>
     <string name="name">Name</string>
     <string name="sex">Sex</string>
     <string name="age">Age</string>
+    <string name="choose_from_your_phone_album">Choose from your phone album</string>
+    <string name="choose_photos">Choose photos</string>
 
 
     <!--工作年限-->
@@ -249,6 +251,7 @@
     <string name="year">Year</string>
     <string name="month">Month</string>
     <string name="Completed">Completed</string>
+    <string name="ksh">:ksh</string>
 
     <!--生活服务-->
 

@@ -98,13 +98,16 @@
     <string name="Please_select_a_type">请选择类型</string>
     <string name="job_require">简单介绍下工作的内容及对应聘者的要求</string>
     <string name="about_us">关于我们</string>
-    <string name="contant_us">联系我们:</string>
+    <string name="contant_us">联系我们</string>
+    <string name="contant_us1">联系我们:</string>
     <string name="job_requirements">职位要求</string>
     <string name="job_information">求职信息</string>
     <string name="recruitment_information">招聘信息</string>
     <string name="name">姓名</string>
     <string name="sex">性别</string>
     <string name="age">年龄</string>
+    <string name="choose_from_your_phone_album">从手机相册选择</string>
+    <string name="choose_photos">拍照选择</string>
 
 
     <!--工作年限-->
@@ -251,6 +254,7 @@
     <string name="year">年</string>
     <string name="month">月</string>
     <string name="Completed">已完成</string>
+    <string name="ksh">:</string>
 
     <!--生活服务-->
 
@@ -269,5 +273,4 @@
     <string name="fersonal_driver">专车司机</string>
     <string name="service_details"> 服务详情</string>
     <!--   <string name="post">发布</string>-->
-
 </resources>

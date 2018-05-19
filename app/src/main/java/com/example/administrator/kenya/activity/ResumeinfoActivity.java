@@ -108,7 +108,6 @@ public class ResumeinfoActivity extends BaseActivity implements View.OnClickList
     RoundImageView resumeInfoPhoto;
     private Dialog dateDialog;
     private PopupWindow popupWindow;
-
     public final String USER_IMAGE_NAME = "image.png";
     public final String USER_CROP_IMAGE_NAME = "temporary.png";
     public Uri imageUriFromCamera;
@@ -119,11 +118,10 @@ public class ResumeinfoActivity extends BaseActivity implements View.OnClickList
     private static final int ALBUM_REQUEST_CODE = 1;
     //剪裁请求码
     private static final int CROP_REQUEST_CODE = 3;
-
     private String s;
     private String sexvalue;
     private User user;
-    private String contentvalue="";
+    private String contentvalue = "";
     private LoadingDialog loadingDialog;
     private Boolean haveAvatar = false;
 
@@ -172,7 +170,7 @@ public class ResumeinfoActivity extends BaseActivity implements View.OnClickList
                 showDateDialog(DateUtil.getDateForString("2000-01-01"), "A");
                 break;
             case R.id.resume_recm:
-                PersonalIntroductionsDialog personalIntroductionsDialog = new PersonalIntroductionsDialog(this,contentvalue);
+                PersonalIntroductionsDialog personalIntroductionsDialog = new PersonalIntroductionsDialog(this, contentvalue);
                 personalIntroductionsDialog.setOnPersonalIntroductionsListener(new OnPersonalIntroductionsListener() {
                     @Override
                     public void success(String content) {
@@ -202,7 +200,7 @@ public class ResumeinfoActivity extends BaseActivity implements View.OnClickList
                     toast(getString(R.string.please) + getString(R.string.choose_birthday));
                 } else if (contentvalue == null || contentvalue.equals("")) {
                     toast(getString(R.string.please) + getString(R.string.enter_self_introduction));
-                } else if (spinner.getSelectedItem().toString().equals(getString(R.string.working_experience) )) {
+                } else if (spinner.getSelectedItem().toString().equals(getString(R.string.working_experience))) {
                     toast(getString(R.string.please) + getString(R.string.choose_working_experience));
                 } else {
                     loadingDialog = new LoadingDialog(this);

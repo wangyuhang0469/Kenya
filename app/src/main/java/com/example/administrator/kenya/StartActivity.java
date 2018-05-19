@@ -24,12 +24,10 @@ public class StartActivity extends BaseActivity {
         isFirstStart();
         ButterKnife.bind(this);
     }
-
     // 判断是否第一次启动来决定跳转不同的欢迎界面
     private void isFirstStart() {
         SharedPreferences getPrefs = PreferenceManager.getDefaultSharedPreferences(getBaseContext());
         boolean isFirstStart = getPrefs.getBoolean("firstStart", true);
-
         if (isFirstStart) {
             startActivity(IntroActivity.class, null);
             SharedPreferences.Editor e = getPrefs.edit();
