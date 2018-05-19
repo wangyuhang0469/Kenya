@@ -24,6 +24,8 @@
     <string name="modify_failed">修改失败</string>
     <string name="delete_successfully">删除成功</string>
     <string name="delete_failed">删除失败</string>
+    <string name="send_successfully">发送成功</string>
+    <string name="send_failed">发送失败</string>
     <string name="enter_complete">请输入完整信息</string>
     <string name="years_old">岁</string>
     <string name="personal_information">个人信息</string>
@@ -76,9 +78,10 @@
     <string name="enter_sent_code">请输入验证码</string>
     <string name="click_to_send_code">获取验证码</string>
     <string name="enter_password">请输入密码</string>
-    <string name="enter_password_8_16_digit_or_alphabet">请输入密码(8-16位数字或字母)</string>
+    <string name="enter_password_8_16_digit_or_alphabet">请输入密码(8-22位数字或字母)</string>
     <string name="confirm_password">请再次输入密码</string>
-    <string name="confirm_password_8_16_digit_or_alphabet">请确认密码(8-16位数字或字母)</string>
+    <string name="passwrod_6_22">密码应为6-22数字或字母</string>
+    <string name="verification_incorrect">验证码错误</string>
     <string name="registration_confirmed">注册</string>
     <string name="rental_services">租房</string>
     <string name="second_hand_goods">二手</string>
@@ -108,6 +111,7 @@
     <string name="age">年龄</string>
     <string name="choose_from_your_phone_album">从手机相册选择</string>
     <string name="choose_photos">拍照选择</string>
+    <string name="under_development">功能正在开发  敬请期待</string>
 
 
     <!--工作年限-->
@@ -159,6 +163,7 @@
     <string name="moving_service">搬家</string>
     <string name="repairing_services">维修</string>
     <string name="recycle_items">回收</string>
+    <string name="log_out">退出登录</string>
 
     <!--项目找资金-->
     <string name="projects_to_fund">项目找资金</string>

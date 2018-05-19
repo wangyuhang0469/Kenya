@@ -1,10 +1,8 @@
 package com.example.administrator.kenya.ui.city;
 
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,7 +22,6 @@ import com.example.administrator.kenya.tools.GlideImageLoader;
 import com.example.administrator.kenya.ui.city.findmoney.FindMoneyActivity;
 import com.example.administrator.kenya.ui.city.findmoney.FindMonydetailActivity;
 import com.example.administrator.kenya.ui.city.findmoney.FindProjectdetailActivity;
-import com.example.administrator.kenya.ui.city.friends.FriendsActivity;
 import com.example.administrator.kenya.ui.city.house.HouseActivity;
 import com.example.administrator.kenya.ui.city.husbandry.HusbandryActivity;
 import com.example.administrator.kenya.ui.city.job.JobActivity;
@@ -32,6 +29,7 @@ import com.example.administrator.kenya.ui.city.life.LifeActivity;
 import com.example.administrator.kenya.ui.city.news.NewsWebActivity;
 import com.example.administrator.kenya.ui.city.news.NewsinfoActivity;
 import com.example.administrator.kenya.ui.city.used.UsedActivity;
+import com.example.administrator.kenya.ui.main.LoadingDialog;
 import com.example.administrator.kenya.view.TextBannerView;
 import com.youth.banner.Banner;
 import com.youth.banner.listener.OnBannerListener;
@@ -94,10 +92,13 @@ public class CityHomeFragment extends BaseFragment {
             @Override
             public void OnBannerClick(int position) {
                 if (BannersList.get(position).getCategory().equals("funds-1")) {
+                    final LoadingDialog loadingDialog = new LoadingDialog(getContext());
+                    loadingDialog.show();
                     OkHttpUtils.get().url(AppConstants.BASE_URL + "/kenya/Funds/selectById?fundsid=" + BannersList.get(position).getCategoryId()).build().execute(new StringCallback() {
                         @Override
                         public void onError(Call call, Exception e, int id) {
                             toast(getString(R.string.load_fail));
+                            loadingDialog.dismiss();
                         }
 
                         @Override
@@ -115,13 +116,17 @@ public class CityHomeFragment extends BaseFragment {
                             } catch (JSONException e) {
                                 e.printStackTrace();
                             }
+                            loadingDialog.dismiss();
                         }
                     });
                 } else if (BannersList.get(position).getCategory().equals("project-1")) {
+                    final LoadingDialog loadingDialog = new LoadingDialog(getContext());
+                    loadingDialog.show();
                     OkHttpUtils.get().url(AppConstants.BASE_URL + "/kenya/Project/selectById?projectid=" + BannersList.get(position).getCategoryId()).build().execute(new StringCallback() {
                         @Override
                         public void onError(Call call, Exception e, int id) {
                             toast(R.string.load_fail);
+                            loadingDialog.dismiss();
                         }
 
                         @Override
@@ -139,6 +144,7 @@ public class CityHomeFragment extends BaseFragment {
                             } catch (JSONException e) {
                                 e.printStackTrace();
                             }
+                            loadingDialog.dismiss();
                         }
                     });
                 } else if (BannersList.get(position).getCategory().equals("url")) {
@@ -180,7 +186,8 @@ public class CityHomeFragment extends BaseFragment {
                 startActivity(HouseActivity.class, null);
                 break;
             case R.id.city_home_friends:
-                startActivity(FriendsActivity.class, null);
+//                startActivity(FriendsActivity.class, null);
+                toast(getString(R.string.under_development));
                 break;
             case R.id.city_home_life:
                 startActivity(LifeActivity.class, null);

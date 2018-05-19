@@ -10,7 +10,6 @@
         android:layout_width="350px"
         android:layout_height="250px"
         android:layout_margin="30px"
-        android:background="@drawable/linshi5"
         android:visibility="gone" />
 
     <com.zhy.autolayout.AutoLinearLayout
@@ -25,7 +24,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginRight="30px"
-            android:textColor="@color/textBlack1" />
+            android:textColor="@color/textBlack1"
+            android:maxLength="22"/>
 
         <TextView
             android:id="@+id/company_price"
@@ -57,6 +57,7 @@
             android:layout_below="@id/company_Title"
             android:layout_toRightOf="@id/company_image"
             android:textColor="@color/textBlack3"
+            android:maxLength="35"
             android:textSize="13sp" />
 
         <TextView

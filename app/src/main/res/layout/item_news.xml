@@ -15,7 +15,7 @@
         android:paddingLeft="30px"
         android:paddingRight="30px"
         android:paddingTop="10px"
-        android:text="柬埔寨部落少女渴望开学 想念老师同学"
+        android:maxLines="3"
         android:textColor="@color/textBlack1"
         android:textSize="18sp" />
 
@@ -26,7 +26,6 @@
         android:layout_alignBottom="@+id/news_image"
         android:paddingBottom="10px"
         android:paddingLeft="30px"
-        android:text="2017/12/12"
         android:textColor="@color/textBlack3"
         android:textSize="34px" />
 

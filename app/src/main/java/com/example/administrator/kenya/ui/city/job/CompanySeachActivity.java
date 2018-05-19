@@ -152,7 +152,7 @@ public class CompanySeachActivity extends BaseActivity {
 
     private void searchEvent() {
         if (keyword.getText().length() == 0) {
-            toast( getString(R.string.please) +  getString(R.string.enter_keyword_first));
+            toast(  getString(R.string.enter_keyword_first));
         } else if (lastKeyword.equals(keyword.getText().toString())) {
         } else {
             replacement();

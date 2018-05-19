@@ -2,6 +2,7 @@ package com.example.administrator.kenya.utils;
 
 import android.util.Log;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -15,6 +16,25 @@ public class DateUtil {
 
     public static final String ymdhms = "yyyy-MM-dd HH:mm:ss";
     public static final String ymd = "yyyy-MM-dd";
+
+
+    public static String birthGetAge(String birthday) {
+        Calendar now = Calendar.getInstance();
+
+        SimpleDateFormat sdf= new SimpleDateFormat("yyyy-MM-dd");
+        Date date = null;
+        try {
+            date = sdf.parse(birthday);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        Calendar birth = Calendar.getInstance();
+        birth.setTime(date);
+        now.add(Calendar.DAY_OF_MONTH,-birth.get(Calendar.DAY_OF_MONTH));
+        now.add(Calendar.MONTH,-birth.get(Calendar.MONTH));
+        now.add(Calendar.YEAR,-birth.get(Calendar.YEAR));
+        return String.valueOf(now.get(Calendar.YEAR));
+    }
 
     public static String monthNumToMonthName(String month) {
         String m = month;
@@ -199,4 +219,6 @@ public class DateUtil {
 
         }
     }
+
+
 }

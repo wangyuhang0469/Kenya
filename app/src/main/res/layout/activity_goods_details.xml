@@ -87,6 +87,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="20px"
                     android:layout_marginTop="66px"
+                    android:maxLines="1"
                     android:layout_toRightOf="@id/avatar"
                     android:textColor="@color/textBlack1" />
 

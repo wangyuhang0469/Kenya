@@ -1,20 +1,32 @@
 package com.example.administrator.kenya.ui.myself.myrelease;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.example.administrator.kenya.R;
 import com.example.administrator.kenya.base.BaseActivity;
 import com.example.administrator.kenya.classes.MessageEvent;
+import com.example.administrator.kenya.classes.MessageEvent2;
 import com.example.administrator.kenya.classes.User;
 import com.example.administrator.kenya.constants.AppConstants;
 import com.example.administrator.kenya.interfaces.OnReUsernameSuccessfulListener;
+import com.example.administrator.kenya.interfaces.OnSexSelectListener;
 import com.example.administrator.kenya.model.image_selector.MultiImageSelectorActivity;
+import com.example.administrator.kenya.ui.city.job.DatePickerDialog;
 import com.example.administrator.kenya.ui.main.LoadingDialog;
 import com.example.administrator.kenya.ui.main.ReUsernameDialog;
+import com.example.administrator.kenya.ui.main.SelectSexDialog;
+import com.example.administrator.kenya.ui.myself.LoginActivity;
+import com.example.administrator.kenya.utils.DateUtil;
 import com.zhy.http.okhttp.OkHttpUtils;
 import com.zhy.http.okhttp.callback.StringCallback;
 
@@ -24,6 +36,7 @@ import org.json.JSONObject;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -52,13 +65,14 @@ public class MyInformationActivity extends BaseActivity {
     private ArrayList<String> mResults;
     private LoadingDialog loadingDialog;
     private User user = User.getInstance();
+    private boolean isfirst = true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_information);
         ButterKnife.bind(this);
-
+        loadingDialog  = new LoadingDialog(this);
         title.setText(getString(R.string.personal_information));
         userName.setText(user.getUserName());
         Glide.with(this).load(User.getInstance().getUserPortrait())
@@ -68,13 +82,38 @@ public class MyInformationActivity extends BaseActivity {
                 .placeholder(R.drawable.avatar)
                 .into(avatar);
         phone.setText(user.getUserPhonenumber());
+
+        String birthdayStr = user.getUserBirthday();
+        if (birthdayStr != null && !birthdayStr.equals("null") &&  !birthdayStr.equals("")) {
+            birthday.setText(birthdayStr);
+        }
+
+        if (user.getUserSex().equals("0")){
+            sex.setText(getString(R.string.male));
+        }else if (user.getUserSex().equals("1")) {
+            sex.setText(getString(R.string.female));
+        }
+
     }
 
-    @OnClick({R.id.back, R.id.avatarBar, R.id.userNameBar, R.id.birthdayBar, R.id.sexBar})
+    @OnClick({R.id.back, R.id.log_out,R.id.avatarBar, R.id.userNameBar, R.id.birthdayBar, R.id.sexBar})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.back:
                 finish();
+                break;
+            case R.id.log_out:
+                User.getInstance().setStatus(false);
+                SharedPreferences getPrefs = PreferenceManager.getDefaultSharedPreferences(getBaseContext());
+                SharedPreferences.Editor e = getPrefs.edit();
+                e.putString("userId", "0");
+                e.apply();
+
+                Intent i = new Intent();
+                setResult(4,i);
+                finish();
+                startActivity(LoginActivity.class,null);
+
                 break;
             case R.id.avatarBar:
                 Intent intent = new Intent(this, MultiImageSelectorActivity.class);
@@ -101,10 +140,47 @@ public class MyInformationActivity extends BaseActivity {
                 reUsernameDialog.show();
                 break;
             case R.id.birthdayBar:
+                String birthdayStr = user.getUserBirthday();
+                if (birthdayStr != null && !birthdayStr.equals("null") &&  !birthdayStr.equals("")) {
+                    showDateDialog(DateUtil.getDateForString(birthdayStr));
+                }else {
+                    showDateDialog(DateUtil.getDateForString("2000-01-01"));
+                }
                 break;
             case R.id.sexBar:
+                new SelectSexDialog(this, new OnSexSelectListener() {
+                    @Override
+                    public void selete(String sex) {
+                        send("userSex",sex);
+                    }
+                }).show();
                 break;
         }
+    }
+
+    private void showDateDialog(List<Integer> date) {
+        DatePickerDialog.Builder builder = new DatePickerDialog.Builder(this);
+        builder.setOnDateSelectedListener(new DatePickerDialog.OnDateSelectedListener() {
+            @Override
+            public void onDateSelected(int[] dates) {
+                String birString = dates[0] + "-" + (dates[1] > 9 ? dates[1] : ("0" + dates[1])) + "-"
+                        + (dates[2] > 9 ? dates[2] : ("0" + dates[2]));
+                send("birthday",birString);
+            }
+
+            @Override
+            public void onCancel() {
+            }
+        }).setSelectYear(date.get(0) - 1)
+                .setSelectMonth(date.get(1) - 1)
+                .setSelectDay(date.get(2) - 1);
+
+        builder.setMaxYear(DateUtil.getYear());
+        builder.setMaxMonth(DateUtil.getDateForString(DateUtil.getToday()).get(1));
+        builder.setMaxDay(DateUtil.getDateForString(DateUtil.getToday()).get(2));
+        builder.create().show();
+//        dateDialog = builder.create();
+//        dateDialog.show();
     }
 
 
@@ -114,7 +190,6 @@ public class MyInformationActivity extends BaseActivity {
         if (requestCode == 2) {
             if (resultCode == RESULT_OK) {
                 mResults = data.getStringArrayListExtra(MultiImageSelectorActivity.EXTRA_RESULT);
-                loadingDialog = new LoadingDialog(this);
                 loadingDialog.show();
                 Luban.with(this)
                         .load(mResults.get(0))
@@ -127,7 +202,7 @@ public class MyInformationActivity extends BaseActivity {
 
                             @Override
                             public void onSuccess(File file) {
-                                send(file);
+                                sendAvatar(file);
                             }
 
                             @Override
@@ -141,7 +216,7 @@ public class MyInformationActivity extends BaseActivity {
     }
 
 
-    private void send(File file) {
+    private void sendAvatar(File file) {
 
         OkHttpUtils.post()
                 .url(AppConstants.BASE_URL + "/kenya/user/updatePortrait")
@@ -152,7 +227,7 @@ public class MyInformationActivity extends BaseActivity {
                     @Override
                     public void onError(Call call, Exception e, int id) {
                         e.printStackTrace();
-                        toast(R.string.post_fail);
+                        toast(R.string.modify_failed);
                         loadingDialog.dismiss();
                     }
 
@@ -161,19 +236,68 @@ public class MyInformationActivity extends BaseActivity {
                         log(response);
                         try {
                             JSONObject jsonObject = new JSONObject(response);
-                            toast(jsonObject.getString("message"));
                             if (jsonObject.getString("code").equals("000")) {
                                 Glide.with(MyInformationActivity.this)
                                         .load(mResults.get(0))
                                         .into(avatar);
-                                EventBus.getDefault().post(new MessageEvent(mResults.get(0)));
-                                User.getInstance().setUserPortrait(mResults.get(0));
+                                String msg = jsonObject.getJSONObject("result").getString("userPortrait");
+                                User.getInstance().setUserPortrait(msg);
+                                EventBus.getDefault().post(new MessageEvent(msg));
+                                toast(getString(R.string.modify_successfully));
                             }
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
                         loadingDialog.dismiss();
                         loadingDialog = null;
+                    }
+                });
+    }
+
+    private void send(final String key, final String word){
+        loadingDialog.show();
+        OkHttpUtils.post()
+                .url(AppConstants.BASE_URL + "/kenya/user/updateUser")
+                .addParams("userId", User.getInstance().getUserId())
+                .addParams(key,word)
+                .build()
+                .execute(new StringCallback() {
+                    @Override
+                    public void onError(Call call, Exception e, int id) {
+                        e.printStackTrace();
+                        toast(getString(R.string.modify_failed));
+                        loadingDialog.dismiss();
+                    }
+
+                    @Override
+                    public void onResponse(String response, int id) {
+                        try {
+                            JSONObject jsonObject = new JSONObject(response);
+                            if (jsonObject.getString("code").equals("000")){
+                                toast(getString(R.string.modify_successfully));
+                                if (key.equals("birthday")){
+                                    User.getInstance().setUserBirthday(word);
+                                    birthday.setText(word);
+                                }else if (key.equals("userSex")){
+                                    String sexStr = null;
+                                    if (word.equals("0")){
+                                        sexStr = getString(R.string.male);
+                                        User.getInstance().setUserSex(word);
+                                        sex.setText(sexStr);
+                                    }else if (word.equals("1")){
+                                        sexStr = getString(R.string.female);
+                                        User.getInstance().setUserSex(word);
+                                        sex.setText(sexStr);
+                                    }
+                                }
+
+                            }else {
+                                toast(getString(R.string.modify_failed));
+                            }
+                            loadingDialog.dismiss();
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
                     }
                 });
     }

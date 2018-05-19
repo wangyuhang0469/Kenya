@@ -18,6 +18,7 @@
         android:layout_alignTop="@id/project_image"
         android:layout_marginRight="30px"
         android:layout_marginTop="10px"
+        android:maxLines="2"
         android:layout_toRightOf="@id/project_image"
         android:textColor="@color/textBlack1" />
 
@@ -29,6 +30,7 @@
         android:layout_toRightOf="@id/project_image"
         android:paddingBottom="10px"
         android:textColor="@color/textBlack2"
+        android:maxLength="23"
         android:textSize="13sp" />
 
     <TextView

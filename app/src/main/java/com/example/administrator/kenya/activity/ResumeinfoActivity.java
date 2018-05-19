@@ -158,6 +158,16 @@ public class ResumeinfoActivity extends BaseActivity implements View.OnClickList
         } else {
             upload(User.getInstance().getUserPortrait());
         }
+
+        if (user.getUserSex().equals("0")){
+            resumeInfoMen.setImageResource(R.mipmap.resume_sex_click);
+            resumeInfoWomen.setImageResource(R.mipmap.resume_sex2);
+            sexvalue = getResources().getString(R.string.male);
+        }else if (user.getUserSex().equals("1")) {
+            resumeInfoMen.setImageResource(R.mipmap.resume_sex);
+            resumeInfoWomen.setImageResource(R.mipmap.resume_sex_click2);
+            sexvalue = getResources().getString(R.string.female);
+        }
     }
 
     @OnClick({R.id.back, R.id.pick_time, R.id.resume_recm, R.id.ruseme_work_time, R.id.resume_info_photo, R.id.resume_info_detail, R.id.resume_info_men, R.id.resume_info_women})
@@ -167,7 +177,12 @@ public class ResumeinfoActivity extends BaseActivity implements View.OnClickList
                 finish();
                 break;
             case R.id.pick_time:
-                showDateDialog(DateUtil.getDateForString("2000-01-01"), "A");
+                String birthdayStr = user.getUserBirthday();
+                if (birthdayStr != null && !birthdayStr.equals("null") &&  !birthdayStr.equals("")) {
+                    showDateDialog(DateUtil.getDateForString(birthdayStr), "A");
+                }else {
+                    showDateDialog(DateUtil.getDateForString("2000-01-01"), "A");
+                }
                 break;
             case R.id.resume_recm:
                 PersonalIntroductionsDialog personalIntroductionsDialog = new PersonalIntroductionsDialog(this, contentvalue);

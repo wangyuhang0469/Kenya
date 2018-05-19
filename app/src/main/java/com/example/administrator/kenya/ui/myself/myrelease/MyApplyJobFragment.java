@@ -25,6 +25,7 @@ import com.example.administrator.kenya.classes.User;
 import com.example.administrator.kenya.constants.AppConstants;
 import com.example.administrator.kenya.interfaces.OnSuccessfulListener;
 import com.example.administrator.kenya.ui.main.DeleteDialog;
+import com.example.administrator.kenya.utils.DateUtil;
 import com.example.administrator.kenya.view.MyFootRefreshView;
 import com.example.administrator.kenya.view.MyHeadRefreshView;
 import com.jwenfeng.library.pulltorefresh.BaseRefreshListener;
@@ -193,7 +194,9 @@ public class MyApplyJobFragment extends BaseFragment {
             holder.job_want.setText(list.get(position).getJobwant());
             holder.job_name.setText(list.get(position).getName());
             holder.job_sex.setText(list.get(position).getSex());
-            holder.job_age.setText(list.get(position).getAge() + getString(R.string.years_old));
+            String age = DateUtil.birthGetAge(list.get(position).getBirthday());
+            list.get(position).setAge(age);
+            holder.job_age.setText(age + getString(R.string.years_old));
 //            holder.job_image.setTag(list.get(position).getHeadimg());
             Glide.with(context)
                     .load(AppConstants.BASE_URL + list.get(position).getHeadimg())

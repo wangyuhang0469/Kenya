@@ -26,12 +26,12 @@ public class IntroActivity extends AppIntro {
         addSlide(SlideFragment.newInstance(R.layout.fragment_splansh3));
 
         setColorDoneText(Color.parseColor("#313131"));
-        setIndicatorColor(Color.parseColor("#555555"), Color.parseColor("#aaaaaa"));
+        setIndicatorColor(Color.parseColor("#78cc99"), Color.parseColor("#e2faeb"));
 
         setSeparatorColor(getResources().getColor(R.color.touming));
         showStatusBar(false);
         showSkipButton(false);
-        setDoneText("ENTER");
+        setDoneText("      ");
 
 //            SharedPreferences.Editor e = getPrefs.edit();
 //            e.putBoolean("firstStart", false);

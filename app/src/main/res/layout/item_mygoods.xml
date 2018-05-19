@@ -18,6 +18,7 @@
         android:layout_alignTop="@id/goodsimgs"
         android:textColor="@color/textBlack1"
         android:layout_marginRight="30px"
+        android:maxLines="2"
         android:layout_marginTop="10px"/>
 
     <TextView
@@ -28,6 +29,7 @@
         android:layout_alignBottom="@id/goodsimgs"
         android:textColor="@color/textBlack2"
         android:textSize="13sp"
+        android:maxLength="23"
         android:layout_marginBottom="10px"/>
 
     <TextView

@@ -1,14 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.zhy.autolayout.AutoLinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.zhy.autolayout.AutoRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/base_bg"
+    tools:context="com.example.administrator.kenya.ui.myself.myrelease.MyInformationActivity"
     android:orientation="vertical"
-    tools:context="com.example.administrator.kenya.ui.myself.myrelease.MyInformationActivity">
+    android:background="@color/base_bg">
 
-    <include layout="@layout/title_bar2" />
+    <com.zhy.autolayout.AutoLinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+    <include layout="@layout/title_bar2"/>
 
     <com.zhy.autolayout.AutoRelativeLayout
         android:id="@+id/avatarBar"
@@ -16,26 +21,27 @@
         android:layout_height="220px">
 
         <TextView
-            style="@style/my_center_tv"
-            android:layout_centerVertical="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:text="@string/avatar"
             android:textColor="@color/textBlack1"
-            android:textSize="16sp" />
+            android:textSize="16sp"
+            android:layout_centerVertical="true"/>
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/avatar"
             android:layout_width="180px"
             android:layout_height="180px"
             android:layout_centerVertical="true"
-            android:layout_toLeftOf="@+id/go"
-            android:src="@drawable/avatar" />
+            android:src="@drawable/avatar"
+            android:layout_toLeftOf="@+id/go" />
 
         <ImageView
             android:id="@+id/go"
             style="@style/my_center_inter"
+            android:src="@mipmap/my_center_inter2"
             android:layout_centerVertical="true"
-            android:layout_marginLeft="30px"
-            android:src="@mipmap/my_center_inter2" />
+            android:layout_marginLeft="30px"/>
     </com.zhy.autolayout.AutoRelativeLayout>
 
     <include layout="@layout/line" />
@@ -47,7 +53,8 @@
         android:layout_height="150px">
 
         <TextView
-            style="@style/my_center_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:text="@string/name"
             android:textColor="@color/textBlack1"
@@ -57,10 +64,10 @@
             android:id="@+id/userName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
             android:layout_toLeftOf="@+id/go2"
+            android:layout_centerVertical="true"
             android:textColor="@color/textBlack3"
-            android:textSize="16sp" />
+            android:textSize="16sp"/>
 
         <ImageView
             android:id="@+id/go2"
@@ -78,7 +85,8 @@
         android:layout_height="150px">
 
         <TextView
-            style="@style/my_center_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:text="@string/birthday"
             android:textColor="@color/textBlack1"
@@ -109,7 +117,8 @@
         android:layout_height="150px">
 
         <TextView
-            style="@style/my_center_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:text="@string/sex"
             android:textColor="@color/textBlack1"
@@ -123,6 +132,10 @@
             android:layout_toLeftOf="@+id/go4"
             android:textColor="@color/textBlack3"
             android:textSize="16sp" />
+
+
+
+
 
         <ImageView
             android:id="@+id/go4"
@@ -139,7 +152,8 @@
         android:layout_marginTop="20px">
 
         <TextView
-            style="@style/my_center_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:text="@string/phone_no."
             android:textColor="@color/textBlack1"
@@ -150,13 +164,31 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
-            android:layout_centerVertical="true"
             android:layout_marginRight="30px"
+            android:layout_centerVertical="true"
             android:textColor="@color/textBlack3"
-            android:textSize="16sp" />
+            android:textSize="16sp"/>
 
 
     </com.zhy.autolayout.AutoRelativeLayout>
 
 
 </com.zhy.autolayout.AutoLinearLayout>
+
+    <TextView
+        android:id="@+id/log_out"
+        android:layout_width="match_parent"
+        android:layout_height="160px"
+        android:text="@string/log_out"
+        android:textAllCaps="true"
+        android:layout_alignParentBottom="true"
+        android:gravity="center"
+        android:background="#fc5157"
+        android:textColor="@color/white"
+        android:textSize="17sp"/>
+
+
+
+
+
+</com.zhy.autolayout.AutoRelativeLayout>

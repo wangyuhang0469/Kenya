@@ -27,10 +27,10 @@
         <com.zhy.autolayout.AutoLinearLayout style="@style/bar1">
 
             <ImageView
-                android:layout_width="44px"
-                android:layout_height="38px"
-                android:layout_marginBottom="40px"
-                android:src="@mipmap/login_user2" />
+                android:layout_width="50px"
+                android:layout_height="50px"
+                android:layout_marginBottom="34px"
+                android:src="@drawable/phone"/>
 
             <EditText
                 android:id="@+id/phone"
@@ -39,6 +39,7 @@
                 android:layout_height="match_parent"
                 android:hint="@string/enter_phone_no."
                 android:inputType="phone"
+                android:maxLength="18"
                 android:paddingLeft="20px" />
         </com.zhy.autolayout.AutoLinearLayout>
 
@@ -49,11 +50,11 @@
 
             <ImageView
                 android:id="@+id/img001"
-                android:layout_width="44px"
-                android:layout_height="35px"
+                android:layout_width="50px"
+                android:layout_height="50px"
                 android:layout_alignParentBottom="true"
-                android:layout_marginBottom="40px"
-                android:src="@mipmap/register_code2" />
+                android:layout_marginBottom="34px"
+                android:src="@drawable/login_v_code" />
 
             <EditText
                 android:id="@+id/verifyCode"
@@ -64,6 +65,7 @@
                 android:layout_toEndOf="@id/img001"
                 android:layout_toStartOf="@+id/getVerifyCode"
                 android:hint="@string/enter_sent_code"
+                android:maxLength="6"
                 android:inputType="number"
                 android:paddingLeft="20px" />
 
@@ -84,10 +86,10 @@
         <com.zhy.autolayout.AutoLinearLayout style="@style/bar1">
 
             <ImageView
-                android:layout_width="39px"
-                android:layout_height="33px"
-                android:layout_marginBottom="40px"
-                android:src="@mipmap/login_pwd2" />
+                android:layout_width="50px"
+                android:layout_height="50px"
+                android:layout_marginBottom="34px"
+                android:src="@drawable/login_user" />
 
             <EditText
                 android:id="@+id/userName"
@@ -95,6 +97,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:hint="@string/enter_your_nick_name"
+                android:maxLength="35"
                 android:paddingLeft="20px" />
         </com.zhy.autolayout.AutoLinearLayout>
 
@@ -103,10 +106,10 @@
         <com.zhy.autolayout.AutoLinearLayout style="@style/bar1">
 
             <ImageView
-                android:layout_width="39px"
-                android:layout_height="33px"
-                android:layout_marginBottom="40px"
-                android:src="@mipmap/login_pwd2" />
+                android:layout_width="50px"
+                android:layout_height="50px"
+                android:layout_marginBottom="34px"
+                android:src="@drawable/login_password" />
 
             <EditText
                 android:id="@+id/password1"
@@ -114,6 +117,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:hint="@string/enter_password_8_16_digit_or_alphabet"
+                android:maxLength="22"
                 android:inputType="textPassword"
                 android:paddingLeft="20px" />
         </com.zhy.autolayout.AutoLinearLayout>
@@ -123,10 +127,10 @@
         <com.zhy.autolayout.AutoLinearLayout style="@style/bar1">
 
             <ImageView
-                android:layout_width="39px"
-                android:layout_height="33px"
-                android:layout_marginBottom="40px"
-                android:src="@mipmap/login_pwd2" />
+                android:layout_width="50px"
+                android:layout_height="50px"
+                android:layout_marginBottom="34px"
+                android:src="@drawable/login_password" />
 
             <EditText
                 android:id="@+id/password2"
@@ -135,6 +139,7 @@
                 android:layout_height="match_parent"
                 android:hint="@string/confirm_password_8_16_digit_or_alphabet"
                 android:inputType="textPassword"
+                android:maxLength="22"
                 android:paddingLeft="20px" />
         </com.zhy.autolayout.AutoLinearLayout>
 

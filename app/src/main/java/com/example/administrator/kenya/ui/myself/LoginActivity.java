@@ -1,6 +1,8 @@
 package com.example.administrator.kenya.ui.myself;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +15,7 @@ import com.example.administrator.kenya.R;
 import com.example.administrator.kenya.base.BaseActivity;
 import com.example.administrator.kenya.classes.User;
 import com.example.administrator.kenya.constants.AppConstants;
+import com.example.administrator.kenya.utils.DeviceUuidFactory;
 import com.zhy.http.okhttp.OkHttpUtils;
 import com.zhy.http.okhttp.callback.StringCallback;
 
@@ -66,8 +69,9 @@ public class LoginActivity extends BaseActivity {
         lock = true;
         OkHttpUtils.get()
                 .url(AppConstants.BASE_URL + "/kenya/user/login")
-                .addParams("userPhoneNumber", phone.getText().toString())
+                    .addParams("userPhoneNumber", phone.getText().toString())
                 .addParams("userPsw", password.getText().toString())
+                .addParams("userDeviceId",DeviceUuidFactory.getUUID(this))
                 .build()
                 .execute(new StringCallback() {
                     @Override
@@ -94,6 +98,12 @@ public class LoginActivity extends BaseActivity {
                                 user.setUserBirthday(jsonObject.getString("userBirthday"));
                                 user.setUserPortrait(jsonObject.getString("userPortrait"));
                                 user.setStatus(true);
+
+                                SharedPreferences getPrefs = PreferenceManager.getDefaultSharedPreferences(getBaseContext());
+                                SharedPreferences.Editor e = getPrefs.edit();
+                                e.putString("userId", user.getUserId());
+                                e.apply();
+
                                 startActivity(MainActivity.class, null);
                                 finish();
                                 toast(getResources().getString(R.string.login_successfully));

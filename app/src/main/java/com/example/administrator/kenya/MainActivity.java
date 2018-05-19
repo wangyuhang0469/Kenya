@@ -16,6 +16,7 @@ import com.example.administrator.kenya.ui.city.CityHomeFragment;
 import com.example.administrator.kenya.ui.main.BlankFragment;
 import com.example.administrator.kenya.ui.main.IntroActivity;
 import com.example.administrator.kenya.ui.main.WelcomeActivity;
+import com.example.administrator.kenya.ui.myself.LoginActivity;
 import com.example.administrator.kenya.ui.myself.MyselfFragment;
 import com.example.administrator.kenya.utils.DeviceUuidFactory;
 import com.example.administrator.kenya.view.TextBannerView;
@@ -112,12 +113,17 @@ public class MainActivity extends BaseActivity {
         if (keyCode == KeyEvent.KEYCODE_BACK && event.getAction() == KeyEvent.ACTION_DOWN) {
             if ((System.currentTimeMillis() - exitTime) > 2000)  //System.currentTimeMillis()无论何时调用，肯定大于2000
             {
-                Toast.makeText(getApplicationContext(), "再按一次退出程序", Toast.LENGTH_SHORT).show();
+//                Toast.makeText(getApplicationContext(), "再按一次退出程序", Toast.LENGTH_SHORT).show();
                 exitTime = System.currentTimeMillis();
             } else {
-//                finish();
-                System.exit(0);
+//                System.exit(0);
+                Intent intent = new Intent();
+// 为Intent设置Action、Category属性
+                intent.setAction(Intent.ACTION_MAIN);// "android.intent.action.MAIN"
+                intent.addCategory(Intent.CATEGORY_HOME); //"android.intent.category.HOME"
+                startActivity(intent);
             }
+
             return true;
         }
         return super.onKeyDown(keyCode, event);
@@ -148,6 +154,15 @@ public class MainActivity extends BaseActivity {
             EventBus.getDefault().postSticky("1");
         else
             EventBus.getDefault().postSticky("0");
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == 1 && resultCode == 4) {
+//            startActivity(LoginActivity.class,null);
+            finish();
+        }
     }
 
     @Override

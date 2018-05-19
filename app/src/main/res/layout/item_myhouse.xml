@@ -23,7 +23,8 @@
         android:layout_marginRight="30px"
         android:layout_marginTop="10px"
         android:layout_toRightOf="@id/house_image"
-        android:textColor="@color/textBlack1" />
+        android:textColor="@color/textBlack1"
+        android:singleLine="true"/>
 
     <TextView
         android:id="@+id/house_address"
@@ -33,6 +34,7 @@
         android:layout_marginBottom="10px"
         android:layout_toRightOf="@id/house_image"
         android:textColor="@color/textBlack2"
+        android:maxLines="1"
         android:textSize="13sp" />
 
 
@@ -56,6 +58,7 @@
         android:layout_below="@id/house_Title"
         android:layout_toRightOf="@id/house_image"
         android:textColor="@color/textBlack3"
+        android:maxLength="18"
         android:textSize="13sp" />
 
     <TextView

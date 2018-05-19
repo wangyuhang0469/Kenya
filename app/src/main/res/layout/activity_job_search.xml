@@ -33,6 +33,7 @@
                 style="@style/edit_base2"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:maxLength="30"
                 android:hint="@string/enter_your_keyword" />
         </com.zhy.autolayout.AutoLinearLayout>
 

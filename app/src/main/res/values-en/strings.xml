@@ -3,52 +3,55 @@
 
     <string name="please">Please \ </string>
 
-    <string name="load_fail">Load Failed</string>
-    <string name="post_success">Post Successfully</string>
-    <string name="post_fail">Post Failed</string>
-    <string name="nothing">Nothing...</string>
+    <string name="load_fail">Loading Failed</string>
+    <string name="post_success">Posting Successfully</string>
+    <string name="post_fail">Posting Failed</string>
+    <string name="nothing">Empty Page</string>
     <string name="enter_keyword_first">Please Enter The Keywords First</string>
     <string name="please_select_at_least_one_picture">Select At Least One Picture</string>
     <string name="company_information">Company Information</string>
     <string name="project_introduction">Project Introduction</string>
-    <string name="investment_amounts">Investment Amounts</string>
+    <string name="investment_amounts">Investment Quota</string>
     <string name="industry">Industry</string>
-    <string name="location">Location</string>
-    <string name="passwords_not_math">The two passwords don\'t match</string>
-    <string name="register_successfully">Register Successfully</string>
-    <string name="register_failed">Register Failed</string>
+    <string name="location">Position</string>
+    <string name="passwords_not_math">Password Error</string>
+    <string name="register_successfully">Registered</string>
+    <string name="register_failed">Process Failed</string>
     <string name="login_successfully">Login Successfully</string>
-    <string name="login_failed">Login Failed</string>
+    <string name="login_failed">Process Failed</string>
     <string name="modify_successfully">Modify Successfully</string>
-    <string name="modify_failed">Modify Failed</string>
-    <string name="delete_successfully">Delete Successfully</string>
-    <string name="delete_failed">Delete Failed</string>
+    <string name="modify_failed">Process Failed</string>
+    <string name="send_successfully">Send Successfully</string>
+    <string name="send_failed">Process Failed</string>
+    <string name="delete_successfully">Deleted</string>
+    <string name="delete_failed">Process Failed</string>
     <string name="enter_complete">Please Enter Complete Information</string>
-    <string name="years_old">\  Years Old</string>
+    <string name="years_old">\  Age</string>
     <string name="personal_information">Personal Information</string>
-    <string name="avatar">Avatar</string>
-    <string name="birthday">Birthday</string>
+    <string name="avatar">Passport Photo</string>
+    <string name="birthday">Date Of Birth</string>
+    <string name="log_out">Log Out</string>
 
     <string name="all_photos">All Photos</string>
     <string name="preview">Preview</string>
-    <string name="msg_no_camera">No System Camera</string>
-    <string name="msg_amount_limit">Arriva Lamount Limit</string>
-    <string name="accomplish">ACCOMPLISH</string>
+    <string name="msg_no_camera">System Camera Error</string>
+    <string name="msg_amount_limit">Maximum Limit Ammount</string>
+    <string name="accomplish">OK</string>
     <string name="photo_unit">\  Pictures</string>
     <string name="tip_take_photo">Take Photo</string>
     <string name="select_image">Select Image</string>
-    <string name="camera_not_working">The Camera Is Not Working Properly</string>
+    <string name="camera_not_working">Camera Malfunction</string>
     <string name="image_error">Image Error</string>
 
     <string name="loading">Loading...</string>
-    <string name="load_more">Load More</string>
+    <string name="load_more">Still Loading</string>
     <string name="refresh">Refresh</string>
-    <string name="choose_sex">Choose Sex</string>
-    <string name="choose_birthday">Choose Birthday</string>
-    <string name="enter_self_introduction">Enter Self-Introduction</string>
-    <string name="choose_working_experience">Choose Working Experience</string>
-    <string name="please_choose_avatar">Please Choose Avatar</string>
-    <string name="expected_job">Expected Job:</string>
+    <string name="choose_sex">Selete Your Gender</string>
+    <string name="choose_birthday">Selete Date of Birth</string>
+    <string name="enter_self_introduction">Introduce Yourself</string>
+    <string name="choose_working_experience">Select Your Working Experience</string>
+    <string name="please_choose_avatar">Choose Passport Photo</string>
+    <string name="expected_job">Job Tittle:</string>
     <string name="job">Job</string>
     <string name="enter_the_job">Enter The Job</string>
     <string name="enter_monthly_salary">Enter Monthly Salary</string>
@@ -73,9 +76,11 @@
     <string name="enter_sent_code">Enter Sent Code</string>
     <string name="click_to_send_code">Cllick To Send Code</string>
     <string name="enter_password">Enter Password</string>
-    <string name="enter_password_8_16_digit_or_alphabet">Enter Password(8-16 digit or alphabet)</string>
+    <string name="enter_password_8_16_digit_or_alphabet">Enter Password(6-22 Digit Or Alphabet)</string>
     <string name="confirm_password">Confirm Password</string>
-    <string name="confirm_password_8_16_digit_or_alphabet">Confirm Password(8-16 digit or alphabet)</string>
+    <string name="confirm_password_8_16_digit_or_alphabet">Confirm Password(6-22 Digit Or Alphabet)</string>
+    <string name="passwrod_6_22">Passwords Should Be 6-22 Digit Or Alphabet</string>
+    <string name="verification_incorrect">Verification Code Error</string>
     <string name="registration_confirmed">Registration Confirmed</string>
     <string name="rental_services">Rental Servicess</string>
     <string name="second_hand_goods">Second Hand Goods</string>
@@ -93,7 +98,7 @@
     <string name="job_intension">Job Intension</string>
     <string name="goods_detail">Goods Detail</string>
     <string name="Please_select_a_type">Please Select A Type</string>
-    <string name="job_require">Briefly introduce the content of this work and the requirements of the applicant</string>
+    <string name="job_require">Job Description And Employer\'s Requirement</string>
     <string name="about_us">About Us</string>
     <string name="contant_us">Contact Us</string>
     <string name="contant_us1">Contact Us:</string>
@@ -104,7 +109,8 @@
     <string name="sex">Sex</string>
     <string name="age">Age</string>
     <string name="choose_from_your_phone_album">Choose from your phone album</string>
-    <string name="choose_photos">Choose photos</string>
+    <string name="choose_photos">Take Photos</string>
+    <string name="under_development">Under Development,Please Wait</string>
 
 
     <!--工作年限-->
@@ -200,7 +206,7 @@
     <!--请输入收获人的真实姓名-->
     <string name="please_enter_real_name">Please Enter Peal Name</string>
     <string name="edit_the_prceiver_address">Edit The Receiver Address</string>
-    <string name="choose_photo">Choose Photo</string>
+    <string name="choose_photo">Take Photo</string>
     <string name="your_photo_callery">Your Photo Gallery</string>
     <string name="receiver">Receiver</string>
     <string name="phone_no.">Phone NO.</string>
@@ -240,7 +246,7 @@
     <string name="enter_your_name">Enter Your Name</string>
     <string name="male">Male</string>
     <string name="female">Female</string>
-    <string name="please_enter_your_job_description">Enter Your Job Description</string>
+    <string name="please_enter_your_job_description">Enter Your Expected Job</string>
     <string name="please_enter_your_phone_no.">Enter Your Phone Number</string>
     <string name="date_of_birth_year">Birthday</string>
     <string name="personal_introduction">Self-Introduction</string>
@@ -257,7 +263,7 @@
 
     <!--<string name="domestic_services">生活服务</string>-->
     <string name="search">Search</string>
-    <string name="enter_your_keyword">Enter your keyword</string>
+    <string name="enter_your_keyword">Enter Your Keyword</string>
     <string name="call">CALL</string>
     <string name="job_application">Job Application</string>
     <string name="workers_recruitment">Workes Recruitment</string>
@@ -268,6 +274,6 @@
     <string name="seourity_guard">Seourity Guard</string>
     <string name="receiptionist">Receiptionist</string>
     <string name="fersonal_driver">PERSONAT DRIVER</string>
-    <string name="service_details"> Service Details</string>
+    <string name="service_details">Details Of Sevice</string>
     <!--   <string name="post">发布</string>-->
 </resources>

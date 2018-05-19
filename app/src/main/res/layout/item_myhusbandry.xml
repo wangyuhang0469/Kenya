@@ -18,6 +18,7 @@
         android:layout_alignTop="@id/framimgs"
         android:layout_marginRight="30px"
         android:layout_marginTop="8px"
+        android:maxLines="3"
         android:layout_toRightOf="@id/framimgs"
         android:textColor="@color/textBlack1" />
 
@@ -29,6 +30,7 @@
         android:layout_marginBottom="8px"
         android:layout_toRightOf="@id/framimgs"
         android:textColor="@color/textBlack2"
+        android:maxLength="23"
         android:textSize="13sp" />
 
     <TextView

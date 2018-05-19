@@ -196,18 +196,18 @@ public class LifeActivity extends BaseActivity {
             public void onCheckedChanged(MyRadioGroup group, int checkedId) {
                 RadioButton radioButton = (RadioButton) popContentView.findViewById(checkedId);
                 keyword = radioButton.getText().toString();
-                if (keyword.equals("No Experience")) {
-                    keyword = "不限";
-                } else if (keyword.equals("Cleaning Service")) {
-                    keyword = "保洁";
-                } else if (keyword.equals("Moving Service")) {
-                    keyword = "搬家";
-                } else if (keyword.equals("Repairing Services")) {
-                    keyword = "维修";
-                } else if (keyword.equals("Recycle Items")) {
-                    keyword = "回收";
-                } else if (keyword.equals("Others")) {
-                    keyword = "其他";
+                if (keyword.equals("不限")) {
+                    keyword = "No Experience";
+                } else if (keyword.equals("保洁")) {
+                    keyword = "Cleaning Service";
+                } else if (keyword.equals("搬家")) {
+                    keyword = "Moving Service";
+                } else if (keyword.equals("维修")) {
+                    keyword = "Repairing Services";
+                } else if (keyword.equals("回收")) {
+                    keyword = "Recycle Items";
+                } else if (keyword.equals("其他")) {
+                    keyword = "Others";
                 } else {
 
                 }

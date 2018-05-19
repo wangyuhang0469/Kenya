@@ -56,7 +56,7 @@ public class HusbandryDetailsActivity extends BaseActivity {
         title.setText(getResources().getString(R.string.details));
         husbandry = (Husbandry) getIntent().getExtras().getSerializable("Husbandry");
         framname.setText(husbandry.getFramname());
-        framtype.setText( getResources().getString(R.string.service_details) +"  " + husbandry.getFramtype());
+        framtype.setText( getResources().getString(R.string.category) +":  " + husbandry.getFramtype());
         framdesc.setText(husbandry.getFramdesc());
         framuser.setText(husbandry.getFramuser());
         framphone.setText(getResources().getString(R.string.phone_no_)+ husbandry.getFramphone());

@@ -35,10 +35,10 @@
             android:layout_marginTop="10px">
 
             <ImageView
-                android:layout_width="38px"
-                android:layout_height="44px"
-                android:layout_marginBottom="40px"
-                android:src="@mipmap/login_user2" />
+                android:layout_width="50px"
+                android:layout_height="50px"
+                android:layout_marginBottom="34px"
+                android:src="@drawable/phone" />
 
             <EditText
                 android:id="@+id/phone"
@@ -46,6 +46,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:hint="@string/enter_phone_no."
+                android:maxLength="18"
                 android:inputType="phone"
                 android:paddingLeft="20px" />
         </com.zhy.autolayout.AutoLinearLayout>
@@ -55,10 +56,10 @@
         <com.zhy.autolayout.AutoLinearLayout style="@style/bar1">
 
             <ImageView
-                android:layout_width="33px"
-                android:layout_height="39px"
-                android:layout_marginBottom="43px"
-                android:src="@mipmap/login_pwd2" />
+                android:layout_width="50px"
+                android:layout_height="50px"
+                android:layout_marginBottom="34px"
+                android:src="@drawable/login_password" />
 
             <EditText
                 android:id="@+id/password"
@@ -67,6 +68,7 @@
                 android:layout_height="match_parent"
                 android:hint="@string/enter_password"
                 android:paddingLeft="22px"
+                android:maxLength="22"
                 android:password="true" />
         </com.zhy.autolayout.AutoLinearLayout>
 

@@ -53,7 +53,7 @@ public class LifeDetailsActivity extends BaseActivity {
         title.setText(getResources().getString(R.string.details));
         lifeServices = (LifeServices) getIntent().getExtras().getSerializable("lifeServices");
         livename.setText(lifeServices.getLivename());
-        livetype.setText(getResources().getString(R.string.service_details) +"  " + lifeServices.getLivetype());
+        livetype.setText(getResources().getString(R.string.category) +":  " + lifeServices.getLivetype());
         livedesc.setText(lifeServices.getLivedesc());
         liveusername.setText(lifeServices.getLiveuser());
         livephone.setText(getResources().getString(R.string.phone_no_)  +lifeServices.getLivephone());

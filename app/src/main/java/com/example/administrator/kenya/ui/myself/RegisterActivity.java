@@ -39,6 +39,7 @@ public class RegisterActivity extends BaseActivity {
 
     private boolean lock = false;
     private MyCountDownTimer myCountDownTimer = new MyCountDownTimer(60000, 1000);
+    private String verificationCode="1135579987654321";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,15 +52,24 @@ public class RegisterActivity extends BaseActivity {
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.getVerifyCode:
-                myCountDownTimer.start();
+                if (phone.getText().length() == 0){
+                    toast(getResources().getString(R.string.please) + getResources().getString(R.string.enter_phone_no_));
+                }else {
+                    toGetVerifyCode();
+                    myCountDownTimer.start();
+                }
                 break;
             case R.id.register:
                 if (lock) {
-                } else if (phone.getText().length() == 0 || userName.getText().length() == 0 || password1.getText().length() == 0 || password2.getText().length() == 0) {
+                } else if (phone.getText().length() == 0 || verifyCode.getText().length() == 0 || userName.getText().length() == 0 || password1.getText().length() == 0 || password2.getText().length() == 0) {
                     toast(getResources().getString(R.string.enter_complete));
-                } else if (!password1.getText().toString().equals(password2.getText().toString())) {
+                }else if (!password1.getText().toString().equals(password2.getText().toString())) {
                     toast(getResources().getString(R.string.passwords_not_math));
-                } else {
+                }else if (password1.getText().length() < 6 || password1.getText().length() > 22 ){
+                    toast(getResources().getString(R.string.passwrod_6_22));
+                }else if (!verifyCode.getText().toString().equals(verificationCode)){
+                    toast(getResources().getString(R.string.verification_incorrect));
+                }else {
                     register();
                 }
                 break;
@@ -103,6 +113,40 @@ public class RegisterActivity extends BaseActivity {
                 });
 
     }
+
+    private void toGetVerifyCode(){
+
+        OkHttpUtils.post()
+                .url(AppConstants.BASE_URL + "/kenya/user/getCode")
+                .addParams("phone",phone.getText().toString())
+                .build()
+                .execute(new StringCallback() {
+                    @Override
+                    public void onError(Call call, Exception e, int id) {
+                        myCountDownTimer.cancel();
+                        myCountDownTimer.onFinish();
+                        toast(getString(R.string.send_failed));
+                    }
+
+                    @Override
+                    public void onResponse(String response, int id) {
+                        try {
+                            JSONObject jsonObject = new JSONObject(response);
+                            if (jsonObject.getString("code").equals("000")){
+                                verificationCode = jsonObject.getString("verificationCode");
+                                toast(getString(R.string.send_successfully));
+                            }else {
+                                toast(getString(R.string.send_failed));
+                                myCountDownTimer.onFinish();
+                                myCountDownTimer.cancel();
+                            }
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                });
+
+    }
     /*
     * 倒计时获取验证码
     * */
@@ -129,7 +173,7 @@ public class RegisterActivity extends BaseActivity {
         public void onFinish() {
             //重新给Button设置文字
             if (getVerifyCode != null) {
-                getVerifyCode.setText("reacquire");
+                getVerifyCode.setText(getString(R.string.acquire));
                 //设置可点击
                 getVerifyCode.setBackgroundDrawable(getResources().getDrawable(R.drawable.bg4dp_theme_btn));
                 getVerifyCode.setClickable(true);

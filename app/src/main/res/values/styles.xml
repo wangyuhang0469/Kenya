@@ -112,9 +112,8 @@
     <style name="my_center_tv">
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_width">wrap_content</item>
-        <item name="android:layout_marginRight">26px</item>
         <item name="android:textSize">16sp</item>
-        <item name="android:layout_marginLeft">10px</item>
+        <item name="android:layout_marginLeft">30px</item>
     </style>
 
     <style name="my_center_inter">
@@ -158,6 +157,8 @@
         <item name="android:layout_height">wrap_content</item>
         <item name="android:textColor">@color/textBlack1</item>
         <item name="android:textSize">15sp</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:paddingRight">30px</item>
     </style>
 
     <!--底部弹出对话框样式-->

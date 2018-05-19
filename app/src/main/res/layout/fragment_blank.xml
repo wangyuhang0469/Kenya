@@ -1,13 +1,38 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.zhy.autolayout.AutoLinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context="com.example.administrator.kenya.ui.main.BlankFragment">
 
-    <!-- TODO: Update blank fragment layout -->
     <TextView
+        android:id="@+id/title"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="144px"
+        android:ellipsize="end"
+        android:maxEms="10"
+        android:singleLine="true"
+        android:textColor="#fff"
+        android:textSize="18sp"
+        android:gravity="center"
+        android:text="@string/shop_online"
+        android:background="@color/theme"/>
 
-</FrameLayout>
+    <com.example.administrator.kenya.view.MyObervalbleScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    <com.zhy.autolayout.AutoRelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/developing"
+            android:adjustViewBounds="true"/>
+
+    </com.zhy.autolayout.AutoRelativeLayout>
+
+    </com.example.administrator.kenya.view.MyObervalbleScrollView>
+</com.zhy.autolayout.AutoLinearLayout>

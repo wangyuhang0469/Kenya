@@ -29,6 +29,7 @@
             android:paddingRight="15dip"
             android:paddingTop="10dip"
             android:text="@string/confirm"
+            android:textAllCaps="true"
             android:textColor="#5677ee"
             android:textSize="15sp" />
     </FrameLayout>

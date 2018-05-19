@@ -221,18 +221,18 @@ public class HusbandryReleaseActivity extends BaseActivity {
 
     private void send(final LoadingDialog loadingDialog) {
         String apinnervalue;
-        if (spinner.getSelectedItem().toString().equals("Pets ＆ Seeds")) {
-            apinnervalue = "动植物种苗";
-        } else if (spinner.getSelectedItem().toString().equals("Crops")) {
-            apinnervalue = "农作物";
-        } else if (spinner.getSelectedItem().toString().equals("Livestock ＆ Poultry")) {
-            apinnervalue = "畜禽养殖";
-        } else if (spinner.getSelectedItem().toString().equals("Agricultural Machinery")) {
-            apinnervalue = "农机设备";
-        } else if (spinner.getSelectedItem().toString().equals("Pesticides ＆ Fertilizer")) {
-            apinnervalue = "农药肥料";
-        } else if (spinner.getSelectedItem().toString().equals("Others")) {
-            apinnervalue = "其他";
+        if (spinner.getSelectedItem().toString().equals("动植物种苗")) {
+            apinnervalue = "Pets ＆ Seeds";
+        } else if (spinner.getSelectedItem().toString().equals("农作物")) {
+            apinnervalue = "Crops";
+        } else if (spinner.getSelectedItem().toString().equals("畜禽养殖")) {
+            apinnervalue = "Livestock ＆ Poultry";
+        } else if (spinner.getSelectedItem().toString().equals("农机设备")) {
+            apinnervalue = "Agricultural Machinery";
+        } else if (spinner.getSelectedItem().toString().equals("农药肥料")) {
+            apinnervalue = "Pesticides ＆ Fertilizer";
+        } else if (spinner.getSelectedItem().toString().equals("其他")) {
+            apinnervalue = "Others";
         } else {
             apinnervalue = spinner.getSelectedItem().toString();
         }

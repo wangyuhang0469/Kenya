@@ -200,20 +200,20 @@ public class HusbandryActivity extends BaseActivity {
             public void onCheckedChanged(MyRadioGroup group, int checkedId) {
                 RadioButton radioButton = (RadioButton) popContentView.findViewById(checkedId);
                 keyword = radioButton.getText().toString();
-                if (keyword.equals("No Experience")) {
-                    keyword = "不限";
-                } else if (keyword.equals("Pets ＆ Seeds")) {
-                    keyword = "动植物种苗";
-                } else if (keyword.equals("Crops")) {
-                    keyword = "农作物";
-                } else if (keyword.equals("Livestock ＆ Poultry")) {
-                    keyword = "畜禽养殖";
-                } else if (keyword.equals("Agricultural Machinery")) {
-                    keyword = "农机设备";
-                } else if (keyword.equals("Pesticides ＆ Fertilizer")) {
-                    keyword = "农药肥料";
-                } else if (keyword.equals("Others")) {
-                    keyword = "其他";
+                if (keyword.equals("不限")) {
+                    keyword = "No Experience";
+                } else if (keyword.equals("动植物种苗")) {
+                    keyword = "Pets ＆ Seeds";
+                } else if (keyword.equals("农作物")) {
+                    keyword = "Crops";
+                } else if (keyword.equals("畜禽养殖")) {
+                    keyword = "Livestock ＆ Poultry";
+                } else if (keyword.equals("农机设备")) {
+                    keyword = "Agricultural Machinery";
+                } else if (keyword.equals("农药肥料")) {
+                    keyword = "Pesticides ＆ Fertilizer";
+                } else if (keyword.equals("其他")) {
+                    keyword = "Others";
                 } else {
                 }
                 husbandryList.clear();

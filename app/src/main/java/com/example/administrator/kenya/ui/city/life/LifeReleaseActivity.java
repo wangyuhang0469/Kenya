@@ -218,16 +218,16 @@ public class LifeReleaseActivity extends BaseActivity {
 
     private void send(final LoadingDialog loadingDialog) {
         String spinnervalue;
-        if (spinner.getSelectedItem().toString().equals("Cleaning Service")) {
-            spinnervalue = "保洁";
-        } else if (spinner.getSelectedItem().toString().equals("Moving Service")) {
-            spinnervalue = "搬家";
-        } else if (spinner.getSelectedItem().toString().equals("Repairing Services")) {
-            spinnervalue = "维修";
-        } else if (spinner.getSelectedItem().toString().equals("Recycle Items")) {
-            spinnervalue = "回收";
-        } else if (spinner.getSelectedItem().toString().equals("Others")) {
-            spinnervalue = "其他";
+        if (spinner.getSelectedItem().toString().equals("保洁")) {
+            spinnervalue = "Cleaning Service";
+        } else if (spinner.getSelectedItem().toString().equals("搬家")) {
+            spinnervalue = "Moving Service";
+        } else if (spinner.getSelectedItem().toString().equals("维修")) {
+            spinnervalue = "Repairing Services";
+        } else if (spinner.getSelectedItem().toString().equals("回收")) {
+            spinnervalue = "Recycle Items";
+        } else if (spinner.getSelectedItem().toString().equals("其他")) {
+            spinnervalue = "Others";
         } else {
             spinnervalue = spinner.getSelectedItem().toString();
         }
@@ -261,7 +261,7 @@ public class LifeReleaseActivity extends BaseActivity {
                                 LifeServices lifeServices = JSON.parseObject(jsonObject.getString("result"), LifeServices.class);
                                 Bundle bundle = new Bundle();
                                 bundle.putSerializable("lifeServices", lifeServices);
-                                toast("发布成功");
+                                toast(getResources().getString(R.string.post_success));
                                 startActivity(LifeDetailsActivity.class, bundle);
                                 finish();
                             } else {

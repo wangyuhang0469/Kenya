@@ -83,15 +83,15 @@ public class ReUsernameDialog extends Dialog{
 
         final String userName = information.getText().toString();
         OkHttpUtils.post()
-                .url(AppConstants.BASE_URL + "/kenya/user/updateuserName")
-                .addParams("id", User.getInstance().getUserId())
+                .url(AppConstants.BASE_URL + "/kenya/user/updateUser")
+                .addParams("userId", User.getInstance().getUserId())
                 .addParams("userName",userName)
                 .build()
                 .execute(new StringCallback() {
                     @Override
                     public void onError(Call call, Exception e, int id) {
                         e.printStackTrace();
-                        Toast.makeText(getContext(), "Modify Fail", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getContext(), getContext().getString(R.string.modify_failed), Toast.LENGTH_SHORT).show();
                     }
 
                     @Override
@@ -99,7 +99,7 @@ public class ReUsernameDialog extends Dialog{
                         try {
                             JSONObject jsonObject = new JSONObject(response);
                             if (jsonObject.getString("code").equals("000")){
-                                Toast.makeText(getContext(), "Modify Success", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(getContext(), getContext().getString(R.string.modify_successfully), Toast.LENGTH_SHORT).show();
                                 User.getInstance().setUserName(userName);
                                 if (onReUsernameSuccessfulListener != null)
                                     onReUsernameSuccessfulListener.success(userName);

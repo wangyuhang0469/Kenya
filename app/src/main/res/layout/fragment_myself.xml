@@ -145,7 +145,8 @@
 
             <com.zhy.autolayout.AutoRelativeLayout
                 android:id="@+id/myPoint"
-                style="@style/my_center_bar">
+                style="@style/my_center_bar"
+                android:visibility="gone">
 
                 <ImageView
                     android:id="@+id/my_center_points"

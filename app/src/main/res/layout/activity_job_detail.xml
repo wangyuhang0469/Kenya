@@ -139,6 +139,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="34px"
             android:layout_toRightOf="@id/avatar"
+            android:maxLines="1"
             android:textColor="@color/textBlack1" />
 
         <TextView
