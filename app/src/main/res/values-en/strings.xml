@@ -61,7 +61,7 @@
     <string name="timepicker_month">MONTH</string>
     <string name="timepicker_day">DAY</string>
 
-    <string name="app_name">Kenya</string>
+    <string name="app_name">Bright Light</string>
     <!--login 登录-->
     <!--<string name="login">login</string>-->
     <!--<string name="next">Next</string>-->
@@ -76,9 +76,9 @@
     <string name="enter_sent_code">Enter Sent Code</string>
     <string name="click_to_send_code">Cllick To Send Code</string>
     <string name="enter_password">Enter Password</string>
-    <string name="enter_password_8_16_digit_or_alphabet">Enter Password(6-22 Digit Or Alphabet)</string>
+    <string name="confirm_password_6_22_digit_or_alphabet">Confirm Password(6-22 Digit Or Alphabet)</string>
+    <string name="enter_password_6_22_digit_or_alphabet">Enter Password(6-22 Digit Or Alphabet)</string>
     <string name="confirm_password">Confirm Password</string>
-    <string name="confirm_password_8_16_digit_or_alphabet">Confirm Password(6-22 Digit Or Alphabet)</string>
     <string name="passwrod_6_22">Passwords Should Be 6-22 Digit Or Alphabet</string>
     <string name="verification_incorrect">Verification Code Error</string>
     <string name="registration_confirmed">Registration Confirmed</string>
@@ -196,10 +196,10 @@
     <!--<string name="funds_for_projects">有资金找项目</string>-->
     <string name="car_poll">Car Poll</string>
     <string name="shop_online">Shop Online</string>
-    <string name="city_personal">Personal Info</string>
+    <!--<string name="city_personal">Personal Info</string>-->
     <string name="reset_password">Reset Password</string>
     <string name="new_password">New Password</string>
-    <string name="city_confirm_password">Confirm Password</string>
+    <!--<string name="city_confirm_password">Confirm Password</string>-->
     <string name="enter">Enter</string>
 
 

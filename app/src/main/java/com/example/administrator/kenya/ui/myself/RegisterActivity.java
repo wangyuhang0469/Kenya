@@ -39,7 +39,7 @@ public class RegisterActivity extends BaseActivity {
 
     private boolean lock = false;
     private MyCountDownTimer myCountDownTimer = new MyCountDownTimer(60000, 1000);
-    private String verificationCode="1135579987654321";
+    private String verificationCode="113557dd";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

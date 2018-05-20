@@ -116,7 +116,7 @@
                 style="@style/edit_base"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:hint="@string/enter_password_8_16_digit_or_alphabet"
+                android:hint="@string/enter_password_6_22_digit_or_alphabet"
                 android:maxLength="22"
                 android:inputType="textPassword"
                 android:paddingLeft="20px" />
@@ -137,7 +137,7 @@
                 style="@style/edit_base"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:hint="@string/confirm_password_8_16_digit_or_alphabet"
+                android:hint="@string/confirm_password_6_22_digit_or_alphabet"
                 android:inputType="textPassword"
                 android:maxLength="22"
                 android:paddingLeft="20px" />

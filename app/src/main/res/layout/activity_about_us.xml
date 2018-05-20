@@ -64,7 +64,7 @@
                 <TextView
                     style="@style/my_center_tv"
                     android:layout_toRightOf="@id/about_us_tv"
-                    android:text="400-512-362"
+                    android:text="0780051319"
                     android:textColor="@color/textBlack1" />
 
                 <ImageView

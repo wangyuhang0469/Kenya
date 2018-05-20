@@ -17,6 +17,8 @@ public class AboutUsActivity extends BaseActivity {
 
     @Bind(R.id.title)
     TextView title;
+    @Bind(R.id.about_us_tv)
+    TextView aboutUsTv;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,7 +36,7 @@ public class AboutUsActivity extends BaseActivity {
                 break;
             case R.id.about_us:
                 Intent intent = new Intent(Intent.ACTION_DIAL);
-                Uri data = Uri.parse("tel:" + "400-512-362");
+                Uri data = Uri.parse("tel:" + aboutUsTv.getText().toString());
                 intent.setData(data);
                 startActivity(intent);
                 break;

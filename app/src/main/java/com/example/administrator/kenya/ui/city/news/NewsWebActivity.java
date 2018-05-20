@@ -25,7 +25,6 @@ public class NewsWebActivity extends BaseActivity {
     TextView title;
     @Bind(R.id.news_web)
     WebView newsWeb;
-    private NewsWebActivity newsWebActivity;
     private News news;
 
     @Override
@@ -40,14 +39,15 @@ public class NewsWebActivity extends BaseActivity {
     public void initdata() {
         String content = getIntent().getExtras().getString("content");
         if (content != null && !content.equals("")) {
-            loadView(AppConstants.BASE_URL + content);
-            newsWeb.loadUrl(AppConstants.BASE_URL + content);
+            loadView(content);
+            title.setText("Details");
+//            newsWeb.loadUrl( content);
         } else {
             news = (News) getIntent().getExtras().getSerializable("news");
             loadView(AppConstants.BASE_URL + news.getNewstext());
-            newsWeb.loadUrl(AppConstants.BASE_URL + news.getNewstext());
+//            newsWeb.loadUrl(AppConstants.BASE_URL + news.getNewstext());
         }
-        newsWebActivity = this;
+
         newsWeb.getSettings().setDefaultTextEncodingName("GB2312");
         WebSettings settings = newsWeb.getSettings();
         settings.setDomStorageEnabled(true);

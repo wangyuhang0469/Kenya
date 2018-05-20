@@ -257,22 +257,20 @@ public class CityHomeFragment extends BaseFragment {
 
                     @Override
                     public void onResponse(String response, int id) {
-                        List<Banners> addList = null;
                         try {
                             JSONObject jsonObject = new JSONObject(response);
-                            if (jsonObject.getString("code").equals("000")) {
-                            } else {
-                            }
                             response = jsonObject.getString("rows");
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
-                        addList = JSON.parseArray(response, Banners.class);
-                        BannersList.addAll(addList);
-                        for (int i = 0; i < addList.size(); i++) {
-                            imageList.add(AppConstants.BASE_URL + addList.get(i).getPic());
+                        BannersList = JSON.parseArray(response, Banners.class);
+                        if (BannersList != null) {
+                            for (int i = 0; i < BannersList.size(); i++) {
+                                imageList.add(AppConstants.BASE_URL + BannersList.get(i).getPic());
+                            }
+                            initBanner(imageList);
+
                         }
-                        initBanner(imageList);
                     }
                 });
     }

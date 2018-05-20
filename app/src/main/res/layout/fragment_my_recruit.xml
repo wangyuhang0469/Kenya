@@ -29,7 +29,8 @@
             android:text="@string/nothing"
             android:textColor="@color/textBlack3"
             android:layout_centerInParent="true"
-            android:paddingTop="20px"/>
+            android:paddingTop="20px"
+            android:visibility="gone"/>
     </com.zhy.autolayout.AutoRelativeLayout>
 
 </com.jwenfeng.library.pulltorefresh.PullToRefreshLayout>
