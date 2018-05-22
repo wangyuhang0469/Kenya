@@ -4,8 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/base_bg"
-    tools:context="com.example.administrator.kenya.ui.city.life.LifeActivity">
     tools:context="com.example.administrator.kenya.ui.city.life.LifeActivity">
 
     <com.zhy.autolayout.AutoRelativeLayout

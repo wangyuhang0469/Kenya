@@ -1,36 +1,38 @@
-<com.jwenfeng.library.pulltorefresh.PullToRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.zhy.autolayout.AutoRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/pullToRefreshLayout"
-    tools:context="com.example.administrator.kenya.ui.myself.myrelease.MyRecruitFragment">
+    tools:context="com.example.administrator.kenya.ui.myself.myrelease.MyLifeFragment">
 
-    <com.zhy.autolayout.AutoRelativeLayout
+    <com.jwenfeng.library.pulltorefresh.PullToRefreshLayout
+        android:id="@+id/pullToRefreshLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
         <android.support.v7.widget.RecyclerView
             android:id="@+id/recyclerView"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
 
-        <ImageView
-            android:id="@+id/nothing"
-            android:layout_width="230px"
-            android:layout_height="302px"
-            android:layout_above="@+id/text"
-            android:layout_centerHorizontal="true"
-            android:visibility="gone"
-            android:src="@drawable/nothing"/>
+    </com.jwenfeng.library.pulltorefresh.PullToRefreshLayout>>
 
-        <TextView
-            android:id="@+id/text"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/nothing"
-            android:textColor="@color/textBlack3"
-            android:layout_centerInParent="true"
-            android:paddingTop="20px"
-            android:visibility="gone"/>
-    </com.zhy.autolayout.AutoRelativeLayout>
+    <ImageView
+        android:id="@+id/nothing"
+        android:layout_width="230px"
+        android:layout_height="302px"
+        android:layout_above="@+id/text"
+        android:layout_centerHorizontal="true"
+        android:visibility="gone"
+        android:src="@drawable/nothing"/>
 
-</com.jwenfeng.library.pulltorefresh.PullToRefreshLayout>
+    <TextView
+        android:id="@+id/text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/nothing"
+        android:visibility="gone"
+        android:textColor="@color/textBlack3"
+        android:layout_centerInParent="true"
+        android:paddingTop="20px"/>
+
+</com.zhy.autolayout.AutoRelativeLayout>

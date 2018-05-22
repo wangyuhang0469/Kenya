@@ -85,20 +85,7 @@ public class PreviewDialog extends Dialog{
 
             Glide.with(context)
                     .load(url)
-                    .listener(new RequestListener<String, GlideDrawable>() {
-                        @Override
-                        public boolean onException(Exception e, String model, Target<GlideDrawable> target, boolean isFirstResource) {
-                            return false;
-                        }
-
-                        @Override
-                        public boolean onResourceReady(GlideDrawable resource, String model, Target<GlideDrawable> target, boolean isFromMemoryCache, boolean isFirstResource) {
-                            Log.e("====================", "onResourceReady: "+isFromMemoryCache +"   "+ isFirstResource );
-                            return false;
-                        }
-                    })
                     .into(photoView);
-            Log.e("====================", "onResourceReady: "+ url );
 
             container.addView(photoView);
 

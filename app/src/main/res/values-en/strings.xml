@@ -20,7 +20,7 @@
     <string name="login_successfully">Login Successfully</string>
     <string name="login_failed">Process Failed</string>
     <string name="modify_successfully">Modify Successfully</string>
-    <string name="modify_failed">Process Failed</string>
+    <string name="modify_failed">Process Failed </string>
     <string name="send_successfully">Send Successfully</string>
     <string name="send_failed">Process Failed</string>
     <string name="delete_successfully">Deleted</string>
@@ -108,7 +108,7 @@
     <string name="name">Name</string>
     <string name="sex">Sex</string>
     <string name="age">Age</string>
-    <string name="choose_from_your_phone_album">Choose from your phone album</string>
+    <string name="choose_from_your_phone_album">Choose From Phone Album</string>
     <string name="choose_photos">Take Photos</string>
     <string name="under_development">Under Development,Please Wait</string>
 
@@ -117,7 +117,7 @@
     <string name="working_experience">Experience</string>
     <string name="unlimited">Unlimited</string>
     <string name="recent_graduate">Recent Graduate</string>
-    <string name="one_year_below">One Year Below</string>
+    <string name="one_year_below">1 Year And Below</string>
     <string name="one_to_three_years">1-3 Years</string>
     <string name="three_to_five_years">3-5 Years</string>
     <string name="five_to_ten_years">5-10 Years</string>
