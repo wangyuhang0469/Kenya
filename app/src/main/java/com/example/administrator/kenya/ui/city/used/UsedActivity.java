@@ -3,6 +3,7 @@ package com.example.administrator.kenya.ui.city.used;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -173,7 +174,7 @@ public class UsedActivity extends BaseActivity {
         @Override
         public void onBindViewHolder(final ViewHolder holder, final int position) {
             holder.goodsname.setText(list.get(position).getGoodsname());
-            holder.goodsphone.setText(getResources().getString(R.string.phone_no_)  + list.get(position).getGoodsphone());
+            holder.goodsphone.setText(getResources().getString(R.string.phone_no_) + list.get(position).getGoodsphone());
             holder.goodsprice.setText("KSh " + list.get(position).getGoodsprice());
 //            holder.goodsimgs.setTag(list.get(position).getGoodsimgs());
 //            holder.goodsimgs.setBackgroundResource(R.drawable.bg4dp_grey);
@@ -190,7 +191,6 @@ public class UsedActivity extends BaseActivity {
                     .centerCrop()
                     .placeholder(R.drawable.img_loading1)
                     .into(holder.goodsimgs);
-
 
 //                    .asBitmap()
 //                    .into(new SimpleTarget<Bitmap>() {

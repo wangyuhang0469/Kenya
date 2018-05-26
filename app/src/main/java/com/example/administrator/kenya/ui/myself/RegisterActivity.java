@@ -39,7 +39,7 @@ public class RegisterActivity extends BaseActivity {
 
     private boolean lock = false;
     private MyCountDownTimer myCountDownTimer = new MyCountDownTimer(60000, 1000);
-    private String verificationCode="113557dd";
+    private String verificationCode = "113557dd";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,9 +52,9 @@ public class RegisterActivity extends BaseActivity {
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.getVerifyCode:
-                if (phone.getText().length() == 0){
+                if (phone.getText().length() == 0) {
                     toast(getResources().getString(R.string.please) + getResources().getString(R.string.enter_phone_no_));
-                }else {
+                } else {
                     toGetVerifyCode();
                     myCountDownTimer.start();
                 }
@@ -63,13 +63,13 @@ public class RegisterActivity extends BaseActivity {
                 if (lock) {
                 } else if (phone.getText().length() == 0 || verifyCode.getText().length() == 0 || userName.getText().length() == 0 || password1.getText().length() == 0 || password2.getText().length() == 0) {
                     toast(getResources().getString(R.string.enter_complete));
-                }else if (!password1.getText().toString().equals(password2.getText().toString())) {
+                } else if (!password1.getText().toString().equals(password2.getText().toString())) {
                     toast(getResources().getString(R.string.passwords_not_math));
-                }else if (password1.getText().length() < 6 || password1.getText().length() > 22 ){
+                } else if (password1.getText().length() < 6 || password1.getText().length() > 22) {
                     toast(getResources().getString(R.string.passwrod_6_22));
-                }else if (!verifyCode.getText().toString().equals(verificationCode)){
+                } else if (!verifyCode.getText().toString().equals(verificationCode)) {
                     toast(getResources().getString(R.string.verification_incorrect));
-                }else {
+                } else {
                     register();
                 }
                 break;
@@ -114,11 +114,10 @@ public class RegisterActivity extends BaseActivity {
 
     }
 
-    private void toGetVerifyCode(){
-
+    private void toGetVerifyCode() {
         OkHttpUtils.post()
                 .url(AppConstants.BASE_URL + "/kenya/user/getCode")
-                .addParams("phone",phone.getText().toString())
+                .addParams("phone", phone.getText().toString())
                 .build()
                 .execute(new StringCallback() {
                     @Override
@@ -132,10 +131,10 @@ public class RegisterActivity extends BaseActivity {
                     public void onResponse(String response, int id) {
                         try {
                             JSONObject jsonObject = new JSONObject(response);
-                            if (jsonObject.getString("code").equals("000")){
+                            if (jsonObject.getString("code").equals("000")) {
                                 verificationCode = jsonObject.getString("verificationCode");
                                 toast(getString(R.string.send_successfully));
-                            }else {
+                            } else {
                                 toast(getString(R.string.send_failed));
                                 myCountDownTimer.onFinish();
                                 myCountDownTimer.cancel();
@@ -145,7 +144,6 @@ public class RegisterActivity extends BaseActivity {
                         }
                     }
                 });
-
     }
     /*
     * 倒计时获取验证码

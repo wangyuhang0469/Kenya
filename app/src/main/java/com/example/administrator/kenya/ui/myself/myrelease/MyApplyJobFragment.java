@@ -74,7 +74,6 @@ public class MyApplyJobFragment extends BaseFragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_my_apply_job, container, false);
         ButterKnife.bind(this, view);
-
         initOKHttp();
         initView();
         postFormBuilder.addParams("currPage", cpageNum + "").build().execute(stringCallback);

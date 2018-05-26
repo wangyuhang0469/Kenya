@@ -69,9 +69,9 @@ public class LoginActivity extends BaseActivity {
         lock = true;
         OkHttpUtils.get()
                 .url(AppConstants.BASE_URL + "/kenya/user/login")
-                    .addParams("userPhoneNumber", phone.getText().toString())
+                .addParams("userPhoneNumber", phone.getText().toString())
                 .addParams("userPsw", password.getText().toString())
-                .addParams("userDeviceId",DeviceUuidFactory.getUUID(this))
+                .addParams("userDeviceId", DeviceUuidFactory.getUUID(this))
                 .build()
                 .execute(new StringCallback() {
                     @Override
@@ -80,7 +80,6 @@ public class LoginActivity extends BaseActivity {
                         lock = false;
                         e.printStackTrace();
                     }
-
                     @Override
                     public void onResponse(String response, int id) {
                         JSONObject jsonObject = null;

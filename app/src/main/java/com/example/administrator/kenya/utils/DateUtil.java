@@ -21,7 +21,7 @@ public class DateUtil {
     public static String birthGetAge(String birthday) {
         Calendar now = Calendar.getInstance();
 
-        SimpleDateFormat sdf= new SimpleDateFormat("yyyy-MM-dd");
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         Date date = null;
         try {
             date = sdf.parse(birthday);
@@ -30,9 +30,9 @@ public class DateUtil {
         }
         Calendar birth = Calendar.getInstance();
         birth.setTime(date);
-        now.add(Calendar.DAY_OF_MONTH,-birth.get(Calendar.DAY_OF_MONTH));
-        now.add(Calendar.MONTH,-birth.get(Calendar.MONTH));
-        now.add(Calendar.YEAR,-birth.get(Calendar.YEAR));
+        now.add(Calendar.DAY_OF_MONTH, -birth.get(Calendar.DAY_OF_MONTH));
+        now.add(Calendar.MONTH, -birth.get(Calendar.MONTH));
+        now.add(Calendar.YEAR, -birth.get(Calendar.YEAR));
         return String.valueOf(now.get(Calendar.YEAR));
     }
 

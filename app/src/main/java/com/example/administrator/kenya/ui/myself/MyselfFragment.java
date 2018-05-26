@@ -40,8 +40,6 @@ import de.hdodenhof.circleimageview.CircleImageView;
  * A simple {@link Fragment} subclass.
  */
 public class MyselfFragment extends BaseFragment {
-
-
     @Bind(R.id.title)
     TextView title;
     @Bind(R.id.back)
@@ -66,7 +64,6 @@ public class MyselfFragment extends BaseFragment {
         View view = inflater.inflate(R.layout.fragment_myself, container, false);
         ButterKnife.bind(this, view);
         EventBus.getDefault().register(this);
-
         title.setText(getResources().getString(R.string.personal));
         back.setVisibility(View.GONE);
         myCenterName.setText(user.getUserName());
@@ -118,12 +115,10 @@ public class MyselfFragment extends BaseFragment {
                 .into(avatar);
     }
 
-
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void Event2(MessageEvent2 messageEvent2) {
         myCenterName.setText(messageEvent2.getMseeage());
     }
-
 
     @OnClick({R.id.avatar, R.id.myName, R.id.phone})
     public void onViewClicked2(View view) {

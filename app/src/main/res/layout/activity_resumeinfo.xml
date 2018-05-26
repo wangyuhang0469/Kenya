@@ -3,8 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.administrator.kenya.activity.ResumeinfoActivity"
-    android:background="@color/base_bg">
+    android:background="@color/base_bg"
+    tools:context="com.example.administrator.kenya.activity.ResumeinfoActivity">
 
     <com.zhy.autolayout.AutoRelativeLayout
         android:id="@+id/person_info"
@@ -24,15 +24,15 @@
             android:id="@+id/title"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
             android:ellipsize="end"
             android:gravity="center"
             android:maxEms="10"
             android:singleLine="true"
             android:text="@string/edit_your_resume"
-            android:textSize="18sp"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true" />
+            android:textSize="18sp" />
 
     </com.zhy.autolayout.AutoRelativeLayout>
 
@@ -50,8 +50,8 @@
             <com.zhy.autolayout.AutoLinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="vertical"
-                android:gravity="center_horizontal">
+                android:gravity="center_horizontal"
+                android:orientation="vertical">
 
                 <TextView
                     android:layout_width="match_parent"
@@ -82,8 +82,8 @@
                         android:layout_height="wrap_content"
                         android:gravity="center"
                         android:hint="@string/enter_your_name"
-                        android:padding="20px"
                         android:maxLength="35"
+                        android:padding="20px"
                         android:textColorHint="@color/textBlack3" />
 
                     <LinearLayout
@@ -122,16 +122,15 @@
                 <include layout="@layout/line" />
 
 
-
-                    <EditText
-                        android:id="@+id/resume_info_phone"
-                        style="@style/edit_base2"
-                        android:layout_width="wrap_content"
-                        android:layout_height="256px"
-                        android:gravity="center"
-                        android:hint="@string/please_enter_your_phone_no."
-                        android:maxLength="18"
-                        android:inputType="number|numberDecimal" />
+                <EditText
+                    android:id="@+id/resume_info_phone"
+                    style="@style/edit_base2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="256px"
+                    android:gravity="center"
+                    android:hint="@string/please_enter_your_phone_no."
+                    android:inputType="number|numberDecimal"
+                    android:maxLength="18" />
 
 
                 <include layout="@layout/line" />
@@ -162,9 +161,9 @@
                             android:id="@+id/resume_time_birday_choose"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="请选择"
                             android:layout_marginTop="50px"
-                            android:visibility="gone"/>
+                            android:text="请选择"
+                            android:visibility="gone" />
                     </com.zhy.autolayout.AutoLinearLayout>
 
                     <View
@@ -188,15 +187,15 @@
                             android:layout_height="wrap_content"
                             android:gravity="center"
                             android:hint="@string/personal_introduction"
-                            android:textColorHint="@color/textBlack2"/>
+                            android:textColorHint="@color/textBlack2" />
 
                         <TextView
                             android:id="@+id/resume_tv_recm_choose"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="请输入"
                             android:layout_marginTop="50px"
-                            android:visibility="gone"/>
+                            android:text="请输入"
+                            android:visibility="gone" />
                     </com.zhy.autolayout.AutoLinearLayout>
 
                     <View
@@ -222,18 +221,14 @@
                             android:gravity="center"
                             android:spinnerMode="dialog" />
 
-
-
                         <TextView
                             android:id="@+id/resume_tv_choose"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="50px"
                             android:text="请选择"
-                            android:visibility="gone"/>
+                            android:visibility="gone" />
                     </com.zhy.autolayout.AutoLinearLayout>
-
-
 
                 </com.zhy.autolayout.AutoLinearLayout>
             </com.zhy.autolayout.AutoLinearLayout>

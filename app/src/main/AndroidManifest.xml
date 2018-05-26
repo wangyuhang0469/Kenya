@@ -96,7 +96,8 @@
         <activity
             android:name=".ui.myself.aboutus.AboutUsActivity"
             android:theme="@style/AppTheme.green_action_bar" />
-        <activity android:name=".ui.myself.myrelease.MyInformationActivity"></activity>
+        <activity android:name=".ui.myself.myrelease.MyInformationActivity" />
+        <activity android:name=".ui.car.MapActivity"></activity>
     </application>
 
 </manifest>

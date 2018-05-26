@@ -2,7 +2,6 @@
 <resources>
 
     <string name="please">Please \ </string>
-
     <string name="load_fail">Loading Failed</string>
     <string name="post_success">Posting Successfully</string>
     <string name="post_fail">Posting Failed</string>
@@ -164,7 +163,7 @@
     <string name="recycle_items">Recycle Items</string>
 
     <!--项目找资金-->
-    <string name="projects_to_fund">Projects To Funds</string>
+    <string name="projects_for_fund">Projects For Funds</string>
     <string name="funds_for_projects">Funds For Projects</string>
     <string name="post">POST</string>
     <string name="details">Details</string>

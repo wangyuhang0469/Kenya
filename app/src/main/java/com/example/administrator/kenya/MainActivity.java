@@ -12,6 +12,7 @@ import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.example.administrator.kenya.base.BaseActivity;
+import com.example.administrator.kenya.ui.car.CallCarFragment;
 import com.example.administrator.kenya.ui.city.CityHomeFragment;
 import com.example.administrator.kenya.ui.main.BlankFragment;
 import com.example.administrator.kenya.ui.main.IntroActivity;
@@ -39,7 +40,7 @@ public class MainActivity extends BaseActivity {
     LinearLayout tab4;
 
     private CityHomeFragment cityHomeFragment;
-    private BlankFragment blankFragment2;
+    private CallCarFragment blankFragment2;
     private BlankFragment blankFragment3;
     private MyselfFragment myselfFragment;
     private Fragment[] fragments;
@@ -66,7 +67,7 @@ public class MainActivity extends BaseActivity {
         linearLayouts[0].setSelected(true);
 
         cityHomeFragment = new CityHomeFragment();
-        blankFragment2 = new BlankFragment();
+        blankFragment2 = new CallCarFragment();
         blankFragment3 = new BlankFragment();
         myselfFragment = new MyselfFragment();
         fragments = new Fragment[]{cityHomeFragment, blankFragment2, blankFragment3, myselfFragment};
@@ -97,7 +98,6 @@ public class MainActivity extends BaseActivity {
     private void isFirstStart() {
         SharedPreferences getPrefs = PreferenceManager.getDefaultSharedPreferences(getBaseContext());
         boolean isFirstStart = getPrefs.getBoolean("firstStart", true);
-
         if (isFirstStart) {
             startActivity(IntroActivity.class, null);
             SharedPreferences.Editor e = getPrefs.edit();

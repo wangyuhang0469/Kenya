@@ -9,30 +9,30 @@
         android:id="@+id/title"
         android:layout_width="match_parent"
         android:layout_height="144px"
+        android:background="@color/theme"
         android:ellipsize="end"
+        android:gravity="center"
         android:maxEms="10"
         android:singleLine="true"
-        android:textColor="#fff"
-        android:textSize="18sp"
-        android:gravity="center"
         android:text="@string/shop_online"
-        android:background="@color/theme"/>
+        android:textColor="#fff"
+        android:textSize="18sp" />
 
     <com.example.administrator.kenya.view.MyObervalbleScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-    <com.zhy.autolayout.AutoRelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <ImageView
+        <com.zhy.autolayout.AutoRelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:src="@drawable/developing"
-            android:adjustViewBounds="true"/>
+            android:layout_height="match_parent">
 
-    </com.zhy.autolayout.AutoRelativeLayout>
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:adjustViewBounds="true"
+                android:src="@drawable/developing" />
+
+        </com.zhy.autolayout.AutoRelativeLayout>
 
     </com.example.administrator.kenya.view.MyObervalbleScrollView>
 </com.zhy.autolayout.AutoLinearLayout>

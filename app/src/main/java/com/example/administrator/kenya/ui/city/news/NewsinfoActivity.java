@@ -112,6 +112,7 @@ public class NewsinfoActivity extends BaseActivity {
             @Override
             public void refresh() {
             }
+
             @Override
             public void loadMore() {
                 postFormBuilder.addParams("page", cpageNum + "").tag(this).build().execute(StringCallback);

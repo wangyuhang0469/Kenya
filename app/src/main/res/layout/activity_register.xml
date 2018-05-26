@@ -30,7 +30,7 @@
                 android:layout_width="50px"
                 android:layout_height="50px"
                 android:layout_marginBottom="34px"
-                android:src="@drawable/phone"/>
+                android:src="@drawable/phone" />
 
             <EditText
                 android:id="@+id/phone"
@@ -65,8 +65,8 @@
                 android:layout_toEndOf="@id/img001"
                 android:layout_toStartOf="@+id/getVerifyCode"
                 android:hint="@string/enter_sent_code"
-                android:maxLength="6"
                 android:inputType="number"
+                android:maxLength="6"
                 android:paddingLeft="20px" />
 
             <Button
@@ -117,8 +117,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:hint="@string/enter_password_6_22_digit_or_alphabet"
-                android:maxLength="22"
                 android:inputType="textPassword"
+                android:maxLength="22"
                 android:paddingLeft="20px" />
         </com.zhy.autolayout.AutoLinearLayout>
 

@@ -186,9 +186,4 @@
         android:background="#fc5157"
         android:textColor="@color/white"
         android:textSize="17sp"/>
-
-
-
-
-
 </com.zhy.autolayout.AutoRelativeLayout>

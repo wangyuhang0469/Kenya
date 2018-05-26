@@ -22,6 +22,7 @@ import com.example.administrator.kenya.tools.GlideImageLoader;
 import com.example.administrator.kenya.ui.city.findmoney.FindMoneyActivity;
 import com.example.administrator.kenya.ui.city.findmoney.FindMonydetailActivity;
 import com.example.administrator.kenya.ui.city.findmoney.FindProjectdetailActivity;
+import com.example.administrator.kenya.ui.city.friends.FriendsActivity;
 import com.example.administrator.kenya.ui.city.house.HouseActivity;
 import com.example.administrator.kenya.ui.city.husbandry.HusbandryActivity;
 import com.example.administrator.kenya.ui.city.job.JobActivity;
@@ -186,8 +187,8 @@ public class CityHomeFragment extends BaseFragment {
                 startActivity(HouseActivity.class, null);
                 break;
             case R.id.city_home_friends:
-//                startActivity(FriendsActivity.class, null);
-                toast(getString(R.string.under_development));
+                startActivity(FriendsActivity.class, null);
+                //toast(getString(R.string.under_development));
                 break;
             case R.id.city_home_life:
                 startActivity(LifeActivity.class, null);
@@ -257,6 +258,7 @@ public class CityHomeFragment extends BaseFragment {
 
                     @Override
                     public void onResponse(String response, int id) {
+                        List<Banners> addList = null;
                         try {
                             JSONObject jsonObject = new JSONObject(response);
                             response = jsonObject.getString("rows");
@@ -269,7 +271,6 @@ public class CityHomeFragment extends BaseFragment {
                                 imageList.add(AppConstants.BASE_URL + BannersList.get(i).getPic());
                             }
                             initBanner(imageList);
-
                         }
                     }
                 });

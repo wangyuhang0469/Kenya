@@ -1,9 +1,6 @@
 <resources>
     <string name="app_name">Bright Light</string>
-
     <string name="please"></string>
-
-
     <string name="load_fail">加载失败</string>
     <string name="post_success">发布成功</string>
     <string name="post_fail">发布失败</string>
@@ -43,13 +40,10 @@
     <string name="job">工作</string>
     <string name="enter_the_job">请输入招聘的职位</string>
     <string name="enter_monthly_salary">请输入月薪</string>
-
     <!--时间上用到的-->
     <string name="timepicker_year">年</string>
     <string name="timepicker_month">月</string>
     <string name="timepicker_day">日</string>
-
-
     <string name="all_photos">所有照片</string>
     <string name="preview">预览</string>
     <string name="msg_no_camera">没有系统相机</string>
@@ -65,7 +59,6 @@
     <!--<string name="login">登录</string>-->
     <!--<string name="next">下一步</string>-->
     <string name="sure">确定</string>
-
     <!--login 登录-->
     <string name="login">登录</string>
 
@@ -165,7 +158,7 @@
     <string name="log_out">退出登录</string>
 
     <!--项目找资金-->
-    <string name="projects_to_fund">项目找资金</string>
+    <string name="projects_for_fund">项目找资金</string>
     <string name="funds_for_projects">资金找项目</string>
     <string name="post">发布</string>
     <string name="details">详情</string>
@@ -177,7 +170,7 @@
     <string name="enter_your_nick_name">请输入昵称</string>
     <string name="nick_name">昵称</string>
     <string name="change_personal_details">修改昵称</string>
-    <string name="receiver_address">我的收获地址</string>
+    <string name="receiver_address">我的收货地址</string>
     <string name="my_post_history">我发布的信息</string>
     <string name="request_a_taxi">申请成为车主</string>
     <string name="my_wellet">我的钱包</string>
@@ -276,5 +269,8 @@
     <string name="receiptionist">大堂经理</string>
     <string name="fersonal_driver">专车司机</string>
     <string name="service_details"> 服务详情</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
     <!--   <string name="post">发布</string>-->
 </resources>

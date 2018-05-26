@@ -158,12 +158,11 @@ public class ResumeinfoActivity extends BaseActivity implements View.OnClickList
         } else {
             upload(User.getInstance().getUserPortrait());
         }
-
-        if (user.getUserSex().equals("0")){
+        if (user.getUserSex().equals("0")) {
             resumeInfoMen.setImageResource(R.mipmap.resume_sex_click);
             resumeInfoWomen.setImageResource(R.mipmap.resume_sex2);
             sexvalue = getResources().getString(R.string.male);
-        }else if (user.getUserSex().equals("1")) {
+        } else if (user.getUserSex().equals("1")) {
             resumeInfoMen.setImageResource(R.mipmap.resume_sex);
             resumeInfoWomen.setImageResource(R.mipmap.resume_sex_click2);
             sexvalue = getResources().getString(R.string.female);
@@ -178,9 +177,9 @@ public class ResumeinfoActivity extends BaseActivity implements View.OnClickList
                 break;
             case R.id.pick_time:
                 String birthdayStr = user.getUserBirthday();
-                if (birthdayStr != null && !birthdayStr.equals("null") &&  !birthdayStr.equals("")) {
+                if (birthdayStr != null && !birthdayStr.equals("null") && !birthdayStr.equals("")) {
                     showDateDialog(DateUtil.getDateForString(birthdayStr), "A");
-                }else {
+                } else {
                     showDateDialog(DateUtil.getDateForString("2000-01-01"), "A");
                 }
                 break;
@@ -234,7 +233,7 @@ public class ResumeinfoActivity extends BaseActivity implements View.OnClickList
                                     s = String.valueOf(file);
                                     File f2 = new File(s);
                                     final PostFormBuilder postFormBuilder = OkHttpUtils.post()
-                                            .addFile("logoFile", "tupian.png", f2);
+                                            .addFile("logoFile", f2.getName(), f2);
                                     postFormBuilder.url(AppConstants.BASE_URL + "/kenya/jobSeeker/saveJobWant")
                                             .addParams("sex", sexvalue)
                                             .addParams("name", resumeInfoJobname.getText().toString())
@@ -325,7 +324,6 @@ public class ResumeinfoActivity extends BaseActivity implements View.OnClickList
                 } else {
                     resumeTvTime.setText(dates[0] + "-" + (dates[1] > 9 ? dates[1] : ("0" + dates[1])) + "-"
                             + (dates[2] > 9 ? dates[2] : ("0" + dates[2])));
-
                 }
             }
 

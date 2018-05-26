@@ -72,7 +72,7 @@ public class MyInformationActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_information);
         ButterKnife.bind(this);
-        loadingDialog  = new LoadingDialog(this);
+        loadingDialog = new LoadingDialog(this);
         title.setText(getString(R.string.personal_information));
         userName.setText(user.getUserName());
         Glide.with(this).load(User.getInstance().getUserPortrait())
@@ -84,19 +84,17 @@ public class MyInformationActivity extends BaseActivity {
         phone.setText(user.getUserPhonenumber());
 
         String birthdayStr = user.getUserBirthday();
-        if (birthdayStr != null && !birthdayStr.equals("null") &&  !birthdayStr.equals("")) {
+        if (birthdayStr != null && !birthdayStr.equals("null") && !birthdayStr.equals("")) {
             birthday.setText(birthdayStr);
         }
-
-        if (user.getUserSex().equals("0")){
+        if (user.getUserSex().equals("0")) {
             sex.setText(getString(R.string.male));
-        }else if (user.getUserSex().equals("1")) {
+        } else if (user.getUserSex().equals("1")) {
             sex.setText(getString(R.string.female));
         }
-
     }
 
-    @OnClick({R.id.back, R.id.log_out,R.id.avatarBar, R.id.userNameBar, R.id.birthdayBar, R.id.sexBar})
+    @OnClick({R.id.back, R.id.log_out, R.id.avatarBar, R.id.userNameBar, R.id.birthdayBar, R.id.sexBar})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.back:
@@ -110,10 +108,9 @@ public class MyInformationActivity extends BaseActivity {
                 e.apply();
 
                 Intent i = new Intent();
-                setResult(4,i);
+                setResult(4, i);
                 finish();
-                startActivity(LoginActivity.class,null);
-
+                startActivity(LoginActivity.class, null);
                 break;
             case R.id.avatarBar:
                 Intent intent = new Intent(this, MultiImageSelectorActivity.class);
@@ -141,9 +138,9 @@ public class MyInformationActivity extends BaseActivity {
                 break;
             case R.id.birthdayBar:
                 String birthdayStr = user.getUserBirthday();
-                if (birthdayStr != null && !birthdayStr.equals("null") &&  !birthdayStr.equals("")) {
+                if (birthdayStr != null && !birthdayStr.equals("null") && !birthdayStr.equals("")) {
                     showDateDialog(DateUtil.getDateForString(birthdayStr));
-                }else {
+                } else {
                     showDateDialog(DateUtil.getDateForString("2000-01-01"));
                 }
                 break;
@@ -151,7 +148,7 @@ public class MyInformationActivity extends BaseActivity {
                 new SelectSexDialog(this, new OnSexSelectListener() {
                     @Override
                     public void selete(String sex) {
-                        send("userSex",sex);
+                        send("userSex", sex);
                     }
                 }).show();
                 break;
@@ -165,7 +162,7 @@ public class MyInformationActivity extends BaseActivity {
             public void onDateSelected(int[] dates) {
                 String birString = dates[0] + "-" + (dates[1] > 9 ? dates[1] : ("0" + dates[1])) + "-"
                         + (dates[2] > 9 ? dates[2] : ("0" + dates[2]));
-                send("birthday",birString);
+                send("birthday", birString);
             }
 
             @Override
@@ -217,7 +214,6 @@ public class MyInformationActivity extends BaseActivity {
 
 
     private void sendAvatar(File file) {
-
         OkHttpUtils.post()
                 .url(AppConstants.BASE_URL + "/kenya/user/updatePortrait")
                 .addFile("file", file.getName(), file)
@@ -254,12 +250,12 @@ public class MyInformationActivity extends BaseActivity {
                 });
     }
 
-    private void send(final String key, final String word){
+    private void send(final String key, final String word) {
         loadingDialog.show();
         OkHttpUtils.post()
                 .url(AppConstants.BASE_URL + "/kenya/user/updateUser")
                 .addParams("userId", User.getInstance().getUserId())
-                .addParams(key,word)
+                .addParams(key, word)
                 .build()
                 .execute(new StringCallback() {
                     @Override
@@ -273,25 +269,24 @@ public class MyInformationActivity extends BaseActivity {
                     public void onResponse(String response, int id) {
                         try {
                             JSONObject jsonObject = new JSONObject(response);
-                            if (jsonObject.getString("code").equals("000")){
+                            if (jsonObject.getString("code").equals("000")) {
                                 toast(getString(R.string.modify_successfully));
-                                if (key.equals("birthday")){
+                                if (key.equals("birthday")) {
                                     User.getInstance().setUserBirthday(word);
                                     birthday.setText(word);
-                                }else if (key.equals("userSex")){
+                                } else if (key.equals("userSex")) {
                                     String sexStr = null;
-                                    if (word.equals("0")){
+                                    if (word.equals("0")) {
                                         sexStr = getString(R.string.male);
                                         User.getInstance().setUserSex(word);
                                         sex.setText(sexStr);
-                                    }else if (word.equals("1")){
+                                    } else if (word.equals("1")) {
                                         sexStr = getString(R.string.female);
                                         User.getInstance().setUserSex(word);
                                         sex.setText(sexStr);
                                     }
                                 }
-
-                            }else {
+                            } else {
                                 toast(getString(R.string.modify_failed));
                             }
                             loadingDialog.dismiss();
