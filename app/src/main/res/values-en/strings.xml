@@ -81,7 +81,7 @@
     <string name="passwrod_6_22">Passwords Should Be 6-22 Digit Or Alphabet</string>
     <string name="verification_incorrect">Verification Code Error</string>
     <string name="registration_confirmed">Registration Confirmed</string>
-    <string name="rental_services">Rental Servicess</string>
+    <string name="rental_services">Rental Services</string>
     <string name="second_hand_goods">Second Hand Goods</string>
     <string name="recruitment">Recruitment</string>
     <string name="job_wanted">Job Wanted</string>
@@ -175,7 +175,7 @@
     <string name="enter_your_nick_name">Enter Your Name</string>
     <string name="nick_name">Nick Name </string>
     <string name="change_personal_details">Change Personal Detail</string>
-    <string name="receiver_address">Peceiver Address</string>
+    <string name="receiver_address">Receiver Address</string>
     <string name="my_post_history">My Post History</string>
     <string name="request_a_taxi">Request A Taxi</string>
     <string name="my_wellet">My Wallet</string>

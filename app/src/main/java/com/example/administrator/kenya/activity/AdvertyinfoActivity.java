@@ -108,7 +108,6 @@ public class AdvertyinfoActivity extends BaseActivity {
                                     e.printStackTrace();
                                     toast(getString(R.string.post_fail));
                                 }
-
                                 @Override
                                 public void onResponse(String response, int id) {
                                     try {
@@ -132,7 +131,6 @@ public class AdvertyinfoActivity extends BaseActivity {
                 break;
         }
     }
-
     @OnClick({R.id.adverty_info_choose, R.id.resume_info_mianyi})
     public void onViewClicked2(View view) {
         type++;

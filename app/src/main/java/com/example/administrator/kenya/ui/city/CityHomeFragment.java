@@ -187,8 +187,8 @@ public class CityHomeFragment extends BaseFragment {
                 startActivity(HouseActivity.class, null);
                 break;
             case R.id.city_home_friends:
-                startActivity(FriendsActivity.class, null);
-                //toast(getString(R.string.under_development));
+                // startActivity(FriendsActivity.class, null);
+                toast(getString(R.string.under_development));
                 break;
             case R.id.city_home_life:
                 startActivity(LifeActivity.class, null);

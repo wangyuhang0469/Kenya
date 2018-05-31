@@ -115,6 +115,49 @@
                 android:paddingTop="40px">
 
                 <com.zhy.autolayout.AutoLinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:layout_width="140px"
+                        android:layout_height="140px"
+                        android:src="@mipmap/city_home_lab7" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20px"
+                        android:text="买房"
+                        android:textColor="@color/textBlack1"
+                        android:textSize="12sp" />
+                </com.zhy.autolayout.AutoLinearLayout>
+
+                <com.zhy.autolayout.AutoLinearLayout
+                    android:id="@+id/city_home_husbandry"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:layout_width="140px"
+                        android:layout_height="140px"
+                        android:src="@mipmap/city_home_lab3" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20px"
+                        android:text="@string/farm_products"
+                        android:textColor="@color/textBlack1"
+                        android:textSize="12sp" />
+                </com.zhy.autolayout.AutoLinearLayout>
+
+                <com.zhy.autolayout.AutoLinearLayout
                     android:id="@+id/city_home_life"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
@@ -139,37 +182,13 @@
 
 
                 <com.zhy.autolayout.AutoLinearLayout
-                    android:id="@+id/city_home_husbandry"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:orientation="vertical">
-
-                    <ImageView
-                        android:layout_width="140px"
-                        android:layout_height="140px"
-                        android:src="@mipmap/city_home_lab3" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="20px"
-                        android:text="@string/farm_products"
-                        android:textColor="@color/textBlack1"
-                        android:textSize="12sp" />
-
-
-                </com.zhy.autolayout.AutoLinearLayout>
-
-
-                <com.zhy.autolayout.AutoLinearLayout
                     android:id="@+id/city_home_friends"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:gravity="center"
-                    android:orientation="vertical">
+                    android:orientation="vertical"
+                    android:visibility="gone">
 
                     <ImageView
                         android:layout_width="140px"
@@ -186,7 +205,6 @@
 
 
                 </com.zhy.autolayout.AutoLinearLayout>
-
 
             </com.zhy.autolayout.AutoLinearLayout>
 

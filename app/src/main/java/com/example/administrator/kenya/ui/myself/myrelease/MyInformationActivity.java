@@ -264,7 +264,6 @@ public class MyInformationActivity extends BaseActivity {
                         toast(getString(R.string.modify_failed));
                         loadingDialog.dismiss();
                     }
-
                     @Override
                     public void onResponse(String response, int id) {
                         try {

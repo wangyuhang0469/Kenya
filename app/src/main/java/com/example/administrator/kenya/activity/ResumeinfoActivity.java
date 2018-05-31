@@ -227,7 +227,6 @@ public class ResumeinfoActivity extends BaseActivity implements View.OnClickList
                                 @Override
                                 public void onStart() {
                                 }
-
                                 @Override
                                 public void onSuccess(File file) {
                                     s = String.valueOf(file);
@@ -510,9 +509,7 @@ public class ResumeinfoActivity extends BaseActivity implements View.OnClickList
                     break;
             }
         }
-
     }
-
     public void cropImage(Uri imageUri, int aspectX, int aspectY,
                           int return_flag) {
         File file = new File(this.getExternalCacheDir(), USER_CROP_IMAGE_NAME);
@@ -560,7 +557,6 @@ public class ResumeinfoActivity extends BaseActivity implements View.OnClickList
         photoPickerIntent.setType("image/*");
         startActivityForResult(photoPickerIntent, ALBUM_REQUEST_CODE);
     }
-
     /**
      * 裁剪图片
      */
