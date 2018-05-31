@@ -81,6 +81,9 @@ public class ReUsernameDialog extends Dialog{
 
     private void send(){
 
+        yes.setClickable(false);
+        no.setClickable(false);
+
         final String userName = information.getText().toString();
         OkHttpUtils.post()
                 .url(AppConstants.BASE_URL + "/kenya/user/updateUser")
@@ -92,6 +95,9 @@ public class ReUsernameDialog extends Dialog{
                     public void onError(Call call, Exception e, int id) {
                         e.printStackTrace();
                         Toast.makeText(getContext(), getContext().getString(R.string.modify_failed), Toast.LENGTH_SHORT).show();
+
+                        yes.setClickable(true);
+                        no.setClickable(true);
                     }
 
                     @Override
@@ -112,7 +118,9 @@ public class ReUsernameDialog extends Dialog{
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
-                    }
+
+                        yes.setClickable(true);
+                        no.setClickable(true); }
                 });
 
 

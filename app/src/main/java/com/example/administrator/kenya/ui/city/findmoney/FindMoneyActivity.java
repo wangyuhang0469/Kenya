@@ -8,6 +8,7 @@ import android.widget.ImageView;
 
 import com.example.administrator.kenya.R;
 import com.example.administrator.kenya.adapter.MyViewPagerAdapter;
+import com.example.administrator.kenya.ui.main.PosterDialog;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -50,5 +51,10 @@ public class FindMoneyActivity extends FragmentActivity {
     @OnClick(R.id.find_money_back)
     public void onViewClicked() {
         finish();
+    }
+
+    @OnClick(R.id.poster)
+    public void onViewClicked2() {
+        new PosterDialog(this).show();
     }
 }

@@ -38,13 +38,14 @@
             android:id="@+id/classification"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_alignParentRight="true"
-            android:layout_centerVertical="true"
             android:gravity="center|right"
             android:paddingLeft="30px"
             android:paddingRight="80px"
             android:text="@string/category"
-            android:textColor="@color/textgreen1" />
+            android:textColor="@color/textgreen1"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true" />
 
         <ImageView
             android:id="@+id/xiala"

@@ -74,6 +74,8 @@ public class DeleteDialog extends Dialog{
 
     private void delete(){
         information.setText("Loading...");
+        yes.setClickable(false);
+        no.setClickable(false);
 
         OkHttpUtils.post()
                 .url(url)
