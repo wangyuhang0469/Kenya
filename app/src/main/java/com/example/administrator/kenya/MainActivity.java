@@ -19,6 +19,7 @@ import com.example.administrator.kenya.ui.main.IntroActivity;
 import com.example.administrator.kenya.ui.main.WelcomeActivity;
 import com.example.administrator.kenya.ui.myself.LoginActivity;
 import com.example.administrator.kenya.ui.myself.MyselfFragment;
+import com.example.administrator.kenya.utils.APKVersionCodeUtils;
 import com.example.administrator.kenya.utils.DeviceUuidFactory;
 import com.example.administrator.kenya.view.TextBannerView;
 
@@ -56,6 +57,7 @@ public class MainActivity extends BaseActivity {
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
         initView();
+
     }
 
     protected void initView() {
