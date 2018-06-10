@@ -132,7 +132,6 @@ public class MyHouseFragment extends BaseFragment {
         LinearLayoutManager layoutmanager = new LinearLayoutManager(getContext());
         recyclerView.setLayoutManager(layoutmanager);
         recyclerView.setAdapter(myHouseAdapter);
-
         pullToRefreshLayout.setCanRefresh(false);
         pullToRefreshLayout.setCanLoadMore(false);
         pullToRefreshLayout.setHeaderView(new MyHeadRefreshView(getContext()));

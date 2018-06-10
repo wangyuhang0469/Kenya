@@ -34,4 +34,12 @@
     <color name="line6">#9b9b9b</color>
     <color name="line7">#c3c3c3</color>
     <color name="line8">#989898</color>
+    <color name="line9">#cbcbcb</color>
+    <color name="line10">#46bd7b</color>
+
+    <color name="gray">#cccccc</color>
+    <color name="drop_down_unselected">#111111</color>
+    <color name="mask_color">#88888888</color>
+    <color name="check_bg">#f2f2f2</color>
+
 </resources>

@@ -60,6 +60,7 @@ public class MyReleaseActivity extends BaseActivity {
     private MyLifeFragment myLifeFragment;
     private MyHusbandryFragment myHusbandryFragment;
     private BlankFragment blankFragment7;
+    private BuyHouseFragment buyHouseFragment;
     private int currentTabIndex;
 
     @Override
@@ -139,6 +140,11 @@ public class MyReleaseActivity extends BaseActivity {
                     case R.id.radioButton7:
                         fragmentTransaction.hide(fragments[currentTabIndex]).show(fragments[6]).commit();
                         currentTabIndex = 6;
+                        classification.setText("买房");
+                        break;
+                    case R.id.radioButton8:
+                        fragmentTransaction.hide(fragments[currentTabIndex]).show(fragments[7]).commit();
+                        currentTabIndex = 7;
                         classification.setText(getResources().getString(R.string.find_friends));
                         break;
                 }
@@ -156,7 +162,8 @@ public class MyReleaseActivity extends BaseActivity {
         myLifeFragment = new MyLifeFragment();
         myHusbandryFragment = new MyHusbandryFragment();
         blankFragment7 = new BlankFragment();
-        fragments = new Fragment[]{myHouseFragment, myUsedFragment, myApplyJobFragment, myRecruitFragment, myLifeFragment, myHusbandryFragment, blankFragment7};
+        buyHouseFragment = new BuyHouseFragment();
+        fragments = new Fragment[]{myHouseFragment, myUsedFragment, myApplyJobFragment, myRecruitFragment, myLifeFragment, myHusbandryFragment, buyHouseFragment, blankFragment7};
         getSupportFragmentManager().beginTransaction()
                 .add(R.id.fragment_container, fragments[0])
                 .add(R.id.fragment_container, fragments[1])
@@ -164,7 +171,8 @@ public class MyReleaseActivity extends BaseActivity {
                 .add(R.id.fragment_container, fragments[3])
                 .add(R.id.fragment_container, fragments[4])
                 .add(R.id.fragment_container, fragments[5])
-                .hide(fragments[5]).hide(fragments[4]).hide(fragments[3]).hide(fragments[2]).hide(fragments[1])
+                .add(R.id.fragment_container, fragments[6])
+                .hide(fragments[6]).hide(fragments[5]).hide(fragments[4]).hide(fragments[3]).hide(fragments[2]).hide(fragments[1])
                 .show(fragments[0]).commit();
     }
 

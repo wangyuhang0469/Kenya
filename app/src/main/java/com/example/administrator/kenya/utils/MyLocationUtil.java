@@ -35,26 +35,28 @@ public class MyLocationUtil {
     private String provider;
     private Context context;
     private MyLocationListener myLocationListener;
-    final Handler handler = new Handler(Looper.getMainLooper()){
+    final Handler handler = new Handler(Looper.getMainLooper()) {
 
         public void handleMessage(Message msg) {
             switch (msg.what) {
                 case 1:
-                    if (province != null && province.length()!=0 && city != null && city.length()!=0) {
-                        myLocationListener.success(province,city);
-                    }else {
+                    if (province != null && province.length() != 0 && city != null && city.length() != 0) {
+                        myLocationListener.success(province, city);
+                    } else {
                         myLocationListener.failed("error");
                     }
                     break;
             }
-        };
+        }
+
+        ;
     };
 
     public MyLocationUtil(Context context) {
         this.context = context;
     }
 
-    public static MyLocationUtil getInstance(Context context){
+    public static MyLocationUtil getInstance(Context context) {
         return new MyLocationUtil(context);
     }
 
@@ -69,7 +71,6 @@ public class MyLocationUtil {
         // 返回最合适的符合条件的 provider ，第 2 个参数为 true 说明 , 如果只有一个 provider 是有效的 , 则返回当前  provider
         provider = locationManager.getBestProvider(criteria, true);
     }
-
 
 
     private void getInformationByLocation(Location location) {
@@ -109,16 +110,18 @@ public class MyLocationUtil {
 
 
         public void onLocationChanged(Location location) {
-           getInformationByLocation(location);
+            getInformationByLocation(location);
 
         }
 
         public void onProviderDisabled(String provider) {
-           getInformationByLocation(null);
+            getInformationByLocation(null);
 
         }
+
         public void onProviderEnabled(String provider) {
         }
+
         public void onStatusChanged(String provider, int status, Bundle extras) {
         }
     };
@@ -142,10 +145,10 @@ public class MyLocationUtil {
         return location;
     }
 
-    public void getLocationInformation( MyLocationListener myLocationListener){
+    public void getLocationInformation(MyLocationListener myLocationListener) {
         this.myLocationListener = myLocationListener;
 
-        new Thread(){
+        new Thread() {
             @Override
             public void run() {
                 getInformationByLocation(getLocation());

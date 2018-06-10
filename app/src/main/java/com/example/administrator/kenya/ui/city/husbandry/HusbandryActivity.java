@@ -66,8 +66,7 @@ public class HusbandryActivity extends BaseActivity {
 
     private PopupWindow popupWindow;
     private String keyword = "不限";
-
-
+    
     private int cpageNum = 1;
 
     private MyAdapter myAdapter;
@@ -275,7 +274,7 @@ public class HusbandryActivity extends BaseActivity {
         @Override
         public void onBindViewHolder(final ViewHolder holder, final int position) {
             holder.framname.setText(list.get(position).getFramname());
-            holder.framphone.setText( getResources().getString(R.string.phone_no_)+ list.get(position).getFramphone());
+            holder.framphone.setText(getResources().getString(R.string.phone_no_) + list.get(position).getFramphone());
 //            holder.framimgs.setTag(list.get(position).getFramimgs());
             holder.call.setOnClickListener(new View.OnClickListener() {
                 @Override

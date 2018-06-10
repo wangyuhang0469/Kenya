@@ -24,31 +24,31 @@
 
 
                 <RadioButton
-                android:id="@+id/radioButton1"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_margin="30px"
-                android:layout_weight="1"
-                android:background="@drawable/popup_bg"
-                android:button="@null"
-                android:checked="true"
-                android:gravity="center"
-                android:minHeight="88px"
-                android:text="@string/rental_services"
-                android:textColor="@drawable/popup_textcolor" />
+                    android:id="@+id/radioButton1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="30px"
+                    android:layout_weight="1"
+                    android:background="@drawable/popup_bg"
+                    android:button="@null"
+                    android:checked="true"
+                    android:gravity="center"
+                    android:minHeight="88px"
+                    android:text="@string/rental_services"
+                    android:textColor="@drawable/popup_textcolor" />
 
                 <RadioButton
-                android:id="@+id/radioButton2"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_margin="30px"
-                android:layout_weight="1"
-                android:background="@drawable/popup_bg"
-                android:button="@null"
-                android:gravity="center"
-                android:minHeight="88px"
-                android:text="@string/second_hand_goods"
-                android:textColor="@drawable/popup_textcolor" />
+                    android:id="@+id/radioButton2"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="30px"
+                    android:layout_weight="1"
+                    android:background="@drawable/popup_bg"
+                    android:button="@null"
+                    android:gravity="center"
+                    android:minHeight="88px"
+                    android:text="@string/second_hand_goods"
+                    android:textColor="@drawable/popup_textcolor" />
 
 
             </com.zhy.autolayout.AutoLinearLayout>
@@ -99,146 +99,181 @@
                 android:paddingRight="30px">
 
                 <RadioButton
-                android:id="@+id/radioButton5"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_margin="30px"
-                android:layout_weight="1"
-                android:background="@drawable/popup_bg"
-                android:button="@null"
-                android:gravity="center"
-                android:minHeight="88px"
-                android:text="@string/domestic_services"
-                android:textColor="@drawable/popup_textcolor" />
+                    android:id="@+id/radioButton5"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="30px"
+                    android:layout_weight="1"
+                    android:background="@drawable/popup_bg"
+                    android:button="@null"
+                    android:gravity="center"
+                    android:minHeight="88px"
+                    android:text="@string/domestic_services"
+                    android:textColor="@drawable/popup_textcolor" />
 
                 <RadioButton
-                android:id="@+id/radioButton6"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_margin="30px"
-                android:layout_weight="1"
-                android:background="@drawable/popup_bg"
-                android:button="@null"
-                android:gravity="center"
-                android:minHeight="88px"
-                android:text="@string/farm_products"
-                android:textColor="@drawable/popup_textcolor" />
+                    android:id="@+id/radioButton6"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="30px"
+                    android:layout_weight="1"
+                    android:background="@drawable/popup_bg"
+                    android:button="@null"
+                    android:gravity="center"
+                    android:minHeight="88px"
+                    android:text="@string/farm_products"
+                    android:textColor="@drawable/popup_textcolor" />
 
             </com.zhy.autolayout.AutoLinearLayout>
 
 
+            <com.zhy.autolayout.AutoLinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:paddingLeft="30px"
+                android:paddingRight="30px">
+
+                <RadioButton
+                    android:id="@+id/radioButton7"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="30px"
+                    android:layout_weight="1"
+                    android:background="@drawable/popup_bg"
+                    android:button="@null"
+                    android:gravity="center"
+                    android:minHeight="88px"
+                    android:text="买房"
+                    android:textColor="@drawable/popup_textcolor" />
+
+                <RadioButton
+                    android:id="@+id/radioButton8"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="30px"
+                    android:layout_weight="1"
+                    android:background="@drawable/popup_bg"
+                    android:button="@null"
+                    android:gravity="center"
+                    android:minHeight="88px"
+                    android:text="待定"
+                    android:textColor="@drawable/popup_textcolor" />
+
+            </com.zhy.autolayout.AutoLinearLayout>
+
 
             <!--<com.zhy.autolayout.AutoLinearLayout-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:gravity="center_vertical">-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:gravity="center_vertical">-->
 
-                <!--<RadioButton-->
-                    <!--android:id="@+id/radioButton1"-->
-                    <!--android:layout_width="0dp"-->
-                    <!--android:layout_height="wrap_content"-->
-                    <!--android:layout_margin="30px"-->
-                    <!--android:layout_weight="1"-->
-                    <!--android:background="@drawable/popup_bg"-->
-                    <!--android:button="@null"-->
-                    <!--android:checked="true"-->
-                    <!--android:gravity="center"-->
-                    <!--android:minHeight="88px"-->
-                    <!--android:text="@string/rental_services"-->
-                    <!--android:textColor="@drawable/popup_textcolor" />-->
+            <!--<RadioButton-->
+            <!--android:id="@+id/radioButton1"-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_margin="30px"-->
+            <!--android:layout_weight="1"-->
+            <!--android:background="@drawable/popup_bg"-->
+            <!--android:button="@null"-->
+            <!--android:checked="true"-->
+            <!--android:gravity="center"-->
+            <!--android:minHeight="88px"-->
+            <!--android:text="@string/rental_services"-->
+            <!--android:textColor="@drawable/popup_textcolor" />-->
 
-                <!--<RadioButton-->
-                    <!--android:id="@+id/radioButton2"-->
-                    <!--android:layout_width="0dp"-->
-                    <!--android:layout_height="wrap_content"-->
-                    <!--android:layout_margin="30px"-->
-                    <!--android:layout_weight="1"-->
-                    <!--android:background="@drawable/popup_bg"-->
-                    <!--android:button="@null"-->
-                    <!--android:gravity="center"-->
-                    <!--android:minHeight="88px"-->
-                    <!--android:text="@string/second_hand_goods"-->
-                    <!--android:textColor="@drawable/popup_textcolor" />-->
+            <!--<RadioButton-->
+            <!--android:id="@+id/radioButton2"-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_margin="30px"-->
+            <!--android:layout_weight="1"-->
+            <!--android:background="@drawable/popup_bg"-->
+            <!--android:button="@null"-->
+            <!--android:gravity="center"-->
+            <!--android:minHeight="88px"-->
+            <!--android:text="@string/second_hand_goods"-->
+            <!--android:textColor="@drawable/popup_textcolor" />-->
 
-                <!--<RadioButton-->
-                    <!--android:id="@+id/radioButton3"-->
-                    <!--android:layout_width="0dp"-->
-                    <!--android:layout_height="wrap_content"-->
-                    <!--android:layout_margin="30px"-->
-                    <!--android:layout_weight="1"-->
-                    <!--android:background="@drawable/popup_bg"-->
-                    <!--android:button="@null"-->
-                    <!--android:gravity="center"-->
-                    <!--android:minHeight="88px"-->
-                    <!--android:text="@string/job_wanted"-->
-                    <!--android:textColor="@drawable/popup_textcolor" />-->
+            <!--<RadioButton-->
+            <!--android:id="@+id/radioButton3"-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_margin="30px"-->
+            <!--android:layout_weight="1"-->
+            <!--android:background="@drawable/popup_bg"-->
+            <!--android:button="@null"-->
+            <!--android:gravity="center"-->
+            <!--android:minHeight="88px"-->
+            <!--android:text="@string/job_wanted"-->
+            <!--android:textColor="@drawable/popup_textcolor" />-->
 
 
-                <!--<RadioButton-->
-                    <!--android:id="@+id/radioButton4"-->
-                    <!--android:layout_width="0dp"-->
-                    <!--android:layout_height="wrap_content"-->
-                    <!--android:layout_margin="30px"-->
-                    <!--android:layout_weight="1"-->
-                    <!--android:background="@drawable/popup_bg"-->
-                    <!--android:button="@null"-->
-                    <!--android:gravity="center"-->
-                    <!--android:minHeight="88px"-->
-                    <!--android:text="@string/recruitment"-->
-                    <!--android:textColor="@drawable/popup_textcolor" />-->
+            <!--<RadioButton-->
+            <!--android:id="@+id/radioButton4"-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_margin="30px"-->
+            <!--android:layout_weight="1"-->
+            <!--android:background="@drawable/popup_bg"-->
+            <!--android:button="@null"-->
+            <!--android:gravity="center"-->
+            <!--android:minHeight="88px"-->
+            <!--android:text="@string/recruitment"-->
+            <!--android:textColor="@drawable/popup_textcolor" />-->
 
             <!--</com.zhy.autolayout.AutoLinearLayout>-->
 
 
             <!--<com.zhy.autolayout.AutoLinearLayout-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="match_parent"-->
-                <!--android:gravity="center_vertical">-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:gravity="center_vertical">-->
 
-                <!--<RadioButton-->
-                    <!--android:id="@+id/radioButton5"-->
-                    <!--android:layout_width="0dp"-->
-                    <!--android:layout_height="wrap_content"-->
-                    <!--android:layout_margin="30px"-->
-                    <!--android:layout_weight="1"-->
-                    <!--android:background="@drawable/popup_bg"-->
-                    <!--android:button="@null"-->
-                    <!--android:gravity="center"-->
-                    <!--android:minHeight="88px"-->
-                    <!--android:text="@string/domestic_services"-->
-                    <!--android:textColor="@drawable/popup_textcolor" />-->
+            <!--<RadioButton-->
+            <!--android:id="@+id/radioButton5"-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_margin="30px"-->
+            <!--android:layout_weight="1"-->
+            <!--android:background="@drawable/popup_bg"-->
+            <!--android:button="@null"-->
+            <!--android:gravity="center"-->
+            <!--android:minHeight="88px"-->
+            <!--android:text="@string/domestic_services"-->
+            <!--android:textColor="@drawable/popup_textcolor" />-->
 
-                <!--<RadioButton-->
-                    <!--android:id="@+id/radioButton6"-->
-                    <!--android:layout_width="0dp"-->
-                    <!--android:layout_height="wrap_content"-->
-                    <!--android:layout_margin="30px"-->
-                    <!--android:layout_weight="1"-->
-                    <!--android:background="@drawable/popup_bg"-->
-                    <!--android:button="@null"-->
-                    <!--android:gravity="center"-->
-                    <!--android:minHeight="88px"-->
-                    <!--android:text="@string/farm_products"-->
-                    <!--android:textColor="@drawable/popup_textcolor" />-->
+            <!--<RadioButton-->
+            <!--android:id="@+id/radioButton6"-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_margin="30px"-->
+            <!--android:layout_weight="1"-->
+            <!--android:background="@drawable/popup_bg"-->
+            <!--android:button="@null"-->
+            <!--android:gravity="center"-->
+            <!--android:minHeight="88px"-->
+            <!--android:text="@string/farm_products"-->
+            <!--android:textColor="@drawable/popup_textcolor" />-->
 
-                <!--<RadioButton-->
-                    <!--android:id="@+id/radioButton7"-->
-                    <!--android:layout_width="0dp"-->
-                    <!--android:layout_height="wrap_content"-->
-                    <!--android:layout_margin="30px"-->
-                    <!--android:layout_weight="1"-->
-                    <!--android:background="@drawable/popup_bg"-->
-                    <!--android:button="@null"-->
-                    <!--android:gravity="center"-->
-                    <!--android:minHeight="88px"-->
-                    <!--android:text="@string/find_friends"-->
-                    <!--android:textColor="@drawable/popup_textcolor" />-->
+            <!--<RadioButton-->
+            <!--android:id="@+id/radioButton7"-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_margin="30px"-->
+            <!--android:layout_weight="1"-->
+            <!--android:background="@drawable/popup_bg"-->
+            <!--android:button="@null"-->
+            <!--android:gravity="center"-->
+            <!--android:minHeight="88px"-->
+            <!--android:text="@string/find_friends"-->
+            <!--android:textColor="@drawable/popup_textcolor" />-->
 
-                <!--<View-->
-                    <!--android:layout_width="0dp"-->
-                    <!--android:layout_height="match_parent"-->
-                    <!--android:layout_margin="30px"-->
-                    <!--android:layout_weight="1" />-->
+            <!--<View-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:layout_margin="30px"-->
+            <!--android:layout_weight="1" />-->
 
             <!--</com.zhy.autolayout.AutoLinearLayout>-->
 

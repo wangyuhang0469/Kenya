@@ -73,7 +73,6 @@
     </com.jwenfeng.library.pulltorefresh.PullToRefreshLayout>
 
 
-
     <TextView
         android:id="@+id/release"
         android:layout_width="match_parent"

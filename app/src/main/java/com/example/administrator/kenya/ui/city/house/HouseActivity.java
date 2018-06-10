@@ -57,7 +57,6 @@ public class HouseActivity extends BaseActivity {
         postFormBuilder = OkHttpUtils.post()
                 .url(AppConstants.BASE_URL + "/kenya/Lease/selectByFile")
                 .addParams("pn", cpageNum + "");
-
         StringCallback = new StringCallback() {
             @Override
             public void onError(Call call, Exception e, int id) {
@@ -71,6 +70,7 @@ public class HouseActivity extends BaseActivity {
 
             @Override
             public void onResponse(String response, int id) {
+                Log.d("kang", "qqqqqqqqqqq" + response);
                 //防止因Activity释放导致内部控件空指针
                 if (pullToRefreshLayout != null) {
                     cpageNum++;

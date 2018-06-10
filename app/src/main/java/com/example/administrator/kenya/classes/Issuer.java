@@ -6,7 +6,7 @@ import java.io.Serializable;
  * Created by Administrator on 2018/4/13.
  */
 
-public class Issuer implements Serializable{
+public class Issuer implements Serializable {
     String userId;
     String userName;
     String userPsw;

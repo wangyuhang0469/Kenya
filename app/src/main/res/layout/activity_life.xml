@@ -38,14 +38,14 @@
             android:id="@+id/classification"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
             android:gravity="center|right"
             android:paddingLeft="30px"
             android:paddingRight="80px"
             android:text="@string/category"
-            android:textColor="@color/textgreen1"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true" />
+            android:textColor="@color/textgreen1" />
 
         <ImageView
             android:id="@+id/xiala"
@@ -91,18 +91,18 @@
         android:layout_height="302px"
         android:layout_above="@+id/text"
         android:layout_centerHorizontal="true"
-        android:visibility="gone"
-        android:src="@drawable/nothing"/>
+        android:src="@drawable/nothing"
+        android:visibility="gone" />
 
     <TextView
         android:id="@+id/text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/nothing"
-        android:textColor="@color/textBlack3"
         android:layout_centerInParent="true"
         android:paddingTop="20px"
-        android:visibility="gone"/>
+        android:text="@string/nothing"
+        android:textColor="@color/textBlack3"
+        android:visibility="gone" />
 
     <View
         android:id="@+id/black"

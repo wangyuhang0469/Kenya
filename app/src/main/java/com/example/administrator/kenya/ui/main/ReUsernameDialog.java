@@ -28,7 +28,7 @@ import java.util.Map;
 import okhttp3.Call;
 
 
-public class ReUsernameDialog extends Dialog{
+public class ReUsernameDialog extends Dialog {
 
     private EditText information;
     private TextView yes;
@@ -46,16 +46,16 @@ public class ReUsernameDialog extends Dialog{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.re_username_dialog);
 
-        information =(EditText) findViewById(R.id.information);
-        yes =(TextView) findViewById(R.id.yes);
-        no =(TextView) findViewById(R.id.no);
+        information = (EditText) findViewById(R.id.information);
+        yes = (TextView) findViewById(R.id.yes);
+        no = (TextView) findViewById(R.id.no);
 
         yes.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (information.getText().length()!=0){
+                if (information.getText().length() != 0) {
                     send();
-                }else {
+                } else {
                     Toast.makeText(getContext(), "Please enter a new name", Toast.LENGTH_SHORT).show();
                 }
             }
@@ -79,7 +79,7 @@ public class ReUsernameDialog extends Dialog{
     }
 
 
-    private void send(){
+    private void send() {
 
         yes.setClickable(false);
         no.setClickable(false);
@@ -88,7 +88,7 @@ public class ReUsernameDialog extends Dialog{
         OkHttpUtils.post()
                 .url(AppConstants.BASE_URL + "/kenya/user/updateUser")
                 .addParams("userId", User.getInstance().getUserId())
-                .addParams("userName",userName)
+                .addParams("userName", userName)
                 .build()
                 .execute(new StringCallback() {
                     @Override
@@ -104,7 +104,7 @@ public class ReUsernameDialog extends Dialog{
                     public void onResponse(String response, int id) {
                         try {
                             JSONObject jsonObject = new JSONObject(response);
-                            if (jsonObject.getString("code").equals("000")){
+                            if (jsonObject.getString("code").equals("000")) {
                                 Toast.makeText(getContext(), getContext().getString(R.string.modify_successfully), Toast.LENGTH_SHORT).show();
                                 User.getInstance().setUserName(userName);
                                 if (onReUsernameSuccessfulListener != null)
@@ -112,7 +112,7 @@ public class ReUsernameDialog extends Dialog{
                                 EventBus.getDefault().post(new MessageEvent2(userName));
                                 User.getInstance().setUserName(userName);
                                 ReUsernameDialog.this.dismiss();
-                            }else {
+                            } else {
                                 Toast.makeText(getContext(), jsonObject.getString("message"), Toast.LENGTH_SHORT).show();
                             }
                         } catch (JSONException e) {
@@ -120,14 +120,15 @@ public class ReUsernameDialog extends Dialog{
                         }
 
                         yes.setClickable(true);
-                        no.setClickable(true); }
+                        no.setClickable(true);
+                    }
                 });
 
 
     }
 
 
-    public void setOnReUsernameSuccessfulListener(OnReUsernameSuccessfulListener onReUsernameSuccessfulListener){
+    public void setOnReUsernameSuccessfulListener(OnReUsernameSuccessfulListener onReUsernameSuccessfulListener) {
         this.onReUsernameSuccessfulListener = onReUsernameSuccessfulListener;
     }
 

@@ -270,5 +270,8 @@
     <string name="fersonal_driver">专车司机</string>
     <string name="service_details"> 服务详情</string>
 
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
     <!--   <string name="post">发布</string>-->
 </resources>

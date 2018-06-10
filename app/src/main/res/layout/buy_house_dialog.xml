@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.zhy.autolayout.AutoLinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="300dp"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:background="@drawable/diabg_bkg"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/buy_house_dialog_newhouse"
+        android:layout_width="match_parent"
+        android:layout_height="150px"
+        android:gravity="center"
+        android:maxLength="35"
+        android:text="发布新房"
+        android:textColor="@color/textBlack1"
+        android:textSize="14sp" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.3dp"
+        android:background="@color/line1" />
+
+    <TextView
+        android:id="@+id/buy_house_dialog_oldhouse"
+        android:layout_width="match_parent"
+        android:layout_height="150px"
+        android:gravity="center"
+        android:maxLength="35"
+        android:text="发布二手房"
+        android:textColor="@color/textBlack1"
+        android:textSize="14sp" />
+</com.zhy.autolayout.AutoLinearLayout>

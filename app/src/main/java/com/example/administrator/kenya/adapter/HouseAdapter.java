@@ -32,8 +32,9 @@ public class HouseAdapter extends RecyclerView.Adapter<HouseAdapter.ViewHolder> 
         this.list = list;
         this.context = context;
     }
+
     public class ViewHolder extends RecyclerView.ViewHolder {
-        TextView house_Title, house_square,house_address, house_home, house_price,call;
+        TextView house_Title, house_square, house_address, house_home, house_price, call;
         ImageView house_image;
 
         public ViewHolder(View itemView) {
@@ -53,18 +54,19 @@ public class HouseAdapter extends RecyclerView.Adapter<HouseAdapter.ViewHolder> 
         View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_house, parent, false);
         return new ViewHolder(v);
     }
+
     @Override
     public void onBindViewHolder(final ViewHolder holder, final int position) {
         holder.house_Title.setText(list.get(position).getLeasename());
         holder.house_home.setText(list.get(position).getLeasehome());
-        holder.house_square.setText(list.get(position).getLeasesquare()+"㎡");
+        holder.house_square.setText(list.get(position).getLeasesquare() + "㎡");
         holder.house_address.setText(list.get(position).getLeaseaddress());
-        holder.house_price.setText("KSh " + list.get(position).getLeaseprice()+"/Month");
+        holder.house_price.setText("KSh " + list.get(position).getLeaseprice() + "/Month");
 
         holder.call.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                new CallPhoneDialog(context,list.get(position).getLeasephone()).show();
+                new CallPhoneDialog(context, list.get(position).getLeasephone()).show();
             }
         });
 

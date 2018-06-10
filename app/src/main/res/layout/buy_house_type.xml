@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.zhy.autolayout.AutoLinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <com.zhy.autolayout.AutoLinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="60px"
+        android:layout_marginTop="100px">
+
+        <com.example.administrator.kenya.view.MyRadioGroup
+            android:id="@+id/myRadioGroupText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <com.zhy.autolayout.AutoLinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <RadioButton
+                    android:id="@+id/rg_tv1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/popup_bg"
+                    android:button="@null"
+                    android:checked="true"
+                    android:gravity="center"
+                    android:paddingLeft="20px"
+                    android:paddingRight="20px"
+                    android:text="不限"
+                    android:textColor="@drawable/popup_textcolor"
+                    android:textSize="13sp" />
+
+                <RadioButton
+                    android:id="@+id/rg_tv2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="88px"
+                    android:background="@drawable/popup_bg"
+                    android:button="@null"
+                    android:gravity="center"
+                    android:paddingLeft="20px"
+                    android:paddingRight="20px"
+                    android:text="新房"
+                    android:textColor="@drawable/popup_textcolor"
+                    android:textSize="13sp" />
+
+                <RadioButton
+                    android:id="@+id/rg_tv3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="88px"
+                    android:background="@drawable/popup_bg"
+                    android:button="@null"
+                    android:gravity="center"
+                    android:paddingLeft="20px"
+                    android:paddingRight="20px"
+                    android:text="二手房"
+                    android:textColor="@drawable/popup_textcolor"
+                    android:textSize="13sp" />
+            </com.zhy.autolayout.AutoLinearLayout>
+        </com.example.administrator.kenya.view.MyRadioGroup>
+    </com.zhy.autolayout.AutoLinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="60px"
+        android:layout_marginTop="120px"
+        android:text="户型"
+        android:textColor="@color/textBlack1"
+        android:textSize="15sp" />
+
+    <com.example.administrator.kenya.view.MyRadioGroup
+        android:id="@+id/myRadioGroup"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.zhy.autolayout.AutoLinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <com.zhy.autolayout.AutoLinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:paddingLeft="25px"
+                android:paddingRight="30px">
+
+
+                <RadioButton
+                    android:id="@+id/radioButton1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="30px"
+                    android:layout_weight="1"
+                    android:background="@drawable/popup_bg"
+                    android:button="@null"
+                    android:checked="true"
+                    android:gravity="center"
+                    android:minHeight="78px"
+                    android:text="不限"
+                    android:textColor="@drawable/popup_textcolor"
+                    android:textSize="13sp" />
+
+                <RadioButton
+                    android:id="@+id/radioButton2"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="30px"
+                    android:layout_weight="1"
+                    android:background="@drawable/popup_bg"
+                    android:button="@null"
+                    android:gravity="center"
+                    android:minHeight="78px"
+                    android:text="一室"
+                    android:textColor="@drawable/popup_textcolor"
+                    android:textSize="13sp" />
+
+                <RadioButton
+                    android:id="@+id/radioButton3"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="30px"
+                    android:layout_weight="1"
+                    android:background="@drawable/popup_bg"
+                    android:button="@null"
+                    android:gravity="center"
+                    android:minHeight="78px"
+                    android:text="一室一厅"
+                    android:textColor="@drawable/popup_textcolor"
+                    android:textSize="13sp" />
+
+                <RadioButton
+                    android:id="@+id/radioButton4"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="30px"
+                    android:layout_weight="1"
+                    android:background="@drawable/popup_bg"
+                    android:button="@null"
+                    android:gravity="center"
+                    android:minHeight="78px"
+                    android:text="两室一厅"
+                    android:textColor="@drawable/popup_textcolor"
+                    android:textSize="13sp" />
+            </com.zhy.autolayout.AutoLinearLayout>
+
+            <com.zhy.autolayout.AutoLinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:paddingLeft="25px"
+                android:paddingRight="30px">
+
+                <RadioButton
+                    android:id="@+id/radioButton5"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="30px"
+                    android:layout_weight="1"
+                    android:background="@drawable/popup_bg"
+                    android:button="@null"
+                    android:gravity="center"
+                    android:minHeight="78px"
+                    android:text="两室两厅"
+                    android:textColor="@drawable/popup_textcolor"
+                    android:textSize="13sp" />
+
+
+                <RadioButton
+                    android:id="@+id/radioButton6"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="30px"
+                    android:layout_weight="1"
+                    android:background="@drawable/popup_bg"
+                    android:button="@null"
+                    android:gravity="center"
+                    android:minHeight="78px"
+                    android:text="三室一厅"
+                    android:textColor="@drawable/popup_textcolor"
+                    android:textSize="13sp" />
+
+                <RadioButton
+                    android:id="@+id/radioButton7"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="30px"
+                    android:layout_weight="1"
+                    android:background="@drawable/popup_bg"
+                    android:button="@null"
+                    android:gravity="center"
+                    android:minHeight="78px"
+                    android:text="三室两厅"
+                    android:textColor="@drawable/popup_textcolor"
+                    android:textSize="13sp" />
+
+                <RadioButton
+                    android:id="@+id/radioButton8"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="30px"
+                    android:layout_weight="1"
+                    android:background="@drawable/popup_bg"
+                    android:button="@null"
+                    android:gravity="center"
+                    android:minHeight="78px"
+                    android:text="四室一厅"
+                    android:textColor="@drawable/popup_textcolor"
+                    android:textSize="13sp" />
+            </com.zhy.autolayout.AutoLinearLayout>
+        </com.zhy.autolayout.AutoLinearLayout>
+    </com.example.administrator.kenya.view.MyRadioGroup>
+
+</com.zhy.autolayout.AutoLinearLayout>

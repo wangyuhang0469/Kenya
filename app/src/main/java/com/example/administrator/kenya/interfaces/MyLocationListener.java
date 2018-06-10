@@ -5,6 +5,7 @@ package com.example.administrator.kenya.interfaces;
  */
 
 public interface MyLocationListener {
-    void  success(String province, String city);
-    void  failed(String message);
+    void success(String province, String city);
+
+    void failed(String message);
 }

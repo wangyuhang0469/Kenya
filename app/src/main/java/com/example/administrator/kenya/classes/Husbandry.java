@@ -10,7 +10,7 @@ import java.util.List;
  * Created by Administrator on 2018/4/16.
  */
 
-public class Husbandry implements Serializable{
+public class Husbandry implements Serializable {
 
     String framid;
     String framname;

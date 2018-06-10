@@ -1,26 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <com.zhy.autolayout.AutoLinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="210dp"
+    android:layout_width="210dp"
     android:layout_height="93dp"
+    android:layout_gravity="center"
     android:background="@drawable/bg8dp_white"
-    android:layout_gravity="center">
+    android:orientation="vertical">
 
     <EditText
         android:id="@+id/information"
+        style="@style/edit_base"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:gravity="center"
         android:hint="Enter a new name"
-        android:textSize="14sp"
-        android:paddingTop="10dp"
-        style="@style/edit_base"
         android:maxLength="35"
-        android:textColor="@color/textBlack1"/>
+        android:paddingTop="10dp"
+        android:textColor="@color/textBlack1"
+        android:textSize="14sp" />
 
     <View
         android:layout_width="match_parent"
         android:layout_height="0.3dp"
-        android:background="@color/line1"/>
+        android:background="@color/line1" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -29,28 +30,28 @@
 
         <TextView
             android:id="@+id/yes"
-            android:layout_weight="1"
             android:layout_width="0dp"
             android:layout_height="match_parent"
+            android:layout_weight="1"
             android:gravity="center"
             android:text="MODIFY"
-            android:textSize="15sp"
-            android:textColor="@color/textgreen1"/>
+            android:textColor="@color/textgreen1"
+            android:textSize="15sp" />
 
         <View
             android:layout_width="0.3dp"
             android:layout_height="match_parent"
-            android:background="@color/line1"/>
+            android:background="@color/line1" />
 
         <TextView
             android:id="@+id/no"
-            android:layout_weight="1"
             android:layout_width="0dp"
             android:layout_height="match_parent"
+            android:layout_weight="1"
             android:gravity="center"
             android:text="CANCEL"
-            android:textSize="15sp"
-            android:textColor="@color/textgreen1"/>
+            android:textColor="@color/textgreen1"
+            android:textSize="15sp" />
 
 
     </LinearLayout>

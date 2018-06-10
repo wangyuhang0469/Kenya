@@ -40,14 +40,14 @@
             android:layout_height="match_parent"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
+            android:layout_toEndOf="@+id/title"
+            android:layout_toRightOf="@+id/title"
             android:gravity="center|right"
             android:paddingLeft="10px"
             android:paddingRight="80px"
             android:singleLine="true"
             android:text="@string/rental_services"
-            android:textColor="@color/textgreen1"
-            android:layout_toRightOf="@+id/title"
-            android:layout_toEndOf="@+id/title" />
+            android:textColor="@color/textgreen1" />
 
         <ImageView
             android:id="@+id/xiala"
@@ -59,7 +59,6 @@
 
 
     </com.zhy.autolayout.AutoRelativeLayout>
-
 
 
     <RelativeLayout

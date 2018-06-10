@@ -1,0 +1,443 @@
+package com.example.administrator.kenya.ui.city.buyhouse;
+
+import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.GridView;
+import android.widget.ListView;
+import android.widget.TextView;
+
+import com.alibaba.fastjson.JSON;
+import com.example.administrator.kenya.R;
+import com.example.administrator.kenya.adapter.HouseAdapter;
+import com.example.administrator.kenya.base.BaseActivity;
+import com.example.administrator.kenya.classes.CityProvince;
+import com.example.administrator.kenya.classes.Friend;
+import com.example.administrator.kenya.classes.House;
+import com.example.administrator.kenya.constants.AppConstants;
+import com.example.administrator.kenya.ui.main.BuyHouseDialog;
+import com.example.administrator.kenya.utils.MyLocationUtil;
+import com.example.administrator.kenya.view.MyRadioGroup;
+import com.zhy.http.okhttp.OkHttpUtils;
+import com.zhy.http.okhttp.builder.PostFormBuilder;
+import com.zhy.http.okhttp.callback.StringCallback;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
+import butterknife.Bind;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
+import okhttp3.Call;
+
+public class BuyHouseActivity extends BaseActivity {
+    @Bind(R.id.buy_house_release)
+    TextView buyHouseRelease;
+    @Bind(R.id.dropDownMenu)
+    DropDownMenu mDropDownMenu;
+    private PostFormBuilder postFormBuilder;
+    //private int cpageNum = 1;
+    private StringCallback StringCallback;
+    private List<House> housesList = new ArrayList<>();
+    private HouseAdapter houseadapter;
+    private List<Friend> friendList;
+    private List<CityProvince> cityProvincesList = new ArrayList<>();
+    private List<String> cityProvincesListstring = new ArrayList<>();
+    List<CityProvince> cityNameList = new ArrayList<>();
+    private List<String> cityNameListstring = new ArrayList<>();
+    private String headers[] = {"位置", "类型", "面积", "总价"};
+    private List<View> popupViews = new ArrayList<View>();
+    private GirdDropDownAdapter provinceAdapter;
+    private GirdDropDownAdapter cityAdpter;
+    private ListDropDownAdapter typeAdapter;
+    private ListDropDownAdapter squareAdapter;
+    private ListDropDownAdapter moneyAdapter;
+
+    private String square[] = {"不限", "50m2以下", "50-70m2", "70-90m2", "90-110m2", "110-130m2", "130-150m2", "150-200m2", "200-300m2", "300-500m2", "500m2以上"};
+    private String money[] = {"不限", "1million以下", "1-2million", "2-3million", "3-4million", "4-5million", "5-6million", "6-7million", "7-8million", "8-9million", "9-10million", "10million以上"};
+
+    View shengshiview;
+    View housetypeview;
+    View popContentView;
+    MyRadioGroup myRadioGroup;
+    MyRadioGroup myRadioGrouptext;
+    String cityprovince = "";
+    String cityname = "";
+    String houseType = "";
+    String houseName = "";
+    String housesquare = "";
+    String househome = "";
+    String price = "";
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_buy_house);
+        ButterKnife.bind(this);
+        initOKHttp();
+        initProvinceCity();
+        initView();
+        initData();
+        initEvent();
+    }
+
+    ListView provinceView;
+    ListView typeView;
+    ListView squareView;
+    ListView moneyView;
+    ListView cityView;
+    GridView constellation;  //constellationView里面的视图布局
+    RecyclerView recyclerView;
+    RecyclerView recyclerView1;
+
+    //获取当前的地理位置，实际的地理位置。
+
+
+    private void initProvinceCity() {
+        OkHttpUtils.get().url(AppConstants.BASE_URL + "/kenya/city/findByCountCityprovince").build().execute(new StringCallback() {
+            @Override
+            public void onError(Call call, Exception e, int id) {
+                toast(getString(R.string.load_fail));
+            }
+
+            @Override
+            public void onResponse(String response, int id) {
+                List<CityProvince> addList = null;
+                try {
+                    JSONObject jsonObject = new JSONObject(response);
+                    //JSONArray jsonArray = jsonObject.getJSONArray("result");
+                    if (jsonObject.getString("code").equals("000")) {
+                    } else {
+                        toast(jsonObject.getString("message"));
+                    }
+                    response = jsonObject.getString("result");
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+                addList = JSON.parseArray(response, CityProvince.class);
+                cityProvincesList.addAll(addList);
+                cityProvincesListstring.add("不限");
+                for (int i = 0; i < cityProvincesList.size(); i++) {
+                    String cityprovince = cityProvincesList.get(i).getCityprovince();
+                    cityProvincesListstring.add(cityprovince);
+                }
+            }
+        });
+    }
+    private void initOKHttp() {
+        postFormBuilder = OkHttpUtils.post()
+                .url(AppConstants.BASE_URL + "/kenya/House/findByHouse")
+                .addParams("houseName", houseName)
+                .addParams("housesquare", housesquare)
+                .addParams("househome", househome)
+                .addParams("houseType", houseType)
+                .addParams("cityprovince", cityprovince)
+                .addParams("cityname", cityname)
+                .addParams("price", price);
+        StringCallback = new StringCallback() {
+            @Override
+            public void onError(Call call, Exception e, int id) {
+                //防止因Activity释放导致内部控件空指针
+                toast(getResources().getString(R.string.load_fail));
+            }
+
+            @Override
+            public void onResponse(String response, int id) {
+                List<House> addList = null;
+                try {
+                    JSONObject jsonObject = new JSONObject(response);
+                    if (jsonObject.getString("code").equals("000")) {
+                    } else {
+                    }
+                    response = jsonObject.getString("result");
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+                addList = JSON.parseArray(response, House.class);
+                housesList.clear();
+                housesList.addAll(addList);
+                houseadapter.notifyDataSetChanged();
+            }
+        };
+    }
+
+    private void initView() {
+        houseadapter = new HouseAdapter(this, housesList);
+        LinearLayoutManager layoutmanager = new LinearLayoutManager(this);
+        postFormBuilder.build().execute(StringCallback);
+        shengshiview = this.getLayoutInflater().inflate(R.layout.sheng_shi_choose, null);
+        provinceView = shengshiview.findViewById(R.id.lv_sheng);
+        cityView = shengshiview.findViewById(R.id.lv_shi);
+        provinceAdapter = new GirdDropDownAdapter(this, cityProvincesListstring);
+        provinceView.setDividerHeight(0);//设置ListView条目间隔的距离
+        provinceView.setAdapter(provinceAdapter);
+
+        //init age menu
+        popContentView = LayoutInflater.from(this).inflate(R.layout.buy_house_type, null);
+        myRadioGroup = (MyRadioGroup) popContentView.findViewById(R.id.myRadioGroup);
+        myRadioGrouptext = (MyRadioGroup) popContentView.findViewById(R.id.myRadioGroupText);
+
+        squareView = new ListView(this);
+        squareView.setDividerHeight(0);
+        squareAdapter = new ListDropDownAdapter(this, Arrays.asList(square));
+        squareView.setAdapter(squareAdapter);
+
+        moneyView = new ListView(this);
+        moneyView.setDividerHeight(0);
+        moneyAdapter = new ListDropDownAdapter(this, Arrays.asList(money));
+        moneyView.setAdapter(moneyAdapter);
+    }
+
+    @OnClick({R.id.buy_house_back, R.id.buy_house_release})
+    public void onViewClicked(View view) {
+        switch (view.getId()) {
+            case R.id.buy_house_back:
+                finish();
+                break;
+            case R.id.buy_house_release:
+                BuyHouseDialog buyHouseDialog = new BuyHouseDialog(this);
+                buyHouseDialog.show();
+                break;
+        }
+    }
+
+    private void initData() {
+        //init popupViews
+        popupViews.add(shengshiview);
+        popupViews.add(popContentView);
+        popupViews.add(squareView);
+        popupViews.add(moneyView);
+
+        //init context view
+        recyclerView = new RecyclerView(this);
+        recyclerView.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
+        LinearLayoutManager layoutmanager = new LinearLayoutManager(this);
+        recyclerView.setLayoutManager(layoutmanager);
+        recyclerView.setAdapter(houseadapter);
+        //init dropdownview
+        mDropDownMenu.setDropDownMenu(Arrays.asList(headers), popupViews, recyclerView);
+
+    }
+
+    /**
+     * 设置四个条件选择的点击事件
+     */
+    private void initEvent() {
+        popContentView.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View view, MotionEvent motionEvent) {
+                return true;
+            }
+        });
+        //add item click event
+        provinceView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                provinceAdapter.setCheckItem(position);
+                if (position == 0) {
+                    mDropDownMenu.closeMenu();
+                    cityprovince = "";
+                } else {
+                    cityprovince = position == 0 ? headers[0] : cityProvincesListstring.get(position);
+                }
+                mDropDownMenu.setTabText(position == 0 ? headers[0] : cityProvincesListstring.get(position));
+                //textView.append(position == 0 ? headers[0] : citys[position] + "\n");
+                initcityname(cityProvincesListstring.get(position));
+            }
+        });
+
+
+        cityView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                mDropDownMenu.setTabText(i == 0 ? headers[0] : cityView.getItemAtPosition(i).toString());
+                cityAdpter.setCheckItem(i);
+                mDropDownMenu.closeMenu();
+                if (i == 0) {
+                    cityname = "";
+                } else {
+                    cityname = i == 0 ? headers[0] : cityView.getItemAtPosition(i).toString();
+                }
+                postFormBuilder.addParams("houseName", houseName)
+                        .addParams("housesquare", housesquare)
+                        .addParams("househome", househome)
+                        .addParams("houseType", houseType)
+                        .addParams("cityprovince", cityprovince)
+                        .addParams("cityname", cityname)
+                        .addParams("price", price)
+                        .build().execute(StringCallback);
+            }
+        });
+
+        squareView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                squareAdapter.setCheckItem(position);
+                mDropDownMenu.setTabText(position == 0 ? headers[2] : square[position]);
+                // textView.append(position == 0 ? headers[2] : square[position] + "\n");
+                housesquare = position == 0 ? headers[2] : square[position];
+                mDropDownMenu.closeMenu();
+                if (position == 0) {
+                    housesquare = "";
+                } else {
+                    housesquare = position == 0 ? headers[2] : square[position];
+                }
+                postFormBuilder.addParams("houseName", houseName)
+                        .addParams("housesquare", housesquare)
+                        .addParams("househome", househome)
+                        .addParams("houseType", houseType)
+                        .addParams("cityprovince", cityprovince)
+                        .addParams("cityname", cityname)
+                        .addParams("price", price)
+                        .build().execute(StringCallback);
+            }
+        });
+        moneyView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                moneyAdapter.setCheckItem(position);
+                mDropDownMenu.setTabText(position == 0 ? headers[3] : money[position]);
+                // textView.append(position == 0 ? headers[2] : sexs[position] + "\n");
+                mDropDownMenu.closeMenu();
+                if (position == 0) {
+                    price = "";
+                } else {
+                    price = position == 0 ? headers[3] : money[position];
+                }
+                postFormBuilder.addParams("houseName", houseName)
+                        .addParams("housesquare", housesquare)
+                        .addParams("househome", househome)
+                        .addParams("houseType", houseType)
+                        .addParams("cityprovince", cityprovince)
+                        .addParams("cityname", cityname)
+                        .addParams("price", price)
+                        .build().execute(StringCallback);
+            }
+        });
+        myRadioGroup.setOnCheckedChangeListener(new MyRadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(MyRadioGroup group, int checkedId) {
+                switch (checkedId) {
+                    case R.id.radioButton1:
+                        mDropDownMenu.closeMenu();
+                        househome = "";
+                        break;
+                    case R.id.radioButton2:
+                        mDropDownMenu.closeMenu();
+                        househome = "一室";
+                        break;
+                    case R.id.radioButton3:
+                        mDropDownMenu.closeMenu();
+                        househome = "一室一厅";
+                        break;
+                    case R.id.radioButton4:
+                        mDropDownMenu.closeMenu();
+                        househome = "两室一厅";
+                        break;
+                    case R.id.radioButton5:
+                        mDropDownMenu.closeMenu();
+                        househome = "两室两厅";
+                        break;
+                    case R.id.radioButton6:
+                        mDropDownMenu.closeMenu();
+                        househome = "3室1厅";
+                        break;
+                    case R.id.radioButton7:
+                        mDropDownMenu.closeMenu();
+                        househome = "三室两厅";
+                        break;
+                    case R.id.radioButton8:
+                        mDropDownMenu.closeMenu();
+                        househome = "四室两厅";
+                        break;
+                }
+                postFormBuilder.addParams("houseName", houseName)
+                        .addParams("housesquare", housesquare)
+                        .addParams("househome", househome)
+                        .addParams("houseType", houseType)
+                        .addParams("cityprovince", cityprovince)
+                        .addParams("cityname", cityname)
+                        .addParams("price", price)
+                        .build().execute(StringCallback);
+            }
+        });
+        myRadioGrouptext.setOnCheckedChangeListener(new MyRadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(MyRadioGroup group, int checkedId) {
+                switch (checkedId) {
+                    case R.id.rg_tv1:
+                        houseType = "";
+                        break;
+                    case R.id.rg_tv2:
+                        houseType = "新房";
+                        break;
+                    case R.id.rg_tv3:
+                        houseType = "二手房";
+                        break;
+                }
+            }
+        });
+    }
+
+    /**
+     * 监听点击回退按钮事件
+     */
+    @Override
+    public void onBackPressed() {
+        //退出activity前关闭菜单
+        if (mDropDownMenu.isShowing()) {
+            mDropDownMenu.closeMenu();
+        } else {
+            super.onBackPressed();
+        }
+    }
+
+    private void initcityname(String cityprovince) {
+        cityNameListstring.clear();
+        cityNameList.clear();
+        OkHttpUtils.get().url(AppConstants.BASE_URL + "/kenya/city/findByCityprovince?cityprovince=" + cityprovince).build().execute(new StringCallback() {
+            @Override
+            public void onError(Call call, Exception e, int id) {
+                toast(getString(R.string.load_fail));
+                // Toast.makeText(context, "城市名称获取失败", Toast.LENGTH_LONG).show();
+            }
+
+            @Override
+            public void onResponse(String response, int id) {
+                List<CityProvince> addList = null;
+                try {
+                    JSONObject jsonObject = new JSONObject(response);
+                    if (jsonObject.getString("code").equals("000")) {
+
+                    } else {
+                        toast(jsonObject.getString("message"));
+                        //Toast.makeText(context, jsonObject.getString("message"), Toast.LENGTH_LONG).show();
+                    }
+                    response = jsonObject.getString("result");
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                addList = JSON.parseArray(response, CityProvince.class);
+                cityNameList.addAll(addList);
+                cityNameListstring.add("不限");
+                for (int i = 0; i < cityNameList.size(); i++) {
+                    String cityname = cityNameList.get(i).getCityname();
+                    cityNameListstring.add(cityname);
+                }
+                cityAdpter = new GirdDropDownAdapter(BuyHouseActivity.this, cityNameListstring);
+                cityView.setAdapter(cityAdpter);
+            }
+        });
+    }
+
+}

@@ -48,7 +48,6 @@ public class House implements Serializable {
     }
 
 
-
     public String getLeaseid() {
         return leaseid;
     }
@@ -162,7 +161,6 @@ public class House implements Serializable {
     public void setLeasedesc(String leasedesc) {
         this.leasedesc = leasedesc;
     }
-
 
 
     public List<String> getHouseImageUrlList() {
