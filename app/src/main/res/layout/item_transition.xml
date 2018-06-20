@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.zhy.autolayout.AutoRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white">
+
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="16sp"
+        android:layout_marginTop="20px"
+        android:layout_marginBottom="10px"
+        android:layout_marginLeft="30px"
+        android:layout_marginRight="30px"
+        android:singleLine="true"
+        android:textColor="@color/textBlack1"/>
+
+    <ImageView
+        android:id="@+id/img"
+        android:layout_width="300px"
+        android:layout_height="450px"
+        android:layout_below="@+id/title"
+        android:layout_marginLeft="30px"/>
+
+    <TextView
+        android:id="@+id/details"
+        android:layout_width="match_parent"
+        android:layout_height="450px"
+        android:layout_below="@id/title"
+        android:layout_toRightOf="@id/img"
+        android:layout_marginLeft="30px"
+        android:layout_marginRight="30px"
+        android:ellipsize="middle"
+        android:textColor="@color/textBlack2"
+        android:lineSpacingMultiplier="1.1"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="20px"
+        android:background="@color/base_bg"
+        android:layout_below="@id/img"
+        android:layout_marginTop="20px"/>
+
+
+</com.zhy.autolayout.AutoRelativeLayout>

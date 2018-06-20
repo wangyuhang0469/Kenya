@@ -12,10 +12,10 @@ public class User implements Serializable {
 
 
     private String userId;
-    private String userName;
+    private String userName = "Anna DLeiy";
     private String userPsw;
     private String userSex;
-    private String userPhonenumber;
+    private String userPhonenumber ="0714625689";
     private String userHavecar;
     private String userBirthday;
     private String userPortrait;

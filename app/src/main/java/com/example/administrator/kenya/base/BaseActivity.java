@@ -77,7 +77,7 @@ public class BaseActivity extends FragmentActivity {
     }
 
     public void log(String msg) {
-        Log.i("===============================================================", msg);
+        Log.e("===============================================================", msg);
     }
 
 

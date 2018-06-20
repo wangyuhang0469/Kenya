@@ -83,7 +83,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:text="@string/shop_online"
+                android:text="@string/news"
                 android:textColor="@drawable/tab_textcolor"
                 android:textSize="12dp" />
         </LinearLayout>

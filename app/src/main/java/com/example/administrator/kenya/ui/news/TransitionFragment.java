@@ -1,16 +1,24 @@
-package com.example.administrator.kenya.ui.city.news;
+package com.example.administrator.kenya.ui.news;
+
 
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
+import android.support.v7.widget.StaggeredGridLayoutManager;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.alibaba.fastjson.JSON;
 import com.example.administrator.kenya.R;
 import com.example.administrator.kenya.adapter.NewsAdapter;
-import com.example.administrator.kenya.base.BaseActivity;
+import com.example.administrator.kenya.adapter.TransitionAdapter;
+import com.example.administrator.kenya.base.BaseFragment;
 import com.example.administrator.kenya.classes.News;
+import com.example.administrator.kenya.classes.Transition;
 import com.example.administrator.kenya.constants.AppConstants;
 import com.example.administrator.kenya.view.MyFootRefreshView;
 import com.example.administrator.kenya.view.MyHeadRefreshView;
@@ -28,37 +36,49 @@ import java.util.List;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
-import butterknife.OnClick;
 import okhttp3.Call;
 
-public class NewsinfoActivity extends BaseActivity {
+/**
+ * A simple {@link Fragment} subclass.
+ */
+public class TransitionFragment extends BaseFragment {
 
-    @Bind(R.id.title)
-    TextView title;
+
     @Bind(R.id.recyclerView)
     RecyclerView recyclerView;
     @Bind(R.id.pullToRefreshLayout)
     PullToRefreshLayout pullToRefreshLayout;
-    private NewsAdapter newsAdapter;
-    private List<News> newsList = new ArrayList<>();
+    @Bind(R.id.nothing)
+    ImageView nothing;
+    @Bind(R.id.text)
+    TextView text;
+    private TransitionAdapter transitionAdapter;
+    private List<Transition> transitionList = new ArrayList<>();
     private int cpageNum = 1;
     private PostFormBuilder postFormBuilder;
     private StringCallback StringCallback;
 
+
+
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_newsinfo);
-        ButterKnife.bind(this);
-        title.setText(getResources().getString(R.string.news));
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        // Inflate the layout for this fragment
+        View view = inflater.inflate(R.layout.fragment_transition, container, false);
+        ButterKnife.bind(this, view);
+
+
         initOKHttp();
         initView();
         postFormBuilder.addParams("page", cpageNum + "").build().execute(StringCallback);
+
+        return view;
     }
+
 
     private void initOKHttp() {
         postFormBuilder = OkHttpUtils.post()
-                .url(AppConstants.BASE_URL + "/kenya/news/pageQuery")
+                .url(AppConstants.YJIP + "/kenya/funeral/pageQuery")
                 .addParams("page", cpageNum + "");
 
         StringCallback = new StringCallback() {
@@ -77,7 +97,7 @@ public class NewsinfoActivity extends BaseActivity {
                 //防止因Activity释放导致内部控件空指针
                 if (pullToRefreshLayout != null) {
                     cpageNum++;
-                    List<News> addList = null;
+                    List<Transition> addList = null;
                     try {
                         JSONObject jsonObject = new JSONObject(response);
                         if (jsonObject.getString("code").equals("000")) {
@@ -89,9 +109,10 @@ public class NewsinfoActivity extends BaseActivity {
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
-                    addList = JSON.parseArray(response, News.class);
-                    newsList.addAll(addList);
-                    newsAdapter.notifyDataSetChanged();
+                    addList = JSON.parseArray(response, Transition.class);
+                    if (addList != null)
+                        transitionList.addAll(addList);
+                    transitionAdapter.notifyDataSetChanged();
                     pullToRefreshLayout.finishLoadMore();
                 }
             }
@@ -100,14 +121,14 @@ public class NewsinfoActivity extends BaseActivity {
 
     //初始化组件
     private void initView() {
-        newsAdapter = new NewsAdapter(this, newsList);
-        LinearLayoutManager layoutmanager = new LinearLayoutManager(this);
+        transitionAdapter = new TransitionAdapter(getContext(), transitionList);
+        LinearLayoutManager layoutmanager = new LinearLayoutManager(getContext());
         recyclerView.setLayoutManager(layoutmanager);
-        recyclerView.setAdapter(newsAdapter);
+        recyclerView.setAdapter(transitionAdapter);
         pullToRefreshLayout.setCanRefresh(false);
         pullToRefreshLayout.setCanLoadMore(false);
-        pullToRefreshLayout.setHeaderView(new MyHeadRefreshView(this));
-        pullToRefreshLayout.setFooterView(new MyFootRefreshView(this));
+        pullToRefreshLayout.setHeaderView(new MyHeadRefreshView(getContext()));
+        pullToRefreshLayout.setFooterView(new MyFootRefreshView(getContext()));
         pullToRefreshLayout.setRefreshListener(new BaseRefreshListener() {
             @Override
             public void refresh() {
@@ -120,9 +141,9 @@ public class NewsinfoActivity extends BaseActivity {
         });
     }
 
-
-    @OnClick(R.id.back)
-    public void onViewClicked() {
-        finish();
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        ButterKnife.unbind(this);
     }
 }

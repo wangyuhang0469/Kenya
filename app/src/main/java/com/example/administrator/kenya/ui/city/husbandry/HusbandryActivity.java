@@ -174,6 +174,7 @@ public class HusbandryActivity extends BaseActivity {
         popupWindow.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         // 设置PopupWindow是否能响应外部点击事件
         popupWindow.setOutsideTouchable(true);
+        popupWindow.setFocusable(true);
         // 设置PopupWindow是否能响应点击事件
         popupWindow.setTouchable(true);
 

@@ -2,6 +2,7 @@ package com.example.administrator.kenya.ui.myself;
 
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -34,16 +35,14 @@ import java.util.ArrayList;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import crossoverone.statuslib.StatusUtil;
 import de.hdodenhof.circleimageview.CircleImageView;
 
 /**
  * A simple {@link Fragment} subclass.
  */
 public class MyselfFragment extends BaseFragment {
-    @Bind(R.id.title)
-    TextView title;
-    @Bind(R.id.back)
-    ImageView back;
+
     @Bind(R.id.my_center_name)
     TextView myCenterName;
     @Bind(R.id.avatar)
@@ -64,8 +63,8 @@ public class MyselfFragment extends BaseFragment {
         View view = inflater.inflate(R.layout.fragment_myself, container, false);
         ButterKnife.bind(this, view);
         EventBus.getDefault().register(this);
-        title.setText(getResources().getString(R.string.personal));
-        back.setVisibility(View.GONE);
+
+
         myCenterName.setText(user.getUserName());
         Glide.with(this).load(User.getInstance().getUserPortrait())
                 .centerCrop()
@@ -120,7 +119,7 @@ public class MyselfFragment extends BaseFragment {
         myCenterName.setText(messageEvent2.getMseeage());
     }
 
-    @OnClick({R.id.avatar, R.id.myName, R.id.phone})
+    @OnClick({R.id.avatar, R.id.phone})
     public void onViewClicked2(View view) {
 //        startActivity(MyInformationActivity.class,null);
         getActivity().startActivityForResult(new Intent(getActivity(), MyInformationActivity.class), 1);

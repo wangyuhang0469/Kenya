@@ -8,6 +8,8 @@
     <!-- 网络权限 -->
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+
     <!-- 相机权限 -->
     <uses-permission android:name="android.permission.CAMERA" />
     <!-- 读写权限 -->
@@ -25,9 +27,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity
-            android:name=".MainActivity"
-            android:theme="@style/AppTheme.green_action_bar" />
+        <activity android:name=".MainActivity" />
         <activity android:name=".base.BaseActivity" />
         <activity
             android:name=".ui.main.IntroActivity"
@@ -69,6 +69,16 @@
                 android:resource="@xml/file_paths" />
         </provider>
 
+        <!-- <provider -->
+        <!-- android:authorities="com.navston.shaxi.fileprovider" -->
+        <!-- android:name="android.support.v4.content.FileProvider" -->
+        <!-- android:grantUriPermissions="true" -->
+        <!-- android:exported="false"> -->
+        <!-- <meta-data -->
+        <!-- android:name="android.support.FILE_PROVIDER_PATHS" -->
+        <!-- android:resource="@xml/filepaths"/> -->
+        <!-- </provider> -->
+
         <activity
             android:name=".ui.city.job.JobActivity"
             android:theme="@style/AppTheme.dark_action_bar" />
@@ -108,7 +118,9 @@
         <activity android:name=".ui.car.MapActivity" />
         <activity android:name=".ui.city.buyhouse.BuyHouseActivity" />
         <activity android:name=".ui.city.buyhouse.BuyHouseInfoActivity" />
-        <activity android:name=".ui.city.buyhouse.ProvinceCityDetailsActivity"></activity>
+        <activity android:name=".ui.city.buyhouse.ProvinceCityDetailsActivity" />
+        <activity android:name=".ui.news.TransitionReleaseActivity" />
+        <activity android:name=".ui.news.ClassifiedReleaseActivity"></activity>
     </application>
 
 </manifest>

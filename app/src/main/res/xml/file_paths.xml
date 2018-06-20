@@ -14,4 +14,7 @@
     <external-path
         name="dcim"
         path="DCIM/" />
+
+    <external-path name="apk"  path="apk"/>
+    <!--<root-path path="." name="external_storage_root" />-->
 </paths>

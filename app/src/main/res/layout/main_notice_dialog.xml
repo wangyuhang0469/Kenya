@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.zhy.autolayout.AutoRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+    
+    <com.zhy.autolayout.AutoLinearLayout
+        android:layout_width="800px"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg8dp_white"
+        android:layout_centerInParent="true"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/information"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/textBlack1"
+            android:lineSpacingMultiplier="1.1"
+            android:textSize="16sp"
+            android:padding="50px"/>
+
+        <include layout="@layout/line_max"/>
+
+        <TextView
+            android:id="@+id/close"
+            android:layout_width="match_parent"
+            android:layout_height="130px"
+            android:text="OK"
+            android:textSize="17sp"
+            android:textColor="@color/textgreen1"
+            android:gravity="center"/>
+
+
+
+    </com.zhy.autolayout.AutoLinearLayout>
+
+
+</com.zhy.autolayout.AutoRelativeLayout>

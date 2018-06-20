@@ -1,33 +1,58 @@
 package com.example.administrator.kenya;
 
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Bitmap;
+import android.graphics.Color;
+import android.net.wifi.WifiManager;
+import android.os.Build;
 import android.os.Bundle;
+import android.os.Environment;
 import android.preference.PreferenceManager;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v7.widget.LinearLayoutCompat;
 import android.view.KeyEvent;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.LinearLayout;
-import android.widget.Toast;
+import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.animation.GlideAnimation;
+import com.bumptech.glide.request.target.SimpleTarget;
 import com.example.administrator.kenya.base.BaseActivity;
+import com.example.administrator.kenya.constants.AppConstants;
+import com.example.administrator.kenya.interfaces.OnChooseListener;
 import com.example.administrator.kenya.ui.car.CallCarFragment;
 import com.example.administrator.kenya.ui.city.CityHomeFragment;
 import com.example.administrator.kenya.ui.main.BlankFragment;
 import com.example.administrator.kenya.ui.main.IntroActivity;
+import com.example.administrator.kenya.ui.main.MainNoticeDialog;
+import com.example.administrator.kenya.ui.main.MainPosterDialog;
+import com.example.administrator.kenya.ui.main.UpdateDialog;
 import com.example.administrator.kenya.ui.main.WelcomeActivity;
-import com.example.administrator.kenya.ui.myself.LoginActivity;
 import com.example.administrator.kenya.ui.myself.MyselfFragment;
+import com.example.administrator.kenya.ui.news.NewsFragment;
 import com.example.administrator.kenya.utils.APKVersionCodeUtils;
-import com.example.administrator.kenya.utils.DeviceUuidFactory;
-import com.example.administrator.kenya.view.TextBannerView;
+import com.example.administrator.kenya.utils.OpenFileUtil;
+import com.zhy.http.okhttp.OkHttpUtils;
+import com.zhy.http.okhttp.callback.FileCallBack;
+import com.zhy.http.okhttp.callback.StringCallback;
 
 import org.greenrobot.eventbus.EventBus;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.File;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import crossoverone.statuslib.StatusUtil;
+import okhttp3.Call;
 
 public class MainActivity extends BaseActivity {
 
@@ -42,7 +67,7 @@ public class MainActivity extends BaseActivity {
 
     private CityHomeFragment cityHomeFragment;
     private CallCarFragment blankFragment2;
-    private BlankFragment blankFragment3;
+    private NewsFragment newsFragment;
     private MyselfFragment myselfFragment;
     private Fragment[] fragments;
     private LinearLayout[] linearLayouts;
@@ -56,9 +81,33 @@ public class MainActivity extends BaseActivity {
         //isFirstStart();
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
+
+        // 第二个参数是状态栏色值, 第三个是兼容5.0到6.0之间状态栏颜色字体只能是白色。
+        // 如果沉浸的颜色与状态栏颜色冲突, 设置一层浅色对比能显示出状态栏字体
+        // 如果您的项目是6.0以上机型, 推荐使用两个参数的setUseStatusBarColor。
+        StatusUtil.setUseStatusBarColor(this, getColor(R.color.theme), Color.parseColor("#33000000"));
+
+        // 第二个参数是是否沉浸,第三个参数是状态栏字体是否为黑色
+        StatusUtil.setSystemStatus(this, true, false);
+
+//        initTitle();
+
         initView();
 
+        getposterOrNotice();
+
     }
+
+//    private void initTitle() {
+//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+//            LinearLayoutCompat.LayoutParams layoutParams = new LinearLayoutCompat.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
+//            layoutParams.setMargins(0, StatusUtil.getStatusBarHeight(this), 0, 0);
+//            //顶部距离
+//            TextView titleView = new TextView(this);
+//            titleView.setText("djopwijdioajdad");
+//            titleView.setLayoutParams(layoutParams);
+//        }
+//    }
 
     protected void initView() {
         linearLayouts = new LinearLayout[4];
@@ -70,15 +119,15 @@ public class MainActivity extends BaseActivity {
 
         cityHomeFragment = new CityHomeFragment();
         blankFragment2 = new CallCarFragment();
-        blankFragment3 = new BlankFragment();
+        newsFragment = new NewsFragment();
         myselfFragment = new MyselfFragment();
-        fragments = new Fragment[]{cityHomeFragment, blankFragment2, blankFragment3, myselfFragment};
+        fragments = new Fragment[]{cityHomeFragment, blankFragment2, newsFragment, myselfFragment};
         getSupportFragmentManager().beginTransaction()
                 .add(R.id.fragment_container, cityHomeFragment)
                 .add(R.id.fragment_container, blankFragment2)
-                .add(R.id.fragment_container, blankFragment3)
+                .add(R.id.fragment_container, newsFragment)
                 .add(R.id.fragment_container, myselfFragment)
-                .hide(myselfFragment).hide(blankFragment3).hide(blankFragment2)
+                .hide(myselfFragment).hide(newsFragment).hide(blankFragment2)
                 .show(cityHomeFragment).commit();
     }
 
@@ -138,6 +187,7 @@ public class MainActivity extends BaseActivity {
             case R.id.tab_1:
                 index = 0;
                 onTabSelect(index);
+                StatusUtil.setUseStatusBarColor(this, getColor(R.color.theme), Color.parseColor("#33000000"));
                 break;
             case R.id.tab_2:
                 index = 1;
@@ -146,10 +196,12 @@ public class MainActivity extends BaseActivity {
             case R.id.tab_3:
                 index = 2;
                 onTabSelect(index);
+                StatusUtil.setUseStatusBarColor(this,Color.parseColor("#4b4b4b"), Color.parseColor("#33000000"));
                 break;
             case R.id.tab_4:
                 index = 3;
                 onTabSelect(index);
+                StatusUtil.setUseStatusBarColor(this, Color.TRANSPARENT, Color.parseColor("#33000000"));
                 break;
         }
         if (index != 0)
@@ -173,6 +225,181 @@ public class MainActivity extends BaseActivity {
         if (EventBus.getDefault().isRegistered(this)) {
             EventBus.getDefault().unregister(this);
         }
+    }
+
+    private void getposterOrNotice(){
+        log("开始请求");
+        OkHttpUtils.post()
+                .url(AppConstants.BASE_URL + "/kenya/posterOrNotice/query")
+                .build()
+                .execute(new StringCallback() {
+                    @Override
+                    public void onError(Call call, Exception e, int id) {
+                        e.printStackTrace();
+                    }
+
+                    @Override
+                    public void onResponse(String response, int id) {
+                        JSONObject jsonObject = null;
+                        try {
+                            jsonObject = new JSONObject(response);
+                            log(response);
+                            if (jsonObject.getString("code").equals("000")){
+                                jsonObject = jsonObject.getJSONObject("data");
+                                SharedPreferences getPrefs = PreferenceManager.getDefaultSharedPreferences(getBaseContext());
+                                String  lastPoster =getPrefs.getString("lastPoster" , "0");
+                                //每个海报只显示一次
+                                if (!jsonObject.getString("id").equals(lastPoster)) {
+                                    SharedPreferences.Editor e = getPrefs.edit();
+                                    e.putString("lastPoster", jsonObject.getString("id"));
+                                    e.apply();
+                                    //如果是海报则...
+                                    if (jsonObject.getString("type").equals("Poster")) {
+                                        Glide.with(MainActivity.this)
+                                                .load(AppConstants.BASE_URL + jsonObject.getString("img0"))
+                                                .asBitmap()
+                                                .into(new SimpleTarget<Bitmap>() {
+                                                    @Override
+                                                    public void onResourceReady(Bitmap resource, GlideAnimation<? super Bitmap> glideAnimation) {
+                                                        MainPosterDialog mainPosterDialog = new MainPosterDialog(MainActivity.this, resource);
+                                                        mainPosterDialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
+                                                            @Override
+                                                            public void onDismiss(DialogInterface dialogInterface) {
+                                                                getNewVersions();   //执行是否有新版本逻辑
+                                                            }
+                                                        });
+                                                        mainPosterDialog.show();
+                                                    }
+                                                });
+                                        //如果是通知则...
+                                    } else if (jsonObject.getString("type").equals("Notice")) {
+                                        MainNoticeDialog mainNoticerDialog = new MainNoticeDialog(MainActivity.this, jsonObject.getString("article"));
+                                        mainNoticerDialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
+                                            @Override
+                                            public void onDismiss(DialogInterface dialogInterface) {
+                                                getNewVersions();     //执行是否有新版本逻辑
+                                            }
+                                        });
+                                        mainNoticerDialog.show();
+                                    }
+                                }else {
+                                    getNewVersions();    //执行是否有新版本逻辑
+                                }
+                            }
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+
+                    }
+                });
+
+    }
+
+    private void getNewVersions(){
+        OkHttpUtils.post()
+                .url(AppConstants.BASE_URL + "/kenya/version/query")
+                .build()
+                .execute(new StringCallback() {
+                    @Override
+                    public void onError(Call call, Exception e, int id) {
+                        e.printStackTrace();
+                    }
+
+
+                    @Override
+                    public void onResponse(String response, int id) {
+                        log(response);
+                        JSONObject jsonObject = null;
+                        final SharedPreferences getPrefs = PreferenceManager.getDefaultSharedPreferences(getBaseContext());
+                        String newVersion = "";
+                        final String lastDownloadVersion = getPrefs.getString("version" , "1.0.0");
+                        final String nowVersion = APKVersionCodeUtils.getVerName(MainActivity.this);
+                        String apkUrl = "";
+                        String  information= "";
+                        boolean  forcedUpdate= false;
+
+                        try {
+                            jsonObject = new JSONObject(response);
+
+                            if (jsonObject.getString("code").equals("000")){
+                                jsonObject = jsonObject.getJSONObject("data");
+                                newVersion = jsonObject.getString("version");
+                                apkUrl = jsonObject.getString("apkUrl");
+                                information = jsonObject.getString("describes");
+                                forcedUpdate = jsonObject.getBoolean("forcedUpdate");
+                            }
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+
+
+
+                        //判断最新版本 与 当前版本
+                        if (APKVersionCodeUtils.compareVersion(newVersion , nowVersion) > 0){
+                            log("网上大于现在");
+                            //判断最新版本是否下载
+                            if (APKVersionCodeUtils.compareVersion(newVersion , lastDownloadVersion) > 0) {
+                                log("未下载");
+                                //若WIFI为开启状态下载新版本
+                                WifiManager wifiManager = (WifiManager) getApplicationContext().getSystemService(Context.WIFI_SERVICE);
+                                if (wifiManager != null && wifiManager.isWifiEnabled()){
+                                    log("wifi已开启 开始下载");
+                                    final String finalInformation = information;
+                                    final String finalNewVersion = newVersion;
+                                    final boolean finalForcedUpdate = forcedUpdate;
+                                    OkHttpUtils.get()
+                                            .url(AppConstants.BASE_URL + apkUrl)
+                                            .build()
+                                            .execute(new FileCallBack(Environment.getExternalStorageDirectory().getAbsolutePath() + "/apk", "BL"+ finalNewVersion +".apk") {
+
+                                                @Override
+                                                public void onError(Call call, Exception e, int id) {
+                                                    e.printStackTrace();
+                                                }
+
+                                                @Override
+                                                public void onResponse(File response, int id) {
+                                                    OpenFileUtil.deleteFile(new File(Environment.getExternalStorageDirectory().getAbsolutePath() + "/apk", "BL"+ lastDownloadVersion +".apk"));
+                                                    SharedPreferences.Editor e = getPrefs.edit();
+                                                    e.putString("version", finalNewVersion);
+                                                    e.apply();
+                                                    log(response.getPath());
+                                                    UpdateDialog updateDialog = new UpdateDialog(MainActivity.this,response.getPath() , finalNewVersion, finalInformation , finalForcedUpdate).setOnChooseListener(new OnChooseListener() {
+                                                        @Override
+                                                        public void yes(String message) {}
+                                                        @Override
+                                                        public void no(String message) {
+                                                            if (message.equals("true"))
+                                                                finish();
+                                                        }
+                                                    });
+                                                    updateDialog.setCancelable(false);
+                                                    updateDialog.show();
+
+                                                }
+                                            });
+                                }
+                            }else {
+                                UpdateDialog updateDialog = new UpdateDialog(MainActivity.this,UpdateDialog.DOWNLOAD_PATH ,lastDownloadVersion, information, forcedUpdate).setOnChooseListener(new OnChooseListener() {
+                                    @Override
+                                    public void yes(String message) {}
+                                    @Override
+                                    public void no(String message) {
+                                        if (message.equals("true"))
+                                            finish();
+                                    }
+                                });
+
+                                updateDialog.setCancelable(false);
+                                updateDialog.show();
+                            }
+                        }else {
+                            log("不大于");
+                        }
+
+
+                    }
+                });
     }
 
 }

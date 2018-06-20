@@ -27,10 +27,10 @@ public class PosterDialog extends Dialog{
         findViewById(R.id.image).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                Intent intent = new Intent(Intent.ACTION_DIAL);
-//                Uri data = Uri.parse("tel:" + "0780051319");
-//                intent.setData(data);
-//                getContext().startActivity(intent);
+                Intent intent = new Intent(Intent.ACTION_DIAL);
+                Uri data = Uri.parse("tel:" + "0780051319");
+                intent.setData(data);
+                getContext().startActivity(intent);
                 PosterDialog.this.dismiss();
             }
         });

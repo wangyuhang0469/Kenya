@@ -4,7 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.example.administrator.kenya.ui.city.CityHomeFragment">
+    tools:context="com.example.administrator.kenya.ui.city.CityHomeFragment"
+    android:fitsSystemWindows="true">
 
     <include layout="@layout/title_bar" />
 

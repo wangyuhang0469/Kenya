@@ -3,6 +3,7 @@ package com.example.administrator.kenya.ui.city;
 
 import android.Manifest;
 import android.content.pm.PackageManager;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
@@ -60,6 +61,7 @@ import java.util.List;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import crossoverone.statuslib.StatusUtil;
 import okhttp3.Call;
 
 import static com.example.administrator.kenya.MyApplication.MyApplication.mContext;
@@ -95,6 +97,7 @@ public class CityHomeFragment extends BaseFragment {
         ButterKnife.bind(this, view);
 
 
+
         permissionList.add(Manifest.permission.CAMERA);
         permissionList.add(Manifest.permission.RECORD_AUDIO);
         permissionList.add(Manifest.permission.WRITE_EXTERNAL_STORAGE);
@@ -109,17 +112,7 @@ public class CityHomeFragment extends BaseFragment {
         data = new ArrayList<>();
         initOkhttpBanner();
 
-        MyLocationUtil.getInstance(getContext()).getLocationInformation(new MyLocationListener() {
-            @Override
-            public void success(String province, String city) {
-                toast(province + city);
-            }
 
-            @Override
-            public void failed(String message) {
-                toast(message);
-            }
-        });
         return view;
     }
 
