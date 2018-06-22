@@ -121,6 +121,8 @@
         <activity android:name=".ui.city.buyhouse.ProvinceCityDetailsActivity" />
         <activity android:name=".ui.news.TransitionReleaseActivity" />
         <activity android:name=".ui.news.ClassifiedReleaseActivity"></activity>
+        <activity android:name=".ui.city.buyhouse.BuyHouseDetailActivity" />
+        <activity android:name=".ui.city.buyhouse.BuyHouseSearchActivity"></activity>
     </application>
 
 </manifest>

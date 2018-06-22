@@ -32,7 +32,6 @@
 
             <include layout="@layout/line" />
 
-
             <EditText
                 android:id="@+id/framname"
                 style="@style/edit_base2"
@@ -141,7 +140,6 @@
 
         </com.zhy.autolayout.AutoLinearLayout>
     </com.example.administrator.kenya.view.MyObervalbleScrollView>
-
 
     <TextView
         android:id="@+id/release"

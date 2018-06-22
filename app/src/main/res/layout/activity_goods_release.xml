@@ -21,6 +21,14 @@
             android:orientation="vertical"
             android:paddingBottom="50px">
 
+            <Spinner
+                android:id="@+id/spinner"
+                android:layout_width="match_parent"
+                android:layout_height="150px"
+                android:background="#00000000"
+                android:spinnerMode="dialog" />
+
+            <include layout="@layout/line" />
 
             <com.zhy.autolayout.AutoLinearLayout
                 android:layout_width="match_parent"
@@ -46,6 +54,31 @@
                     android:paddingLeft="30px" />
 
             </com.zhy.autolayout.AutoLinearLayout>
+
+            <include layout="@layout/line" />
+
+            <com.zhy.autolayout.AutoRelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="150px"
+                android:gravity="center_vertical">
+
+                <TextView
+                    android:id="@+id/goods_address"
+                    style="@style/edit_base2"
+                    android:gravity="center_vertical"
+                    android:hint="请选择位置"
+                    android:maxLength="50"
+                    android:paddingLeft="30px" />
+
+                <ImageView
+                    android:id="@+id/goods_inter"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="30px"
+                    android:padding="40px"
+                    android:src="@mipmap/my_center_inter2" />
+            </com.zhy.autolayout.AutoRelativeLayout>
 
             <include layout="@layout/line" />
 
@@ -119,8 +152,8 @@
                 android:layout_marginTop="24px"
                 android:gravity="center"
                 android:hint="@string/enter_your_selling_price"
-                android:maxLength="10"
-                android:inputType="number" />
+                android:inputType="number"
+                android:maxLength="10" />
 
             <include layout="@layout/line" />
 
@@ -130,8 +163,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="150px"
                 android:gravity="center"
-                android:maxLength="35"
-                android:hint="@string/enter_personal_contacts" />
+                android:hint="@string/enter_personal_contacts"
+                android:maxLength="35" />
 
             <include layout="@layout/line" />
 
@@ -142,8 +175,8 @@
                 android:layout_height="150px"
                 android:gravity="center"
                 android:hint="@string/enter_phone_number"
-                android:maxLength="18"
-                android:inputType="phone" />
+                android:inputType="phone"
+                android:maxLength="18" />
 
             <include layout="@layout/line" />
 

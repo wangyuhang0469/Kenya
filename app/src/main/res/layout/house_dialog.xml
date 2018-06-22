@@ -6,7 +6,7 @@
     android:orientation="vertical">
 
     <TextView
-        android:id="@+id/buy_house_choose"
+        android:id="@+id/house_choose"
         android:layout_width="match_parent"
         android:layout_height="150px"
         android:background="@color/base_bg"
@@ -22,13 +22,13 @@
         android:background="@color/line1" />
 
     <TextView
-        android:id="@+id/buy_house_dialog_newhouse"
+        android:id="@+id/house_dialog_house"
         android:layout_width="match_parent"
         android:layout_height="150px"
         android:background="@color/white"
         android:gravity="center"
         android:maxLength="35"
-        android:text="新房"
+        android:text="住宅"
         android:textColor="@color/textBlack1"
         android:textSize="14sp" />
 
@@ -38,13 +38,29 @@
         android:background="@color/line1" />
 
     <TextView
-        android:id="@+id/buy_house_dialog_oldhouse"
+        android:id="@+id/house_dialog_office_building"
         android:layout_width="match_parent"
         android:layout_height="150px"
         android:background="@color/white"
         android:gravity="center"
         android:maxLength="35"
-        android:text="二手房"
+        android:text="写字楼"
+        android:textColor="@color/textBlack1"
+        android:textSize="14sp" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.3dp"
+        android:background="@color/line1" />
+
+    <TextView
+        android:id="@+id/house_dialog_workshop"
+        android:layout_width="match_parent"
+        android:layout_height="150px"
+        android:background="@color/white"
+        android:gravity="center"
+        android:maxLength="35"
+        android:text="厂房"
         android:textColor="@color/textBlack1"
         android:textSize="14sp" />
 </com.zhy.autolayout.AutoLinearLayout>

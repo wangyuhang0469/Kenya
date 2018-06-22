@@ -1,35 +1,43 @@
 package com.example.administrator.kenya.ui.city.buyhouse;
 
+import android.Manifest;
+import android.content.Context;
+import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.location.LocationManager;
 import android.os.Bundle;
-import android.util.Log;
+import android.provider.Settings;
+import android.support.v4.content.ContextCompat;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.administrator.kenya.R;
 import com.example.administrator.kenya.base.BaseActivity;
 import com.example.administrator.kenya.interfaces.MyLocationListener;
-import com.example.administrator.kenya.ui.main.YesOrNoDialog;
 import com.example.administrator.kenya.utils.MyLocationUtil;
-
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-import static com.example.administrator.kenya.MyApplication.MyApplication.mContext;
-
 public class ProvinceCityDetailsActivity extends BaseActivity {
-
     @Bind(R.id.back)
     ImageView back;
     @Bind(R.id.title)
     TextView title;
-    @Bind(R.id.buy_house_info_title)
-    TextView buyHouseInfoTitle;
+    @Bind(R.id.province_city_detail)
+    TextView provinceCityDetail;
+    @Bind(R.id.province_city_detail_et)
+    EditText provinceCityDetailEt;
     @Bind(R.id.buy_house_province_city_sure)
     TextView buyHouseProvinceCitySure;
+    Intent intent;
+    String provinceName;
+    String cityName;
+    private LocationManager lm;//位置管理
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,17 +45,8 @@ public class ProvinceCityDetailsActivity extends BaseActivity {
         setContentView(R.layout.activity_province_city_details);
         ButterKnife.bind(this);
         title.setText("省市详情");
-        MyLocationUtil.getInstance(this).getLocationInformation(new MyLocationListener() {
-            @Override
-            public void success(String province, String city) {
-                toast(province + city);
-            }
-
-            @Override
-            public void failed(String message) {
-                toast(message);
-            }
-        });
+        intent = new Intent();
+        permissionPosition();
     }
 
     @OnClick({R.id.back, R.id.buy_house_province_city_sure})
@@ -57,7 +56,50 @@ public class ProvinceCityDetailsActivity extends BaseActivity {
                 finish();
                 break;
             case R.id.buy_house_province_city_sure:
+                if (provinceCityDetailEt.getText().length() == 0) {
+                    toast("请输入详细地址");
+                } else if (provinceName.length() == 0 || cityName.length() == 0) {
+                    toast("省市信息有误");
+                } else {
+                    Bundle bundle = new Bundle();
+                    bundle.putString("province", provinceName);
+                    bundle.putString("city", cityName);
+                    bundle.putString("content", provinceCityDetailEt.getText().toString());
+                    intent.putExtras(bundle);
+                    this.setResult(RESULT_OK, intent);
+                    this.finish();
+                }
                 break;
         }
     }
+
+    public void permissionPosition() {
+        lm = (LocationManager) this.getSystemService(Context.LOCATION_SERVICE);
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)
+                != PackageManager.PERMISSION_GRANTED) {
+            // 没有权限，申请权限。
+            Toast.makeText(this, "请设置定位权限", Toast.LENGTH_SHORT).show();
+        } else {
+            // 有权限了
+            pp();
+            Toast.makeText(this, "有权限", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    public void pp() {
+        MyLocationUtil.getInstance(this).getLocationInformation(new MyLocationListener() {
+            @Override
+            public void success(String province, String city) {
+                toast(province + city);
+                provinceCityDetail.setText(province + city);
+                provinceName = province;
+                cityName = city;
+            }
+            @Override
+            public void failed(String message) {
+                toast(message);
+            }
+        });
+    }
+
 }

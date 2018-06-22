@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     tools:context="com.example.administrator.kenya.ui.city.buyhouse.BuyHouseInfoActivity">
 
     <include
@@ -46,21 +47,24 @@
 
             <include layout="@layout/line" />
 
-            <com.zhy.autolayout.AutoLinearLayout
+            <com.zhy.autolayout.AutoRelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="150px"
                 android:gravity="center_vertical">
 
                 <TextView
+                    android:id="@+id/buy_house_info_type"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:layout_marginLeft="50px"
+                    android:gravity="center_vertical"
                     android:text="户型" />
 
                 <TextView
                     android:id="@+id/buy_house_info_types"
-                    android:layout_width="250dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="150px"
+                    android:layout_toRightOf="@+id/buy_house_info_type"
                     android:gravity="center_vertical"
                     android:hint="请选择您的户型信息"
                     android:maxLength="50"
@@ -69,11 +73,12 @@
                 <ImageView
                     android:id="@+id/buy_house_iv_type"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="60px"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="60px"
                     android:padding="10dp"
                     android:src="@mipmap/drop_down_green" />
-            </com.zhy.autolayout.AutoLinearLayout>
+            </com.zhy.autolayout.AutoRelativeLayout>
 
             <include layout="@layout/line" />
 
@@ -91,7 +96,7 @@
                     android:id="@+id/buy_house_info_square"
                     style="@style/edit_base2"
                     android:gravity="center_vertical"
-                    android:hint="请输入房屋面积"
+                    android:hint="请输入房屋面积(/m2)"
                     android:inputType="number"
                     android:maxLength="5"
                     android:paddingLeft="30px" />
@@ -100,15 +105,15 @@
 
             <include layout="@layout/line" />
 
-            <com.zhy.autolayout.AutoLinearLayout
+            <com.zhy.autolayout.AutoRelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="150px"
                 android:gravity="center_vertical">
 
                 <TextView
                     android:id="@+id/buy_house_positoon"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="150px"
                     android:layout_marginLeft="50px"
                     android:gravity="center_vertical"
                     android:text="位置" />
@@ -126,10 +131,11 @@
                     android:id="@+id/buy_house_inter"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="600px"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="30px"
                     android:padding="40px"
                     android:src="@mipmap/my_center_inter2" />
-            </com.zhy.autolayout.AutoLinearLayout>
+            </com.zhy.autolayout.AutoRelativeLayout>
 
             <include layout="@layout/line" />
 
@@ -147,8 +153,9 @@
                     android:id="@+id/buy_house_info_price"
                     style="@style/edit_base2"
                     android:gravity="center_vertical"
-                    android:hint="输入您想卖出的总价格"
-                    android:maxLength="50"
+                    android:hint="输入您想卖出的总价格(KSh)"
+                    android:inputType="number"
+                    android:maxLength="10"
                     android:paddingLeft="30px" />
             </com.zhy.autolayout.AutoLinearLayout>
 

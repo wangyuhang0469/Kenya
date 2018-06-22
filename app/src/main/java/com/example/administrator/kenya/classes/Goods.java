@@ -29,7 +29,6 @@ public class Goods implements Serializable {
     String goodsdesc;
     Issuer user;
 
-
     public Issuer getUser() {
         return user;
     }
@@ -37,7 +36,6 @@ public class Goods implements Serializable {
     public void setUser(Issuer user) {
         this.user = user;
     }
-
 
 
     public String getGoodsid() {
@@ -136,18 +134,17 @@ public class Goods implements Serializable {
         this.goodsdesc = goodsdesc;
     }
 
-
     public ArrayList<String> getImageUrlList() {
         ArrayList<String> imageUrlList = new ArrayList<>();
-        if (!goodsimgs.equals(""))
+        if (!(goodsimgs == null || goodsimgs.equals("")))
             imageUrlList.add(AppConstants.BASE_URL + goodsimgs);
-        if (!goodsimg1.equals(""))
+        if (!(goodsimg1 == null || goodsimg1.equals("")))
             imageUrlList.add(AppConstants.BASE_URL + goodsimg1);
-        if (!goodsimg2.equals(""))
+        if (!(goodsimg2 == null || goodsimg2.equals("")))
             imageUrlList.add(AppConstants.BASE_URL + goodsimg2);
-        if (!goodsimg3.equals(""))
+        if (!(goodsimg3 == null || goodsimg3.equals("")))
             imageUrlList.add(AppConstants.BASE_URL + goodsimg3);
-        if (!goodsimg4.equals(""))
+        if (!(goodsimg4 == null || goodsimg4.equals("")))
             imageUrlList.add(AppConstants.BASE_URL + goodsimg4);
         return imageUrlList;
     }

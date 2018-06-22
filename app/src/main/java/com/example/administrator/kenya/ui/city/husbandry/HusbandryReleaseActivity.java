@@ -59,7 +59,6 @@ public class HusbandryReleaseActivity extends BaseActivity {
     @Bind(R.id.framphone)
     EditText framphone;
 
-
     private ArrayList<String> mResults = new ArrayList<>();
     private ArrayList<File> compressFile = new ArrayList<>();
 
@@ -84,7 +83,6 @@ public class HusbandryReleaseActivity extends BaseActivity {
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, R.layout.spinner_simple, R.id.spinner_tv, types);
         adapter.setDropDownViewResource(R.layout.item_spinner);
         spinner.setAdapter(adapter);
-
         framname.requestFocus();
     }
 
@@ -95,7 +93,6 @@ public class HusbandryReleaseActivity extends BaseActivity {
             if (resultCode == RESULT_OK) {
                 mResults = data.getStringArrayListExtra("select_result");
                 assert mResults != null;
-
                 // show results in textview
                 StringBuffer sb = new StringBuffer();
                 sb.append(String.format("Totally %d images selected:", mResults.size())).append("\n");
@@ -121,10 +118,8 @@ public class HusbandryReleaseActivity extends BaseActivity {
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-
         if (requestCode == 1) {
             boolean isAllGranted = true;
-
             // 判断是否所有的权限都已经授予了
             for (int grant : grantResults) {
                 if (grant != PackageManager.PERMISSION_GRANTED) {
@@ -132,13 +127,11 @@ public class HusbandryReleaseActivity extends BaseActivity {
                     break;
                 }
             }
-
             if (isAllGranted) {
                 startCamera();
             }
         }
     }
-
 
     private void startCamera() {
         Intent intent = new Intent(HusbandryReleaseActivity.this, MultiImageSelectorActivity.class);
@@ -203,8 +196,6 @@ public class HusbandryReleaseActivity extends BaseActivity {
                                 }).launch();
                     }
                 }
-
-
                 break;
         }
     }

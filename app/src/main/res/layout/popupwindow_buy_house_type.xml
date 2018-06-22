@@ -2,7 +2,7 @@
 <com.zhy.autolayout.AutoLinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
+    android:background="@color/grey"
     android:orientation="vertical">
 
     <com.example.administrator.kenya.view.MyRadioGroup
@@ -30,7 +30,7 @@
                     android:layout_weight="1"
                     android:background="@drawable/popup_bg"
                     android:button="@null"
-                    android:checked="false"
+                    android:checked="true"
                     android:gravity="center"
                     android:minHeight="78px"
                     android:text="取消"
@@ -47,7 +47,7 @@
                     android:button="@null"
                     android:gravity="center"
                     android:minHeight="78px"
-                    android:text="一室"
+                    android:text="1室"
                     android:textColor="@drawable/popup_textcolor"
                     android:textSize="13sp" />
 
@@ -61,7 +61,7 @@
                     android:button="@null"
                     android:gravity="center"
                     android:minHeight="78px"
-                    android:text="一室一厅"
+                    android:text="1室1厅"
                     android:textColor="@drawable/popup_textcolor"
                     android:textSize="13sp" />
 
@@ -75,7 +75,7 @@
                     android:button="@null"
                     android:gravity="center"
                     android:minHeight="78px"
-                    android:text="两室一厅"
+                    android:text="2室1厅"
                     android:textColor="@drawable/popup_textcolor"
                     android:textSize="13sp" />
             </com.zhy.autolayout.AutoLinearLayout>
@@ -97,7 +97,7 @@
                     android:button="@null"
                     android:gravity="center"
                     android:minHeight="78px"
-                    android:text="两室两厅"
+                    android:text="2室2厅"
                     android:textColor="@drawable/popup_textcolor"
                     android:textSize="13sp" />
 
@@ -112,7 +112,7 @@
                     android:button="@null"
                     android:gravity="center"
                     android:minHeight="78px"
-                    android:text="三室一厅"
+                    android:text="3室1厅"
                     android:textColor="@drawable/popup_textcolor"
                     android:textSize="13sp" />
 
@@ -126,7 +126,7 @@
                     android:button="@null"
                     android:gravity="center"
                     android:minHeight="78px"
-                    android:text="三室两厅"
+                    android:text="3室2厅"
                     android:textColor="@drawable/popup_textcolor"
                     android:textSize="13sp" />
 
@@ -140,7 +140,7 @@
                     android:button="@null"
                     android:gravity="center"
                     android:minHeight="78px"
-                    android:text="四室一厅"
+                    android:text="4室1厅"
                     android:textColor="@drawable/popup_textcolor"
                     android:textSize="13sp" />
             </com.zhy.autolayout.AutoLinearLayout>

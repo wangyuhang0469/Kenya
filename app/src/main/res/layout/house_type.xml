@@ -44,7 +44,7 @@
                     android:gravity="center"
                     android:paddingLeft="20px"
                     android:paddingRight="20px"
-                    android:text="新房"
+                    android:text="住宅"
                     android:textColor="@drawable/popup_textcolor"
                     android:textSize="13sp" />
 
@@ -58,7 +58,21 @@
                     android:gravity="center"
                     android:paddingLeft="20px"
                     android:paddingRight="20px"
-                    android:text="二手房"
+                    android:text="写字楼"
+                    android:textColor="@drawable/popup_textcolor"
+                    android:textSize="13sp" />
+
+                <RadioButton
+                    android:id="@+id/rg_tv4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="88px"
+                    android:background="@drawable/popup_bg"
+                    android:button="@null"
+                    android:gravity="center"
+                    android:paddingLeft="20px"
+                    android:paddingRight="20px"
+                    android:text="厂房"
                     android:textColor="@drawable/popup_textcolor"
                     android:textSize="13sp" />
             </com.zhy.autolayout.AutoLinearLayout>
@@ -77,7 +91,8 @@
     <com.example.administrator.kenya.view.MyRadioGroup
         android:id="@+id/myRadioGroup"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:visibility="gone">
 
         <com.zhy.autolayout.AutoLinearLayout
             android:layout_width="match_parent"

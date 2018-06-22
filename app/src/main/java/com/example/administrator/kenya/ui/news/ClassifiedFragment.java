@@ -122,9 +122,7 @@ public class ClassifiedFragment extends BaseFragment {
     //初始化组件
     private void initView() {
         classfiedAdapter = new ClassfiedAdapter(getContext(), classifiedList);
-
-
-        StaggeredGridLayoutManager staggeredGridLayoutManager = new StaggeredGridLayoutManager(2,StaggeredGridLayoutManager.VERTICAL);
+        StaggeredGridLayoutManager staggeredGridLayoutManager = new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
         recyclerView.setLayoutManager(staggeredGridLayoutManager);
         recyclerView.setAdapter(classfiedAdapter);
         pullToRefreshLayout.setCanRefresh(false);
@@ -135,7 +133,6 @@ public class ClassifiedFragment extends BaseFragment {
             @Override
             public void refresh() {
             }
-
             @Override
             public void loadMore() {
                 postFormBuilder.addParams("page", cpageNum + "").tag(this).build().execute(stringCallback);

@@ -3,12 +3,19 @@ package com.example.administrator.kenya.ui.city.house;
 import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
+import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.PopupWindow;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.alibaba.fastjson.JSON;
@@ -19,7 +26,10 @@ import com.example.administrator.kenya.classes.House;
 import com.example.administrator.kenya.classes.User;
 import com.example.administrator.kenya.constants.AppConstants;
 import com.example.administrator.kenya.model.image_selector.MultiImageSelectorActivity;
+import com.example.administrator.kenya.ui.city.buyhouse.ProvinceCityDetailsActivity;
 import com.example.administrator.kenya.ui.main.LoadingDialog;
+import com.example.administrator.kenya.view.MyRadioGroup;
+import com.zhy.autolayout.AutoRelativeLayout;
 import com.zhy.http.okhttp.OkHttpUtils;
 import com.zhy.http.okhttp.builder.PostFormBuilder;
 import com.zhy.http.okhttp.callback.StringCallback;
@@ -38,8 +48,9 @@ import okhttp3.Call;
 import top.zibin.luban.Luban;
 import top.zibin.luban.OnCompressListener;
 
-public class HouseInfoActivity extends BaseActivity {
+import static com.example.administrator.kenya.R.id.radioButton1;
 
+public class HouseInfoActivity extends BaseActivity {
     @Bind(R.id.title)
     TextView title;
     @Bind({R.id.house_info_img1, R.id.house_info_img2, R.id.house_info_img3, R.id.house_info_img4, R.id.house_info_img5})
@@ -59,11 +70,20 @@ public class HouseInfoActivity extends BaseActivity {
     @Bind(R.id.house_square)
     EditText houseSquare;
     @Bind(R.id.house_address)
-    EditText houseAddress;
+    TextView houseAddress;
     @Bind(R.id.house_home)
-    EditText houseHome;
+    TextView houseHome;
+    @Bind(R.id.house_iv_type)
+    ImageView houseIvType;
+    @Bind(R.id.house_info_type)
+    AutoRelativeLayout houseInfoType;
     private ArrayList<String> mResults = new ArrayList<>();
     private ArrayList<File> compressFile = new ArrayList<>();
+    String hometype = "";
+    String province = "";
+    String city = "";
+    String content = "";
+    private PopupWindow popupWindow;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,11 +91,14 @@ public class HouseInfoActivity extends BaseActivity {
         setContentView(R.layout.activity_house_info);
         ButterKnife.bind(this);
         title.setText(getResources().getString(R.string.post));
-
+        hometype = (String) getIntent().getExtras().get("housetype");
+        if (hometype.equals("住宅")) {
+            houseInfoType.setVisibility(View.VISIBLE);
+        }
         housePenson.setText(User.getInstance().getUserName());
         housePhone.setText(User.getInstance().getUserPhonenumber());
-
         houseName.requestFocus();
+        initPopupWindow();
     }
 
     /**
@@ -106,6 +129,14 @@ public class HouseInfoActivity extends BaseActivity {
                                 .into(imageViews.get(i));
                     }
                 }
+            }
+        } else if (requestCode == 1) {
+            if (resultCode == RESULT_OK) {
+                Bundle result = data.getExtras();
+                province = result.get("province").toString();
+                city = result.get("city").toString();
+                content = result.get("content").toString();
+                houseAddress.setText(province + city + content);
             }
         }
     }
@@ -153,7 +184,7 @@ public class HouseInfoActivity extends BaseActivity {
         startActivityForResult(intent, 2);
     }
 
-    @OnClick({R.id.back, R.id.release})
+    @OnClick({R.id.back, R.id.release, R.id.house_iv_type, R.id.house_inter})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.back:
@@ -162,7 +193,7 @@ public class HouseInfoActivity extends BaseActivity {
             case R.id.release:
                 if (houseName.getText().length() == 0) {
                     toast(getResources().getString(R.string.please) + getResources().getString(R.string.enter_your_title));
-                } else if (houseHome.getText().length() == 0) {
+                } else if (hometype.equals("住宅") && houseHome.getText().length() == 0) {
                     toast(getResources().getString(R.string.please) + getResources().getString(R.string.please_choose_the_type_of_hoose_e_g__one_bedroom));
                 } else if (houseSquare.getText().length() == 0) {
                     toast(getResources().getString(R.string.please) + getResources().getString(R.string.enter_the_size_of_house_in_square_metres));
@@ -209,6 +240,13 @@ public class HouseInfoActivity extends BaseActivity {
                     }
                 }
                 break;
+            case R.id.house_iv_type:
+                houseIvType.setClickable(false);
+                popupWindow.showAsDropDown(view);
+                break;
+            case R.id.house_inter:
+                startActivityForResult(new Intent(HouseInfoActivity.this, ProvinceCityDetailsActivity.class), 1);
+                break;
         }
     }
 
@@ -226,6 +264,9 @@ public class HouseInfoActivity extends BaseActivity {
                 .addParams("leasesquare", houseSquare.getText().toString())
                 .addParams("leasehome", houseHome.getText().toString())
                 .addParams("leaseaddress", houseAddress.getText().toString())
+                .addParams("cityprovince", province)
+                .addParams("cityname", city)
+                .addParams("hometype", hometype)
                 .addParams("userid", User.getInstance().getUserId())
                 .build()
                 .execute(new StringCallback() {
@@ -256,5 +297,62 @@ public class HouseInfoActivity extends BaseActivity {
                         loadingDialog.dismiss();
                     }
                 });
+    }
+
+    private void initPopupWindow() {
+        final View popContentView = LayoutInflater.from(this).inflate(R.layout.popupwindow_buy_house_type, null);
+        popupWindow = new PopupWindow(popContentView, RelativeLayout.LayoutParams.MATCH_PARENT,
+                RelativeLayout.LayoutParams.WRAP_CONTENT);
+        // 设置PopupWindow的背景
+        popupWindow.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        // 设置PopupWindow是否能响应外部点击事件
+        popupWindow.setOutsideTouchable(true);
+        // 设置PopupWindow是否能响应点击事件
+        popupWindow.setTouchable(true);
+        popupWindow.setFocusable(true);
+        popupWindow.setOnDismissListener(new PopupWindow.OnDismissListener() {
+            @Override
+            public void onDismiss() {
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        houseIvType.setClickable(true);
+                    }
+                }, 100);
+            }
+        });
+        MyRadioGroup myRadioGroup = (MyRadioGroup) popContentView.findViewById(R.id.myRadioGroup);
+        myRadioGroup.setOnCheckedChangeListener(new MyRadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(MyRadioGroup group, int checkedId) {
+                switch (checkedId) {
+                    case radioButton1:
+                        houseHome.setText("请选择您的户型信息");
+                        break;
+                    case R.id.radioButton2:
+                        houseHome.setText("1室");
+                        break;
+                    case R.id.radioButton3:
+                        houseHome.setText("1室1厅");
+                        break;
+                    case R.id.radioButton4:
+                        houseHome.setText("2室1厅");
+                        break;
+                    case R.id.radioButton5:
+                        houseHome.setText("2室2厅");
+                        break;
+                    case R.id.radioButton6:
+                        houseHome.setText("3室1厅");
+                        break;
+                    case R.id.radioButton7:
+                        houseHome.setText("3室2厅");
+                        break;
+                    case R.id.radioButton8:
+                        houseHome.setText("4室1厅");
+                        break;
+                }
+                popupWindow.dismiss();
+            }
+        });
     }
 }

@@ -18,6 +18,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.administrator.kenya.R;
+import com.jwenfeng.library.pulltorefresh.PullToRefreshLayout;
 
 import java.util.List;
 
@@ -37,7 +38,6 @@ public class DropDownMenu extends LinearLayout {
     private View maskView;
     //tabMenuView里面选中的tab位置，-1表示未选中
     private int current_tab_position = -1;
-
     //分割线颜色
     private int dividerColor = 0xffcccccc;
     //tab选中颜色
@@ -114,11 +114,10 @@ public class DropDownMenu extends LinearLayout {
      * @param popupViews
      * @param contentView
      */
-    public void setDropDownMenu(@NonNull List<String> tabTexts, @NonNull List<View> popupViews, @NonNull RecyclerView contentView) {
+    public void setDropDownMenu(@NonNull List<String> tabTexts, @NonNull List<View> popupViews, @NonNull View contentView) {
         if (tabTexts.size() != popupViews.size()) {
             throw new IllegalArgumentException("params not match, tabTexts.size() should be equal popupViews.size()");
         }
-
         for (int i = 0; i < tabTexts.size(); i++) {
             addTab(tabTexts, i);
         }
@@ -253,6 +252,7 @@ public class DropDownMenu extends LinearLayout {
             }
         }
     }
+
     public int dpTpPx(float value) {
         DisplayMetrics dm = getResources().getDisplayMetrics();
         return (int) (TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, value, dm) + 0.5);

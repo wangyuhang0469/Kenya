@@ -1,6 +1,7 @@
 package com.example.administrator.kenya.ui.city.used;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
@@ -40,27 +41,21 @@ public class GoodsDetailsActivity extends BaseActivity {
     TextView goodsname;
     @Bind(R.id.avatar)
     CircleImageView avatar;
-
     private Goods goods;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_goods_details);
         ButterKnife.bind(this);
-
         title.setText(getResources().getString(R.string.goods_detail));
-
         goods = (Goods) getIntent().getExtras().getSerializable("goods");
-
-
         initBanner(goods.getImageUrlList());
         goodsname.setText(goods.getGoodsname());
         goodsprice.setText("KSh " + goods.getGoodsprice());
         goodsdesc.setText(goods.getGoodsdesc());
         goodsusername.setText(goods.getGoodsusername());
-        goodsphone.setText(getResources().getString(R.string.phone_no_)  + goods.getGoodsphone());
+        goodsphone.setText(getResources().getString(R.string.phone_no_) + goods.getGoodsphone());
 
         Glide.with(this).load(AppConstants.BASE_URL + goods.getUser().getUserPortrait())
                 .centerCrop()

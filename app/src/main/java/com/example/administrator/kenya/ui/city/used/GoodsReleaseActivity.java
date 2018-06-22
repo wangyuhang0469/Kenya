@@ -6,10 +6,11 @@ import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
-import android.util.Log;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.alibaba.fastjson.JSON;
@@ -21,6 +22,7 @@ import com.example.administrator.kenya.classes.Issuer;
 import com.example.administrator.kenya.classes.User;
 import com.example.administrator.kenya.constants.AppConstants;
 import com.example.administrator.kenya.model.image_selector.MultiImageSelectorActivity;
+import com.example.administrator.kenya.ui.city.buyhouse.ProvinceCityDetailsActivity;
 import com.example.administrator.kenya.ui.main.LoadingDialog;
 import com.zhy.http.okhttp.OkHttpUtils;
 import com.zhy.http.okhttp.builder.PostFormBuilder;
@@ -44,7 +46,6 @@ public class GoodsReleaseActivity extends BaseActivity {
 
     @Bind(R.id.title)
     TextView title;
-
     @Bind({R.id.images, R.id.image1, R.id.image2, R.id.image3, R.id.image4})
     List<ImageView> imageViews;
     @Bind(R.id.goodsname)
@@ -57,9 +58,15 @@ public class GoodsReleaseActivity extends BaseActivity {
     EditText goodsusername;
     @Bind(R.id.goodsphone)
     EditText goodsphone;
-
+    @Bind(R.id.spinner)
+    Spinner spinner;
+    @Bind(R.id.goods_address)
+    TextView goodsAddress;
     private ArrayList<String> mResults = new ArrayList<>();
     private ArrayList<File> compressFile = new ArrayList<>();
+    String province = "";
+    String city = "";
+    String content = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,17 +74,29 @@ public class GoodsReleaseActivity extends BaseActivity {
         setContentView(R.layout.activity_goods_release);
         ButterKnife.bind(this);
         title.setText(getResources().getString(R.string.post));
-
         goodsusername.setText(User.getInstance().getUserName());
         goodsphone.setText(User.getInstance().getUserPhonenumber());
-
+        List<String> types = new ArrayList<>();
+        types.add("请选择物品类别");
+        types.add("手机数码");
+        types.add("家用电器");
+        types.add("食品");
+        types.add("衣服鞋子");
+        types.add("交通工具");
+        types.add("百货");
+        types.add("日化");
+        types.add("书籍");
+        types.add("其他");
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, R.layout.spinner_simple, R.id.spinner_tv, types);
+        adapter.setDropDownViewResource(R.layout.item_spinner);
+        spinner.setAdapter(adapter);
         goodsname.requestFocus();
-
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         // get selected images from selector
+        super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == 2) {
             if (resultCode == RESULT_OK) {
                 mResults = data.getStringArrayListExtra("select_result");
@@ -100,8 +119,15 @@ public class GoodsReleaseActivity extends BaseActivity {
                     }
                 }
             }
+        } else if (requestCode == 1) {
+            if (resultCode == RESULT_OK) {
+                Bundle result = data.getExtras();
+                province = result.get("province").toString();
+                city = result.get("city").toString();
+                content = result.get("content").toString();
+                goodsAddress.setText(province + city + content);
+            }
         }
-        super.onActivityResult(requestCode, resultCode, data);
     }
 
     @Override
@@ -123,14 +149,16 @@ public class GoodsReleaseActivity extends BaseActivity {
         }
     }
 
-    @OnClick({R.id.back, R.id.release})
+    @OnClick({R.id.back, R.id.release, R.id.goods_inter})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.back:
                 finish();
                 break;
             case R.id.release:
-                if (goodsphone.getText().length() == 0) {
+                if (spinner.getSelectedItem().toString().equals("请选择物品类别")) {
+                    toast("请选择物品类别");
+                } else if (goodsphone.getText().length() == 0) {
                     toast(getResources().getString(R.string.please) + getResources().getString(R.string.enter_your_title));
                 } else if (goodsdesc.getText().length() == 0) {
                     toast(getResources().getString(R.string.please) + getResources().getString(R.string.describe_in_details_about_your_product));
@@ -166,11 +194,13 @@ public class GoodsReleaseActivity extends BaseActivity {
 
                                     @Override
                                     public void onError(Throwable e) {
-
                                     }
                                 }).launch();
                     }
                 }
+                break;
+            case R.id.goods_inter:
+                startActivityForResult(new Intent(GoodsReleaseActivity.this, ProvinceCityDetailsActivity.class), 1);
                 break;
         }
     }
@@ -204,7 +234,7 @@ public class GoodsReleaseActivity extends BaseActivity {
 
         PostFormBuilder postFormBuilder = OkHttpUtils.post();
         for (int i = 0; i < compressFile.size(); i++) {
-            postFormBuilder.addFile("logoFil", compressFile.get(i).getName(), compressFile.get(i));
+            postFormBuilder.addFile("logoFile", compressFile.get(i).getName(), compressFile.get(i));
         }
         postFormBuilder.url(AppConstants.BASE_URL + "/kenya/saveSurvey")
                 .addParams("userId", User.getInstance().getUserId())
@@ -213,6 +243,9 @@ public class GoodsReleaseActivity extends BaseActivity {
                 .addParams("goodsPrice", goodsprice.getText().toString())
                 .addParams("goodUserName", goodsusername.getText().toString())
                 .addParams("goodsPhone", goodsphone.getText().toString())
+                .addParams("goodsType", spinner.getSelectedItem().toString())
+                .addParams("cityprovince", province)
+                .addParams("cityname", city)
                 .build()
                 .execute(new StringCallback() {
                     @Override

@@ -29,7 +29,6 @@ public class BuyHouseDialog extends Dialog {
         super(context, R.style.FullScreenDialog);
     }
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

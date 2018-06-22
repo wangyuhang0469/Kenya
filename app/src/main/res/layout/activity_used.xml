@@ -2,6 +2,7 @@
 <com.zhy.autolayout.AutoRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/rootlayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.example.administrator.kenya.ui.city.used.UsedActivity">
@@ -58,12 +59,30 @@
 
     </com.zhy.autolayout.AutoRelativeLayout>
 
+    <com.example.administrator.kenya.ui.city.buyhouse.DropDownMenu xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/dropDownMenu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/release"
+        android:layout_below="@+id/title_bar"
+        app:dddividerColor="@color/gray"
+        app:ddmaskColor="@color/mask_color"
+        app:ddmenuBackgroundColor="@color/white"
+        app:ddmenuMenuHeightPercent="0.5"
+        app:ddmenuSelectedIcon="@mipmap/drop_up_green"
+        app:ddmenuTextSize="13sp"
+        app:ddmenuUnselectedIcon="@mipmap/drop_down_grey"
+        app:ddtextSelectedColor="@color/textgreen3"
+        app:ddtextUnselectedColor="@color/textBlack2"
+        app:ddunderlineColor="@color/gray" />
+
     <com.jwenfeng.library.pulltorefresh.PullToRefreshLayout
         android:id="@+id/pullToRefreshLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_above="@+id/release"
-        android:layout_below="@+id/title_bar">
+        android:layout_below="@+id/dropDownMenu">
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/recyclerView"
@@ -71,7 +90,6 @@
             android:layout_height="match_parent" />
 
     </com.jwenfeng.library.pulltorefresh.PullToRefreshLayout>
-
 
 
     <TextView

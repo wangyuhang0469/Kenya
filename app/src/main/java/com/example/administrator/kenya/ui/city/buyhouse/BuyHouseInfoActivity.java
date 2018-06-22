@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.WindowManager;
@@ -22,6 +23,7 @@ import com.alibaba.fastjson.JSON;
 import com.bumptech.glide.Glide;
 import com.example.administrator.kenya.R;
 import com.example.administrator.kenya.base.BaseActivity;
+import com.example.administrator.kenya.classes.BuyHouse;
 import com.example.administrator.kenya.classes.House;
 import com.example.administrator.kenya.classes.User;
 import com.example.administrator.kenya.constants.AppConstants;
@@ -50,7 +52,6 @@ import top.zibin.luban.OnCompressListener;
 import static com.example.administrator.kenya.R.id.radioButton1;
 
 public class BuyHouseInfoActivity extends BaseActivity {
-
     @Bind(R.id.title)
     TextView title;
     @Bind(R.id.buy_house_info_title)
@@ -82,6 +83,9 @@ public class BuyHouseInfoActivity extends BaseActivity {
     private ArrayList<File> compressFile = new ArrayList<>();
     String housetype;
     private PopupWindow popupWindow;
+    String province;
+    String city;
+    String content;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -89,9 +93,9 @@ public class BuyHouseInfoActivity extends BaseActivity {
         setContentView(R.layout.activity_buy_house_info);
         ButterKnife.bind(this);
         title.setText("房源发布");
-        Intent intent = getIntent();
-        Bundle bundle = intent.getExtras();
-        housetype = (String) bundle.get("housetype");
+        housetype = (String) getIntent().getExtras().get("housetype");
+        buyHouseInfoPerson.setText(User.getInstance().getUserName());
+        buyHouseInfoPhone.setText(User.getInstance().getUserPhonenumber());
         initPopupWindow();
     }
 
@@ -152,7 +156,7 @@ public class BuyHouseInfoActivity extends BaseActivity {
                 }
                 break;
             case R.id.buy_house_inter:
-                startActivity(ProvinceCityDetailsActivity.class, null);
+                startActivityForResult(new Intent(BuyHouseInfoActivity.this, ProvinceCityDetailsActivity.class), 1);
                 break;
             case R.id.buy_house_iv_type:
                 buyHouseIvType.setClickable(false);
@@ -200,8 +204,8 @@ public class BuyHouseInfoActivity extends BaseActivity {
                 .addParams("housesquare", buyHouseInfoSquare.getText().toString())
                 .addParams("househome", buyHouseInfoTypes.getText().toString())
                 .addParams("houseaddress", buyHouseInfoAddress.getText().toString())
-                .addParams("cityprovince", "Nairobi")
-                .addParams("cityname", "Nairobi")
+                .addParams("cityprovince", province)
+                .addParams("cityname", city)
                 .addParams("housetype", housetype)
                 .addParams("userid", User.getInstance().getUserId())
                 .build()
@@ -218,11 +222,11 @@ public class BuyHouseInfoActivity extends BaseActivity {
                         try {
                             JSONObject jsonObject = new JSONObject(response);
                             if (jsonObject.getString("code").equals("000")) {
-                                House house = JSON.parseObject(jsonObject.getString("result"), House.class);
+                                BuyHouse buyhouse = JSON.parseObject(jsonObject.getString("result"), BuyHouse.class);
                                 Bundle bundle = new Bundle();
-                                bundle.putSerializable("house", house);
+                                bundle.putSerializable("buyhouse", buyhouse);
                                 toast(getResources().getString(R.string.post_success));
-                                startActivity(HouseDetailActivity.class, bundle);
+                                startActivity(BuyHouseDetailActivity.class, bundle);
                                 finish();
                             } else {
                                 toast(jsonObject.getString("message"));
@@ -264,6 +268,14 @@ public class BuyHouseInfoActivity extends BaseActivity {
                     }
                 }
             }
+        } else if (requestCode == 1) {
+            if (resultCode == RESULT_OK) {
+                Bundle result = data.getExtras();
+                province = result.get("province").toString();
+                city = result.get("city").toString();
+                content = result.get("content").toString();
+                buyHouseInfoAddress.setText(province + city + content);
+            }
         }
     }
 
@@ -298,7 +310,7 @@ public class BuyHouseInfoActivity extends BaseActivity {
         popupWindow.setOutsideTouchable(true);
         // 设置PopupWindow是否能响应点击事件
         popupWindow.setTouchable(true);
-
+        popupWindow.setFocusable(true);
 
         popupWindow.setOnDismissListener(new PopupWindow.OnDismissListener() {
             @Override
@@ -320,28 +332,29 @@ public class BuyHouseInfoActivity extends BaseActivity {
                         buyHouseInfoTypes.setText("请选择您的户型信息");
                         break;
                     case R.id.radioButton2:
-                        buyHouseInfoTypes.setText("一室");
+                        buyHouseInfoTypes.setText("1室");
                         break;
                     case R.id.radioButton3:
-                        buyHouseInfoTypes.setText("一室一厅");
+                        buyHouseInfoTypes.setText("1室1厅");
                         break;
                     case R.id.radioButton4:
-                        buyHouseInfoTypes.setText("两室一厅");
+                        buyHouseInfoTypes.setText("2室1厅");
                         break;
                     case R.id.radioButton5:
-                        buyHouseInfoTypes.setText("两室两厅");
+                        buyHouseInfoTypes.setText("2室2厅");
                         break;
                     case R.id.radioButton6:
-                        buyHouseInfoTypes.setText("三室一厅");
+                        buyHouseInfoTypes.setText("3室1厅");
                         break;
                     case R.id.radioButton7:
-                        buyHouseInfoTypes.setText("四室一厅");
+                        buyHouseInfoTypes.setText("3室2厅");
+                        break;
+                    case R.id.radioButton8:
+                        buyHouseInfoTypes.setText("4室1厅");
                         break;
                 }
                 popupWindow.dismiss();
             }
         });
     }
-
-
 }

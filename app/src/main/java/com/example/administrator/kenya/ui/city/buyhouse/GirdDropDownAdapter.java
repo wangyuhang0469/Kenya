@@ -13,7 +13,6 @@ import com.example.administrator.kenya.R;
 
 
 import java.util.List;
-
 import butterknife.Bind;
 import butterknife.ButterKnife;
 

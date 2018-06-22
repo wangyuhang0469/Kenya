@@ -83,7 +83,7 @@ public class NewsFragment extends BaseFragment {
 
         initMagicIndicator();
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-            linearLayout.setPadding(0, StatusUtil.getStatusBarHeight(this.getActivity()), 0,0 );
+            linearLayout.setPadding(0, StatusUtil.getStatusBarHeight(this.getActivity()), 0, 0);
         }
 
 
@@ -118,8 +118,6 @@ public class NewsFragment extends BaseFragment {
     }
 
 
-
-
     private void initMagicIndicator() {
         magicIndicator.setBackgroundColor(Color.WHITE);
         CommonNavigator commonNavigator = new CommonNavigator(getContext());
@@ -136,7 +134,7 @@ public class NewsFragment extends BaseFragment {
                 simplePagerTitleView.setTextSize(17);
                 simplePagerTitleView.setNormalColor(Color.GRAY);
 //                simplePagerTitleView.setSelectedColor(Color.BLACK);
-                simplePagerTitleView.setSelectedColor(getContext().getColor(R.color.textgreen1));
+                simplePagerTitleView.setSelectedColor(getContext().getResources().getColor(R.color.textgreen1));
                 simplePagerTitleView.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -153,7 +151,7 @@ public class NewsFragment extends BaseFragment {
                 indicator.setColors(Color.parseColor("#029f8c"), Color.parseColor("#05B2CC")
                         , Color.parseColor("#DBFE1C"), Color.parseColor("#3CD173"),
                         Color.parseColor("#44A6CD"), Color.parseColor("#BFFEF9")
-                        ,Color.parseColor("#555555") , Color.parseColor("#4D69CC"));
+                        , Color.parseColor("#555555"), Color.parseColor("#4D69CC"));
                 return indicator;
             }
         });
@@ -169,7 +167,6 @@ public class NewsFragment extends BaseFragment {
         fragmentList.add(typeNewsFragment);
     }
 
-
     @Override
     public void onDestroyView() {
         super.onDestroyView();
@@ -180,7 +177,7 @@ public class NewsFragment extends BaseFragment {
     public void onViewClicked() {
         if (viewPager.getCurrentItem() == 5) {
             startActivity(ClassifiedReleaseActivity.class, null);
-        }else if (viewPager.getCurrentItem() == 6){
+        } else if (viewPager.getCurrentItem() == 6) {
             startActivity(TransitionReleaseActivity.class, null);
         }
 

@@ -2,38 +2,39 @@
 <com.zhy.autolayout.AutoRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/rootlayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.administrator.kenya.ui.city.house.HouseActivity">
+    tools:context="com.example.administrator.kenya.ui.city.buyhouse.BuyHouseSearchActivity">
 
     <com.zhy.autolayout.AutoRelativeLayout
-        android:id="@+id/house_title_bar"
+        android:id="@+id/title_bar"
         android:layout_width="match_parent"
         android:layout_height="144px"
         android:background="@color/base_bg">
 
         <com.zhy.autolayout.AutoLinearLayout
-            android:id="@+id/house_search_bar"
             android:layout_width="match_parent"
             android:layout_height="100px"
             android:layout_centerVertical="true"
             android:layout_toEndOf="@+id/back"
             android:layout_toStartOf="@+id/tv_search"
             android:background="@color/white"
-            android:gravity="center">
+            android:gravity="center_vertical">
 
             <ImageView
                 android:layout_width="41px"
                 android:layout_height="41px"
+                android:layout_marginLeft="30px"
                 android:layout_marginRight="20px"
                 android:src="@drawable/search" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/enter_your_keyword"
-                android:textColor="@color/textBlack3" />
+            <EditText
+                android:id="@+id/keyword"
+                style="@style/edit_base2"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="@string/enter_your_keyword"
+                android:maxLength="30" />
 
         </com.zhy.autolayout.AutoLinearLayout>
 
@@ -55,51 +56,37 @@
             android:gravity="center"
             android:text="@string/search"
             android:textColor="@color/textBlack1" />
-    </com.zhy.autolayout.AutoRelativeLayout>
 
-    <com.example.administrator.kenya.ui.city.buyhouse.DropDownMenu xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:id="@+id/dropDownMenu"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/release"
-        android:layout_below="@+id/house_title_bar"
-        app:dddividerColor="@color/gray"
-        app:ddmaskColor="@color/mask_color"
-        app:ddmenuBackgroundColor="@color/white"
-        app:ddmenuMenuHeightPercent="0.5"
-        app:ddmenuSelectedIcon="@mipmap/drop_up_green"
-        app:ddmenuTextSize="13sp"
-        app:ddmenuUnselectedIcon="@mipmap/drop_down_grey"
-        app:ddtextSelectedColor="@color/textgreen3"
-        app:ddtextUnselectedColor="@color/textBlack2"
-        app:ddunderlineColor="@color/gray" />
+    </com.zhy.autolayout.AutoRelativeLayout>
 
     <com.jwenfeng.library.pulltorefresh.PullToRefreshLayout
         android:id="@+id/pullToRefreshLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_above="@+id/release"
-        android:layout_below="@+id/dropDownMenu">
+        android:layout_below="@+id/title_bar">
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/recyclerView"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_above="@+id/release"
-            android:layout_below="@+id/house_title_bar" />
-
+            android:layout_height="match_parent" />
     </com.jwenfeng.library.pulltorefresh.PullToRefreshLayout>
 
+    <ImageView
+        android:id="@+id/nothing"
+        android:layout_width="230px"
+        android:layout_height="302px"
+        android:layout_above="@+id/text"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/nothing"
+        android:visibility="gone" />
 
     <TextView
-        android:id="@+id/release"
-        android:layout_width="match_parent"
-        android:layout_height="160px"
-        android:layout_alignParentBottom="true"
-        android:background="@color/theme_btn"
-        android:gravity="center"
-        android:text="@string/post"
-        android:textColor="@color/white"
-        android:textSize="17sp" />
+        android:id="@+id/text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:paddingTop="20px"
+        android:text="@string/nothing"
+        android:textColor="@color/textBlack3"
+        android:visibility="gone" />
 </com.zhy.autolayout.AutoRelativeLayout>

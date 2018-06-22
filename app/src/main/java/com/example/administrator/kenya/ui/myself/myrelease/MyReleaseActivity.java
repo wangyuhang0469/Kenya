@@ -84,6 +84,7 @@ public class MyReleaseActivity extends BaseActivity {
         popupWindow.setOutsideTouchable(true);
         // 设置PopupWindow是否能响应点击事件
         popupWindow.setTouchable(true);
+        popupWindow.setFocusable(true);
 
 
         popupWindow.setOnDismissListener(new PopupWindow.OnDismissListener() {

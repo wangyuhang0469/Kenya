@@ -66,7 +66,7 @@ public class HusbandryActivity extends BaseActivity {
 
     private PopupWindow popupWindow;
     private String keyword = "不限";
-    
+
     private int cpageNum = 1;
 
     private MyAdapter myAdapter;
@@ -177,6 +177,7 @@ public class HusbandryActivity extends BaseActivity {
         popupWindow.setFocusable(true);
         // 设置PopupWindow是否能响应点击事件
         popupWindow.setTouchable(true);
+        popupWindow.setFocusable(true);
 
 
         popupWindow.setOnDismissListener(new PopupWindow.OnDismissListener() {

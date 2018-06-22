@@ -10,7 +10,6 @@ public class CityProvince {
      * cityprovince : Central Province
      * cityname : null
      */
-
     private String cityid;
     private String cityprovince;
     private String cityname;

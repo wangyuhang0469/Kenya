@@ -27,7 +27,6 @@ import android.view.WindowManager;
  * 设备工具箱，提供与设备硬件相关的工具方法
  */
 public class DeviceUtils {
-
     /**
      * 获取屏幕尺寸
      */

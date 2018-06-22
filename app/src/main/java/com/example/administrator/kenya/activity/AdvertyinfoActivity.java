@@ -2,6 +2,7 @@ package com.example.administrator.kenya.activity;
 
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
@@ -44,6 +45,8 @@ public class AdvertyinfoActivity extends BaseActivity {
     EditText advertyInfoCompanyPhone;
     @Bind(R.id.spinner)
     Spinner spinner;
+    @Bind(R.id.adverty_info_company_address)
+    EditText advertyInfoCompanyAddress;
     private String price;
     private int type = 0;
     boolean img = true;
@@ -94,6 +97,7 @@ public class AdvertyinfoActivity extends BaseActivity {
                 } else {
                     PostFormBuilder postFormBuilder = OkHttpUtils.post();
                     postFormBuilder.url(AppConstants.BASE_URL + "/kenya/recruit/publish")
+                            .addParams("companyaddress", advertyInfoCompanyAddress.getText().toString())
                             .addParams("companyname", advertyInfoCompanyName.getText().toString())
                             .addParams("companystationdesc", advertyInfoWorkQuiret.getText().toString())
                             .addParams("companyphone", advertyInfoCompanyPhone.getText().toString())
@@ -108,8 +112,10 @@ public class AdvertyinfoActivity extends BaseActivity {
                                     e.printStackTrace();
                                     toast(getString(R.string.post_fail));
                                 }
+
                                 @Override
                                 public void onResponse(String response, int id) {
+                                    Log.d("kang", "11111111111" + response);
                                     try {
                                         JSONObject jsonObject = new JSONObject(response);
                                         if (jsonObject.getString("code").equals("000")) {
@@ -131,6 +137,7 @@ public class AdvertyinfoActivity extends BaseActivity {
                 break;
         }
     }
+
     @OnClick({R.id.adverty_info_choose, R.id.resume_info_mianyi})
     public void onViewClicked2(View view) {
         type++;
