@@ -77,7 +77,7 @@ public class GoodsReleaseActivity extends BaseActivity {
         goodsusername.setText(User.getInstance().getUserName());
         goodsphone.setText(User.getInstance().getUserPhonenumber());
         List<String> types = new ArrayList<>();
-        types.add("请选择物品类别");
+        types.add(getResources().getString(R.string.enter_your_category));
         types.add("手机数码");
         types.add("家用电器");
         types.add("食品");

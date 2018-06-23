@@ -275,4 +275,18 @@
     <string name="fersonal_driver">PERSONAT DRIVER</string>
     <string name="service_details">Details Of Sevice</string>
     <!--   <string name="post">发布</string>-->
+
+
+    <!--买房模块新曾字段-->
+    <string name="house_type">House type</string>
+    <string name="area">Area</string>
+    <string name="choose_the_exact_location">Choose the exact location</string>
+    <string name="total_prices">Total Prices</string>
+    <string name="Please_enter_the_total_price_you_want_to_sell">Please enter the total price you want to sell(KSh)</string>
+    <string name="Contact">Contact</string>
+    <string name="Enter_the_name">Enter the name</string>
+    <string name="Phone">Phone</string>
+    <string name="Enter_a_contact_number">Enter a contact number</string>
+    <string name="send_housing_resource">Send housing resource</string>
+
 </resources>

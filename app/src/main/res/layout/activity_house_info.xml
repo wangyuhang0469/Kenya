@@ -41,7 +41,7 @@
                     android:id="@+id/house_home"
                     style="@style/edit_base2"
                     android:gravity="center_vertical"
-                    android:hint="请选择户型"
+                    android:hint="@string/please_choose_the_type_of_hoose_e.g._one_bedroom"
                     android:maxLength="50"
                     android:paddingLeft="30px" />
 
@@ -77,7 +77,7 @@
                     android:id="@+id/house_address"
                     style="@style/edit_base2"
                     android:gravity="center_vertical"
-                    android:hint="请选择位置"
+                    android:hint="@string/choose_the_exact_location"
                     android:maxLength="50"
                     android:paddingLeft="30px" />
 

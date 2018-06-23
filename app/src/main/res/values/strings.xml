@@ -274,4 +274,17 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
     <!--   <string name="post">发布</string>-->
+
+    <!--买房模块新曾字段-->
+    <string name="house_type">户型</string>
+    <string name="area">面积</string>
+    <string name="choose_the_exact_location">请选择位置</string>
+    <string name="total_prices">总价</string>
+    <string name="Please_enter_the_total_price_you_want_to_sell">请输入想卖出的总价格(KSh)</string>
+    <string name="Contact">联系人</string>
+    <string name="Enter_the_name">输入姓名</string>
+    <string name="Phone">电话</string>
+    <string name="Enter_a_contact_number">输入联系电话</string>
+    <string name="send_housing_resource">发布房源</string>
+
 </resources>

@@ -66,7 +66,7 @@
                     android:id="@+id/goods_address"
                     style="@style/edit_base2"
                     android:gravity="center_vertical"
-                    android:hint="请选择位置"
+                    android:hint="@string/choose_the_exact_location"
                     android:maxLength="50"
                     android:paddingLeft="30px" />
 
@@ -177,12 +177,10 @@
                 android:hint="@string/enter_phone_number"
                 android:inputType="phone"
                 android:maxLength="18" />
-
             <include layout="@layout/line" />
 
         </com.zhy.autolayout.AutoLinearLayout>
     </com.example.administrator.kenya.view.MyObervalbleScrollView>
-
 
     <TextView
         android:id="@+id/release"
@@ -194,5 +192,4 @@
         android:text="@string/post"
         android:textColor="@color/white"
         android:textSize="17sp" />
-
 </com.zhy.autolayout.AutoRelativeLayout>
