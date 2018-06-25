@@ -20,60 +20,60 @@
             <com.zhy.autolayout.AutoRelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="560px"
-                android:orientation="vertical"
-                android:background="@drawable/myself_bg1">
+                android:background="@drawable/myself_bg1"
+                android:orientation="vertical">
 
                 <TextView
                     android:id="@+id/title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerHorizontal="true"
+                    android:layout_marginTop="100px"
                     android:ellipsize="end"
                     android:maxEms="10"
                     android:singleLine="true"
-                    android:textColor="#fff"
-                    android:textSize="18sp"
                     android:text="@string/personal"
-                    android:layout_marginTop="100px"/>
+                    android:textColor="#fff"
+                    android:textSize="18sp" />
 
                 <de.hdodenhof.circleimageview.CircleImageView
                     android:id="@+id/avatar"
                     android:layout_width="188px"
                     android:layout_height="188px"
-                    android:layout_marginTop="46px"
-                    android:src="@drawable/avatar"
                     android:layout_below="@id/title"
-                    android:layout_marginLeft="50px"/>
+                    android:layout_marginLeft="50px"
+                    android:layout_marginTop="46px"
+                    android:src="@drawable/avatar" />
 
                 <!--<com.zhy.autolayout.AutoRelativeLayout-->
-                    <!--android:id="@+id/myName"-->
-                    <!--android:layout_width="match_parent"-->
-                    <!--android:layout_height="wrap_content"-->
-                    <!--android:layout_marginLeft="200px"-->
-                    <!--android:layout_marginRight="200px"-->
-                    <!--android:gravity="center_vertical"-->
-                    <!--android:paddingBottom="30px"-->
-                    <!--android:paddingTop="20px">-->
+                <!--android:id="@+id/myName"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_marginLeft="200px"-->
+                <!--android:layout_marginRight="200px"-->
+                <!--android:gravity="center_vertical"-->
+                <!--android:paddingBottom="30px"-->
+                <!--android:paddingTop="20px">-->
 
-                    <TextView
-                        android:id="@+id/my_center_name"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textColor="@color/white"
-                        android:layout_toRightOf="@id/avatar"
-                        android:layout_alignTop="@id/avatar"
-                        android:layout_marginTop="30px"
-                        android:layout_marginLeft="30px"/>
+                <TextView
+                    android:id="@+id/my_center_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignTop="@id/avatar"
+                    android:layout_marginLeft="30px"
+                    android:layout_marginTop="30px"
+                    android:layout_toRightOf="@id/avatar"
+                    android:textColor="@color/white" />
 
-                    <ImageView
-                        android:id="@+id/image"
-                        android:layout_width="40px"
-                        android:layout_height="40px"
-                        android:layout_toRightOf="@+id/my_center_name"
-                        android:src="@drawable/myself_icon1"
-                        android:layout_marginLeft="16px"
-                        android:layout_alignTop="@id/avatar"
-                        android:layout_marginTop="40px"/>
+                <ImageView
+                    android:id="@+id/image"
+                    android:layout_width="40px"
+                    android:layout_height="40px"
+                    android:layout_alignTop="@id/avatar"
+                    android:layout_marginLeft="16px"
+                    android:layout_marginTop="40px"
+                    android:layout_toRightOf="@+id/my_center_name"
+                    android:src="@drawable/myself_icon1" />
 
 
                 <!--</com.zhy.autolayout.AutoRelativeLayout>-->
@@ -82,45 +82,137 @@
                     android:id="@+id/phone"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="30px"
-                    android:textColor="@color/white"
-                    android:layout_toRightOf="@+id/avatar"
                     android:layout_alignBottom="@id/avatar"
-                    android:layout_marginLeft="30px"/>
+                    android:layout_marginBottom="30px"
+                    android:layout_marginLeft="30px"
+                    android:layout_toRightOf="@+id/avatar"
+                    android:textColor="@color/white" />
 
             </com.zhy.autolayout.AutoRelativeLayout>
 
             <com.zhy.autolayout.AutoLinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="1300px"
-                android:orientation="vertical"
                 android:layout_marginTop="445px"
-                android:paddingLeft="28px"
-                android:paddingRight="28px"
-                android:background="@drawable/myself_bg2">
-
-            <com.zhy.autolayout.AutoLinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@color/base_bg"
+                android:background="@drawable/myself_bg2"
                 android:orientation="vertical"
-                android:paddingBottom="20px">
+                android:paddingLeft="28px"
+                android:paddingRight="28px">
+
+                <com.zhy.autolayout.AutoLinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/base_bg"
+                    android:orientation="vertical"
+                    android:paddingBottom="20px">
+
+                    <com.zhy.autolayout.AutoRelativeLayout
+                        android:id="@+id/myAddress"
+                        style="@style/my_center_bar">
+
+                        <ImageView
+                            android:id="@+id/my_center_address"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="2dp"
+                            android:src="@mipmap/my_center_address2" />
+
+                        <TextView
+                            style="@style/my_center_tv"
+                            android:layout_toRightOf="@id/my_center_address"
+                            android:text="@string/receiver_address" />
+
+                        <ImageView
+                            style="@style/my_center_inter"
+                            android:src="@mipmap/my_center_inter2" />
+                    </com.zhy.autolayout.AutoRelativeLayout>
+
+                    <include layout="@layout/line" />
+
+                    <com.zhy.autolayout.AutoRelativeLayout
+                        android:id="@+id/myRelease"
+                        style="@style/my_center_bar">
+
+                        <ImageView
+                            android:id="@+id/my_center_infor"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="2dp"
+                            android:src="@mipmap/my_center_info2" />
+
+                        <TextView
+                            style="@style/my_center_tv"
+                            android:layout_toRightOf="@id/my_center_infor"
+                            android:text="@string/my_post_history" />
+
+                        <ImageView
+                            style="@style/my_center_inter"
+                            android:src="@mipmap/my_center_inter2" />
+                    </com.zhy.autolayout.AutoRelativeLayout>
+
+                    <include layout="@layout/line" />
+
+                    <com.zhy.autolayout.AutoRelativeLayout
+                        android:id="@+id/myCar"
+                        style="@style/my_center_bar">
+
+                        <ImageView
+                            android:id="@+id/my_center_bink"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="2dp"
+                            android:src="@mipmap/my_center_bink2" />
+
+                        <TextView
+                            style="@style/my_center_tv"
+                            android:layout_toRightOf="@id/my_center_bink"
+                            android:text="@string/request_a_taxi" />
+
+                        <ImageView
+                            style="@style/my_center_inter"
+                            android:src="@mipmap/my_center_inter2" />
+                    </com.zhy.autolayout.AutoRelativeLayout>
+
+                </com.zhy.autolayout.AutoLinearLayout>
 
                 <com.zhy.autolayout.AutoRelativeLayout
-                    android:id="@+id/myAddress"
-                    style="@style/my_center_bar">
+                    android:id="@+id/myPoint"
+                    style="@style/my_center_bar"
+                    android:visibility="gone">
 
                     <ImageView
-                        android:id="@+id/my_center_address"
+                        android:id="@+id/my_center_points"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="2dp"
-                        android:src="@mipmap/my_center_address2" />
+                        android:src="@mipmap/my_center_points2" />
 
                     <TextView
                         style="@style/my_center_tv"
-                        android:layout_toRightOf="@id/my_center_address"
-                        android:text="@string/receiver_address" />
+                        android:layout_toRightOf="@id/my_center_points"
+                        android:text="@string/disscoont_point" />
+
+                    <ImageView
+                        style="@style/my_center_inter"
+                        android:src="@mipmap/my_center_inter2" />
+                </com.zhy.autolayout.AutoRelativeLayout>
+
+
+                <com.zhy.autolayout.AutoRelativeLayout
+                    android:id="@+id/myVallet"
+                    style="@style/my_center_bar">
+
+                    <ImageView
+                        android:id="@+id/my_center_purse"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="2dp"
+                        android:src="@mipmap/my_center_purse2" />
+
+                    <TextView
+                        style="@style/my_center_tv"
+                        android:layout_toRightOf="@id/my_center_purse"
+                        android:text="@string/my_wellet" />
 
                     <ImageView
                         style="@style/my_center_inter"
@@ -130,20 +222,20 @@
                 <include layout="@layout/line" />
 
                 <com.zhy.autolayout.AutoRelativeLayout
-                    android:id="@+id/myRelease"
+                    android:id="@+id/about_us"
                     style="@style/my_center_bar">
 
                     <ImageView
-                        android:id="@+id/my_center_infor"
+                        android:id="@+id/my_center_myself"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="2dp"
-                        android:src="@mipmap/my_center_info2" />
+                        android:src="@mipmap/about_us_server" />
 
                     <TextView
                         style="@style/my_center_tv"
-                        android:layout_toRightOf="@id/my_center_infor"
-                        android:text="@string/my_post_history" />
+                        android:layout_toRightOf="@id/my_center_myself"
+                        android:text="@string/about_us" />
 
                     <ImageView
                         style="@style/my_center_inter"
@@ -151,99 +243,6 @@
                 </com.zhy.autolayout.AutoRelativeLayout>
 
                 <include layout="@layout/line" />
-
-                <com.zhy.autolayout.AutoRelativeLayout
-                    android:id="@+id/myCar"
-                    style="@style/my_center_bar">
-
-                    <ImageView
-                        android:id="@+id/my_center_bink"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="2dp"
-                        android:src="@mipmap/my_center_bink2" />
-
-                    <TextView
-                        style="@style/my_center_tv"
-                        android:layout_toRightOf="@id/my_center_bink"
-                        android:text="@string/request_a_taxi" />
-
-                    <ImageView
-                        style="@style/my_center_inter"
-                        android:src="@mipmap/my_center_inter2" />
-                </com.zhy.autolayout.AutoRelativeLayout>
-
-            </com.zhy.autolayout.AutoLinearLayout>
-
-            <com.zhy.autolayout.AutoRelativeLayout
-                android:id="@+id/myPoint"
-                style="@style/my_center_bar"
-                android:visibility="gone">
-
-                <ImageView
-                    android:id="@+id/my_center_points"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="2dp"
-                    android:src="@mipmap/my_center_points2" />
-
-                <TextView
-                    style="@style/my_center_tv"
-                    android:layout_toRightOf="@id/my_center_points"
-                    android:text="@string/disscoont_point" />
-
-                <ImageView
-                    style="@style/my_center_inter"
-                    android:src="@mipmap/my_center_inter2" />
-            </com.zhy.autolayout.AutoRelativeLayout>
-
-
-
-            <com.zhy.autolayout.AutoRelativeLayout
-                android:id="@+id/myVallet"
-                style="@style/my_center_bar">
-
-                <ImageView
-                    android:id="@+id/my_center_purse"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="2dp"
-                    android:src="@mipmap/my_center_purse2" />
-
-                <TextView
-                    style="@style/my_center_tv"
-                    android:layout_toRightOf="@id/my_center_purse"
-                    android:text="@string/my_wellet" />
-
-                <ImageView
-                    style="@style/my_center_inter"
-                    android:src="@mipmap/my_center_inter2" />
-            </com.zhy.autolayout.AutoRelativeLayout>
-
-            <include layout="@layout/line" />
-
-            <com.zhy.autolayout.AutoRelativeLayout
-                android:id="@+id/about_us"
-                style="@style/my_center_bar">
-
-                <ImageView
-                    android:id="@+id/my_center_myself"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="2dp"
-                    android:src="@mipmap/about_us_server" />
-
-                <TextView
-                    style="@style/my_center_tv"
-                    android:layout_toRightOf="@id/my_center_myself"
-                    android:text="@string/about_us" />
-
-                <ImageView
-                    style="@style/my_center_inter"
-                    android:src="@mipmap/my_center_inter2" />
-            </com.zhy.autolayout.AutoRelativeLayout>
-
-            <include layout="@layout/line" />
 
             </com.zhy.autolayout.AutoLinearLayout>
         </com.zhy.autolayout.AutoRelativeLayout>

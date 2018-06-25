@@ -52,7 +52,6 @@ public class BuyHouseFragment extends BaseFragment {
     @Bind(R.id.text)
     TextView text;
 
-
     private PostFormBuilder postFormBuilder;
     private int cpageNum = 1;
     private StringCallback stringCallback;

@@ -77,7 +77,6 @@ public class MyReleaseActivity extends BaseActivity {
         final View popContentView = LayoutInflater.from(this).inflate(R.layout.popupwindow_myrelease, null);
         popupWindow = new PopupWindow(popContentView, RelativeLayout.LayoutParams.MATCH_PARENT,
                 RelativeLayout.LayoutParams.WRAP_CONTENT);
-
         // 设置PopupWindow的背景
         popupWindow.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         // 设置PopupWindow是否能响应外部点击事件
@@ -85,13 +84,11 @@ public class MyReleaseActivity extends BaseActivity {
         // 设置PopupWindow是否能响应点击事件
         popupWindow.setTouchable(true);
         popupWindow.setFocusable(true);
-
-
         popupWindow.setOnDismissListener(new PopupWindow.OnDismissListener() {
             @Override
             public void onDismiss() {
                 black.setVisibility(View.GONE);
-                xiala.setImageDrawable(getDrawable(R.drawable.icon_xiala0));
+                xiala.setImageDrawable(getResources().getDrawable(R.drawable.icon_xiala0));
                 //解决点击分类按钮 关闭且迅速打开问题
                 new Handler().postDelayed(new Runnable() {
                     @Override
@@ -149,7 +146,6 @@ public class MyReleaseActivity extends BaseActivity {
                         classification.setText(getResources().getString(R.string.find_friends));
                         break;
                 }
-
                 popupWindow.dismiss();
             }
         });
@@ -184,13 +180,11 @@ public class MyReleaseActivity extends BaseActivity {
                 finish();
                 break;
             case R.id.classification:
-                xiala.setImageDrawable(getDrawable(R.drawable.icon_xiala1));
+                xiala.setImageDrawable(getResources().getDrawable(R.drawable.icon_xiala1));
                 classification.setClickable(false);
                 popupWindow.showAsDropDown(titleBar);
                 black.setVisibility(View.VISIBLE);
                 break;
         }
     }
-
-
 }

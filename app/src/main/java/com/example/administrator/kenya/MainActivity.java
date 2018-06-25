@@ -89,7 +89,7 @@ public class MainActivity extends BaseActivity {
         // 第二个参数是状态栏色值, 第三个是兼容5.0到6.0之间状态栏颜色字体只能是白色。
         // 如果沉浸的颜色与状态栏颜色冲突, 设置一层浅色对比能显示出状态栏字体
         // 如果您的项目是6.0以上机型, 推荐使用两个参数的setUseStatusBarColor。
-        StatusUtil.setUseStatusBarColor(this, getColor(R.color.theme), Color.parseColor("#33000000"));
+        StatusUtil.setUseStatusBarColor(this, getResources().getColor(R.color.theme), Color.parseColor("#33000000"));
 
         // 第二个参数是是否沉浸,第三个参数是状态栏字体是否为黑色
         StatusUtil.setSystemStatus(this, true, false);
@@ -222,7 +222,7 @@ public class MainActivity extends BaseActivity {
             case R.id.tab_1:
                 index = 0;
                 onTabSelect(index);
-                StatusUtil.setUseStatusBarColor(this, getColor(R.color.theme), Color.parseColor("#33000000"));
+                StatusUtil.setUseStatusBarColor(this, getResources().getColor(R.color.theme), Color.parseColor("#33000000"));
                 break;
             case R.id.tab_2:
                 index = 1;
@@ -368,8 +368,6 @@ public class MainActivity extends BaseActivity {
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
-
-
 
                         //判断最新版本 与 当前版本
                         if (APKVersionCodeUtils.compareVersion(newVersion , nowVersion) > 0){

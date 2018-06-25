@@ -90,7 +90,6 @@ public class BuyHouseActivity extends BaseActivity {
     String housesquare = "";
     String househome = "";
     String price = "";
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -114,7 +113,6 @@ public class BuyHouseActivity extends BaseActivity {
             public void onError(Call call, Exception e, int id) {
                 toast(getString(R.string.load_fail));
             }
-
             @Override
             public void onResponse(String response, int id) {
                 List<CityProvince> addList = null;
@@ -138,7 +136,6 @@ public class BuyHouseActivity extends BaseActivity {
             }
         });
     }
-
     private PostFormBuilder getRequest() {
         return OkHttpUtils.post()
                 .url(AppConstants.BASE_URL + "/kenya/House/findByHouse")
@@ -161,7 +158,6 @@ public class BuyHouseActivity extends BaseActivity {
                     e.printStackTrace();
                 }
             }
-
             @Override
             public void onResponse(String response, int id) {
                 if (pullToRefreshLayout != null) {
@@ -194,7 +190,6 @@ public class BuyHouseActivity extends BaseActivity {
                     e.printStackTrace();
                 }
             }
-
             @Override
             public void onResponse(String response, int id) {
                 if (pullToRefreshLayout != null) {
@@ -219,7 +214,6 @@ public class BuyHouseActivity extends BaseActivity {
         };
 
     }
-
     private void initView() {
         houseadapter = new BuyHouseAdapter(this, housesList);
         shengshiview = this.getLayoutInflater().inflate(R.layout.sheng_shi_choose, null);

@@ -71,6 +71,7 @@ public class MyLocationUtil {
         // 返回最合适的符合条件的 provider ，第 2 个参数为 true 说明 , 如果只有一个 provider 是有效的 , 则返回当前  provider
         provider = locationManager.getBestProvider(criteria, true);
     }
+
     private void getInformationByLocation(Location location) {
         if (location == null)
             return;

@@ -244,8 +244,8 @@ public class GoodsReleaseActivity extends BaseActivity {
                 .addParams("goodUserName", goodsusername.getText().toString())
                 .addParams("goodsPhone", goodsphone.getText().toString())
                 .addParams("goodsType", spinner.getSelectedItem().toString())
-                .addParams("cityprovince", province)
-                .addParams("cityname", city)
+                .addParams("cityprovince", "Nyanza Province")
+                .addParams("cityname", "Bondo District")
                 .build()
                 .execute(new StringCallback() {
                     @Override
