@@ -3,9 +3,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
     android:orientation="vertical"
-    tools:context="com.example.administrator.kenya.ui.city.CityHomeFragment"
-    android:fitsSystemWindows="true">
+    tools:context="com.example.administrator.kenya.ui.city.CityHomeFragment">
 
     <include layout="@layout/title_bar" />
 
@@ -132,7 +132,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="20px"
-                        android:text="买房"
+                        android:text="@string/For_Buyers"
                         android:textColor="@color/textBlack1"
                         android:textSize="12sp" />
                 </com.zhy.autolayout.AutoLinearLayout>

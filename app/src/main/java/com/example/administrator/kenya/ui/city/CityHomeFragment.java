@@ -95,7 +95,7 @@ public class CityHomeFragment extends BaseFragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_city_home, container, false);
         ButterKnife.bind(this, view);
-        
+
         permissionList.add(Manifest.permission.CAMERA);
         permissionList.add(Manifest.permission.RECORD_AUDIO);
         permissionList.add(Manifest.permission.WRITE_EXTERNAL_STORAGE);
@@ -109,8 +109,6 @@ public class CityHomeFragment extends BaseFragment {
         imageList = new ArrayList<>();
         data = new ArrayList<>();
         initOkhttpBanner();
-
-
         return view;
     }
 
@@ -156,7 +154,6 @@ public class CityHomeFragment extends BaseFragment {
                             toast(R.string.load_fail);
                             loadingDialog.dismiss();
                         }
-
                         @Override
                         public void onResponse(String response, int id) {
                             try {
@@ -328,64 +325,4 @@ public class CityHomeFragment extends BaseFragment {
             }
         }
     }
-    // @Override
-//    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
-//        switch (requestCode) {
-//            case MY_PERMISSIONS_REQUEST: {
-//                //If request is cancelled, the result arrays are empty.
-//                int length = grantResults.length;
-//                boolean re_request = false;//标记位：如果需要重新授予权限，true；反之，false。
-//                for (int i = 0; i < length; i++) {
-//                    if (grantResults[i] == PackageManager.PERMISSION_GRANTED) {
-//                        Log.d("kang", "权限授予成功:" + permissions[i]);
-//                    } else {
-//                        Log.e("kang", "权限授予失败:" + permissions[i]);
-//                        re_request = true;
-//                    }
-//                }
-//                if (re_request) {
-//                    //弹出对话框，提示用户重新授予权限
-//                    //关于弹出自定义对话框，可以查看本博文开头的知识扩展
-//                    final YesOrNoDialog permissionDialog = new YesOrNoDialog(mContext);
-//                    permissionDialog.setCanceledOnTouchOutside(false);
-//                    permissionDialog.setMeesage("请授予相关权限，否则程序无法运行。\n\n点击确定，重新授予权限。\n点击取消，立即终止程序。\n");
-//                    permissionDialog.setCallback(new YesOrNoDialog.YesOrNoDialogCallback() {
-//                        @Override
-//                        public void onClickButton(YesOrNoDialog.ClickedButton button, String message) {
-//                            if (button == YesOrNoDialog.ClickedButton.POSITIVE) {
-//                                permissionDialog.dismiss();
-//                                //此处需要弹出手动修改权限的系统界面
-//                                checkAndRequestPermissions(permissionList);
-//                            } else if (button == YesOrNoDialog.ClickedButton.NEGATIVE) {
-//                                permissionDialog.dismiss();
-//                            }
-//                        }
-//                    });
-//                    permissionDialog.show();
-//                }
-//                break;
-//            }
-//            default:
-//                break;
-//        }
-//    }
-//    private void checkAndRequestPermissions(ArrayList<String> permissionList) {
-//
-//        ArrayList<String> list = new ArrayList<>(permissionList);
-//        Iterator<String> it = list.iterator();
-//        while (it.hasNext()) {
-//            String permission = it.next();
-//            //检查权限是否已经申请
-//            int hasPermission = ContextCompat.checkSelfPermission(this.getContext(), permission);
-//            if (hasPermission == PackageManager.PERMISSION_GRANTED) {
-//                it.remove();
-//            }
-//        }
-//        if (list.size() == 0) {
-//            return;
-//        }
-//        String[] permissions = list.toArray(new String[0]);
-//        //正式请求权限
-//        ActivityCompat.requestPermissions(this.getActivity(), permissions, MY_PERMISSIONS_REQUEST);
-//    }
 }

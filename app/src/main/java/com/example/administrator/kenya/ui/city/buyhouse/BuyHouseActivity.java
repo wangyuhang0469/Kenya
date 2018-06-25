@@ -70,9 +70,9 @@ public class BuyHouseActivity extends BaseActivity {
     private ListDropDownAdapter typeAdapter;
     private ListDropDownAdapter squareAdapter;
     private ListDropDownAdapter moneyAdapter;
-    private String headers[] = {"位置", "类型", "面积", "总价"};
-    private String square[] = {"不限", "50m2以下", "50-70m2", "70-90m2", "90-110m2", "110-130m2", "130-150m2", "150-200m2", "200-300m2", "300-500m2", "500m2以上"};
-    private String money[] = {"不限", "KSh100000以下", "KSh100000-200000", "KSh200000-300000", "KSh200000-300000", "KSh300000-400000", "KSh400000-500000", "KSh500000-600000", "KSh600000-700000", "KSh700000-800000", "KSh800000-900000", "KSh1000000以上"};
+    private String[] headers;
+    private String[] square;
+    private String[] money;
     View shengshiview;
     View housetypeview;
     View popContentView;
@@ -96,6 +96,9 @@ public class BuyHouseActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_buy_house);
         ButterKnife.bind(this);
+        headers = new String[]{getString(R.string.position), getString(R.string.type), getString(R.string.area), getString(R.string.total)};
+        square = new String[]{getString(R.string.Unlimited), getString(R.string.under_50m2), "50-70m2", "70-90m2", "90-110m2", "110-130m2", "130-150m2", "150-200m2", "200-300m2", "300-500m2", getString(R.string.Above_500m2)};
+        money = new String[]{getString(R.string.Unlimited), getString(R.string.under_ksh100000), "KSh100000-200000", "KSh200000-300000", "KSh200000-300000", "KSh300000-400000", "KSh400000-500000", "KSh500000-600000", "KSh600000-700000", "KSh700000-800000", "KSh800000-900000", getString(R.string.above__ksh1000000)};
         initOKHttp();
         initProvinceCity();
         initView();
@@ -127,7 +130,7 @@ public class BuyHouseActivity extends BaseActivity {
                 }
                 addList = JSON.parseArray(response, CityProvince.class);
                 cityProvincesList.addAll(addList);
-                cityProvincesListstring.add("不限");
+                cityProvincesListstring.add((String) getResources().getText(R.string.Unlimited));
                 for (int i = 0; i < cityProvincesList.size(); i++) {
                     String cityprovince = cityProvincesList.get(i).getCityprovince();
                     cityProvincesListstring.add(cityprovince);
@@ -410,31 +413,31 @@ public class BuyHouseActivity extends BaseActivity {
                         break;
                     case R.id.radioButton2:
                         mDropDownMenu.closeMenu();
-                        househome = "1室";
+                        househome = (String) getResources().getText(R.string.Room_1);
                         break;
                     case R.id.radioButton3:
                         mDropDownMenu.closeMenu();
-                        househome = "1室1厅";
+                        househome = (String) getResources().getText(R.string.Room_1_Hall);
                         break;
                     case R.id.radioButton4:
                         mDropDownMenu.closeMenu();
-                        househome = "2室1厅";
+                        househome = (String) getResources().getText(R.string.Room_1_Hall_2);
                         break;
                     case R.id.radioButton5:
                         mDropDownMenu.closeMenu();
-                        househome = "2室2厅";
+                        househome = (String) getResources().getText(R.string.Room_2_Hall_2);
                         break;
                     case R.id.radioButton6:
                         mDropDownMenu.closeMenu();
-                        househome = "3室1厅";
+                        househome = (String) getResources().getText(R.string.Room_1_Hall_3);
                         break;
                     case R.id.radioButton7:
                         mDropDownMenu.closeMenu();
-                        househome = "3室2厅";
+                        househome = (String) getResources().getText(R.string.Room_2_Hall_3);
                         break;
                     case R.id.radioButton8:
                         mDropDownMenu.closeMenu();
-                        househome = "4室2厅";
+                        househome = (String) getResources().getText(R.string.Room_1_Hall_4);
                         break;
                 }
                 cpageNum = 1;
@@ -449,10 +452,10 @@ public class BuyHouseActivity extends BaseActivity {
                         houseType = "";
                         break;
                     case R.id.rg_tv2:
-                        houseType = "新房";
+                        houseType = (String) getResources().getText(R.string.bridal_chamber);
                         break;
                     case R.id.rg_tv3:
-                        houseType = "二手房";
+                        houseType = (String) getResources().getText(R.string.second_hand_house);
                         break;
                 }
             }
@@ -499,7 +502,7 @@ public class BuyHouseActivity extends BaseActivity {
                 }
                 addList = JSON.parseArray(response, CityProvince.class);
                 cityNameList.addAll(addList);
-                cityNameListstring.add("不限");
+                cityNameListstring.add((String) getResources().getText(R.string.Unlimited));
                 for (int i = 0; i < cityNameList.size(); i++) {
                     String cityname = cityNameList.get(i).getCityname();
                     cityNameListstring.add(cityname);

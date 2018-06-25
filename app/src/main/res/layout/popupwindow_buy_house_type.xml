@@ -33,7 +33,7 @@
                     android:checked="true"
                     android:gravity="center"
                     android:minHeight="78px"
-                    android:text="取消"
+                    android:text="@string/Unlimited"
                     android:textColor="@drawable/popup_textcolor"
                     android:textSize="13sp" />
 
@@ -47,7 +47,7 @@
                     android:button="@null"
                     android:gravity="center"
                     android:minHeight="78px"
-                    android:text="1室"
+                    android:text="@string/Room_1"
                     android:textColor="@drawable/popup_textcolor"
                     android:textSize="13sp" />
 
@@ -61,7 +61,7 @@
                     android:button="@null"
                     android:gravity="center"
                     android:minHeight="78px"
-                    android:text="1室1厅"
+                    android:text="@string/Room_1_Hall"
                     android:textColor="@drawable/popup_textcolor"
                     android:textSize="13sp" />
 
@@ -75,7 +75,7 @@
                     android:button="@null"
                     android:gravity="center"
                     android:minHeight="78px"
-                    android:text="2室1厅"
+                    android:text="@string/Room_1_Hall_2"
                     android:textColor="@drawable/popup_textcolor"
                     android:textSize="13sp" />
             </com.zhy.autolayout.AutoLinearLayout>
@@ -97,7 +97,7 @@
                     android:button="@null"
                     android:gravity="center"
                     android:minHeight="78px"
-                    android:text="2室2厅"
+                    android:text="@string/Room_2_Hall_2"
                     android:textColor="@drawable/popup_textcolor"
                     android:textSize="13sp" />
 
@@ -112,7 +112,7 @@
                     android:button="@null"
                     android:gravity="center"
                     android:minHeight="78px"
-                    android:text="3室1厅"
+                    android:text="@string/Room_1_Hall_3"
                     android:textColor="@drawable/popup_textcolor"
                     android:textSize="13sp" />
 
@@ -126,7 +126,7 @@
                     android:button="@null"
                     android:gravity="center"
                     android:minHeight="78px"
-                    android:text="3室2厅"
+                    android:text="@string/Room_2_Hall_3"
                     android:textColor="@drawable/popup_textcolor"
                     android:textSize="13sp" />
 
@@ -140,7 +140,7 @@
                     android:button="@null"
                     android:gravity="center"
                     android:minHeight="78px"
-                    android:text="4室1厅"
+                    android:text="@string/Room_1_Hall_4"
                     android:textColor="@drawable/popup_textcolor"
                     android:textSize="13sp" />
             </com.zhy.autolayout.AutoLinearLayout>

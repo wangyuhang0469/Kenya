@@ -80,9 +80,9 @@ public class UsedActivity extends BaseActivity {
     private ListDropDownAdapter moneyAdapter;
     private GirdDropDownAdapter cityAdpter;
     private ListDropDownAdapter popContentView2adapter;
-    private String headers[] = {"位置", "类型", "价格"};
-    private String types[] = {"不限", "手机数码", "家用电器", "食品", "衣服鞋子", "百货", "日化", "书籍", "其他"};
-    private String money[] = {"不限", "KSh50", "KSh50-100", "KSh100-200", "KSh200-300", "KSh300-400", "KSh400-500", "KSh500-600", "KSh600-700", "KSh700-800", "KSh800-900", "KSh900-1000", "KSh1000以上"};
+    private String[] headers;
+    private String[] types;
+    private String[] money;
     String cityprovince = "";
     String cityname = "";
     String goodsPrice = "";
@@ -93,6 +93,9 @@ public class UsedActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_used);
         ButterKnife.bind(this);
+        headers = new String[]{getString(R.string.position), getString(R.string.type), getString(R.string.Price)};
+        types = new String[]{getString(R.string.Unlimited), getString(R.string.Mobile_phone_digital), getString(R.string.Household_appliances), getString(R.string.foodstuff), getString(R.string.Clothes_shoes), getString(R.string.vehicle), getString(R.string.general_merchandise), getString(R.string.Daily_chemical), getString(R.string.books), getString(R.string.other)};
+        money = new String[]{getString(R.string.Unlimited), "KSh50", "KSh50-100", "KSh100-200", "KSh200-300", "KSh300-400", "KSh400-500", "KSh500-600", "KSh600-700", "KSh700-800", "KSh800-900", "KSh900-1000", getString(R.string.above_1000)};
         initOKHttp();
         initView();
         initProvinceCity();
@@ -316,7 +319,7 @@ public class UsedActivity extends BaseActivity {
                 }
                 addList = JSON.parseArray(response, CityProvince.class);
                 cityProvincesList.addAll(addList);
-                cityProvincesListstring.add("不限");
+                cityProvincesListstring.add(getString(R.string.Unlimited));
                 for (int i = 0; i < cityProvincesList.size(); i++) {
                     String cityprovince = cityProvincesList.get(i).getCityprovince();
                     cityProvincesListstring.add(cityprovince);
@@ -474,7 +477,7 @@ public class UsedActivity extends BaseActivity {
                 }
                 addList = JSON.parseArray(response, CityProvince.class);
                 cityNameList.addAll(addList);
-                cityNameListstring.add("不限");
+                cityNameListstring.add(getString(R.string.Unlimited));
                 for (int i = 0; i < cityNameList.size(); i++) {
                     String cityname = cityNameList.get(i).getCityname();
                     cityNameListstring.add(cityname);

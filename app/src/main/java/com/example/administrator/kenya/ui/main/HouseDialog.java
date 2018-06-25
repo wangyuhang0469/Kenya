@@ -39,7 +39,7 @@ public class HouseDialog extends Dialog {
             public void onClick(View view) {
                 Intent intent = new Intent(getContext(), HouseInfoActivity.class);
                 Bundle bundle = new Bundle();
-                bundle.putString("housetype", "住宅");
+                bundle.putString("housetype", getContext().getString(R.string.residence));
                 intent.putExtras(bundle);
                 getContext().startActivity(intent);
                 HouseDialog.this.dismiss();
@@ -50,7 +50,7 @@ public class HouseDialog extends Dialog {
             public void onClick(View view) {
                 Intent intent = new Intent(getContext(), HouseInfoActivity.class);
                 Bundle bundle = new Bundle();
-                bundle.putString("housetype", "写字楼");
+                bundle.putString("housetype", getContext().getString(R.string.Office_Building));
                 intent.putExtras(bundle);
                 getContext().startActivity(intent);
                 HouseDialog.this.dismiss();
@@ -61,7 +61,7 @@ public class HouseDialog extends Dialog {
             public void onClick(View view) {
                 Intent intent = new Intent(getContext(), HouseInfoActivity.class);
                 Bundle bundle = new Bundle();
-                bundle.putString("housetype", "厂房");
+                bundle.putString("housetype", getContext().getString(R.string.factory_mill));
                 intent.putExtras(bundle);
                 getContext().startActivity(intent);
                 HouseDialog.this.dismiss();

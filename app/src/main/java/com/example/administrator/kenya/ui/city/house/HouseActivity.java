@@ -67,9 +67,9 @@ public class HouseActivity extends BaseActivity {
     private ListDropDownAdapter squareAdapter;
     private ListDropDownAdapter moneyAdapter;
     private GirdDropDownAdapter cityAdpter;
-    private String headers[] = {"位置", "类型", "面积", "租金"};
-    private String square[] = {"不限", "50m2以下", "50-70m2", "70-90m2", "90-110m2", "110-130m2", "130-150m2", "150-200m2", "200-300m2", "300-500m2", "500m2以上"};
-    private String money[] = {"不限", "KSh50/month", "KSh50-100/month", "KSh100-200/month", "KSh200-300/month", "KSh300-400/month", "KSh400-500/month", "KSh500-600/month", "KSh600-700/month", "KSh700-800/month", "KSh800-900/month", "KSh900-1000/month", "KSh1000以上/month"};
+    private String[] headers;
+    private String[] square;
+    private String[] money;
     View shengshiview;
     View popContentView;
     ListView squareView;
@@ -91,6 +91,10 @@ public class HouseActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_house);
         ButterKnife.bind(this);
+        headers = new String[]{getString(R.string.position), getString(R.string.type), getString(R.string.area), getString(R.string.rent)};
+        square = new String[]{getString(R.string.Unlimited), getString(R.string.under_50m2), "50-70m2", "70-90m2", "90-110m2", "110-130m2", "130-150m2", "150-200m2", "200-300m2", "300-500m2", getString(R.string.Above_500m2)};
+        money = new String[]{getString(R.string.Unlimited), "KSh50/month", "KSh50-100/month", "KSh100-200/month", "KSh200-300/month", "KSh300-400/month", "KSh400-500/month", "KSh500-600/month", "KSh600-700/month", "KSh700-800/month", "KSh800-900/month", "KSh900-1000/month", getString(R.string.rent_1000_above)
+        };
         initOKHttp();
         initView();
         initProvinceCity();
@@ -122,7 +126,7 @@ public class HouseActivity extends BaseActivity {
                 }
                 addList = JSON.parseArray(response, CityProvince.class);
                 cityProvincesList.addAll(addList);
-                cityProvincesListstring.add("不限");
+                cityProvincesListstring.add(getString(R.string.Unlimited));
                 for (int i = 0; i < cityProvincesList.size(); i++) {
                     String cityprovince = cityProvincesList.get(i).getCityprovince();
                     cityProvincesListstring.add(cityprovince);
@@ -396,31 +400,31 @@ public class HouseActivity extends BaseActivity {
                         break;
                     case R.id.radioButton2:
                         mDropDownMenu.closeMenu();
-                        leaseHome = "1室";
+                        leaseHome = getString(R.string.Room_1);
                         break;
                     case R.id.radioButton3:
                         mDropDownMenu.closeMenu();
-                        leaseHome = "1室1厅";
+                        leaseHome = getString(R.string.Room_1_Hall);
                         break;
                     case R.id.radioButton4:
                         mDropDownMenu.closeMenu();
-                        leaseHome = "2室1厅";
+                        leaseHome = getString(R.string.Room_1_Hall_2);
                         break;
                     case R.id.radioButton5:
                         mDropDownMenu.closeMenu();
-                        leaseHome = "2室2厅";
+                        leaseHome = getString(R.string.Room_2_Hall_2);
                         break;
                     case R.id.radioButton6:
                         mDropDownMenu.closeMenu();
-                        leaseHome = "3室1厅";
+                        leaseHome = getString(R.string.Room_1_Hall_3);
                         break;
                     case R.id.radioButton7:
                         mDropDownMenu.closeMenu();
-                        leaseHome = "3室2厅";
+                        leaseHome = getString(R.string.Room_2_Hall_3);
                         break;
                     case R.id.radioButton8:
                         mDropDownMenu.closeMenu();
-                        leaseHome = "4室2厅";
+                        leaseHome = getString(R.string.Room_1_Hall_4);
                         break;
                 }
                 cpageNum = 1;
@@ -437,16 +441,16 @@ public class HouseActivity extends BaseActivity {
                         mDropDownMenu.closeMenu();
                         break;
                     case R.id.rg_tv2:
-                        hometype = "住宅";
+                        hometype = getString(R.string.residence);
                         myRadioGroup.setVisibility(View.VISIBLE);
                         break;
                     case R.id.rg_tv3:
-                        hometype = "写字楼";
+                        hometype = getString(R.string.Office_Building);
                         myRadioGroup.setVisibility(View.GONE);
                         mDropDownMenu.closeMenu();
                         break;
                     case R.id.rg_tv4:
-                        hometype = "厂房";
+                        hometype = getString(R.string.factory_mill);
                         myRadioGroup.setVisibility(View.GONE);
                         mDropDownMenu.closeMenu();
                         break;
@@ -515,7 +519,7 @@ public class HouseActivity extends BaseActivity {
                 }
                 addList = JSON.parseArray(response, CityProvince.class);
                 cityNameList.addAll(addList);
-                cityNameListstring.add("不限");
+                cityNameListstring.add(getString(R.string.Unlimited));
                 for (int i = 0; i < cityNameList.size(); i++) {
                     String cityname = cityNameList.get(i).getCityname();
                     cityNameListstring.add(cityname);

@@ -12,7 +12,7 @@
         android:background="@color/base_bg"
         android:gravity="center"
         android:maxLength="35"
-        android:text="请选择"
+        android:text="@string/Please_select"
         android:textColor="@color/textBlack1"
         android:textSize="14sp" />
 
@@ -28,7 +28,7 @@
         android:background="@color/white"
         android:gravity="center"
         android:maxLength="35"
-        android:text="住宅"
+        android:text="@string/residence"
         android:textColor="@color/textBlack1"
         android:textSize="14sp" />
 
@@ -44,7 +44,7 @@
         android:background="@color/white"
         android:gravity="center"
         android:maxLength="35"
-        android:text="写字楼"
+        android:text="@string/Office_Building"
         android:textColor="@color/textBlack1"
         android:textSize="14sp" />
 
@@ -60,7 +60,7 @@
         android:background="@color/white"
         android:gravity="center"
         android:maxLength="35"
-        android:text="厂房"
+        android:text="@string/factory_mill"
         android:textColor="@color/textBlack1"
         android:textSize="14sp" />
 </com.zhy.autolayout.AutoLinearLayout>

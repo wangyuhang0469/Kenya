@@ -289,4 +289,46 @@
     <string name="Enter_a_contact_number">Enter a contact number</string>
     <string name="send_housing_resource">Send housing resource</string>
 
+
+    <string name="Please_select">Please select</string>
+    <string name="bridal_chamber">bridal chamber </string>
+    <string name="second_hand_house">second hand house </string>
+    <string name="Room_1">Room 1</string>
+    <string name="Room_1_Hall">1 Room 1 Hall</string>
+    <string name="Room_1_Hall_2">2 Room 1 Hall</string>
+    <string name="Room_2_Hall_2">2 Room 2 Hall</string>
+    <string name="Room_1_Hall_3">3 Room 1 Hall</string>
+    <string name="Room_2_Hall_3">3 Room 2 Hall</string>
+    <string name="Room_1_Hall_4">4 Room 1 Hall</string>
+    <string name="position">position</string>
+    <string name="type">type</string>
+    <string name="total">total</string>
+    <string name="Unlimited">Unlimited</string>
+    <string name="Mobile_phone_digital">Mobile phone digital</string>
+    <string name="Household_appliances"> domestic appliance </string>
+    <string name="foodstuff">foodstuff</string>
+    <string name="Clothes_shoes">Clothes, shoes.</string>
+    <string name="general_merchandise">general merchandise </string>
+    <string name="Daily_chemical">Daily chemical</string>
+    <string name="books">books</string>
+    <string name="other">other</string>
+    <string name="Office_Building">Office Building</string>
+    <string name="factory_mill">factory [mill</string>
+    <string name="Release_house_source">Release house source</string>
+    <string name="vehicle">Vehicle</string>
+    <string name="residence">Residence</string>
+    <string name="Housing_release">Housing release</string>
+    <string name="Please_enter_the_description_information_of_the_house">Please enter the description information of the house</string>
+    <string name="Please_enter_the_total_sale_price">Please enter the total sale price</string>
+    <string name="Door_model">Door model</string>
+    <string name="For_Buyers">For Buyers</string>
+    <string name="Please_select_your_account_information">Please select your account information</string>
+    <string name="Price">Price</string>
+    <string name="rent">Rent</string>
+    <string name="under_50m2">under 50m2</string>
+    <string name="Above_500m2">Above 500m2</string>
+    <string name="under_ksh100000">under ksh100000</string>
+    <string name="above__ksh1000000">above ksh1000000</string>
+    <string name="rent_1000_above">above KSh1000/month</string>
+    <string name="above_1000">above KSh1000</string>
 </resources>

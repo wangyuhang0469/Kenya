@@ -92,7 +92,7 @@ public class BuyHouseInfoActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_buy_house_info);
         ButterKnife.bind(this);
-        title.setText("房源发布");
+        title.setText(getResources().getText(R.string.Housing_release));
         housetype = (String) getIntent().getExtras().get("housetype");
         buyHouseInfoPerson.setText(User.getInstance().getUserName());
         buyHouseInfoPhone.setText(User.getInstance().getUserPhonenumber());
@@ -115,13 +115,13 @@ public class BuyHouseInfoActivity extends BaseActivity {
                 } else if (buyHouseInfoAddress.getText().length() == 0) {
                     toast(getResources().getString(R.string.please) + getResources().getString(R.string.enter_the_exact_location));
                 } else if (buyHouseInfoPrice.getText().length() == 0) {
-                    toast("请输入出售的总价格");
+                    toast("" + getResources().getText(R.string.Please_enter_the_total_sale_price));
                 } else if (buyHouseInfoPerson.getText().length() == 0) {
-                    toast("请输入联系人");
+                    toast("" + getResources().getText(R.string.enter_personal_contacts));
                 } else if (buyHouseInfoPhone.getText().length() == 0) {
-                    toast("请输入联系人电话");
+                    toast("" + getResources().getText(R.string.enter_phone_number));
                 } else if (buyHouseInfoDesc.getText().length() == 0) {
-                    toast("请输入房屋的描述信息");
+                    toast("" + getResources().getText(R.string.Please_enter_the_description_information_of_the_house));
                 } else if (mResults == null || mResults.size() <= 0) {
                     toast(getResources().getString(R.string.please) + getResources().getString(R.string.please_select_at_least_one_picture));
                 } else {
@@ -329,28 +329,28 @@ public class BuyHouseInfoActivity extends BaseActivity {
             public void onCheckedChanged(MyRadioGroup group, int checkedId) {
                 switch (checkedId) {
                     case radioButton1:
-                        buyHouseInfoTypes.setText("请选择您的户型信息");
+                        buyHouseInfoTypes.setText(getResources().getText(R.string.Please_select_your_account_information));
                         break;
                     case R.id.radioButton2:
-                        buyHouseInfoTypes.setText("1室");
+                        buyHouseInfoTypes.setText(getResources().getText(R.string.Room_1));
                         break;
                     case R.id.radioButton3:
-                        buyHouseInfoTypes.setText("1室1厅");
+                        buyHouseInfoTypes.setText(getResources().getText(R.string.Room_1_Hall));
                         break;
                     case R.id.radioButton4:
-                        buyHouseInfoTypes.setText("2室1厅");
+                        buyHouseInfoTypes.setText(getResources().getText(R.string.Room_1_Hall_2));
                         break;
                     case R.id.radioButton5:
-                        buyHouseInfoTypes.setText("2室2厅");
+                        buyHouseInfoTypes.setText(getResources().getText(R.string.Room_2_Hall_2));
                         break;
                     case R.id.radioButton6:
-                        buyHouseInfoTypes.setText("3室1厅");
+                        buyHouseInfoTypes.setText(getResources().getText(R.string.Room_1_Hall_3));
                         break;
                     case R.id.radioButton7:
-                        buyHouseInfoTypes.setText("3室2厅");
+                        buyHouseInfoTypes.setText(getResources().getText(R.string.Room_2_Hall_3));
                         break;
                     case R.id.radioButton8:
-                        buyHouseInfoTypes.setText("4室1厅");
+                        buyHouseInfoTypes.setText(getResources().getText(R.string.Room_1_Hall_4));
                         break;
                 }
                 popupWindow.dismiss();

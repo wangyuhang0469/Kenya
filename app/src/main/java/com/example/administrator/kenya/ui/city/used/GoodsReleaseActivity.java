@@ -78,15 +78,15 @@ public class GoodsReleaseActivity extends BaseActivity {
         goodsphone.setText(User.getInstance().getUserPhonenumber());
         List<String> types = new ArrayList<>();
         types.add(getResources().getString(R.string.enter_your_category));
-        types.add("手机数码");
-        types.add("家用电器");
-        types.add("食品");
-        types.add("衣服鞋子");
-        types.add("交通工具");
-        types.add("百货");
-        types.add("日化");
-        types.add("书籍");
-        types.add("其他");
+        types.add(getString(R.string.Mobile_phone_digital));
+        types.add(getString(R.string.Household_appliances));
+        types.add(getString(R.string.foodstuff));
+        types.add(getString(R.string.Clothes_shoes));
+        types.add(getString(R.string.vehicle));
+        types.add(getString(R.string.general_merchandise));
+        types.add(getString(R.string.Daily_chemical));
+        types.add(getString(R.string.books));
+        types.add(getString(R.string.other));
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, R.layout.spinner_simple, R.id.spinner_tv, types);
         adapter.setDropDownViewResource(R.layout.item_spinner);
         spinner.setAdapter(adapter);
@@ -156,8 +156,8 @@ public class GoodsReleaseActivity extends BaseActivity {
                 finish();
                 break;
             case R.id.release:
-                if (spinner.getSelectedItem().toString().equals("请选择物品类别")) {
-                    toast("请选择物品类别");
+                if (spinner.getSelectedItem().toString().equals(getString(R.string.enter_your_category))) {
+                    toast(getString(R.string.enter_your_category));
                 } else if (goodsphone.getText().length() == 0) {
                     toast(getResources().getString(R.string.please) + getResources().getString(R.string.enter_your_title));
                 } else if (goodsdesc.getText().length() == 0) {

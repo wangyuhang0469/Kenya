@@ -92,7 +92,7 @@ public class HouseInfoActivity extends BaseActivity {
         ButterKnife.bind(this);
         title.setText(getResources().getString(R.string.post));
         hometype = (String) getIntent().getExtras().get("housetype");
-        if (hometype.equals("住宅")) {
+        if (hometype.equals(getString(R.string.residence))) {
             houseInfoType.setVisibility(View.VISIBLE);
         }
         housePenson.setText(User.getInstance().getUserName());
@@ -193,7 +193,7 @@ public class HouseInfoActivity extends BaseActivity {
             case R.id.release:
                 if (houseName.getText().length() == 0) {
                     toast(getResources().getString(R.string.please) + getResources().getString(R.string.enter_your_title));
-                } else if (hometype.equals("住宅") && houseHome.getText().length() == 0) {
+                } else if (hometype.equals(getString(R.string.residence)) && houseHome.getText().length() == 0) {
                     toast(getResources().getString(R.string.please) + getResources().getString(R.string.please_choose_the_type_of_hoose_e_g__one_bedroom));
                 } else if (houseSquare.getText().length() == 0) {
                     toast(getResources().getString(R.string.please) + getResources().getString(R.string.enter_the_size_of_house_in_square_metres));
@@ -327,28 +327,28 @@ public class HouseInfoActivity extends BaseActivity {
             public void onCheckedChanged(MyRadioGroup group, int checkedId) {
                 switch (checkedId) {
                     case radioButton1:
-                        houseHome.setText("请选择您的户型信息");
+                        houseHome.setText(getString(R.string.Please_select_your_account_information));
                         break;
                     case R.id.radioButton2:
-                        houseHome.setText("1室");
+                        houseHome.setText(getString(R.string.Room_1));
                         break;
                     case R.id.radioButton3:
-                        houseHome.setText("1室1厅");
+                        houseHome.setText(getString(R.string.Room_1_Hall));
                         break;
                     case R.id.radioButton4:
-                        houseHome.setText("2室1厅");
+                        houseHome.setText(getString(R.string.Room_1_Hall_2));
                         break;
                     case R.id.radioButton5:
-                        houseHome.setText("2室2厅");
+                        houseHome.setText(getString(R.string.Room_2_Hall_2));
                         break;
                     case R.id.radioButton6:
-                        houseHome.setText("3室1厅");
+                        houseHome.setText(getString(R.string.Room_1_Hall_3));
                         break;
                     case R.id.radioButton7:
-                        houseHome.setText("3室2厅");
+                        houseHome.setText(getString(R.string.Room_2_Hall_3));
                         break;
                     case R.id.radioButton8:
-                        houseHome.setText("4室1厅");
+                        houseHome.setText(getString(R.string.Room_1_Hall_4));
                         break;
                 }
                 popupWindow.dismiss();

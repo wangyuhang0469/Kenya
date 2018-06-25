@@ -12,7 +12,7 @@
         android:background="@color/base_bg"
         android:gravity="center"
         android:maxLength="35"
-        android:text="请选择"
+        android:text="@string/Please_select"
         android:textColor="@color/textBlack1"
         android:textSize="14sp" />
 
@@ -28,7 +28,7 @@
         android:background="@color/white"
         android:gravity="center"
         android:maxLength="35"
-        android:text="新房"
+        android:text="@string/bridal_chamber"
         android:textColor="@color/textBlack1"
         android:textSize="14sp" />
 
@@ -44,7 +44,7 @@
         android:background="@color/white"
         android:gravity="center"
         android:maxLength="35"
-        android:text="二手房"
+        android:text="@string/second_hand_house"
         android:textColor="@color/textBlack1"
         android:textSize="14sp" />
 </com.zhy.autolayout.AutoLinearLayout>

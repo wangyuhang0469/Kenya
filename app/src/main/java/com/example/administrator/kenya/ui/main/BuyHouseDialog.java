@@ -40,7 +40,7 @@ public class BuyHouseDialog extends Dialog {
             public void onClick(View view) {
                 Intent intent = new Intent(getContext(), BuyHouseInfoActivity.class);
                 Bundle bundle = new Bundle();
-                bundle.putString("housetype", "新房");
+                bundle.putString("housetype", getContext().getResources().getString(R.string.bridal_chamber));
                 intent.putExtras(bundle);
                 getContext().startActivity(intent);
                 BuyHouseDialog.this.dismiss();
@@ -52,7 +52,7 @@ public class BuyHouseDialog extends Dialog {
             public void onClick(View view) {
                 Intent intent = new Intent(getContext(), BuyHouseInfoActivity.class);
                 Bundle bundle = new Bundle();
-                bundle.putString("housetype", "二手房");
+                bundle.putString("housetype", getContext().getResources().getString(R.string.second_hand_house));
                 intent.putExtras(bundle);
                 getContext().startActivity(intent);
                 BuyHouseDialog.this.dismiss();
