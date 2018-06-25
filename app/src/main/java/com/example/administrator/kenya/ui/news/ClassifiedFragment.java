@@ -78,7 +78,7 @@ public class ClassifiedFragment extends BaseFragment {
 
     private void initOKHttp() {
         postFormBuilder = OkHttpUtils.post()
-                .url(AppConstants.YJIP + "/kenya/SmallAds/pageQuery")
+                .url(AppConstants.BASE_URL + "/kenya/SmallAds/pageQuery")
                 .addParams("page", cpageNum + "");
 
         stringCallback = new StringCallback() {

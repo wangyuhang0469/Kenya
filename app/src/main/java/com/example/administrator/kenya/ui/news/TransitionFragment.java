@@ -78,7 +78,7 @@ public class TransitionFragment extends BaseFragment {
 
     private void initOKHttp() {
         postFormBuilder = OkHttpUtils.post()
-                .url(AppConstants.YJIP + "/kenya/funeral/pageQuery")
+                .url(AppConstants.BASE_URL + "/kenya/funeral/pageQuery")
                 .addParams("page", cpageNum + "");
 
         StringCallback = new StringCallback() {

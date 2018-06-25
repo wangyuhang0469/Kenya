@@ -127,7 +127,7 @@ public class MyLocationUtil {
     private Location getLocation() {
         Location location = null;
         if (ActivityCompat.checkSelfPermission(context, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(context, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-//            ActivityCompat.requestPermissions((Activity) context, new String[]{Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION, Manifest.permission.CAMERA}, 1);
+//            ActivityCompat.requestPermissions((Activity) context, new String[]{!= PackageManager.PERMISSION_GRANTED!= PackageManager.PERMISSION_GRANTED, Manifest.permission.CAMERA}, 1);
         } else {
             geocoder = new Geocoder(context);
             locationManager = (LocationManager) context.getSystemService(Context.LOCATION_SERVICE);

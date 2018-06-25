@@ -273,6 +273,27 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
+
+    <!--6月23日增加-->
+    <string name="all">综合</string>
+    <string name="national">国家</string>
+    <string name="opinion">观点</string>
+    <string name="letters">投稿</string>
+    <string name="county">县市</string>
+    <string name="classified">广告</string>
+    <string name="transition">讣告</string>
+    <string name="sports">体育</string>
+
+    <string name="update_ontent">更新内容</string>
+    <string name="please_enter_the_name_of_the_deceased">请输入逝者姓名</string>
+    <string name="please_enter_the_life_story">请输入生平事迹</string>
+    <string name="please_upload_the_photo_of_the_deceased">请上传逝者照片</string>
+    <string name="publish_advertisement">发布广告</string>
+    <string name="please_upload_your_advertisement">请上传您的广告(图片形式)</string>
+    <string name="post_transition">发布讣告</string>
+    <string name="a_new_version_has_been_downloaded_in_WIFI">新版本已在WIFI下下载完成,是否现在安装?</string>
+    <string name="install">安装</string>
+
     <!--   <string name="post">发布</string>-->
 
     <!--买房模块新曾字段-->

@@ -59,7 +59,7 @@ public class TransitionAdapter extends RecyclerView.Adapter<TransitionAdapter.Vi
 //        holder.news_image.setTag(list.get(position).getNewsimg0());
 
         Glide.with(context)
-                .load(AppConstants.YJIP + list.get(position).getImg0())
+                .load(AppConstants.BASE_URL + list.get(position).getImg0())
                 .centerCrop()
                 .placeholder(R.drawable.img_loading3)
                 .into(holder.img);

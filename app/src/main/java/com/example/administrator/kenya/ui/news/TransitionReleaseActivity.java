@@ -62,7 +62,7 @@ public class TransitionReleaseActivity extends BaseActivity {
         setContentView(R.layout.activity_transition_release);
         ButterKnife.bind(this);
 
-        title.setText("Post Transition");
+        title.setText(getString(R.string.post_transition));
 
 
     }
@@ -75,11 +75,11 @@ public class TransitionReleaseActivity extends BaseActivity {
                 break;
             case R.id.release:
                 if (name.getText().length() == 0) {
-                    toast(getResources().getString(R.string.please) + getResources().getString(R.string.enter_your_title));
+                    toast( getResources().getString(R.string.please_enter_the_name_of_the_deceased));
                 } else if (details.getText().length() == 0) {
-                    toast( getResources().getString(R.string.please_describe));
+                    toast( getResources().getString(R.string.please_enter_the_life_story));
                 } else if (mResults == null || mResults.size() == 0) {
-                    toast(getResources().getString(R.string.please) + getResources().getString(R.string.please_select_at_least_one_picture));
+                    toast(getResources().getString(R.string.please_upload_the_photo_of_the_deceased));
                 } else {
                     final LoadingDialog loadingDialog = new LoadingDialog(TransitionReleaseActivity.this);
                     loadingDialog.show();
@@ -187,7 +187,7 @@ public class TransitionReleaseActivity extends BaseActivity {
         for (int i = 0; i < compressFile.size(); i++) {
             postFormBuilder.addFile("uploadFile", compressFile.get(i).getName(), compressFile.get(i));
         }
-        postFormBuilder.url(AppConstants.YJIP + "/kenya/funeral/save")
+        postFormBuilder.url(AppConstants.BASE_URL + "/kenya/funeral/save")
                 .addParams("userId", User.getInstance().getUserId())
 //                .addParams("userId","1")
                 .addParams("name", name.getText().toString())

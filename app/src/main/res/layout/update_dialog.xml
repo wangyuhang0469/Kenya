@@ -18,7 +18,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="The latest version has been downloaded"
+            android:text="@string/a_new_version_has_been_downloaded_in_WIFI"
             android:textColor="@color/textBlack1"
             android:textSize="18sp"
             android:layout_marginTop="50px"
@@ -50,7 +50,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="更新内容:"
+            android:text="@string/update_ontent"
             android:textColor="@color/textBlack2"
             android:textSize="16sp"
             android:layout_marginTop="30px"/>
@@ -75,7 +75,7 @@
                 android:id="@+id/yes"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="INSTALL"
+                android:text="@string/install"
                 android:textColor="@color/textgreen3"
                 android:textSize="16sp"
                 android:layout_toLeftOf="@+id/no"

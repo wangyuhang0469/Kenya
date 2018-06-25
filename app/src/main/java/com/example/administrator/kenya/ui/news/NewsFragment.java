@@ -63,14 +63,14 @@ public class NewsFragment extends BaseFragment {
         View view = inflater.inflate(R.layout.fragment_news, container, false);
         ButterKnife.bind(this, view);
 
-        titleList.add("All");
-        titleList.add("National");
-        titleList.add("Opinion");
-        titleList.add("Letters");
-        titleList.add("County");
-        titleList.add("Classified");
-        titleList.add("Transition");
-        titleList.add("Sports");
+        titleList.add(getString(R.string.all));
+        titleList.add(getString(R.string.national));
+        titleList.add(getString(R.string.opinion));
+        titleList.add(getString(R.string.letters));
+        titleList.add(getString(R.string.county));
+        titleList.add(getString(R.string.classified));
+        titleList.add(getString(R.string.transition));
+        titleList.add(getString(R.string.sports));
         addFragment("All");
         addFragment("National");
         addFragment("Opinion");

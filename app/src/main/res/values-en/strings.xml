@@ -276,6 +276,28 @@
     <string name="service_details">Details Of Sevice</string>
     <!--   <string name="post">发布</string>-->
 
+    <!--6月23日增加-->
+    <string name="all">All</string>
+    <string name="national">National</string>
+    <string name="opinion">Opinion</string>
+    <string name="letters">Letters</string>
+    <string name="county">County</string>
+    <string name="classified">Classified</string>
+    <string name="transition">Transition</string>
+    <string name="sports">Sports</string>
+
+    <string name="update_ontent">Update Content</string>
+    <string name="please_enter_the_name_of_the_deceased">Please Enter The Name Of The Deceased</string>
+    <string name="please_enter_the_life_story">Please Enter The Life Story</string>
+    <string name="please_upload_the_photo_of_the_deceased">Please Upload The Photo Of The Deceased</string>
+    <string name="publish_advertisement">Post Advertisement</string>
+    <string name="please_upload_your_advertisement">Please Upload Your Advertisement (Picture Form)</string>
+    <string name="post_transition">Post Transition</string>
+    <string name="a_new_version_has_been_downloaded_in_WIFI">A new version has been downloaded in WIFI,install?</string>
+    <string name="install">INSTALL</string>
+
+
+
 
     <!--买房模块新曾字段-->
     <string name="house_type">House type</string>

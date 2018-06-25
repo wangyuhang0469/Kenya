@@ -119,7 +119,7 @@ public class MyselfFragment extends BaseFragment {
         myCenterName.setText(messageEvent2.getMseeage());
     }
 
-    @OnClick({R.id.avatar, R.id.phone})
+    @OnClick({R.id.avatar, R.id.phone,R.id.my_center_name,R.id.image})
     public void onViewClicked2(View view) {
 //        startActivity(MyInformationActivity.class,null);
         getActivity().startActivityForResult(new Intent(getActivity(), MyInformationActivity.class), 1);

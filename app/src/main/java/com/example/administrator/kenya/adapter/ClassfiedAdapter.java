@@ -52,7 +52,7 @@ public class ClassfiedAdapter extends RecyclerView.Adapter<ClassfiedAdapter.View
     public void onBindViewHolder(final ViewHolder holder, final int position) {
 
         Glide.with(context)
-                .load(AppConstants.YJIP + list.get(position).getImg0())
+                .load(AppConstants.BASE_URL + list.get(position).getImg0())
                 .centerCrop()
                 .placeholder(R.drawable.img_loading3)
                 .into(holder.imageView);
@@ -62,7 +62,7 @@ public class ClassfiedAdapter extends RecyclerView.Adapter<ClassfiedAdapter.View
             @Override
             public void onClick(View view) {
                 List<String> url = new ArrayList<String>();
-                url.add(AppConstants.YJIP + list.get(position).getImg0());
+                url.add(AppConstants.BASE_URL + list.get(position).getImg0());
                 new PreviewDialog(context ,url , 0 ).show();
             }
         });

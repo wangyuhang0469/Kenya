@@ -51,7 +51,7 @@ public class ClassifiedReleaseActivity extends BaseActivity {
         setContentView(R.layout.activity_classified_release);
         ButterKnife.bind(this);
 
-        title.setText("Post Classified");
+        title.setText(getString(R.string.publish_advertisement));
 
     }
 
@@ -168,7 +168,7 @@ public class ClassifiedReleaseActivity extends BaseActivity {
         for (int i = 0; i < compressFile.size(); i++) {
             postFormBuilder.addFile("uploadFile", compressFile.get(i).getName(), compressFile.get(i));
         }
-        postFormBuilder.url(AppConstants.YJIP + "/kenya/SmallAds/save")
+        postFormBuilder.url(AppConstants.BASE_URL + "/kenya/SmallAds/save")
                 .addParams("userId", User.getInstance().getUserId())
 //                .addParams("userId","1")
                 .addParams("title","")
