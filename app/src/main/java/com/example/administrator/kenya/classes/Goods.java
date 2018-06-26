@@ -14,7 +14,6 @@ import java.util.List;
  */
 
 public class Goods implements Serializable {
-
     String goodsid;
     String goodsname;
     String goodsimgs;
@@ -28,6 +27,16 @@ public class Goods implements Serializable {
     String userid;
     String goodsdesc;
     String goodstype;
+
+    public String getGoodsaddress() {
+        return goodsaddress;
+    }
+
+    public void setGoodsaddress(String goodsaddress) {
+        this.goodsaddress = goodsaddress;
+    }
+
+    String goodsaddress;
     Issuer user;
 
     public String getGoodstype() {

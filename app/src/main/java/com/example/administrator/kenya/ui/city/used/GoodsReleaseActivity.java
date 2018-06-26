@@ -230,8 +230,6 @@ public class GoodsReleaseActivity extends BaseActivity {
         }
         startActivityForResult(intent, 2);
     }
-
-
     private void send(final LoadingDialog loadingDialog) {
 
         PostFormBuilder postFormBuilder = OkHttpUtils.post();

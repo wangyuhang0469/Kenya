@@ -7,24 +7,24 @@
 
     <com.zhy.autolayout.AutoLinearLayout
         android:layout_width="match_parent"
-        android:layout_height="180px"
-        android:layout_marginLeft="60px"
-        android:layout_marginTop="140px">
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30px"
+        android:layout_marginTop="110px">
 
         <com.example.administrator.kenya.view.MyRadioGroup
             android:id="@+id/myRadioGroupText"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginRight="30px">
+            android:layout_height="wrap_content"
+            android:layout_margin="30px">
 
             <com.zhy.autolayout.AutoLinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="wrap_content">
 
                 <RadioButton
                     android:id="@+id/rg_tv1"
                     android:layout_width="0dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:background="@drawable/popup_bg"
                     android:button="@null"
@@ -38,7 +38,7 @@
                 <RadioButton
                     android:id="@+id/rg_tv2"
                     android:layout_width="0dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:layout_marginLeft="88px"
                     android:layout_weight="1"
                     android:background="@drawable/popup_bg"
@@ -52,7 +52,7 @@
                 <RadioButton
                     android:id="@+id/rg_tv3"
                     android:layout_width="0dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:layout_marginLeft="88px"
                     android:layout_weight="1"
                     android:background="@drawable/popup_bg"
@@ -66,7 +66,7 @@
                 <RadioButton
                     android:id="@+id/rg_tv4"
                     android:layout_width="0dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:layout_marginLeft="88px"
                     android:layout_weight="1"
                     android:background="@drawable/popup_bg"
