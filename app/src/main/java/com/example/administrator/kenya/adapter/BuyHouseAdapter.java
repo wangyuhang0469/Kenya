@@ -37,7 +37,7 @@ public class BuyHouseAdapter extends RecyclerView.Adapter<BuyHouseAdapter.ViewHo
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        TextView house_Title, house_square, house_address, house_home, house_price, call;
+        TextView house_Title, house_square, house_address, house_home, house_price, call, house_type;
         ImageView house_image;
 
         public ViewHolder(View itemView) {
@@ -49,6 +49,7 @@ public class BuyHouseAdapter extends RecyclerView.Adapter<BuyHouseAdapter.ViewHo
             house_price = (TextView) itemView.findViewById(R.id.house_price);
             call = (TextView) itemView.findViewById(R.id.house_call);
             house_image = (ImageView) itemView.findViewById(R.id.house_image);
+            house_type = itemView.findViewById(R.id.buy_house_type_new);
         }
     }
 
@@ -65,6 +66,11 @@ public class BuyHouseAdapter extends RecyclerView.Adapter<BuyHouseAdapter.ViewHo
         holder.house_square.setText(list.get(position).getHousesquare() + "㎡");
         holder.house_address.setText(list.get(position).getHouseaddress());
         holder.house_price.setText("KSh " + list.get(position).getHouseprice());
+        if (list.get(position).getHousetype().equals("新房")) {
+            holder.house_type.setVisibility(View.VISIBLE);
+        } else {
+
+        }
 
         holder.call.setOnClickListener(new View.OnClickListener() {
             @Override

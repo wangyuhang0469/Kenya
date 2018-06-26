@@ -160,6 +160,8 @@ public class GoodsReleaseActivity extends BaseActivity {
                     toast(getString(R.string.enter_your_category));
                 } else if (goodsphone.getText().length() == 0) {
                     toast(getResources().getString(R.string.please) + getResources().getString(R.string.enter_your_title));
+                } else if (goodsAddress.getText().length() == 0) {
+                    toast(getResources().getString(R.string.please) + getResources().getString(R.string.enter_the_exact_location));
                 } else if (goodsdesc.getText().length() == 0) {
                     toast(getResources().getString(R.string.please) + getResources().getString(R.string.describe_in_details_about_your_product));
                 } else if (goodsprice.getText().length() == 0) {
@@ -244,8 +246,9 @@ public class GoodsReleaseActivity extends BaseActivity {
                 .addParams("goodUserName", goodsusername.getText().toString())
                 .addParams("goodsPhone", goodsphone.getText().toString())
                 .addParams("goodsType", spinner.getSelectedItem().toString())
-                .addParams("cityprovince", "Nyanza Province")
-                .addParams("cityname", "Bondo District")
+                .addParams("cityprovince", province)
+                .addParams("cityname", city)
+                .addParams("goodsaddress", goodsAddress.getText().toString())
                 .build()
                 .execute(new StringCallback() {
                     @Override

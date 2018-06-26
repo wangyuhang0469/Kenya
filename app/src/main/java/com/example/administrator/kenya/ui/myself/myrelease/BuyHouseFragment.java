@@ -14,8 +14,11 @@ import android.widget.TextView;
 
 import com.alibaba.fastjson.JSON;
 import com.example.administrator.kenya.R;
+import com.example.administrator.kenya.adapter.BuyHouseAdapter;
+import com.example.administrator.kenya.adapter.MyBuyHouseAdapter;
 import com.example.administrator.kenya.adapter.MyHouseAdapter;
 import com.example.administrator.kenya.base.BaseFragment;
+import com.example.administrator.kenya.classes.BuyHouse;
 import com.example.administrator.kenya.classes.House;
 import com.example.administrator.kenya.classes.User;
 import com.example.administrator.kenya.constants.AppConstants;
@@ -42,7 +45,6 @@ import okhttp3.Call;
  */
 public class BuyHouseFragment extends BaseFragment {
 
-
     @Bind(R.id.recyclerView)
     RecyclerView recyclerView;
     @Bind(R.id.pullToRefreshLayout)
@@ -55,8 +57,8 @@ public class BuyHouseFragment extends BaseFragment {
     private PostFormBuilder postFormBuilder;
     private int cpageNum = 1;
     private StringCallback stringCallback;
-    private List<House> housesList = new ArrayList<>();
-    private MyHouseAdapter myHouseAdapter;
+    private List<BuyHouse> housesList = new ArrayList<>();
+    private MyBuyHouseAdapter myHouseAdapter;
 
     public BuyHouseFragment() {
     }
@@ -76,7 +78,7 @@ public class BuyHouseFragment extends BaseFragment {
         postFormBuilder = OkHttpUtils.post()
                 .url(AppConstants.BASE_URL + "/kenya/user/selectByUserId")
                 .addParams("pn", cpageNum + "")
-                .addParams("Type", "租房")
+                .addParams("Type", "买房")
                 .addParams("userid", User.getInstance().getUserId());
 
         stringCallback = new StringCallback() {
@@ -92,11 +94,10 @@ public class BuyHouseFragment extends BaseFragment {
 
             @Override
             public void onResponse(String response, int id) {
-                Log.d("kang", "111111" + response);
                 //防止因Activity释放导致内部控件空指针
                 if (pullToRefreshLayout != null) {
                     cpageNum++;
-                    List<House> addList = null;
+                    List<BuyHouse> addList = null;
                     try {
                         JSONObject jsonObject = new JSONObject(response);
                         if (jsonObject.getString("code").equals("000")) {
@@ -108,7 +109,7 @@ public class BuyHouseFragment extends BaseFragment {
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
-                    addList = JSON.parseArray(response, House.class);
+                    addList = JSON.parseArray(response, BuyHouse.class);
                     housesList.addAll(addList);
                     myHouseAdapter.notifyDataSetChanged();
                     if (housesList.size() == 0) {
@@ -126,7 +127,7 @@ public class BuyHouseFragment extends BaseFragment {
 
     //初始化组件
     private void initView() {
-        myHouseAdapter = new MyHouseAdapter(getContext(), housesList);
+        myHouseAdapter = new MyBuyHouseAdapter(getContext(), housesList);
         LinearLayoutManager layoutmanager = new LinearLayoutManager(getContext());
         recyclerView.setLayoutManager(layoutmanager);
         recyclerView.setAdapter(myHouseAdapter);

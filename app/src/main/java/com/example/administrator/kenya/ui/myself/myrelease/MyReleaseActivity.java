@@ -15,8 +15,10 @@ import android.widget.PopupWindow;
 import android.widget.RadioButton;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.serializer.ToStringSerializer;
 import com.example.administrator.kenya.R;
 import com.example.administrator.kenya.base.BaseActivity;
 import com.example.administrator.kenya.base.BaseFragment;
@@ -42,7 +44,6 @@ import butterknife.OnClick;
 import okhttp3.Call;
 
 public class MyReleaseActivity extends BaseActivity {
-
     @Bind(R.id.title_bar)
     AutoRelativeLayout titleBar;
     @Bind(R.id.classification)
@@ -68,7 +69,6 @@ public class MyReleaseActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_release);
         ButterKnife.bind(this);
-
         initView();
         initPopupWindow();
     }
@@ -141,9 +141,10 @@ public class MyReleaseActivity extends BaseActivity {
                         classification.setText("买房");
                         break;
                     case R.id.radioButton8:
-                        fragmentTransaction.hide(fragments[currentTabIndex]).show(fragments[7]).commit();
-                        currentTabIndex = 7;
-                        classification.setText(getResources().getString(R.string.find_friends));
+                        //fragmentTransaction.hide(fragments[currentTabIndex]).show(fragments[7]).commit();
+                        //currentTabIndex = 7;
+                        // classification.setText(getResources().getString(R.string.find_friends));
+                        Toast.makeText(MyReleaseActivity.this, "功能尚在开发中，敬请期待", Toast.LENGTH_LONG).show();
                         break;
                 }
                 popupWindow.dismiss();

@@ -3,6 +3,7 @@ package com.example.administrator.kenya.ui.city.used;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -127,6 +128,7 @@ public class UsedActivity extends BaseActivity {
 
             @Override
             public void onResponse(String response, int id) {
+                Log.d("kang", "33333333333333" + response);
                 //防止因Activity释放导致内部控件空指针
                 if (pullToRefreshLayout != null) {
                     List<Goods> addList = null;
@@ -231,7 +233,7 @@ public class UsedActivity extends BaseActivity {
         }
 
         public class ViewHolder extends RecyclerView.ViewHolder {
-            TextView goodsname, goodsphone, goodsprice, call;
+            TextView goodsname, goodsphone, goodsprice, call, goods_type;
             ImageView goodsimgs;
 
             public ViewHolder(View itemView) {
@@ -241,6 +243,7 @@ public class UsedActivity extends BaseActivity {
                 goodsprice = (TextView) itemView.findViewById(R.id.goodsprice);
                 call = (TextView) itemView.findViewById(R.id.call);
                 goodsimgs = (ImageView) itemView.findViewById(R.id.goodsimgs);
+                goods_type = itemView.findViewById(R.id.goods_type);
             }
         }
 
@@ -255,6 +258,7 @@ public class UsedActivity extends BaseActivity {
             holder.goodsname.setText(list.get(position).getGoodsname());
             holder.goodsphone.setText(getResources().getString(R.string.phone_no_) + list.get(position).getGoodsphone());
             holder.goodsprice.setText("KSh " + list.get(position).getGoodsprice());
+            holder.goods_type.setText(list.get(position).getGoodstype());
 //            holder.goodsimgs.setTag(list.get(position).getGoodsimgs());
 //            holder.goodsimgs.setBackgroundResource(R.drawable.bg4dp_grey);
 

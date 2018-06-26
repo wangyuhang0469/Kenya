@@ -3,6 +3,7 @@ package com.example.administrator.kenya.ui.city.house;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.WindowManager;
@@ -70,7 +71,7 @@ public class HouseSearchActivity extends BaseActivity {
         postFormBuilder = OkHttpUtils.post()
                 .url(AppConstants.BASE_URL + "/kenya/Lease/selectByFile")
                 .addParams("pn", cpageNum + "")
-                .addParams("LeaseName", keyword.getText().toString());
+                .addParams("Leasename", keyword.getText().toString());
 
         StringCallback = new StringCallback() {
             @Override
@@ -146,7 +147,7 @@ public class HouseSearchActivity extends BaseActivity {
 
             @Override
             public void loadMore() {
-                postFormBuilder.addParams("pn", cpageNum + "").addParams("leaseName", lastKeyword).build().execute(StringCallback);
+                postFormBuilder.addParams("pn", cpageNum + "").addParams("leasename", lastKeyword).build().execute(StringCallback);
             }
         });
     }
@@ -162,7 +163,7 @@ public class HouseSearchActivity extends BaseActivity {
         } else if (lastKeyword.equals(keyword.getText().toString())) {
         } else {
             replacement();
-            postFormBuilder.addParams("pn", cpageNum + "").addParams("leaseName", keyword.getText().toString()).build().execute(StringCallback);
+            postFormBuilder.addParams("pn", cpageNum + "").addParams("leasename", keyword.getText().toString()).build().execute(StringCallback);
         }
     }
 

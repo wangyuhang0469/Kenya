@@ -41,8 +41,6 @@ import okhttp3.Call;
  * A simple {@link Fragment} subclass.
  */
 public class MyHouseFragment extends BaseFragment {
-
-
     @Bind(R.id.recyclerView)
     RecyclerView recyclerView;
     @Bind(R.id.pullToRefreshLayout)
@@ -75,6 +73,7 @@ public class MyHouseFragment extends BaseFragment {
     }
 
     private void initOKHttp() {
+        Log.d("kang", 1111111 + User.getInstance().getUserId());
         postFormBuilder = OkHttpUtils.post()
                 .url(AppConstants.BASE_URL + "/kenya/user/selectByUserId")
                 .addParams("pn", cpageNum + "")
@@ -94,7 +93,6 @@ public class MyHouseFragment extends BaseFragment {
 
             @Override
             public void onResponse(String response, int id) {
-                Log.d("kang", "111111" + response);
                 //防止因Activity释放导致内部控件空指针
                 if (pullToRefreshLayout != null) {
                     cpageNum++;

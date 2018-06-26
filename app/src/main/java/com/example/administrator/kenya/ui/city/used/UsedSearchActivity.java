@@ -3,6 +3,7 @@ package com.example.administrator.kenya.ui.city.used;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -68,7 +69,7 @@ public class UsedSearchActivity extends BaseActivity {
         ButterKnife.bind(this);
 
         //自动 弹出输入法切不挤压原布局
-        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN|WindowManager.LayoutParams.SOFT_INPUT_STATE_VISIBLE);
+        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN | WindowManager.LayoutParams.SOFT_INPUT_STATE_VISIBLE);
 
         initOKHttp();
 
@@ -77,6 +78,7 @@ public class UsedSearchActivity extends BaseActivity {
     }
 
     private void initOKHttp() {
+        Log.d("kang", "1213131313" + keyword.getText().toString());
         postFormBuilder = OkHttpUtils.post()
                 .url(AppConstants.BASE_URL + "/kenya/Goods/selectByFile")
                 .addParams("pn", cpageNum + "")
@@ -223,7 +225,7 @@ public class UsedSearchActivity extends BaseActivity {
         @Override
         public void onBindViewHolder(final ViewHolder holder, final int position) {
             holder.goodsname.setText(list.get(position).getGoodsname());
-            holder.goodsphone.setText(getResources().getString(R.string.phone_no_)  + list.get(position).getGoodsphone());
+            holder.goodsphone.setText(getResources().getString(R.string.phone_no_) + list.get(position).getGoodsphone());
             holder.goodsprice.setText("KSh " + list.get(position).getGoodsprice());
 //            holder.goodsimgs.setTag(list.get(position).getGoodsimgs());
 

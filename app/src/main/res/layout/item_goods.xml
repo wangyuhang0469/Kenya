@@ -18,9 +18,16 @@
         android:layout_alignTop="@id/goodsimgs"
         android:layout_marginRight="30px"
         android:layout_marginTop="10px"
-        android:maxLines="2"
         android:layout_toRightOf="@id/goodsimgs"
+        android:maxLines="2"
         android:textColor="@color/textBlack1" />
+
+    <TextView
+        android:id="@+id/goods_type"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/goodsname"
+        android:layout_toRightOf="@id/goodsimgs" />
 
     <TextView
         android:id="@+id/goodsphone"
@@ -29,8 +36,8 @@
         android:layout_alignBottom="@id/goodsimgs"
         android:layout_marginBottom="10px"
         android:layout_toRightOf="@id/goodsimgs"
-        android:textColor="@color/textBlack2"
         android:maxLength="23"
+        android:textColor="@color/textBlack2"
         android:textSize="13sp" />
 
     <TextView

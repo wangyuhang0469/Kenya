@@ -6,7 +6,6 @@
     android:orientation="vertical"
     tools:context="com.example.administrator.kenya.activity.JobDetailActivity">
 
-
     <com.zhy.autolayout.AutoRelativeLayout
         android:id="@+id/job_deyail_title"
         android:layout_width="match_parent"
@@ -65,6 +64,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="50px"
+                    android:textColor="@color/textgreen1"
                     android:textSize="24sp" />
 
                 <TextView
@@ -96,8 +96,10 @@
                 android:layout_below="@+id/job_detail_line_up"
                 android:layout_marginTop="20px"
                 android:background="@color/white"
-                android:gravity="center_horizontal"
-                android:text="@string/job_requirements" />
+                android:paddingLeft="30px"
+                android:text="@string/job_requirements"
+                android:textColor="@color/textBlack1"
+                android:textSize="50px" />
 
             <TextView
                 android:id="@+id/job_detail_desc"
@@ -108,59 +110,64 @@
                 android:layout_marginBottom="30px"
                 android:layout_marginLeft="30px"
                 android:layout_marginRight="30px"
-                android:layout_marginTop="40px"
+                android:layout_marginTop="30px"
                 android:background="@color/white"
                 android:lineSpacingMultiplier="1.3"
                 android:textColor="@color/textBlack2" />
+
+            <View
+                android:id="@+id/line8"
+                android:layout_width="match_parent"
+                android:layout_height="20px"
+                android:layout_marginTop="20px"
+                android:background="@color/base_bg" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="80px"
+                android:gravity="center_vertical"
+                android:paddingLeft="30px"
+                android:text="公司地址"
+                android:textColor="@color/textBlack1"
+                android:textSize="16sp" />
+
+            <View
+                android:id="@+id/line5"
+                android:layout_width="match_parent"
+                android:layout_height="0.3dp"
+                android:background="@color/line7" />
+
+            <com.zhy.autolayout.AutoLinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="80px"
+                android:layout_below="@+id/line5">
+
+                <ImageView
+                    android:id="@+id/my_center_address"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="30px"
+                    android:src="@mipmap/my_center_address2" />
+
+                <TextView
+                    android:id="@+id/job_detail_adress"
+                    style="@style/my_center_tv"
+                    android:layout_gravity="center_vertical"
+                    android:layout_toRightOf="@id/my_center_address"
+                    android:text="建华大街跃进路交口乐城商务1318" />
+            </com.zhy.autolayout.AutoLinearLayout>
 
         </com.zhy.autolayout.AutoLinearLayout>
 
     </com.example.administrator.kenya.view.MyObervalbleScrollView>
 
     <com.zhy.autolayout.AutoRelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="120px"
-        android:layout_above="@+id/job_detail_call"
-        android:background="@color/white">
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="0.3dp"
-            android:layout_marginTop="20px"
-            android:background="@color/line7" />
-
-        <com.zhy.autolayout.AutoLinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="center_vertical">
-
-            <ImageView
-                android:id="@+id/my_center_address"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="30px"
-                android:src="@mipmap/my_center_address2" />
-
-            <TextView
-                android:id="@+id/job_detail_adress"
-                style="@style/my_center_tv"
-                android:layout_toRightOf="@id/my_center_address"
-                android:text="建华大街跃进路交口乐城商务1318" />
-        </com.zhy.autolayout.AutoLinearLayout>
-
-    </com.zhy.autolayout.AutoRelativeLayout>
-
-    <com.zhy.autolayout.AutoRelativeLayout
         android:id="@+id/job_detail_call"
         android:layout_width="match_parent"
         android:layout_height="180px"
         android:layout_alignParentBottom="true"
-        android:background="@color/base_bg">
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="3dp"
-            android:background="@color/line7" />
+        android:background="@color/white">
 
         <ImageView
             android:id="@+id/avatar"

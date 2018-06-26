@@ -12,29 +12,31 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.example.administrator.kenya.R;
-import com.example.administrator.kenya.classes.House;
+import com.example.administrator.kenya.classes.BuyHouse;
 import com.example.administrator.kenya.constants.AppConstants;
-import com.example.administrator.kenya.ui.city.house.HouseDetailActivity;
+import com.example.administrator.kenya.interfaces.OnSuccessfulListener;
+import com.example.administrator.kenya.ui.city.buyhouse.BuyHouseDetailActivity;
 import com.example.administrator.kenya.ui.main.CallPhoneDialog;
+import com.example.administrator.kenya.ui.main.DeleteDialog;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by 123 on 2018/3/27.
  */
 
-public class HouseAdapter extends RecyclerView.Adapter<HouseAdapter.ViewHolder> {
-
-    private List<House> list;
+public class MyBuyHouseAdapter extends RecyclerView.Adapter<MyBuyHouseAdapter.ViewHolder> {
+    private List<BuyHouse> list;
     private Context context;
 
-    public HouseAdapter(Context context, List<House> list) {
+    public MyBuyHouseAdapter(Context context, List<BuyHouse> list) {
         this.list = list;
         this.context = context;
     }
-
     public class ViewHolder extends RecyclerView.ViewHolder {
-        TextView house_Title, house_square, house_address, house_home, house_price, call;
+        TextView house_Title, house_square, house_address, house_home, house_price, call, house_delete;
         ImageView house_image;
 
         public ViewHolder(View itemView) {
@@ -46,38 +48,35 @@ public class HouseAdapter extends RecyclerView.Adapter<HouseAdapter.ViewHolder> 
             house_price = (TextView) itemView.findViewById(R.id.house_price);
             call = (TextView) itemView.findViewById(R.id.house_call);
             house_image = (ImageView) itemView.findViewById(R.id.house_image);
+            house_delete = (TextView) itemView.findViewById(R.id.delete);
         }
     }
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_house, parent, false);
+        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_mybuyhouse, parent, false);
         return new ViewHolder(v);
     }
 
     @Override
     public void onBindViewHolder(final ViewHolder holder, final int position) {
-        holder.house_Title.setText(list.get(position).getLeasename());
-        holder.house_home.setText(list.get(position).getLeasehome());
-        holder.house_square.setText(list.get(position).getLeasesquare() + "㎡");
-        holder.house_address.setText(list.get(position).getLeaseaddress());
-        holder.house_price.setText("KSh " + list.get(position).getLeaseprice() + "/Month");
-        if (list.get(position).getLeasehome().equals("")) {
-            holder.house_home.setText(list.get(position).getHometype());
-        } else {
-
-        }
+        holder.house_Title.setText(list.get(position).getHousename());
+        holder.house_home.setText(list.get(position).getHousehome());
+        holder.house_square.setText(list.get(position).getHousesquare() + "㎡");
+        holder.house_address.setText(list.get(position).getHouseaddress());
+        holder.house_price.setText("KSh " + list.get(position).getHouseprice());
 
         holder.call.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                new CallPhoneDialog(context, list.get(position).getLeasephone()).show();
+                new CallPhoneDialog(context, list.get(position).getHousephone()).show();
             }
         });
+
 //        holder.house_image.setTag(list.get(position).getLeaseimgs());
 
         Glide.with(context)
-                .load(AppConstants.BASE_URL + list.get(position).getLeaseimgs())
+                .load(AppConstants.BASE_URL + list.get(position).getHouseimgs())
                 .centerCrop()
                 .placeholder(R.drawable.img_loading1)
                 .into(holder.house_image);
@@ -92,15 +91,31 @@ public class HouseAdapter extends RecyclerView.Adapter<HouseAdapter.ViewHolder> 
 //                        }
 //                    }
 //                });
-
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Bundle bundle = new Bundle();
-                bundle.putSerializable("house", list.get(position));
-                Intent intent = new Intent(context, HouseDetailActivity.class);
+                bundle.putSerializable("buyhouse", list.get(position));
+                Intent intent = new Intent(context, BuyHouseDetailActivity.class);
                 intent.putExtras(bundle);
                 context.startActivity(intent);
+            }
+        });
+        holder.house_delete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Map<String, String> params = new HashMap<String, String>();
+                params.put("Type", "买房");
+                params.put("id", list.get(position).getHouseid());
+                DeleteDialog deleteDialog = new DeleteDialog(context, AppConstants.BASE_URL + "/kenya/user/deleteByUserId", params);
+                deleteDialog.setOnSuccessfulListener(new OnSuccessfulListener() {
+                    @Override
+                    public void success() {
+                        list.remove(position);
+                        notifyDataSetChanged();
+                    }
+                });
+                deleteDialog.show();
             }
         });
     }

@@ -76,7 +76,6 @@ public class MyUsedFragment extends BaseFragment {
         initOKHttp();
         initView();
         postFormBuilder.addParams("pn", cpageNum + "").build().execute(stringCallback);
-
         return view;
     }
 

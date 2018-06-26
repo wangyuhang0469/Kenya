@@ -26,9 +26,17 @@ public class House implements Serializable {
     private String leaseimg4;
     private String userid;
     private String leasedesc;
+    private String hometype;
     private String leaseuser;
     private Issuer user;
 
+    public String getHometype() {
+        return hometype;
+    }
+
+    public void setHometype(String hometype) {
+        this.hometype = hometype;
+    }
 
     public String getLeaseuser() {
         return leaseuser;

@@ -114,7 +114,7 @@ public class MyHusbandryFragment extends BaseFragment {
                 //防止因Activity释放导致内部控件空指针
                 if (pullToRefreshLayout != null) {
                     pullToRefreshLayout.finishLoadMore();
-                    toast( getString(R.string.load_fail));
+                    toast(getString(R.string.load_fail));
                     e.printStackTrace();
                 }
             }
@@ -188,7 +188,7 @@ public class MyHusbandryFragment extends BaseFragment {
         @Override
         public void onBindViewHolder(final ViewHolder holder, final int position) {
             holder.framname.setText(list.get(position).getFramname());
-            holder.framphone.setText( getString(R.string.phone_no_) + list.get(position).getFramphone());
+            holder.framphone.setText(getString(R.string.phone_no_) + list.get(position).getFramphone());
 //            holder.framimgs.setTag(list.get(position).getFramimgs());
 //
             Glide.with(getContext())

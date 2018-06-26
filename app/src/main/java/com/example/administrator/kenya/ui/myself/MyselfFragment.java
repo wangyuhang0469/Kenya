@@ -49,7 +49,6 @@ public class MyselfFragment extends BaseFragment {
     CircleImageView avatar;
     @Bind(R.id.phone)
     TextView phone;
-
     private User user = User.getInstance();
 
     private ArrayList<String> mResults;
@@ -63,7 +62,6 @@ public class MyselfFragment extends BaseFragment {
         View view = inflater.inflate(R.layout.fragment_myself, container, false);
         ButterKnife.bind(this, view);
         EventBus.getDefault().register(this);
-
 
         myCenterName.setText(user.getUserName());
         Glide.with(this).load(User.getInstance().getUserPortrait())
@@ -119,7 +117,7 @@ public class MyselfFragment extends BaseFragment {
         myCenterName.setText(messageEvent2.getMseeage());
     }
 
-    @OnClick({R.id.avatar, R.id.phone,R.id.my_center_name,R.id.image})
+    @OnClick({R.id.avatar, R.id.phone, R.id.my_center_name, R.id.image})
     public void onViewClicked2(View view) {
 //        startActivity(MyInformationActivity.class,null);
         getActivity().startActivityForResult(new Intent(getActivity(), MyInformationActivity.class), 1);

@@ -118,7 +118,7 @@
     <string name="title_please_enter_your_topic">标题</string>
     <string name="topic">标题</string>
     <string name="please_choose_the_type_of_hoose_e.g._one_bedroom">请输入户型</string>
-    <string name="enter_the_size_of_house_in_square_metres">请输入面积(/m2)</string>
+    <string name="enter_the_size_of_house_in_square_metres">请输入面积(/㎡)</string>
     <string name="enter_the_exact_location">请输入位置</string>
     <string name="mothly_rent">请输入租金</string>
     <string name="phone_number">电话</string>
@@ -343,8 +343,8 @@
     <string name="Please_select_your_account_information">请选择您的户型信息</string>
     <string name="Price">价格</string>
     <string name="rent">租金</string>
-    <string name="under_50m2">50m2以下</string>
-    <string name="Above_500m2">500m2以上</string>
+    <string name="under_50m2">50㎡以下</string>
+    <string name="Above_500m2">500㎡以上</string>
     <string name="under_ksh100000">KSh100000以下</string>
     <string name="above__ksh1000000">KSh1000000以上</string>
     <string name="rent_1000_above">KSh1000以上/month</string>

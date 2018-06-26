@@ -3,6 +3,7 @@ package com.example.administrator.kenya.ui.city.buyhouse;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -85,18 +86,19 @@ public class BuyHouseActivity extends BaseActivity {
     ListView cityView;
     String cityprovince = "";
     String cityname = "";
-    String houseType = "";
+    String housetype = "";
     String houseName = "";
     String housesquare = "";
     String househome = "";
     String price = "";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_buy_house);
         ButterKnife.bind(this);
         headers = new String[]{getString(R.string.position), getString(R.string.type), getString(R.string.area), getString(R.string.total)};
-        square = new String[]{getString(R.string.Unlimited), getString(R.string.under_50m2), "50-70m2", "70-90m2", "90-110m2", "110-130m2", "130-150m2", "150-200m2", "200-300m2", "300-500m2", getString(R.string.Above_500m2)};
+        square = new String[]{getString(R.string.Unlimited), getString(R.string.under_50m2), "50-70㎡", "70-90㎡", "90-110㎡", "110-130㎡", "130-150㎡", "150-200㎡", "200-300㎡", "300-500㎡", getString(R.string.Above_500m2)};
         money = new String[]{getString(R.string.Unlimited), getString(R.string.under_ksh100000), "KSh100000-200000", "KSh200000-300000", "KSh200000-300000", "KSh300000-400000", "KSh400000-500000", "KSh500000-600000", "KSh600000-700000", "KSh700000-800000", "KSh800000-900000", getString(R.string.above__ksh1000000)};
         initOKHttp();
         initProvinceCity();
@@ -113,6 +115,7 @@ public class BuyHouseActivity extends BaseActivity {
             public void onError(Call call, Exception e, int id) {
                 toast(getString(R.string.load_fail));
             }
+
             @Override
             public void onResponse(String response, int id) {
                 List<CityProvince> addList = null;
@@ -136,13 +139,14 @@ public class BuyHouseActivity extends BaseActivity {
             }
         });
     }
+
     private PostFormBuilder getRequest() {
         return OkHttpUtils.post()
                 .url(AppConstants.BASE_URL + "/kenya/House/findByHouse")
                 .addParams("houseName", houseName)
                 .addParams("houseSquare", housesquare)
                 .addParams("househome", househome)
-                .addParams("houseType", houseType)
+                .addParams("housetype", housetype)
                 .addParams("cityprovince", cityprovince)
                 .addParams("cityname", cityname)
                 .addParams("Price", price);
@@ -158,6 +162,7 @@ public class BuyHouseActivity extends BaseActivity {
                     e.printStackTrace();
                 }
             }
+
             @Override
             public void onResponse(String response, int id) {
                 if (pullToRefreshLayout != null) {
@@ -190,6 +195,7 @@ public class BuyHouseActivity extends BaseActivity {
                     e.printStackTrace();
                 }
             }
+
             @Override
             public void onResponse(String response, int id) {
                 if (pullToRefreshLayout != null) {
@@ -212,8 +218,8 @@ public class BuyHouseActivity extends BaseActivity {
                 }
             }
         };
-
     }
+
     private void initView() {
         houseadapter = new BuyHouseAdapter(this, housesList);
         shengshiview = this.getLayoutInflater().inflate(R.layout.sheng_shi_choose, null);
@@ -443,13 +449,13 @@ public class BuyHouseActivity extends BaseActivity {
             public void onCheckedChanged(MyRadioGroup group, int checkedId) {
                 switch (checkedId) {
                     case R.id.rg_tv1:
-                        houseType = "";
+                        housetype = "";
                         break;
                     case R.id.rg_tv2:
-                        houseType = (String) getResources().getText(R.string.bridal_chamber);
+                        housetype = (String) getResources().getText(R.string.bridal_chamber);
                         break;
                     case R.id.rg_tv3:
-                        houseType = (String) getResources().getText(R.string.second_hand_house);
+                        housetype = (String) getResources().getText(R.string.second_hand_house);
                         break;
                 }
             }

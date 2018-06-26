@@ -78,11 +78,11 @@ public class ProvinceCityDetailsActivity extends BaseActivity {
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)
                 != PackageManager.PERMISSION_GRANTED) {
             // 没有权限，申请权限。
-            Toast.makeText(this, "请设置定位权限", Toast.LENGTH_SHORT).show();
+            //Toast.makeText(this, "请设置定位权限", Toast.LENGTH_SHORT).show();
         } else {
             // 有权限了
             pp();
-            Toast.makeText(this, "有权限", Toast.LENGTH_SHORT).show();
+            //  Toast.makeText(this, "有权限", Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -95,6 +95,7 @@ public class ProvinceCityDetailsActivity extends BaseActivity {
                 provinceName = province;
                 cityName = city;
             }
+
             @Override
             public void failed(String message) {
                 toast(message);

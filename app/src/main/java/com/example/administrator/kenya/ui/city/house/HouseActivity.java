@@ -26,6 +26,7 @@ import com.example.administrator.kenya.view.MyHeadRefreshView;
 import com.example.administrator.kenya.view.MyRadioGroup;
 import com.jwenfeng.library.pulltorefresh.BaseRefreshListener;
 import com.jwenfeng.library.pulltorefresh.PullToRefreshLayout;
+import com.zhy.autolayout.AutoLinearLayout;
 import com.zhy.autolayout.AutoRelativeLayout;
 import com.zhy.http.okhttp.OkHttpUtils;
 import com.zhy.http.okhttp.builder.PostFormBuilder;
@@ -52,6 +53,7 @@ public class HouseActivity extends BaseActivity {
     DropDownMenu mDropDownMenu;
     @Bind(R.id.rootlayout)
     AutoRelativeLayout rootlayout;
+    AutoLinearLayout house_type;
     private PostFormBuilder postFormBuilder;
     private int cpageNum = 1;
     private StringCallback StringCallback;
@@ -86,13 +88,14 @@ public class HouseActivity extends BaseActivity {
     String cityname = "";
     String price = "";
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_house);
         ButterKnife.bind(this);
         headers = new String[]{getString(R.string.position), getString(R.string.type), getString(R.string.area), getString(R.string.rent)};
-        square = new String[]{getString(R.string.Unlimited), getString(R.string.under_50m2), "50-70m2", "70-90m2", "90-110m2", "110-130m2", "130-150m2", "150-200m2", "200-300m2", "300-500m2", getString(R.string.Above_500m2)};
+        square = new String[]{getString(R.string.Unlimited), getString(R.string.under_50m2), "50-70㎡", "70-90㎡", "90-110㎡", "110-130㎡", "130-150㎡", "150-200㎡", "200-300㎡", "300-500㎡", getString(R.string.Above_500m2)};
         money = new String[]{getString(R.string.Unlimited), "KSh50/month", "KSh50-100/month", "KSh100-200/month", "KSh200-300/month", "KSh300-400/month", "KSh400-500/month", "KSh500-600/month", "KSh600-700/month", "KSh700-800/month", "KSh800-900/month", "KSh900-1000/month", getString(R.string.rent_1000_above)
         };
         initOKHttp();
@@ -140,7 +143,7 @@ public class HouseActivity extends BaseActivity {
                 .url(AppConstants.BASE_URL + "/kenya/Lease/selectByFile")
                 .addParams("leaseName", leaseName)
                 .addParams("leaseSquare", leaseSquare)
-                .addParams("leaseHome", leaseHome)
+                .addParams("leasehome", leaseHome)
                 .addParams("hometype", hometype)
                 .addParams("cityprovince", cityprovince)
                 .addParams("cityname", cityname)
@@ -161,6 +164,7 @@ public class HouseActivity extends BaseActivity {
 
             @Override
             public void onResponse(String response, int id) {
+                Log.d("kang", "12321" + response);
                 if (pullToRefreshLayout != null) {
                     List<House> addList = null;
                     try {
@@ -228,6 +232,7 @@ public class HouseActivity extends BaseActivity {
         provinceView.setAdapter(provinceAdapter);
         //init age menu
         popContentView = LayoutInflater.from(this).inflate(R.layout.house_type, null);
+        house_type = popContentView.findViewById(R.id.ll_buy_house_type);
         myRadioGroup = (MyRadioGroup) popContentView.findViewById(R.id.myRadioGroup);
         myRadioGrouptext = (MyRadioGroup) popContentView.findViewById(R.id.myRadioGroupText);
         //init square
@@ -437,21 +442,23 @@ public class HouseActivity extends BaseActivity {
                 switch (checkedId) {
                     case R.id.rg_tv1:
                         hometype = "";
-                        myRadioGroup.setVisibility(View.GONE);
+                        house_type.setVisibility(View.GONE);
                         mDropDownMenu.closeMenu();
                         break;
                     case R.id.rg_tv2:
                         hometype = getString(R.string.residence);
-                        myRadioGroup.setVisibility(View.VISIBLE);
+                        house_type.setVisibility(View.VISIBLE);
                         break;
                     case R.id.rg_tv3:
                         hometype = getString(R.string.Office_Building);
-                        myRadioGroup.setVisibility(View.GONE);
+                        leaseHome = "";
+                        house_type.setVisibility(View.GONE);
                         mDropDownMenu.closeMenu();
                         break;
                     case R.id.rg_tv4:
                         hometype = getString(R.string.factory_mill);
-                        myRadioGroup.setVisibility(View.GONE);
+                        leaseHome = "";
+                        house_type.setVisibility(View.GONE);
                         mDropDownMenu.closeMenu();
                         break;
                 }

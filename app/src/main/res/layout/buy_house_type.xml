@@ -7,19 +7,19 @@
 
     <com.zhy.autolayout.AutoLinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="180px"
         android:layout_marginLeft="60px"
-        android:layout_marginTop="100px">
+        android:layout_marginTop="140px">
 
         <com.example.administrator.kenya.view.MyRadioGroup
             android:id="@+id/myRadioGroupText"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="match_parent"
+            android:layout_marginRight="30px">
 
             <com.zhy.autolayout.AutoLinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="30px">
+                android:layout_height="match_parent">
 
                 <RadioButton
                     android:id="@+id/rg_tv1"
@@ -30,6 +30,7 @@
                     android:button="@null"
                     android:checked="true"
                     android:gravity="center"
+                    android:minHeight="78px"
                     android:paddingLeft="20px"
                     android:paddingRight="20px"
                     android:text="@string/Unlimited"
@@ -45,6 +46,7 @@
                     android:background="@drawable/popup_bg"
                     android:button="@null"
                     android:gravity="center"
+                    android:minHeight="78px"
                     android:paddingLeft="20px"
                     android:paddingRight="20px"
                     android:text="@string/bridal_chamber"
@@ -60,6 +62,7 @@
                     android:background="@drawable/popup_bg"
                     android:button="@null"
                     android:gravity="center"
+                    android:minHeight="78px"
                     android:paddingLeft="20px"
                     android:paddingRight="20px"
                     android:text="@string/second_hand_house"

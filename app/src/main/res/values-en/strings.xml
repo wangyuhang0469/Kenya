@@ -276,6 +276,8 @@
     <string name="service_details">Details Of Sevice</string>
     <!--   <string name="post">发布</string>-->
 
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
     <!--6月23日增加-->
     <string name="all">All</string>
     <string name="national">National</string>
@@ -295,8 +297,6 @@
     <string name="post_transition">Post Transition</string>
     <string name="a_new_version_has_been_downloaded_in_WIFI">A new version has been downloaded in WIFI,install?</string>
     <string name="install">INSTALL</string>
-
-
 
 
     <!--买房模块新曾字段-->
@@ -347,8 +347,8 @@
     <string name="Please_select_your_account_information">Please select your account information</string>
     <string name="Price">Price</string>
     <string name="rent">Rent</string>
-    <string name="under_50m2">under 50m2</string>
-    <string name="Above_500m2">Above 500m2</string>
+    <string name="under_50m2">under 50㎡</string>
+    <string name="Above_500m2">Above 500㎡</string>
     <string name="under_ksh100000">under ksh100000</string>
     <string name="above__ksh1000000">above ksh1000000</string>
     <string name="rent_1000_above">above KSh1000/month</string>

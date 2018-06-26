@@ -27,7 +27,16 @@ public class Goods implements Serializable {
     String goodsphone;
     String userid;
     String goodsdesc;
+    String goodstype;
     Issuer user;
+
+    public String getGoodstype() {
+        return goodstype;
+    }
+
+    public void setGoodstype(String goodstype) {
+        this.goodstype = goodstype;
+    }
 
     public Issuer getUser() {
         return user;
