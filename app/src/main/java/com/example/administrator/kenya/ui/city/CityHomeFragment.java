@@ -98,7 +98,6 @@ public class CityHomeFragment extends BaseFragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_city_home, container, false);
         ButterKnife.bind(this, view);
-        
         permissionList.add(Manifest.permission.CAMERA);
         permissionList.add(Manifest.permission.RECORD_AUDIO);
         permissionList.add(Manifest.permission.WRITE_EXTERNAL_STORAGE);

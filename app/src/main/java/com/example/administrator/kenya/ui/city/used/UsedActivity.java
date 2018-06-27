@@ -24,6 +24,7 @@ import com.example.administrator.kenya.ui.city.buyhouse.DropDownMenu;
 import com.example.administrator.kenya.ui.city.buyhouse.GirdDropDownAdapter;
 import com.example.administrator.kenya.ui.city.buyhouse.ListDropDownAdapter;
 import com.example.administrator.kenya.ui.main.CallPhoneDialog;
+import com.example.administrator.kenya.ui.main.LoadingDialog;
 import com.example.administrator.kenya.view.MyFootRefreshView;
 import com.example.administrator.kenya.view.MyHeadRefreshView;
 import com.example.administrator.kenya.view.MyRadioGroup;
@@ -84,6 +85,7 @@ public class UsedActivity extends BaseActivity {
     private String[] headers;
     private String[] types;
     private String[] money;
+    LoadingDialog loadingDialog;
     String cityprovince = "";
     String cityname = "";
     String goodsPrice = "";
@@ -115,6 +117,8 @@ public class UsedActivity extends BaseActivity {
     }
 
     private void initOKHttp() {
+        loadingDialog = new LoadingDialog(this);
+        loadingDialog.show();
         StringCallback = new StringCallback() {
             @Override
             public void onError(Call call, Exception e, int id) {
@@ -123,12 +127,12 @@ public class UsedActivity extends BaseActivity {
                     pullToRefreshLayout.finishLoadMore();
                     toast(getResources().getString(R.string.load_fail));
                     e.printStackTrace();
+                    loadingDialog.dismiss();
                 }
             }
 
             @Override
             public void onResponse(String response, int id) {
-                Log.d("kang", "33333333333333" + response);
                 //防止因Activity释放导致内部控件空指针
                 if (pullToRefreshLayout != null) {
                     List<Goods> addList = null;
@@ -149,6 +153,7 @@ public class UsedActivity extends BaseActivity {
                     myAdapter.notifyDataSetChanged();
                     pullToRefreshLayout.finishLoadMore();
                 }
+                loadingDialog.dismiss();
             }
         };
         StringCallbackMore = new StringCallback() {
@@ -159,6 +164,7 @@ public class UsedActivity extends BaseActivity {
                     pullToRefreshLayout.finishLoadMore();
                     toast(getResources().getString(R.string.load_fail));
                     e.printStackTrace();
+                    loadingDialog.dismiss();
                 }
             }
 
@@ -183,6 +189,7 @@ public class UsedActivity extends BaseActivity {
                     myAdapter.notifyDataSetChanged();
                     pullToRefreshLayout.finishLoadMore();
                 }
+                loadingDialog.dismiss();
             }
         };
     }
@@ -349,7 +356,6 @@ public class UsedActivity extends BaseActivity {
             @Override
             public void refresh() {
             }
-
             @Override
             public void loadMore() {
                 cpageNum++;

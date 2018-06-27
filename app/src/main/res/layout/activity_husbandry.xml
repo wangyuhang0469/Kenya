@@ -11,6 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="144px"
         android:background="@color/base_bg">
+
         <TextView
             android:id="@+id/title"
             android:layout_width="wrap_content"
@@ -23,6 +24,7 @@
             android:text="@string/farm_products"
             android:textColor="@color/textBlack1"
             android:textSize="18sp" />
+
         <ImageView
             android:id="@+id/back"
             android:layout_width="84px"
@@ -42,7 +44,7 @@
             android:paddingLeft="30px"
             android:paddingRight="80px"
             android:text="@string/category"
-            android:textColor="@color/textgreen1" />
+            android:textColor="@color/textBlack2" />
 
         <ImageView
             android:id="@+id/xiala"

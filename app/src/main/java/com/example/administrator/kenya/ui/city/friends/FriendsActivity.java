@@ -17,10 +17,8 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 public class FriendsActivity extends BaseActivity {
-
     @Bind(R.id.recyclerView)
     RecyclerView recyclerView;
-
     private List<Friend> friendList;
 
     @Override

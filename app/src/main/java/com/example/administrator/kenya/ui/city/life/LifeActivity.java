@@ -180,7 +180,8 @@ public class LifeActivity extends BaseActivity {
             @Override
             public void onDismiss() {
                 black.setVisibility(View.GONE);
-                xiala.setImageDrawable(getDrawable(R.drawable.icon_xiala0));
+                xiala.setImageDrawable(getResources().getDrawable(R.drawable.icon_xiala0));
+                classification.setTextColor(getResources().getColor(R.color.textBlack2));
                 //解决点击分类按钮 关闭且迅速打开问题
                 new Handler().postDelayed(new Runnable() {
                     @Override
@@ -229,7 +230,8 @@ public class LifeActivity extends BaseActivity {
                 finish();
                 break;
             case R.id.classification:
-                xiala.setImageDrawable(getDrawable(R.drawable.icon_xiala1));
+                xiala.setImageDrawable(getResources().getDrawable(R.drawable.icon_xiala1));
+                classification.setTextColor(getResources().getColor(R.color.textgreen1));
                 classification.setClickable(false);
                 popupWindow.showAsDropDown(titleBar);
                 black.setVisibility(View.VISIBLE);
@@ -269,7 +271,7 @@ public class LifeActivity extends BaseActivity {
         @Override
         public void onBindViewHolder(final ViewHolder holder, final int position) {
             holder.livename.setText(list.get(position).getLivename());
-            holder.livephone.setText(getResources().getString(R.string.phone_no_)+ list.get(position).getLivephone());
+            holder.livephone.setText(getResources().getString(R.string.phone_no_) + list.get(position).getLivephone());
 //            holder.liveimgs.setTag(list.get(position).getLiveimgs());
 
             holder.call.setOnClickListener(new View.OnClickListener() {

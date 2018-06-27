@@ -158,8 +158,8 @@
                     android:gravity="center"
                     android:minHeight="88px"
                     android:text="待定"
-                    android:textColor="@drawable/popup_textcolor" />
-
+                    android:textColor="@drawable/popup_textcolor"
+                    android:visibility="invisible" />
             </com.zhy.autolayout.AutoLinearLayout>
 
 

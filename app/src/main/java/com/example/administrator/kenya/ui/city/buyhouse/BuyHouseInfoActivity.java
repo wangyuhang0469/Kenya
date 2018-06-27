@@ -9,10 +9,8 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.WindowManager;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.PopupWindow;
@@ -24,13 +22,12 @@ import com.bumptech.glide.Glide;
 import com.example.administrator.kenya.R;
 import com.example.administrator.kenya.base.BaseActivity;
 import com.example.administrator.kenya.classes.BuyHouse;
-import com.example.administrator.kenya.classes.House;
 import com.example.administrator.kenya.classes.User;
 import com.example.administrator.kenya.constants.AppConstants;
 import com.example.administrator.kenya.model.image_selector.MultiImageSelectorActivity;
-import com.example.administrator.kenya.ui.city.house.HouseDetailActivity;
 import com.example.administrator.kenya.ui.main.LoadingDialog;
 import com.example.administrator.kenya.view.MyRadioGroup;
+import com.zhy.autolayout.AutoRelativeLayout;
 import com.zhy.http.okhttp.OkHttpUtils;
 import com.zhy.http.okhttp.builder.PostFormBuilder;
 import com.zhy.http.okhttp.callback.StringCallback;
@@ -78,6 +75,8 @@ public class BuyHouseInfoActivity extends BaseActivity {
     ImageView buyHouseInter;
     @Bind(R.id.buy_house_iv_type)
     ImageView buyHouseIvType;
+    @Bind(R.id.ll_buy_house_info)
+    AutoRelativeLayout llBuyHouseInfo;
 
     private ArrayList<String> mResults = new ArrayList<>();
     private ArrayList<File> compressFile = new ArrayList<>();
@@ -99,7 +98,7 @@ public class BuyHouseInfoActivity extends BaseActivity {
         initPopupWindow();
     }
 
-    @OnClick({R.id.back, R.id.buy_house_info_release, R.id.buy_house_inter, R.id.buy_house_iv_type})
+    @OnClick({R.id.back, R.id.buy_house_info_release, R.id.ll_buy_house_address, R.id.ll_buy_house_info})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.back:
@@ -155,11 +154,11 @@ public class BuyHouseInfoActivity extends BaseActivity {
                     }
                 }
                 break;
-            case R.id.buy_house_inter:
+            case R.id.ll_buy_house_address:
                 startActivityForResult(new Intent(BuyHouseInfoActivity.this, ProvinceCityDetailsActivity.class), 1);
                 break;
-            case R.id.buy_house_iv_type:
-                buyHouseIvType.setClickable(false);
+            case R.id.ll_buy_house_info:
+                llBuyHouseInfo.setClickable(false);
                 popupWindow.showAsDropDown(view);
                 break;
         }
@@ -188,7 +187,6 @@ public class BuyHouseInfoActivity extends BaseActivity {
         }
         startActivityForResult(intent, 2);
     }
-
 
     private void send(final LoadingDialog loadingDialog) {
         PostFormBuilder postFormBuilder = OkHttpUtils.post();
@@ -318,7 +316,7 @@ public class BuyHouseInfoActivity extends BaseActivity {
                 new Handler().postDelayed(new Runnable() {
                     @Override
                     public void run() {
-                        buyHouseIvType.setClickable(true);
+                        llBuyHouseInfo.setClickable(true);
                     }
                 }, 100);
             }

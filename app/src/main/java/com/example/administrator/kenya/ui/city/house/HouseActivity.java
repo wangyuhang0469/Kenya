@@ -21,6 +21,7 @@ import com.example.administrator.kenya.ui.city.buyhouse.DropDownMenu;
 import com.example.administrator.kenya.ui.city.buyhouse.GirdDropDownAdapter;
 import com.example.administrator.kenya.ui.city.buyhouse.ListDropDownAdapter;
 import com.example.administrator.kenya.ui.main.HouseDialog;
+import com.example.administrator.kenya.ui.main.LoadingDialog;
 import com.example.administrator.kenya.view.MyFootRefreshView;
 import com.example.administrator.kenya.view.MyHeadRefreshView;
 import com.example.administrator.kenya.view.MyRadioGroup;
@@ -72,6 +73,7 @@ public class HouseActivity extends BaseActivity {
     private String[] headers;
     private String[] square;
     private String[] money;
+    LoadingDialog loadingDialog;
     View shengshiview;
     View popContentView;
     ListView squareView;
@@ -151,6 +153,8 @@ public class HouseActivity extends BaseActivity {
     }
 
     private void initOKHttp() {
+        loadingDialog = new LoadingDialog(this);
+        loadingDialog.show();
         StringCallback = new StringCallback() {
             @Override
             public void onError(Call call, Exception e, int id) {
@@ -159,12 +163,13 @@ public class HouseActivity extends BaseActivity {
                     pullToRefreshLayout.finishLoadMore();
                     toast(getResources().getString(R.string.load_fail));
                     e.printStackTrace();
+                    loadingDialog.dismiss();
                 }
             }
 
             @Override
             public void onResponse(String response, int id) {
-                Log.d("kang", "12321" + response);
+                Log.d("kang", "12131313" + response);
                 if (pullToRefreshLayout != null) {
                     List<House> addList = null;
                     try {
@@ -184,6 +189,7 @@ public class HouseActivity extends BaseActivity {
                     houseadapter.notifyDataSetChanged();
                     pullToRefreshLayout.finishLoadMore();
                 }
+                loadingDialog.dismiss();
             }
         };
         StringCallbackMore = new StringCallback() {
@@ -194,6 +200,7 @@ public class HouseActivity extends BaseActivity {
                     pullToRefreshLayout.finishLoadMore();
                     toast(getResources().getString(R.string.load_fail));
                     e.printStackTrace();
+                    loadingDialog.dismiss();
                 }
             }
 
@@ -217,6 +224,7 @@ public class HouseActivity extends BaseActivity {
                     houseadapter.notifyDataSetChanged();
                     pullToRefreshLayout.finishLoadMore();
                 }
+                loadingDialog.dismiss();
             }
         };
     }

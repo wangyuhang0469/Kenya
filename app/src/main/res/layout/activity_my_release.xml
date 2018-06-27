@@ -47,7 +47,7 @@
             android:paddingRight="80px"
             android:singleLine="true"
             android:text="@string/rental_services"
-            android:textColor="@color/textgreen1" />
+            android:textColor="@color/textBlack2" />
 
         <ImageView
             android:id="@+id/xiala"

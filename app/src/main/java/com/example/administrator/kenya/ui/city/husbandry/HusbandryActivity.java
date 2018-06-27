@@ -110,7 +110,6 @@ public class HusbandryActivity extends BaseActivity {
             }
         });
     }
-
     private void initOKHttp() {
         postFormBuilder = OkHttpUtils.post()
                 .url(AppConstants.BASE_URL + "/kenya/Fram/selectbytype")
@@ -184,7 +183,8 @@ public class HusbandryActivity extends BaseActivity {
             @Override
             public void onDismiss() {
                 black.setVisibility(View.GONE);
-                xiala.setImageDrawable(getDrawable(R.drawable.icon_xiala0));
+                xiala.setImageDrawable(getResources().getDrawable(R.drawable.icon_xiala0));
+                classification.setTextColor(getResources().getColor(R.color.textBlack2));
                 //解决点击分类按钮 关闭且迅速打开问题
                 new Handler().postDelayed(new Runnable() {
                     @Override
@@ -194,7 +194,6 @@ public class HusbandryActivity extends BaseActivity {
                 }, 100);
             }
         });
-
         MyRadioGroup myRadioGroup = (MyRadioGroup) popContentView.findViewById(R.id.myRadioGroup);
         myRadioGroup.setOnCheckedChangeListener(new MyRadioGroup.OnCheckedChangeListener() {
             @Override
@@ -233,7 +232,8 @@ public class HusbandryActivity extends BaseActivity {
                 finish();
                 break;
             case R.id.classification:
-                xiala.setImageDrawable(getDrawable(R.drawable.icon_xiala1));
+                xiala.setImageDrawable(getResources().getDrawable(R.drawable.icon_xiala1));
+                classification.setTextColor(getResources().getColor(R.color.textgreen1));
                 classification.setClickable(false);
                 popupWindow.showAsDropDown(titleBar);
                 black.setVisibility(View.VISIBLE);

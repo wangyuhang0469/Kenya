@@ -467,6 +467,7 @@ public class ResumeinfoActivity extends BaseActivity implements View.OnClickList
         });
         super.onResume();
     }
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         // TODO Auto-generated method stub

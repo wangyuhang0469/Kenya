@@ -241,7 +241,7 @@ public class HouseInfoActivity extends BaseActivity {
                 }
                 break;
             case R.id.house_iv_type:
-                houseIvType.setClickable(false);
+                houseInfoType.setClickable(false);
                 popupWindow.showAsDropDown(view);
                 break;
             case R.id.house_inter:
@@ -316,7 +316,7 @@ public class HouseInfoActivity extends BaseActivity {
                 new Handler().postDelayed(new Runnable() {
                     @Override
                     public void run() {
-                        houseIvType.setClickable(true);
+                        houseInfoType.setClickable(true);
                     }
                 }, 100);
             }

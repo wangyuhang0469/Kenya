@@ -67,7 +67,6 @@ public class GoodsReleaseActivity extends BaseActivity {
     String province = "";
     String city = "";
     String content = "";
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -149,7 +148,7 @@ public class GoodsReleaseActivity extends BaseActivity {
         }
     }
 
-    @OnClick({R.id.back, R.id.release, R.id.goods_inter})
+    @OnClick({R.id.back, R.id.release, R.id.ll_goods_address})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.back:
@@ -201,7 +200,7 @@ public class GoodsReleaseActivity extends BaseActivity {
                     }
                 }
                 break;
-            case R.id.goods_inter:
+            case R.id.ll_goods_address:
                 startActivityForResult(new Intent(GoodsReleaseActivity.this, ProvinceCityDetailsActivity.class), 1);
                 break;
         }
@@ -230,6 +229,7 @@ public class GoodsReleaseActivity extends BaseActivity {
         }
         startActivityForResult(intent, 2);
     }
+
     private void send(final LoadingDialog loadingDialog) {
 
         PostFormBuilder postFormBuilder = OkHttpUtils.post();

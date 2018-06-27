@@ -21,6 +21,7 @@ import com.example.administrator.kenya.classes.CityProvince;
 import com.example.administrator.kenya.classes.Friend;
 import com.example.administrator.kenya.constants.AppConstants;
 import com.example.administrator.kenya.ui.main.BuyHouseDialog;
+import com.example.administrator.kenya.ui.main.LoadingDialog;
 import com.example.administrator.kenya.view.MyFootRefreshView;
 import com.example.administrator.kenya.view.MyHeadRefreshView;
 import com.example.administrator.kenya.view.MyRadioGroup;
@@ -74,6 +75,7 @@ public class BuyHouseActivity extends BaseActivity {
     private String[] headers;
     private String[] square;
     private String[] money;
+    LoadingDialog loadingDialog;
     View shengshiview;
     View housetypeview;
     View popContentView;
@@ -153,6 +155,8 @@ public class BuyHouseActivity extends BaseActivity {
     }
 
     private void initOKHttp() {
+        loadingDialog = new LoadingDialog(this);
+        loadingDialog.show();
         StringCallback = new StringCallback() {
             @Override
             public void onError(Call call, Exception e, int id) {
@@ -160,6 +164,7 @@ public class BuyHouseActivity extends BaseActivity {
                     pullToRefreshLayout.finishLoadMore();
                     toast(getResources().getString(R.string.load_fail));
                     e.printStackTrace();
+                    loadingDialog.dismiss();
                 }
             }
 
@@ -184,6 +189,7 @@ public class BuyHouseActivity extends BaseActivity {
                     houseadapter.notifyDataSetChanged();
                     pullToRefreshLayout.finishLoadMore();
                 }
+                loadingDialog.dismiss();
             }
         };
         StringCallbackMore = new StringCallback() {
@@ -193,6 +199,7 @@ public class BuyHouseActivity extends BaseActivity {
                     pullToRefreshLayout.finishLoadMore();
                     toast(getResources().getString(R.string.load_fail));
                     e.printStackTrace();
+                    loadingDialog.dismiss();
                 }
             }
 
@@ -216,6 +223,7 @@ public class BuyHouseActivity extends BaseActivity {
                     houseadapter.notifyDataSetChanged();
                     pullToRefreshLayout.finishLoadMore();
                 }
+                loadingDialog.dismiss();
             }
         };
     }
