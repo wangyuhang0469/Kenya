@@ -35,9 +35,11 @@ public class BuyHouseAdapter extends RecyclerView.Adapter<BuyHouseAdapter.ViewHo
         this.list = list;
         this.context = context;
     }
+
     public class ViewHolder extends RecyclerView.ViewHolder {
         TextView house_Title, house_square, house_address, house_home, house_price, call, house_type;
         ImageView house_image;
+
         public ViewHolder(View itemView) {
             super(itemView);
             house_Title = (TextView) itemView.findViewById(R.id.house_Title);

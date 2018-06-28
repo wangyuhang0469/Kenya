@@ -198,7 +198,7 @@ public class BuyHouseInfoActivity extends BaseActivity {
                 .addParams("housedesc", buyHouseInfoDesc.getText().toString())
                 .addParams("houseprice", buyHouseInfoPrice.getText().toString())
                 .addParams("housephone", buyHouseInfoPhone.getText().toString())
-                .addParams("houseUser", buyHouseInfoPerson.getText().toString())
+                .addParams("houseuser", buyHouseInfoPerson.getText().toString())
                 .addParams("housesquare", buyHouseInfoSquare.getText().toString())
                 .addParams("househome", buyHouseInfoTypes.getText().toString())
                 .addParams("houseaddress", buyHouseInfoAddress.getText().toString())

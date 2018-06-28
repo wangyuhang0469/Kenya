@@ -271,6 +271,7 @@ public class HouseActivity extends BaseActivity {
             @Override
             public void refresh() {
             }
+
             @Override
             public void loadMore() {
                 cpageNum++;
