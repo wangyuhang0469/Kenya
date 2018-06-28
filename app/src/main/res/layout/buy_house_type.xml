@@ -106,7 +106,6 @@
                     android:layout_weight="1"
                     android:background="@drawable/popup_bg"
                     android:button="@null"
-                    android:checked="true"
                     android:gravity="center"
                     android:minHeight="78px"
                     android:text="@string/unlimited"

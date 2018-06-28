@@ -92,8 +92,10 @@ public class HouseInfoActivity extends BaseActivity {
         ButterKnife.bind(this);
         title.setText(getResources().getString(R.string.post));
         hometype = (String) getIntent().getExtras().get("housetype");
-        if (hometype.equals(getString(R.string.residence))) {
+        if (hometype.equals("住宅") || hometype.equals("Residence")) {
             houseInfoType.setVisibility(View.VISIBLE);
+        } else {
+
         }
         housePenson.setText(User.getInstance().getUserName());
         housePhone.setText(User.getInstance().getUserPhonenumber());

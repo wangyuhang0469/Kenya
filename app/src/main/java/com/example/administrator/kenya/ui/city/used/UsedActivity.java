@@ -48,7 +48,6 @@ import butterknife.OnClick;
 import okhttp3.Call;
 
 public class UsedActivity extends BaseActivity {
-
     @Bind(R.id.recyclerView)
     RecyclerView recyclerView;
     @Bind(R.id.pullToRefreshLayout)
@@ -133,6 +132,7 @@ public class UsedActivity extends BaseActivity {
 
             @Override
             public void onResponse(String response, int id) {
+                Log.d("kang", "99999999999" + response);
                 //防止因Activity释放导致内部控件空指针
                 if (pullToRefreshLayout != null) {
                     List<Goods> addList = null;

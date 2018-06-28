@@ -469,6 +469,49 @@ public class BuyHouseActivity extends BaseActivity {
                         housetype = (String) getResources().getText(R.string.second_hand_house);
                         break;
                 }
+                myRadioGroup.setOnCheckedChangeListener(null);
+                myRadioGroup.clearCheck();
+                myRadioGroup.setOnCheckedChangeListener(new MyRadioGroup.OnCheckedChangeListener() {
+                    @Override
+                    public void onCheckedChanged(MyRadioGroup group, int checkedId) {
+                        switch (checkedId) {
+                            case R.id.radioButton1:
+                                mDropDownMenu.closeMenu();
+                                househome = "";
+                                break;
+                            case R.id.radioButton2:
+                                mDropDownMenu.closeMenu();
+                                househome = (String) getResources().getText(R.string.Room_1);
+                                break;
+                            case R.id.radioButton3:
+                                mDropDownMenu.closeMenu();
+                                househome = (String) getResources().getText(R.string.Room_1_Hall);
+                                break;
+                            case R.id.radioButton4:
+                                mDropDownMenu.closeMenu();
+                                househome = (String) getResources().getText(R.string.Room_1_Hall_2);
+                                break;
+                            case R.id.radioButton5:
+                                mDropDownMenu.closeMenu();
+                                househome = (String) getResources().getText(R.string.Room_2_Hall_2);
+                                break;
+                            case R.id.radioButton6:
+                                mDropDownMenu.closeMenu();
+                                househome = (String) getResources().getText(R.string.Room_1_Hall_3);
+                                break;
+                            case R.id.radioButton7:
+                                mDropDownMenu.closeMenu();
+                                househome = (String) getResources().getText(R.string.Room_2_Hall_3);
+                                break;
+                            case R.id.radioButton8:
+                                mDropDownMenu.closeMenu();
+                                househome = (String) getResources().getText(R.string.Room_1_Hall_4);
+                                break;
+                        }
+                        cpageNum = 1;
+                        getRequest().build().execute(StringCallback);
+                    }
+                });
             }
         });
     }

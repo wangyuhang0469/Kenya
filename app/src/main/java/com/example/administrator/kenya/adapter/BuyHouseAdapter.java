@@ -66,9 +66,9 @@ public class BuyHouseAdapter extends RecyclerView.Adapter<BuyHouseAdapter.ViewHo
         holder.house_square.setText(list.get(position).getHousesquare() + "㎡");
         holder.house_address.setText(list.get(position).getHouseaddress());
         holder.house_price.setText("KSh " + list.get(position).getHouseprice());
-        if (list.get(position).getHousetype().equals("新房")) {
+        if (list.get(position).getHousetype().equals("新房") || list.get(position).getHousetype().equals("bridal chamber")) {
             holder.house_type.setVisibility(View.VISIBLE);
-        } else if (list.get(position).getHousetype().equals("二手房")) {
+        } else if (list.get(position).getHousetype().equals("二手房") || list.get(position).getHousetype().equals("second hand house")) {
             holder.house_type.setVisibility(View.GONE);
         } else {
         }
@@ -78,7 +78,6 @@ public class BuyHouseAdapter extends RecyclerView.Adapter<BuyHouseAdapter.ViewHo
                 new CallPhoneDialog(context, list.get(position).getHousephone()).show();
             }
         });
-
 //        holder.house_image.setTag(list.get(position).getLeaseimgs());
 
         Glide.with(context)
