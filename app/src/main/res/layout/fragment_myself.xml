@@ -91,13 +91,15 @@
             </com.zhy.autolayout.AutoRelativeLayout>
 
             <com.zhy.autolayout.AutoLinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="1300px"
+                android:layout_width="match_parent"
+                android:layout_height="1360px"
                 android:layout_marginTop="445px"
                 android:background="@drawable/myself_bg2"
                 android:orientation="vertical"
                 android:paddingLeft="28px"
-                android:paddingRight="28px">
+                android:paddingRight="28px"
+                android:layout_marginLeft="22px"
+                android:layout_marginRight="22px">
 
                 <com.zhy.autolayout.AutoLinearLayout
                     android:layout_width="match_parent"

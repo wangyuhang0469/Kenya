@@ -4,15 +4,19 @@ import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
+import android.support.v4.content.FileProvider;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.administrator.kenya.BuildConfig;
 import com.example.administrator.kenya.R;
 import com.example.administrator.kenya.interfaces.OnChooseListener;
 import com.example.administrator.kenya.interfaces.OnSuccessfulListener;
@@ -23,6 +27,7 @@ import com.zhy.http.okhttp.callback.StringCallback;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.File;
 import java.util.Map;
 
 import okhttp3.Call;
@@ -74,6 +79,7 @@ public class UpdateDialog extends Dialog{
             public void onClick(View view) {
                 Intent intent = OpenFileUtil.openFile(getContext(),path);
                 getContext().startActivity(intent);
+
                 onChooseListener.yes("yes");
             }
         });

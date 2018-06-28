@@ -90,12 +90,16 @@ public class ProvinceCityDetailsActivity extends BaseActivity {
         MyLocationUtil.getInstance(this).getLocationInformation(new MyLocationListener() {
             @Override
             public void success(String province, String city) {
-                //  toast(province + city);
-                provinceCityDetail.setText(province + city);
+                toast(province + city);
+                province = province.replace("County","");
+                province = province.replace(" " ,"");
+                province = province.replace("Province" ,"");
+
+                city = city.replace("District","");
+                provinceCityDetail.setText(province +" "+ city);
                 provinceName = province;
                 cityName = city;
             }
-
             @Override
             public void failed(String message) {
                 toast(message);

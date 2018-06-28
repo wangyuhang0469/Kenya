@@ -384,6 +384,7 @@ public class MainActivity extends BaseActivity {
                                     final boolean finalForcedUpdate = forcedUpdate;
                                     OkHttpUtils.get()
                                             .url(AppConstants.BASE_URL + apkUrl)
+//                                            .url(AppConstants.BASE_URL + "/kenya/upload/-1547452445fd192b26f73b1b79a1a10b09c024a837.jpg")
                                             .build()
                                             .execute(new FileCallBack(Environment.getExternalStorageDirectory().getAbsolutePath() + "/apk", "BL"+ finalNewVersion +".apk") {
 

@@ -136,13 +136,14 @@ public class HouseSearchActivity extends BaseActivity {
                 return true;
             }
         });
-        pullToRefreshLayout.setCanRefresh(false);
-        pullToRefreshLayout.setCanLoadMore(false);
-        pullToRefreshLayout.setHeaderView(new MyHeadRefreshView(this));
-        pullToRefreshLayout.setFooterView(new MyFootRefreshView(this));
-        pullToRefreshLayout.setRefreshListener(new BaseRefreshListener() {
+        pullToRefreshLayout.setCanRefresh(false);   //是否能下拉刷新
+        pullToRefreshLayout.setCanLoadMore(false);  //是否能上拉加载
+        pullToRefreshLayout.setHeaderView(new MyHeadRefreshView(this));    //可选   头布局
+        pullToRefreshLayout.setFooterView(new MyFootRefreshView(this));     //可选  脚布局
+        pullToRefreshLayout.setRefreshListener(new BaseRefreshListener() {   //监听
             @Override
             public void refresh() {
+
             }
 
             @Override

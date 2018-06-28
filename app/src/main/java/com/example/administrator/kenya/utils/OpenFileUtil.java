@@ -7,7 +7,10 @@ package com.example.administrator.kenya.utils;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
+import android.os.Build;
 import android.support.v4.content.FileProvider;
+
+import com.example.administrator.kenya.BuildConfig;
 
 import java.io.File;
 import java.util.Locale;
@@ -76,12 +79,16 @@ public class OpenFileUtil {
     public static Intent getApkFileIntent(Context context , String param) {
 
         Intent intent = new Intent();
-        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+//        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         intent.setAction(Intent.ACTION_VIEW);
-//        Uri uri = Uri.fromFile(new File(param));
-//        Uri uri = FileProvider.getUriForFile(context, context.getApplicationContext().getPackageName() + ".provider", new File(param));
-        Uri uri = FileProvider.getUriForFile(context, context.getPackageName() + ".fileprovider", new File(param));
-
+        Uri uri = null;
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+            uri = FileProvider.getUriForFile(context, context.getPackageName() + ".fileprovider", new File(param));
+            //添加这一句表示对目标应用临时授权该Uri所代表的文件
+            intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+        } else {
+            uri = Uri.fromFile( new File(param));
+        }
 
         intent.setDataAndType(uri, "application/vnd.android.package-archive");
         return intent;

@@ -60,10 +60,10 @@ public class ImageAdapter extends RecyclerView.Adapter<ImageAdapter.ViewHolder> 
 //        holder.imageView.setTag(imaUrls.get(position));
 
         Glide.with(context)
-                .load(imaUrls.get(position))
-                .placeholder(R.drawable.img_loading2)
-                .centerCrop()
-                .into(holder.imageView);
+                .load(imaUrls.get(position))    // url
+                .placeholder(R.drawable.img_loading2)      //加载中显示的图片   可不写
+                .centerCrop()       // 显示方式   可不写
+                .into(holder.imageView);    //  显示在那个imageView里
 //                .asBitmap()
 //                .into(new SimpleTarget<Bitmap>() {
 //                    @Override
