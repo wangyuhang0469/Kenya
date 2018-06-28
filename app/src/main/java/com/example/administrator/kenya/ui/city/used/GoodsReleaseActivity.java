@@ -67,6 +67,7 @@ public class GoodsReleaseActivity extends BaseActivity {
     String province = "";
     String city = "";
     String content = "";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

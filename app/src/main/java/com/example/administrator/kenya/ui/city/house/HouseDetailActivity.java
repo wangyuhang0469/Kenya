@@ -1,6 +1,7 @@
 package com.example.administrator.kenya.ui.city.house;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -60,6 +61,10 @@ public class HouseDetailActivity extends BaseActivity {
         houseDetailDesc.setText(house.getLeasedesc());
         houseDetailPrice.setText("KSh " + house.getLeaseprice() + "/Month");
         houseDetailHome.setText(house.getLeasehome());
+        if (houseDetailHome.getText().toString().equals("")) {
+            houseDetailHome.setText(house.getHometype());
+        } else {
+        }
         houseDetailSquare.setText(house.getLeasesquare() + "㎡");
         houseDetailAddress.setText(house.getLeaseaddress());
         houseUsername.setText(house.getLeaseuser());
@@ -72,7 +77,6 @@ public class HouseDetailActivity extends BaseActivity {
                 .placeholder(R.drawable.avatar)
                 .into(avatar);
     }
-
     private void initBanner(List<String> imageUrlList) {
         banner.setImages(imageUrlList).setImageLoader(new GlideImageLoader()).start();
         banner.setOnBannerListener(new OnBannerListener() {
@@ -82,7 +86,6 @@ public class HouseDetailActivity extends BaseActivity {
             }
         });
     }
-
     @OnClick({R.id.back, R.id.call})
     public void onViewClicked(View view) {
         switch (view.getId()) {

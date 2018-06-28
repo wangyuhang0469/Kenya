@@ -1,6 +1,7 @@
 package com.example.administrator.kenya.ui.city.buyhouse;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -64,7 +65,6 @@ public class BuyHouseDetailActivity extends BaseActivity {
         houseDetailAddress.setText(buyHouse.getHouseaddress());
         houseUsername.setText(buyHouse.getHouseuser());
         housePhone.setText(getResources().getString(R.string.phone_no_) + buyHouse.getHousephone());
-
         Glide.with(this).load(AppConstants.BASE_URL + buyHouse.getUser().getUserPortrait())
                 .centerCrop()
                 .dontAnimate()//防止设置placeholder导致第一次不显示网络图片,只显示默认图片的问题

@@ -356,6 +356,7 @@ public class UsedActivity extends BaseActivity {
             @Override
             public void refresh() {
             }
+
             @Override
             public void loadMore() {
                 cpageNum++;
@@ -377,6 +378,9 @@ public class UsedActivity extends BaseActivity {
                 if (position == 0) {
                     mDropDownMenu.closeMenu();
                     cityprovince = "";
+                    cityname = "";
+                    cpageNum = 1;
+                    getRequest().build().execute(StringCallback);
                 } else {
                     cityprovince = position == 0 ? headers[0] : cityProvincesListstring.get(position);
                 }

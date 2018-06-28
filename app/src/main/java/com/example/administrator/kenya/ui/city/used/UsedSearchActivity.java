@@ -78,7 +78,6 @@ public class UsedSearchActivity extends BaseActivity {
     }
 
     private void initOKHttp() {
-        Log.d("kang", "1213131313" + keyword.getText().toString());
         postFormBuilder = OkHttpUtils.post()
                 .url(AppConstants.BASE_URL + "/kenya/Goods/selectByFile")
                 .addParams("pn", cpageNum + "")

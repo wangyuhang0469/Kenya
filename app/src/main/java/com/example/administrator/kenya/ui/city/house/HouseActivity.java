@@ -169,7 +169,6 @@ public class HouseActivity extends BaseActivity {
 
             @Override
             public void onResponse(String response, int id) {
-                Log.d("kang", "12131313" + response);
                 if (pullToRefreshLayout != null) {
                     List<House> addList = null;
                     try {
@@ -272,7 +271,6 @@ public class HouseActivity extends BaseActivity {
             @Override
             public void refresh() {
             }
-
             @Override
             public void loadMore() {
                 cpageNum++;
@@ -301,6 +299,9 @@ public class HouseActivity extends BaseActivity {
                 if (position == 0) {
                     mDropDownMenu.closeMenu();
                     cityprovince = "";
+                    cityname = "";
+                    cpageNum = 1;
+                    getRequest().build().execute(StringCallback);
                 } else {
                     cityprovince = position == 0 ? headers[0] : cityProvincesListstring.get(position);
                 }
@@ -452,6 +453,7 @@ public class HouseActivity extends BaseActivity {
                         hometype = "";
                         house_type.setVisibility(View.GONE);
                         mDropDownMenu.closeMenu();
+                        leaseHome = "";
                         break;
                     case R.id.rg_tv2:
                         hometype = getString(R.string.residence);

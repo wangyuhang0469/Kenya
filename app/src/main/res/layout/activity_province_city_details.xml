@@ -30,7 +30,6 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="50px"
                 android:gravity="center_vertical"
-                android:text="河北省石家庄市"
                 android:textColor="@color/textBlack1"
                 android:textSize="14sp" />
         </com.zhy.autolayout.AutoLinearLayout>
@@ -50,7 +49,7 @@
                 android:layout_height="300px"
                 android:background="@null"
                 android:gravity="top|left"
-                android:hint="请输入详细地址"
+                android:hint="@string/please_enter_the_detailed_address"
                 android:paddingLeft="20px"
                 android:paddingTop="20px"
                 android:textColor="@color/textBlack2"
@@ -71,5 +70,4 @@
         android:textAllCaps="true"
         android:textColor="@color/white"
         android:textSize="17sp" />
-
 </com.zhy.autolayout.AutoRelativeLayout>

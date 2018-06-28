@@ -44,7 +44,7 @@ public class ProvinceCityDetailsActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_province_city_details);
         ButterKnife.bind(this);
-        title.setText("省市详情");
+        title.setText(getString(R.string.provinces_and_cities));
         intent = new Intent();
         permissionPosition();
     }
@@ -57,9 +57,9 @@ public class ProvinceCityDetailsActivity extends BaseActivity {
                 break;
             case R.id.buy_house_province_city_sure:
                 if (provinceCityDetailEt.getText().length() == 0) {
-                    toast("请输入详细地址");
+                    toast("" + getString(R.string.please_enter_the_detailed_address));
                 } else if (provinceName.length() == 0 || cityName.length() == 0) {
-                    toast("省市信息有误");
+                    toast("" + getString(R.string.Incorrect_information_of_provinces_and_cities));
                 } else {
                     Bundle bundle = new Bundle();
                     bundle.putString("province", provinceName);
@@ -90,7 +90,7 @@ public class ProvinceCityDetailsActivity extends BaseActivity {
         MyLocationUtil.getInstance(this).getLocationInformation(new MyLocationListener() {
             @Override
             public void success(String province, String city) {
-                toast(province + city);
+                //  toast(province + city);
                 provinceCityDetail.setText(province + city);
                 provinceName = province;
                 cityName = city;

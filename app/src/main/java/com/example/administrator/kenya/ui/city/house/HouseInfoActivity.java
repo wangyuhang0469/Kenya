@@ -184,7 +184,7 @@ public class HouseInfoActivity extends BaseActivity {
         startActivityForResult(intent, 2);
     }
 
-    @OnClick({R.id.back, R.id.release, R.id.house_iv_type, R.id.house_inter})
+    @OnClick({R.id.back, R.id.release, R.id.house_info_type, R.id.ll_house_address})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.back:
@@ -240,11 +240,11 @@ public class HouseInfoActivity extends BaseActivity {
                     }
                 }
                 break;
-            case R.id.house_iv_type:
+            case R.id.house_info_type:
                 houseInfoType.setClickable(false);
                 popupWindow.showAsDropDown(view);
                 break;
-            case R.id.house_inter:
+            case R.id.ll_house_address:
                 startActivityForResult(new Intent(HouseInfoActivity.this, ProvinceCityDetailsActivity.class), 1);
                 break;
         }

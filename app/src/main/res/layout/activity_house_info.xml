@@ -51,7 +51,7 @@
                     android:layout_alignParentRight="true"
                     android:layout_marginRight="60px"
                     android:padding="10dp"
-                    android:src="@mipmap/drop_down_green" />
+                    android:src="@mipmap/my_center_inter2" />
             </com.zhy.autolayout.AutoRelativeLayout>
 
             <include layout="@layout/line" />
