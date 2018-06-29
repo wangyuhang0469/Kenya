@@ -224,7 +224,6 @@ public class HouseInfoActivity extends BaseActivity {
                                     @Override
                                     public void onStart() {
                                     }
-
                                     @Override
                                     public void onSuccess(File file) {
                                         compressFile.add(file);
@@ -332,25 +331,25 @@ public class HouseInfoActivity extends BaseActivity {
                         houseHome.setText(getString(R.string.Please_select_your_account_information));
                         break;
                     case R.id.radioButton2:
-                        houseHome.setText(getString(R.string.Room_1));
+                        houseHome.setText(getString(R.string.bedroom_1));
                         break;
                     case R.id.radioButton3:
-                        houseHome.setText(getString(R.string.Room_1_Hall));
+                        houseHome.setText(getString(R.string.bedroom_2));
                         break;
                     case R.id.radioButton4:
-                        houseHome.setText(getString(R.string.Room_1_Hall_2));
+                        houseHome.setText(getString(R.string.bedroom_3));
                         break;
                     case R.id.radioButton5:
-                        houseHome.setText(getString(R.string.Room_2_Hall_2));
+                        houseHome.setText(getString(R.string.bedroom_4));
                         break;
                     case R.id.radioButton6:
-                        houseHome.setText(getString(R.string.Room_1_Hall_3));
+                        houseHome.setText(getString(R.string.bedroom_5));
                         break;
                     case R.id.radioButton7:
-                        houseHome.setText(getString(R.string.Room_2_Hall_3));
+                        houseHome.setText(getString(R.string.bedroom_6));
                         break;
                     case R.id.radioButton8:
-                        houseHome.setText(getString(R.string.Room_1_Hall_4));
+                        houseHome.setText(getString(R.string.villas));
                         break;
                 }
                 popupWindow.dismiss();

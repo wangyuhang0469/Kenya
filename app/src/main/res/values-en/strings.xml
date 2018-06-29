@@ -357,11 +357,11 @@
     <string name="please_choose">Please Choose</string>
     <string name="Get_the_location_of_the_city_and_city_information">Get the location of the city and city information</string>
 
-    <string name="bedroom_1">1 bedroom</string>
-    <string name="bedroom_2">2 bedroom</string>
-    <string name="bedroom_3">3 bedroom</string>
-    <string name="bedroom_4">4 bedroom</string>
-    <string name="bedroom_5">5 bedroom</string>
-    <string name="bedroom_6">6 bedroom</string>
+    <string name="bedroom_1">1 Bedroom</string>
+    <string name="bedroom_2">2 Bedroom</string>
+    <string name="bedroom_3">3 Bedroom</string>
+    <string name="bedroom_4">4 Bedroom</string>
+    <string name="bedroom_5">5 Bedroom</string>
+    <string name="bedroom_6">6 Bedroom</string>
     <string name="villas">Villas</string>
 </resources>

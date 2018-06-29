@@ -138,7 +138,7 @@
                         android:button="@null"
                         android:gravity="center"
                         android:minHeight="78px"
-                        android:text="@string/Room_1"
+                        android:text="@string/bedroom_1"
                         android:textColor="@drawable/popup_textcolor"
                         android:textSize="13sp" />
 
@@ -152,7 +152,7 @@
                         android:button="@null"
                         android:gravity="center"
                         android:minHeight="78px"
-                        android:text="@string/Room_1_Hall"
+                        android:text="@string/bedroom_2"
                         android:textColor="@drawable/popup_textcolor"
                         android:textSize="13sp" />
 
@@ -166,7 +166,7 @@
                         android:button="@null"
                         android:gravity="center"
                         android:minHeight="78px"
-                        android:text="@string/Room_1_Hall_2"
+                        android:text="@string/bedroom_3"
                         android:textColor="@drawable/popup_textcolor"
                         android:textSize="13sp" />
                 </com.zhy.autolayout.AutoLinearLayout>
@@ -188,7 +188,7 @@
                         android:button="@null"
                         android:gravity="center"
                         android:minHeight="78px"
-                        android:text="@string/Room_2_Hall_2"
+                        android:text="@string/bedroom_4"
                         android:textColor="@drawable/popup_textcolor"
                         android:textSize="13sp" />
 
@@ -203,7 +203,7 @@
                         android:button="@null"
                         android:gravity="center"
                         android:minHeight="78px"
-                        android:text="@string/Room_1_Hall_3"
+                        android:text="@string/bedroom_5"
                         android:textColor="@drawable/popup_textcolor"
                         android:textSize="13sp" />
 
@@ -217,7 +217,7 @@
                         android:button="@null"
                         android:gravity="center"
                         android:minHeight="78px"
-                        android:text="@string/Room_2_Hall_3"
+                        android:text="@string/bedroom_6"
                         android:textColor="@drawable/popup_textcolor"
                         android:textSize="13sp" />
 
@@ -231,7 +231,7 @@
                         android:button="@null"
                         android:gravity="center"
                         android:minHeight="78px"
-                        android:text="@string/Room_1_Hall_4"
+                        android:text="@string/villas"
                         android:textColor="@drawable/popup_textcolor"
                         android:textSize="13sp" />
                 </com.zhy.autolayout.AutoLinearLayout>

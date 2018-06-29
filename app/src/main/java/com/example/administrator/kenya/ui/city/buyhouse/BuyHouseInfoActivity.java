@@ -329,25 +329,25 @@ public class BuyHouseInfoActivity extends BaseActivity {
                         buyHouseInfoTypes.setText(getResources().getText(R.string.Please_select_your_account_information));
                         break;
                     case R.id.radioButton2:
-                        buyHouseInfoTypes.setText(getResources().getText(R.string.Room_1));
+                        buyHouseInfoTypes.setText(getResources().getText(R.string.bedroom_1));
                         break;
                     case R.id.radioButton3:
-                        buyHouseInfoTypes.setText(getResources().getText(R.string.Room_1_Hall));
+                        buyHouseInfoTypes.setText(getResources().getText(R.string.bedroom_2));
                         break;
                     case R.id.radioButton4:
-                        buyHouseInfoTypes.setText(getResources().getText(R.string.Room_1_Hall_2));
+                        buyHouseInfoTypes.setText(getResources().getText(R.string.bedroom_3));
                         break;
                     case R.id.radioButton5:
-                        buyHouseInfoTypes.setText(getResources().getText(R.string.Room_2_Hall_2));
+                        buyHouseInfoTypes.setText(getResources().getText(R.string.bedroom_4));
                         break;
                     case R.id.radioButton6:
-                        buyHouseInfoTypes.setText(getResources().getText(R.string.Room_1_Hall_3));
+                        buyHouseInfoTypes.setText(getResources().getText(R.string.bedroom_5));
                         break;
                     case R.id.radioButton7:
-                        buyHouseInfoTypes.setText(getResources().getText(R.string.Room_2_Hall_3));
+                        buyHouseInfoTypes.setText(getResources().getText(R.string.bedroom_6));
                         break;
                     case R.id.radioButton8:
-                        buyHouseInfoTypes.setText(getResources().getText(R.string.Room_1_Hall_4));
+                        buyHouseInfoTypes.setText(getResources().getText(R.string.villas));
                         break;
                 }
                 popupWindow.dismiss();
