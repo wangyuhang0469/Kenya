@@ -190,13 +190,13 @@ public class HouseActivity extends BaseActivity {
                     housesList.clear();
                     housesList.addAll(addList);
                     houseadapter.notifyDataSetChanged();
-//                    if (housesList.size() == 0) {
-//                        nothing.setVisibility(View.VISIBLE);
-//                        text.setVisibility(View.VISIBLE);
-//                    } else {
-//                        nothing.setVisibility(View.GONE);
-//                        text.setVisibility(View.GONE);
-//                    }
+                    if (housesList.size() == 0) {
+                        nothing.setVisibility(View.VISIBLE);
+                        text.setVisibility(View.VISIBLE);
+                    } else {
+                        nothing.setVisibility(View.GONE);
+                        text.setVisibility(View.GONE);
+                    }
                     pullToRefreshLayout.finishLoadMore();
                 }
                 loadingDialog.dismiss();

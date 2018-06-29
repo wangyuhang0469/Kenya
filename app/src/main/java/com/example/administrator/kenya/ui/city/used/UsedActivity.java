@@ -153,13 +153,13 @@ public class UsedActivity extends BaseActivity {
                     goodsList.clear();
                     goodsList.addAll(addList);
                     myAdapter.notifyDataSetChanged();
-//                    if (goodsList.size() == 0) {
-//                        nothing.setVisibility(View.VISIBLE);
-//                        text.setVisibility(View.VISIBLE);
-//                    } else {
-//                        nothing.setVisibility(View.GONE);
-//                        text.setVisibility(View.GONE);
-//                    }
+                    if (goodsList.size() == 0) {
+                        nothing.setVisibility(View.VISIBLE);
+                        text.setVisibility(View.VISIBLE);
+                    } else {
+                        nothing.setVisibility(View.GONE);
+                        text.setVisibility(View.GONE);
+                    }
                     pullToRefreshLayout.finishLoadMore();
                 }
                 loadingDialog.dismiss();
