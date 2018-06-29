@@ -72,7 +72,6 @@ public class BuyHouseDetailActivity extends BaseActivity {
                 .placeholder(R.drawable.avatar)
                 .into(avatar);
     }
-
     private void initBanner(List<String> imageUrlList) {
         banner.setImages(imageUrlList).setImageLoader(new GlideImageLoader()).start();
         banner.setOnBannerListener(new OnBannerListener() {

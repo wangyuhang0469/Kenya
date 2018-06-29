@@ -42,7 +42,6 @@ public class GoodsDetailsActivity extends BaseActivity {
     @Bind(R.id.avatar)
     CircleImageView avatar;
     private Goods goods;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -75,8 +74,6 @@ public class GoodsDetailsActivity extends BaseActivity {
             }
         });
     }
-
-
     @OnClick({R.id.back, R.id.call})
     public void onViewClicked(View view) {
         switch (view.getId()) {

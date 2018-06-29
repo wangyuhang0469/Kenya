@@ -54,12 +54,12 @@ public class FindProjectdetailActivity extends BaseActivity {
         project2 = (Project2) getIntent().getExtras().getSerializable("project2");
         initBanner(project2.getProjectImageUrlList());
         projectDetailName.setText(project2.getProjectname());
-        projectDetailPrice.setText(getResources().getString(R.string.investment_amounts)+ ": KSh " + project2.getProjectprice());
-        projectDetailType.setText(getResources().getString(R.string.industry)+ ": " + project2.getProjecttype());
-        projectDetailAddress.setText(getResources().getString(R.string.location)+ ": "+ project2.getProjectaddress());
+        projectDetailPrice.setText(getResources().getString(R.string.investment_amounts) + ": KSh " + project2.getProjectprice());
+        projectDetailType.setText(getResources().getString(R.string.industry) + ": " + project2.getProjecttype());
+        projectDetailAddress.setText(getResources().getString(R.string.location) + ": " + project2.getProjectaddress());
         projectDetailDesc.setText(project2.getProjectdesc());
         porjectUser.setText(project2.getProjectuser());
-        projectPhone.setText(getResources().getString(R.string.phone_no_)  + project2.getProjectphone());
+        projectPhone.setText(getResources().getString(R.string.phone_no_) + project2.getProjectphone());
 
         Glide.with(this).load(AppConstants.BASE_URL + project2.getProjecthead())
                 .centerCrop()

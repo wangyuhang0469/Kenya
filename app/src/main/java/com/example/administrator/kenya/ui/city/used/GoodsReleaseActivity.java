@@ -184,7 +184,6 @@ public class GoodsReleaseActivity extends BaseActivity {
                                     @Override
                                     public void onStart() {
                                     }
-
                                     @Override
                                     public void onSuccess(File file) {
                                         compressFile.add(file);
@@ -192,7 +191,6 @@ public class GoodsReleaseActivity extends BaseActivity {
                                             send(loadingDialog);
                                         }
                                     }
-
                                     @Override
                                     public void onError(Throwable e) {
                                     }
@@ -255,7 +253,6 @@ public class GoodsReleaseActivity extends BaseActivity {
                         toast(getResources().getString(R.string.post_fail));
                         loadingDialog.dismiss();
                     }
-
                     @Override
                     public void onResponse(String response, int id) {
                         try {

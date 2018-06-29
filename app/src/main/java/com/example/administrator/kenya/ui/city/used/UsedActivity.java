@@ -117,6 +117,7 @@ public class UsedActivity extends BaseActivity {
                 .addParams("cityname", cityname)
                 .addParams("goodsPrice", goodsPrice);
     }
+
     private void initOKHttp() {
         loadingDialog = new LoadingDialog(this);
         loadingDialog.show();
@@ -134,7 +135,6 @@ public class UsedActivity extends BaseActivity {
 
             @Override
             public void onResponse(String response, int id) {
-                Log.d("kang", "99999999999" + response);
                 //防止因Activity释放导致内部控件空指针
                 if (pullToRefreshLayout != null) {
                     List<Goods> addList = null;
@@ -153,13 +153,13 @@ public class UsedActivity extends BaseActivity {
                     goodsList.clear();
                     goodsList.addAll(addList);
                     myAdapter.notifyDataSetChanged();
-                    if (goodsList.size() == 0) {
-                        nothing.setVisibility(View.VISIBLE);
-                        text.setVisibility(View.VISIBLE);
-                    } else {
-                        nothing.setVisibility(View.GONE);
-                        text.setVisibility(View.GONE);
-                    }
+//                    if (goodsList.size() == 0) {
+//                        nothing.setVisibility(View.VISIBLE);
+//                        text.setVisibility(View.VISIBLE);
+//                    } else {
+//                        nothing.setVisibility(View.GONE);
+//                        text.setVisibility(View.GONE);
+//                    }
                     pullToRefreshLayout.finishLoadMore();
                 }
                 loadingDialog.dismiss();

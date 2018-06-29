@@ -95,7 +95,6 @@ public class HouseActivity extends BaseActivity {
     String cityname = "";
     String price = "";
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -191,13 +190,13 @@ public class HouseActivity extends BaseActivity {
                     housesList.clear();
                     housesList.addAll(addList);
                     houseadapter.notifyDataSetChanged();
-                    if (housesList.size() == 0) {
-                        nothing.setVisibility(View.VISIBLE);
-                        text.setVisibility(View.VISIBLE);
-                    } else {
-                        nothing.setVisibility(View.GONE);
-                        text.setVisibility(View.GONE);
-                    }
+//                    if (housesList.size() == 0) {
+//                        nothing.setVisibility(View.VISIBLE);
+//                        text.setVisibility(View.VISIBLE);
+//                    } else {
+//                        nothing.setVisibility(View.GONE);
+//                        text.setVisibility(View.GONE);
+//                    }
                     pullToRefreshLayout.finishLoadMore();
                 }
                 loadingDialog.dismiss();
@@ -490,7 +489,6 @@ public class HouseActivity extends BaseActivity {
             }
         });
     }
-
     /**
      * 监听点击回退按钮事件
      */
@@ -559,6 +557,5 @@ public class HouseActivity extends BaseActivity {
             }
         });
     }
-
 
 }
