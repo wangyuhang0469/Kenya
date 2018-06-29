@@ -5,7 +5,6 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -56,6 +55,10 @@ public class UsedActivity extends BaseActivity {
     AutoRelativeLayout rootlayout;
     @Bind(R.id.dropDownMenu)
     DropDownMenu mDropDownMenu;
+    @Bind(R.id.nothing)
+    ImageView nothing;
+    @Bind(R.id.text)
+    TextView text;
     private MyAdapter myAdapter;
     private List<Goods> goodsList = new ArrayList<>();
     private int cpageNum = 1;
@@ -114,7 +117,6 @@ public class UsedActivity extends BaseActivity {
                 .addParams("cityname", cityname)
                 .addParams("goodsPrice", goodsPrice);
     }
-
     private void initOKHttp() {
         loadingDialog = new LoadingDialog(this);
         loadingDialog.show();
@@ -151,6 +153,13 @@ public class UsedActivity extends BaseActivity {
                     goodsList.clear();
                     goodsList.addAll(addList);
                     myAdapter.notifyDataSetChanged();
+                    if (goodsList.size() == 0) {
+                        nothing.setVisibility(View.VISIBLE);
+                        text.setVisibility(View.VISIBLE);
+                    } else {
+                        nothing.setVisibility(View.GONE);
+                        text.setVisibility(View.GONE);
+                    }
                     pullToRefreshLayout.finishLoadMore();
                 }
                 loadingDialog.dismiss();

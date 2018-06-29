@@ -3,12 +3,11 @@ package com.example.administrator.kenya.ui.city.buyhouse;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.GridView;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -55,6 +54,10 @@ public class BuyHouseActivity extends BaseActivity {
     PullToRefreshLayout pullToRefreshLayout;
     @Bind(R.id.rootlayout)
     AutoRelativeLayout rootlayout;
+    @Bind(R.id.nothing)
+    ImageView nothing;
+    @Bind(R.id.text)
+    TextView text;
     private PostFormBuilder postFormBuilder;
     private int cpageNum = 1;
     private StringCallback StringCallback;
@@ -187,6 +190,13 @@ public class BuyHouseActivity extends BaseActivity {
                     housesList.clear();
                     housesList.addAll(addList);
                     houseadapter.notifyDataSetChanged();
+                    if (housesList.size() == 0) {
+                        nothing.setVisibility(View.VISIBLE);
+                        text.setVisibility(View.VISIBLE);
+                    } else {
+                        nothing.setVisibility(View.GONE);
+                        text.setVisibility(View.GONE);
+                    }
                     pullToRefreshLayout.finishLoadMore();
                 }
                 loadingDialog.dismiss();

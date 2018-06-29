@@ -103,7 +103,6 @@ public class HusbandryActivity extends BaseActivity {
             @Override
             public void refresh() {
             }
-
             @Override
             public void loadMore() {
                 postFormBuilder.addParams("framType", keyword).addParams("pn", cpageNum + "").build().execute(StringCallback);

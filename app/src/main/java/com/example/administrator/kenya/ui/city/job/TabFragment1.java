@@ -2,9 +2,6 @@ package com.example.administrator.kenya.ui.city.job;
 
 
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.drawable.BitmapDrawable;
-import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
@@ -14,19 +11,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.alibaba.fastjson.JSON;
-import com.bumptech.glide.Glide;
-import com.bumptech.glide.request.animation.GlideAnimation;
-import com.bumptech.glide.request.target.SimpleTarget;
 import com.example.administrator.kenya.R;
-import com.example.administrator.kenya.activity.ResumeDetilActivity;
 import com.example.administrator.kenya.activity.ResumeinfoActivity;
 import com.example.administrator.kenya.adapter.JobAdapter;
-import com.example.administrator.kenya.classes.Goods;
 import com.example.administrator.kenya.classes.Job;
 import com.example.administrator.kenya.constants.AppConstants;
 import com.example.administrator.kenya.view.MyFootRefreshView;
@@ -59,6 +50,10 @@ public class TabFragment1 extends Fragment {
     RecyclerView recyclerView;
     @Bind(R.id.pullToRefreshLayout)
     PullToRefreshLayout pullToRefreshLayout;
+    @Bind(R.id.nothing)
+    ImageView nothing;
+    @Bind(R.id.text)
+    TextView text;
     private String mParam1;
     private JobAdapter jobAdapter;
     private List<Job> jobList;
@@ -139,6 +134,13 @@ public class TabFragment1 extends Fragment {
                     addList = JSON.parseArray(response, Job.class);
                     jobList.addAll(addList);
                     jobAdapter.notifyDataSetChanged();
+                    if (jobList.size() == 0) {
+                        nothing.setVisibility(View.VISIBLE);
+                        text.setVisibility(View.VISIBLE);
+                    } else {
+                        nothing.setVisibility(View.GONE);
+                        text.setVisibility(View.GONE);
+                    }
                     pullToRefreshLayout.finishLoadMore();
                 }
             }

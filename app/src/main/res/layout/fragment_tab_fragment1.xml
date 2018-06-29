@@ -32,4 +32,23 @@
         android:text="@string/post"
         android:textColor="@color/white"
         android:textSize="17sp" />
+
+    <ImageView
+        android:id="@+id/nothing"
+        android:layout_width="230px"
+        android:layout_height="302px"
+        android:layout_above="@+id/text"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/nothing"
+        android:visibility="gone" />
+
+    <TextView
+        android:id="@+id/text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:paddingTop="20px"
+        android:text="@string/nothing"
+        android:textColor="@color/textBlack3"
+        android:visibility="gone" />
 </com.zhy.autolayout.AutoRelativeLayout>

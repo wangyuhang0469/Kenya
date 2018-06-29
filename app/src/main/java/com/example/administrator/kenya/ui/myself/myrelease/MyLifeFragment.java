@@ -119,7 +119,7 @@ public class MyLifeFragment extends BaseFragment {
                 //防止因Activity释放导致内部控件空指针
                 if (pullToRefreshLayout != null) {
                     pullToRefreshLayout.finishLoadMore();
-                    toast( getString(R.string.load_fail));
+                    toast(getString(R.string.load_fail));
                     e.printStackTrace();
                 }
             }
@@ -160,9 +160,7 @@ public class MyLifeFragment extends BaseFragment {
 
     }
 
-
     public class MyLifeAdapter extends RecyclerView.Adapter<MyLifeAdapter.ViewHolder> {
-
 
         private List<LifeServices> list;
 
@@ -193,7 +191,7 @@ public class MyLifeFragment extends BaseFragment {
         @Override
         public void onBindViewHolder(final ViewHolder holder, final int position) {
             holder.livename.setText(list.get(position).getLivename());
-            holder.livephone.setText( getString(R.string.phone_no_)+ list.get(position).getLivephone());
+            holder.livephone.setText(getString(R.string.phone_no_) + list.get(position).getLivephone());
 //            holder.liveimgs.setTag(list.get(position).getLiveimgs());
 //
             Glide.with(getContext())
@@ -248,7 +246,6 @@ public class MyLifeFragment extends BaseFragment {
         public int getItemCount() {
             return list == null ? 0 : list.size();
         }
-
     }
 
     @Override
