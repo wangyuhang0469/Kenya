@@ -91,20 +91,20 @@ public class ProvinceCityDetailsActivity extends BaseActivity {
             @Override
             public void success(String province, String city) {
                 toast(province + city);
-                province = province.replace("County","");
-                province = province.replace(" " ,"");
-                province = province.replace("Province" ,"");
-
-                city = city.replace("District","");
-                provinceCityDetail.setText(province +" "+ city);
+                province = province.replace("County", "");
+                province = province.replace(" ", "");
+                province = province.replace("Province", "");
+                city = city.replace("District", "");
+                provinceCityDetail.setText(province + " " + city);
                 provinceName = province;
                 cityName = city;
             }
+
             @Override
             public void failed(String message) {
-                toast(message);
+                //toast(message);
+                toast("定位权限未开启，定位信息获取失败");
             }
         });
     }
-
 }

@@ -14,6 +14,7 @@ import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
 import android.support.v4.app.ActivityCompat;
+import android.widget.Toast;
 
 import com.example.administrator.kenya.interfaces.MyLocationListener;
 
@@ -25,10 +26,8 @@ import java.util.List;
  */
 
 public class MyLocationUtil {
-
     private String city;
     private String province;
-
     // 此对象能通过经纬度来获取相应的城市等信息
     private Geocoder geocoder;
     private LocationManager locationManager;
@@ -36,7 +35,6 @@ public class MyLocationUtil {
     private Context context;
     private MyLocationListener myLocationListener;
     final Handler handler = new Handler(Looper.getMainLooper()) {
-
         public void handleMessage(Message msg) {
             switch (msg.what) {
                 case 1:
@@ -48,10 +46,7 @@ public class MyLocationUtil {
                     break;
             }
         }
-
-        ;
     };
-
     public MyLocationUtil(Context context) {
         this.context = context;
     }
@@ -98,14 +93,12 @@ public class MyLocationUtil {
                 mProvince += add.getAdminArea();
             }
         }
-
         city = mCity;
         province = mProvince;
 
     }
 
     private final LocationListener locationListener = new LocationListener() {
-
 
         public void onLocationChanged(Location location) {
             getInformationByLocation(location);
@@ -124,28 +117,31 @@ public class MyLocationUtil {
         }
     };
 
-
     private Location getLocation() {
         Location location = null;
         if (ActivityCompat.checkSelfPermission(context, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(context, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
 //            ActivityCompat.requestPermissions((Activity) context, new String[]{!= PackageManager.PERMISSION_GRANTED!= PackageManager.PERMISSION_GRANTED, Manifest.permission.CAMERA}, 1);
         } else {
-            geocoder = new Geocoder(context);
-            locationManager = (LocationManager) context.getSystemService(Context.LOCATION_SERVICE);
-            getProvider();
-            // 通过最后一次的地理位置来获得Location对象
-            location = locationManager.getLastKnownLocation(provider);
-            if (location == null) {
-                locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 6000000, 1, locationListener);
+            try {
+                geocoder = new Geocoder(context);
+                locationManager = (LocationManager) context.getSystemService(Context.LOCATION_SERVICE);
+                getProvider();
+                // 通过最后一次的地理位置来获得Location对象
+                location = locationManager.getLastKnownLocation(provider);
+                if (location == null) {
+                    locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 6000000, 1, locationListener);
+                }
+                return location;
+            } catch (Exception e) {
+
             }
-            return location;
+
         }
         return location;
     }
 
     public void getLocationInformation(MyLocationListener myLocationListener) {
         this.myLocationListener = myLocationListener;
-
         new Thread() {
             @Override
             public void run() {

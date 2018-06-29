@@ -33,7 +33,7 @@
                     android:checked="true"
                     android:gravity="center"
                     android:minHeight="78px"
-                    android:text="@string/Unlimited"
+                    android:text="@string/please_choose"
                     android:textColor="@drawable/popup_textcolor"
                     android:textSize="13sp" />
 

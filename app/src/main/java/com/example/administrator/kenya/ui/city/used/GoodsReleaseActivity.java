@@ -125,7 +125,7 @@ public class GoodsReleaseActivity extends BaseActivity {
                 province = result.get("province").toString();
                 city = result.get("city").toString();
                 content = result.get("content").toString();
-                goodsAddress.setText(province + city + content);
+                goodsAddress.setText(province + " " + city + " " + content);
             }
         }
     }
@@ -175,7 +175,6 @@ public class GoodsReleaseActivity extends BaseActivity {
                 } else {
                     final LoadingDialog loadingDialog = new LoadingDialog(GoodsReleaseActivity.this);
                     loadingDialog.show();
-
                     for (int i = 0; i < mResults.size(); i++) {
                         Luban.with(this)
                                 .load(mResults.get(i))

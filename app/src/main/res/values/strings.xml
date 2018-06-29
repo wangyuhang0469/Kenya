@@ -352,5 +352,6 @@
     <string name="provinces_and_cities">省市详情</string>
     <string name="please_enter_the_detailed_address">请输入详细地址</string>
     <string name="Incorrect_information_of_provinces_and_cities">省市信息有误</string>
-
+    <string name="please_choose">请选择</string>
+    <string name="Get_the_location_of_the_city_and_city_information">获取定位的省市详情</string>
 </resources>

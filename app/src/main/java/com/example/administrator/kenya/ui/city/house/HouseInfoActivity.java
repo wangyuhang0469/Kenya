@@ -138,7 +138,7 @@ public class HouseInfoActivity extends BaseActivity {
                 province = result.get("province").toString();
                 city = result.get("city").toString();
                 content = result.get("content").toString();
-                houseAddress.setText(province + city + content);
+                houseAddress.setText(province + " " + city + " " + content);
             }
         }
     }

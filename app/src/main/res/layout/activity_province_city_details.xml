@@ -30,12 +30,12 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="50px"
                 android:gravity="center_vertical"
+                android:hint="@string/Get_the_location_of_the_city_and_city_information"
                 android:textColor="@color/textBlack1"
                 android:textSize="14sp" />
         </com.zhy.autolayout.AutoLinearLayout>
 
         <include layout="@layout/line" />
-
 
         <com.zhy.autolayout.AutoRelativeLayout
             android:layout_width="match_parent"

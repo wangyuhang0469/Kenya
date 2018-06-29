@@ -308,6 +308,7 @@ public class BuyHouseActivity extends BaseActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 provinceAdapter.setCheckItem(position);
+                String tr = position == 0 ? headers[0] : cityProvincesListstring.get(position);
                 if (position == 0) {
                     mDropDownMenu.closeMenu();
                     cityprovince = "";

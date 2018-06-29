@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
     <string name="please">Please \ </string>
     <string name="load_fail">Loading Failed</string>
     <string name="post_success">Posting Successfully</string>
@@ -184,7 +183,6 @@
     <string name="cancel">CANCEL</string>
     <string name="farm_products">Farm Products</string>
     <string name="category">Category</string>
-
     <!--加载中-->
     <string name="uploding">Uploding</string>
     <!--<string name="recruitment">招聘</string>-->
@@ -356,5 +354,6 @@
     <string name="provinces_and_cities">Provinces and Cities</string>
     <string name="please_enter_the_detailed_address">Please enter the detailed address.</string>
     <string name="Incorrect_information_of_provinces_and_cities">Incorrect information of provinces and cities</string>
-
+    <string name="please_choose">Please Choose</string>
+    <string name="Get_the_location_of_the_city_and_city_information">Get the location of the city and city information</string>
 </resources>

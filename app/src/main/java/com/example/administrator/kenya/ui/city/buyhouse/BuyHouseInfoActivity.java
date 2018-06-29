@@ -272,7 +272,7 @@ public class BuyHouseInfoActivity extends BaseActivity {
                 province = result.get("province").toString();
                 city = result.get("city").toString();
                 content = result.get("content").toString();
-                buyHouseInfoAddress.setText(province + city + content);
+                buyHouseInfoAddress.setText(province + " " + city + " " + content);
             }
         }
     }
@@ -296,7 +296,6 @@ public class BuyHouseInfoActivity extends BaseActivity {
             }
         }
     }
-
 
     private void initPopupWindow() {
         final View popContentView = LayoutInflater.from(this).inflate(R.layout.popupwindow_buy_house_type, null);
