@@ -44,7 +44,6 @@ import okhttp3.Call;
  * A simple {@link Fragment} subclass.
  */
 public class BuyHouseFragment extends BaseFragment {
-
     @Bind(R.id.recyclerView)
     RecyclerView recyclerView;
     @Bind(R.id.pullToRefreshLayout)
@@ -94,6 +93,7 @@ public class BuyHouseFragment extends BaseFragment {
 
             @Override
             public void onResponse(String response, int id) {
+                Log.d("kang", "9789679679679" + response);
                 //防止因Activity释放导致内部控件空指针
                 if (pullToRefreshLayout != null) {
                     cpageNum++;
@@ -110,7 +110,10 @@ public class BuyHouseFragment extends BaseFragment {
                         e.printStackTrace();
                     }
                     addList = JSON.parseArray(response, BuyHouse.class);
-                    housesList.addAll(addList);
+                    if (housesList != null && housesList.size() > 0) {
+                        housesList.addAll(addList);
+                    } else {
+                    }
                     myHouseAdapter.notifyDataSetChanged();
                     if (housesList.size() == 0) {
                         nothing.setVisibility(View.VISIBLE);
