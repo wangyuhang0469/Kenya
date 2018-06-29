@@ -354,4 +354,12 @@
     <string name="Incorrect_information_of_provinces_and_cities">省市信息有误</string>
     <string name="please_choose">请选择</string>
     <string name="Get_the_location_of_the_city_and_city_information">获取定位的省市详情</string>
+
+    <string name="bedroom_1">1卧室</string>
+    <string name="bedroom_2">2卧室</string>
+    <string name="bedroom_3">3卧室</string>
+    <string name="bedroom_4">4卧室</string>
+    <string name="bedroom_5">5卧室</string>
+    <string name="bedroom_6">6卧室</string>
+    <string name="villas">别墅</string>
 </resources>

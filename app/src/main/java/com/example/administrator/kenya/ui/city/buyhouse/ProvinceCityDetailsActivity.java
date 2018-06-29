@@ -35,8 +35,8 @@ public class ProvinceCityDetailsActivity extends BaseActivity {
     @Bind(R.id.buy_house_province_city_sure)
     TextView buyHouseProvinceCitySure;
     Intent intent;
-    String provinceName;
-    String cityName;
+    String provinceName = "";
+    String cityName = "";
     private LocationManager lm;//位置管理
 
     @Override
