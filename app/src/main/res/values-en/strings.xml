@@ -313,7 +313,7 @@
     <string name="Please_select">Please select</string>
     <string name="bridal_chamber">Bridal chamber</string>
     <string name="second_hand_house">Second hand house</string>
-    <string name="Room_1">Room 1</string>
+    <string name="Room_1">1 Room </string>
     <string name="Room_1_Hall">1 Room 1 Hall</string>
     <string name="Room_1_Hall_2">2 Room 1 Hall</string>
     <string name="Room_2_Hall_2">2 Room 2 Hall</string>
@@ -333,7 +333,7 @@
     <string name="books">Books</string>
     <string name="other">Other</string>
     <string name="Office_Building">Office Building</string>
-    <string name="factory_mill">Factory [mill</string>
+    <string name="factory_mill">Factory</string>
     <string name="Release_house_source">Release house source</string>
     <string name="vehicle">Vehicle</string>
     <string name="residence">Residence</string>

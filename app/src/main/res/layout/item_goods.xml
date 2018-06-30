@@ -38,6 +38,18 @@
         android:layout_toRightOf="@id/goodsimgs"
         android:maxLength="23"
         android:textColor="@color/textBlack2"
+        android:textSize="13sp"
+        android:visibility="gone" />
+
+    <TextView
+        android:id="@+id/goodsaddress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/goodsimgs"
+        android:layout_marginBottom="10px"
+        android:layout_toRightOf="@id/goodsimgs"
+        android:maxLength="23"
+        android:textColor="@color/textBlack2"
         android:textSize="13sp" />
 
     <TextView
@@ -51,13 +63,14 @@
         android:gravity="center"
         android:text="@string/call"
         android:textColor="@color/white"
-        android:textSize="13sp" />
+        android:textSize="13sp"
+        android:visibility="gone" />
 
     <TextView
         android:id="@+id/goodsprice"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@id/goodsphone"
+        android:layout_above="@id/goodsaddress"
         android:layout_toRightOf="@id/goodsimgs"
         android:textColor="@color/textgreen1"
         android:textSize="17sp" />

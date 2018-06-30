@@ -1,7 +1,6 @@
 package com.example.administrator.kenya.ui.city.used;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
@@ -41,7 +40,10 @@ public class GoodsDetailsActivity extends BaseActivity {
     TextView goodsname;
     @Bind(R.id.avatar)
     CircleImageView avatar;
+    @Bind(R.id.goods_detail_address)
+    TextView goodsDetailAddress;
     private Goods goods;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -55,6 +57,7 @@ public class GoodsDetailsActivity extends BaseActivity {
         goodsdesc.setText(goods.getGoodsdesc());
         goodsusername.setText(goods.getGoodsusername());
         goodsphone.setText(getResources().getString(R.string.phone_no_) + goods.getGoodsphone());
+        goodsDetailAddress.setText(goods.getGoodsaddress());
 
         Glide.with(this).load(AppConstants.BASE_URL + goods.getUser().getUserPortrait())
                 .centerCrop()
@@ -74,6 +77,7 @@ public class GoodsDetailsActivity extends BaseActivity {
             }
         });
     }
+
     @OnClick({R.id.back, R.id.call})
     public void onViewClicked(View view) {
         switch (view.getId()) {

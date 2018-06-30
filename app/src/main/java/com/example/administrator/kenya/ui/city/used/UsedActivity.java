@@ -176,7 +176,6 @@ public class UsedActivity extends BaseActivity {
                     loadingDialog.dismiss();
                 }
             }
-
             @Override
             public void onResponse(String response, int id) {
                 //防止因Activity释放导致内部控件空指针
@@ -249,7 +248,7 @@ public class UsedActivity extends BaseActivity {
         }
 
         public class ViewHolder extends RecyclerView.ViewHolder {
-            TextView goodsname, goodsphone, goodsprice, call, goods_type;
+            TextView goodsname, goodsphone, goodsprice, call, goods_type, goodsaddress;
             ImageView goodsimgs;
 
             public ViewHolder(View itemView) {
@@ -260,6 +259,7 @@ public class UsedActivity extends BaseActivity {
                 call = (TextView) itemView.findViewById(R.id.call);
                 goodsimgs = (ImageView) itemView.findViewById(R.id.goodsimgs);
                 goods_type = itemView.findViewById(R.id.goods_type);
+                goodsaddress = itemView.findViewById(R.id.goodsaddress);
             }
         }
 
@@ -275,6 +275,7 @@ public class UsedActivity extends BaseActivity {
             holder.goodsphone.setText(getResources().getString(R.string.phone_no_) + list.get(position).getGoodsphone());
             holder.goodsprice.setText("KSh " + list.get(position).getGoodsprice());
             holder.goods_type.setText(list.get(position).getGoodstype());
+            holder.goodsaddress.setText(list.get(position).getGoodsaddress());
 //            holder.goodsimgs.setTag(list.get(position).getGoodsimgs());
 //            holder.goodsimgs.setBackgroundResource(R.drawable.bg4dp_grey);
 

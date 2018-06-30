@@ -65,7 +65,6 @@
                     android:textSize="18sp" />
 
 
-
                 <TextView
                     android:id="@+id/house_detail_square"
                     android:layout_width="wrap_content"
@@ -94,9 +93,9 @@
                     android:id="@+id/house_address_img2"
                     android:layout_width="50px"
                     android:layout_height="50px"
-                    android:gravity="center_vertical"
-                    android:layout_marginLeft="30px"
                     android:layout_centerVertical="true"
+                    android:layout_marginLeft="30px"
+                    android:gravity="center_vertical"
                     android:src="@drawable/house_type" />
 
 
@@ -104,10 +103,10 @@
                     android:id="@+id/house_detail_home"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_toRightOf="@+id/house_address_img2"
-                    android:gravity="center_vertical"
                     android:layout_marginLeft="20px"
                     android:layout_marginRight="30px"
+                    android:layout_toRightOf="@+id/house_address_img2"
+                    android:gravity="center_vertical"
                     android:singleLine="true"
                     android:textColor="@color/textBlack2"
                     android:textSize="13sp" />
@@ -121,25 +120,24 @@
                     android:id="@+id/house_address_img"
                     android:layout_width="50px"
                     android:layout_height="50px"
-                    android:gravity="center_vertical"
-                    android:layout_marginLeft="30px"
                     android:layout_centerVertical="true"
+                    android:layout_marginLeft="30px"
+                    android:gravity="center_vertical"
                     android:src="@drawable/house_address" />
 
                 <TextView
                     android:id="@+id/house_detail_address"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_toRightOf="@+id/house_address_img"
-                    android:gravity="center_vertical"
                     android:layout_marginLeft="20px"
                     android:layout_marginRight="30px"
+                    android:layout_toRightOf="@+id/house_address_img"
+                    android:gravity="center_vertical"
                     android:singleLine="true"
                     android:textColor="@color/textBlack2"
                     android:textSize="13sp" />
 
             </com.zhy.autolayout.AutoRelativeLayout>
-
 
 
             <View
@@ -156,12 +154,12 @@
                     android:id="@+id/avatar"
                     android:layout_width="152px"
                     android:layout_height="152px"
-                    android:layout_marginLeft="8dp"
-                    android:src="@drawable/avatar"
-                    android:layout_centerVertical="true"
                     android:layout_alignParentLeft="true"
                     android:layout_alignParentStart="true"
-                    android:layout_marginStart="8dp" />
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginStart="8dp"
+                    android:src="@drawable/avatar" />
 
                 <TextView
                     android:id="@+id/house_username"

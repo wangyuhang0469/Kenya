@@ -224,6 +224,7 @@ public class HouseInfoActivity extends BaseActivity {
                                     @Override
                                     public void onStart() {
                                     }
+
                                     @Override
                                     public void onSuccess(File file) {
                                         compressFile.add(file);

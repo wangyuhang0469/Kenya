@@ -65,6 +65,41 @@
 
             <View
                 android:layout_width="match_parent"
+                android:layout_height="2px"
+                android:layout_marginLeft="30px"
+                android:layout_marginRight="30px"
+                android:layout_marginTop="34px"
+                android:background="@color/line1" />
+
+            <com.zhy.autolayout.AutoRelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="100px">
+
+                <ImageView
+                    android:id="@+id/goods_address_img"
+                    android:layout_width="50px"
+                    android:layout_height="50px"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="30px"
+                    android:gravity="center_vertical"
+                    android:src="@drawable/house_address" />
+
+                <TextView
+                    android:id="@+id/goods_detail_address"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="20px"
+                    android:layout_marginRight="30px"
+                    android:layout_toRightOf="@+id/goods_address_img"
+                    android:gravity="center_vertical"
+                    android:singleLine="true"
+                    android:textColor="@color/textBlack2"
+                    android:textSize="13sp" />
+
+            </com.zhy.autolayout.AutoRelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
                 android:layout_height="20px"
                 android:background="@color/base_bg" />
 
@@ -87,8 +122,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="20px"
                     android:layout_marginTop="66px"
-                    android:maxLines="1"
                     android:layout_toRightOf="@id/avatar"
+                    android:maxLines="1"
                     android:textColor="@color/textBlack1" />
 
                 <TextView

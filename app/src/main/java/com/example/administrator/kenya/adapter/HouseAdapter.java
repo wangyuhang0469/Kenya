@@ -32,6 +32,7 @@ public class HouseAdapter extends RecyclerView.Adapter<HouseAdapter.ViewHolder> 
         this.list = list;
         this.context = context;
     }
+
     public class ViewHolder extends RecyclerView.ViewHolder {
         TextView house_Title, house_square, house_address, house_home, house_price, call;
         ImageView house_image;
@@ -65,7 +66,6 @@ public class HouseAdapter extends RecyclerView.Adapter<HouseAdapter.ViewHolder> 
             holder.house_home.setText(list.get(position).getHometype());
         } else {
         }
-
         holder.call.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
