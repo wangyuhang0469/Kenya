@@ -103,7 +103,7 @@ public class BuyHouseActivity extends BaseActivity {
         setContentView(R.layout.activity_buy_house);
         ButterKnife.bind(this);
         headers = new String[]{getString(R.string.position), getString(R.string.type), getString(R.string.area), getString(R.string.total)};
-        square = new String[]{getString(R.string.Unlimited), getString(R.string.under_50m2), "50-70㎡", "70-90㎡", "90-110㎡", "110-130㎡", "130-150㎡", "150-200㎡", "200-300㎡", "300-500㎡", getString(R.string.Above_500m2)};
+        square = new String[]{getString(R.string.Unlimited), getString(R.string.under_50m2), "50-70sqm", "70-90sqm", "90-110sqm", "110-130sqm", "130-150sqm", "150-200sqm", "200-30sqm", "300-500sqm", getString(R.string.Above_500m2)};
         money = new String[]{getString(R.string.Unlimited), getString(R.string.under_ksh100000), "KSh100000-200000", "KSh200000-300000", "KSh200000-300000", "KSh300000-400000", "KSh400000-500000", "KSh500000-600000", "KSh600000-700000", "KSh700000-800000", "KSh800000-900000", getString(R.string.above__ksh1000000)};
         initOKHttp();
         initProvinceCity();
@@ -112,7 +112,6 @@ public class BuyHouseActivity extends BaseActivity {
         initEvent();
         getRequest().addParams("pn", cpageNum + "").build().execute(StringCallback);
     }
-
     //init province
     private void initProvinceCity() {
         OkHttpUtils.get().url(AppConstants.BASE_URL + "/kenya/city/findByCountCityprovince").build().execute(new StringCallback() {

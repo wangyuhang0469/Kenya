@@ -52,7 +52,6 @@ public class TabFragment2 extends Fragment {
     ImageView nothing;
     @Bind(R.id.text)
     TextView text;
-
     private String mParam1;
 
     private CompanyAdapter companyAdapter;

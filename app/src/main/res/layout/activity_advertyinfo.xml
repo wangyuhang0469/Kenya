@@ -13,6 +13,7 @@
         android:layout_width="match_parent"
         android:layout_height="144px"
         android:background="@color/base_bg">
+
         <ImageView
             android:id="@+id/back"
             android:layout_width="wrap_content"

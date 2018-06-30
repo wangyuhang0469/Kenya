@@ -61,7 +61,7 @@ public class BuyHouseDetailActivity extends BaseActivity {
         houseDetailDesc.setText(buyHouse.getHousedesc());
         houseDetailPrice.setText("KSh " + buyHouse.getHouseprice() + "/Month");
         houseDetailHome.setText(buyHouse.getHousehome());
-        houseDetailSquare.setText(buyHouse.getHousesquare() + "㎡");
+        houseDetailSquare.setText(buyHouse.getHousesquare() + "sqm");
         houseDetailAddress.setText(buyHouse.getHouseaddress());
         houseUsername.setText(buyHouse.getHouseuser());
         housePhone.setText(getResources().getString(R.string.phone_no_) + buyHouse.getHousephone());
@@ -72,6 +72,7 @@ public class BuyHouseDetailActivity extends BaseActivity {
                 .placeholder(R.drawable.avatar)
                 .into(avatar);
     }
+
     private void initBanner(List<String> imageUrlList) {
         banner.setImages(imageUrlList).setImageLoader(new GlideImageLoader()).start();
         banner.setOnBannerListener(new OnBannerListener() {

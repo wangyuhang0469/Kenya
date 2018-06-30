@@ -65,7 +65,7 @@ public class HouseDetailActivity extends BaseActivity {
             houseDetailHome.setText(house.getHometype());
         } else {
         }
-        houseDetailSquare.setText(house.getLeasesquare() + "㎡");
+        houseDetailSquare.setText(house.getLeasesquare() + "sqm");
         houseDetailAddress.setText(house.getLeaseaddress());
         houseUsername.setText(house.getLeaseuser());
         housePhone.setText(getResources().getString(R.string.phone_no_) + house.getLeasephone());

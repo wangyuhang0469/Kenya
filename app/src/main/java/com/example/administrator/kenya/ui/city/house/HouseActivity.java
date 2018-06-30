@@ -101,7 +101,7 @@ public class HouseActivity extends BaseActivity {
         setContentView(R.layout.activity_house);
         ButterKnife.bind(this);
         headers = new String[]{getString(R.string.position), getString(R.string.type), getString(R.string.area), getString(R.string.rent)};
-        square = new String[]{getString(R.string.Unlimited), getString(R.string.under_50m2), "50-70㎡", "70-90㎡", "90-110㎡", "110-130㎡", "130-150㎡", "150-200㎡", "200-300㎡", "300-500㎡", getString(R.string.Above_500m2)};
+        square = new String[]{getString(R.string.Unlimited), getString(R.string.under_50m2), "50-70sqm", "70-90sqm", "90-110sqm", "110-130sqm", "130-150sqm", "150-200sqm", "200-300sqm", "300-500sqm", getString(R.string.Above_500m2)};
         money = new String[]{getString(R.string.Unlimited), "KSh50/month", "KSh50-100/month", "KSh100-200/month", "KSh200-300/month", "KSh300-400/month", "KSh400-500/month", "KSh500-600/month", "KSh600-700/month", "KSh700-800/month", "KSh800-900/month", "KSh900-1000/month", getString(R.string.rent_1000_above)
         };
         initOKHttp();

@@ -25,25 +25,27 @@
             android:orientation="vertical"
             android:paddingBottom="50px">
 
-            <com.zhy.autolayout.AutoLinearLayout
+            <com.zhy.autolayout.AutoRelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="match_parent">
 
                 <TextView
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_centerVertical="true"
                     android:layout_marginLeft="50px"
                     android:text="@string/topic" />
 
                 <EditText
                     android:id="@+id/buy_house_info_title"
                     style="@style/edit_base2"
+                    android:layout_marginLeft="300px"
                     android:gravity="center_vertical"
                     android:hint="@string/enter_your_title"
                     android:maxLength="120"
                     android:paddingLeft="30px" />
 
-            </com.zhy.autolayout.AutoLinearLayout>
+            </com.zhy.autolayout.AutoRelativeLayout>
 
             <include layout="@layout/line" />
 
@@ -65,7 +67,7 @@
                     android:id="@+id/buy_house_info_types"
                     android:layout_width="wrap_content"
                     android:layout_height="150px"
-                    android:layout_toRightOf="@+id/buy_house_info_type"
+                    android:layout_marginLeft="300px"
                     android:gravity="center_vertical"
                     android:hint="@string/please_choose_the_type_of_hoose_e.g._one_bedroom"
                     android:maxLength="50"
@@ -83,26 +85,29 @@
 
             <include layout="@layout/line" />
 
-            <com.zhy.autolayout.AutoLinearLayout
+            <com.zhy.autolayout.AutoRelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
                     android:layout_marginLeft="50px"
                     android:text="@string/area" />
 
                 <EditText
                     android:id="@+id/buy_house_info_square"
                     style="@style/edit_base2"
+                    android:layout_width="match_parent"
+                    android:layout_marginLeft="300px"
                     android:gravity="center_vertical"
-                    android:hint="@string/enter_the_size_of_house_in_square_metres"
+                    android:hint="@string/Imported_housing_area"
                     android:inputType="number"
                     android:maxLength="5"
                     android:paddingLeft="30px" />
 
-            </com.zhy.autolayout.AutoLinearLayout>
+            </com.zhy.autolayout.AutoRelativeLayout>
 
             <include layout="@layout/line" />
 
@@ -124,7 +129,7 @@
                     android:id="@+id/buy_house_info_address"
                     android:layout_width="wrap_content"
                     android:layout_height="150px"
-                    android:layout_toRightOf="@+id/buy_house_positoon"
+                    android:layout_marginLeft="300px"
                     android:gravity="center_vertical"
                     android:hint="@string/choose_the_exact_location"
                     android:paddingLeft="30px" />
@@ -141,68 +146,78 @@
 
             <include layout="@layout/line" />
 
-            <com.zhy.autolayout.AutoLinearLayout
+            <com.zhy.autolayout.AutoRelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
                 <TextView
+                    android:id="@+id/textView5"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
                     android:layout_marginLeft="50px"
                     android:text="@string/total_prices" />
 
                 <EditText
                     android:id="@+id/buy_house_info_price"
                     style="@style/edit_base2"
+                    android:layout_width="match_parent"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginLeft="300px"
                     android:gravity="center_vertical"
                     android:hint="@string/Please_enter_the_total_price_you_want_to_sell"
                     android:inputType="number"
                     android:maxLength="10"
                     android:paddingLeft="30px" />
-            </com.zhy.autolayout.AutoLinearLayout>
+            </com.zhy.autolayout.AutoRelativeLayout>
 
             <include layout="@layout/line" />
 
-
-            <com.zhy.autolayout.AutoLinearLayout
+            <com.zhy.autolayout.AutoRelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
                     android:layout_marginLeft="50px"
                     android:text="@string/Contact" />
 
                 <EditText
                     android:id="@+id/buy_house_info_person"
                     style="@style/edit_base2"
+                    android:layout_width="wrap_content"
+                    android:layout_marginLeft="300px"
                     android:gravity="center_vertical"
                     android:hint="@string/Enter_the_name"
                     android:maxLength="50"
                     android:paddingLeft="30px" />
-            </com.zhy.autolayout.AutoLinearLayout>
+            </com.zhy.autolayout.AutoRelativeLayout>
 
             <include layout="@layout/line" />
 
-            <com.zhy.autolayout.AutoLinearLayout
+            <com.zhy.autolayout.AutoRelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
                     android:layout_marginLeft="50px"
                     android:text="@string/Phone" />
 
                 <EditText
                     android:id="@+id/buy_house_info_phone"
                     style="@style/edit_base2"
+                    android:layout_width="wrap_content"
+                    android:layout_marginLeft="300px"
                     android:gravity="center_vertical"
                     android:hint="@string/Enter_a_contact_number"
                     android:maxLength="50"
                     android:paddingLeft="30px" />
-            </com.zhy.autolayout.AutoLinearLayout>
+            </com.zhy.autolayout.AutoRelativeLayout>
 
             <include layout="@layout/line" />
 

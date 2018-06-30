@@ -123,7 +123,7 @@
     <string name="title_please_enter_your_topic">Title (Topic) Please Enter Your Topic</string>
     <string name="topic">Topic</string>
     <string name="please_choose_the_type_of_hoose_e.g._one_bedroom">Enter The Type Of House  e.g.One Bedroom</string>
-    <string name="enter_the_size_of_house_in_square_metres">Enter The Size Of House In Square Metres</string>
+    <string name="enter_the_size_of_house_in_square_metres">Enter the size of house in square metres(sqm)</string>
     <string name="enter_the_exact_location">Enter The Exact Location(Of The House)</string>
     <string name="mothly_rent">Enter Monthly Rent</string>
     <string name="phone_number">Phone Number</string>
@@ -302,7 +302,7 @@
     <string name="area">Area</string>
     <string name="choose_the_exact_location">Choose the exact location</string>
     <string name="total_prices">Total Prices</string>
-    <string name="Please_enter_the_total_price_you_want_to_sell">Please enter the total price you want to sell(KSh)</string>
+    <string name="Please_enter_the_total_price_you_want_to_sell">Enter the total price you want to sell(KSh)</string>
     <string name="Contact">Contact</string>
     <string name="Enter_the_name">Enter the name</string>
     <string name="Phone">Phone</string>
@@ -311,8 +311,8 @@
 
 
     <string name="Please_select">Please select</string>
-    <string name="bridal_chamber">bridal chamber</string>
-    <string name="second_hand_house">second hand house</string>
+    <string name="bridal_chamber">Bridal chamber</string>
+    <string name="second_hand_house">Second hand house</string>
     <string name="Room_1">Room 1</string>
     <string name="Room_1_Hall">1 Room 1 Hall</string>
     <string name="Room_1_Hall_2">2 Room 1 Hall</string>
@@ -326,7 +326,7 @@
     <string name="Unlimited">Unlimited</string>
     <string name="Mobile_phone_digital">Mobile phone digital</string>
     <string name="Household_appliances">Domestic appliance </string>
-    <string name="foodstuff">foodstuff</string>
+    <string name="foodstuff">Foodstuff</string>
     <string name="Clothes_shoes">Clothes,Shoes.</string>
     <string name="general_merchandise">General merchandise </string>
     <string name="Daily_chemical">Daily chemical</string>
@@ -345,12 +345,12 @@
     <string name="Please_select_your_account_information">Please select your account information</string>
     <string name="Price">Price</string>
     <string name="rent">Rent</string>
-    <string name="under_50m2">under 50㎡</string>
-    <string name="Above_500m2">Above 500㎡</string>
-    <string name="under_ksh100000">under ksh100000</string>
-    <string name="above__ksh1000000">above ksh1000000</string>
-    <string name="rent_1000_above">above KSh1000/month</string>
-    <string name="above_1000">above KSh1000</string>
+    <string name="under_50m2">Under 50sqm</string>
+    <string name="Above_500m2">Above 500sqm</string>
+    <string name="under_ksh100000">Under KSh100000</string>
+    <string name="above__ksh1000000">Above KSh1000000</string>
+    <string name="rent_1000_above">Above KSh1000/month</string>
+    <string name="above_1000">Above KSh1000</string>
     <string name="provinces_and_cities">Provinces and Cities</string>
     <string name="please_enter_the_detailed_address">Please enter the detailed address.</string>
     <string name="Incorrect_information_of_provinces_and_cities">Incorrect information of provinces and cities</string>
@@ -364,4 +364,6 @@
     <string name="bedroom_5">5 Bedroom</string>
     <string name="bedroom_6">6 Bedroom</string>
     <string name="villas">Villas</string>
+    <string name="Imported_housing_area">Imported housing area(sqm)</string>
+
 </resources>

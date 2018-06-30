@@ -58,7 +58,7 @@ public class HouseAdapter extends RecyclerView.Adapter<HouseAdapter.ViewHolder> 
     public void onBindViewHolder(final ViewHolder holder, final int position) {
         holder.house_Title.setText(list.get(position).getLeasename());
         holder.house_home.setText(list.get(position).getLeasehome());
-        holder.house_square.setText(list.get(position).getLeasesquare() + "㎡");
+        holder.house_square.setText(list.get(position).getLeasesquare() + "sqm");
         holder.house_address.setText(list.get(position).getLeaseaddress());
         holder.house_price.setText("KSh " + list.get(position).getLeaseprice() + "/Month");
         if (list.get(position).getLeasehome().equals("")) {
