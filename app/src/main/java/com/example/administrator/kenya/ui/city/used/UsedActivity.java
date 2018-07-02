@@ -176,6 +176,7 @@ public class UsedActivity extends BaseActivity {
                     loadingDialog.dismiss();
                 }
             }
+
             @Override
             public void onResponse(String response, int id) {
                 //防止因Activity释放导致内部控件空指针
@@ -385,6 +386,7 @@ public class UsedActivity extends BaseActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 provinceAdapter.setCheckItem(position);
+                mDropDownMenu.setTabText(position == 0 ? headers[0] : cityProvincesListstring.get(position));
                 if (position == 0) {
                     mDropDownMenu.closeMenu();
                     cityprovince = "";
@@ -394,7 +396,6 @@ public class UsedActivity extends BaseActivity {
                 } else {
                     cityprovince = position == 0 ? headers[0] : cityProvincesListstring.get(position);
                 }
-                mDropDownMenu.setTabText(position == 0 ? headers[0] : cityProvincesListstring.get(position));
                 //textView.append(position == 0 ? headers[0] : citys[position] + "\n");
                 initcityname(cityProvincesListstring.get(position));
             }

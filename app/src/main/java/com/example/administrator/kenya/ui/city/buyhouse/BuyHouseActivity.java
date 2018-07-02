@@ -3,6 +3,7 @@ package com.example.administrator.kenya.ui.city.buyhouse;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -112,6 +113,7 @@ public class BuyHouseActivity extends BaseActivity {
         initEvent();
         getRequest().addParams("pn", cpageNum + "").build().execute(StringCallback);
     }
+
     //init province
     private void initProvinceCity() {
         OkHttpUtils.get().url(AppConstants.BASE_URL + "/kenya/city/findByCountCityprovince").build().execute(new StringCallback() {
@@ -317,7 +319,7 @@ public class BuyHouseActivity extends BaseActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 provinceAdapter.setCheckItem(position);
-                String tr = position == 0 ? headers[0] : cityProvincesListstring.get(position);
+                mDropDownMenu.setTabText(position == 0 ? headers[0] : cityProvincesListstring.get(position));
                 if (position == 0) {
                     mDropDownMenu.closeMenu();
                     cityprovince = "";
@@ -327,7 +329,6 @@ public class BuyHouseActivity extends BaseActivity {
                 } else {
                     cityprovince = position == 0 ? headers[0] : cityProvincesListstring.get(position);
                 }
-                mDropDownMenu.setTabText(position == 0 ? headers[0] : cityProvincesListstring.get(position));
                 //textView.append(position == 0 ? headers[0] : citys[position] + "\n");
                 initcityname(cityProvincesListstring.get(position));
             }
