@@ -51,7 +51,6 @@
         android:layout_marginBottom="10px"
         android:layout_toRightOf="@id/goodsimgs"
         android:ellipsize="end"
-        android:maxLength="23"
         android:singleLine="true"
         android:textColor="@color/textBlack2"
         android:textSize="13sp" />
