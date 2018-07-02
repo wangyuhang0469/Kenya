@@ -366,5 +366,7 @@
     <string name="villas">Villas</string>
     <string name="Imported_housing_area">Imported housing area(sqm)</string>
     <string name="Please_describe_the_job_requirements">Please describe the job requirements.</string>
-
+    <string name="Please_enter_your_work_address">Please enter your work address</string>
+    <string name="company_address">Company Address</string>
+    <string name="work_address">Work Address</string>
 </resources>

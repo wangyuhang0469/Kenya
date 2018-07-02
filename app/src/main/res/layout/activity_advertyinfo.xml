@@ -65,7 +65,9 @@
 
             <include layout="@layout/line" />
 
-            <com.zhy.autolayout.AutoRelativeLayout style="@style/adverty_info_ll">
+            <com.zhy.autolayout.AutoRelativeLayout
+                style="@style/adverty_info_ll"
+                android:visibility="gone">
 
                 <TextView
                     android:id="@+id/adverty_yuexin"
@@ -103,7 +105,9 @@
                     android:text="@string/negotiable" />
             </com.zhy.autolayout.AutoRelativeLayout>
 
-            <include layout="@layout/line" />
+            <include
+                layout="@layout/line"
+                android:visibility="gone" />
 
 
             <com.zhy.autolayout.AutoRelativeLayout
@@ -174,7 +178,7 @@
 
                 <TextView
                     style="@style/adverty_info_tv"
-                    android:text="工作地址" />
+                    android:text="@string/work_address" />
 
                 <EditText
                     android:id="@+id/adverty_info_company_address"
@@ -182,9 +186,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginLeft="350px"
-                    android:hint="请输入工作地址" />
+                    android:hint="@string/Please_enter_your_work_address" />
             </com.zhy.autolayout.AutoRelativeLayout>
-
             <include layout="@layout/line" />
 
             <com.zhy.autolayout.AutoRelativeLayout

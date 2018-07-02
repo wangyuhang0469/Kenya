@@ -364,5 +364,8 @@
     <string name="villas">别墅</string>
     <string name="Imported_housing_area">输入房屋面积(sqm)</string>
     <string name="Please_describe_the_job_requirements">请描述职位要求.</string>
+    <string name="Please_enter_your_work_address">请输入工作地址</string>
+    <string name="company_address">公司地址</string>
+    <string name="work_address">工作地址</string>
 
 </resources>

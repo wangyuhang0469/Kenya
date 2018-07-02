@@ -127,7 +127,7 @@
                 android:layout_height="80px"
                 android:gravity="center_vertical"
                 android:paddingLeft="30px"
-                android:text="公司地址"
+                android:text="@string/company_address"
                 android:textColor="@color/textBlack1"
                 android:textSize="16sp" />
 

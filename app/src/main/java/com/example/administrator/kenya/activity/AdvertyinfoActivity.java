@@ -84,8 +84,6 @@ public class AdvertyinfoActivity extends BaseActivity {
                 }
                 if (advertyInfoWorkName.getText().length() == 0) {
                     toast(getString(R.string.please) + getString(R.string.enter_the_job));
-                } else if (price.length() == 0) {
-                    toast(getString(R.string.please) + getString(R.string.enter_monthly_salary));
                 } else if (spinner.getSelectedItem().toString().equals(getString(R.string.Please_select_a_type))) {
                     toast(getString(R.string.Please_select_a_type));
                 } else if (advertyInfoCompanyName.getText().length() == 0) {
