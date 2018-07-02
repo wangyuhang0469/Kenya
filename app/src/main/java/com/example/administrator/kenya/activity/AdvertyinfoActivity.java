@@ -93,7 +93,7 @@ public class AdvertyinfoActivity extends BaseActivity {
                 } else if (advertyInfoCompanyPhone.getText().length() == 0) {
                     toast(getString(R.string.please) + getString(R.string.enter_phone_no_));
                 } else if (advertyInfoWorkQuiret.getText().length() == 0) {
-                    toast(getString(R.string.please) + getString(R.string.please_enter_your_job_description));
+                    toast(getString(R.string.please) + getString(R.string.Please_describe_the_job_requirements));
                 } else {
                     PostFormBuilder postFormBuilder = OkHttpUtils.post();
                     postFormBuilder.url(AppConstants.BASE_URL + "/kenya/recruit/publish")
@@ -115,7 +115,6 @@ public class AdvertyinfoActivity extends BaseActivity {
 
                                 @Override
                                 public void onResponse(String response, int id) {
-                                    Log.d("kang", "11111111111" + response);
                                     try {
                                         JSONObject jsonObject = new JSONObject(response);
                                         if (jsonObject.getString("code").equals("000")) {

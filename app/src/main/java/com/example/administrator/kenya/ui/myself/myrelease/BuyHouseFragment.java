@@ -94,6 +94,7 @@ public class BuyHouseFragment extends BaseFragment {
 
             @Override
             public void onResponse(String response, int id) {
+                Log.d("kang", "123131312312312" + response);
                 //防止因Activity释放导致内部控件空指针
                 if (pullToRefreshLayout != null) {
                     cpageNum++;
@@ -110,7 +111,7 @@ public class BuyHouseFragment extends BaseFragment {
                         e.printStackTrace();
                     }
                     addList = JSON.parseArray(response, BuyHouse.class);
-                    if (addList!=null)
+                    if (addList != null)
                         housesList.addAll(addList);
                     myHouseAdapter.notifyDataSetChanged();
                     if (housesList.size() == 0) {

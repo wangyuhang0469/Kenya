@@ -363,5 +363,6 @@
     <string name="bedroom_6">6卧室</string>
     <string name="villas">别墅</string>
     <string name="Imported_housing_area">输入房屋面积(sqm)</string>
+    <string name="Please_describe_the_job_requirements">请描述职位要求.</string>
 
 </resources>

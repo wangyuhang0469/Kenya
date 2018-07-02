@@ -79,10 +79,13 @@
                 <TextView
                     android:id="@+id/goods_address"
                     style="@style/edit_base2"
+                    android:layout_marginRight="100px"
+                    android:ellipsize="end"
                     android:gravity="center_vertical"
                     android:hint="@string/choose_the_exact_location"
                     android:maxLength="50"
-                    android:paddingLeft="30px" />
+                    android:paddingLeft="30px"
+                    android:singleLine="true" />
 
                 <ImageView
                     android:id="@+id/goods_inter"

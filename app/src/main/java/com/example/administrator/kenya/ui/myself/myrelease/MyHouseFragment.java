@@ -93,6 +93,7 @@ public class MyHouseFragment extends BaseFragment {
 
             @Override
             public void onResponse(String response, int id) {
+                Log.d("kang", "111111111" + response);
                 //防止因Activity释放导致内部控件空指针
                 if (pullToRefreshLayout != null) {
                     cpageNum++;

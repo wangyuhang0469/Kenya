@@ -19,6 +19,7 @@
         android:layout_marginRight="30px"
         android:layout_marginTop="10px"
         android:layout_toRightOf="@id/house_image"
+        android:ellipsize="end"
         android:singleLine="true"
         android:textColor="@color/textBlack1" />
 
@@ -42,7 +43,8 @@
         android:layout_alignBottom="@id/house_image"
         android:layout_marginBottom="10px"
         android:layout_toRightOf="@id/house_image"
-        android:maxLines="1"
+        android:ellipsize="end"
+        android:singleLine="true"
         android:textColor="@color/textBlack2"
         android:textSize="13sp" />
 
@@ -86,6 +88,7 @@
         android:layout_height="wrap_content"
         android:layout_above="@id/house_address"
         android:layout_toRightOf="@id/house_image"
+        android:singleLine="true"
         android:textColor="@color/textgreen1"
         android:textSize="17sp" />
 

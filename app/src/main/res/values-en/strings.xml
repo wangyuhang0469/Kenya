@@ -365,5 +365,6 @@
     <string name="bedroom_6">6 Bedroom</string>
     <string name="villas">Villas</string>
     <string name="Imported_housing_area">Imported housing area(sqm)</string>
+    <string name="Please_describe_the_job_requirements">Please describe the job requirements.</string>
 
 </resources>
