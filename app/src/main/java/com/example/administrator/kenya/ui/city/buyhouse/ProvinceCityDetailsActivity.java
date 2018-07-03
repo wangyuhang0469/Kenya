@@ -90,7 +90,7 @@ public class ProvinceCityDetailsActivity extends BaseActivity {
         MyLocationUtil.getInstance(this).getLocationInformation(new MyLocationListener() {
             @Override
             public void success(String province, String city) {
-                toast(province + city);
+                //toast(province + city);
                 province = province.replace("County", "");
                 province = province.replace(" ", "");
                 province = province.replace("Province", "");

@@ -107,7 +107,7 @@ public class BuyHouseInfoActivity extends BaseActivity {
             case R.id.buy_house_info_release:
                 if (buyHouseInfoTitle.getText().length() == 0) {
                     toast(getResources().getString(R.string.please) + getResources().getString(R.string.enter_your_title));
-                } else if (buyHouseInfoTypes.getText().length() == 0) {
+                } else if (buyHouseInfoTypes.getText().length() == 0 || buyHouseInfoTypes.getText().equals(getString(R.string.Please_select_your_account_information))) {
                     toast(getResources().getString(R.string.please) + getResources().getString(R.string.please_choose_the_type_of_hoose_e_g__one_bedroom));
                 } else if (buyHouseInfoSquare.getText().length() == 0) {
                     toast(getResources().getString(R.string.please) + getResources().getString(R.string.enter_the_size_of_house_in_square_metres));

@@ -195,7 +195,7 @@ public class HouseInfoActivity extends BaseActivity {
             case R.id.release:
                 if (houseName.getText().length() == 0) {
                     toast(getResources().getString(R.string.please) + getResources().getString(R.string.enter_your_title));
-                } else if (hometype.equals(getString(R.string.residence)) && houseHome.getText().length() == 0) {
+                } else if (hometype.equals(getString(R.string.residence)) && houseHome.getText().length() == 0 || houseHome.getText().equals(getString(R.string.Please_select_your_account_information))) {
                     toast(getResources().getString(R.string.please) + getResources().getString(R.string.please_choose_the_type_of_hoose_e_g__one_bedroom));
                 } else if (houseSquare.getText().length() == 0) {
                     toast(getResources().getString(R.string.please) + getResources().getString(R.string.enter_the_size_of_house_in_square_metres));
