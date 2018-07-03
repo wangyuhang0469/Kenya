@@ -103,7 +103,7 @@ public class HouseActivity extends BaseActivity {
         ButterKnife.bind(this);
         headers = new String[]{getString(R.string.position), getString(R.string.type), getString(R.string.area), getString(R.string.rent)};
         square = new String[]{getString(R.string.Unlimited), getString(R.string.under_50m2), "50-70sqm", "70-90sqm", "90-110sqm", "110-130sqm", "130-150sqm", "150-200sqm", "200-300sqm", "300-500sqm", getString(R.string.Above_500m2)};
-        money = new String[]{getString(R.string.Unlimited), "KSh50/month", "KSh50-100/month", "KSh100-200/month", "KSh200-300/month", "KSh300-400/month", "KSh400-500/month", "KSh500-600/month", "KSh600-700/month", "KSh700-800/month", "KSh800-900/month", "KSh900-1000/month", getString(R.string.rent_1000_above)
+        money = new String[]{getString(R.string.Unlimited), "KSh1000/month", "KSh1000-5000/month", "KSh5000-10000/month", "KSh10000-15000/month", "KSh15000-20000/month", "KSh20000-30000/month", "KSh30000-50000/month", "KSh50000-80000/month", "KSh80000-100000/month", "KSh100000-150000/month", "KSh150000-200000/month", getString(R.string.rent_200000_above)
         };
         initOKHttp();
         initView();
@@ -387,29 +387,29 @@ public class HouseActivity extends BaseActivity {
                 } else {
                     // price = position == 0 ? headers[3] : money[position];
                     if (position == 1) {
-                        price = "0-50";
+                        price = "0-1000";
                     } else if (position == 2) {
-                        price = "50-100";
+                        price = "1000-5000";
                     } else if (position == 3) {
-                        price = "100-200";
+                        price = "5000-10000";
                     } else if (position == 4) {
-                        price = "200-300";
+                        price = "10000-15000";
                     } else if (position == 5) {
-                        price = "300-400";
+                        price = "15000-20000";
                     } else if (position == 6) {
-                        price = "400-500";
+                        price = "20000-30000";
                     } else if (position == 7) {
-                        price = "500-600";
+                        price = "30000-50000";
                     } else if (position == 8) {
-                        price = "600-700";
+                        price = "50000-80000";
                     } else if (position == 9) {
-                        price = "700-800";
+                        price = "80000-100000";
                     } else if (position == 10) {
-                        price = "800-900";
+                        price = "100000-150000";
                     } else if (position == 11) {
-                        price = "900-1000";
+                        price = "150000-200000";
                     } else if (position == 12) {
-                        price = "1000-0";
+                        price = "200000-0";
                     } else {
                     }
                 }

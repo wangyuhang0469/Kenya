@@ -91,11 +91,9 @@
         android:singleLine="true"
         android:textColor="@color/textgreen1"
         android:textSize="15sp" />
-
     <View
         android:layout_width="match_parent"
         android:layout_height="1px"
         android:layout_alignParentBottom="true"
         android:background="#989898" />
-
 </com.zhy.autolayout.AutoRelativeLayout>

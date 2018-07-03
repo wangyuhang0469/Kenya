@@ -347,8 +347,8 @@
     <string name="Above_500m2">500sqm以上</string>
     <string name="under_ksh100000">KSh100000以下</string>
     <string name="above__ksh1000000">KSh1000000以上</string>
-    <string name="rent_1000_above">KSh1000以上/month</string>
-    <string name="above_1000">KSh1000以上</string>
+    <string name="rent_200000_above">KSh200000以上/month</string>
+    <string name="above_100000">KSh100000以上</string>
     <string name="provinces_and_cities">省市详情</string>
     <string name="please_enter_the_detailed_address">请输入详细地址</string>
     <string name="Incorrect_information_of_provinces_and_cities">省市信息有误</string>

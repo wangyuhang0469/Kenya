@@ -100,7 +100,7 @@ public class UsedActivity extends BaseActivity {
         ButterKnife.bind(this);
         headers = new String[]{getString(R.string.position), getString(R.string.type), getString(R.string.Price)};
         types = new String[]{getString(R.string.Unlimited), getString(R.string.Mobile_phone_digital), getString(R.string.Household_appliances), getString(R.string.foodstuff), getString(R.string.Clothes_shoes), getString(R.string.vehicle), getString(R.string.general_merchandise), getString(R.string.Daily_chemical), getString(R.string.books), getString(R.string.other)};
-        money = new String[]{getString(R.string.Unlimited), "KSh50", "KSh50-100", "KSh100-200", "KSh200-300", "KSh300-400", "KSh400-500", "KSh500-600", "KSh600-700", "KSh700-800", "KSh800-900", "KSh900-1000", getString(R.string.above_1000)};
+        money = new String[]{getString(R.string.Unlimited), "KSh500", "KSh500-1000", "KSh1000-2000", "KSh2000-3000", "KSh3000-5000", "KSh5000-10000", "KSh10000-20000", "KSh20000-30000", "KSh30000-50000", "KSh50000-80000", "KSh80000-100000", getString(R.string.above_100000)};
         initOKHttp();
         initView();
         initProvinceCity();
@@ -443,29 +443,29 @@ public class UsedActivity extends BaseActivity {
                 } else {
                     // price = position == 0 ? headers[3] : money[position];
                     if (position == 1) {
-                        goodsPrice = "0-50";
+                        goodsPrice = "0-500";
                     } else if (position == 2) {
-                        goodsPrice = "50-100";
+                        goodsPrice = "500-1000";
                     } else if (position == 3) {
-                        goodsPrice = "100-200";
+                        goodsPrice = "1000-2000";
                     } else if (position == 4) {
-                        goodsPrice = "200-300";
+                        goodsPrice = "2000-3000";
                     } else if (position == 5) {
-                        goodsPrice = "300-400";
+                        goodsPrice = "3000-5000";
                     } else if (position == 6) {
-                        goodsPrice = "400-500";
+                        goodsPrice = "5000-10000";
                     } else if (position == 7) {
-                        goodsPrice = "500-600";
+                        goodsPrice = "10000-20000";
                     } else if (position == 8) {
-                        goodsPrice = "600-700";
+                        goodsPrice = "20000-30000";
                     } else if (position == 9) {
-                        goodsPrice = "700-800";
+                        goodsPrice = "30000-50000";
                     } else if (position == 10) {
-                        goodsPrice = "800-900";
+                        goodsPrice = "50000-80000";
                     } else if (position == 11) {
-                        goodsPrice = "900-1000";
+                        goodsPrice = "80000-100000";
                     } else if (position == 12) {
-                        goodsPrice = "1000-0";
+                        goodsPrice = "100000-0";
                     } else {
                     }
                 }

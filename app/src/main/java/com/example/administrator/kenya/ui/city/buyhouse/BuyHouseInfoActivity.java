@@ -172,7 +172,6 @@ public class BuyHouseInfoActivity extends BaseActivity {
             startCamera();
         }
     }
-
     private void startCamera() {
         Intent intent = new Intent(BuyHouseInfoActivity.this, MultiImageSelectorActivity.class);
         // 是否显示拍摄图片

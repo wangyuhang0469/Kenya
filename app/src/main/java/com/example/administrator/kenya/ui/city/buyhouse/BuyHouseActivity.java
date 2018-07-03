@@ -526,7 +526,6 @@ public class BuyHouseActivity extends BaseActivity {
             }
         });
     }
-
     /**
      * 监听点击回退按钮事件
      */

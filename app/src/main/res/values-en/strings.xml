@@ -349,8 +349,8 @@
     <string name="Above_500m2">Above 500sqm</string>
     <string name="under_ksh100000">Under KSh100000</string>
     <string name="above__ksh1000000">Above KSh1000000</string>
-    <string name="rent_1000_above">Above KSh1000/month</string>
-    <string name="above_1000">Above KSh1000</string>
+    <string name="rent_200000_above">Above KSh200000/month</string>
+    <string name="above_100000">Above KSh100000</string>
     <string name="provinces_and_cities">Provinces and Cities</string>
     <string name="please_enter_the_detailed_address">Please enter the detailed address.</string>
     <string name="Incorrect_information_of_provinces_and_cities">Incorrect information of provinces and cities</string>
