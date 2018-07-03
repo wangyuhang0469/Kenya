@@ -54,7 +54,10 @@ public class ResumeDetilActivity extends Activity {
         resumeDetailPhone.setText(job.getPhone());
         resumeDetailSex.setText(job.getSex());
         resumeDetailAge.setText(job.getAge());
-        Glide.with(this).load(AppConstants.BASE_URL + job.getHeadimg()).diskCacheStrategy(DiskCacheStrategy.ALL).transform(new GlideCircleTransform(this)).into(resumeDetilImg);
+        Glide.with(this).load(AppConstants.BASE_URL + job.getHeadimg())
+                .diskCacheStrategy(DiskCacheStrategy.ALL)
+                .transform(new GlideCircleTransform(this))
+                .into(resumeDetilImg);
     }
 
     @OnClick({R.id.back, R.id.resume_detail_job_release})

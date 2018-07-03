@@ -114,6 +114,7 @@ public class ClassifiedFragment extends BaseFragment {
                         classifiedList.addAll(addList);
                     classfiedAdapter.notifyDataSetChanged();
                     pullToRefreshLayout.finishLoadMore();
+                    pullToRefreshLayout.finishRefresh();
                 }
             }
         };
@@ -125,13 +126,15 @@ public class ClassifiedFragment extends BaseFragment {
         StaggeredGridLayoutManager staggeredGridLayoutManager = new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
         recyclerView.setLayoutManager(staggeredGridLayoutManager);
         recyclerView.setAdapter(classfiedAdapter);
-        pullToRefreshLayout.setCanRefresh(false);
         pullToRefreshLayout.setCanLoadMore(false);
         pullToRefreshLayout.setHeaderView(new MyHeadRefreshView(getContext()));
         pullToRefreshLayout.setFooterView(new MyFootRefreshView(getContext()));
         pullToRefreshLayout.setRefreshListener(new BaseRefreshListener() {
             @Override
             public void refresh() {
+                cpageNum = 1;
+                classifiedList.clear();
+                postFormBuilder.addParams("page", cpageNum + "").tag(this).build().execute(stringCallback);
             }
             @Override
             public void loadMore() {

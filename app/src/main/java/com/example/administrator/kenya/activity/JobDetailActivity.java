@@ -2,11 +2,16 @@ package com.example.administrator.kenya.activity;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.example.administrator.kenya.R;
 import com.example.administrator.kenya.base.BaseActivity;
 import com.example.administrator.kenya.classes.Company;
+import com.example.administrator.kenya.classes.GlideCircleTransform;
+import com.example.administrator.kenya.constants.AppConstants;
 import com.example.administrator.kenya.ui.main.CallPhoneDialog;
 
 import butterknife.Bind;
@@ -28,6 +33,8 @@ public class JobDetailActivity extends BaseActivity {
     TextView jobDetailHowLong;
     @Bind(R.id.job_detail_adress)
     TextView jobDetailAdress;
+    @Bind(R.id.avatar)
+    ImageView avatar;
     private Company company;
 
     @Override
@@ -47,6 +54,12 @@ public class JobDetailActivity extends BaseActivity {
         jobDetailPersonName.setText(company.getCompanyname());
         jobDetailPersonPhone.setText(getString(R.string.phone_no_) + company.getCompanyphone());
         jobDetailHowLong.setText(company.getCompanyimg5());
+
+
+//        Glide.with(this).load(AppConstants.BASE_URL + company.ge())
+//                .diskCacheStrategy(DiskCacheStrategy.ALL)
+//                .transform(new GlideCircleTransform(this))
+//                .into(resumeDetilImg);
     }
 
     @OnClick({R.id.back, R.id.job_detail_release})

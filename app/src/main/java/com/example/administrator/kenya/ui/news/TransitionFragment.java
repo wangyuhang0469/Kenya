@@ -114,6 +114,7 @@ public class TransitionFragment extends BaseFragment {
                         transitionList.addAll(addList);
                     transitionAdapter.notifyDataSetChanged();
                     pullToRefreshLayout.finishLoadMore();
+                    pullToRefreshLayout.finishRefresh();
                 }
             }
         };
@@ -125,13 +126,15 @@ public class TransitionFragment extends BaseFragment {
         LinearLayoutManager layoutmanager = new LinearLayoutManager(getContext());
         recyclerView.setLayoutManager(layoutmanager);
         recyclerView.setAdapter(transitionAdapter);
-        pullToRefreshLayout.setCanRefresh(false);
         pullToRefreshLayout.setCanLoadMore(false);
         pullToRefreshLayout.setHeaderView(new MyHeadRefreshView(getContext()));
         pullToRefreshLayout.setFooterView(new MyFootRefreshView(getContext()));
         pullToRefreshLayout.setRefreshListener(new BaseRefreshListener() {
             @Override
             public void refresh() {
+                cpageNum = 1;
+                transitionList.clear();
+                postFormBuilder.addParams("page", cpageNum + "").build().execute(StringCallback);
             }
 
             @Override

@@ -145,7 +145,7 @@ public class MyReleaseActivity extends BaseActivity {
                         //fragmentTransaction.hide(fragments[currentTabIndex]).show(fragments[7]).commit();
                         //currentTabIndex = 7;
                         // classification.setText(getResources().getString(R.string.find_friends));
-                        Toast.makeText(MyReleaseActivity.this, "功能尚在开发中，敬请期待", Toast.LENGTH_LONG).show();
+                        Toast.makeText(MyReleaseActivity.this, getString(R.string.under_development), Toast.LENGTH_LONG).show();
                         break;
                 }
                 popupWindow.dismiss();
