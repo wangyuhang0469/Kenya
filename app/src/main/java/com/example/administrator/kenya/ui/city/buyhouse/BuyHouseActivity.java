@@ -275,7 +275,6 @@ public class BuyHouseActivity extends BaseActivity {
                 break;
         }
     }
-
     private void initData() {
         //init popupViews
         popupViews.add(shengshiview);
@@ -435,31 +434,31 @@ public class BuyHouseActivity extends BaseActivity {
                         break;
                     case R.id.radioButton2:
                         mDropDownMenu.closeMenu();
-                        househome = (String) getResources().getText(R.string.bedroom_1);
+                        househome = "1 Bedroom";
                         break;
                     case R.id.radioButton3:
                         mDropDownMenu.closeMenu();
-                        househome = (String) getResources().getText(R.string.bedroom_2);
+                        househome = "2 Bedroom";
                         break;
                     case R.id.radioButton4:
                         mDropDownMenu.closeMenu();
-                        househome = (String) getResources().getText(R.string.bedroom_3);
+                        househome = "3 Bedroom";
                         break;
                     case R.id.radioButton5:
                         mDropDownMenu.closeMenu();
-                        househome = (String) getResources().getText(R.string.bedroom_4);
+                        househome = "4 Bedroom";
                         break;
                     case R.id.radioButton6:
                         mDropDownMenu.closeMenu();
-                        househome = (String) getResources().getText(R.string.bedroom_5);
+                        househome = "5 Bedroom";
                         break;
                     case R.id.radioButton7:
                         mDropDownMenu.closeMenu();
-                        househome = (String) getResources().getText(R.string.bedroom_6);
+                        househome = "6 Bedroom";
                         break;
                     case R.id.radioButton8:
                         mDropDownMenu.closeMenu();
-                        househome = (String) getResources().getText(R.string.villas);
+                        househome = "Villas";
                         break;
                 }
                 cpageNum = 1;
@@ -474,10 +473,10 @@ public class BuyHouseActivity extends BaseActivity {
                         housetype = "";
                         break;
                     case R.id.rg_tv2:
-                        housetype = (String) getResources().getText(R.string.bridal_chamber);
+                        housetype = "Bridal chamber";
                         break;
                     case R.id.rg_tv3:
-                        housetype = (String) getResources().getText(R.string.second_hand_house);
+                        housetype = "Second hand house";
                         break;
                 }
                 myRadioGroup.setOnCheckedChangeListener(null);
@@ -492,31 +491,31 @@ public class BuyHouseActivity extends BaseActivity {
                                 break;
                             case R.id.radioButton2:
                                 mDropDownMenu.closeMenu();
-                                househome = (String) getResources().getText(R.string.Room_1);
+                                househome = "1 Bedroom";
                                 break;
                             case R.id.radioButton3:
                                 mDropDownMenu.closeMenu();
-                                househome = (String) getResources().getText(R.string.Room_1_Hall);
+                                househome = "2 Bedroom";
                                 break;
                             case R.id.radioButton4:
                                 mDropDownMenu.closeMenu();
-                                househome = (String) getResources().getText(R.string.Room_1_Hall_2);
+                                househome = "3 Bedroom";
                                 break;
                             case R.id.radioButton5:
                                 mDropDownMenu.closeMenu();
-                                househome = (String) getResources().getText(R.string.Room_2_Hall_2);
+                                househome = "4 Bedroom";
                                 break;
                             case R.id.radioButton6:
                                 mDropDownMenu.closeMenu();
-                                househome = (String) getResources().getText(R.string.Room_1_Hall_3);
+                                househome = "5 Bedroom";
                                 break;
                             case R.id.radioButton7:
                                 mDropDownMenu.closeMenu();
-                                househome = (String) getResources().getText(R.string.Room_2_Hall_3);
+                                househome = "6 Bedroom";
                                 break;
                             case R.id.radioButton8:
                                 mDropDownMenu.closeMenu();
-                                househome = (String) getResources().getText(R.string.Room_1_Hall_4);
+                                househome = "Villas";
                                 break;
                         }
                         cpageNum = 1;
@@ -526,6 +525,7 @@ public class BuyHouseActivity extends BaseActivity {
             }
         });
     }
+
     /**
      * 监听点击回退按钮事件
      */

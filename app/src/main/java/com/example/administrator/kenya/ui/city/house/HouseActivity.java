@@ -427,31 +427,31 @@ public class HouseActivity extends BaseActivity {
                         break;
                     case R.id.radioButton2:
                         mDropDownMenu.closeMenu();
-                        leaseHome = getString(R.string.bedroom_1);
+                        leaseHome = "1 Bedroom";
                         break;
                     case R.id.radioButton3:
                         mDropDownMenu.closeMenu();
-                        leaseHome = getString(R.string.bedroom_2);
+                        leaseHome = "2 Bedroom";
                         break;
                     case R.id.radioButton4:
                         mDropDownMenu.closeMenu();
-                        leaseHome = getString(R.string.bedroom_3);
+                        leaseHome = "3 Bedroom";
                         break;
                     case R.id.radioButton5:
                         mDropDownMenu.closeMenu();
-                        leaseHome = getString(R.string.bedroom_4);
+                        leaseHome = "4 Bedroom";
                         break;
                     case R.id.radioButton6:
                         mDropDownMenu.closeMenu();
-                        leaseHome = getString(R.string.bedroom_5);
+                        leaseHome = "5 Bedroom";
                         break;
                     case R.id.radioButton7:
                         mDropDownMenu.closeMenu();
-                        leaseHome = getString(R.string.bedroom_6);
+                        leaseHome = "6 Bedroom";
                         break;
                     case R.id.radioButton8:
                         mDropDownMenu.closeMenu();
-                        leaseHome = getString(R.string.villas);
+                        leaseHome = "Villas";
                         break;
                 }
                 cpageNum = 1;
@@ -469,17 +469,17 @@ public class HouseActivity extends BaseActivity {
                         leaseHome = "";
                         break;
                     case R.id.rg_tv2:
-                        hometype = getString(R.string.residence);
+                        hometype = "Residence";
                         house_type.setVisibility(View.VISIBLE);
                         break;
                     case R.id.rg_tv3:
-                        hometype = getString(R.string.Office_Building);
+                        hometype = "Office Building";
                         leaseHome = "";
                         house_type.setVisibility(View.GONE);
                         mDropDownMenu.closeMenu();
                         break;
                     case R.id.rg_tv4:
-                        hometype = getString(R.string.factory_mill);
+                        hometype = "Factory";
                         leaseHome = "";
                         house_type.setVisibility(View.GONE);
                         mDropDownMenu.closeMenu();

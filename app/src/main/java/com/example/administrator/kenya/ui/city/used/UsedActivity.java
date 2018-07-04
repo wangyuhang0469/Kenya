@@ -425,6 +425,26 @@ public class UsedActivity extends BaseActivity {
                     goodsType = "";
                 } else {
                     goodsType = position == 0 ? headers[2] : types[position];
+                    if (goodsType.equals(getString(R.string.Mobile_phone_digital))) {
+                        goodsType = "Mobile phone digital";
+                    } else if (goodsType.equals(getString(R.string.Household_appliances))) {
+                        goodsType = "Domestic appliance";
+                    } else if (goodsType.equals(getString(R.string.foodstuff))) {
+                        goodsType = "Foodstuff";
+                    } else if (goodsType.equals(getString(R.string.Clothes_shoes))) {
+                        goodsType = "Clothes,Shoes.";
+                    } else if (goodsType.equals(getString(R.string.vehicle))) {
+                        goodsType = "Vehicle";
+                    } else if (goodsType.equals(getString(R.string.general_merchandise))) {
+                        goodsType = "General merchandise";
+                    } else if (goodsType.equals(getString(R.string.Daily_chemical))) {
+                        goodsType = "Daily chemical";
+                    } else if (goodsType.equals(getString(R.string.books))) {
+                        goodsType = "books";
+                    } else if (goodsType.equals(getString(R.string.other))) {
+                        goodsType = "Other";
+                    } else {
+                    }
                 }
                 mDropDownMenu.closeMenu();
                 cpageNum = 1;

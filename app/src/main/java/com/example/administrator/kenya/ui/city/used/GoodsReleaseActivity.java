@@ -67,6 +67,7 @@ public class GoodsReleaseActivity extends BaseActivity {
     String province = "";
     String city = "";
     String content = "";
+    String goodsTypesp = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -231,7 +232,26 @@ public class GoodsReleaseActivity extends BaseActivity {
     }
 
     private void send(final LoadingDialog loadingDialog) {
-
+        if (spinner.getSelectedItem().toString().equals(getString(R.string.Mobile_phone_digital))) {
+            goodsTypesp = "Mobile phone digital";
+        } else if (spinner.getSelectedItem().toString().equals(getString(R.string.Household_appliances))) {
+            goodsTypesp = "Domestic appliance";
+        } else if (spinner.getSelectedItem().toString().equals(getString(R.string.foodstuff))) {
+            goodsTypesp = "Foodstuff";
+        } else if (spinner.getSelectedItem().toString().equals(getString(R.string.Clothes_shoes))) {
+            goodsTypesp = "Clothes,Shoes.";
+        } else if (spinner.getSelectedItem().toString().equals(getString(R.string.vehicle))) {
+            goodsTypesp = "Vehicle";
+        } else if (spinner.getSelectedItem().toString().equals(getString(R.string.general_merchandise))) {
+            goodsTypesp = "General merchandise";
+        } else if (spinner.getSelectedItem().toString().equals(getString(R.string.Daily_chemical))) {
+            goodsTypesp = "Daily chemical";
+        } else if (spinner.getSelectedItem().toString().equals(getString(R.string.books))) {
+            goodsTypesp = "Books";
+        } else if (spinner.getSelectedItem().toString().equals(getString(R.string.other))) {
+            goodsTypesp = "Other";
+        } else {
+        }
         PostFormBuilder postFormBuilder = OkHttpUtils.post();
         for (int i = 0; i < compressFile.size(); i++) {
             postFormBuilder.addFile("logoFile", compressFile.get(i).getName(), compressFile.get(i));
@@ -243,9 +263,9 @@ public class GoodsReleaseActivity extends BaseActivity {
                 .addParams("goodsPrice", goodsprice.getText().toString())
                 .addParams("goodUserName", goodsusername.getText().toString())
                 .addParams("goodsPhone", goodsphone.getText().toString())
-                .addParams("goodsType", spinner.getSelectedItem().toString())
-                .addParams("cityprovince", province)
-                .addParams("cityname", city)
+                .addParams("goodsType", goodsTypesp)
+                .addParams("cityprovince", "河北")
+                .addParams("cityname", "石家庄市")
                 .addParams("goodsaddress", goodsAddress.getText().toString())
                 .build()
                 .execute(new StringCallback() {

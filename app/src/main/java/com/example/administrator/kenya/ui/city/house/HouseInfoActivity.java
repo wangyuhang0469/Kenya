@@ -83,6 +83,7 @@ public class HouseInfoActivity extends BaseActivity {
     String province = "";
     String city = "";
     String content = "";
+    String houseHomepp = "";
     private PopupWindow popupWindow;
 
     @Override
@@ -94,8 +95,12 @@ public class HouseInfoActivity extends BaseActivity {
         hometype = (String) getIntent().getExtras().get("housetype");
         if (hometype.equals("住宅") || hometype.equals("Residence")) {
             houseInfoType.setVisibility(View.VISIBLE);
+            hometype = "Residence";
+        } else if (hometype.equals("写字楼")) {
+            hometype = "Office Building";
+        } else if (hometype.equals("厂房")) {
+            hometype = "Factory";
         } else {
-
         }
         housePenson.setText(User.getInstance().getUserName());
         housePhone.setText(User.getInstance().getUserPhonenumber());
@@ -264,7 +269,7 @@ public class HouseInfoActivity extends BaseActivity {
                 .addParams("leasephone", housePhone.getText().toString())
                 .addParams("leaseuser", housePenson.getText().toString())
                 .addParams("leasesquare", houseSquare.getText().toString())
-                .addParams("leasehome", houseHome.getText().toString())
+                .addParams("leasehome", houseHomepp)
                 .addParams("leaseaddress", houseAddress.getText().toString())
                 .addParams("cityprovince", province)
                 .addParams("cityname", city)
@@ -333,24 +338,31 @@ public class HouseInfoActivity extends BaseActivity {
                         break;
                     case R.id.radioButton2:
                         houseHome.setText(getString(R.string.bedroom_1));
+                        houseHomepp = "1 Bedroom";
                         break;
                     case R.id.radioButton3:
                         houseHome.setText(getString(R.string.bedroom_2));
+                        houseHomepp = "2 Bedroom";
                         break;
                     case R.id.radioButton4:
                         houseHome.setText(getString(R.string.bedroom_3));
+                        houseHomepp = "3 Bedroom";
                         break;
                     case R.id.radioButton5:
                         houseHome.setText(getString(R.string.bedroom_4));
+                        houseHomepp = "4 Bedroom";
                         break;
                     case R.id.radioButton6:
                         houseHome.setText(getString(R.string.bedroom_5));
+                        houseHomepp = "5 Bedroom";
                         break;
                     case R.id.radioButton7:
                         houseHome.setText(getString(R.string.bedroom_6));
+                        houseHomepp = "6 Bedroom";
                         break;
                     case R.id.radioButton8:
                         houseHome.setText(getString(R.string.villas));
+                        houseHomepp = "Villas";
                         break;
                 }
                 popupWindow.dismiss();

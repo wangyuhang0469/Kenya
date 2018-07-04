@@ -85,6 +85,7 @@ public class BuyHouseInfoActivity extends BaseActivity {
     String province;
     String city;
     String content;
+    String househome;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -93,6 +94,12 @@ public class BuyHouseInfoActivity extends BaseActivity {
         ButterKnife.bind(this);
         title.setText(getResources().getText(R.string.Housing_release));
         housetype = (String) getIntent().getExtras().get("housetype");
+        if (housetype.equals("新房")) {
+            housetype = "Bridal chamber";
+        } else if (housetype.equals("二手房")) {
+            housetype = "Second hand house";
+        } else {
+        }
         buyHouseInfoPerson.setText(User.getInstance().getUserName());
         buyHouseInfoPhone.setText(User.getInstance().getUserPhonenumber());
         initPopupWindow();
@@ -172,6 +179,7 @@ public class BuyHouseInfoActivity extends BaseActivity {
             startCamera();
         }
     }
+
     private void startCamera() {
         Intent intent = new Intent(BuyHouseInfoActivity.this, MultiImageSelectorActivity.class);
         // 是否显示拍摄图片
@@ -199,7 +207,7 @@ public class BuyHouseInfoActivity extends BaseActivity {
                 .addParams("housephone", buyHouseInfoPhone.getText().toString())
                 .addParams("houseuser", buyHouseInfoPerson.getText().toString())
                 .addParams("housesquare", buyHouseInfoSquare.getText().toString())
-                .addParams("househome", buyHouseInfoTypes.getText().toString())
+                .addParams("househome", househome)
                 .addParams("houseaddress", buyHouseInfoAddress.getText().toString())
                 .addParams("cityprovince", province)
                 .addParams("cityname", city)
@@ -329,24 +337,31 @@ public class BuyHouseInfoActivity extends BaseActivity {
                         break;
                     case R.id.radioButton2:
                         buyHouseInfoTypes.setText(getResources().getText(R.string.bedroom_1));
+                        househome = "1 Bedroom";
                         break;
                     case R.id.radioButton3:
                         buyHouseInfoTypes.setText(getResources().getText(R.string.bedroom_2));
+                        househome = "2 Bedroom";
                         break;
                     case R.id.radioButton4:
                         buyHouseInfoTypes.setText(getResources().getText(R.string.bedroom_3));
+                        househome = "3 Bedroom";
                         break;
                     case R.id.radioButton5:
                         buyHouseInfoTypes.setText(getResources().getText(R.string.bedroom_4));
+                        househome = "4 Bedroom";
                         break;
                     case R.id.radioButton6:
                         buyHouseInfoTypes.setText(getResources().getText(R.string.bedroom_5));
+                        househome = "5 Bedroom";
                         break;
                     case R.id.radioButton7:
                         buyHouseInfoTypes.setText(getResources().getText(R.string.bedroom_6));
+                        househome = "6 Bedroom";
                         break;
                     case R.id.radioButton8:
                         buyHouseInfoTypes.setText(getResources().getText(R.string.villas));
+                        househome = "Villas";
                         break;
                 }
                 popupWindow.dismiss();
