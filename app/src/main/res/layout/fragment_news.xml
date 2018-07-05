@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <com.zhy.autolayout.AutoLinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical"
+    android:id="@+id/linearLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.administrator.kenya.ui.news.NewsFragment"
-    android:id="@+id/linearLayout">
+    android:orientation="vertical"
+    tools:context="com.example.administrator.kenya.ui.news.NewsFragment">
 
 
     <com.zhy.autolayout.AutoRelativeLayout
@@ -23,23 +23,23 @@
             android:gravity="center"
             android:maxEms="10"
             android:singleLine="true"
+            android:text="@string/news"
             android:textColor="@color/textBlack1"
-            android:textSize="18sp"
-            android:text="@string/news"/>
+            android:textSize="18sp" />
 
 
         <TextView
             android:id="@+id/poster"
             android:layout_width="wrap_content"
             android:layout_height="144px"
-            android:adjustViewBounds="true"
-            android:padding="30px"
-            android:gravity="center"
             android:layout_alignParentRight="true"
+            android:adjustViewBounds="true"
+            android:gravity="center"
+            android:padding="30px"
             android:text="To Post"
             android:textColor="@color/textgreen1"
             android:textSize="16sp"
-            android:visibility="gone"/>
+            android:visibility="gone" />
 
 
     </com.zhy.autolayout.AutoRelativeLayout>
@@ -47,16 +47,16 @@
     <net.lucode.hackware.magicindicator.MagicIndicator
         android:id="@+id/magicIndicator"
         android:layout_width="match_parent"
-        android:layout_height="110px"/>
+        android:layout_height="110px" />
 
     <View
         android:layout_width="match_parent"
         android:layout_height="1px"
-        android:background="#999999"/>
+        android:background="#999999" />
 
     <android.support.v4.view.ViewPager
         android:id="@+id/viewPager"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content" />
 
 </com.zhy.autolayout.AutoLinearLayout>

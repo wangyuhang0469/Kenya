@@ -226,7 +226,7 @@ public class CityHomeFragment extends BaseFragment {
                 MainActivity mainActivity = (MainActivity) getActivity();
                 mainActivity.onTabSelect(2);
                 mainActivity = null;
-                StatusUtil.setUseStatusBarColor(getActivity(),Color.parseColor("#4b4b4b"), Color.parseColor("#33000000"));
+                StatusUtil.setUseStatusBarColor(getActivity(), Color.parseColor("#4b4b4b"), Color.parseColor("#33000000"));
 //                startActivity(NewsinfoActivity.class, null);
                 break;
             case R.id.city_home_husbandry:

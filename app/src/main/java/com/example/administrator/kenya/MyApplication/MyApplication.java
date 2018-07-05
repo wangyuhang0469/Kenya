@@ -70,7 +70,6 @@ public class MyApplication extends Application {
                 activityList.remove(activity);
             }
         }
-
     }
 
     /*清空activity，取消引用*/

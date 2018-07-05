@@ -264,8 +264,8 @@ public class GoodsReleaseActivity extends BaseActivity {
                 .addParams("goodUserName", goodsusername.getText().toString())
                 .addParams("goodsPhone", goodsphone.getText().toString())
                 .addParams("goodsType", goodsTypesp)
-                .addParams("cityprovince", "河北")
-                .addParams("cityname", "石家庄市")
+                .addParams("cityprovince", province)
+                .addParams("cityname", city)
                 .addParams("goodsaddress", goodsAddress.getText().toString())
                 .build()
                 .execute(new StringCallback() {

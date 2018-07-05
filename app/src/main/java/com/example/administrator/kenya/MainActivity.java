@@ -99,13 +99,12 @@ public class MainActivity extends BaseActivity {
         initView();
 
 
-
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED
                 || ActivityCompat.checkSelfPermission(this, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED
-                ||ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED
+                || ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED
                 || ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
 
-            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION,Manifest.permission.ACCESS_COARSE_LOCATION,Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.CAMERA}, 1);
+            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION, Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.CAMERA}, 1);
         } else {
             getposterOrNotice();
         }
@@ -231,7 +230,7 @@ public class MainActivity extends BaseActivity {
             case R.id.tab_3:
                 index = 2;
                 onTabSelect(index);
-                StatusUtil.setUseStatusBarColor(this,Color.parseColor("#4b4b4b"), Color.parseColor("#33000000"));
+                StatusUtil.setUseStatusBarColor(this, Color.parseColor("#4b4b4b"), Color.parseColor("#33000000"));
                 break;
             case R.id.tab_4:
                 index = 3;
@@ -262,7 +261,7 @@ public class MainActivity extends BaseActivity {
         }
     }
 
-    private void getposterOrNotice(){
+    private void getposterOrNotice() {
         log("开始请求");
         OkHttpUtils.post()
                 .url(AppConstants.BASE_URL + "/kenya/posterOrNotice/query")
@@ -279,10 +278,10 @@ public class MainActivity extends BaseActivity {
                         try {
                             jsonObject = new JSONObject(response);
                             log(response);
-                            if (jsonObject.getString("code").equals("000")){
+                            if (jsonObject.getString("code").equals("000")) {
                                 jsonObject = jsonObject.getJSONObject("data");
                                 SharedPreferences getPrefs = PreferenceManager.getDefaultSharedPreferences(getBaseContext());
-                                String  lastPoster =getPrefs.getString("lastPoster" , "0");
+                                String lastPoster = getPrefs.getString("lastPoster", "0");
                                 //每个海报只显示一次
                                 if (!jsonObject.getString("id").equals(lastPoster)) {
                                     SharedPreferences.Editor e = getPrefs.edit();
@@ -319,7 +318,7 @@ public class MainActivity extends BaseActivity {
                                         mainNoticerDialog.setCancelable(false);
                                         mainNoticerDialog.show();
                                     }
-                                }else {
+                                } else {
                                     getNewVersions();    //执行是否有新版本逻辑
                                 }
                             }
@@ -332,7 +331,7 @@ public class MainActivity extends BaseActivity {
 
     }
 
-    private void getNewVersions(){
+    private void getNewVersions() {
         OkHttpUtils.post()
                 .url(AppConstants.BASE_URL + "/kenya/version/query")
                 .build()
@@ -349,16 +348,16 @@ public class MainActivity extends BaseActivity {
                         JSONObject jsonObject = null;
                         final SharedPreferences getPrefs = PreferenceManager.getDefaultSharedPreferences(getBaseContext());
                         String newVersion = "";
-                        final String lastDownloadVersion = getPrefs.getString("version" , "1.0.0");
+                        final String lastDownloadVersion = getPrefs.getString("version", "1.0.0");
                         final String nowVersion = APKVersionCodeUtils.getVerName(MainActivity.this);
                         String apkUrl = "";
-                        String  information= "";
-                        boolean  forcedUpdate= false;
+                        String information = "";
+                        boolean forcedUpdate = false;
 
                         try {
                             jsonObject = new JSONObject(response);
 
-                            if (jsonObject.getString("code").equals("000")){
+                            if (jsonObject.getString("code").equals("000")) {
                                 jsonObject = jsonObject.getJSONObject("data");
                                 newVersion = jsonObject.getString("version");
                                 apkUrl = jsonObject.getString("apkUrl");
@@ -370,14 +369,14 @@ public class MainActivity extends BaseActivity {
                         }
 
                         //判断最新版本 与 当前版本
-                        if (APKVersionCodeUtils.compareVersion(newVersion , nowVersion) > 0){
+                        if (APKVersionCodeUtils.compareVersion(newVersion, nowVersion) > 0) {
                             log("网上大于现在");
                             //判断最新版本是否下载
-                            if (APKVersionCodeUtils.compareVersion(newVersion , lastDownloadVersion) > 0) {
+                            if (APKVersionCodeUtils.compareVersion(newVersion, lastDownloadVersion) > 0) {
                                 log("未下载");
                                 //若WIFI为开启状态下载新版本
                                 WifiManager wifiManager = (WifiManager) getApplicationContext().getSystemService(Context.WIFI_SERVICE);
-                                if (wifiManager != null && wifiManager.isWifiEnabled()){
+                                if (wifiManager != null && wifiManager.isWifiEnabled()) {
                                     log("wifi已开启 开始下载");
                                     final String finalInformation = information;
                                     final String finalNewVersion = newVersion;
@@ -386,7 +385,7 @@ public class MainActivity extends BaseActivity {
                                             .url(AppConstants.BASE_URL + apkUrl)
 //                                            .url(AppConstants.BASE_URL + "/kenya/upload/-1547452445fd192b26f73b1b79a1a10b09c024a837.jpg")
                                             .build()
-                                            .execute(new FileCallBack(Environment.getExternalStorageDirectory().getAbsolutePath() + "/apk", "BL"+ finalNewVersion +".apk") {
+                                            .execute(new FileCallBack(Environment.getExternalStorageDirectory().getAbsolutePath() + "/apk", "BL" + finalNewVersion + ".apk") {
 
                                                 @Override
                                                 public void onError(Call call, Exception e, int id) {
@@ -395,14 +394,16 @@ public class MainActivity extends BaseActivity {
 
                                                 @Override
                                                 public void onResponse(File response, int id) {
-                                                    OpenFileUtil.deleteFile(new File(Environment.getExternalStorageDirectory().getAbsolutePath() + "/apk", "BL"+ lastDownloadVersion +".apk"));
+                                                    OpenFileUtil.deleteFile(new File(Environment.getExternalStorageDirectory().getAbsolutePath() + "/apk", "BL" + lastDownloadVersion + ".apk"));
                                                     SharedPreferences.Editor e = getPrefs.edit();
                                                     e.putString("version", finalNewVersion);
                                                     e.apply();
                                                     log(response.getPath());
-                                                    UpdateDialog updateDialog = new UpdateDialog(MainActivity.this,response.getPath() , finalNewVersion, finalInformation , finalForcedUpdate).setOnChooseListener(new OnChooseListener() {
+                                                    UpdateDialog updateDialog = new UpdateDialog(MainActivity.this, response.getPath(), finalNewVersion, finalInformation, finalForcedUpdate).setOnChooseListener(new OnChooseListener() {
                                                         @Override
-                                                        public void yes(String message) {}
+                                                        public void yes(String message) {
+                                                        }
+
                                                         @Override
                                                         public void no(String message) {
                                                             if (message.equals("true"))
@@ -415,10 +416,12 @@ public class MainActivity extends BaseActivity {
                                                 }
                                             });
                                 }
-                            }else {
-                                UpdateDialog updateDialog = new UpdateDialog(MainActivity.this,UpdateDialog.DOWNLOAD_PATH ,lastDownloadVersion, information, forcedUpdate).setOnChooseListener(new OnChooseListener() {
+                            } else {
+                                UpdateDialog updateDialog = new UpdateDialog(MainActivity.this, UpdateDialog.DOWNLOAD_PATH, lastDownloadVersion, information, forcedUpdate).setOnChooseListener(new OnChooseListener() {
                                     @Override
-                                    public void yes(String message) {}
+                                    public void yes(String message) {
+                                    }
+
                                     @Override
                                     public void no(String message) {
                                         if (message.equals("true"))
@@ -429,7 +432,7 @@ public class MainActivity extends BaseActivity {
                                 updateDialog.setCancelable(false);
                                 updateDialog.show();
                             }
-                        }else {
+                        } else {
                             log("不大于");
                         }
 

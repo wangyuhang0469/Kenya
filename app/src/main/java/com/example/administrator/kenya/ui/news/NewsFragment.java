@@ -112,8 +112,6 @@ public class NewsFragment extends BaseFragment {
 
             }
         });
-
-
         return view;
     }
 
@@ -180,6 +178,5 @@ public class NewsFragment extends BaseFragment {
         } else if (viewPager.getCurrentItem() == 6) {
             startActivity(TransitionReleaseActivity.class, null);
         }
-
     }
 }

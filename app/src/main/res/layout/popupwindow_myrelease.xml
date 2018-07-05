@@ -144,7 +144,7 @@
                     android:button="@null"
                     android:gravity="center"
                     android:minHeight="88px"
-                    android:text="买房"
+                    android:text="@string/For_Buyers"
                     android:textColor="@drawable/popup_textcolor" />
 
                 <RadioButton
