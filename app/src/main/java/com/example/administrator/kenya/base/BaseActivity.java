@@ -137,4 +137,12 @@ public class BaseActivity extends FragmentActivity {
         }
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
     }
+
+
+    public void backgroundAlpaha(float bgAlpha) {
+        WindowManager.LayoutParams lp = this.getWindow().getAttributes();
+        lp.alpha = bgAlpha;
+        this.getWindow().addFlags(WindowManager.LayoutParams.FLAG_DIM_BEHIND);
+        this.getWindow().setAttributes(lp);
+    }
 }

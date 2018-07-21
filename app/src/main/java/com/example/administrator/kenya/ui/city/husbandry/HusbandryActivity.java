@@ -224,12 +224,13 @@ public class HusbandryActivity extends BaseActivity {
         });
     }
 
-    @OnClick({R.id.back, R.id.classification, R.id.release})
+    @OnClick({R.id.back ,R.id.classification, R.id.release})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.back:
                 finish();
                 break;
+
             case R.id.classification:
                 xiala.setImageDrawable(getResources().getDrawable(R.drawable.icon_xiala1));
                 classification.setTextColor(getResources().getColor(R.color.textgreen1));

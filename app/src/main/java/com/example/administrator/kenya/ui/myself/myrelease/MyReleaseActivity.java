@@ -139,7 +139,7 @@ public class MyReleaseActivity extends BaseActivity {
                     case R.id.radioButton7:
                         fragmentTransaction.hide(fragments[currentTabIndex]).show(fragments[6]).commit();
                         currentTabIndex = 6;
-                        classification.setText("买房");
+                        classification.setText(getString(R.string.For_Buyers));
                         break;
                     case R.id.radioButton8:
                         //fragmentTransaction.hide(fragments[currentTabIndex]).show(fragments[7]).commit();

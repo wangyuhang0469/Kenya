@@ -120,9 +120,10 @@
         <activity android:name=".ui.city.buyhouse.BuyHouseInfoActivity" />
         <activity android:name=".ui.city.buyhouse.ProvinceCityDetailsActivity" />
         <activity android:name=".ui.news.TransitionReleaseActivity" />
-        <activity android:name=".ui.news.ClassifiedReleaseActivity"></activity>
+        <activity android:name=".ui.news.ClassifiedReleaseActivity" />
         <activity android:name=".ui.city.buyhouse.BuyHouseDetailActivity" />
-        <activity android:name=".ui.city.buyhouse.BuyHouseSearchActivity"></activity>
+        <activity android:name=".ui.city.buyhouse.BuyHouseSearchActivity" />
+        <activity android:name=".ui.main.SelectAddressActivity"></activity>
     </application>
 
 </manifest>

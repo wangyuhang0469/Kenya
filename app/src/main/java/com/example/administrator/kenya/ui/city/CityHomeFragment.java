@@ -3,6 +3,7 @@ package com.example.administrator.kenya.ui.city;
 
 import android.Manifest;
 import android.app.Activity;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -43,6 +44,7 @@ import com.example.administrator.kenya.ui.city.news.NewsWebActivity;
 import com.example.administrator.kenya.ui.city.news.NewsinfoActivity;
 import com.example.administrator.kenya.ui.city.used.UsedActivity;
 import com.example.administrator.kenya.ui.main.LoadingDialog;
+import com.example.administrator.kenya.ui.main.SelectAddressActivity;
 import com.example.administrator.kenya.ui.main.YesOrNoDialog;
 import com.example.administrator.kenya.utils.MyLocationUtil;
 import com.example.administrator.kenya.view.TextBannerView;
@@ -111,6 +113,8 @@ public class CityHomeFragment extends BaseFragment {
         imageList = new ArrayList<>();
         data = new ArrayList<>();
         initOkhttpBanner();
+
+
 
 
         return view;
@@ -193,7 +197,7 @@ public class CityHomeFragment extends BaseFragment {
         ButterKnife.unbind(this);
     }
 
-    @OnClick({R.id.btn1, R.id.btn2, R.id.city_home_job, R.id.city_home_used, R.id.city_home_house, R.id.city_home_friends, R.id.city_home_life, R.id.city_home_husbandry, R.id.tv1, R.id.city_home_buy_house})
+    @OnClick({R.id.btn1,R.id.title_bar, R.id.btn2, R.id.city_home_job, R.id.city_home_used, R.id.city_home_house, R.id.city_home_friends, R.id.city_home_life, R.id.city_home_husbandry, R.id.tv1, R.id.city_home_buy_house})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.btn1:
@@ -201,6 +205,11 @@ public class CityHomeFragment extends BaseFragment {
                 bundle.putString("findmoney", "A");
                 startActivity(FindMoneyActivity.class, bundle);
                 break;
+
+            case R.id.title_bar:
+                getActivity().startActivityForResult( new Intent(getActivity() , SelectAddressActivity.class) , AppConstants.CODE_CHOOSE_CITY);
+                break;
+
             case R.id.btn2:
                 Bundle bundle1 = new Bundle();
                 bundle1.putString("findmoney", "");

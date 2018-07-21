@@ -250,6 +250,8 @@ public class MainActivity extends BaseActivity {
         if (requestCode == 1 && resultCode == 4) {
 //            startActivity(LoginActivity.class,null);
             finish();
+        }else if (requestCode == AppConstants.CODE_CHOOSE_CITY && resultCode == 200){
+            toast(data.getStringExtra("province") + " == " +data.getStringExtra("city"));
         }
     }
 

@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.zhy.autolayout.AutoLinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.example.administrator.kenya.ui.main.SelectAddressActivity">
+
+    <com.example.administrator.kenya.view.MyObervalbleScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <com.zhy.autolayout.AutoLinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+
+
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="当前定位的城市"
+        android:layout_marginLeft="30px"
+        android:layout_marginTop="30px"
+        android:textSize="15sp"
+        android:textColor="@color/textBlack1"/>
+
+
+    <TextView
+        android:id="@+id/location_address"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="当前定位的城市"
+        android:layout_marginLeft="80px"
+        android:layout_marginTop="30px"
+        android:textSize="16sp"
+        android:textColor="@color/textBlack1"/>
+
+
+    <TextView
+        android:id="@+id/choose_other"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="选择其他城市"
+        android:layout_marginLeft="30px"
+        android:layout_marginTop="30px"
+        android:textSize="15sp"
+        android:textColor="@color/textBlack1"/>
+
+
+    <com.zhy.autolayout.AutoLinearLayout
+        android:id="@+id/province_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="30px"
+        android:orientation="vertical">
+
+    </com.zhy.autolayout.AutoLinearLayout>
+
+
+    <com.zhy.autolayout.AutoLinearLayout
+        android:id="@+id/city_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="30px"
+        android:orientation="vertical">
+
+    </com.zhy.autolayout.AutoLinearLayout>
+
+
+
+
+        </com.zhy.autolayout.AutoLinearLayout>
+    </com.example.administrator.kenya.view.MyObervalbleScrollView>
+</com.zhy.autolayout.AutoLinearLayout>
