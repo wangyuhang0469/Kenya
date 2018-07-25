@@ -1,10 +1,12 @@
 package com.example.administrator.kenya.classes;
 
+import java.io.Serializable;
+
 /**
  * Created by Administrator on 2018/7/16.
  */
 
-public class ChildComment {
+public class ChildComment implements Serializable{
     private String id;
     private String createTime;
     private String toUsername;

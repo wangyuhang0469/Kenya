@@ -202,6 +202,7 @@
 
     <!--请输入收获人的真实姓名-->
     <string name="please_enter_real_name">Please Enter Peal Name</string>
+    <string name="please_enter">Please Enter</string>
     <string name="edit_the_prceiver_address">Edit The Receiver Address</string>
     <string name="choose_photo">Take Photo</string>
     <string name="your_photo_callery">Your Photo Gallery</string>
@@ -369,4 +370,10 @@
     <string name="Please_enter_your_work_address">Please enter your work address</string>
     <string name="company_address">Company Address</string>
     <string name="work_address">Work Address</string>
+
+
+    <string name="reply">Reply</string>
+    <string name="follow">Follow</string>
+    <string name="unfold">Unfold</string>
+
 </resources>

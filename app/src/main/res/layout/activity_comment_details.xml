@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.zhy.autolayout.AutoRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/base_bg"
+    tools:context="com.example.administrator.kenya.ui.main.CommentDetailsActivity">
+
+    <include layout="@layout/title_bar2"/>
+
+    <com.jwenfeng.library.pulltorefresh.PullToRefreshLayout
+        android:id="@+id/pullToRefreshLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="120px"
+        android:layout_marginTop="144px">
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <com.zhy.autolayout.AutoLinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+    <com.zhy.autolayout.AutoRelativeLayout
+        android:id="@+id/bar_main_comment"
+        android:orientation="vertical" android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/avatar"
+            android:layout_width="100px"
+            android:layout_height="100px"
+            android:layout_marginTop="9dp"
+            android:layout_marginLeft="10dp"
+            android:src="@drawable/avatar"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"/>
+
+        <TextView
+            android:id="@+id/name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/textBlack2"
+            android:layout_toRightOf="@id/avatar"
+            android:layout_marginTop="48px"
+            android:layout_marginLeft="20px"/>
+
+        <TextView
+            android:id="@+id/text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/avatar"
+            android:layout_toRightOf="@id/avatar"
+            android:layout_alignLeft="@+id/name"
+            android:layout_marginRight="30px"
+            android:lineSpacingMultiplier="1.2"
+            android:ellipsize="end"
+            android:textColor="@color/textBlack1"/>
+
+        <TextView
+            android:id="@+id/unfold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/text"
+            android:layout_toRightOf="@id/avatar"
+            android:layout_alignLeft="@+id/name"
+            android:layout_marginRight="30px"
+            android:text="@string/unfold"
+            android:textSize="13sp"
+            android:visibility="gone"
+            android:layout_marginTop="2px"
+            android:textColor="@color/blue"/>
+
+        <com.zhy.autolayout.AutoLinearLayout
+            android:id="@+id/ll1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/unfold"
+            android:layout_alignLeft="@id/text"
+            android:layout_alignRight="@id/text"
+            android:gravity="center_vertical"
+            android:layout_marginTop="5px"
+            android:layout_marginBottom="30px">
+
+            <TextView
+                android:id="@+id/date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/textBlack3"
+                android:textSize="12sp"/>
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:layout_width="6px"
+                android:layout_height="6px"
+                android:src="@color/textBlack3"
+                android:layout_marginLeft="20px"/>
+
+            <TextView
+                android:id="@+id/reply"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/blue"
+                android:textSize="12sp"
+                android:layout_marginLeft="20px"
+                android:text="@string/reply"/>
+
+
+        </com.zhy.autolayout.AutoLinearLayout>
+
+
+    </com.zhy.autolayout.AutoRelativeLayout>
+
+
+    <com.zhy.autolayout.AutoLinearLayout
+        android:id="@+id/commentViews"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+
+    </com.zhy.autolayout.AutoLinearLayout>
+
+
+
+        </com.zhy.autolayout.AutoLinearLayout>
+    </ScrollView>
+    </com.jwenfeng.library.pulltorefresh.PullToRefreshLayout>
+
+    <com.zhy.autolayout.AutoRelativeLayout
+        android:id="@+id/bar_edit"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:layout_alignParentBottom="true">
+
+        <com.zhy.autolayout.AutoRelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="120px">
+
+            <TextView
+                android:id="@+id/comment_text"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_toLeftOf="@+id/comment_send"
+                android:layout_marginTop="20px"
+                android:layout_marginLeft="30px"
+                android:layout_marginBottom="20px"
+                android:hint="@string/reply"
+                android:textSize="13sp"
+                android:paddingLeft="30px"
+                android:background="@drawable/bg4dp_base_bg"
+                android:gravity="center_vertical"/>
+
+            <ImageView
+                android:id="@+id/comment_send"
+                android:layout_width="50px"
+                android:layout_height="44px"
+                android:src="@drawable/icon_comment"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="30px"
+                android:layout_marginLeft="30px"
+                android:layout_centerVertical="true"/>
+
+
+
+        </com.zhy.autolayout.AutoRelativeLayout>
+
+    </com.zhy.autolayout.AutoRelativeLayout>
+
+</com.zhy.autolayout.AutoRelativeLayout>

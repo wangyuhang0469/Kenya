@@ -43,7 +43,7 @@
         android:layout_toRightOf="@id/avatar"
         android:layout_alignLeft="@+id/name"
         android:layout_marginRight="30px"
-        android:text="展开"
+        android:text="@string/unfold"
         android:textSize="13sp"
         android:visibility="gone"
         android:layout_marginTop="2px"
@@ -67,20 +67,7 @@
             android:textColor="@color/textBlack3"
             android:textSize="12sp"/>
 
-        <de.hdodenhof.circleimageview.CircleImageView
-            android:layout_width="6px"
-            android:layout_height="6px"
-            android:src="@color/textBlack3"
-            android:layout_marginLeft="20px"/>
 
-        <TextView
-            android:id="@+id/reply"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="@color/blue"
-            android:textSize="12sp"
-            android:layout_marginLeft="20px"
-            android:text="@string/reply"/>
 
 
     </com.zhy.autolayout.AutoLinearLayout>

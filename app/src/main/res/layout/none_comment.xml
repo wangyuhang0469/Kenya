@@ -7,7 +7,7 @@
         android:id="@+id/text"
         android:layout_width="match_parent"
         android:layout_height="300px"
-        android:text="暂无留言"
+        android:text="@string/nothing"
         android:gravity="center"/>
 
 </com.zhy.autolayout.AutoRelativeLayout>

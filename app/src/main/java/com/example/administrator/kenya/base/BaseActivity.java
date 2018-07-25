@@ -88,6 +88,13 @@ public class BaseActivity extends FragmentActivity {
         }
     }
 
+    public void unHideSoftInput(IBinder token) {
+        if (token != null) {
+            InputMethodManager im = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+            im.hideSoftInputFromWindow(token, InputMethodManager.SHOW_FORCED);
+        }
+    }
+
     @Override
     protected void onDestroy() {
         super.onDestroy();

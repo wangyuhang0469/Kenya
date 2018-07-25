@@ -1,12 +1,13 @@
 package com.example.administrator.kenya.classes;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
  * Created by Administrator on 2018/7/16.
  */
 
-public class Comment {
+public class Comment implements Serializable {
     private String id;
     private String userId;
     private String commentText;

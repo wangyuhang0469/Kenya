@@ -123,7 +123,8 @@
         <activity android:name=".ui.news.ClassifiedReleaseActivity" />
         <activity android:name=".ui.city.buyhouse.BuyHouseDetailActivity" />
         <activity android:name=".ui.city.buyhouse.BuyHouseSearchActivity" />
-        <activity android:name=".ui.main.SelectAddressActivity"></activity>
+        <activity android:name=".ui.main.SelectAddressActivity" />
+        <activity android:name=".ui.main.CommentDetailsActivity" android:windowSoftInputMode="adjustPan"></activity>
     </application>
 
 </manifest>

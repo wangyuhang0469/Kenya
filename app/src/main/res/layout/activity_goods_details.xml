@@ -13,14 +13,14 @@
     <com.jwenfeng.library.pulltorefresh.PullToRefreshLayout
         android:id="@+id/pullToRefreshLayout"
         android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="160px"
+        android:layout_marginTop="144px">
+
+
+    <ScrollView
+        android:layout_width="match_parent"
         android:layout_height="match_parent">
-
-
-    <!--<ScrollView-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="match_parent"-->
-        <!--android:layout_marginBottom="160px"-->
-        <!--android:layout_marginTop="144px">-->
 
         <com.zhy.autolayout.AutoLinearLayout
             android:id="@+id/ll"
@@ -152,14 +152,14 @@
 
             <com.zhy.autolayout.AutoRelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="120px">
+                android:layout_height="130px">
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:gravity="center_vertical"
                 android:layout_marginLeft="30px"
                 android:textColor="@color/textBlack1"
-                android:text="留言"/>
+                android:text="@string/follow"/>
                 
                 <ImageView
                     android:id="@+id/image_comment"
@@ -187,7 +187,7 @@
 
             <View
                 android:layout_width="match_parent"
-                android:layout_height="20px"
+                android:layout_height="80px"
                 android:background="@color/base_bg" />
 
             
@@ -195,7 +195,7 @@
         </com.zhy.autolayout.AutoLinearLayout>
 
 
-    <!--</ScrollView>-->
+    </ScrollView>
 
     </com.jwenfeng.library.pulltorefresh.PullToRefreshLayout>
 

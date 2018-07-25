@@ -199,6 +199,7 @@
 
     <!--请输入收获人的真实姓名-->
     <string name="please_enter_real_name">请输入收获人的真实姓名</string>
+    <string name="please_enter">请输入</string>
     <string name="edit_the_prceiver_address">编辑收获地址</string>
     <string name="choose_photo">选择照片</string>
     <string name="your_photo_callery">所有相册</string>
@@ -367,5 +368,9 @@
     <string name="Please_enter_your_work_address">请输入工作地址</string>
     <string name="company_address">公司地址</string>
     <string name="work_address">工作地址</string>
+
+    <string name="reply">回复</string>
+    <string name="follow">评论</string>
+    <string name="unfold">展开</string>
 
 </resources>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.zhy.autolayout.AutoLinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="300dp"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:background="@drawable/bg8dp_white"
+    android:orientation="vertical">
+
+   <TextView
+       android:id="@+id/delete"
+       android:layout_width="match_parent"
+       android:layout_height="150px"
+       android:gravity="center"
+       android:text="@string/delete"
+       android:textColor="@color/textBlack2"/>
+
+    <!--<include layout="@layout/line_max"/>-->
+
+    <!--<TextView-->
+        <!--android:id="@+id/female"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="150px"-->
+        <!--android:gravity="center"-->
+        <!--android:text="@string/female"-->
+        <!--android:textColor="@color/textBlack2"/>-->
+
+</com.zhy.autolayout.AutoLinearLayout>
