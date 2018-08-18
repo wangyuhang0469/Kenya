@@ -10,8 +10,8 @@ import com.example.administrator.kenya.R;
 import com.example.administrator.kenya.base.BaseActivity;
 import com.example.administrator.kenya.classes.CityProvince;
 import com.example.administrator.kenya.constants.AppConstants;
-import com.example.administrator.kenya.ui.city.buyhouse.GirdDropDownAdapter;
-import com.example.administrator.kenya.ui.city.used.UsedActivity;
+import com.example.administrator.kenya.interfaces.MyLocationListener;
+import com.example.administrator.kenya.utils.MyLocationUtil;
 import com.zhy.autolayout.AutoLinearLayout;
 import com.zhy.http.okhttp.OkHttpUtils;
 import com.zhy.http.okhttp.callback.StringCallback;
@@ -24,6 +24,7 @@ import java.util.List;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 import okhttp3.Call;
 
 public class SelectAddressActivity extends BaseActivity {
@@ -41,6 +42,7 @@ public class SelectAddressActivity extends BaseActivity {
     private List<CityProvince> provinceList = new ArrayList<>();
     private List<CityProvince> cityList = new ArrayList<>();
     private String provinceStr;
+    private String cityStr;
     private LoadingDialog loadingDialog;
 
 
@@ -51,6 +53,25 @@ public class SelectAddressActivity extends BaseActivity {
         ButterKnife.bind(this);
 
         initProvince();
+
+
+        MyLocationUtil.getInstance(this).getLocationInformation(new MyLocationListener() {
+            @Override
+            public void success(String province, String city) {
+                provinceStr = province;
+                cityStr = city;
+                if (provinceStr.equals(cityStr)) {
+                    locationAddress.setText(cityStr);
+                } else {
+                    locationAddress.setText(provinceStr + "  " + cityStr);
+                }
+            }
+
+            @Override
+            public void failed(String message) {
+                toast("定位失败,请手动选择地址");
+            }
+        });
 
     }
 
@@ -73,9 +94,9 @@ public class SelectAddressActivity extends BaseActivity {
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
-                for (int i = 0 ; i < provinceList.size() ; i++){
+                for (int i = 0; i < provinceList.size(); i++) {
                     CityProvince province = provinceList.get(i);
-                    addProvince(province , i);
+                    addProvince(province, i);
                 }
 
             }
@@ -87,41 +108,41 @@ public class SelectAddressActivity extends BaseActivity {
         loadingDialog = new LoadingDialog(this);
         loadingDialog.show();
         OkHttpUtils.post().
-                url(AppConstants.BASE_URL + "/kenya/city/findByCityprovince" )
-                .addParams("cityprovince" , provinceStr )
+                url(AppConstants.BASE_URL + "/kenya/city/findByCityprovince")
+                .addParams("cityprovince", provinceStr)
                 .build()
                 .execute(new StringCallback() {
-            @Override
-            public void onError(Call call, Exception e, int id) {
-                toast(getString(R.string.load_fail));
-                loadingDialog.dismiss();
-            }
-
-            @Override
-            public void onResponse(String response, int id) {
-                try {
-                    JSONObject jsonObject = new JSONObject(response);
-                    if (jsonObject.getString("code").equals("000")) {
-                        response = jsonObject.getString("result");
-                        cityList = JSON.parseArray(response, CityProvince.class);
-                        for (int i = 0 ; i < cityList.size() ; i++){
-                            CityProvince city = cityList.get(i);
-                            addCity(city , i);
-                        }
-                        provinceView.setVisibility(View.GONE);
-                        cityView.setVisibility(View.VISIBLE);
+                    @Override
+                    public void onError(Call call, Exception e, int id) {
+                        toast(getString(R.string.load_fail));
+                        loadingDialog.dismiss();
                     }
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-                loadingDialog.dismiss();
-            }
-        });
+
+                    @Override
+                    public void onResponse(String response, int id) {
+                        try {
+                            JSONObject jsonObject = new JSONObject(response);
+                            if (jsonObject.getString("code").equals("000")) {
+                                response = jsonObject.getString("result");
+                                cityList = JSON.parseArray(response, CityProvince.class);
+                                for (int i = 0; i < cityList.size(); i++) {
+                                    CityProvince city = cityList.get(i);
+                                    addCity(city, i);
+                                }
+                                provinceView.setVisibility(View.GONE);
+                                cityView.setVisibility(View.VISIBLE);
+                            }
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                        loadingDialog.dismiss();
+                    }
+                });
     }
 
 
-    private void addProvince(final CityProvince province , final int position){
-        View itemView = View.inflate(this , R.layout.item_choose_province_city , null);
+    private void addProvince(final CityProvince province, final int position) {
+        View itemView = View.inflate(this, R.layout.item_choose_province_city, null);
         TextView tv_province = itemView.findViewById(R.id.text);
         tv_province.setText(province.getCityprovince());
         itemView.setOnClickListener(new View.OnClickListener() {
@@ -135,17 +156,18 @@ public class SelectAddressActivity extends BaseActivity {
     }
 
 
-    private void addCity(final CityProvince province , final int position){
-        View itemView = View.inflate(this , R.layout.item_choose_province_city , null);
+    private void addCity(final CityProvince province, final int position) {
+        View itemView = View.inflate(this, R.layout.item_choose_province_city, null);
         TextView tv_city = itemView.findViewById(R.id.text);
         tv_city.setText(province.getCityname());
         itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                cityStr = province.getCityname();
                 Intent intent = new Intent();
-                intent.putExtra("province"  ,  provinceStr);
-                intent.putExtra("city"  , province.getCityname());
-                setResult(200 , intent);
+                intent.putExtra("province", provinceStr);
+                intent.putExtra("city", cityStr);
+                setResult(200, intent);
                 finish();
             }
         });
@@ -153,8 +175,21 @@ public class SelectAddressActivity extends BaseActivity {
     }
 
 
-        private void showCitys(){
-            chooseOther.setText("当前选择的城市为:" + provinceStr);
-            loadCity();
+    private void showCitys() {
+        chooseOther.setText("当前选择的城市为:" + provinceStr);
+        loadCity();
+    }
+
+    @OnClick(R.id.location_address)
+    public void onViewClicked() {
+        if (cityStr == null){
+            toast("定位失败,请手动选择城市");
+        }else {
+            Intent intent = new Intent();
+            intent.putExtra("province", provinceStr);
+            intent.putExtra("city", cityStr);
+            setResult(200, intent);
+            finish();
+        }
     }
 }

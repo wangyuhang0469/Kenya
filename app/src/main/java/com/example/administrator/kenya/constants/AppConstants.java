@@ -13,7 +13,7 @@ public class AppConstants {
     //public static final String BASE_URL = "http://192.168.1.104";//测试环境
     // public static final String BASE_URL = "http://47.93.6.164:8080";//服务器环境
     //public static final String BASE_URL = "http://192.144.152.195";//国内后台服务器
-     public static final String BASE_URL = "http://192.168.1.107";//彭程本地IP
+     public static final String BASE_URL = "http://192.168.1.104";//彭程本地IP
     public static final String YJIP = "http://192.168.1.106:8080";//外国服务器
 //        public static final String BASE_URL = "http://192.144.152.195";//彭程服务器
 //    public static final String BASE_URL = "http://47.89.246.205:8001";//上线服务器

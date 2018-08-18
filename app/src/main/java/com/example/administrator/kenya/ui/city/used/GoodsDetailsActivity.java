@@ -70,25 +70,24 @@ public class GoodsDetailsActivity extends BaseActivity {
     CircleImageView avatar;
     @Bind(R.id.goods_detail_address)
     TextView goodsDetailAddress;
-    @Bind(R.id.commentViews)
-    AutoLinearLayout commentViews;
-    @Bind(R.id.ll)
-    AutoLinearLayout ll;
-    @Bind(R.id.pullToRefreshLayout)
-    PullToRefreshLayout pullToRefreshLayout;
     private Goods goods;
 
     //==============================评论变量====================================================================
     private List<Comment> commentListc;
     private PopupWindow popupWindow;
     private int cpageNum = 1;
+    @Bind(R.id.commentViews)
+    AutoLinearLayout commentViews;
+    @Bind(R.id.pullToRefreshLayout)
+    PullToRefreshLayout pullToRefreshLayout;
+    @Bind(R.id.ll)
+    AutoLinearLayout ll;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_goods_details);
         ButterKnife.bind(this);
-        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
         title.setText(getResources().getString(R.string.goods_detail));
 
         goods = (Goods) getIntent().getExtras().getSerializable("goods");
@@ -109,6 +108,7 @@ public class GoodsDetailsActivity extends BaseActivity {
 
 
         //==========================================评论模块=================================================================
+        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
         initPopupWindow();
         initPullToRefreshLayout();
         loadComments();

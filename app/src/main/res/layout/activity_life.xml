@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:id="@+id/rootlayout"
     tools:context="com.example.administrator.kenya.ui.city.life.LifeActivity">
 
     <com.zhy.autolayout.AutoRelativeLayout
@@ -45,7 +46,8 @@
             android:paddingLeft="30px"
             android:paddingRight="80px"
             android:text="@string/category"
-            android:textColor="@color/textBlack2" />
+            android:textColor="@color/textBlack2"
+            android:visibility="gone"/>
 
         <ImageView
             android:id="@+id/xiala"
@@ -53,7 +55,8 @@
             android:layout_height="match_parent"
             android:layout_alignParentRight="true"
             android:layout_marginRight="30px"
-            android:src="@drawable/icon_xiala0" />
+            android:src="@drawable/icon_xiala0"
+            android:visibility="gone"/>
 
 
     </com.zhy.autolayout.AutoRelativeLayout>
@@ -111,5 +114,24 @@
         android:layout_below="@+id/title_bar"
         android:background="@color/touming_black"
         android:visibility="gone" />
+
+
+    <com.example.administrator.kenya.ui.city.buyhouse.DropDownMenu
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/dropDownMenu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/release"
+        android:layout_below="@+id/title_bar"
+        app:dddividerColor="@color/gray"
+        app:ddmaskColor="@color/mask_color"
+        app:ddmenuBackgroundColor="@color/white"
+        app:ddmenuMenuHeightPercent="0.5"
+        app:ddmenuSelectedIcon="@mipmap/drop_up_green"
+        app:ddmenuTextSize="13sp"
+        app:ddmenuUnselectedIcon="@mipmap/drop_down_grey"
+        app:ddtextSelectedColor="@color/textgreen3"
+        app:ddtextUnselectedColor="@color/textBlack2"
+        app:ddunderlineColor="@color/gray" />
 
 </com.zhy.autolayout.AutoRelativeLayout>

@@ -65,6 +65,7 @@ public class UsedActivity extends BaseActivity {
     private PostFormBuilder postFormBuilder;
     private StringCallback StringCallback;
     private StringCallback StringCallbackMore;
+
     private List<CityProvince> cityProvincesList = new ArrayList<>();
     private List<String> cityProvincesListstring = new ArrayList<>();
     private List<View> popupViews = new ArrayList<View>();
@@ -135,6 +136,7 @@ public class UsedActivity extends BaseActivity {
 
             @Override
             public void onResponse(String response, int id) {
+                log(response);
                 //防止因Activity释放导致内部控件空指针
                 if (pullToRefreshLayout != null) {
                     List<Goods> addList = null;

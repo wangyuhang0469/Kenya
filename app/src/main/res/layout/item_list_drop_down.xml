@@ -3,8 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="120px"
     android:background="@color/white"
-    android:orientation="vertical"
-    tools:context="com.car.cslm.widget.drop_down_menu.DefaultDropDownAdapter">
+    android:orientation="vertical">
 
 
     <TextView
@@ -20,6 +19,6 @@
         android:layout_width="match_parent"
         android:layout_height="0.5dp"
         android:layout_below="@+id/text"
-        android:background="@color/line1" />
+        android:background="@color/gray" />
 
 </LinearLayout>

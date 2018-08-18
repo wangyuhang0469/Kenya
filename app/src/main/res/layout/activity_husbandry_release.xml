@@ -45,6 +45,34 @@
 
             <include layout="@layout/line" />
 
+
+            <com.zhy.autolayout.AutoRelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="150px">
+
+                <TextView
+                    android:id="@+id/location_address"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+                    android:textColor="@color/textBlack2"
+                    android:textColorHint="@color/textBlack3"
+                    android:hint="定位中"
+                    android:paddingLeft="30px"/>
+
+
+                <ImageView
+                    android:id="@+id/go2"
+                    style="@style/my_center_inter"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="30px"
+                    android:src="@mipmap/my_center_inter2" />
+            </com.zhy.autolayout.AutoRelativeLayout>
+
+            <include layout="@layout/line" />
+
+
+
             <EditText
                 android:id="@+id/framdesc"
                 style="@style/edit_base"

@@ -21,8 +21,11 @@ import com.example.administrator.kenya.base.BaseActivity;
 import com.example.administrator.kenya.classes.LifeServices;
 import com.example.administrator.kenya.classes.User;
 import com.example.administrator.kenya.constants.AppConstants;
+import com.example.administrator.kenya.interfaces.MyLocationListener;
 import com.example.administrator.kenya.model.image_selector.MultiImageSelectorActivity;
 import com.example.administrator.kenya.ui.main.LoadingDialog;
+import com.example.administrator.kenya.ui.main.SelectAddressActivity;
+import com.example.administrator.kenya.utils.MyLocationUtil;
 import com.zhy.http.okhttp.OkHttpUtils;
 import com.zhy.http.okhttp.builder.PostFormBuilder;
 import com.zhy.http.okhttp.callback.StringCallback;
@@ -57,6 +60,11 @@ public class LifeReleaseActivity extends BaseActivity {
     List<ImageView> imageViews;
     @Bind(R.id.liveuser)
     EditText liveuser;
+    @Bind(R.id.location_address)
+    TextView locationAddress;
+
+    private String provinceStr="";
+    private String cityStr = "";
 
 
     private ArrayList<String> mResults = new ArrayList<>();
@@ -84,6 +92,25 @@ public class LifeReleaseActivity extends BaseActivity {
         adapter.setDropDownViewResource(R.layout.item_spinner);
         spinner.setAdapter(adapter);
         livename.requestFocus();
+
+
+        MyLocationUtil.getInstance(this).getLocationInformation(new MyLocationListener() {
+            @Override
+            public void success(String province, String city) {
+                provinceStr = province;
+                cityStr = city;
+                if (provinceStr.equals(cityStr)) {
+                    locationAddress.setText(cityStr);
+                } else {
+                    locationAddress.setText(provinceStr + "  " + cityStr);
+                }
+            }
+
+            @Override
+            public void failed(String message) {
+                locationAddress.setHint("定位失败,请选择地址");
+            }
+        });
     }
 
     @Override
@@ -111,6 +138,14 @@ public class LifeReleaseActivity extends BaseActivity {
                                 .into(imageViews.get(i));
                     }
                 }
+            }
+        }else if (requestCode == AppConstants.CODE_CHOOSE_CITY && resultCode == 200){
+            provinceStr = data.getStringExtra("province");
+            cityStr = data.getStringExtra("city");
+            if (provinceStr.equals(cityStr)) {
+                locationAddress.setText(cityStr);
+            } else {
+                locationAddress.setText(provinceStr + "  " + cityStr);
             }
         }
         super.onActivityResult(requestCode, resultCode, data);
@@ -153,11 +188,14 @@ public class LifeReleaseActivity extends BaseActivity {
         startActivityForResult(intent, 2);
     }
 
-    @OnClick({R.id.back, R.id.release})
+    @OnClick({R.id.back, R.id.release ,R.id.location_address})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.back:
                 finish();
+                break;
+            case R.id.location_address:
+                startActivityForResult( new Intent(this , SelectAddressActivity.class) , AppConstants.CODE_CHOOSE_CITY);
                 break;
             case R.id.release:
                 if (spinner.getSelectedItem().toString().equals(getResources().getString(R.string.enter_your_category))) {
@@ -172,7 +210,9 @@ public class LifeReleaseActivity extends BaseActivity {
                     toast(getResources().getString(R.string.please) + getResources().getString(R.string.enter_phone_number));
                 } else if (mResults == null || mResults.size() <= 0) {
                     toast(getResources().getString(R.string.please) + getResources().getString(R.string.please_select_at_least_one_picture));
-                } else {
+                } else if (provinceStr.equals("") && cityStr.equals("")){
+                    toast("请选择地址");
+                }else {
                     for (int i = 0; i < mResults.size(); i++) {
                         final LoadingDialog loadingDialog = new LoadingDialog(LifeReleaseActivity.this);
                         loadingDialog.show();
@@ -235,13 +275,15 @@ public class LifeReleaseActivity extends BaseActivity {
         for (int i = 0; i < compressFile.size(); i++) {
             postFormBuilder.addFile("files", compressFile.get(i).getName(), compressFile.get(i));
         }
-        postFormBuilder.url(AppConstants.BASE_URL + "/kenya/Live/filesUpload")
+        postFormBuilder.url(AppConstants.BASE_URL + "/kenya/Live/saveLive")
                 .addParams("userid", User.getInstance().getUserId())
                 .addParams("livetype", spinnervalue)
                 .addParams("livename", livename.getText().toString())
                 .addParams("livedesc", livedesc.getText().toString())
                 .addParams("liveuser", liveuser.getText().toString())
                 .addParams("livephone", livephone.getText().toString())
+                .addParams("cityprovince", provinceStr)
+                .addParams("cityname", cityStr)
                 .build()
                 .execute(new StringCallback() {
                     @Override
@@ -253,7 +295,7 @@ public class LifeReleaseActivity extends BaseActivity {
 
                     @Override
                     public void onResponse(String response, int id) {
-
+                        log(response);
                         try {
                             JSONObject jsonObject = new JSONObject(response);
                             log(response);

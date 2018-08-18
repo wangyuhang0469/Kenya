@@ -6,7 +6,6 @@ import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
-import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
@@ -21,9 +20,11 @@ import com.example.administrator.kenya.base.BaseActivity;
 import com.example.administrator.kenya.classes.Husbandry;
 import com.example.administrator.kenya.classes.User;
 import com.example.administrator.kenya.constants.AppConstants;
+import com.example.administrator.kenya.interfaces.MyLocationListener;
 import com.example.administrator.kenya.model.image_selector.MultiImageSelectorActivity;
-import com.example.administrator.kenya.ui.city.life.LifeDetailsActivity;
 import com.example.administrator.kenya.ui.main.LoadingDialog;
+import com.example.administrator.kenya.ui.main.SelectAddressActivity;
+import com.example.administrator.kenya.utils.MyLocationUtil;
 import com.zhy.http.okhttp.OkHttpUtils;
 import com.zhy.http.okhttp.builder.PostFormBuilder;
 import com.zhy.http.okhttp.callback.StringCallback;
@@ -58,6 +59,11 @@ public class HusbandryReleaseActivity extends BaseActivity {
     EditText framuser;
     @Bind(R.id.framphone)
     EditText framphone;
+    @Bind(R.id.location_address)
+    TextView locationAddress;
+
+    private String provinceStr="";
+    private String cityStr = "";
 
     private ArrayList<String> mResults = new ArrayList<>();
     private ArrayList<File> compressFile = new ArrayList<>();
@@ -84,6 +90,24 @@ public class HusbandryReleaseActivity extends BaseActivity {
         adapter.setDropDownViewResource(R.layout.item_spinner);
         spinner.setAdapter(adapter);
         framname.requestFocus();
+
+        MyLocationUtil.getInstance(this).getLocationInformation(new MyLocationListener() {
+            @Override
+            public void success(String province, String city) {
+                provinceStr = province;
+                cityStr = city;
+                if (provinceStr.equals(cityStr)) {
+                    locationAddress.setText(cityStr);
+                } else {
+                    locationAddress.setText(provinceStr + "  " + cityStr);
+                }
+            }
+
+            @Override
+            public void failed(String message) {
+                locationAddress.setHint("定位失败,请选择地址");
+            }
+        });
     }
 
     @Override
@@ -111,6 +135,14 @@ public class HusbandryReleaseActivity extends BaseActivity {
                     }
                 }
             }
+        }else if (requestCode == AppConstants.CODE_CHOOSE_CITY && resultCode == 200){
+            provinceStr = data.getStringExtra("province");
+            cityStr = data.getStringExtra("city");
+            if (provinceStr.equals(cityStr)) {
+                locationAddress.setText(cityStr);
+            } else {
+                locationAddress.setText(provinceStr + "  " + cityStr);
+            }
         }
         super.onActivityResult(requestCode, resultCode, data);
     }
@@ -120,7 +152,7 @@ public class HusbandryReleaseActivity extends BaseActivity {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         if (requestCode == 1) {
             boolean isAllGranted = true;
-            // 判断是否所有的权限都已经授予了
+            // 判断是否所有的权 限都已经授予了
             for (int grant : grantResults) {
                 if (grant != PackageManager.PERMISSION_GRANTED) {
                     isAllGranted = false;
@@ -148,11 +180,14 @@ public class HusbandryReleaseActivity extends BaseActivity {
         startActivityForResult(intent, 2);
     }
 
-    @OnClick({R.id.back, R.id.release})
+    @OnClick({R.id.back, R.id.release , R.id.location_address})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.back:
                 finish();
+                break;
+            case R.id.location_address:
+                startActivityForResult( new Intent(this , SelectAddressActivity.class) , AppConstants.CODE_CHOOSE_CITY);
                 break;
             case R.id.release:
                 if (spinner.getSelectedItem().toString().equals(getResources().getString(R.string.enter_your_category))) {
@@ -167,6 +202,8 @@ public class HusbandryReleaseActivity extends BaseActivity {
                     toast(getResources().getString(R.string.please) + getResources().getString(R.string.enter_phone_number));
                 } else if (mResults == null || mResults.size() <= 0) {
                     toast(getResources().getString(R.string.please) + getResources().getString(R.string.please_select_at_least_one_picture));
+                }else if (provinceStr.equals("") && cityStr.equals("")){
+                    toast("请选择地址");
                 } else {
                     final LoadingDialog loadingDialog = new LoadingDialog(HusbandryReleaseActivity.this);
                     loadingDialog.show();
@@ -224,7 +261,7 @@ public class HusbandryReleaseActivity extends BaseActivity {
             apinnervalue = "Pesticides ＆ Fertilizer";
         } else if (spinner.getSelectedItem().toString().equals("其他")) {
             apinnervalue = "Others";
-        } else {
+        }else {
             apinnervalue = spinner.getSelectedItem().toString();
         }
         PostFormBuilder postFormBuilder = OkHttpUtils.post();
@@ -232,12 +269,14 @@ public class HusbandryReleaseActivity extends BaseActivity {
             postFormBuilder.addFile("files", compressFile.get(i).getName(), compressFile.get(i));
         }
         postFormBuilder.url(AppConstants.BASE_URL + "/kenya/Fram/insertfram")
-                .addParams("userid", User.getInstance().getUserId())
+                .addParams("userId", User.getInstance().getUserId())
                 .addParams("framtype", apinnervalue)
                 .addParams("framname", framname.getText().toString())
                 .addParams("framdesc", framdesc.getText().toString())
                 .addParams("framuser", framuser.getText().toString())
                 .addParams("framphone", framphone.getText().toString())
+                .addParams("cityprovince", provinceStr)
+                .addParams("cityname", cityStr)
                 .build()
                 .execute(new StringCallback() {
                     @Override
@@ -249,7 +288,7 @@ public class HusbandryReleaseActivity extends BaseActivity {
 
                     @Override
                     public void onResponse(String response, int id) {
-
+                        log(response);
                         try {
                             JSONObject jsonObject = new JSONObject(response);
                             log(response);

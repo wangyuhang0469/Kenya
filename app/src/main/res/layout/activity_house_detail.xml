@@ -9,13 +9,21 @@
 
     <include layout="@layout/title_bar2" />
 
-    <com.example.administrator.kenya.view.MyObervalbleScrollView
+    <com.jwenfeng.library.pulltorefresh.PullToRefreshLayout
+        android:id="@+id/pullToRefreshLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_above="@+id/call"
+        android:layout_marginBottom="160px"
         android:layout_marginTop="144px">
 
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/call">
+
         <com.zhy.autolayout.AutoLinearLayout
+            android:id="@+id/ll"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@color/white"
@@ -181,8 +189,59 @@
                     android:layout_toRightOf="@id/avatar"
                     android:textColor="@color/textgreen1" />
             </com.zhy.autolayout.AutoRelativeLayout>
+
+
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="20px"
+                android:background="@color/base_bg" />
+
+            <com.zhy.autolayout.AutoRelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="130px">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+                    android:layout_marginLeft="30px"
+                    android:textColor="@color/textBlack1"
+                    android:text="@string/follow"/>
+
+                <ImageView
+                    android:id="@+id/image_comment"
+                    android:layout_width="130px"
+                    android:layout_height="match_parent"
+                    android:paddingRight="30px"
+                    android:paddingLeft="40px"
+                    android:layout_alignParentRight="true"
+                    android:src="@drawable/icon_comment"/>
+            </com.zhy.autolayout.AutoRelativeLayout>
+            <View
+                android:layout_width="wrap_content"
+                android:layout_height="1px"
+                android:background="@color/line1"/>
+
+            <com.zhy.autolayout.AutoLinearLayout
+                android:id="@+id/commentViews"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+
+            </com.zhy.autolayout.AutoLinearLayout>
+
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="80px"
+                android:background="@color/base_bg" />
+
+
         </com.zhy.autolayout.AutoLinearLayout>
-    </com.example.administrator.kenya.view.MyObervalbleScrollView>
+    </ScrollView>
+
+    </com.jwenfeng.library.pulltorefresh.PullToRefreshLayout>
 
     <TextView
         android:id="@+id/call"
